@@ -140,14 +140,14 @@ body {
 
     #header-navigation li {
         float: left;
-        color: #fff;
+        color: #666;
         margin-top: 10px;
         margin-right: 20px;
         font-size: 17px;
     }
 
         #header-navigation li:hover {
-            color: #fff;
+            color: #000;
             cursor: pointer;
         }
 
