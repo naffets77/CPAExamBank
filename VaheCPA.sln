@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "VaheCPA", "..\VaheCPA", "{E5E70DF4-9B7F-455C-8EEF-A34676AAF22B}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "VaheCPA", ".", "{E5E70DF4-9B7F-455C-8EEF-A34676AAF22B}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
 		Debug.AspNetCompiler.VirtualPath = "/VaheCPA"
@@ -19,6 +19,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "VaheCPA", "..\VaheCPA", "{E
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "56664"
+		VWDVirtualPath = "/"
 	EndProjectSection
 EndProject
 Global

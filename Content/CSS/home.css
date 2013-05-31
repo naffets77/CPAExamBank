@@ -1,0 +1,139 @@
+﻿
+
+
+/* SPLASH PAGE */
+
+#home-row1 {
+    float: left;
+    margin: 0px 0px;
+    height: 457px;
+    width: 960px;
+    background-image: url("/Content/Images/Home/COR_HOME_01.jpg");
+    position: relative;
+}
+
+
+    #home-row1 h1 {
+        color: #fff;
+        text-align: right;
+        margin-right: 20px;
+        margin-bottom: 0px;
+        font-size: 40px;
+        padding-bottom: 0px;
+    }
+
+    #home-row1 h2 {
+        color: #fff;
+        text-align: right;
+        font-style: italic;
+        margin-right: 20px;
+        font-size: 20px;
+    }
+
+    #home-row1 p {
+        width: 512px;
+        float: right;
+        color: #fff;
+        margin-right: 20px;
+        font-size: 22px;
+        margin-top: 22px;
+        font-weight: 400;
+        line-height: 1.3em;
+    }
+
+#home-registration-holder {
+    font-size: 20px;
+    width: 100%;
+    float: left;
+    position: relative;
+}
+
+
+#home-registration-content {
+    position: absolute;
+    right: 30px;
+    top: 10px;
+    width: 340px;
+    margin-top: 10px;
+    margin-left: 10px;
+    background-color: #fff;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -khtml-border-radius: 15px;
+    border-radius: 15px;
+}
+
+#registration-finish-button {
+    font-size: 16px;
+    padding: 10px 16px;
+}
+
+#home-registration-content table {
+    list-style-type: none;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+    #home-registration-content table tr td {
+        padding-bottom: 15px;
+        position: relative;
+        font-size: 15px;
+    }
+
+    #home-registration-content table .title {
+        font-size: 32px;
+        margin-right: 45px;
+    }
+
+    #home-registration-content table .error-message {
+        position: absolute;
+        right: 28px;
+        top: 50px;
+        font-size: 12px;
+    }
+
+#home-registration-content input[type=text] {
+    padding: 2px 6px;
+    width: 274px;
+    font-size: 18px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#home-registration-content select {
+    padding: 2px 6px;
+    width: 292px;
+    font-size: 18px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#home-registration-content .tooltip {
+    font-size: 12px;
+}
+
+#home-registration-transparency {
+    position: absolute;
+    background-color: #fff;
+    width: 360px;
+    height: 263px;
+    right: 20px;
+    top: 10px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -khtml-border-radius: 15px;
+    border-radius: 15px;
+    /* IE 8 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=15)";
+    /* IE 5-7 */
+    filter: alpha(opacity=15);
+    -moz-opacity: 0.15;
+    -khtml-opacity: 0.15;
+    opacity: 0.15;
+}
+
+/* END SPLASH PAGE STYLES */
