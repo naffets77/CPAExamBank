@@ -1,23 +1,77 @@
 <html>
     <head>
 
+        <title>CPA Exam Bank - CPA Exam Questions</title>
+
+        <link href="Content/CSS/global.css" rel="stylesheet" />
     </head>
     <body>
+        <div id="wrapper">
+            <div id="body">
 
-        <table>
-            <tr>
-                <td>Username</td>
-                <td><input type="text" /></td>
-            </tr>
-            <tr>
-                <td>Password</td>
-                <td><input type="text" /></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><input type="submit" /></td>
-            </tr>
-        </table>
+                <div id="ServerErrorHandler">
+                    <h2>There was an error trying to make your request.</h2> 
+                    <p>
+                        Please refresh the page and try again. If you are seeing this message and you have verified your internet 
+                        connection is valid then please <span class="link" style="color:#000;">contact us</span>.
+                    </p>
+                </div>
+
+
+                <div id="header">
+                    <div id="header-logo"></div>
+                    <ul id="header-navigation">
+                        <li id="header-navigation-aboutus" class="first">About Us</li>
+                        <li id="header-navigation-pricing">Pricing</li>
+                        <li id="header-navigation-faqs">FAQs</li>
+                        <li id="header-navigation-contactus" class="last">Contact Us</li>
+                    </ul>
+                    <div id="header-login-container">
+                        <table>
+                            <tr>
+                                <td>
+                                    <input type="text" id='home-login-username' value="Email" onclick="$(this).val('steffan77@gmail.com');" /> <br />
+                                </td>
+                                <td>
+                                    <input type="text" id='home-login-password' value="Password" onclick="$(this).val('testing');" /> <br />
+                                    <span id='home-forgot-login'>Forgot Password/Email?</span>
+                                </td>
+                                <td>
+                                    <button id='login' style="margin-top:1px">Login</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="header-logout-container">
+                        Logout
+                    </div>
+                </div>
+
+
+            </div>
+
+
+            <footer>
+                <div id="footer-content-holder">
+                    <ul id="footer-nav">
+                        <li id="footer-nav-aboutus">About Us</li>
+                        <li id="footer-nav-contactus">Contact Us</li>
+                        <li id="footer-nav-support">Support</li>
+                        <li id="footer-nav-privacypolicy">Privacy Policy</li>
+                        <li id="footer-nav-termsofuse">Terms of Use</li>
+                    </ul>
+                    <div id="footer-row-1">
+                        Corviden &copy; 2013 - Learn with Corviden
+                    </div>
+                    <div id="footer-row-2">
+                        <div id="footer-logo"></div>
+                    </div>
+                </div>
+            </footer>
+
+
+        </div>
+
 
 
 

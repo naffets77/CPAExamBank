@@ -1,2 +1,253 @@
-﻿body {
+﻿/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
 }
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+    blockquote:before, blockquote:after,
+    q:before, q:after {
+        content: '';
+        content: none;
+    }
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+
+/* END RESET */
+
+
+
+/* GLOBAL NON PAGE SPECIFIC STYLES */
+html {
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #fff;
+    color: #333;
+    font-size: .85em;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    margin: 0;
+    padding: 0;
+    float: left;
+    height: 100%;
+    width: 100%;
+}
+
+#wrapper {
+    width: 960px;
+    margin: 0px auto;
+    height: 100%;
+}
+
+#body {
+    clear: both;
+    float: left;
+    width: 960px;
+    -moz-box-shadow: 0 0 35px 0px #ccc;
+    -webkit-box-shadow: 0 0 35px 0px #ccc;
+    box-shadow: 0 0 35px 0px #ccc;
+    background-image: url("/Content/Images/Shared/bkgroundLight.jpg");
+    background-repeat: repeat;
+    min-height: 600px;
+}
+
+#ServerErrorHandler {
+    width: 400px;
+    margin: 0px auto;
+    position: absolute;
+    left: 50%;
+    margin-left: -200px;
+    padding: 60px 40px 20px;
+    background-color: #FFD484;
+    border: solid 1px #000;
+    top: -171px;
+    z-index: 10;
+}
+
+    #ServerErrorHandler h2 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+#header {
+    width: 960px;
+    color: #fff;
+    float: left;
+    border-bottom: 1px solid #999;
+}
+
+#header-logo {
+    cursor: pointer;
+    margin-left: 20px;
+    margin-top: 20px;
+    height: 90px;
+    width: 100px;
+    float: left;
+    background: url("/Content/Images/Shared/COR_SPRITE_SHEET.png") -48px -25px no-repeat;
+}
+
+#header-navigation {
+    list-style-type: none;
+    border-top: solid 1px #fff;
+    width: 338px;
+    float: left;
+    padding-left: 0px;
+    margin-top: 15px;
+}
+
+    #header-navigation li {
+        float: left;
+        color: #fff;
+        margin-top: 10px;
+        margin-right: 20px;
+        font-size: 17px;
+    }
+
+        #header-navigation li:hover {
+            color: #fff;
+            cursor: pointer;
+        }
+
+        #header-navigation li.last {
+            margin-right: 0px;
+        }
+
+#header-login-container {
+    float: right;
+    border-top: solid 1px #fff;
+    margin-top: 15px;
+    font-size: 12px;
+    margin-right: 20px;
+}
+
+    #header-login-container table {
+        margin-top: 5px;
+    }
+
+        #header-login-container table tr td {
+            vertical-align: top;
+        }
+
+    #header-login-container input {
+        width: 120px;
+        color: #999;
+    }
+
+#header-logout-container {
+    float: right;
+    margin-top: 15px;
+    font-size: 14px;
+    margin-right: 20px;
+    display: none;
+    cursor: pointer;
+}
+
+
+footer {
+    clear: both;
+    color: #bdbdbd;
+    text-align: center;
+    padding: 20px 0px 50px;
+    margin: 0px auto;
+    width: 800px;
+    margin: 0px auto;
+}
+
+#footer-content-holder {
+    width: 100%;
+    margin-top: 20px;
+    border-top: 1px solid #999;
+    padding-top: 20px;
+}
+
+#footer-nav {
+    width: 520px;
+    margin: 10px auto;
+    list-style-type: none;
+}
+
+    #footer-nav li {
+        float: left;
+        margin-right: 20px;
+        font-size: 17px;
+    }
+
+        #footer-nav li:hover {
+            color: #fff;
+            cursor: pointer;
+        }
+
+#footer-row-1 {
+    clear: both;
+    margin-top: 10px;
+    float: left;
+    width: 100%;
+    border-bottom: 1px solid #999;
+    padding: 10px 0px 25px;
+}
+
+#footer-row-2 {
+    clear: both;
+    float: left;
+    width: 100%;
+    margin-top: 20px;
+}
+
+#footer-logo {
+    background: url("/Content/Images/Shared/COR_SPRITE_SHEET.png") -48px -236px no-repeat;
+    height: 120px;
+    width: 130px;
+    clear: both;
+    margin: 0px auto; /* IE 8 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+    /* IE 5-7 */
+    filter: alpha(opacity=35);
+    -moz-opacity: 0.35;
+    -khtml-opacity: 0.35;
+    opacity: 0.35;
+}
+
+/* END GLOBAL NON PAGE SPECIFIC STYLES */
