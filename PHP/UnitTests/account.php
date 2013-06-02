@@ -6,6 +6,9 @@
     
 class TestOfLogin extends UnitTestCase {
     function testLogCreatesNewFileOnFirstMessage() {
+    
+        simulatePostRequest(array("email"=>"demo_account@cpaexambank.com", "password"=>"demo1"), "ciboriumsvc_account","login");
+    
         $this->assertTrue(true);
     }
 }

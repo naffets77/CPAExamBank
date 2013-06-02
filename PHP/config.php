@@ -12,7 +12,7 @@
     $GLOBAL_database = "ciborium_" . $serviceVersion;
     
     $CONFIG_libPath = "/srv/lib/";
-    $CONFIG_servicePath = "/srv/lib/CORServices/" . $serviceVersion . "/";
+    $CONFIG_servicePath = "/srv/lib/TPrepServices/" . $serviceVersion . "/";
 
     
     
