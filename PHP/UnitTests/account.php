@@ -9,7 +9,7 @@ class TestOfLogin extends UnitTestCase {
     
         BuildTestHeader("Login", "service_account", "login", "Test logging in with a username/password", null, null);
         
-        $result = simulatePostRequest(array("email"=>"demo_account@cpaexambank.com", "password"=>"demo1"), "account","login");
+        $result = simulatePostRequest(array("email"=>"demo_account@cpaexambank.com", "password"=>"demo1"), "service_account","login");
     
         BuildResultViewer($result);
         
@@ -59,7 +59,7 @@ function simulatePostRequest($arrayPostVars, $service, $function){
     
     include_once($CONFIG_servicePath . $service .".php");
        
-    return call_user_func("service_{$service}::{$function}"); 
+    return call_user_func("{$service}::{$function}"); 
 }
 
 ?>
