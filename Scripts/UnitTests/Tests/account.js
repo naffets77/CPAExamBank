@@ -7,7 +7,7 @@ asyncTest("Login", function () {
     var postData = {
         email : "demo_account@cpaexambank.com",
         password: "e368b9938746fa090d6afd3628355133",
-        service: "service_account",
+        service: "account",
         call : "login"
     }
 
