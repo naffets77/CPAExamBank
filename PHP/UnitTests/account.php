@@ -9,7 +9,7 @@ class TestOfLogin extends UnitTestCase {
     
         BuildTestHeader("Login", "service_account", "login", "Test logging in with a username/password", null, null);
         
-        $result = simulatePostRequest(array("email"=>"demo_account@cpaexambank.com", "password"=>"demo1"), "service_account","login");
+        $result = simulatePostRequest(array("email"=>"demo_account@cpaexambank.com", "password"=>"e368b9938746fa090d6afd3628355133"), "service_account","login");
     
         BuildResultViewer($result);
         
