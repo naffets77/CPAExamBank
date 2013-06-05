@@ -1,11 +1,6 @@
 <?php
 
-?><?php
-
-    error_reporting(-1);
-
-    $serviceVersion = "dev";
-    $servicePath = "/srv/lib/CORServices/" . $serviceVersion . "/";
+    include_once("config.php");
     
     $services = array("service_account","service_class", "service_classPlan", "service_chat", "service_practice");
 
@@ -28,7 +23,7 @@
     
     if($validService){
             
-        include_once($servicePath . "service_".$_POST['service'].".php");
+        include_once($CONFIG_servicePath . "service_".$_POST['service'].".php");
     
         
         
