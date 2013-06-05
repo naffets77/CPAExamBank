@@ -42,7 +42,7 @@ function BuildTestHeader($name,$service, $function, $testingDescription, $inputs
 function BuildResultViewer($result){
 
     echo "<div class='result-viewer'>
-            <div class='result-viewer-toggle'>+ Show Result</div>
+            <div class='result-viewer-toggle' toggleattr='off'>+ Result</div>
             <pre style='display:none;'>" . var_dump($result) . "</pre>
           </div>";
 }
@@ -67,11 +67,24 @@ function simulatePostRequest($arrayPostVars, $service, $function){
 
 
 
-<script src="Scripts/jquery-2.0.2.min.js"></script>
+<script src="/Scripts/jquery-2.0.2.min.js"></script>
 <script>
-    $(document).on('ready', function(){
+    $(document).on("ready", function(){
 
-        console.log("ready");
+        $(".result-viewer-toggle").on("click", function(){
+            var toggleState = $(this).attr("toggleattr");
+            
+            if(toggleState == "off"){
+                $(this).parent().children("pre").show();
+                $(this).html("- Hide Result").attr("toggleattr","on");
+            }
+            else{
+                $(this).parent().children("pre").hide();
+                $(this).html("+ Result").attr("toggleattr","off");            
+            
+            }
+         
+        });
 
 
     });
