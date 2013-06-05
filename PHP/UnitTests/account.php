@@ -41,9 +41,13 @@ function BuildTestHeader($name,$service, $function, $testingDescription, $inputs
 
 function BuildResultViewer($result){
 
+    ob_start();
+    var_dump($result)
+    $varDumpResult = ob_get_clean();
+
     echo "<div class='result-viewer'>
             <div class='result-viewer-toggle' toggleattr='off'>+ Result</div>
-            <pre style='display:none;'>" . var_dump($result) . "</pre>
+            <pre style='display:none;'>" . $varDumpResult  . "</pre>
           </div>";
 }
 
