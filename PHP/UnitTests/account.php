@@ -17,7 +17,6 @@ class TestOfLogin extends UnitTestCase {
     }
 }
 
-
 function BuildTestHeader($name,$service, $function, $testingDescription, $inputs, $output){
 
     echo "<h2>$name</h2>
@@ -42,8 +41,10 @@ function BuildTestHeader($name,$service, $function, $testingDescription, $inputs
 
 function BuildResultViewer($result){
 
-    var_dump($result);
-
+    echo "<div class='result-viewer'>
+            <div class='result-viewer-toggle'>+ Show Result</div>
+            <pre style='display:none;'>" . var_dump($result) . "</pre>
+          </div>";
 }
 
 function simulatePostRequest($arrayPostVars, $service, $function){
@@ -63,3 +64,14 @@ function simulatePostRequest($arrayPostVars, $service, $function){
 }
 
 ?>
+
+
+
+<script src="Scripts/jquery-2.0.2.min.js"></script>
+
+$(document).on('ready', function(){
+
+    console.log("ready");
+
+
+});
