@@ -14,7 +14,7 @@ asyncTest("Valid Login is Successful", function () {
 
     $.post("/PHP/services.php", postData, function (data) {
 
-        if (data.reason == "" && data.Account != null) {
+        if (data.Reason == "" && data.Account != null) {
             ok(true, "Passed");
         }
         else {
@@ -41,7 +41,7 @@ asyncTest("Invalid Login is Not Successfull", function () {
 
     $.post("/PHP/services.php", postData, function (data) {
 
-        if (data.reason == "Invalid Password" && data.Account == undefined) {
+        if (data.Reason == "User name/Password combination did not match." && data.Account == null) {
             ok(true, "Passed");
         }
         else {
