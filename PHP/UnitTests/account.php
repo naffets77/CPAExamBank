@@ -68,10 +68,11 @@ function simulatePostRequest($arrayPostVars, $service, $function){
 
 
 <script src="Scripts/jquery-2.0.2.min.js"></script>
+<script>
+    $(document).on('ready', function(){
 
-$(document).on('ready', function(){
-
-    console.log("ready");
+        console.log("ready");
 
 
-});
+    });
+</script>
