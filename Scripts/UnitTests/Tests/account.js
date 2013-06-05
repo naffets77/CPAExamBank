@@ -22,7 +22,7 @@ asyncTest("Valid Login is Successful", function () {
         }
         start();
 
-    });
+    }, 'json');
 
 });
 
@@ -49,6 +49,6 @@ asyncTest("Invalid Login is Not Successfull", function () {
         }
         start();
 
-    });
+    },'json');
 
 });
