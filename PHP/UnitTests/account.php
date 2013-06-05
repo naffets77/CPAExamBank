@@ -7,9 +7,9 @@
 class TestOfLogin extends UnitTestCase {
     function testLogCreatesNewFileOnFirstMessage() {
     
-        BuildTestHeader("Login", "service_account", "login", "Test logging in with a username/password");
+        BuildTestHeader("Login", "service_account", "login", "Test logging in with a username/password", null, null);
         
-        $result = simulatePostRequest(array("email"=>"demo_account@cpaexambank.com", "password"=>"demo1"), "service_account","login");
+        $result = simulatePostRequest(array("email"=>"demo_account@cpaexambank.com", "password"=>"demo1"), "account","login");
     
         BuildResultViewer($result);
         
