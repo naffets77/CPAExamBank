@@ -25,9 +25,7 @@
             
         include_once($CONFIG_servicePath . "service_".$_POST['service'].".php");
     
-        
-        
-        call_user_func("service_{$_POST['service']}::{$_POST['call']}");
-       
+        $return = call_user_func("service_{$_POST['service']}::{$_POST['call']}");
+        echo json_encode($return);
     }
 ?>
