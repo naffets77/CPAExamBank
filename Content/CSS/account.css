@@ -1,5 +1,14 @@
 ﻿/*** Account Styles ****/
 
+
+/* Horiz Navigation */
+
+.horiz-nav{float:left; width:400px;}
+.horiz-nav li{float:left; display:inline-block;}
+
+
+/* Popup */
+
 #popup-container{height:360px; width:800px; position:absolute; top:70px; margin-left:60px; background-color:#fff; color:#333; padding:20px; z-index:1001; display:none;
                  background:url("/Content/Images/Shared/watermark1.jpg") no-repeat 390px 0px #fff;
                -webkit-box-shadow: 0px 0px 34px 10px #444; -moz-box-shadow: 0px 0px 34px 10px #444; box-shadow: 0px 0px 34px 10px #444;
