@@ -230,11 +230,6 @@ $.COR.account.initUser = function () {
         this.showNewAccountPopup();
     }
 
-        // Normal Account Initalization
-    else {
-        this.chat.startPoll();
-    }
-
     $.COR.pageSwap("js-content-wrapper-splash", "js-content-wrapper-user-account");
 }
 
