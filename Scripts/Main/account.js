@@ -25,7 +25,7 @@ $.COR.account = {
 
 
 
-$.pubty.account.setup = function (data, successCallback) {
+$.COR.account.setup = function (data, successCallback) {
 
     var self = this;
     var cacheInvalidator = $.pubty.DisableCache ? "?num=" + Math.floor(Math.random() * 11000) : "";
@@ -85,7 +85,7 @@ $.pubty.account.setup = function (data, successCallback) {
 
 }
 
-$.pubty.account.hashHandler = function () {
+$.COR.account.hashHandler = function () {
 
     if ($.pubty.account.user != null) {
 
@@ -111,7 +111,7 @@ $.pubty.account.hashHandler = function () {
 
 };
 
-$.pubty.account.setupEvents = function(){
+$.COR.account.setupEvents = function () {
     
     var self = this;
   
@@ -254,10 +254,10 @@ $.pubty.account.setupEvents = function(){
 // Helper Functions
 
 
-$.pubty.account.initUser = function () {
+$.COR.account.initUser = function () {
 
     // handle if user first time flag is true
-    if ($.pubty.account.user.IsRegistrationInfoObtained == "0") {
+    if ($.COR.account.user.IsRegistrationInfoObtained == "0") {
         this.showNewAccountPopup();
     }
 
@@ -266,10 +266,10 @@ $.pubty.account.initUser = function () {
         this.chat.startPoll();
     }
 
-    $.pubty.pageSwap("js-content-wrapper-splash", "js-content-wrapper-user-account");
+    $.COR.pageSwap("js-content-wrapper-splash", "js-content-wrapper-user-account");
 }
 
-$.pubty.account.showNewAccountPopup = function(){
+$.COR.account.showNewAccountPopup = function () {
 
 
     // show the overlay
@@ -284,7 +284,7 @@ $.pubty.account.showNewAccountPopup = function(){
 
     $.get("/HTMLPartials/Account/NewInstructorAccountPopup.html", function (data) {
 
-        $.pubty.Utilities.PopupHandler.init(data, function () {
+        $.COR.Utilities.PopupHandler.init(data, function () {
 
             // TODO: Could loop through popup content div's looking for forms and dynamically build them rather than hardcoding them like this... 
             // Could even build it into the popup handler ... //serialize, whould auto serialize all of the forms in the popup and return the result!
@@ -302,7 +302,7 @@ $.pubty.account.showNewAccountPopup = function(){
 
                 switch (name) {
                     case 'registration-password':
-                        postData[name] = $.pubty.MD5(value);
+                        postData[name] = $.COR.MD5(value);
                         break;
                     case 'password-again':
                         break;
@@ -312,11 +312,11 @@ $.pubty.account.showNewAccountPopup = function(){
                 }
             });
 
-            postData['UID'] = $.pubty.account.user.AccountUserId;
+            postData['UID'] = $.COR.account.user.AccountUserId;
 
 
             
-            var ph = new $.pubty.postHandler({
+            var ph = new $.COR.postHandler({
                 service: "account", call: "completeTeacherRegistration",
                 params: postData,
                 success: function (data) {
@@ -326,24 +326,6 @@ $.pubty.account.showNewAccountPopup = function(){
 
             ph.submitPost();
             
-
-            //var postData = form1 + form2 + form3 + "&UID=" + $.pubty.account.user.AccountUserId;
-
-            //console.log(postData);
-
-            /*
-            $.post("/PHP/AJAX/Account/TeacherOtherRegistration.php", postData, function (data) {
-                // Will Probably want to update user object with returned user object?
-                // Or will want to autolog them back on (If possible?)
-                //$.pubty.Utilities.PopupHandler.hide();
-
-                // Lets just reload the page, which should handle logging them in for now... later we can do 
-                // a fancier delete the user and reload with the password they provided, or something like that? 
-                window.location.reload()
-            });
-            */
-
-
         });
 
     });
