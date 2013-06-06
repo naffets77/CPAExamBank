@@ -1,1 +1,32 @@
-﻿
+﻿/*** Account Styles ****/
+
+#popup-container{height:360px; width:800px; position:absolute; top:70px; margin-left:60px; background-color:#fff; color:#333; padding:20px; z-index:1001; display:none;
+                 background:url("/Content/Images/Shared/watermark1.jpg") no-repeat 390px 0px #fff;
+               -webkit-box-shadow: 0px 0px 34px 10px #444; -moz-box-shadow: 0px 0px 34px 10px #444; box-shadow: 0px 0px 34px 10px #444;
+}
+
+#popup-container .popup-content{display:none;}
+#popup-content-holder{height:320px; overflow:auto;}
+
+#popup-content-holder table tr td{padding-bottom:4px;}
+#popup-content-holder table tr td:first-child{text-align:right; padding-right:6px;}
+
+#popup-nav-holder{display:none; margin:0px auto; width:800px; position:absolute; bottom:16px; height:30px; }
+#popup-nav-holder .popup-previous{float:left; display:none;}
+#popup-nav-holder .popup-next{float:right;}
+
+#popup-overlay{background-color:#333; height:100%; width:100%; top:0px; left:0px; z-index:1000; position:fixed; display:none;                       
+                        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=55)";
+                        filter: alpha(opacity=55);
+                        -moz-opacity: 0.55; -khtml-opacity: 0.55; opacity: 0.55;}
+
+
+#account-class-management-show-class{background-color:#fff; color:#000;}
+
+
+/* Reset Password Styles */
+
+#js-content-wrapper-reset-account{float:left; clear:both; width:100%;}
+#reset-password-holder{background-color:#000; color:#fff; padding:20px; min-height:450px;}
+#reset-password-holder table tr td:first-child{padding-right:10px;}
+#reset-password-holder table tr td{padding-bottom:20px;}
