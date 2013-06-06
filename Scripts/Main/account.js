@@ -28,7 +28,7 @@ $.COR.account = {
 $.COR.account.setup = function (data, successCallback) {
 
     var self = this;
-    var cacheInvalidator = $.pubty.DisableCache ? "?num=" + Math.floor(Math.random() * 11000) : "";
+    var cacheInvalidator = $.COR.DisableCache ? "?num=" + Math.floor(Math.random() * 11000) : "";
 
     //Set Hash 
 
@@ -87,17 +87,17 @@ $.COR.account.setup = function (data, successCallback) {
 
 $.COR.account.hashHandler = function () {
 
-    if ($.pubty.account.user != null) {
+    if ($.COR.account.user != null) {
 
         // This case should only be called because we've just created a new user but havent finished filling out their information
         //this.initUser(); // TODO: This was being called on every login, but apparently based on the above comment shouldn't be .. 
     }
     else {
 
-        $.pubty.checkLogin(
+        $.COR.checkLogin(
             function (data) {
-                $.pubty.account.setup(data, function () {
-                    //$.pubty.pageSwap("js-content-wrapper-splash", "js-content-wrapper-user-account");
+                $.COR.account.setup(data, function () {
+                    //$.COR.pageSwap("js-content-wrapper-splash", "js-content-wrapper-user-account");
                 });
             },
 
@@ -129,10 +129,7 @@ $.COR.account.setupEvents = function () {
        // Show/Hide Content
        $(".account-content").addClass("hidden");
        $("#account-content_" + $(this).attr("id").split("_")[1]).removeClass("hidden");
-       
-       // 5 Second polling if we're on the chat window, otherwise 30 seconds       
-       $.pubty.account.chat.PollInterval = $(this).attr("id").split("_")[1]  === "4" ? 5 : 30;
-       
+              
     });
     
 
@@ -155,15 +152,7 @@ $.COR.account.setupEvents = function () {
 
     });
 
-    // Temporary Show the Practice Topic Screen Stuff
 
-    $("#voice-chat-start-practice").on("click", function () {
-
-        // TODO - This will need to go in it's correct spot, for now while developing the UI this will work here for now
-        $.pubty.practiceLesson.init();
-        //$("#js-content-wrapper-matched").fadeIn();
-
-    });
     
     /* ----- Settings Management ---- */
     
@@ -171,7 +160,7 @@ $.COR.account.setupEvents = function () {
         e.preventDefault();
         if($(this).hasClass("disabled")){return;}
         
-        if($.pubty.validateForm($(this).parents("form"))){
+        if ($.COR.validateForm($(this).parents("form"))) {
             
             var self = this;
             
@@ -179,7 +168,7 @@ $.COR.account.setupEvents = function () {
             
             $.post("/PHP/AJAX/Account/UpdateAccount.php",$(this).parents("form").serialize() + "&Data=true", function(data){
                                 
-                $.pubty.cycleButton(self,"Saved", "Update");
+                $.COR.cycleButton(self, "Saved", "Update");
                 $(self).removeClass("disabled");
                 
             });            
@@ -191,11 +180,11 @@ $.COR.account.setupEvents = function () {
     $("#account-settings-update-password-button").on("click", function(e){
         e.preventDefault();
                 
-        if($.pubty.validateForm($(this).parents("form")) && $(this).hasClass("disabled") == false){
+        if ($.COR.validateForm($(this).parents("form")) && $(this).hasClass("disabled") == false) {
             
             var self = this;
-            var oldPassword = $.pubty.MD5($("#account-settings-old-password").val());
-            var newPassword = $.pubty.MD5($("#account-settings-new-password").val());
+            var oldPassword = $.COR.MD5($("#account-settings-old-password").val());
+            var newPassword = $.COR.MD5($("#account-settings-new-password").val());
             
             
             
@@ -204,8 +193,8 @@ $.COR.account.setupEvents = function () {
             $.post("/PHP/AJAX/Account/UpdatePassword.php","old_password=" + oldPassword + "&password=" + newPassword + "&Data=true", function(data){
                 
                 $("#account-settings-current-password").val(newPassword);
-                $.pubty.account.user.LoginPassword = newPassword;
-                $.pubty.cycleButton(self,"Saved", "Update");
+                $.COR.account.user.LoginPassword = newPassword;
+                $.COR.cycleButton(self, "Saved", "Update");
                 $(self).removeClass("disabled");
             });
         }     
@@ -217,7 +206,7 @@ $.COR.account.setupEvents = function () {
         e.preventDefault();
         if($(this).hasClass("disabled")){return;}
         
-        if($.pubty.account.user.IsInClass == 0 && $.pubty.validateForm($(this).parents("form"))){
+        if ($.COR.account.user.IsInClass == 0 && $.COR.validateForm($(this).parents("form"))) {
             
             var self = this;
             
@@ -236,12 +225,8 @@ $.COR.account.setupEvents = function () {
 
     }); 
 
-    
-    $.pubty.account.chat.setupEvents();
-    $.pubty.account.classes.setupEvents();
-    $.pubty.account.classPlans.setupEvents();
-    
-    $.pubty.account.chat.init();
+
+    // Call setup on any other events that are sub of the account object
     
 };
 
