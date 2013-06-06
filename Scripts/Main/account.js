@@ -51,22 +51,6 @@ $.COR.account.setup = function (data, successCallback) {
 
         $("#account-settings-current-password").val(self.user.LoginPassword);
 
-
-        if (data.Account.IsInstructor == 0) {
-            $("#user-account-navigation .instructor").hide();
-            $("#account-nav_3").trigger("click");
-        }
-        else {
-            $("#user-account-navigation .instructor").show();
-            $("#account-nav_1").trigger("click");
-
-            self.classes.addClasses(data.Classes);
-            self.classPlans.addClassPlans(data.ClassPlans);
-        }
-
-
-        SetupDropdowns();
-
         self.setupEvents();
 
         $("#header-login-container").hide();
