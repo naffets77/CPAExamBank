@@ -37,7 +37,7 @@ $.COR.account.setup = function (data, successCallback) {
 
     $.get("/HTMLPartials/Account.html" + cacheInvalidator, function (loggedinPageHTML) {
 
-        $("#body div.content-wrapper").append(loggedinPageHTML);
+        $("#body").append(loggedinPageHTML);
 
         self.user = data.Account;
 
