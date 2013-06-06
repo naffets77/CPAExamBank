@@ -1,0 +1,1202 @@
+
+           
+<!-- Logged In Page -->
+<div id="js-content-wrapper-user-account" class="js-content-wrapper hidden">
+    
+    <div id='user-account-col'>
+        
+        <ul class='button-nav' id='user-account-navigation'>
+            <li id='account-nav_1' class='instructor current'>Classes</li>
+            <li id='account-nav_2' class='instructor'>Topics Management</li>
+            <li id='account-nav_3' style="display:none;">Language Chat</li>
+            <li id='account-nav_4'>Friends List</li>
+            <li id='account-nav_5'>Account Settings</li>
+            <li id='account-nav_6'>Practice</li>
+        </ul>
+            
+            
+        <!-- Logged In Chat Window -->
+        <div id='logged-in-voice-chat-window' class='Box hidden'>
+        
+            <div id='logged-in-voice-chat-window-connecting'>
+                <img style='display:inline-block;' src='/Images/ajax-loader-small.gif' />
+                Connecting
+            </div>
+            
+            <div id='logged-in-voice-chat-window-connected' class='hidden'>
+                Connected
+            </div>
+        
+        
+        </div>
+            
+        <!-- Class Management -->
+        <div id='account-content_1' class='Box account-content'>
+            
+             <h2>Class Management</h2>
+            
+            <!-- Add New Class -->
+            <div id='account-class-management-create-class'>
+                <form>
+                    <table style='width:40%; float:left; margin-left:20px;'>
+                        <tr>
+                            <td>Language</td>
+                            <td><select name='laid' class='languages-holder'></select></td>
+                        </tr>
+                        <tr>
+                            <td>Class Name</td>
+                            <td><input type='text' id='account-class-create-class-name' name='name' class='Validate' validate='Required' /></td>
+                        </tr>
+                        <tr>
+                            <td>Expected Class Size</td>
+                            <td><input type='text' name='classcount' class='Validate' validate='NumericMin,Numeric,Required' numericMin="1" /></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <button id='account-class-management-create-class-button'>Create</button>
+                                <span id='account-class-management-new-class-cancel' class='link'>cancel</span>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+                <div style="width:2px; border-right: 2px solid; float: left; min-height: 400px;">    
+                        &nbsp;
+                    </div>
+                <div  style='width:50%; float:right; margin-right:20px;'>
+                    
+                    <h3>Creating a New Class is Easy!</h3>
+                    <p>Enter the following information:</p>
+                    <ol>
+                        <li>Language: Provide the language of study</li>
+                        <li>
+                            Class Name: Choose a descriptive name to identify your class.<br />**Hint: Use a standardized name to help keep your classes organized.
+                            <p style="margin-left: 40px;">Ex. Spanish Fall 2012 Period 1 = SP_FALL2012_P1</p>
+                            <p style="margin-left: 40px;">Ex. French Quarter 1 2011 9:10am - 10:00am = FRQ1_2011_910A</p>
+                        </li>
+                        <li>Expected Class Size: Entering the expected class size will allow you to keep track of the total number of students registered.</li>
+                    </ol>
+                    <p style="text-indent: 20px">**Tokens: After a class is created you will receive a token that must be distributed to your students. This token will allow your students to register into the class that has just been created.</p>
+                    <!--<h3>Creating a New Class</h3>
+                    <p>
+                        Create a new class, use a unique name to identify a class. After you create a class you will be given a unique token 
+                        to provide to your students for them to register to your class. After you have created a class you will be able to specify a class size. 
+                        You can add students to a class for two weeks before it will be locked and the token will no longer be valid. 
+                    </p>
+                    
+                    <h3>Language</h3>
+                    <p>
+                        The Language of the class to be taught.
+                    </p>
+                    
+                    <h3>Class Name</h3>
+                    <p>
+                        A short descriptive name identify your classes by. For convenience try and stick to a standard to 
+                        help keep your classes organized. They will be sorted in the opposite order of how you 
+                        add them.  <br /><br />
+                        
+                        Examples...
+                        <br /><br />
+                        
+                        Spanish Fall 2012 Period 1 = SP_FALL2012_P1 <br />
+                        French Quarter 1 2011 9:10a - 10:00a = FRQ1_2011_910a
+                    </p>
+                    
+                    <h3>Expected Class Size</h3>
+                    
+                    <p>
+                        This will be used to help you know when all of your students have registered. 
+                    </p>-->
+                    
+                </div>
+            </div>
+            
+            <!-- Class Management -->
+            <div id='account-class-management-class-holder'>
+                
+
+                <!-- Class Selection -->
+                <table style='width:100%; font-size:15px'>
+                    <tr>
+                        <td style='width:95px;'>Select Class</td>
+                        <td style='width:150px;'>
+                            <select id='account-class-management-classes-selector'>
+                                <option value=''>Please Select</option>
+                            </select>
+                        </td>
+                        <td  style="padding-right:0px;">
+                            <button style='float:right;' id='account-class-management-new-class-button'>New Class</button>
+                        </td>
+                    </tr>
+                </table>
+                
+                <!-- Class Management Splash -->
+                <div id='account-class-management-splash'>
+                    <div style="width: 430px; float: left; padding: 15px;">
+                        <p>
+                            Please select the class you wish to manage from the drop down menu.
+                        </p>
+                        <span>The classes tab will allow you to:</span><br />
+                        <ul style="list-style-type: disc;">
+                            <li>Create a class</li>
+                            <li>View student details</li>
+                            <li>Send class wide messages</li>
+                            <li>Adjust curriculum settings</li>
+                        </ul>
+                    </div>
+                    <div style="width:2px; border-right: 2px solid; float: left; min-height: 400px;">    
+                        &nbsp;
+                    </div>
+                    <div style="width: 430px; float: left; padding: 15px;">
+                        <p>Create a New Class:</p>
+                        <p>Use the 'New Class' button located in the upper right corner to create your class. You will need to enter the course language, a class name and expected class size.</p>
+                        <p>**Note: A class is defined to be a course that is one semester or one quarter's time frame.</p>
+                    </div>
+                    <div style="clear: both;"></div>
+                </div>
+                
+                <!-- Class Management Show Class -->
+                <div id='account-class-management-show-class' class='hidden'>
+                    
+                    
+                    <!-- Class Info -->
+                    <div id='class-info' class='info-header'>
+                        <table>
+                            <tr>
+                                <td class="info-header-title" colspan="2"><span class='label'>Class Name:</span> <span class='value' id='class-info-name'></span></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><span class='label'>Num Students:</span> <span class='value' id='class-info-expected-students-count'></span></td>
+                                <td><span class='label'>Num Registered Students:</span> <span class='value' id='class-info-registered-students-count'></span></td>
+                                <td><span class='label'>Class Code:</span> <span class='value' id='class-info-class-code'></span></td>
+                                <td><span class='label'>Language:</span> <span class='value' id='class-info-class-language'></span></td>
+                                <td><span class='label'>Topic Set:</span> <span class='value' id='class-info-topic-set'>Default</span></td>
+                            </tr>
+                            <tr>
+                                <td style="padding-top:5px;"><span id='class-info-class-options' class='link' toggleswap='show students' >show class details</span></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    
+                    
+                    <!-- Students Table -->
+                    <table id='class-info-students-table' class='info-grid account-class-management-show-class-content current-class-management-content' style='margin-bottom:15px;'>
+                        <thead>
+                            <tr>
+                                <td>Name</td>
+                                <td>Email</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    
+                
+                    <!-- Class Options -->
+                    <div id='class-info-class-options-display' class="account-class-management-show-class-content hidden">
+                         <ul class='button-nav-mini'>
+                            <li class='current' id='class-info-class-options-nav_1'>Class Options</li>
+                            <li id='class-info-class-options-nav_2'>Topics Management</li>
+                         </ul>
+                         
+                         <div id='class-info-class-options-content_1' class='class-info-class-options-content'>
+
+                            <form style='float:left; width:450px; border-right:1px solid #999;'>
+                                <table>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <div style='width:100%;'>
+                                                Class Size&nbsp; <input id='class-info-class-options-class-size' class='Validate' validate='Required' type='text' style='width:50px;' /> 
+                                                
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <input type='checkbox' /> &nbsp; Open Class (Not Implemented)
+                                            <p style='margin:0px; padding:0px; font-size:10px; width:305px;'>
+                                                An open class means that the students will have the ability to search for, and be in included in searches by students 
+                                                of other classes looking for people to practice speaking with. Only students learning/speaking either the language being 
+                                                taught or the native language will be included in the search. <span class='link'>More Info</span>.  
+                                            </p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <input type='checkbox' />  &nbsp; Class Completed (Not Implemented)
+                                            <p style='margin:0px; padding:0px; font-size:10px; width:305px;'>
+                                                This is an irreversible action. Only select this when you are completed with a class. <span class='link'>More Info</span>.  
+                                            </p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td><button id='class-info-class-options-update-button'>Update</button></td>
+                                    </tr>
+                                </table>
+                            </form>
+                            
+                            <div style='float:left; margin-left:40px; width:400px;'>
+                                <p>
+                                    Send class wide message
+                                </p>
+                                <textarea id='class-info-class-wide-message' style='width:395px; height:160px; float:left;'></textarea>
+                                <span class='error-message' id='class-info-class-wide-message-error-message' style='display:none; float:right;'>Message Required</span>
+                                <button id='class-info-class-options-send-class-wide-message'>Send</button>
+                                <p>
+                                    Students will receive their class wide message within the COR Chat tab.
+                                </p>
+                            </div>
+                            
+                         </div>
+                         
+                         <div id='class-info-class-options-content_2' class='class-info-class-options-content' style='display:none;'>
+
+                            <table style="margin-top:0px;">
+                                <tr>
+                                    <td>Select Class Plan: </td>
+                                    <td>
+                                        <select id='class-info-class-options-topic-selection' style='width:200px;'>
+                                            <option>&nbsp;&nbsp;&nbsp;Loading...</option>
+                                        </select>
+                                        <div class="ajax-loader-small" style="position:absolute; margin-top:-25px; margin-left:8px;"></div>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <div style="width: 420px; float: left; padding: 15px;">
+                                <p>
+                                    Choose the curriculum plan from the drop down menu above. Only when a curriculum plan is chosen will students see topics and lessons to practice.
+                                </p>
+                            </div>
+                            <div style="width:2px; border-right: 2px solid black; float: left; min-height: 250px;">    
+                                &nbsp;
+                            </div>
+                            <div style="width: 420px; float: left; padding: 15px;">
+                                <p>
+                                    In Curriculum you can select the types of topics your students will use to converse with each other or for individual practice.  To create a Curriculum you will need to access the Curriculum tab.
+                                </p>
+                            </div>
+                            <div style="clear: both;"></div>
+                            
+                             <!--<p style='width:565px;''>
+                                 Class plans allow you to customize the types of lessons and study that your students will be able to use and 
+                                 practice. 
+                                 <br /><br/>
+                                 There will be more customization options, including limiting which lessons/topics are available for a class at any 
+                                 given time. At the moment you can only select which class plan is available for a class. 
+                                 
+                             </p>-->
+                             
+                         </div>
+                         
+                         
+                    </div>
+
+                    <!-- Class Management - Student Details -->
+                    <div id="account-class-management-student-detail" class="account-class-management-show-class-content hidden" style="min-height:300px;">
+
+                        <div id="account-class-management-student-detail-loading" style="padding:10px 20px; height:300px;">
+                            <img src="../Images/ajax-loader-small.gif" /> Loading Student Details...
+                        </div>
+
+                        <div id="account-class-management-student-detail-content" class="hidden">
+                            
+                            <div style='padding: 10px 20px; border-bottom: 1px dashed #CCC; float: left; width: 885px; margin-bottom: 13px;' id="account-class-management-student-detail-header">
+                                <div style="float:left; width:500px;">
+                                    <table>
+                                        <tr>
+                                            <td style="font-weight:bold;">Name:</td> 
+                                            <td id="account-class-management-student-detail-name"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight:bold;">Email:</td>
+                                            <td id="account-class-management-student-detail-email"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight:bold;">Lessons:</td> 
+                                            <td id="account-class-management-student-detail-lessons-completed">0</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight:bold;">Total Time:</td> 
+                                            <td id="account-class-management-student-detail-total-time">00:00:00</td>
+                                        </tr>
+                                    </table>
+
+                                </div>
+                                <div style="float:right;">
+                                    <span id="account-class-management-student-detail-return" class="link">&lt;&lt;Return To Students</span>
+                                </div>
+                            </div>
+                        
+                            <table id="account-class-management-student-detail-lessons-holder" style="margin:20px;">
+                                <thead>
+                                    <tr>
+                                        <td>Lesson Name</td>
+                                        <td>Lesson Type</td>
+                                        <td>Topic Name</td>
+                                        <td>Class Plan Name</td>
+                                        <td>Partner</td>
+                                        <td>Duration (m:s)</td>
+                                        <td>Date (m/d/y)</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+
+                            <div id="account-class-management-student-detail-no-lessons" class="hidden" style="margin-left:20px; font-weight:bold; height:300px;">
+                                No lessons Completed
+                            </div>
+
+                        </div>
+
+                    </div>
+                
+                </div>
+                
+
+               
+                                         
+            </div>
+                             
+                                    
+        </div>
+                                           
+        <!-- Class Plan Management -->     
+        <div id='account-content_2' class='Box hidden account-content'>
+            <h2>Lesson Plan</h2>
+
+            
+            <div id='account-topics-management-holder'>
+                
+                <!-- Create New Lesson Plan -->
+                <div id='account-topic-management-create-topic'>
+                      
+                    <form>
+                        <table style='width:40%; float:left; margin-left:20px;'>
+                            <tr>
+                                <td>
+                                    Name
+                                </td>
+                                <td>
+                                    <input class='Validate' name='ClassPlanName' id='ClassPlanName' Validate="Required"  type='text' />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Source</td>
+                                <td>
+                                    <select>
+                                        <option>Empty</option>
+                                        <option>Copy Existing</option>
+                                    </select>
+                                </td>     
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <button id='account-topic-management-create-lesson-plan'>Create</button>
+                                    <span id='account-lesson-plan-management-cancel-new-lesson-plan' class='link'>cancel</span>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                      
+                    <div  style='width:50%; float:right; margin-right:20px;'>
+                        
+                        <h3>What is a topic?</h3>
+                        <p>
+                            Topics are a way to organize how you want your students to be able to communicate. 
+                        </p>
+                        
+                        <h3>How should I organize my Topics?</h3>
+                        <p>
+                            Topics can be organized in many different ways. You may want to organize them based on the content you are currently 
+                            covering (Food, Greetings, Sports), by the week of the class, or possibly representing a chapter in a book. 
+                        </p>
+                        
+                        <h3>Assigning Topics to classes</h3>
+                        <p>
+                            Topics are assigned to a class. You can do this in the class tab after selecting a particular class. You can then choose 
+                            which topics are available for a given class at any time. 
+                        </p>
+                        
+                        <h3>Topic Activities</h3>
+                        
+                        <p>
+                            After you create a topic, you can create topic activies. The activities are what a student will use to practice his 
+                            language skills. 
+                        </p>
+                        
+                    </div>
+                      
+                </div>
+                
+                <!-- Lesson Plan Management -->
+                <div  id='account-topic-management-holder'>
+                    
+                    
+                    <!-- Lesson Plan Selection -->
+                    <table style='width:100%;'>
+                        <tr>
+                            <td style='width:90px;'>Lesson Plan : </td>
+                            <td style='width:150px;'>
+                                <select id='account-lesson-plan-management-lesson-plan-selector'>
+                                    <option value=''>Please Select</option>
+                                </select>
+                            </td>
+                            <td>
+                                <button style='float:right;' id='account-topic-management-new-topic-set-button'>New Lesson Plan</button>
+                            </td>
+                        </tr>
+                    </table>    
+                                            
+                    <!-- Lesson Plan Splash -->
+                    <div id='account-lesson-plan-management-splash' style='display:block;'>
+                    
+                        <p style='width:600px;'>
+                            Select the lesson plan you wish to manage. You can use a default lesson plan, or use a default lesson plan as a starting point for your 
+                            own custom lesson plan. 
+                        </p>
+                        
+                        
+                    </div>                    
+                
+                    <!-- Show Lesson Plan -->                    
+                    <div id='account-lesson-plan-management-lesson-plan' style="display:none;">
+                                                       
+                        <!-- Lesson Plan Info -->
+                        <div id='lesson-plan-info'>
+                            <table>
+                                <tr>
+                                    <td><span class='label'>Lesson Plan Name:</span> <span class='value' id='lesson-plan-info-name'></span></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span class='label'>Num Topics:</span> <span class='value' id='lesson-plan-number-topics'></span></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span id='lesson-plan-options' class='link' toggleswap='show topics'>show options</span></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div id="lesson-plan-breadcrumb" style="display:none;">
+                            Breadcrumb
+                        </div>
+                        
+                        <!-- Lesson Plan Options -->
+                        <div id="class-plan-options-ui" style="display:none;">
+                            <h3>Options</h3>
+                            <form>
+                            <table style="float:left; width:400px;">
+                                    <tr>
+                                        <td>Name</td>
+                                        <td><input id="class-plan-name-update" name="ClassPlanName" type="text" class="Validate" validate="Required" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td><button id="class-plan-update-class-plan">Save</button></td>
+                                    </tr>
+                                </table>
+                            </form>
+                            
+                            <div style="float:left; border-left:1px solid #999; margin-left:20px; padding-left:20px; width:400px;">
+                                <button id="class-plan-delete-class-plan">Delete Class Plan</button>
+                                <p>
+                                    If you delete this class plan it is a permanent action and will delete all topics, and lessons 
+                                    that are associated with it. You will be asked to confirm your request. This is irreversable.
+                                </p>
+                            </div>
+                            
+                        </div>
+                        
+                        
+                        <!-- Lesson Plan Topics List -->
+                        <div id='lesson-plan-topics-list'>
+                        
+                            <h3 class='lesson-plan-topic-header'>Topics <button id='lesson-plan-new-topic-button' class=' mini' style='float:right;'>New Topic</button></h3>
+                            
+                            <!-- Topic Holder -->
+                            <ul id='lesson-plan-topic-holder' style='width:850px'>
+                                <li>
+                                    <span class='expander' style='font-size:17px;'>+</span> 
+                                    <span class='lesson-plan-topic'>Food</span>
+
+                                    <div class='expand-target'>
+                                        <div class='topic-options'>
+                                            <button class='lesson-plan-topic-add-lesson mini'>add lesson</button> &nbsp;
+                                            <button class='mini'>edit</button> &nbsp;
+                                            <button class='mini'>remove</button>      
+                                        </div>
+                                        <table class='topic-lesson-type-list-table'>
+                                            <thead>
+                                                <tr>
+                                                    <td>Lesson Type</td>
+                                                    <td>Name</td>
+                                                    <td></td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </li>
+                            </ul>
+                        
+                        </div>
+                        
+                        <!-- Topic New/Edit -->
+                        <div id='lesson-plan-new-topic' class='hidden' style='margin:0px 0px 60px; float:left;'>
+
+                            <form>
+                                <table style='width:40%; float:left; margin-left:20px;'>
+                                    <tr>
+                                        <td>
+                                            <span class='topic-ui-new'>New Topic Name</span>
+                                            <span class='topic-ui-update'>Topic Name</span>
+                                        </td>
+                                        <td>
+                                            <input name="Name" id='ClassPlanTopicName' class="Validate" Validate="Required"  style='width:165px;' type='text' />
+                                        </td>
+                                    </tr>
+                                    <tr class="topic-ui-update">
+                                        <td>Disable</td>
+                                        <td><input type="checkbox" name="Disabled" id="class-plan-topic-disabled" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <button class='topic-ui-new'  id='lesson-plan-create-topic'>Create</button>
+                                            <button class='topic-ui-update' id='lesson-plan-update-topic'>Save</button>
+                                            <span id='lesson-plan-new-topic-cancel' class='link'>cancel</span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </form>
+                      
+                            <div style='width:50%; float:right; margin-right:20px;'>
+                                
+                                <div class='topic-ui-new'>
+                                    <h3>What is a topic?</h3>
+                                    <p>
+                                        Topics are a way to organize how you want your students to be able to communicate. 
+                                    </p>
+                                
+                                    <h3>How should I organize my Topics?</h3>
+                                    <p>
+                                        Topics can be organized in many different ways. You may want to organize them based on the content you are currently 
+                                        covering (Food, Greetings, Sports), by the week of the class, or possibly representing a chapter in a book. 
+                                    </p>
+                                                                
+                                    <h3>Topic Lessons</h3>
+                                
+                                    <p>
+                                        After you create a topic, you can create topic lessons. The lessons are what a student will use to practice his 
+                                        language skills. 
+                                    </p>
+                                </div>
+
+                                <div class='topic-ui-update'>
+                                    <button id="lesson-plan-delete-topic">Delete Topic</button>
+                                    <p>
+                                        If you delete this topic it is a permanent action and will delete all lessons that are associated with it. You will be asked to confirm your request. This is irreversable.
+                                    </p>
+                                </div>
+                             
+                            </div>                        
+                        
+                        
+                        </div>
+                                                
+                        <!-- Lesson Plan New Lesson -->
+                        <div id='lesson-plan-new-lesson' class='hidden' style='margin:0px 0px 60px; float:left; width:100%; '>
+
+                            <form style='width:40%; float:left; margin-left:20px; margin-top:20px;'>
+                                <table >
+                                    <tr>
+                                        <td>Topic:</td>
+                                        <td id='lesson-plan-new-lesson-topic-name'>Food</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Lesson Type</td>
+                                        <td>
+                                            <select id='lesson-plan-new-lesson-lesson-type' style='width:200px;'>
+                                                <option value='1'>Situational Coversation</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <button id='lesson-plan-new-lesson-continue'>Continue</button>
+                                            <span id='lesson-plan-new-lesson-cancel' class='link'>cancel</span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </form>
+                      
+                            <div  style='width:50%; margin-top:20px; float:right; margin-right:20px; height:300px;'>
+                                
+                                <h3>Lesson Type - Situational Conversation</h3>
+                                
+                                <p>
+                                    All about what a situational conversation is.  
+                                </p>
+                                
+                            </div>                      
+                            
+                            
+                        </div>
+                        
+                        <!-- New Lesson Plan - Situational Conversation -->
+                        <div id='lesson-plan-new-lesson_1' class='lesson-plan-new-lesson-type-ui hidden' LessonTypeName="Situational Conversation">
+                            
+                            <div class="lesson-plan-lesson-fields-loader" style="font-size:16px;">
+                               <div class="ajax-loader-small" style="position:absolute; margin-top:1px;"></div> 
+                               <span style='margin-left:20px;'>Loading Lesson</span> 
+                            </div>
+
+                            <div class="lesson-plan-lesson-fields" style=' margin-left:20px; margin-top:20px; margin-bottom:60px;'>
+                                
+                                <form>
+                                    <table id='lesson-plan-new-lesson-situational-conversation-table'>
+                                        <tr>
+                                            <td>
+                                                Name
+                                            </td>
+                                            <td>
+                                                <input id='lesson-situational-conversation-name' class="Validate" validate="Required" style='width:189px;' type='text' />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>Short description of conversation</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Description</td>
+                                            <td><textarea id='lesson-situational-conversation-description' class="Validate" validate="Required" style='height:100px; width:400px;'></textarea></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>Provide some context about what will be talked about.</td>
+                                        </tr>
+                                        <tr>
+                                            <td style='vertical-align: top; padding-top:20px;'>Prompts</td>
+                                            <td style='padding-top:20px;'>
+                                                Prompts are how a studen will interact with other students. They are optional, as you may want to set up a scence with a 
+                                                description and allow students to speak about that. However, if you want to provide a more focused practice, you can provide 
+                                                a prompt which the student can use to provide a starting point when practicing the language. 
+                                                <br /><br />
+                                                The prompt has two parts, the prompt and the hint. Depending on the level of instruction, you may write the prompt in your native 
+                                                language, or in the practice language. Both students will be able to view the prompt, however only the listening student will be 
+                                                able to view the hint. For example if you provide the prompt in the naitive language, and the hint in the forgien language, the 
+                                                student speaking can be tasked with translating the prompt while the listening student can provide assistance. 
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td style='padding-top:20px;'>
+                                                <ul style='padding-left:0px;'>
+                                                    <li><span id='lesson-situational-conversation-new-prompt'class='link'>New Prompt</span></li>
+                                                    <li style='font-weight:bold;' class='empty-header'>This Situational Conversation Is Empty</li>
+                                                    <li>
+                                                        <table id='lesson-situational-conversation-prompt-container-table' class='prompt-container-table'>
+                                                            <!-- Example Prompt 
+                                                            <tr class='prompt-tr'>
+                                                                <td>1.</td>
+                                                                <td>
+                                                                    <table class='prompt-table'>
+                                                                        <tr>
+                                                                            <td>Prompt:</td>
+                                                                            <td class='lesson-prompt-prompt-text'>
+                                                                                Curabitur nisl urna, dictum non condimentum vitae, fermentum sit amet dolor. Duis pulvinar, est id sollicitudin hendrerit, orci velit aliquet elit, vel lacinia magna quam vel purus.
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Hint:</td>
+                                                                            <td class='lesson-prompt-hint-text'>
+                                                                                Sed leo erat, tincidunt et viverra ut, aliquam venenatis ligula. Ut vestibulum pharetra ultrices. Aliquam at libero id lorem accumsan semper quis at ante. Vivamus sodales iaculis urna, dictum varius dolor ultricies sed. 
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                                <td>
+                                                                    <div class='icon-up'></div><div class='icon-down'></div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class='icon-delete'></div>
+                                                                </td>
+                                                            </tr>
+                                                            -->
+                                                        </table>
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td class="lessontype_1-ui-new">
+                                                <button id='lesson-plan-create-new-situational-conversation'>Complete</button>
+                                                <span class='lesson-plan-create-new-type-cancel link'>back</span>              
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td class="lessontype_1-ui-edit">
+                                                <button id='lesson-plan-update-situational-conversation'>Update</button>
+                                                <span class='lesson-plan-update-cancel link'>cancel</span>              
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </form>
+                            </div>
+                      
+                  
+                              
+                        </div>
+                                                
+                    </div>                    
+                    
+                    
+                </div>
+           
+            </div>
+            
+            
+        </div>
+                
+        <!-- Initiate Language Chat --> 
+        <div id='account-content_3' class='Box hidden account-content'>
+            <h2>Language Chat</h2>
+            
+            <table style='width:50%; font-size:22px; margin-top:20px; float:left;'>
+                <tr>
+                    <td>Native Language</td>
+                    <td>
+                        <select class='languages-holder'></select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Practice Language</td>
+                    <td>
+                        <select class='languages-holder'></select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Proficiency</td>
+                    <td>
+                        <select class='proficiencies-holder'></select>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <button class="initiateMatch js-page-switch" page-switch="js-content-wrapper-finding-match">Start</button>
+                    </td>
+                </tr>
+
+            </table>
+            
+            <div style='width:40%; float:left; margin-left:20px; margin-top:13px;'>
+                            
+                <h3>Finding Partners</h3>
+                This will initiate a random search for people to talk to with your chosen language.
+                
+                <h3>Rating System</h3>
+                As a registered user you will be rated by your peers and this rating will match you with other similar ratings. 
+                If you maintain high ratings you will always have quality partners. Please follow the rules and be 
+                courteous. 
+                
+                <h3>Chatting With Friends</h3>
+                If you are trying to chat with someone 
+                specifically you will need to initiate from your <span class='link'>friends list</span>. 
+            
+            </div>
+            
+        </div>
+        
+        <!-- Friends List --> 
+        <div id='account-content_4' class='Box hidden account-content'>
+            
+            <img id='account-chat-init-loader' style='margin-top:10px;' src = "/Images/ajax-loader-small.gif" />
+            
+            <!-- Splash -->
+            <div id='account-chat-splash' class='Box ChatBox hidden'>
+                Will be the default splash page of information about chat...
+            </div>
+            
+            <!-- Chat Message Holder -->
+            <div id='account-chat-message-col' class='Box ChatBox hidden'>
+                
+                <h2 id='account-chat-message-col-title'><span id='account-chat-message-chatting-with-name'>Jason Kim</span></h2>
+                
+                <div id='account-chat-delete-contact' class='trash-icon'></div>
+                <ul id='account-chat-message-col-options'>
+                    <li>
+                        <select id='account-chat-message-change-group'></select>
+                    </li>
+                </ul>
+                
+                
+                <div id='account-chat-message-holder'>
+                    <ul>
+                        <!-- Example
+                        <li>
+                            <span class='account-chat-message-holder-name'>Me</span>:
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at varius nisi. Sed nec tortor in quam venenatis mollis. In hac habitasse platea dictumst. Suspendisse potenti. Pellentesque gravida magna in sapien molestie porta. Sed ornare felis id lorem porttitor id venenatis nisi varius.
+                            <div class='account-chat-message-holder-date'>10/12/2012 2:43pm</div>
+                        </li>
+                        -->
+                    </ul>
+                </div>
+                <textarea id='account-chat-send-message-text'></textarea>
+                <div>
+                    <button style='float:left;' id='accont-chat-send-message-button'>Send</button>
+                    <div id='account-chat-initiate-voice-chat' class='phone-active-icon'></div>
+                </div>
+            </div>
+            
+            <!-- Search For Friends By Email -->
+            <div id='account-chat-add-friend-col' class='Box ChatBox hidden'>
+                <form>
+                    <table>
+                        <tr>
+                            <td>Email</td>
+                            <td><input id='account-chat-search-friends-email-input' name='email' class='Validate' validate='Required,Email' type='text'>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <button id='account-chat-search-friends-button'>Search</button>
+                                <span id='account-chat-search-friends-cancel' class='link'>Cancel</span>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            
+            <!-- Search For Friends Result -->
+            <div id='account-chat-search-friend-result-col' class='Box ChatBox hidden'>
+                <h3>Notification Sent</h3>
+                <p id='account-chat-search-friend-result-email-sent'>
+                    We have notified <span id='account-chat-search-friend-result-email'></span>, that you want to be friends. They 
+                    will need to accept your invite and then you will appear in eachothers friend list. 
+                </p>
+            </div>                         
+            
+            <!-- Invite Friends By Email -->
+            <div id='account-chat-invite-friend-col' class='Box ChatBox hidden'>
+                <p id='account-chat-search-no-friend-found' class='hidden'>
+                    This person has not registered on our site yet. Would you like to send them an invite?
+                </p>
+                <p id='account-chat-invite-friend'>
+                    You can send an invite to a friend that you would want to be able to chat with using our service. A friend 
+                    invited in this way will automatically be added to your friends list. 
+                </p>
+                <form>
+                    <table>
+                        <tr>
+                            <td>Email</td>
+                            <td><input id='account-chat-invite-friends-email-input' name='email' class='Validate' validate='Required,Email' type='text' />&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <button id='account-chat-invite-friends-button'>Invite</button>
+                                <span id='account-chat-invite-friends-cancel' class='link'>Cancel</span>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>   
+            
+            <!-- Create Group -->
+            <div id='account-chat-create-group' class='Box ChatBox hidden'>
+                <p>You can organize your friends in groups.</p>
+                <form>
+                    <table>
+                        <tr>
+                            <td>Group Name</td>
+                            <td><input id='account-chat-create-group-group-name-input' name='group' class='Validate' validate='Required,Name' type='text' />&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <button id='account-chat-create-group-button'>Create Group</button>
+                                <span id='account-chat-create-group-cancel' class='link'>Cancel</span>                                        
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+                                 
+            
+            <!-- Friends List -->
+            <div id='chat-col' class='Box hidden'>
+            
+                <select id='chat-col-chat-status'></select>
+            
+                <ul class='nav'>
+                    <li id='chat-nav_1' class='active'>Groups</li>
+                    <li id='chat-nav_2'>All</li>
+                    <li id='chat-nav_3'>Friend Requests <span id='chat-col-friend-requests-count'></span></li>
+                </ul>  
+                
+                <div id='chat-content_1' class='chat-content'>
+                    <!--
+                    <ul id='chat-group_0' class='chat-group'>
+                        <li class='header'>Espaniol 101Q32012</li>
+                        <li>
+                            <div class='chat-name'>Steffan McMurrin</div>
+                        </li>
+                    </ul>
+                    -->
+                </div>
+                
+                <div id='chat-content_2' class='chat-content hidden'>
+                    <ul id='chat-group-all-friends' class='chat-group'>
+                        <li class='header'>All Contacts</li>
+                        <!--
+                        <li>
+                            <div class='chat-name'>Jon Doe</div>
+                        </li>
+                        -->
+                    </ul>
+                </div>
+                
+                <div id='chat-content_3' class='chat-content hidden'>
+
+                    <ul id='chat-pending-invites' class='chat-group'>
+                        <li class='header'>Friend Requests</li>
+                        <!--
+                        <li>
+                            <div class='chat-name'>Jon Doe</div>
+                            <div class='chat-pending-invites-options'>
+                                <span class='link'>yes</span>  &nbsp;
+                                <span class='link'>no</span>
+                            </div>
+                        </li>
+                        -->
+                    </ul>
+                                                    
+                </div>
+                
+                <div id='chat-buttons'>
+                    <button id='account-chat-add-contact' class='mini'>Add Contact</button>
+                    <button id='account-chat-invite-contact' class='mini' style='margin-left:5px;'>Invite</button>        
+                </div>          
+                                
+            </div>
+            
+        </div>
+                    
+        <!-- Account Settings --> 
+        <div id='account-content_5' class='Box hidden account-content'>
+            
+            <div id="account-settings-main"
+                <div style='float:left; width:40%;'>
+                    <h2>Account Settings</h2>
+                    <form>
+                        <table class='account-settings'>
+                            <tr>
+                                <td>
+                                    Email/Username
+                                </td>
+                                <td>
+                                    <input id='account-settings-username' type='text' value='' disabled="disabled" style='background-color:#dfdfdf'  />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    First Name
+                                </td>
+                                <td>
+                                    <input id='account-settings-first-name' name='FirstName' type='text' value='' />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Last Name</td>
+                                <td>
+                                    <input id='account-settings-last-name' name='LastName' type='text' value='' />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Naitive Language</td>
+                                <td>
+                                    <select id='account-settings-naitive-language' name='NaitiveLanguageId' class='languages-holder'></select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Practice Language</td>
+                                <td>
+                                    <select id='account-settings-practice-language' name='SoughtLanguageid' class='languages-holder'></select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Profficiency</td>
+                                <td><select id='account-settings-practice-language-proficiency' name='SoughtLanguageProficiencyId' class='proficiencies-holder'></select></td>
+                            </tr>
+                        
+                            <tr id='account-settings-update-button-tr'>
+                                <td></td>
+                                <td>
+                                    <button id='account-settings-update-button'>Update</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                        
+                    <div style='width:100%; float:left; margin-top:20px;'>
+                        <h2>Update Password</h2>
+                        <form>
+                            <input id='account-settings-current-password' type='hidden' />
+                            <table class='account-settings'>
+                                <tr>
+                                    <td>Current Password</td>
+                                    <td>
+                                        <input id='account-settings-old-password' name='old_password' type='password' class='Validate' validate='MatchPassword,Required' validationmatch='account-settings-current-password' />
+                                        <br />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>New Password</td>
+                                    <td>
+                                        <input id='account-settings-new-password' name='password' type='password' class='Validate' validate='MinLength,Required' validationminlength='5' />
+                                        <br />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>New Password Again</td>
+                                    <td>
+                                        <input name='password_confirm' type='password' class='Validate' validate='Match,Required' validationmatch='account-settings-new-password' />
+                                        <br />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <button id='account-settings-update-password-button'>Update</button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                
+                    <div style='width:100%; float:left; margin-top:20px;'>
+                        <h2>Add Class Code</h2>
+                        <form>
+                            <input id='account-settings-current-password' type='hidden' />
+                            <table class='account-settings'>
+                                <tr>
+                                    <td style='widht:103px;'>Class Code</td>
+                                    <td>
+                                        <input id='account-settings-class-code' name='classcode' type='text' class='Validate' validate='Required' />
+                                        <br />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <button id='account-settings-add-class-code-button'>Add Code</button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>                    
+                    </div>
+                
+                </div>
+
+
+                <div style="float:left; width:50%; margin-left:90px;">
+                    <h2>Purchase Additional Classes</h2>
+
+                    <p>
+                        Ipsum Lorem Stuff
+                    </p>
+
+                    <p style="margin-top:20px;">
+                        Classes are free for our Beta users. Continue to receive additional class tokens. 
+                    </p>
+
+                    <p style="margin-top:20px;">
+                        <span id="account-settings-purchase-classes" class="link">Purchase Additional Classes</span>
+                    </p>
+                </div>           
+            </div>
+
+            <div id="account-settings-buy-products">
+
+                <h2>Purchase Additional Classes</h2>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Quantity</td>
+                            <td>Description</td>
+                            <td>Total</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <input style="width:50px;" type="text" />
+                            </td>
+                            <td>
+                                Class Token
+                            </td>
+                            <td id="buy-products-total"></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <span class="link"> Purchase Classes</span>
+
+            </div>
+
+            <div id="account-settings-buy-review">
+
+                Review
+
+            </div>
+
+            <div id="account-settings-buy-complete">
+
+                Classes Complete
+
+            </div>            
+            
+
+        </div>
+        
+        <div id='account-content_6' class='Box hidden account-content'>
+            <button id="voice-chat-start-practice">Start Practice</button>
+        </div>
+        
+    </div>
+    
+</div>
+
+
