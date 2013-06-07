@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include_once("../config.php");
     require_once($CONFIG_libPath . "simpletest/autorun.php");
     
