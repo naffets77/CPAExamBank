@@ -5,7 +5,7 @@
     
     
 class TestOfLogin extends UnitTestCase {
-    function testLoging() {
+    function testLogin() {
     
         BuildTestHeader("Login", "service_account", "login", "Test logging in with a username/password", null, null);
         
@@ -15,7 +15,9 @@ class TestOfLogin extends UnitTestCase {
         
         $this->assertTrue(true);
     }
-    
+}
+ 
+class TestLogout extends UnitTestCase {
     function testLogout() {
     
         
