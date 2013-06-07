@@ -4,8 +4,13 @@
 /* Horiz Navigation */
 
 .horiz-nav{float:left; width:400px;}
-.horiz-nav li{float:left; display:inline-block;}
+.horiz-nav li{float:left; display:inline-block; cursor:pointer;}
 
+
+/* Account Content*/
+
+
+.account-content{float:left; width:100%;}
 
 /* Popup */
 
