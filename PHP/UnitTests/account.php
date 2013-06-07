@@ -17,8 +17,18 @@ class TestAccount extends UnitTestCase {
     }
     
     function testLogout(){
-        $this->assertTrue(true);
+        BuildTestHeader("Logout", "service_account", "logout", "Test logging out", null, null);
+        
+        $result = simulatePostRequest(null, "service_account","logout");
     
+        BuildResultViewer($result);
+        BuildResultViewer($result);
+        // Check that there isn't a valid log
+            
+        $result = simulatePostRequest(null, "service_account","checkValidLogin");
+        BuildResultViewer($result);
+        
+        $this->assertFalse($result);
     }
 }
  
