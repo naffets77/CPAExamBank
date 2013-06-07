@@ -5,7 +5,7 @@
     
     
 class TestOfLogin extends UnitTestCase {
-    function testLogCreatesNewFileOnFirstMessage() {
+    function testLoging() {
     
         BuildTestHeader("Login", "service_account", "login", "Test logging in with a username/password", null, null);
         
@@ -15,7 +15,25 @@ class TestOfLogin extends UnitTestCase {
         
         $this->assertTrue(true);
     }
+    
+    function testLogout() {
+    
+        
+        BuildTestHeader("Logout", "service_account", "logout", "Test logging out", null, null);
+        
+        $result = simulatePostRequest(null, "service_account","logout");
+    
+        BuildResultViewer($result);
+        
+        // Check that there isn't a valid log
+            
+        $result = simulatePostRequest(null, "service_account","checkValidLogin");
+        
+        $this->assertFalse($result);
+    }
 }
+
+
 
 function BuildTestHeader($name,$service, $function, $testingDescription, $inputs, $output){
 
@@ -53,12 +71,12 @@ function simulatePostRequest($arrayPostVars, $service, $function){
 
     global $CONFIG_servicePath;
 
-
-    // Setup Post
-    foreach($arrayPostVars as $key => $value){
-        $_POST[$key] = $value;
+    if($arrayPostVars != null){
+        // Setup Post
+        foreach($arrayPostVars as $key => $value){
+            $_POST[$key] = $value;
+        }
     }
-    
     
     include_once($CONFIG_servicePath . $service .".php");
        
