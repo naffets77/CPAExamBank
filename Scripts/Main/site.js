@@ -40,12 +40,12 @@ $(document).ready(function(){
                 );
             }
             else {
-                $.COR.toggleHomeNavigation
+                $.COR.toggleHomeNavigation();
                 $.COR.pageSwap(null, "home");
             }
         }
         else {
-            $.COR.toggleHomeNavigation
+            $.COR.toggleHomeNavigation();
             $.COR.pageSwap(null, "home");
         }
     });
