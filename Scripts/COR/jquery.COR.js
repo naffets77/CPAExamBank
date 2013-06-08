@@ -490,7 +490,7 @@ $.COR.setupAccountNavigation = function () {
 
         $(element).hide();
 
-        if ($(element).hasClass("accunt")) {
+        if ($(element).hasClass("account")) {
             $(element).show();
         }
 
