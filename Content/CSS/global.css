@@ -66,13 +66,13 @@ table {
 
 /* GLOBAL NON PAGE SPECIFIC STYLES */
 html {
-    background-color: #fff;
+    background-color: #efefef;
     margin: 0;
     padding: 0;
 }
 
 body {
-    background-color: #fff;
+    background-color: #efefef;
     color: #333;
     font-size: .85em;
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
@@ -86,19 +86,14 @@ body {
 #wrapper {
     width: 960px;
     margin: 0px auto;
-    height: 100%;
 }
 
 #body {
     clear: both;
     float: left;
     width: 960px;
-    -moz-box-shadow: 0 0 35px 0px #ccc;
-    -webkit-box-shadow: 0 0 35px 0px #ccc;
-    box-shadow: 0 0 35px 0px #ccc;
     background-repeat: repeat;
     min-height: 500px;
-    background-color:#fff
 }
 
 #ServerErrorHandler {
@@ -121,26 +116,34 @@ body {
 
 #header {
     width: 960px;
-    color: #fff;
     float: left;
-    border-bottom: 1px solid #999;
+    margin-bottom:20px;
+    background-color:#fff;
+
+    -moz-box-shadow: 0 0 35px 0px #ccc;
+    -webkit-box-shadow: 0 0 35px 0px #ccc;
+    box-shadow: 0 0 35px 0px #ccc;
+
+    
 }
 
 #header-logo {
     cursor: pointer;
-    margin-left: 20px;
-    margin-top: 20px;
-    height: 90px;
-    width: 100px;
+    margin: 20px 0 10px 20px;
     float: left;
-    background: url("/Content/Images/Shared/COR_SPRITE_SHEET.png") -48px -25px no-repeat;
+    color:#000;
+
+    font: 50px Tahoma, Helvetica, Arial, Sans-Serif;
+    text-align: center;
+    color: #222;
+    text-shadow: 0px 2px 3px #555;
+
 }
 
 #header-navigation {
     list-style-type: none;
     border-top: solid 1px #fff;
-    width: 338px;
-    float: left;
+    float: right;
     padding-left: 0px;
     margin-top: 15px;
 }
@@ -150,8 +153,14 @@ body {
         color: #666;
         margin-top: 10px;
         margin-right: 20px;
-        font-size: 17px;
+        font-size: 30px;
+        padding:4px 8px;
     }
+
+        #header-navigation li.current {
+            background-color:#fff;
+        }
+
 
         #header-navigation li:hover {
             color: #000;
@@ -165,9 +174,10 @@ body {
 #header-login-container {
     float: right;
     border-top: solid 1px #fff;
-    margin-top: 15px;
+    margin-top: 0px;
     font-size: 12px;
     margin-right: 20px;
+    margin-bottom: 10px;
 }
 
     #header-login-container table {
@@ -176,11 +186,13 @@ body {
 
         #header-login-container table tr td {
             vertical-align: top;
+            padding-right:10px;
         }
 
     #header-login-container input {
         width: 120px;
         color: #999;
+        padding:2px 0 2px 4px;
     }
 
 #header-logout-container {
@@ -241,20 +253,6 @@ footer {
     float: left;
     width: 100%;
     margin-top: 20px;
-}
-
-#footer-logo {
-    background: url("/Content/Images/Shared/COR_SPRITE_SHEET.png") -48px -236px no-repeat;
-    height: 120px;
-    width: 130px;
-    clear: both;
-    margin: 0px auto; /* IE 8 */
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
-    /* IE 5-7 */
-    filter: alpha(opacity=35);
-    -moz-opacity: 0.35;
-    -khtml-opacity: 0.35;
-    opacity: 0.35;
 }
 
 /* END GLOBAL NON PAGE SPECIFIC STYLES */

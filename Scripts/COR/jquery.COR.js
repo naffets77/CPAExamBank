@@ -221,15 +221,32 @@ $.COR.pageEvents = function () {
     //*************** END footer events **********************************\\
 
     //*************** header events **********************************\\
+    $('#header-navigation-home').on('click', function () {
+        if ($(this).hasClass('current')) { return; }
+        $(this).parent().children().removeClass('current');
+        $(this).addClass('current');
+        self.pageSwap(getCurrentDisplayedId(), 'js-content-wrapper-splash');
+    });
+
     $('#header-navigation-aboutus').on('click', function () {
+        if ($(this).hasClass('current')) { return; }
+        $(this).parent().children().removeClass('current');
+        $(this).addClass('current');
         self.pageSwap(getCurrentDisplayedId(), 'js-content-wrapper-aboutus');
     });
 
     $('#header-navigation-pricing').on('click', function () {
+        if ($(this).hasClass('current')) { return; }
+        $(this).parent().children().removeClass('current');
+        $(this).addClass('current');
         self.pageSwap(getCurrentDisplayedId(), 'js-content-wrapper-pricing');
     });
 
     $('#header-navigation-faqs').on('click', function () {
+        if ($(this).hasClass('current')) { return; }
+        $(this).parent().children().removeClass('current');
+        $(this).addClass('current');
+
         var FAQAjax = $.post("/PHP/AJAX/Support/GetFAQs.php", "SetId=2&HTMLEntities=false&Data=true", function (data) {
             if (data.ResultsFound != null) {
                 var myHTML = "<ol id='home-FAQs'>";
@@ -250,6 +267,11 @@ $.COR.pageEvents = function () {
     });
 
     $('#header-navigation-contactus').on('click', function () {
+
+        if ($(this).hasClass('current')) { return; }
+        $(this).parent().children().removeClass('current');
+        $(this).addClass('current');
+
         self.pageSwap(getCurrentDisplayedId(), 'js-content-wrapper-contactus');
     });
 

@@ -22,26 +22,22 @@
 
 
                 <div id="header">
-                    <div id="header-logo"></div>
-                    <ul id="header-navigation">
-                        <li id="header-navigation-aboutus" class="first">About Us</li>
-                        <li id="header-navigation-pricing">Pricing</li>
-                        <li id="header-navigation-faqs">FAQs</li>
-                        <li id="header-navigation-contactus" class="last">Contact Us</li>
-                    </ul>
+                    <div id="header-logo">CPAExamBank.com</div>
                     <div id="header-login-container">
                         <table>
                             <tr>
                                 <td>
-                                    <input type="text" id='home-login-username' value="Email" onclick="$(this).val('steffan77@gmail.com');" /> <br />
+                                    <input type="text" id='home-login-username' value="Email" onclick="$(this).val('steffan77@gmail.com');" />
                                 </td>
                                 <td>
-                                    <input type="text" id='home-login-password' value="Password" onclick="$(this).val('testing');" /> <br />
-                                    <span id='home-forgot-login'>Forgot Password/Email?</span>
+                                    <input type="text" id='home-login-password' value="Password" onclick="$(this).val('testing');" />
                                 </td>
                                 <td>
                                     <button id='login' style="margin-top:1px">Login</button>
                                 </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="padding-top:4px;"><span id='home-forgot-login'>Forgot Password/Email?</span></td>
                             </tr>
                         </table>
                     </div>
@@ -50,10 +46,19 @@
                     </div>
                 </div>
                  
+                <ul id="header-navigation">
+                    <li id="header-navigation-home" class="current first">Home</li>
+                    <li id="header-navigation-pricing">Product</li>
+                    <li id="header-navigation-faqs">FAQs</li>
+                    <li id="header-navigation-aboutus">About Us</li>
+                    <li id="header-navigation-contactus" class="last">Contact Us</li>
+                </ul>
+
                 <!-- Home Page -->
                 <div id="js-content-wrapper-splash" class="js-content-wrapper hidden">
 
-                    <div id="home-row1" class="body-content-col-container two-col">
+                    <!--
+                    <div id="home-row1" class="body-content-col-container two-col hidden">
 
                         <h1>Over 250 Multiple Choice CPA Test Questions</h1>
                         <h2>Start Practicing - As Low as $5</h2>
@@ -144,10 +149,49 @@
                             </div>
                                                 
                         </div>
-                        -->
+                        
                     </div>
-         
+                    -->
 
+                    <div id="home-row-1">
+                        <div id="home-product-container">
+                            <div id="home-product-container-top-left">
+                                <div class="product">Financial <br /> Accounting and Reporting</div>
+                                <div class="product-price">$5</div>
+                            </div>
+                            <div id="home-product-container-top-right">
+                                <div class="product">Auditing <br /> and <br /> Attestation</div>
+                                <div class="product-price">$5</div>
+                            </div>
+                            <div id="home-product-container-bottom-left">
+                                <div class="product">Business <br /> environment<br /> and concepts</div>
+                                <div class="product-price">$5</div>
+                            </div>
+                            <div id="home-product-container-bottom-right">
+                                <div class="product">Regualtion <br /> and <br /> Taxation</div>
+                                <div class="product-price">$5</div>
+                            </div>
+                        </div>
+
+                        <p>
+                            Phasellus vitae tellus eget nisl luctus molestie. In molestie purus non mi fringilla vestibulum. Nunc placerat, sapien sed 
+                            imperdiet tristique, velit quam consequat lacus, ac cursus ante felis eget nulla. Pellentesque sit amet condimentum nulla. 
+                            <br /><br />
+                            Nulla at venenatis est, sit amet viverra velit. Ut velit magna, eleifend at vulputate et, scelerisque vel nulla. Sed vitae eros vitae nisl mollis ullamcorper. Curabitur sed iaculis quam, non vestibulum lorem.
+                        </p>
+                    </div>
+
+                    <div id="home-row-2" style="margin-top:20px; background-color:#efefef;float:left; width:920px; margin:20px;">
+                        <ul>
+                            <li>Lorem ipsum dolor sit amet, consectetur adipis</li>
+                            <li>Duis sed ligula et lectus cursus viverra</li>
+                            <li>Vestibulum quis ipsum justo. Praesent in mi ultricies</li>
+                            <li>Ut sagittis diam volutpat purus commodo tempor.</li>
+                            <li>Etiam lobortis quam in placerat mollis.</li>
+                            <li>Donec imperdiet ut nulla ut viverra.</li>
+                        </ul>
+                        <img style="height:300px; float:right; margin:20px;" src="Content/Images/Home/accountant.jpg" />
+                    </div>
 
                 </div>
  
