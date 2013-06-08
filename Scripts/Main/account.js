@@ -125,6 +125,8 @@ $.COR.account.setupEvents = function () {
         $("#header-login-container").show();
 
         location.hash = "";
+
+        // TODO: Shold post a logout here to kill the session
         
 
     });
