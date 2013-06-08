@@ -93,7 +93,7 @@ $.COR.pageEvents = function () {
             password,
             function () { // success function
 
-                self.setupAccountNavigation();
+                self.toggleAccountNavigation();
 
                 location.hash = "account";
             },
@@ -501,7 +501,7 @@ $.COR.cycleButton = function (buttonElement, cycleName, originalName, fadeoutTim
 
 // Helper Functions
 
-$.COR.setupAccountNavigation = function () {
+$.COR.toggleAccountNavigation = function () {
 
     // Setup the navigation to change to the account set
     $("#header-navigation li").each(function (index, element) {
@@ -515,6 +515,22 @@ $.COR.setupAccountNavigation = function () {
     });
 
     $("#header-navigation-study").trigger('click');
+};
+
+$.COR.toggleHomeNavigation = function () {
+
+    // Setup the navigation to change to the home / logged out set
+    $("#header-navigation li").each(function (index, element) {
+
+        $(element).show();
+
+        if ($(element).hasClass("account-only")) {
+            $(element).hide();
+        }
+
+    });
+
+    $("#header-navigation-home").trigger('click');
 };
 
 $.COR.toggleAccountLogin = function () {

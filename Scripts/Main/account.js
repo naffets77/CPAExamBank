@@ -120,15 +120,11 @@ $.COR.account.setupEvents = function () {
         // Clear Account User & stop polling and things like that?
         self.user = null;
 
-        // Fade Out Account Page
-        $("#js-content-wrapper-user-account").hide();
-
-        // Fade in Home Page
-        $("#js-content-wrapper-splash").fadeIn();
-
         // Swap Logout with Login UI
         $("#header-logout-container").hide();
         $("#header-login-container").show();
+
+        location.hash = "";
         
 
     });
