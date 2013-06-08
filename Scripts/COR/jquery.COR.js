@@ -514,6 +514,7 @@ $.COR.setupAccountNavigation = function () {
 
     });
 
+    $("#header-navigation-study").trigger('click');
 };
 
 $.COR.toggleAccountLogin = function () {
