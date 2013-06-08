@@ -483,7 +483,6 @@ $.COR.cycleButton = function (buttonElement, cycleName, originalName, fadeoutTim
 
 // Helper Functions
 
-
 $.COR.setupAccountNavigation = function () {
 
     // Setup the navigation to change to the account set
@@ -497,12 +496,13 @@ $.COR.setupAccountNavigation = function () {
 
     });
 
-}
+};
 
 $.COR.toggleAccountLogin = function () {
 
     // Will hide and show the login w/logout link
-}
+};
+
 
 // Stopwatch plugin
 (function ($) {
@@ -585,7 +585,7 @@ $.COR.getDisplayNameById = function (languageId) {
         }
 
     }
-}
+};
 
 
 // Random Utils ( Should move to COR.utlities.
