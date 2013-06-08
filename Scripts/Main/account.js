@@ -63,10 +63,7 @@ $.COR.account.setup = function (data, successCallback) {
         self.initUser();
 
         successCallback();
-    })
-
-
-
+    });
 }
 
 $.COR.account.hashHandler = function () {

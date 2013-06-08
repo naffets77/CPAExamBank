@@ -92,6 +92,9 @@ $.COR.pageEvents = function () {
             email,
             password,
             function () { // success function
+
+                self.setupAccountNavigation();
+
                 location.hash = "account";
             },
             function (failedReason) { // failure function (invalid email/password etc)
@@ -355,6 +358,12 @@ $.COR.checkLogin = function (successCallback, failCallback) {
 }
 
 
+
+
+
+
+// Validation Stuff
+
 $.COR.validateForm = function (formElement) {
 
     var Validates = true;
@@ -472,6 +481,28 @@ $.COR.cycleButton = function (buttonElement, cycleName, originalName, fadeoutTim
     return buttonElement;
 };
 
+// Helper Functions
+
+
+$.COR.setupAccountNavigation = function () {
+
+    // Setup the navigation to change to the account set
+    $("#header-navigation li").each(function (index, element) {
+
+        $(element).hide();
+
+        if ($(element).hasClass("accunt")) {
+            $(element).show();
+        }
+
+    });
+
+}
+
+$.COR.toggleAccountLogin = function () {
+
+    // Will hide and show the login w/logout link
+}
 
 // Stopwatch plugin
 (function ($) {

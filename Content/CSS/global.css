@@ -61,6 +61,11 @@ table {
 .hidden {display:none;}
 .bold {font-weight:bold;}
 .clear{clear:both;}
+.shadow {
+    -moz-box-shadow: 5px 5px 16px #bbb;
+    -webkit-box-shadow: 5px 5px 16px #bbb;
+    box-shadow: 5px 5px 16px #bbb;
+}
 
 /* END GLOBAL CLASSES */
 
