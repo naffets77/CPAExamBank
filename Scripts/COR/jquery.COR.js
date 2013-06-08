@@ -224,6 +224,8 @@ $.COR.pageEvents = function () {
     //*************** END footer events **********************************\\
 
     //*************** header events **********************************\\
+
+    //// TODO: nav links need to be refactored to be handled automatically... shouldn't be driven by id's like this.. (i blame marcus)
     $('#header-navigation-home').on('click', function () {
         if ($(this).hasClass('current')) { return; }
         $(this).parent().children().removeClass('current');
@@ -276,6 +278,22 @@ $.COR.pageEvents = function () {
         $(this).addClass('current');
 
         self.pageSwap(getCurrentDisplayedId(), 'js-content-wrapper-contactus');
+    });
+
+    $('#header-navigation-my-info').on('click', function () {
+        if ($(this).hasClass('current')) { return; }
+        $(this).parent().children().removeClass('current');
+        $(this).addClass('current');
+
+        self.pageSwap(getCurrentDisplayedId(), 'js-content-wrapper-my-info');
+    });
+
+    $('#header-navigation-study').on('click', function () {
+        if ($(this).hasClass('current')) { return; }
+        $(this).parent().children().removeClass('current');
+        $(this).addClass('current');
+
+        self.pageSwap(getCurrentDisplayedId(), 'js-content-wrapper-practice');
     });
 
     $('#home-forgot-login').on('click', function () {

@@ -1,6 +1,139 @@
 
+
+
+
+<div id='js-content-wrapper-my-info' class="js-content-wrapper hidden">
+            
+    <div id="account-settings-main">
+                
+        <div style='float:left; width:40%;'>
+            <h2>Account Settings</h2>
+            <form>
+                <table class='account-settings'>
+                    <tr>
+                        <td>
+                            Email/Username
+                        </td>
+                        <td>
+                            <input id='account-settings-username' type='text' value='' disabled="disabled" style='background-color:#dfdfdf'  />
+                        </td>
+                    </tr>                        
+                    <tr id='account-settings-update-button-tr'>
+                        <td></td>
+                        <td>
+                            <button id='account-settings-update-button'>Update</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+                        
+            <div style='width:100%; float:left; margin-top:20px;'>
+                <h2>Update Password</h2>
+                <form>
+                    <input id='account-settings-current-password' type='hidden' />
+                    <table class='account-settings'>
+                        <tr>
+                            <td>Current Password</td>
+                            <td>
+                                <input id='account-settings-old-password' name='old_password' type='password' class='Validate' validate='MatchPassword,Required' validationmatch='account-settings-current-password' />
+                                <br />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>New Password</td>
+                            <td>
+                                <input id='account-settings-new-password' name='password' type='password' class='Validate' validate='MinLength,Required' validationminlength='5' />
+                                <br />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>New Password Again</td>
+                            <td>
+                                <input name='password_confirm' type='password' class='Validate' validate='Match,Required' validationmatch='account-settings-new-password' />
+                                <br />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <button id='account-settings-update-password-button'>Update</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+                                
+        </div>
+
+        <div style="float:left; width:50%; margin-left:90px;">
+            <h2>Purchase Additional Classes</h2>
+
+            <p>
+                Ipsum Lorem Stuff
+            </p>
+
+            <p style="margin-top:20px;">
+                Classes are free for our Beta users. Continue to receive additional class tokens. 
+            </p>
+
+            <p style="margin-top:20px;">
+                <span id="account-settings-purchase-classes" class="link">Purchase Additional Classes</span>
+            </p>
+        </div>           
+    </div>
+
+    <div id="account-settings-buy-products" class="hidden">
+
+        <h2>Purchase Additional Classes</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <td>Quantity</td>
+                    <td>Description</td>
+                    <td>Total</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <input style="width:50px;" type="text" />
+                    </td>
+                    <td>
+                        Class Token
+                    </td>
+                    <td id="buy-products-total"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <span class="link"> Purchase Classes</span>
+
+    </div>
+
+    <div id="account-settings-buy-review" class="hidden">
+
+        Review
+
+    </div>
+
+    <div id="account-settings-buy-complete" class="hidden">
+
+        Classes Complete
+
+    </div>            
+            
+</div>
+
+<div id='js-content-wrapper-practice' class='js-content-wrapper hidden'>
+
+    Practice
+
+</div>
+        
+
            
-<!-- Logged In Page -->
+<!-- Logged In Page 
 <div id="js-content-wrapper-user-account" class="js-content-wrapper hidden">
     
     <div id='user-account-col'>
@@ -14,7 +147,7 @@
             <button id="voice-chat-start-practice">Start Practice</button>
         </div>           
                     
-        <!-- Account Settings --> 
+  
         <div id='account-content_2' class='Box hidden account-content'>
             
             <div id="account-settings-main">
@@ -145,3 +278,4 @@
 </div>
 
 
+-->
