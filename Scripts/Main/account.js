@@ -1,26 +1,7 @@
 
 $.COR.account = {
-    user:null,
-    chat : {
-        Init : false,
-        Active : false,
-        LastPoll : null,
-        PollInterval : 30,
-        FriendsList : null,
-        FriendRequests : null,
-        NewMessages: null,
-        PartnerId : null
-    },
-    classes : {
-       ClassCache: [],
-       StudentCache: [],
-       TopicsLoaded :false
-    },
-    classPlans :{
-        classPlans: {},
-        selectedClassPlan: null,
-        activeTopicId : null
-    }
+    offline : false,
+    user:null
 };
 
 

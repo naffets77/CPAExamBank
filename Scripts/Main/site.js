@@ -14,6 +14,12 @@ var hashHandler = {
 $(document).ready(function(){
 
 
+    var urlVars = getUrlVars();
+
+    if (urlVars.offline != undefined && urlVars.offline == 'true') {
+        $.COR.account.offline = true;
+    }
+
 
 
 
@@ -61,4 +67,17 @@ if (!Date.now) {
     Date.now = function now() {
         return +(new Date);
     };
+}
+
+
+
+function getUrlVars() {
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for (var i = 0; i < hashes.length; i++) {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
 }
