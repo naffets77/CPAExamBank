@@ -19,7 +19,7 @@ class TestAccount extends UnitTestCase {
     }
     
 
-    
+    /*
     function testRefreshLogin(){
         BuildTestHeader("Check Valid Login", "service_refreshLogin", "refreshLogin", "Testing refreshing the login", null, null);
         
@@ -34,7 +34,8 @@ class TestAccount extends UnitTestCase {
         
         $this->assertNotNull($result);
     }
-
+    */
+    
     function testUpdateLoginEmail(){
     
     
