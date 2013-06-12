@@ -63,11 +63,44 @@ $(document).ready(function(){
 
 
 
+$.COR.TPrep = {};
+
+$.COR.TPrep.showFullScreenOverlay = function (content, contentClassSize) {
+
+
+    if ($("#full-screen-container").is(":visible")) {
+
+        $("#full-screen-container .content").fadeOut(function () {
+            $(this).html("");
+
+            $("#full-screen-container .content").html(content).removeClass().addClass(contentClassSize).fadeIn();
+
+        });
+
+
+    }
+    else {
+        $("#full-screen-container .content").html(content);
+
+        $("#full-screen-container").removeClass().addClass(contentClassSize);
+
+        $("#full-screen-holder").show();
+        $("#full-screen-container").show();
+
+    }
+}
+
+
+
+
 if (!Date.now) {
     Date.now = function now() {
         return +(new Date);
     };
 }
+
+
+
 
 
 

@@ -186,6 +186,31 @@ $.COR.account.setupEvents = function () {
     }); 
 
 
+
+    /* -------- Practice Management --------- */
+
+    $("#start-practice").on("click", function () {
+
+
+        // Build data objects w/options
+
+        // Show UI 'getting questions' - full screen
+
+        $.COR.TPrep.showFullScreenOverlay($("#js-overlay-content-loading-questions").html(), $("#js-overlay-content-loading-questions").attr("contentSize"));
+
+        // Get Questions
+
+
+        setTimeout(function () {
+            // Show Testing UI - full screen
+            $.COR.TPrep.showFullScreenOverlay($("#js-overlay-content-study-questions").html(), $("#js-overlay-content-loading-questions").attr("contentSize"));
+
+        }, 1000);
+    });
+
+
+
+
     // Call setup on any other events that are sub of the account object
     
 };

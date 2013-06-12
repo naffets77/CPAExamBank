@@ -32,6 +32,46 @@
     width: 100%;
 }
 
+
+
+/* Practice Content */
+
+#practice-options {
+    margin-top:20px;
+    float:left;
+    width:60%;
+}
+
+#practice-explanation {
+    float:right; 
+    width:35%;
+    background-color:#efefef;
+    padding:20px;
+}
+
+    #practice-explanation h3 {
+        font-weight: bold;
+    }
+
+    #practice-explanation p {
+        margin:10px 0px 15px;
+    }
+
+
+#practice-options tr td {
+    padding: 2px 4px;
+}
+
+#practice-options tr.section>td {
+    padding-top:25px;
+}
+
+#start-practice {
+    margin-left:5px;
+}
+
+
+
 /* Popup */
 
 #popup-container {
@@ -131,4 +171,18 @@
 
     #reset-password-holder table tr td {
         padding-bottom: 20px;
+    }
+
+
+
+/* Overlay Content */
+
+#full-screen-container .load-questions {
+    margin:200px auto 0;
+    font-size:16px;
+
+}
+
+    #full-screen-container .load-questions table {
+        margin:0px auto;
     }

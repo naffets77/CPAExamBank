@@ -127,12 +127,280 @@
 
 <div id='js-content-wrapper-practice' class='js-content-wrapper hidden'>
 
-    Practice
+    <div class="content">
+    
+        <h2>Practice Options</h2>
+
+        <div style="float:left; width:100%; margin-bottom:20px;">
+            <table id="practice-options">
+                <tr>
+                    <td>
+                        Question Type
+                    </td>
+                    <td>
+                        <table style="padding-left:0px;">
+                            <tr>
+                                <td>
+                                    <input type="radio" name="practice-category" value="study" checked/>
+                                </td>
+                                <td>
+                                    Auditing And Attestation (AUD)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="radio" name="practice-category" value="test" />
+                                </td>
+                                <td>
+                                    Business Environment and Concepts (BEC)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="radio" name="practice-category" value="study" />
+                                </td>
+                                <td>
+                                    Financial Accounting and Reporting (FAR)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="radio" name="practice-category" value="test" />
+                                </td>
+                                <td>
+                                    Regulation (REG)
+                                </td>
+                            </tr>
+                        </table> 
+                    </td>
+                </tr>
+                <tr class="section">
+                    <td>Number of Questions</td>
+                    <td>
+                        <select style="margin-left:10px;">
+                            <option>10</option>
+                            <option selected>20</option>
+                            <option>30</option>
+                            <option>40</option>
+                            <option>50</option>
+                            <option>60</option>
+                            <option>70</option>
+                            <option>72</option>
+                            <option>80</option>
+                            <option>90</option>
+                        </select>
+                </tr>
+                <tr class="section">
+                    <td>Practice Mode</td>
+                    <td>
+                        <table style="padding-left:0px;">
+                            <tr>
+                                <td>
+                                    <input type="radio" name="practice-mode" value="study" checked />
+                                </td>
+                                <td>
+                                    Study
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="radio" name="practice-mode" value="test" />
+                                </td>
+                                <td>
+                                    Test
+                                </td>
+                            </tr>
+                        </table>                    
+                    </td>
+                </tr>
+                <tr class="section">
+                    <td>Do you want to...</td>
+                    <td>
+                        <table style="padding-left:0px;">
+                            <tr>
+                                <td>
+                                    <input type="radio" name="practice-strategy" value="new" checked/>
+                                </td>
+                                <td>
+                                    Get all new questions I've not seen before. 
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="radio" name="practice-strategy" value="smart" />
+                                </td>
+                                <td>
+                                    Get similar questions I've had trouble with in the past. 
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="radio" name="practice-strategy" value="mixed" />
+                                </td>
+                                <td>
+                                    Get a mix of both. 
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr class="section">
+                    <td></td>
+                    <td><input id="start-practice" type='submit' value="Start" /></td>
+                </tr>
+
+            </table>
+            
+            <div id="practice-explanation" class="explanation">
+                
+                <h3>Number of Questions</h3>
+                <p>
+                    The number of questions that you currently want to study. You can stop studying at any point. 
+                </p>
+
+                <h3>Practice Mode</h3>
+                <p>
+                    Study mode will allow you to immediatley see the correct answer and explanation after you complete a question. Test mode you 
+                    must wait until you either complete the number of questions you've selected to do, or exited out of the test to see a summary 
+                    of your results with explanations. 
+                </p>
+
+                <h3>Question Selection Strategy</h3>
+                <p>
+                    Once you have a history of questions we can start tailoring your study automatically. We can provide you with additional 
+                    questions similar to those that you have struggled with in the past. Otherwise we will try and provide you questions 
+                    that you have not seen before. 
+                </p>
+            </div>
+        </div>
+        
+    </div>
 
 </div>
         
 
-           
+<!-- Overlay for when we're loading questions -->   
+<div id="js-overlay-content-loading-questions" contentSize="full" class="hidden">
+
+    <div class="load-questions">
+        <table>
+            <tr>
+                <td><img style="position:absolute; margin-top:1px; margin-left:-10px;" src="../Content/Images/Shared/ajax-loader-small.gif" /></td>
+                <td style="padding-left:20px;">Getting Questions... this could take a few seconds!</td>
+            </tr>
+        </table> 
+    </div>
+
+</div>
+
+
+<div id="js-overlay-content-study-questions" contentSize="full" class="hidden">
+
+    Study Question Viewer
+
+    <div class="study-question-viewer-page" id="study-question-viwer-page">
+
+        <div class="study-question-viewer-header">
+            <div id="study-question-viewer-exit">Exit</div>
+        </div>
+
+        <div id="study-question-viewer-directions">
+            
+            <h1>Directions</h1>
+
+            <h3>Directions Topics</h3>
+
+            <ul>
+                <li><a>Navigation</a></li>
+                <li><a>The Toolbar</a></li>
+            </ul>
+
+            <p>
+                <span class="bold">Note:</span> If you believe you have encountered a software malfunction, report it to the test center staff immediately. 
+            </p>
+
+
+            <h2>Navigation</h2>
+
+            <p>
+                To navigate from question to question, use the controls at the bottom of the screen. Click on the <span class="bold">Next</span> button to advance to the 
+                next question, or the <span class="bold">Previous</span> button to go to the previous question. To go directly to any question, click on its number.
+            </p>
+
+            <p>
+                If you would like a reminder to revist a question, or to indicate that you are finished with it, click on the reminder flag below the question number. 
+                To clear the flag, click on it again. Reminder flags are for your use only - they do not contribute to your score. 
+            </p>
+
+            <a>Return To Top</a>
+
+            <h2>The Toolbar</h2>
+
+            <p>
+                The toolbar at the top of the screen shows the amount of time remaining for you to complete the examination. In addition, the following tools are available. 
+                Note that only the <span class="bold">Exit</span> button is displayed when Directions are visible - the <span class="bold">Calculator</span> button will appear 
+                when you begin the questions. 
+            </p>
+
+        </div>
+
+        <div id="study-question-viewer-question-mc" class="hidden">
+            <div class="question-content">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin bibendum ligula vitae libero mollis gravida quis 
+                vel erat. Donec laoreet ante nibh, id pellentesque elit luctus eget.
+            </div>
+            <div class="answer-options">
+                <table>
+                    <tr>
+                        <td><input type="radio" name="study-question-answers" /></td>
+                        <td>Answer 1</td>
+                    </tr>
+                    <tr>
+                        <td><input type="radio" name="study-question-answers" /></td>
+                        <td>Answer 2</td>
+                    </tr>
+                    <tr>
+                        <td><input type="radio" name="study-question-answers" /></td>
+                        <td>Answer 3</td>
+                    </tr>
+                    <tr>
+                        <td><input type="radio" name="study-question-answers" /></td>
+                        <td>Answer 4</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="study-question-viewer-footer">
+            
+            <div class="footer-flag-reminder">
+                = Reminder
+            </div>
+
+
+            <ul class="footer-questions-list">
+                <li>Directions</li>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+            </ul>
+            
+            <div class="footer-nav">
+                <div class="prev"></div>
+                <div class="next"></div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+</div>
+
+   
 <!-- Logged In Page 
 <div id="js-content-wrapper-user-account" class="js-content-wrapper hidden">
     
