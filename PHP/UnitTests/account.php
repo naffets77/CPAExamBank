@@ -14,32 +14,11 @@ class TestAccount extends UnitTestCase {
         $result = simulatePostRequest(array("email"=>"demo_account@cpaexambank.com", "password"=>"e368b9938746fa090d6afd3628355133"), "service_account","login");
     
         BuildResultViewer($result, "service_account :: login");
-        
-        $result = simulatePostRequest(null, "service_account","logout");
-    
-        BuildResultViewer($result,"service_account :: logout"); // cleanup
-        
+                
         $this->assertTrue(true);
     }
     
-    function testLogout(){
-        BuildTestHeader("Logout", "service_account", "logout", "Test logging out", null, null);
-        
-        $result = simulatePostRequest(array("email"=>"demo_account@cpaexambank.com", "password"=>"e368b9938746fa090d6afd3628355133"), "service_account","login");
-        
-        BuildResultViewer($result,"service_account :: login");
-        
-        $result = simulatePostRequest(null, "service_account","logout");
-    
-        BuildResultViewer($result,"service_account :: logout");
- 
-        // Check that there isn't a valid log
-            
-        $result = simulatePostRequest(null, "service_account","refreshLogin");
-        BuildResultViewer($result,"service_account :: refreshLogin");
-        
-        $this->assertFalse($result);
-    }
+
     
     function testRefreshLogin(){
         BuildTestHeader("Check Valid Login", "service_refreshLogin", "refreshLogin", "Testing refreshing the login", null, null);
@@ -55,6 +34,42 @@ class TestAccount extends UnitTestCase {
         
         $this->assertNotNull($result);
     }
+
+    function testUpdateLoginEmail(){
+    
+    
+        BuildTestHeader("Update Login Email", "service_updateLoginEmail", "updateLoginEmail", "Test updating email", null, null);
+        
+        $result = simulatePostRequest(array("email"=>"demo_account@cpaexambank.com", "password"=>"e368b9938746fa090d6afd3628355133"), "service_account","login");
+    
+        BuildResultViewer($result, "service_account :: login");
+        
+        $result = simulatePostRequest(array("email"=>"updated_demo_account@cpaexambank.com", "service_account","updateLoginEmail");
+    
+        BuildResultViewer($result,"service_account :: updateLoginEmail"); 
+          
+        $this->assertTrue(true);    
+    
+    }
+
+    
+    function testLogout(){
+        BuildTestHeader("Logout", "service_account", "logout", "Test logging out", null, null);
+        
+        
+        $result = simulatePostRequest(null, "service_account","logout");
+    
+        BuildResultViewer($result,"service_account :: logout");
+ 
+        // Check that there isn't a valid log
+            
+        $result = simulatePostRequest(null, "service_account","refreshLogin");
+        BuildResultViewer($result,"service_account :: refreshLogin");
+        
+        $this->assertFalse($result);
+    }
+    
+    
 }
  
 /*
