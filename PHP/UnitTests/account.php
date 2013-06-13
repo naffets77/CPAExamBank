@@ -45,12 +45,12 @@ class TestAccount extends UnitTestCase {
     
         BuildResultViewer($result, "service_account :: login");
         
-        $result = simulatePostRequest(array("email"=>"updated_demo_account@cpaexambank.com", "hash"=> $result['hash']), "service_account","updateLoginEmail");
+        $result = simulatePostRequest(array("email"=>"updated_demo_account@cpaexambank.com", "Hash"=> $result['hash']), "service_account","updateLoginEmail");
     
         BuildResultViewer($result,"service_account :: updateLoginEmail"); 
         
         // clean up
-        $result = simulatePostRequest(array("email"=>"demo_account@cpaexambank.com", "hash"=> $result['Hash']), "service_account","updateLoginEmail");
+        $result = simulatePostRequest(array("email"=>"demo_account@cpaexambank.com", "Hash"=> $result['Hash']), "service_account","updateLoginEmail");
     
         BuildResultViewer($result,"service_account :: updateLoginEmail"); 
           
