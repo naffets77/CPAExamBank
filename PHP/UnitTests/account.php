@@ -41,16 +41,16 @@ class TestAccount extends UnitTestCase {
     
         BuildTestHeader("Update Login Email", "service_updateLoginEmail", "updateLoginEmail", "Test updating email", null, null);
         
-        $result = simulatePostRequest(array("email"=>"demo_account@cpaexambank.com", "password"=>"e368b9938746fa090d6afd3628355133"), "service_account","login");
+        $accountResult = simulatePostRequest(array("email"=>"demo_account@cpaexambank.com", "password"=>"e368b9938746fa090d6afd3628355133"), "service_account","login");
     
-        BuildResultViewer($result, "service_account :: login");
+        BuildResultViewer($accountResult, "service_account :: login");
         
-        $result = simulatePostRequest(array("email"=>"updated_demo_account@cpaexambank.com", "Hash"=> $result['Hash']), "service_account","updateLoginEmail");
+        $result = simulatePostRequest(array("email"=>"updated_demo_account@cpaexambank.com", "Hash"=> $accountResult['Hash']), "service_account","updateLoginEmail");
     
         BuildResultViewer($result,"service_account :: updateLoginEmail"); 
         
         // clean up
-        $result = simulatePostRequest(array("email"=>"demo_account@cpaexambank.com", "Hash"=> $result['Hash']), "service_account","updateLoginEmail");
+        $result = simulatePostRequest(array("email"=>"demo_account@cpaexambank.com", "Hash"=> $accountResult['Hash']), "service_account","updateLoginEmail");
     
         BuildResultViewer($result,"service_account :: updateLoginEmail"); 
           
