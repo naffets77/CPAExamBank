@@ -57,12 +57,33 @@ class TestAccount extends UnitTestCase {
         $this->assertTrue(true);    
     
     }
+    
+    function testUpdatePassword(){
+    
+    
+        BuildTestHeader("Update Password", "service_updatePassword", "updatePassword", "Test updating password", null, null);
+        
+        $accountResult = simulatePostRequest(array("email"=>"demo_account@cpaexambank.com", "password"=>"e368b9938746fa090d6afd3628355133"), "service_account","login");
+    
+        BuildResultViewer($accountResult, "service_account :: login");
+        
+        $result = simulatePostRequest(array("password"=>md5("testing"), "Hash"=> $accountResult['Hash']), "service_account","updatePassword");
+    
+        BuildResultViewer($result,"service_account :: updatePassword"); 
+        
+        // clean up
+        $result = simulatePostRequest(array("password"=>"e368b9938746fa090d6afd3628355133", "Hash"=> $accountResult['Hash']), "service_account","updatePassword");
+    
+        BuildResultViewer($result,"service_account :: updatePassword"); 
+          
+        $this->assertTrue(true);    
+    
+    }
 
     
     function testLogout(){
         BuildTestHeader("Logout", "service_account", "logout", "Test logging out", null, null);
-        
-        
+                
         $result = simulatePostRequest(null, "service_account","logout");
     
         BuildResultViewer($result,"service_account :: logout");
@@ -94,7 +115,7 @@ class TestLogout extends UnitTestCase {
         $result = simulatePostRequest(null, "service_account","checkValidLogin");
         
         
-        $this->assertFalse($result);
+        $this->assertNull($result['Account']);
     }
 }
 */
