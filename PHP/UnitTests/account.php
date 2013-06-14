@@ -138,6 +138,8 @@ function simulatePostRequest($arrayPostVars, $service, $function){
 
     global $CONFIG_servicePath;
 
+    $_POST = array();
+
     if($arrayPostVars != null){
         // Setup Post
         foreach($arrayPostVars as $key => $value){
