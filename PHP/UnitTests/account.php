@@ -93,7 +93,7 @@ class TestAccount extends UnitTestCase {
         $result = simulatePostRequest(null, "service_account","refreshLogin");
         BuildResultViewer($result,"service_account :: refreshLogin");
         
-        $this->assertFalse($result);
+        $this->assertNull($result['Account']);
     }
     
     
