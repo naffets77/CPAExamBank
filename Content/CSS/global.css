@@ -67,6 +67,11 @@ table {
     box-shadow: 5px 5px 16px #bbb;
 }
 
+h1{}
+h2{font-size:24px; margin:20px;}
+
+
+
 /* END GLOBAL CLASSES */
 
 /* GLOBAL NON PAGE SPECIFIC STYLES */
@@ -133,12 +138,12 @@ body {
     padding: 60px 40px 20px;
     background-color: #FFD484;
     border: solid 1px #000;
-    top: -171px;
+    top: -190px;
     z-index: 10;
 }
 
     #ServerErrorHandler h2 {
-        font-size: 18px;
+        font-size: 18px !important;
         margin-bottom: 10px;
     }
 
