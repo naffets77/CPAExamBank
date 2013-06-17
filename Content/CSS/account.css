@@ -198,6 +198,7 @@
 #study-question-viewer-page {
     float:left; 
     width:960px;
+    margin-top:20px;
 }
 
     #study-question-viewer-page h1 {
@@ -235,6 +236,7 @@
     height:420px;
     min-height:420px;
     overflow-y:scroll;
+    width:920px;
 }
 
     #study-question-viewer-directions ul {
@@ -278,6 +280,20 @@
         margin-right: 14px;
     }
 
+
+#study-question-viewer-question-mc .question-content {
+    margin-top:20px;
+    font-size:16px;
+}
+
+#study-question-viewer-question-mc .answer-options table {
+    margin-top:20px;
+
+}
+
+    #study-question-viewer-question-mc .answer-options table tr td {
+        padding:4px 10px 4px 0;
+    }
 
 
 #study-question-viewer-header {
@@ -325,10 +341,8 @@
     }
 
 .study-question-navigation .footer-questions-quicklink-holder{
-    background-color:#efefef;
     float:left;
     width:600px;
-
 }
 
     .study-question-navigation .footer-questions-quicklink-holder > div {
@@ -338,16 +352,25 @@
         text-align: center;
         border: 1px solid #aaa;
         margin-right: 5px;
+        cursor:pointer;
     }
+
+        .study-question-navigation .footer-questions-quicklink-holder > div.answered {
+            background-color:#efefef;
+        }
 
         .study-question-navigation .footer-questions-quicklink-holder div .flag {
             background-image: url("/Content/Images/Account/spritesheet.png");
             background-position: -41px 31px;
-            width: 20px;
+            width: 11px;
             height: 18px;
             margin-left: 6px;
             cursor:pointer;
         }
+
+            .study-question-navigation .footer-questions-quicklink-holder div .flag.set {
+               background-position: -31px 31px; 
+            }
 
         .study-question-navigation .footer-questions-quicklink-holder div.active {
             border:solid 1px #000;
@@ -357,6 +380,7 @@
             width:65px;
             text-align:center;
             padding: 9px 1px;
+            cursor:pointer;
         }
 
 .study-question-navigation .footer-nav {

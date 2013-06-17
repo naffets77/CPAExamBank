@@ -1,7 +1,11 @@
 
 $.COR.account = {
     offline : false,
-    user:null
+    user: null,
+    simulator: {
+        questions: null,
+        questionIndex: null
+    }
 };
 
 
@@ -208,39 +212,55 @@ $.COR.account.setupEvents = function () {
                 $("#js-overlay-content-loading-questions").attr("contentSize"),
                 function () {
                     // Get Questions
-                    var questions = self.getOfflineQuestions();
-                    var questionIndex = 0;
+
+                    self.simulator.questions = self.getOfflineQuestions();
+                    self.simulator.questionIndex = 0;
+
+                    self.setupQuestionFooterNavigation(self.simulator.questions);
+
+
+                    // Local cache for events
+                    var questions = self.simulator.questions;
 
                     $("#full-screen-container .footer-nav .prev").on('click', function () {
-                        questionIndex--;
+                        self.simulator.questionIndex--;
 
-                        self.displayStudyQuestion(questions[questionIndex]);
+                        self.displayStudyQuestion(questions[self.simulator.questionIndex]);
 
 
                     });
 
                     $("#full-screen-container .footer-nav .next").on('click', function () {
-                        questionIndex++;
+                        self.simulator.questionIndex++;
 
-                        if (questionIndex == questions.length) {
+                        if (self.simulator.questionIndex == questions.length) { 
                             // Were done show completed screen
                             alert("Are you sure you're done?");
                         }
 
-                        if (questionIndex == 0) {
-                            // Hide Previous
-                            $("#study-question-viewer-page .footer-nav .prev").addClass('hidden')
-                        }
-                        else {
-                            if (!$("#study-question-viewer-page .footer-nav .prev").is(":visible")) {
-                                $("#study-question-viewer-page .footer-nav .prev").removeClass('hidden');
-                            }
-                        }
-
-
-                        self.displayStudyQuestion(questions[questionIndex]);
+                        self.displayStudyQuestion(questions[self.simulator.questionIndex]);
 
                     });
+
+                    $("#full-screen-container .footer-questions-quicklink-holder .question-quicklink").on('click', function () {
+
+                        if ($(this).hasClass("active")) return;
+
+                        var index = $(this).attr("index");
+
+                        self.displayStudyQuestion(questions[index]);
+
+                        self.simulator.questionIndex = index;
+                    });
+
+                    $("#full-screen-container .footer-questions-quicklink-holder .flag").on('click', function (e) {
+
+                        $(this).toggleClass("set");
+
+                        e.stopPropagation();
+
+                    });
+
 
                 }
             );
@@ -346,15 +366,20 @@ $.COR.account.showNewAccountPopup = function () {
 
 }
 
+
+
+// Question Study Helpers
+
+// Gets a set of questions for offline testing
 $.COR.account.getOfflineQuestions = function () {
 
     return offlineObjects = [
         {
-            type: "direction"
+            type: "direction",
+            index: 0
         },
         {
-            type: "question",
-            question: "Question 1",
+            text: "Question 1",
             answers: [
                     "Answer 1",
                     "Answer 2",
@@ -365,8 +390,7 @@ $.COR.account.getOfflineQuestions = function () {
             explanation: "Answer Explanation"
         },
         {
-            type: "question",
-            question: "Question 2",
+            text: "Question 2",
             answers: [
                     "Answer 1",
                     "Answer 2",
@@ -377,8 +401,7 @@ $.COR.account.getOfflineQuestions = function () {
             explanation: "Answer Explanation"
         },
         {
-            type: "question",
-            question: "Question 3",
+            text: "Question 3",
             answers: [
                     "Answer 1",
                     "Answer 2",
@@ -393,20 +416,41 @@ $.COR.account.getOfflineQuestions = function () {
 
 }
 
+// Builds the dynamic footer UI
+$.COR.account.setupQuestionFooterNavigation = function (questions) {
+
+    $("#full-screen-container .footer-questions-quicklink-holder div").each(function (index, element) {
+        if ($(element).hasClass('directions')) return;
+        $(element).remove();
+    });
+
+    var len = questions.length;
+
+    for (var i = 0; i < len; i++) {
+
+        if (questions[i].text != undefined) {
+
+            var html = "<div class='question-quicklink' index='" + i + "'>" + i + " <div class='flag'></div></div>";
+            $("#full-screen-container .footer-questions-quicklink-holder").append(html);
+
+            questions[i].index = i;
+            questions[i].type = 'question';
+        }
+    }
+
+}
+
+// Shows the selected Question UI
 $.COR.account.displayStudyQuestion = function (question) {
 
     var self = this;
 
     if (question.type == "direction") {
-        $("#study-question-viewer-question-mc").fadeOut(function () {
+        $("#study-question-viewer-question-mc").hide(function () {
             $("#study-question-viewer-directions").fadeIn();
         });
     }
     else {
-
-
-
-
 
         if ($("#study-question-viewer-directions").is(":visible")) {
             $("#study-question-viewer-directions").fadeOut(function () {
@@ -424,9 +468,63 @@ $.COR.account.displayStudyQuestion = function (question) {
     }
 
 
+    // Update Footer UI Navigation
+
+    // Show/Hide The Previous Button
+    if (this.simulator.questionIndex == 0) {
+        // Hide Previous
+        $("#study-question-viewer-page .footer-nav .prev").addClass('hidden')
+    }
+    else {
+        if (!$("#study-question-viewer-page .footer-nav .prev").is(":visible")) {
+            $("#study-question-viewer-page .footer-nav .prev").removeClass('hidden');
+        }
+    }
+
+    // Set the selected question as highlighted
+    $("#full-screen-container .footer-questions-quicklink-holder .question-quicklink").removeClass("active");
+    $(".question-quicklink[index=" + question.index + "]").addClass("active");
+
+
 }
 
-$.COR.account.setStudyQuestionData = function () {
+// Sets up the data in the selected Question UI
+$.COR.account.setStudyQuestionData = function (question) {
 
+    var self = this;
+
+    $("#full-screen-container .question-content").html(question.text);
+
+    $("#full-screen-container .answer-options table").html("");
+
+    for (var i = 0; i < question.answers.length; i++) {
+
+        var html = "<tr><td><input type='radio' id='study-question-answer-" + i + "' value='" + i + "' name='study-question-answer' /></td>";
+        html += "<td><label for='study-question-answer-" + i + "'>" + question.answers[i] + "</label></td></tr>";
+        $("#full-screen-container .answer-options table").append(html);
+    }
+
+
+    // Question Events
+
+    $("#full-screen-container .answer-options input").on('change', function () {
+        self.selectAnswer(question);
+    });
+
+}
+
+// Handles selecting an answer
+$.COR.account.selectAnswer = function (question) {
+
+    // get answer
+    var selectedAnswer = $('input:radio[name=study-question-answer]:checked').val();
+
+    // set question answered
+    question.selectedAnswer = selectedAnswer;
+
+    // update footer UI to indicate question was answered
+    $(".question-quicklink[index=" + question.index + "]").addClass("answered");
+
+    // check UI Type Study/Test to display explanation
 
 }
