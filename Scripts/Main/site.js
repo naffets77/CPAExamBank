@@ -65,7 +65,7 @@ $(document).ready(function(){
 
 $.COR.TPrep = {};
 
-$.COR.TPrep.showFullScreenOverlay = function (content, contentClassSize) {
+$.COR.TPrep.showFullScreenOverlay = function (content, contentClassSize, events) {
 
 
     if ($("#full-screen-container").is(":visible")) {
@@ -75,6 +75,9 @@ $.COR.TPrep.showFullScreenOverlay = function (content, contentClassSize) {
 
             $("#full-screen-container .content").html(content).removeClass().addClass(contentClassSize).fadeIn();
 
+            if (typeof events == 'function') {
+                events();
+            }
         });
 
 
@@ -87,6 +90,10 @@ $.COR.TPrep.showFullScreenOverlay = function (content, contentClassSize) {
         $("#full-screen-holder").show();
         $("#full-screen-container").show();
 
+
+        if (typeof events == 'function') {
+            events();
+        }
     }
 }
 

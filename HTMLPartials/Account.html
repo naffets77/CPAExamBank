@@ -296,105 +296,123 @@
 
 <div id="js-overlay-content-study-questions" contentSize="full" class="hidden">
 
-    Study Question Viewer
+    <div id="study-questions-viewer-wrapper">
+        <div class="study-question-viewer-page shadow-centered" id="study-question-viewer-page">
 
-    <div class="study-question-viewer-page" id="study-question-viwer-page">
+            <div id="study-question-viewer-header">
+                <div id="study-question-viewer-exit">Exit</div>
+            </div>
 
-        <div class="study-question-viewer-header">
-            <div id="study-question-viewer-exit">Exit</div>
-        </div>
-
-        <div id="study-question-viewer-directions">
+            <div id="study-question-viewer-directions">
             
-            <h1>Directions</h1>
+                <h1>Directions</h1>
 
-            <h3>Directions Topics</h3>
+                <h3>Directions Topics</h3>
 
-            <ul>
-                <li><a>Navigation</a></li>
-                <li><a>The Toolbar</a></li>
-            </ul>
+                <ul>
+                    <li><a>Navigation</a></li>
+                    <li><a>The Toolbar</a></li>
+                </ul>
 
-            <p>
-                <span class="bold">Note:</span> If you believe you have encountered a software malfunction, report it to the test center staff immediately. 
-            </p>
+                <p style="margin-bottom:20px;">
+                    <span class="bold">Note:</span> If you believe you have encountered a software malfunction, report it to the test center staff immediately. 
+                </p>
 
 
-            <h2>Navigation</h2>
+                <h2>Navigation</h2>
 
-            <p>
-                To navigate from question to question, use the controls at the bottom of the screen. Click on the <span class="bold">Next</span> button to advance to the 
-                next question, or the <span class="bold">Previous</span> button to go to the previous question. To go directly to any question, click on its number.
-            </p>
+                <p>
+                    To navigate from question to question, use the controls at the bottom of the screen. Click on the <span class="bold">Next</span> button to advance to the 
+                    next question, or the <span class="bold">Previous</span> button to go to the previous question. To go directly to any question, click on its number.
+                </p>
 
-            <p>
-                If you would like a reminder to revist a question, or to indicate that you are finished with it, click on the reminder flag below the question number. 
-                To clear the flag, click on it again. Reminder flags are for your use only - they do not contribute to your score. 
-            </p>
+                <p>
+                    If you would like a reminder to revist a question, or to indicate that you are finished with it, click on the reminder flag below the question number. 
+                    To clear the flag, click on it again. Reminder flags are for your use only - they do not contribute to your score. 
+                </p>
 
-            <a>Return To Top</a>
+                <a>Return To Top</a>
 
-            <h2>The Toolbar</h2>
+                <h2>The Toolbar</h2>
 
-            <p>
-                The toolbar at the top of the screen shows the amount of time remaining for you to complete the examination. In addition, the following tools are available. 
-                Note that only the <span class="bold">Exit</span> button is displayed when Directions are visible - the <span class="bold">Calculator</span> button will appear 
-                when you begin the questions. 
-            </p>
+                <p>
+                    The toolbar at the top of the screen shows the amount of time remaining for you to complete the examination. In addition, the following tools are available. 
+                    Note that only the <span class="bold">Exit</span> button is displayed when Directions are visible - the <span class="bold">Calculator</span> button will appear 
+                    when you begin the questions. 
+                </p>
 
-        </div>
+                <div id="calculator-explanation">
+                    <div class="icon shadow"></div>
+                    <div class="text">
+                        Click on this button to display the calculator; click it again to hide the calculator. To move the 
+                        calculator, click on the calculator title bar and drag the calculator to the desired location.
+                    </div>
+                </div>
 
-        <div id="study-question-viewer-question-mc" class="hidden">
-            <div class="question-content">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin bibendum ligula vitae libero mollis gravida quis 
-                vel erat. Donec laoreet ante nibh, id pellentesque elit luctus eget.
+                <div id="exit-explanation">
+                    <div class="icon shadow"></div>
+                    <div class="text">
+                        Click on this button to go to the next part of the examination. You must complete all of the questions to 
+                        receive full credit. Once you click on <span class="bold">Exit</span> and confirm the action, you will NOT 
+                        be able to return to this testlet. 
+                    </div>
+                </div>
+
             </div>
-            <div class="answer-options">
-                <table>
-                    <tr>
-                        <td><input type="radio" name="study-question-answers" /></td>
-                        <td>Answer 1</td>
-                    </tr>
-                    <tr>
-                        <td><input type="radio" name="study-question-answers" /></td>
-                        <td>Answer 2</td>
-                    </tr>
-                    <tr>
-                        <td><input type="radio" name="study-question-answers" /></td>
-                        <td>Answer 3</td>
-                    </tr>
-                    <tr>
-                        <td><input type="radio" name="study-question-answers" /></td>
-                        <td>Answer 4</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
 
-        <div class="study-question-viewer-footer">
+            <div id="study-question-viewer-question-mc" class="hidden">
+                <div class="question-content">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin bibendum ligula vitae libero mollis gravida quis 
+                    vel erat. Donec laoreet ante nibh, id pellentesque elit luctus eget.
+                </div>
+                <div class="answer-options">
+                    <table>
+                        <tr>
+                            <td><input type="radio" name="study-question-answers" /></td>
+                            <td>Answer 1</td>
+                        </tr>
+                        <tr>
+                            <td><input type="radio" name="study-question-answers" /></td>
+                            <td>Answer 2</td>
+                        </tr>
+                        <tr>
+                            <td><input type="radio" name="study-question-answers" /></td>
+                            <td>Answer 3</td>
+                        </tr>
+                        <tr>
+                            <td><input type="radio" name="study-question-answers" /></td>
+                            <td>Answer 4</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div id="study-question-viewer-footer">
             
-            <div class="footer-flag-reminder">
-                = Reminder
-            </div>
+                <div class="study-question-navigation">
+                    <div class="footer-flag-reminder">
+                        <div class="flag"></div> = Reminder
+                    </div>
 
 
-            <ul class="footer-questions-list">
-                <li>Directions</li>
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-                <li>4</li>
-                <li>5</li>
-            </ul>
+                    <div class="footer-questions-quicklink-holder">
+                        <div class="directions active">Directions</div>
+                        <div>1 <div class="flag"></div></div>
+                        <div>2 <div class="flag"></div></div>
+                        <div>3 <div class="flag"></div></div>
+                        <div>4 <div class="flag"></div></div>
+                        <div>5 <div class="flag"></div></div>
+                    </div>
             
-            <div class="footer-nav">
-                <div class="prev"></div>
-                <div class="next"></div>
-            </div>
+                    <div class="footer-nav">
+                        <div class="prev hidden"><div class='icon'></div>Previous</div>
+                        <div class="next"><div class="icon"></div>Next </div>
+                    </div>
+                </div>
 
+            </div>
         </div>
     </div>
-
 
 
 

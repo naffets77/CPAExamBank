@@ -186,3 +186,215 @@
     #full-screen-container .load-questions table {
         margin:0px auto;
     }
+
+
+/* Study Question Styles */
+
+#study-questions-viewer-wrapper {
+    width:960px;
+    margin:0px auto;
+}
+
+#study-question-viewer-page {
+    float:left; 
+    width:960px;
+}
+
+    #study-question-viewer-page h1 {
+        background-color: #000;
+        color: #fff;
+        padding: 4px 0px;
+        font-size: 18px;
+        text-align: center;
+        margin:10px 0px;
+    }
+
+    #study-question-viewer-page h2 {
+        background-color: #999;
+        color: #000;
+        padding: 4px 0px;
+        font-size: 18px;
+        text-align: center;
+        margin:10px 0px;
+    }
+
+    #study-question-viewer-page h3 {
+        font-weight:bold;
+    }
+
+    #study-question-viewer-page a {
+        color:blue;
+        text-decoration:underline;
+    }
+
+#study-question-viewer-directions, #study-question-viewer-question-mc {
+
+    padding:0px 20px;
+    clear:both;
+    float:left;
+    height:420px;
+    min-height:420px;
+    overflow-y:scroll;
+}
+
+    #study-question-viewer-directions ul {
+        margin:20px 0px;
+
+    }
+
+
+#calculator-explanation, #exit-explanation {
+    margin:25px 0px;
+    clear:both;
+    float:left;
+}
+
+#calculator-explanation {
+    margin-bottom:10px;
+}
+
+    #calculator-explanation .text, #exit-explanation .text {
+        margin-top:8px;
+        width:740px;
+    }
+
+    #exit-explanation .icon {
+        background-image: url("/Content/Images/Account/spritesheet.png");
+        float: left;
+        width: 33px;
+        background-position: 52px -9px;
+        height: 32px;
+        padding: 5px;
+        margin-right: 14px;
+    }
+
+    #calculator-explanation .icon {
+        background-image: url("/Content/Images/Account/spritesheet.png");
+        float: left;
+        width: 33px;
+        background-position: 100px -9px;
+        height: 32px;
+        padding: 5px;
+        margin-right: 14px;
+    }
+
+
+
+#study-question-viewer-header {
+    border-bottom:1px solid #999;
+    float:left; 
+    width:100%;
+    padding:4px 0px;
+}
+
+#study-question-viewer-exit {    
+    background-image:url("/Content/Images/Account/spritesheet.png");
+    float: right;
+    width: 47px;
+    background-position: 56px -14px;
+    height: 17px;
+    padding-top: 32px;
+    text-align: center;
+    font-weight: bold;
+    border-left: 1px solid #efefef;
+    padding-left: 2px;
+}
+
+#study-question-viewer-footer {
+    border-top:1px solid #999;
+    float:left; 
+    width:100%;
+    padding:10px 0px;
+    margin-top:10px;
+}
+
+.study-question-navigation .footer-flag-reminder {
+    height: 10px;
+    width: 95px;
+    float:left;
+    padding:8px 3px;
+    margin-left:20px;
+}
+
+    .study-question-navigation .footer-flag-reminder .flag {
+        background-image: url("/Content/Images/Account/spritesheet.png");
+        height: 13px;
+        width: 11px;
+        background-position: -31px 29px;
+        float: left;
+    }
+
+.study-question-navigation .footer-questions-quicklink-holder{
+    background-color:#efefef;
+    float:left;
+    width:600px;
+
+}
+
+    .study-question-navigation .footer-questions-quicklink-holder > div {
+        float: left;
+        width: 20px;
+        font-size: 11px;
+        text-align: center;
+        border: 1px solid #aaa;
+        margin-right: 5px;
+    }
+
+        .study-question-navigation .footer-questions-quicklink-holder div .flag {
+            background-image: url("/Content/Images/Account/spritesheet.png");
+            background-position: -41px 31px;
+            width: 20px;
+            height: 18px;
+            margin-left: 6px;
+            cursor:pointer;
+        }
+
+        .study-question-navigation .footer-questions-quicklink-holder div.active {
+            border:solid 1px #000;
+        }
+
+        .study-question-navigation .footer-questions-quicklink-holder div.directions{
+            width:65px;
+            text-align:center;
+            padding: 9px 1px;
+        }
+
+.study-question-navigation .footer-nav {
+    float:right;
+    width:160px;
+    margin-right:20px;
+}
+
+    .study-question-navigation .footer-nav .prev {
+        float: left;
+        text-align: center;
+        border: 1px solid #999;
+        width: 76px;
+        padding: 8px 0px;
+        cursor:pointer;
+    }
+
+        .study-question-navigation .footer-nav .prev .icon {
+            background-image: url("/Content/Images/Account/spritesheet.png");
+            height: 15px;
+            width: 10px;
+            background-position: -330px 35px;
+            float: left;
+        }
+
+    .study-question-navigation .footer-nav .next {
+        float: right;
+        text-align: center;
+        border: 1px solid #999;
+        width: 76px;
+        padding: 8px 0px;
+        cursor:pointer;
+    }
+
+        .study-question-navigation .footer-nav .next .icon {
+            background-image: url("/Content/Images/Account/spritesheet.png");
+            height: 15px;
+            width: 10px;
+            background-position: -342px 35px;
+            float: right;
+        }

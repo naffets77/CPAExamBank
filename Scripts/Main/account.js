@@ -196,16 +196,64 @@ $.COR.account.setupEvents = function () {
 
         // Show UI 'getting questions' - full screen
 
-        $.COR.TPrep.showFullScreenOverlay($("#js-overlay-content-loading-questions").html(), $("#js-overlay-content-loading-questions").attr("contentSize"));
-
-        // Get Questions
-
+        $.COR.TPrep.showFullScreenOverlay(
+            $("#js-overlay-content-loading-questions").html(),
+            $("#js-overlay-content-loading-questions").attr("contentSize")
+        );
 
         setTimeout(function () {
             // Show Testing UI - full screen
-            $.COR.TPrep.showFullScreenOverlay($("#js-overlay-content-study-questions").html(), $("#js-overlay-content-loading-questions").attr("contentSize"));
+            $.COR.TPrep.showFullScreenOverlay(
+                $("#js-overlay-content-study-questions").html(),
+                $("#js-overlay-content-loading-questions").attr("contentSize"),
+                function () {
+                    // Get Questions
+                    var questions = self.getOfflineQuestions();
+                    var questionIndex = 0;
+
+                    $("#full-screen-container .footer-nav .prev").on('click', function () {
+                        questionIndex--;
+
+                        self.displayStudyQuestion(questions[questionIndex]);
+
+
+                    });
+
+                    $("#full-screen-container .footer-nav .next").on('click', function () {
+                        questionIndex++;
+
+                        if (questionIndex == questions.length) {
+                            // Were done show completed screen
+                            alert("Are you sure you're done?");
+                        }
+
+                        if (questionIndex == 0) {
+                            // Hide Previous
+                            $("#study-question-viewer-page .footer-nav .prev").addClass('hidden')
+                        }
+                        else {
+                            if (!$("#study-question-viewer-page .footer-nav .prev").is(":visible")) {
+                                $("#study-question-viewer-page .footer-nav .prev").removeClass('hidden');
+                            }
+                        }
+
+
+                        self.displayStudyQuestion(questions[questionIndex]);
+
+                    });
+
+                }
+            );
+
+
+
 
         }, 1000);
+
+
+
+
+
     });
 
 
@@ -216,7 +264,8 @@ $.COR.account.setupEvents = function () {
 };
 
 
- 
+
+
 
 
 
@@ -294,5 +343,90 @@ $.COR.account.showNewAccountPopup = function () {
         });
 
     });
+
+}
+
+$.COR.account.getOfflineQuestions = function () {
+
+    return offlineObjects = [
+        {
+            type: "direction"
+        },
+        {
+            type: "question",
+            question: "Question 1",
+            answers: [
+                    "Answer 1",
+                    "Answer 2",
+                    "Answer 3",
+                    "Answer 4"
+            ],
+            answerIndex: 1,
+            explanation: "Answer Explanation"
+        },
+        {
+            type: "question",
+            question: "Question 2",
+            answers: [
+                    "Answer 1",
+                    "Answer 2",
+                    "Answer 3",
+                    "Answer 4"
+            ],
+            answerIndex: 1,
+            explanation: "Answer Explanation"
+        },
+        {
+            type: "question",
+            question: "Question 3",
+            answers: [
+                    "Answer 1",
+                    "Answer 2",
+                    "Answer 3",
+                    "Answer 4"
+            ],
+            answerIndex: 1,
+            explanation: "Answer Explanation"
+        }
+    ];
+
+
+}
+
+$.COR.account.displayStudyQuestion = function (question) {
+
+    var self = this;
+
+    if (question.type == "direction") {
+        $("#study-question-viewer-question-mc").fadeOut(function () {
+            $("#study-question-viewer-directions").fadeIn();
+        });
+    }
+    else {
+
+
+
+
+
+        if ($("#study-question-viewer-directions").is(":visible")) {
+            $("#study-question-viewer-directions").fadeOut(function () {
+                self.setStudyQuestionData(question);
+                $("#study-question-viewer-question-mc").fadeIn();
+            });
+        }
+        else {
+            $("#study-question-viewer-question-mc").fadeOut(function () {
+                self.setStudyQuestionData(question);
+                $("#study-question-viewer-question-mc").fadeIn();
+            });
+        }
+
+    }
+
+
+}
+
+$.COR.account.setStudyQuestionData = function () {
+
 
 }
