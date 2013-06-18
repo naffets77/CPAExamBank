@@ -261,6 +261,9 @@ $.COR.account.setupEvents = function () {
 
                     });
 
+                    $("#full-screen-container .study-question-viewer-exit").on('click', function () {
+                        $.COR.TPrep.hideFullScreenOverlay();
+                    });
 
                 }
             );

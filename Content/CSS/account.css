@@ -303,7 +303,7 @@
     padding:4px 0px;
 }
 
-#study-question-viewer-exit {    
+#study-question-viewer-header .study-question-viewer-exit {    
     background-image:url("/Content/Images/Account/spritesheet.png");
     float: right;
     width: 47px;
@@ -314,6 +314,7 @@
     font-weight: bold;
     border-left: 1px solid #efefef;
     padding-left: 2px;
+    cursor:pointer;
 }
 
 #study-question-viewer-footer {

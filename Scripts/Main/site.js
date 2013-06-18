@@ -97,7 +97,9 @@ $.COR.TPrep.showFullScreenOverlay = function (content, contentClassSize, events)
     }
 }
 
-
+$.COR.TPrep.hideFullScreenOverlay = function () {
+    $("#full-screen-container").fadeOut();
+}
 
 
 if (!Date.now) {
