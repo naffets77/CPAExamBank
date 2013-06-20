@@ -316,6 +316,12 @@ $.COR.pageEvents = function () {
 
 }
 
+$.COR.getCurrentDisplayedId = function () {
+    var myID = "";
+    myID = $('#body').find('div.js-content-wrapper').not(':hidden').attr('id');
+    return myID;
+}
+
 $.COR.login = function (email, password, successCallback, failcallback) {
 
     var self = this;
@@ -551,7 +557,8 @@ $.COR.toggleHomeNavigation = function () {
 
     });
 
-    $("#header-navigation-home").trigger('click');
+    $("#header-navigation li").removeClass('current');
+    $("#header-navigation_").addClass('current');
 };
 
 $.COR.toggleAccountLogin = function () {

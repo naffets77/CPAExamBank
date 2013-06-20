@@ -20,7 +20,7 @@
     }
 
         .horiz-nav li.current {
-            background-color:#dfdfdf;
+            background-color: #dfdfdf;
         }
 
 
@@ -37,16 +37,16 @@
 /* Practice Content */
 
 #practice-options {
-    margin-top:20px;
-    float:left;
-    width:60%;
+    margin-top: 20px;
+    float: left;
+    width: 60%;
 }
 
 #practice-explanation {
-    float:right; 
-    width:35%;
-    background-color:#efefef;
-    padding:20px;
+    float: right;
+    width: 35%;
+    background-color: #efefef;
+    padding: 20px;
 }
 
     #practice-explanation h3 {
@@ -54,7 +54,7 @@
     }
 
     #practice-explanation p {
-        margin:10px 0px 15px;
+        margin: 10px 0px 15px;
     }
 
 
@@ -62,12 +62,12 @@
     padding: 2px 4px;
 }
 
-#practice-options tr.section>td {
-    padding-top:25px;
+#practice-options tr.section > td {
+    padding-top: 25px;
 }
 
 #start-practice {
-    margin-left:5px;
+    margin-left: 5px;
 }
 
 
@@ -178,27 +178,26 @@
 /* Overlay Content */
 
 #full-screen-container .load-questions {
-    margin:200px auto 0;
-    font-size:16px;
-
+    margin: 200px auto 0;
+    font-size: 16px;
 }
 
     #full-screen-container .load-questions table {
-        margin:0px auto;
+        margin: 0px auto;
     }
 
 
 /* Study Question Styles */
 
 #study-questions-viewer-wrapper {
-    width:960px;
-    margin:0px auto;
+    width: 960px;
+    margin: 0px auto;
 }
 
 #study-question-viewer-page {
-    float:left; 
-    width:960px;
-    margin-top:20px;
+    float: left;
+    width: 960px;
+    margin-top: 20px;
 }
 
     #study-question-viewer-page h1 {
@@ -207,7 +206,7 @@
         padding: 4px 0px;
         font-size: 18px;
         text-align: center;
-        margin:10px 0px;
+        margin: 10px 0px;
     }
 
     #study-question-viewer-page h2 {
@@ -216,121 +215,148 @@
         padding: 4px 0px;
         font-size: 18px;
         text-align: center;
-        margin:10px 0px;
+        margin: 10px 0px;
     }
 
     #study-question-viewer-page h3 {
-        font-weight:bold;
+        font-weight: bold;
     }
 
     #study-question-viewer-page a {
-        color:blue;
-        text-decoration:underline;
+        color: blue;
+        text-decoration: underline;
     }
 
-#study-question-viewer-directions, #study-question-viewer-question-mc {
-
-    padding:0px 20px;
-    clear:both;
-    float:left;
-    height:420px;
-    min-height:420px;
-    overflow-y:scroll;
-    width:920px;
+.study-question-viewer-page .study-quesitons-content {
+    padding: 0px 20px;
+    clear: both;
+    float: left;
+    height: 420px;
+    min-height: 420px;
+    overflow-y: scroll;
+    width: 920px;
 }
 
-    #study-question-viewer-directions ul {
-        margin:20px 0px;
-
-    }
+#study-question-viewer-directions ul {
+    margin: 20px 0px;
+}
 
 
 #calculator-explanation, #exit-explanation {
-    margin:25px 0px;
-    clear:both;
-    float:left;
+    margin: 25px 0px;
+    clear: both;
+    float: left;
 }
 
 #calculator-explanation {
-    margin-bottom:10px;
+    margin-bottom: 10px;
 }
 
     #calculator-explanation .text, #exit-explanation .text {
-        margin-top:8px;
-        width:740px;
+        margin-top: 8px;
+        width: 740px;
     }
 
-    #exit-explanation .icon {
-        background-image: url("/Content/Images/Account/spritesheet.png");
-        float: left;
-        width: 33px;
-        background-position: 52px -9px;
-        height: 32px;
-        padding: 5px;
-        margin-right: 14px;
-    }
+#exit-explanation .icon {
+    background-image: url("/Content/Images/Account/spritesheet.png");
+    float: left;
+    width: 33px;
+    background-position: 52px -9px;
+    height: 32px;
+    padding: 5px;
+    margin-right: 14px;
+}
 
-    #calculator-explanation .icon {
-        background-image: url("/Content/Images/Account/spritesheet.png");
-        float: left;
-        width: 33px;
-        background-position: 100px -9px;
-        height: 32px;
-        padding: 5px;
-        margin-right: 14px;
-    }
+#calculator-explanation .icon {
+    background-image: url("/Content/Images/Account/spritesheet.png");
+    float: left;
+    width: 33px;
+    background-position: 100px -9px;
+    height: 32px;
+    padding: 5px;
+    margin-right: 14px;
+}
 
 
 #study-question-viewer-question-mc .question-content {
-    margin-top:20px;
-    font-size:16px;
+    margin-top: 20px;
+    font-size: 16px;
 }
 
 #study-question-viewer-question-mc .answer-options table {
-    margin-top:20px;
-
+    margin-top: 20px;
 }
 
     #study-question-viewer-question-mc .answer-options table tr td {
-        padding:4px 10px 4px 0;
+        padding: 4px 10px 4px 0;
     }
 
+        #study-question-viewer-question-mc .answer-options table tr td.result-spacer {
+            width: 20px;
+        }
+
+            #study-question-viewer-question-mc .answer-options table tr td.result-spacer.correct {
+                background-image: url('/Content/Images/Account/green-arrow.png');
+                width: 20px;
+                background-size: 18px;
+                background-repeat: no-repeat;
+                background-position: 0px 6px;
+                padding-right: 0px;
+            }
+
+#study-question-viewer-question-mc .answer-explanation {
+    margin-top: 20px;
+}
+
+    #study-question-viewer-question-mc .answer-explanation .answer-explanation-holder {
+        margin-top: 20px;
+    }
+
+#study-question-viewer-results .results-summary {
+    margin-top:20px;
+    margin-left:20px;
+}
+
+#study-question-viewer-results .results-summary tr td {
+    padding-right:20px;
+    padding-bottom:10px;
+}
 
 #study-question-viewer-header {
-    border-bottom:1px solid #999;
-    float:left; 
-    width:100%;
-    padding:4px 0px;
+    border-bottom: 1px solid #999;
+    float: left;
+    width: 100%;
+    padding: 4px 0px;
 }
 
-#study-question-viewer-header .study-question-viewer-exit {    
-    background-image:url("/Content/Images/Account/spritesheet.png");
-    float: right;
-    width: 47px;
-    background-position: 56px -14px;
-    height: 17px;
-    padding-top: 32px;
-    text-align: center;
-    font-weight: bold;
-    border-left: 1px solid #efefef;
-    padding-left: 2px;
-    cursor:pointer;
-}
+    #study-question-viewer-header .study-question-viewer-exit {
+        background-image: url("/Content/Images/Account/spritesheet.png");
+        float: right;
+        width: 47px;
+        background-position: 56px -14px;
+        height: 17px;
+        padding-top: 32px;
+        text-align: center;
+        font-weight: bold;
+        border-left: 1px solid #efefef;
+        padding-left: 2px;
+        cursor: pointer;
+    }
 
 #study-question-viewer-footer {
-    border-top:1px solid #999;
-    float:left; 
-    width:100%;
-    padding:10px 0px;
-    margin-top:10px;
+    border-top: 1px solid #999;
+    float: left;
+    width: 100%;
+    padding: 10px 0px;
+    margin-top: 10px;
 }
 
 .study-question-navigation .footer-flag-reminder {
     height: 10px;
     width: 95px;
-    float:left;
-    padding:8px 3px;
-    margin-left:20px;
+    float: left;
+    padding: 8px 3px;
+    margin-left: 20px;
 }
 
     .study-question-navigation .footer-flag-reminder .flag {
@@ -341,9 +367,9 @@
         float: left;
     }
 
-.study-question-navigation .footer-questions-quicklink-holder{
-    float:left;
-    width:600px;
+.study-question-navigation .footer-questions-quicklink-holder {
+    float: left;
+    width: 600px;
 }
 
     .study-question-navigation .footer-questions-quicklink-holder > div {
@@ -353,41 +379,46 @@
         text-align: center;
         border: 1px solid #aaa;
         margin-right: 5px;
-        cursor:pointer;
+        cursor: pointer;
     }
 
         .study-question-navigation .footer-questions-quicklink-holder > div.answered {
-            background-color:#efefef;
+            background-color: #efefef;
         }
 
-        .study-question-navigation .footer-questions-quicklink-holder div .flag {
-            background-image: url("/Content/Images/Account/spritesheet.png");
-            background-position: -41px 31px;
-            width: 11px;
-            height: 18px;
-            margin-left: 6px;
-            cursor:pointer;
+    .study-question-navigation .footer-questions-quicklink-holder div .flag {
+        background-image: url("/Content/Images/Account/spritesheet.png");
+        background-position: -41px 31px;
+        width: 11px;
+        height: 18px;
+        margin-left: 6px;
+        cursor: pointer;
+    }
+
+        .study-question-navigation .footer-questions-quicklink-holder div .flag.set {
+            background-position: -31px 31px;
         }
 
-            .study-question-navigation .footer-questions-quicklink-holder div .flag.set {
-               background-position: -31px 31px; 
-            }
+    .study-question-navigation .footer-questions-quicklink-holder div.incorrect {
+        border: solid 1px red;
+    }
 
-        .study-question-navigation .footer-questions-quicklink-holder div.active {
-            border:solid 1px #000;
-        }
+    .study-question-navigation .footer-questions-quicklink-holder div.active {
+        border: solid 1px #000;
+    }
 
-        .study-question-navigation .footer-questions-quicklink-holder div.directions{
-            width:65px;
-            text-align:center;
-            padding: 9px 1px;
-            cursor:pointer;
-        }
+    .study-question-navigation .footer-questions-quicklink-holder div.directions,
+    .study-question-navigation .footer-questions-quicklink-holder div.results {
+        width: 65px;
+        text-align: center;
+        padding: 9px 1px;
+        cursor: pointer;
+    }
 
 .study-question-navigation .footer-nav {
-    float:right;
-    width:160px;
-    margin-right:20px;
+    float: right;
+    width: 160px;
+    margin-right: 20px;
 }
 
     .study-question-navigation .footer-nav .prev {
@@ -396,7 +427,7 @@
         border: 1px solid #999;
         width: 76px;
         padding: 8px 0px;
-        cursor:pointer;
+        cursor: pointer;
     }
 
         .study-question-navigation .footer-nav .prev .icon {
@@ -413,7 +444,7 @@
         border: 1px solid #999;
         width: 76px;
         padding: 8px 0px;
-        cursor:pointer;
+        cursor: pointer;
     }
 
         .study-question-navigation .footer-nav .next .icon {

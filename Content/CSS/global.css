@@ -189,12 +189,16 @@ body {
 
     #header-navigation li {
         float: left;
-        color: #666;
         margin-top: 10px;
         margin-right: 20px;
         font-size: 30px;
         padding:4px 8px;
     }
+
+        #header-navigation li a {
+            color:#666;
+            text-decoration:none;
+        }
 
         #header-navigation li.current {
             background-color:#fff;

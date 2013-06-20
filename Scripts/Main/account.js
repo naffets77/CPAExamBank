@@ -3,8 +3,11 @@ $.COR.account = {
     offline : false,
     user: null,
     simulator: {
+        options: {},
+        live : false,
         questions: null,
-        questionIndex: null
+        questionIndex: null,
+        completed : false
     }
 };
 
@@ -55,6 +58,7 @@ $.COR.account.hashHandler = function () {
 
     if ($.COR.account.user != null) {
 
+        // WTF do these comments even mean?? WHAT WAS I DOING? _sigh_
         // This case should only be called because we've just created a new user but havent finished filling out their information
         //this.initUser(); // TODO: This was being called on every login, but apparently based on the above comment shouldn't be .. 
     }
@@ -190,98 +194,6 @@ $.COR.account.setupEvents = function () {
     }); 
 
 
-
-    /* -------- Practice Management --------- */
-
-    $("#start-practice").on("click", function () {
-
-
-        // Build data objects w/options
-
-        // Show UI 'getting questions' - full screen
-
-        $.COR.TPrep.showFullScreenOverlay(
-            $("#js-overlay-content-loading-questions").html(),
-            $("#js-overlay-content-loading-questions").attr("contentSize")
-        );
-
-        setTimeout(function () {
-            // Show Testing UI - full screen
-            $.COR.TPrep.showFullScreenOverlay(
-                $("#js-overlay-content-study-questions").html(),
-                $("#js-overlay-content-loading-questions").attr("contentSize"),
-                function () {
-                    // Get Questions
-
-                    self.simulator.questions = self.getOfflineQuestions();
-                    self.simulator.questionIndex = 0;
-
-                    self.setupQuestionFooterNavigation(self.simulator.questions);
-
-
-                    // Local cache for events
-                    var questions = self.simulator.questions;
-
-                    $("#full-screen-container .footer-nav .prev").on('click', function () {
-                        self.simulator.questionIndex--;
-
-                        self.displayStudyQuestion(questions[self.simulator.questionIndex]);
-
-
-                    });
-
-                    $("#full-screen-container .footer-nav .next").on('click', function () {
-                        self.simulator.questionIndex++;
-
-                        if (self.simulator.questionIndex == questions.length) { 
-                            // Were done show completed screen
-                            alert("Are you sure you're done?");
-                        }
-
-                        self.displayStudyQuestion(questions[self.simulator.questionIndex]);
-
-                    });
-
-                    $("#full-screen-container .footer-questions-quicklink-holder .question-quicklink").on('click', function () {
-
-                        if ($(this).hasClass("active")) return;
-
-                        var index = $(this).attr("index");
-
-                        self.displayStudyQuestion(questions[index]);
-
-                        self.simulator.questionIndex = index;
-                    });
-
-                    $("#full-screen-container .footer-questions-quicklink-holder .flag").on('click', function (e) {
-
-                        $(this).toggleClass("set");
-
-                        e.stopPropagation();
-
-                    });
-
-                    $("#full-screen-container .study-question-viewer-exit").on('click', function () {
-                        $.COR.TPrep.hideFullScreenOverlay();
-                    });
-
-                }
-            );
-
-
-
-
-        }, 1000);
-
-
-
-
-
-    });
-
-
-
-
     // Call setup on any other events that are sub of the account object
     
 };
@@ -303,7 +215,10 @@ $.COR.account.initUser = function () {
         this.showNewAccountPopup();
     }
 
-    $.COR.pageSwap("js-content-wrapper-splash", "js-content-wrapper-user-account");
+    $.COR.pageSwap($.COR.getCurrentDisplayedId(), "js-content-wrapper-study");
+
+    $("#header-navigation li").removeClass('current');
+    $("#header-navigation_study").addClass('current');
 }
 
 $.COR.account.showNewAccountPopup = function () {
@@ -373,6 +288,163 @@ $.COR.account.showNewAccountPopup = function () {
 
 // Question Study Helpers
 
+$.COR.account.startStudy = function () {
+    var self = this;
+
+    this.simulator.live = true;
+    this.simulator.completed = false;
+    this.simulator.questions = null;
+    this.simulator.questionIndex = null;
+
+    this.simulator.options.category = $("[name=practice-category]:checked").val();
+    this.simulator.options.questionCount = $("#practice-question-count").val();
+    this.simulator.options.mode = $("[name=practice-mode]:checked").val();
+    this.simulator.options.strategy = $("[name=practice-strategy]:checked").val();
+
+
+    // Build data objects w/options
+
+    // Show UI 'getting questions' - full screen
+
+    $.COR.TPrep.showFullScreenOverlay(
+        $("#js-overlay-content-loading-questions").html(),
+        $("#js-overlay-content-loading-questions").attr("contentSize")
+    );
+
+    setTimeout(function () {
+        // Show Testing UI - full screen
+        $.COR.TPrep.showFullScreenOverlay(
+            $("#js-overlay-content-study-questions").html(),
+            $("#js-overlay-content-loading-questions").attr("contentSize"),
+            function () {
+                // Get Questions
+
+                self.simulator.questions = self.getOfflineQuestions();
+                self.simulator.questionIndex = 0;
+
+                self.setupQuestionFooterNavigation(self.simulator.questions);
+
+
+                // Local cache for events
+                var questions = self.simulator.questions;
+
+                $("#full-screen-container .footer-nav .prev").on('click', function () {
+                    self.simulator.questionIndex--;
+
+
+
+                    self.displayStudyQuestion(questions[self.simulator.questionIndex]);
+
+
+                });
+
+                $("#full-screen-container .footer-nav .next").on('click', function () {
+                    self.simulator.questionIndex++;
+
+                    // we already finished - just show results
+                    if (self.simulator.questionIndex >= questions.length && self.simulator.completed == true) {
+
+                        // Set Results footer navigation to active
+                        $("#full-screen-container .footer-questions-quicklink-holder .question-quicklink").removeClass('active');
+
+                        // Show results navigation
+                        $("#full-screen-container .footer-questions-quicklink-holder .results").addClass('active')
+
+                        $("#full-screen-container .footer-nav .next").addClass('hidden');
+
+                        $("#study-question-viewer-question-mc").fadeOut(function () {
+                            $("#study-question-viewer-results").fadeIn();
+                        });
+
+                    }
+                    else if (self.simulator.questionIndex == questions.length && self.simulator.completed == false) {
+                        // Were done show completed screen
+                        //var result = ("Are you sure you're done?");
+
+                        //if test confirm done
+                        if (self.simulator.options.mode == 'test') {
+
+                            var result = confirm("Are you sure you're done?");
+
+                            if (result) {
+                                self.completeTest();
+                            }
+
+                        }
+                        else {
+
+                            var completed = true;
+
+
+                            var len = self.simulator.questions.length;
+
+                            // skip the first guy which is the placeholder for the description 
+                            for (var i = 1; i < len; i++) {
+
+                                if (self.simulator.questions[i].selectedAnswer == null) {
+                                    completed = false;
+                                    break;
+                                }
+                            }
+
+                            var showReview = completed ? true : confirm("Not all questions answerd, are you sure you want to continue?");
+
+                            if (showReview) {
+                                // show completion screen
+                                self.completeTest();
+                            }
+
+                        }
+                    }
+                    else {
+
+                        self.displayStudyQuestion(questions[self.simulator.questionIndex]);
+                    }
+
+                });
+
+                $("#full-screen-container .footer-questions-quicklink-holder .question-quicklink").on('click', function () {
+
+                    if ($(this).hasClass("active")) return;
+
+                    var index = $(this).attr("index");
+
+
+                    if ($(this).hasClass("results")) {
+
+                        $("#study-question-viewer-question-mc").fadeOut(function () {
+                            $("#study-question-viewer-results").fadeIn();
+                        });
+                    }
+                    else {
+                        self.displayStudyQuestion(questions[index]);
+                    }
+
+                    self.simulator.questionIndex = index;
+                });
+
+                $("#full-screen-container .footer-questions-quicklink-holder .flag").on('click', function (e) {
+
+                    $(this).toggleClass("set");
+
+                    e.stopPropagation();
+
+                });
+
+                $("#full-screen-container .study-question-viewer-exit").on('click', function () {
+                    self.exitSimulator();
+                });
+
+            }
+        );
+
+
+
+
+    }, 1000);
+
+};
+
 // Gets a set of questions for offline testing
 $.COR.account.getOfflineQuestions = function () {
 
@@ -441,12 +513,21 @@ $.COR.account.setupQuestionFooterNavigation = function (questions) {
         }
     }
 
+    // Insert Results quicklink
+    $("#full-screen-container .footer-questions-quicklink-holder").append("<div index='" + (i++) + "' class='results question-quicklink hidden'>Results</div>");
+
+
 }
 
 // Shows the selected Question UI
 $.COR.account.displayStudyQuestion = function (question) {
 
     var self = this;
+
+
+    if($("#full-screen-container  #study-question-viewer-results").is(":visible")){
+        $("#full-screen-container  #study-question-viewer-results").hide();
+    }
 
     if (question.type == "direction") {
         $("#study-question-viewer-question-mc").hide(function () {
@@ -470,25 +551,31 @@ $.COR.account.displayStudyQuestion = function (question) {
 
     }
 
-
     // Update Footer UI Navigation
-
-    // Show/Hide The Previous Button
-    if (this.simulator.questionIndex == 0) {
-        // Hide Previous
-        $("#study-question-viewer-page .footer-nav .prev").addClass('hidden')
-    }
-    else {
-        if (!$("#study-question-viewer-page .footer-nav .prev").is(":visible")) {
-            $("#study-question-viewer-page .footer-nav .prev").removeClass('hidden');
-        }
-    }
 
     // Set the selected question as highlighted
     $("#full-screen-container .footer-questions-quicklink-holder .question-quicklink").removeClass("active");
     $(".question-quicklink[index=" + question.index + "]").addClass("active");
 
+    // Show/Hide The Previous Button
+    if (this.simulator.questionIndex == 0) {
+        $("#study-question-viewer-page .footer-nav .prev").addClass('hidden')
+    }
+    else {
+        if (!$("#full-screen-container #study-question-viewer-page .footer-nav .prev").is(":visible")) {
+            $("#full-screen-container #study-question-viewer-page .footer-nav .prev").removeClass('hidden');
+        }
+    }
 
+    // Show/Hide Next Button
+    if (this.simulator.completed == true && $("#full-screen-container .footer-questions-quicklink-holder .results").hasClass('active')) {
+        $("#full-screen-container #study-question-viewer-page .footer-nav .next").addClass('hidden');
+    }
+    else {
+        if (!$("#full-screen-container #study-question-viewer-page .footer-nav .next").is(":visible")) {
+            $("#full-screen-container #study-question-viewer-page .footer-nav .next").removeClass('hidden');
+        }
+    }
 }
 
 // Sets up the data in the selected Question UI
@@ -496,31 +583,51 @@ $.COR.account.setStudyQuestionData = function (question) {
 
     var self = this;
 
+    $("#full-screen-container .answer-explanation").hide();
+
     $("#full-screen-container .question-content").html(question.text);
+    $("#full-screen-container .answer-explanation-holder").html(question.explanation);
 
     $("#full-screen-container .answer-options table").html("");
 
     for (var i = 0; i < question.answers.length; i++) {
 
-        var html = "<tr><td><input type='radio' id='study-question-answer-" + i + "' value='" + i + "' name='study-question-answer' /></td>";
+        var html = "<tr><td class='result-spacer'></td><td><input type='radio' id='study-question-answer-" + i + "' value='" + i + "' name='study-question-answer' /></td>";
         html += "<td><label for='study-question-answer-" + i + "'>" + question.answers[i] + "</label></td></tr>";
         $("#full-screen-container .answer-options table").append(html);
     }
 
-
     // Question Events
 
     $("#full-screen-container .answer-options input").on('change', function () {
-        self.selectAnswer(question);
+        self.selectAnswer(question, this);
     });
+
+
+    // Check if Study Mode and Question Answered - Disable Question
+
+    if ((typeof question.selectedAnswer != "undefined" && self.simulator.options.mode == 'study') || self.simulator.completed == true) {
+
+        // Set Checked Index
+        $($($('#full-screen-container .answer-options table tr')[question.selectedAnswer]).find('input')).attr('checked', 'checked');
+
+        // Set Questions Disabled
+        $("#full-screen-container .answer-options table input").attr('disabled', 'disabled');
+
+        // Indicate Correct Answer
+        $($($('#full-screen-container .answer-options table tr')[question.answerIndex]).children()[0]).addClass('correct');
+
+        // Show Explanation
+        $("#full-screen-container .answer-explanation").show();
+    }
 
 }
 
 // Handles selecting an answer
-$.COR.account.selectAnswer = function (question) {
+$.COR.account.selectAnswer = function (question, selectedInput) {
 
     // get answer
-    var selectedAnswer = $('input:radio[name=study-question-answer]:checked').val();
+    var selectedAnswer = $(selectedInput).val();
 
     // set question answered
     question.selectedAnswer = selectedAnswer;
@@ -528,6 +635,92 @@ $.COR.account.selectAnswer = function (question) {
     // update footer UI to indicate question was answered
     $(".question-quicklink[index=" + question.index + "]").addClass("answered");
 
-    // check UI Type Study/Test to display explanation
+    if (this.simulator.options.mode == "study") {
 
+        // Indicate Correct Answer
+        $($($(selectedInput).parents('tbody').children('tr')[question.answerIndex]).children()[0]).addClass('correct');
+
+        // Show Explanation
+        $("#full-screen-container .answer-explanation").show();
+
+        // Disable Inputs
+        $("#full-screen-container .answer-options table input").attr('disabled', 'disabled');
+    }
+
+}
+
+// Transition from questions to review page
+
+$.COR.account.completeTest = function () {
+
+    var self = this;
+
+    $("#study-question-viewer-question-mc").fadeOut(function () {
+        $("#study-question-viewer-results").fadeIn(function () {
+
+            // Set Results footer navigation to active
+            $("#full-screen-container .footer-questions-quicklink-holder .question-quicklink").removeClass('active');
+
+            // Show results navigation
+            $("#full-screen-container .footer-questions-quicklink-holder .results").addClass('active').show();
+
+            // Hide the next button
+            $("#full-screen-container #study-question-viewer-page .footer-nav .next").addClass("hidden");
+
+            // Make sure previous button is showing
+            $("#full-screen-container #study-question-viewer-page .footer-nav .prev").removeClass("hidden");
+
+            // Set simulation to completed
+            self.simulator.completed = true;
+
+            var correct = 0;
+            var incorrect = 0;
+            var skipped = 0;
+
+            // loop through questions
+
+            var questions = self.simulator.questions;
+
+            // skip first question
+            for (var i = 1; i < questions.length; i++) {
+
+                var question = questions[i];
+
+                if (question.selectedAnswer != null) {
+
+                    // make all the wrong answers red in the navigation
+                    if (question.selectedAnswer != question.answerIndex) {
+                        incorrect++;
+                        $("#full-screen-container .footer-questions-quicklink-holder [index=" + question.index + "]").addClass("incorrect");
+                    }
+                    else {
+                        correct++
+                    }
+                }
+                else {
+                    skipped++;
+                }
+            }
+
+            $("#full-screen-container .results-num-questions").html(self.simulator.questions.length - 1);
+            $("#full-screen-container .results-num-correct").html(correct);
+            $("#full-screen-container .results-num-incorrect").html(incorrect);
+            $("#full-screen-container .results-num-skipped").html(skipped);
+
+
+
+        });
+    });
+}
+
+// Exit simulator
+$.COR.account.exitSimulator = function(){
+
+    this.simulator.live = false;
+
+    $("#full-screen-container #study-questions-viewer-wrapper").unbind().remove();
+
+
+    $.COR.TPrep.hideFullScreenOverlay();
+    location.hash = "study";
 }

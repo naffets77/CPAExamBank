@@ -125,7 +125,7 @@
             
 </div>
 
-<div id='js-content-wrapper-practice' class='js-content-wrapper hidden'>
+<div id='js-content-wrapper-study' class='js-content-wrapper hidden'>
 
     <div class="content">
     
@@ -141,7 +141,7 @@
                         <table style="padding-left:0px;">
                             <tr>
                                 <td>
-                                    <input type="radio" name="practice-category" value="study" checked/>
+                                    <input type="radio" name="practice-category" value="1" checked/>
                                 </td>
                                 <td>
                                     Auditing And Attestation (AUD)
@@ -149,7 +149,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <input type="radio" name="practice-category" value="test" />
+                                    <input type="radio" name="practice-category" value="2" />
                                 </td>
                                 <td>
                                     Business Environment and Concepts (BEC)
@@ -157,7 +157,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <input type="radio" name="practice-category" value="study" />
+                                    <input type="radio" name="practice-category" value="3" />
                                 </td>
                                 <td>
                                     Financial Accounting and Reporting (FAR)
@@ -165,7 +165,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <input type="radio" name="practice-category" value="test" />
+                                    <input type="radio" name="practice-category" value="4" />
                                 </td>
                                 <td>
                                     Regulation (REG)
@@ -177,7 +177,7 @@
                 <tr class="section">
                     <td>Number of Questions</td>
                     <td>
-                        <select style="margin-left:10px;">
+                        <select id="practice-question-count" style="margin-left:10px;">
                             <option>10</option>
                             <option selected>20</option>
                             <option>30</option>
@@ -246,7 +246,7 @@
                 </tr>
                 <tr class="section">
                     <td></td>
-                    <td><input id="start-practice" type='submit' value="Start" /></td>
+                    <td><a class="button btn-orange btn-medium" href="#start-practice">Start</a></td>
                 </tr>
 
             </table>
@@ -303,15 +303,15 @@
                 <div class="study-question-viewer-exit">Exit</div>
             </div>
 
-            <div id="study-question-viewer-study-directions" class="hidden">
+            <div id="study-question-viewer-study-directions" class="study-quesitons-content hidden">
 
             </div>
 
-            <div id="study-question-viewer-test-directions" class="hidden">
+            <div id="study-question-viewer-test-directions" class="hidden study-quesitons-content">
 
             </div>
 
-            <div id="study-question-viewer-directions">
+            <div id="study-question-viewer-directions" class="study-quesitons-content">
             
                 <h1>Directions</h1>
 
@@ -368,21 +368,79 @@
 
             </div>
 
-            <div id="study-question-viewer-question-mc" class="hidden">
+            <div id="study-question-viewer-question-mc" class="study-quesitons-content hidden">
                 <div class="question-content">
                 </div>
                 <div class="answer-options">
                     <table>
                     </table>
                 </div>
+                <div class="answer-explanation hidden">
+                    <h3>Explanation:</h3>
+                    <div class="answer-explanation-holder"></div>
+                </div>
             </div>
 
-            <div id="study-question-viewer-exit-uncompleted" class="hidden">
+            <div id="study-question-viewer-exit-uncompleted" class="study-quesitons-content hidden">
 
             </div>
 
-            <div id="study-question-viewer-results" class="hidden">
+            <div id="study-question-viewer-results" class="study-quesitons-content hidden">
+                <h1>Results</h1>
+                
+                <p style="margin:20px;">
+                    You've completed all of the questions, and your results have been saved to your account. You may go back and review your work if you want 
+                    or exit using the icon above. 
+                </p>
 
+                <h3>Summary</h3>
+
+                <table class="results-summary">
+                    <tr>
+                        <td>
+                            Total Questions
+                        </td>
+                        <td class="results-num-questions"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Questions Correct
+                        </td>
+                        <td class="results-num-correct"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Questions Incorrect
+                        </td>
+                        <td class="results-num-incorrect"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Questions Skipped
+                        </td>
+                        <td class="results-num-skipped"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Average Time Per Question
+                        </td>
+                        <td class="results-avg-time"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Longest Question
+                        </td>
+                        <td class="results-most-time"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Shortest Question
+                        </td>
+                        <td class="results-least-time"></td>
+                    </tr>
+                </table>
+
+               
             </div>
 
             <div id="study-question-viewer-footer">
@@ -395,6 +453,7 @@
 
                     <div class="footer-questions-quicklink-holder">
                         <div index="0" class="directions question-quicklink active">Directions</div>
+                        
                     </div>
             
                     <div class="footer-nav">

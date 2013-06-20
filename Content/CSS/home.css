@@ -278,3 +278,35 @@
         padding-right:10px;
         vertical-align:middle;  
 }
+
+
+/*** FAQs ***/
+
+#faq-holder {
+    margin-left: 20px;
+    margin-bottom:50px;
+    float:left;
+}
+
+#faq-holder .col1 {
+    float:left; width:300px;
+
+}
+
+    #faq-holder .col1 h2 {
+        font-size:15px;
+        font-weight:bold;
+        margin:0px;
+        margin-bottom:5px;
+    }
+
+    #faq-holder .col1 ul li.section {
+        margin-bottom:20px;
+    }
+
+#faq-holder .col2 {
+    float:left;
+    margin-left:20px;
+    width:570px;
+
+}
