@@ -158,20 +158,6 @@
     width: 100%;
 }
 
-#reset-password-holder {
-    background-color: #000;
-    color: #fff;
-    padding: 20px;
-    min-height: 450px;
-}
-
-    #reset-password-holder table tr td:first-child {
-        padding-right: 10px;
-    }
-
-    #reset-password-holder table tr td {
-        padding-bottom: 20px;
-    }
 
 
 

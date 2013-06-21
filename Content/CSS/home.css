@@ -17,6 +17,26 @@
 
 /* Home */
 
+#home-forgot-login {
+    cursor:pointer;
+}
+
+#reset-password-holder {
+    color: #000;
+    padding: 20px;
+    min-height: 450px;
+}
+
+    #reset-password-holder table tr td:first-child {
+        padding-right: 10px;
+    }
+
+    #reset-password-holder table tr td {
+        padding-bottom: 20px;
+    }
+
+
+
 #home-row-1 p {
     float: left;
     width: 570px;
@@ -36,6 +56,43 @@
         font-size: 19px;
         margin-bottom: 20px;
     }
+
+#home-row-3 {
+    margin-bottom:40px;
+    float:left;
+}
+
+#home-row-3 p {
+    width:580px;
+    float:left;
+    margin-left:20px;
+    font-size:17px;
+    line-height:20px;
+}
+
+    #home-row-3 p .bold {
+        font-size:20px;
+    }
+
+    #home-row-3 .register {
+        width:300px;
+        float:left;
+        background-color:#D8D8D8;
+        padding:20px;
+    }
+        #home-row-3 .register table tr td {
+            padding-bottom:10px;
+        }
+
+        #home-row-3 .register table tr td:first-child {
+            padding-right:10px;        
+        }
+
+        #home-row-3 .register input {
+            width: 200px;
+            padding: 2px 6px;
+            font-size: 16px;
+        }
 
 #home-product-container {
     height: 300px;
@@ -310,3 +367,39 @@
     width:570px;
 
 }
+
+
+/*** Registration Popup ***/
+
+#js-overlay-register-content .title { 
+    font-size:17px; 
+    font-weight:bold;
+}
+
+#js-overlay-register-content tr td {
+    padding:4px 10px;
+}
+
+#js-overlay-register-content .register-close{
+    background-color: #000;
+    color: #fff;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    padding: 4px 10px 9px 10px;
+    font-weight: bold;
+
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -khtml-border-radius: 20px;
+    border-radius: 20px;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+    border:2px solid #fff;
+}
+
+
+

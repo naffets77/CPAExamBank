@@ -123,6 +123,8 @@ $.COR.TPrep.showFullScreenOverlay = function (content, contentClassSize, events)
             if (typeof events == 'function') {
                 events();
             }
+
+            $("#full-screen-overlay").fadeIn();
         });
 
 
@@ -139,11 +141,16 @@ $.COR.TPrep.showFullScreenOverlay = function (content, contentClassSize, events)
         if (typeof events == 'function') {
             events();
         }
+
+        $("#full-screen-overlay").fadeIn();
     }
 }
 
 $.COR.TPrep.hideFullScreenOverlay = function () {
-    $("#full-screen-container").fadeOut();
+
+    $("#full-screen-container").fadeOut(function () {
+        $("#full-screen-overlay").fadeOut(200);
+    });
 }
 
 

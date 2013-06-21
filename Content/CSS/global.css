@@ -99,7 +99,8 @@ body {
     width: 100%;
 }
 
-#full-screen-holder {
+
+#full-screen-overlay {
     position: fixed;
     left: 0px;
     top: 0px;
@@ -118,6 +119,19 @@ body {
     top:0px;
     width:100%;
     height:100%;
+    z-index:1001;
+}
+
+#full-screen-container.partial {
+    background-color:#fff;
+    position:fixed;
+    width:550px;
+    padding:20px;
+    top: 50%;
+    left: 50%;
+    margin-left:-295px;
+    margin-top:-300px;
+    z-index:1001;
 }
 
 #full-screen-container .content{margin:20px;}

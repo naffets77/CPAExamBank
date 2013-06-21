@@ -45,7 +45,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="2" style="padding-top:4px;"><span id='home-forgot-login'>Forgot Password/Email?</span></td>
+                                <td colspan="2" style="padding-top:4px;"><a href="#reset-password" id='home-forgot-login'>Forgot Password/Email?</a></td>
                             </tr>
                         </table>
                     </div>
@@ -164,7 +164,7 @@
                     -->
 
                     <div id="home-row-1">
-                        <div id="home-product-container" class="shadow">
+                        <div id="home-product-container" class="shadow register-sign-up">
                             <div id="home-product-container-top-left">
                                 <div class="product">Financial <br /> Accounting and Reporting</div>
                                 <div class="product-price">$6</div>
@@ -203,62 +203,77 @@
                         <img style="height:300px; float:right; margin:20px;" src="Content/Images/Home/accountant.jpg" />
                     </div>
 
-                </div>
- 
-
-                <!-- Lost Login/Password -->
-                <div id="js-content-wrapper-reset-account" class="js-content-wrapper hidden">
-                
-                    <div id="reset-password-holder">
-                        <h1>Reset Password</h1>
-                
-                        <form id="reset-account-form">
+                    <div id="home-row-3">
+                        <h2>Register and Access  your account in 30 seconds</h2>
+                        <p>
+                            <span class='bold'>&gt;</span> Get started right now with free questions. 
+                            <br /><br />
+                            <span class='bold'>&gt;</span> No credit card required
+                            <br /><br />
+                            <span class='bold'>&gt;</span> Vivamus congue porta consequat. In hac habitasse platea dictumst.
+                            <br /><br />
+                            <span class='bold'>&gt;</span> Aliquam id facilisis metus. In eget erat est.
+                            <br /><br />
+                            <span class='bold'>&gt;</span> In hac habitasse platea dictumst.
+                        </p>
+                        <div class="register shadow">
                             <table>
-                                <tr id="reset-account-row-accounttype">
-                                    <td>Account Type</td>
-                                    <td>Teacher<input type="radio" name="reset-account-accounttype" value="2" />&nbsp;&nbsp;Student<input type="radio" name="reset-account-accounttype" value="1" checked /></td>
+                                <tr>
+                                    <td colspan="2"><h2 style="text-align:left; width:100%; padding:0px; margin:0px;">Quick Registration</h2></td>
                                 </tr>
-                                <tr id="reset-account-row-username">
-                                    <td>Username</td>
-                                    <td><input id="reset-account-username" name="reset-account-username" class="Validate" validate="Required" type="text" /></td>
+                                <tr>
+                                    <td>Email</td>
+                                    <td><input type="text" /></td>
                                 </tr>
-                                <tr id="reset-account-row-securityquestion">
-                                    <td>Security Question</td>
-                                    <td><select id="reset-account-securityquestion" name="reset-account-securityquestion" style="width: 250px;"><option selected value="1">What is your FAVORITE color?</option><option value="2">What is your FAVORITE athlete?</option></select></td>
-                                </tr>
-                                <tr id="reset-account-row-securityanswer">
-                                    <td>Security Answer</td>
-                                    <td><input id="reset-account-securityanswer" name="reset-account-securityanswer" class="Validate reset-account-field" validate="Required" type="text" maxlength="100" /></td>
-                                </tr>
-                                <tr id="reset-account-row-teachercode" class="Validate reset-account-field" style="display:none;">
-                                    <td>Teacher Code</td>
-                                    <td><input id="reset-account-teachercode" name="reset-account-teachercode" class="Validate reset-account-field" validate="Required" type="text" /></td>
-                                </tr>
-                                <tr id="reset-account-row-password">
+                                <tr>
                                     <td>Password</td>
-                                    <td><input id="reset-account-password" name="reset-account-password" class="Validate reset-account-field" validate="MinLength,Required" ValidationMinLength="4" type="password" /></td>
-                                </tr>
-                                <tr id="reset-account-row-confirmpassword">
-                                    <td>Confirm Password</td>
-                                    <td><input id="reset-account-confirmpassword" name="reset-account-confirmpassword" class="Validate reset-account-field" validate='Match,Required' ValidationMatch='reset-account-password' type="password" /></td>
+                                    <td><input type="text" /></td>
                                 </tr>
                                 <tr>
                                     <td></td>
                                     <td>
-                                        <button id="reset-account-update-password">Update Password</button><span id="reset-account-swirly" style="display: none;">Updating...</span>
-                                        <span ignorevalidation='true' class='js-page-switch link' page-switch="js-content-wrapper-splash">Cancel</span>
+                                        <button class="btn-orange btn-medium">Get Started</button>
                                     </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+ 
+
+                <!-- Lost Login/Password -->
+                <div id="js-content-wrapper-reset-password" class="js-content-wrapper hidden">
+                
+                    <div id="reset-password-holder">
+                        
+                        <h1 class='bold' style="font-size:16px;">Reset Password</h1>
+                
+                        <p style="margin-top:10px; width:600px;">
+                            Hey did you forget your password? 
+                            <br /><br />No problem, put in the email that you registered with and we'll send you an email with a 
+                            temporary password. 
+                            <br /><br />
+                            If that doesn't work, and you think you may have forgotten your email address or mistyped it, then please contact 
+                            us and we'll get in touch to figure out what happened. 
+                        </p>
+
+                        <form id="reset-account-form" style="margin-top:20px;">
+                            <table>
+                                <tr id="reset-account-row-username">
+                                    <td>Email</td>
+                                    <td><input id="reset-account-username" name="reset-account-username" class="Validate" validate="Required" type="text" /></td>
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td id="reset-account-reason"></td>
+                                    <td>
+                                        <button id="reset-account-update-password">Send Rest Email</button><span id="reset-account-swirly" style="display: none;">Updating...</span>
+                                        <span ignorevalidation='true' class='js-page-switch link' page-switch="js-content-wrapper-splash">Cancel</span>
+                                    </td>
                                 </tr>
                             </table>
                         </form>
 
-                        <p>
-                            If you've forgotten your Teacher Code, click here and we will email it to you again. 
-                        </p>
                     </div>
 
                 </div>
@@ -510,7 +525,7 @@
                         </div>
                     </div>
 
-                    <button id="pricing-sign-up" class="btn-orange btn-large shadow">
+                    <button id="pricing-sign-up" class="btn-orange btn-large shadow register-sign-up">
                         Sign Up
                     </button>
                 </div>
@@ -528,7 +543,7 @@
                     </p>
                 </div>
 
-
+                <!-- contact us -->
                 <div id="js-content-wrapper-contact" class="js-content-wrapper hidden">
 
                     <h2>Contact Us</h2>
@@ -599,6 +614,56 @@
 
         </div>
 
+
+        <!-- register popup -->
+        <div id="js-overlay-register" contentSize="partial" class="hidden">
+            <div id="js-overlay-register-content">
+                <div class="register-close">X</div>
+                <table>
+                    <tr>
+                        <td colspan="2" class="title">Register</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Email
+                        </td>
+                        <td>
+                            <input type="text" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Password</td>
+                        <td>
+                            <input type="password" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="title">Interested In...</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input type="checkbox" checked /> (FAR) Financial Accounting and Reporting</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input type="checkbox" checked /> (AUD) Auditing and Attestation</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input type="checkbox" checked /> (BEC) Business environment and concepts</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input type="checkbox" checked /> (REG) Regualtion and Taxation</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><button class="btn-orange btn-medium">Get Started</button></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
 
 
 
