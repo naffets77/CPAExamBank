@@ -6,7 +6,7 @@
             
     <div id="account-settings-main">
                 
-        <div style='float:left; width:40%;'>
+        <div style='float:left; width:40%; margin-bottom:20px;'>
             <h2>Account Settings</h2>
             <form>
                 <table class='account-settings'>
@@ -21,7 +21,7 @@
                     <tr id='account-settings-update-button-tr'>
                         <td></td>
                         <td>
-                            <button id='account-settings-update-button'>Update</button>
+                            <button id='account-settings-update-button' class="btn-orange">Update</button>
                         </td>
                     </tr>
                 </table>
@@ -56,7 +56,7 @@
                         <tr>
                             <td></td>
                             <td>
-                                <button id='account-settings-update-password-button'>Update</button>
+                                <button id='account-settings-update-password-button' class="btn-orange">Update</button>
                             </td>
                         </tr>
                     </table>
@@ -65,20 +65,46 @@
                                 
         </div>
 
-        <div style="float:left; width:50%; margin-left:90px;">
-            <h2>Purchase Additional Classes</h2>
-
-            <p>
-                Ipsum Lorem Stuff
-            </p>
+        <div style="float:left; width:50%; margin-left:90px; margin-bottom:20px;">
+            
+            <h2 style="margin-left:0px;">Current Subscriptions</h2>
 
             <p style="margin-top:20px;">
-                Classes are free for our Beta users. Continue to receive additional class tokens. 
+                Change your subscription plan effortlessly in 30 seconds. Select which section type you are interested in studying and 
+                update your status. Our third party credit card processing party will take your information and your account status will 
+                be updated. 
+            </p>
+            <p style="margin-top:20px;">
+                You are paying for 1 month of subscription per section, if you unselect a section you will receive access to those quesitons 
+                for the remainder of that month (this will be indicated). If you remain subscribed to a section and the month runs out you 
+                will automaticaly be charged again for another month.
             </p>
 
-            <p style="margin-top:20px;">
-                <span id="account-settings-purchase-classes" class="link">Purchase Additional Classes</span>
-            </p>
+            <div id="subscription-holder">
+
+                <ul id="subscription-options">
+                    <li>
+                        <input type="checkbox" /> Auditing And Attestation (AUD)
+                    </li>
+                    <li>
+                        <input type="checkbox" /> Business Environment and Concepts (BEC)
+                    </li>
+                    <li>
+                        <input type="checkbox" /> Financial Accounting and Reporting (FAR)
+                    </li>
+                    <li>
+                        <input type="checkbox" /> Regulation (REG)
+                    </li>
+                    <li>
+                        Total: <span id="subscription-total">$0</span>
+                    </li>
+                </ul>
+
+                <button class="btn-orange btn-medium"> Update Subscription </button>
+
+            </div>
+
+
         </div>           
     </div>
 
@@ -305,9 +331,38 @@
 
             <div id="study-question-viewer-study-directions" class="study-quesitons-content hidden">
 
+                <h2>CPA Exam Study Mode</h2>
+                
+                <p>
+                    In the study mode, when you mark an answer it is your final decision! After you select 
+                    the answer you think is correct, the correct answer will be immediatley indicated and an 
+                    explanation will be provided. 
+                </p>
+                <p>
+                    Your progress will not be saved unless you get to the end of the test or exit! You do not have 
+                    to answer all of the questions. If you skip a question it will be ignored, and not included in 
+                    questions that you have answered. 
+                </p>
+                <button class="btn-orange btn-medium">Start Study Mode</button>
+
             </div>
 
             <div id="study-question-viewer-test-directions" class="hidden study-quesitons-content">
+
+                <h2>CPA Exam Test Mode</h2>
+
+                <p>
+                    In the test mode we try and recreate the experience you will have when you are taking the CPA Exam. You will 
+                    not be immediatley graded on questions you complete (unlike study mode). After you finish the exam by clicking continue
+                    from the last quesiton your answers will be tallied. 
+                </p>
+                <p>
+                    After you complete the exam, your progress will be saved and you will be able to review all of your questions and see 
+                    explanations for each question. Incorrect questions will be indicated in the quesiton navigation at the bottom of the screen. 
+                </p>
+
+                <button class="btn-orange btn-medium">Start Test Mode</button>
+
 
             </div>
 

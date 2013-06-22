@@ -34,11 +34,6 @@ $(document).ready(function(){
 
     $(window).hashchange(function () {
 
-
-        // Any popups that are showing need to be hidden
-        $.COR.Utilities.PopupHandler.hide();
-
-
         if (location !== undefined) {
 
             var loc = location.hash.replace("#", "");
@@ -86,6 +81,10 @@ $(document).ready(function(){
                         var element = $("#" + parts[0] + "_" + parts[1]);
                         $(element).parent().children().addClass("hidden");
                         $(element).removeClass("hidden");
+
+                        $.COR.pageSwap($.COR.getCurrentDisplayedId(), 'js-content-wrapper-' + parts[0]);
+
+                        $(".nav a[href='#" + loc + "']").addClass('active');
 
                     }
                 }

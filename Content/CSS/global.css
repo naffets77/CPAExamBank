@@ -76,6 +76,7 @@ table {
 h1{}
 h2{font-size:24px; margin:20px;}
 
+.cpa-blue{color:#38B2CE;}
 
 
 /* END GLOBAL CLASSES */
@@ -214,13 +215,20 @@ body {
             text-decoration:none;
         }
 
+            #header-navigation li a:hover {
+                color: #38B2CE;
+            }
+
         #header-navigation li.current {
-            background-color:#fff;
+            background-color:#fff;   
         }
+
+            #header-navigation li.current a {
+                color:#666 !important;
+            }
 
 
         #header-navigation li:hover {
-            color: #000;
             cursor: pointer;
         }
 

@@ -323,17 +323,23 @@
 /*** Contact Us Page Styles ***/
 
 
-#js-content-wrapper-contactus .content table {
+#js-content-wrapper-contact .content table {
     margin-top:20px;
 }
 
-    #js-content-wrapper-contactus .content table tr td {
+    #js-content-wrapper-contact .content table tr td {
         padding-bottom:10px;
     }
 
-#js-content-wrapper-contactus .content table tr td:first-child {
+#js-content-wrapper-contact .content table tr td:first-child {
         padding-right:10px;
         vertical-align:middle;  
+}
+
+/*** About Us Page Styles ***/
+
+#js-content-wrapper-contact .content {
+    margin-top:20px;
 }
 
 
@@ -343,10 +349,14 @@
     margin-left: 20px;
     margin-bottom:50px;
     float:left;
+    clear:both;
+    width:100%;
 }
 
 #faq-holder .col1 {
-    float:left; width:300px;
+    float:left; 
+    width:300px;
+    margin-top:10px;
 
 }
 
@@ -360,13 +370,49 @@
     #faq-holder .col1 ul li.section {
         margin-bottom:20px;
     }
+        #faq-holder .col1 ul li.section ul {
+            padding-top:10px;
+        }
+
+        #faq-holder .col1 ul li.section ul li {
+            margin-bottom:10px;
+            margin-left:5px;
+            padding-left:4px;
+            border-left:2px solid #fff;
+        }
+
+            #faq-holder .col1 ul li.section ul li:hover {
+                border-left:2px solid #009999;
+                padding-left:4px;
+            }
+
+        #faq-holder .col1 ul li.section ul li a{
+            color:#333;
+            text-decoration:none;
+        }
+
+            #faq-holder .col1 ul li.section ul li a.active {
+                text-shadow:0px 1px 0px #000;
+            }
+
+
+
 
 #faq-holder .col2 {
     float:left;
     margin-left:20px;
     width:570px;
-
+    margin-top:-15px;
 }
+
+    #faq-holder .col2 h2 {
+        font-size:25px;
+        padding-left:0px;
+        margin-left:0px;
+        padding:15px;
+        background-color:#38B2CE;
+        color:#fff;
+    }
 
 
 /*** Registration Popup ***/
