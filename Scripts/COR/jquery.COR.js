@@ -7,9 +7,7 @@
         DisableCache: true,
 
         Utilities: {
-            PopupHandler: {},
-            PostHandler: {},
-            Phono: {}
+            PostHandler: {}
         }
 
     };
@@ -86,6 +84,8 @@ $.COR.pageEvents = function () {
     $("#login").on("click", function () {
         self.log("Attempting Login");
 
+        $("#invalid-account-message").hide();
+
         var password = $("#home-login-password").val().length != 0 ? $("#home-login-password").val() : "testing";
         var email = $("#home-login-username").val().length != 0 ? $("#home-login-username").val() : "steffan77@gmail.com";
         self.login(
@@ -99,6 +99,7 @@ $.COR.pageEvents = function () {
             },
             function (failedReason) { // failure function (invalid email/password etc)
                 console.log("Error logging in : " + failedReason);
+                $("#invalid-account-message").show();
             }
         );
     });
@@ -326,7 +327,7 @@ $.COR.login = function (email, password, successCallback, failcallback) {
 
     var self = this;
 
-    if(this.offline == false){
+    if(this.account.offline == false){
         var ph = new $.COR.Utilities.PostHandler({
             service: "account", call: "login",
             params: { email: email, password: $.COR.MD5(password) },
