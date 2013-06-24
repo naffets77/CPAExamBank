@@ -42,7 +42,7 @@ $.COR.Utilities.PostHandler = function (options) {
             error: function () {
 
                 // On server error show DC Box assuming we haven't already shown it!
-                if ($('#ServerErrorHandler').css("top") == -171) {
+                if ($('#ServerErrorHandler').css("top") == "-190px") {
                     $('#ServerErrorHandler').animate({ top: '+=131' }, 1000);
                 }
 

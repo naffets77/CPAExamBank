@@ -157,15 +157,17 @@ body {
     left: 50%;
     margin-left: -200px;
     padding: 60px 40px 20px;
-    background-color: #FFD484;
+    background-color: #FFE26C;
     border: solid 1px #000;
     top: -190px;
     z-index: 10;
 }
 
     #ServerErrorHandler h2 {
-        font-size: 18px !important;
+        font-size: 16px !important;
         margin-bottom: 10px;
+        margin-left:0px;
+        font-weight:bold;
     }
 
 #header {

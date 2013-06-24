@@ -2,6 +2,7 @@
 
     // Adding COR ot jQuery
     $.COR = {
+
         debug: true,
         MD5: null,
         DisableCache: true,
@@ -895,7 +896,7 @@ $.COR.Utilities.PostHandler = function (options) {
             error: function () {
 
                 // On server error show DC Box assuming we haven't already shown it!
-                if ($('#ServerErrorHandler').css("top") == -171) {
+                if ($('#ServerErrorHandler').css("top") == -190) {
                     $('#ServerErrorHandler').animate({ top: '+=131' }, 1000);
                 }
 
