@@ -96,9 +96,6 @@ class TestAccount extends UnitTestCase {
         $this->assertNull($result['Account']);
     }
     
-    
-}
- 
     function testInvalidRefreshLogin(){
         BuildTestHeader("Check Valid Login (While Logged out)", "service_refreshLogin", "refreshLogin", "Testing refreshing the login", null, null);
         
@@ -113,6 +110,10 @@ class TestAccount extends UnitTestCase {
         
         $this->assertNull($result['account']);
     }
+    
+}
+ 
+
 
 
 
