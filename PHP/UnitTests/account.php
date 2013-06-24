@@ -19,14 +19,14 @@ class TestAccount extends UnitTestCase {
     }
     
 
-    /*
+    /**/
     function testRefreshLogin(){
-        BuildTestHeader("Check Valid Login", "service_refreshLogin", "refreshLogin", "Testing refreshing the login", null, null);
+        BuildTestHeader("Check Valid Login (While Logged in)", "service_refreshLogin", "refreshLogin", "Testing refreshing the login", null, null);
         
         
-        $result = simulatePostRequest(array("email"=>"demo_account@cpaexambank.com", "password"=>"e368b9938746fa090d6afd3628355133"), "service_account","login");
+        //$result = simulatePostRequest(array("email"=>"demo_account@cpaexambank.com", "password"=>"e368b9938746fa090d6afd3628355133"), "service_account","login");
         
-        BuildResultViewer($result,"service_account :: login");
+        //BuildResultViewer($result,"service_account :: login");
         
         $result = simulatePostRequest(null, "service_account","refreshLogin");
     
@@ -34,7 +34,7 @@ class TestAccount extends UnitTestCase {
         
         $this->assertNotNull($result);
     }
-    */
+    
     
     function testUpdateLoginEmail(){
     
