@@ -2,6 +2,9 @@
 $.COR.account = {
     offline : false,
     user: null,
+    hash: null,
+    licenses: null,
+    userSettings:null,
     simulator: {
         options: {},
         live : false,
@@ -28,6 +31,9 @@ $.COR.account.setup = function (data, successCallback) {
         $("#body").append(loggedinPageHTML);
 
         self.user = data.Account;
+        self.hash = data.Hash;
+        self.licenses = data.Licenses;
+        self.settings = data.UserSettings;
 
         $("#account-settings-username").val(self.user.LoginName);
         $("#account-settings-first-name").val(self.user.FirstName);
@@ -134,12 +140,15 @@ $.COR.account.setupEvents = function () {
             
             $(this).html("Saving...").addClass("disabled");
             
-            $.post("/PHP/AJAX/Account/UpdateAccount.php",$(this).parents("form").serialize() + "&Data=true", function(data){
-                                
-                $.COR.Utilities.cycleButton(self, "Saved", "Update");
-                $(self).removeClass("disabled");
-                
-            });            
+            var ph = new $.COR.Utilities.PostHandler({
+                service: "account", call: "updateLoginEmail",
+                params: { email: email, hash: self.hash },
+                success: function (data) {
+
+                    $.COR.Utilities.cycleButton(self, "Saved", "Update");
+                    $(self).removeClass("disabled");
+                }
+            });
             
         }
                     
@@ -158,13 +167,32 @@ $.COR.account.setupEvents = function () {
             
             $(this).html("Saving...").addClass("disabled");
             
-            $.post("/PHP/AJAX/Account/UpdatePassword.php","old_password=" + oldPassword + "&password=" + newPassword + "&Data=true", function(data){
+            //$.post("/PHP/AJAX/Account/UpdatePassword.php","old_password=" + oldPassword + "&password=" + newPassword + "&Data=true", function(data){
                 
-                $("#account-settings-current-password").val(newPassword);
-                $.COR.account.user.LoginPassword = newPassword;
-                $.COR.Utilities.cycleButton(self, "Saved", "Update");
-                $(self).removeClass("disabled");
+            //    $("#account-settings-current-password").val(newPassword);
+            //    $.COR.account.user.LoginPassword = newPassword;
+            //    $.COR.Utilities.cycleButton(self, "Saved", "Update");
+            //    $(self).removeClass("disabled");
+            //});
+
+            var ph = new $.COR.Utilities.PostHandler({
+                service: "account", call: "updateLoginPassword",
+                params: { email: email, hash: $.COR.MD5(password) },
+                success: function (data) {
+
+                    if (data.Account != null) {
+                        self.account.setup(data, successCallback);
+                    }
+                    else {
+                        failcallback(data.LoginFailedReason);
+                    }
+
+                }
             });
+
+            ph.submitPost();
+
+
         }     
            
     });
