@@ -99,26 +99,20 @@ class TestAccount extends UnitTestCase {
     
 }
  
-/*
-class TestLogout extends UnitTestCase {
-    function testLogout() {
+    function testInvalidRefreshLogin(){
+        BuildTestHeader("Check Valid Login (While Logged out)", "service_refreshLogin", "refreshLogin", "Testing refreshing the login", null, null);
+        
+        
+        //$result = simulatePostRequest(array("email"=>"demo_account@cpaexambank.com", "password"=>"e368b9938746fa090d6afd3628355133"), "service_account","login");
+        
+        //BuildResultViewer($result,"service_account :: login");
+        
+        $result = simulatePostRequest(null, "service_account","refreshLogin");
     
+        BuildResultViewer($result,"service_account :: refreshLogin");
         
-        BuildTestHeader("Logout", "service_account", "logout", "Test logging out", null, null);
-        
-        $result = simulatePostRequest(null, "service_account","logout");
-    
-        BuildResultViewer($result);
-        
-        // Check that there isn't a valid log
-            
-        $result = simulatePostRequest(null, "service_account","checkValidLogin");
-        
-        
-        $this->assertNull($result['Account']);
+        $this->assertNull($result['account']);
     }
-}
-*/
 
 
 
