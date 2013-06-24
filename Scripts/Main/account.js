@@ -124,7 +124,7 @@ $.COR.account.setupEvents = function () {
     
     /* ----- Settings Management ---- */
     
-    $("#account-settings-update-button").on("click", function(e){
+    $("#account-settings-update-email").on("click", function (e) {
         e.preventDefault();
         if($(this).hasClass("disabled")){return;}
         
@@ -136,7 +136,7 @@ $.COR.account.setupEvents = function () {
             
             $.post("/PHP/AJAX/Account/UpdateAccount.php",$(this).parents("form").serialize() + "&Data=true", function(data){
                                 
-                $.COR.cycleButton(self, "Saved", "Update");
+                $.COR.Utilities.cycleButton(self, "Saved", "Update");
                 $(self).removeClass("disabled");
                 
             });            
@@ -162,7 +162,7 @@ $.COR.account.setupEvents = function () {
                 
                 $("#account-settings-current-password").val(newPassword);
                 $.COR.account.user.LoginPassword = newPassword;
-                $.COR.cycleButton(self, "Saved", "Update");
+                $.COR.Utilities.cycleButton(self, "Saved", "Update");
                 $(self).removeClass("disabled");
             });
         }     

@@ -509,25 +509,6 @@ $.COR.validateField = function (Element, Validation) {
     return result;
 };
 
-$.COR.cycleButton = function (buttonElement, cycleName, originalName, fadeoutTime, cycleNameTime) {
-
-    fadeoutTime = fadeoutTime | 1000;
-    cycleNameTime = cycleNameTime | 1000;
-
-    $(buttonElement).fadeOut(fadeoutTime, function () {
-        $(buttonElement).html(cycleName);
-        $(buttonElement).fadeIn(function () {
-            setTimeout(function () {
-                $(buttonElement).hide();
-                $(buttonElement).html(originalName).fadeIn()
-            }, cycleNameTime);
-        });
-    });
-
-
-    return buttonElement;
-};
-
 // Helper Functions
 
 $.COR.toggleAccountNavigation = function () {

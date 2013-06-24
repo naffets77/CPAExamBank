@@ -44,6 +44,11 @@
         padding-right:5px;
     }
 
+    #js-content-wrapper-my-info .account-settings input {
+        padding:4px 6px;
+        width:260px;
+    }
+
 #subscription-holder {
     margin-top: 20px;
     border: 1px solid #efefef;
