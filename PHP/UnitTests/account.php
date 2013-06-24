@@ -62,21 +62,16 @@ class TestAccount extends UnitTestCase {
         
         $accountResult = simulatePostRequest(null, "service_account","refreshLogin");
         
-        $result = simulatePostRequest(array("email"=>"steffna77@gmail.com", "Hash"=> $accountResult['Hash']), "service_account","updateLoginEmail");
+        $result = simulatePostRequest(array("email"=>"steffan77@gmail.com", "Hash"=> $accountResult['Hash']), "service_account","updateLoginEmail");
     
         BuildResultViewer($result,"service_account :: updateLoginEmail"); 
-        
-        // clean up
-        $result = simulatePostRequest(array("email"=>"demo_account@cpaexambank.com", "Hash"=> $accountResult['Hash']), "service_account","updateLoginEmail");
-    
-        BuildResultViewer($result,"service_account :: updateLoginEmail"); 
-          
+                  
         $this->assertTrue(true);     
     }
     
     function testUpdateLoginEmailInvalid(){
         
-        BuildTestHeader("Update Login Email - Email Already Exists", "service_updateLoginEmail", "updateLoginEmail", "Test updating email", null, null);
+        BuildTestHeader("Update Login Email - Email Invalid", "service_updateLoginEmail", "updateLoginEmail", "Test updating email", null, null);
         
         $accountResult = simulatePostRequest(null, "service_account","refreshLogin");
         
