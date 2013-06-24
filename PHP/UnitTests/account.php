@@ -108,7 +108,7 @@ class TestAccount extends UnitTestCase {
     
         BuildResultViewer($result,"service_account :: refreshLogin");
         
-        $this->assertNull($result['account']);
+        $this->assertNull($result['Account']);
     }
     
 }
