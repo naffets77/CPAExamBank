@@ -165,29 +165,18 @@ $.COR.account.setupEvents = function () {
         if ($.COR.validateForm($(this).parents("form")) && $(this).hasClass("disabled") == false) {
             
             var self = this;
-            var oldPassword = $.COR.MD5($("#account-settings-old-password").val());
-            var newPassword = $.COR.MD5($("#account-settings-new-password").val());
-            
-            
-            
+
             $(this).html("Saving...").addClass("disabled");
-            
-            //$.post("/PHP/AJAX/Account/UpdatePassword.php","old_password=" + oldPassword + "&password=" + newPassword + "&Data=true", function(data){
-                
-            //    $("#account-settings-current-password").val(newPassword);
-            //    $.COR.account.user.LoginPassword = newPassword;
-            //    $.COR.Utilities.cycleButton(self, "Saved", "Update");
-            //    $(self).removeClass("disabled");
-            //});
+            var newPassword = $.COR.MD5($("#account-settings-new-password").val());
 
             var ph = new $.COR.Utilities.PostHandler({
                 service: "account", call: "updatePassword",
-                params: { password: $.COR.MD5(newPassword), hash: self.hash },
+                params: { password: newPassword, hash: self.hash },
                 success: function (data) {
 
                     $("#account-settings-current-password").val("");
-                    $("#account-settings-old-password").val("")
-                    $("#account-settings-old-password-again").val("")
+                    $("#account-settings-new-password").val("")
+                    $("#account-settings-new-password-again").val("")
 
                     $.COR.account.user.LoginPassword = newPassword;
                     $.COR.Utilities.cycleButton(self, "Saved", "Update");
