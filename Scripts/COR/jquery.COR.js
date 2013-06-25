@@ -375,9 +375,11 @@ $.COR.login = function (email, password, successCallback, failcallback) {
 $.COR.checkLogin = function (successCallback, failCallback) {
     var self = this;
 
+    self.pageSwap($.COR.getCurrentDisplayedId(), 'js-content-wrapper-login');
+
 
     var ph = new $.COR.Utilities.PostHandler({
-        service: "account", call: "autoLogin",
+        service: "account", call: "refreshLogin",
         params: null,
         success: function (data) {
 
