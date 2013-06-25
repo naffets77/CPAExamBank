@@ -89,6 +89,9 @@ $.COR.pageEvents = function () {
 
         var password = $("#home-login-password").val().length != 0 ? $("#home-login-password").val() : "testing";
         var email = $("#home-login-username").val().length != 0 ? $("#home-login-username").val() : "steffan77@gmail.com";
+
+        self.pageSwap(getCurrentDisplayedId(), 'js-content-wrapper-login');
+
         self.login(
             email,
             password,
@@ -103,6 +106,7 @@ $.COR.pageEvents = function () {
                 $("#invalid-account-message").show();
             }
         );
+
     });
 
     $("#registration-finish-button").on("click", function (e) {
