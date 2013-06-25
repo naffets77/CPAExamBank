@@ -174,7 +174,7 @@ $.COR.account.setupEvents = function () {
                 params: { password: newPassword, hash: self.hash },
                 success: function (data) {
 
-                    $("#account-settings-current-password").val("");
+                    $("#account-settings-old-password").val("");
                     $("#account-settings-new-password").val("")
                     $("#account-settings-new-password-again").val("")
 
