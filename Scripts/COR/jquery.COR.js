@@ -385,7 +385,6 @@ $.COR.checkLogin = function (successCallback, failCallback) {
 
             if (data.Account != null) {
 
-                self.toggleAccountNavigation();
                 successCallback(data);
             }
             else {

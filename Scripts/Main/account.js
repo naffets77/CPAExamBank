@@ -70,6 +70,8 @@ $.COR.account.hashHandler = function () {
     }
     else {
 
+        $.COR.toggleAccountNavigation();
+
         $.COR.checkLogin(
             function (data) {
                 $.COR.account.setup(data, function () {
@@ -78,6 +80,9 @@ $.COR.account.hashHandler = function () {
             },
 
             function (reason) {
+
+                $.COR.toggleHomeNavigation();
+                $.COR.pageSwap($.COR.getCurrentDisplayedId(), "js-content-wrapper-splash");
                 console.log("Didn't log you in because : " + reason);
             }
         );
