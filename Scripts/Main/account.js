@@ -132,7 +132,10 @@ $.COR.account.setupEvents = function () {
     
     $("#account-settings-update-email").on("click", function (e) {
         e.preventDefault();
-        if($(this).hasClass("disabled")){return;}
+        if ($(this).hasClass("disabled")) { return; }
+
+
+        var email = $("#account-settings-username").val();
         
         if ($.COR.validateForm($(this).parents("form"))) {
             
