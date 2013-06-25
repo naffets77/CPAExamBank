@@ -152,6 +152,8 @@ $.COR.account.setupEvents = function () {
                     $(self).removeClass("disabled");
                 }
             });
+
+            ph.submitPost();
             
         }
                     
