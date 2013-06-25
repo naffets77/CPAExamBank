@@ -181,16 +181,17 @@ $.COR.account.setupEvents = function () {
             //});
 
             var ph = new $.COR.Utilities.PostHandler({
-                service: "account", call: "updateLoginPassword",
-                params: { email: email, hash: $.COR.MD5(password) },
+                service: "account", call: "updatePassword",
+                params: { password: $.COR.MD5(newPassword), hash: self.hash },
                 success: function (data) {
 
-                    if (data.Account != null) {
-                        self.account.setup(data, successCallback);
-                    }
-                    else {
-                        failcallback(data.LoginFailedReason);
-                    }
+                    $("#account-settings-current-password").val("");
+                    $("#account-settings-old-password").val("")
+                    $("#account-settings-old-password-again").val("")
+
+                    $.COR.account.user.LoginPassword = newPassword;
+                    $.COR.Utilities.cycleButton(self, "Saved", "Update");
+                    $(self).removeClass("disabled");
 
                 }
             });
