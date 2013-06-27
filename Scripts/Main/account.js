@@ -222,6 +222,20 @@ $.COR.account.setupEvents = function () {
     }); 
 
 
+    /* ----- Question Review ----- */
+
+    $("#review-results .more-info").on("click", function () {
+
+        if ($(this).html() == "More") {
+            $(this).parents('tr').next().show();
+            $(this).html('Less');
+        } else {
+            $(this).parents('tr').next().hide();
+            $(this).html('More');
+        }
+    });
+
+
     // Call setup on any other events that are sub of the account object
     
 };

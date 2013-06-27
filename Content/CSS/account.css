@@ -120,6 +120,26 @@
 }
 
 
+/* Quesiton Review Styles */
+
+#review-options tr td{
+    padding:4px 8px 4px 0px;
+}
+
+#review-results {
+    margin-top: 20px;
+    width:100%;
+}
+
+#review-results tr td {
+    padding:4px 20px 4px 0px;
+    text-align:center;
+}
+
+    #review-results thead tr td {
+        font-weight:bold;
+        border-bottom:1px solid #000;
+    }
 
 
 /* Overlay Content */

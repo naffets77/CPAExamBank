@@ -76,7 +76,8 @@ table {
 h1{}
 h2{font-size:24px; margin:20px;}
 
-.cpa-blue{color:#38B2CE;}
+.cpa-blue, .link, a{color:#38B2CE; text-decoration:none}
+.link, a{cursor:pointer;}
 
 
 /* END GLOBAL CLASSES */

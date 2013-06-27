@@ -150,7 +150,132 @@
 
 <div id="js-content-wrapper-my-review" class="js-content-wrapper hidden">
     <div class="content">
-        Question Review
+        <h2 style="margin-left:0px;">View Questions</h2>
+
+        <table id="review-options">
+            <tr>
+                <td>
+                    Section
+                </td>
+                <td>
+                    <select>
+                        <option>All</option>
+                        <option>AUD</option>
+                        <option>FAR</option>
+                        <option>BEC</option>
+                        <option>REG</option>
+                    </select>
+                </td>
+                <td>
+                    Result
+                </td>
+                <td>
+                    <select>
+                        <option>Both</option>
+                        <option>Incorrect</option>
+                        <option>Correct</option>
+                    </select>
+                </td>
+                <td>Order By</td>
+                <td>
+                    <select>
+                        <option>Correct</option>
+                        <option>Incorrect</option>
+                        <option>Section</option>
+                        <option>Question Id</option>
+                        <option>Avg. Time Spent</option>
+                    </select>
+                </td>
+                <td>
+                    <button class="btn-orange">View Questions</button>
+                </td>
+            </tr>
+        </table>
+
+        <table id="review-results">
+            <thead>
+                <tr>
+                    <td>
+                        Question ID
+                    </td>
+                    <td>
+                        Section
+                    </td>
+                    <td>
+                        Times Correct
+                    </td>
+                    <td>
+                        Times Incorrect
+                    </td>
+                    <td>
+                        Avg. Time Spent
+                    </td>
+                    <td>
+                        Active
+                    </td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>AUD</td>
+                    <td>3</td>
+                    <td>2</td>
+                    <td>01:22</td>
+                    <td>Yes</td>
+                    <td><span class='link more-info'>More</span></td>
+                </tr>           
+                <tr style="display:none;">
+                    <td colspan ="6">
+                        More Info
+                    </td>
+                </tr>     
+                <tr>
+                    <td>2</td>
+                    <td>FAR</td>
+                    <td>3</td>
+                    <td>2</td>
+                    <td>01:22</td>
+                    <td>Yes</td>
+                    <td><span class='link more-info'>More</span></td>
+                </tr>
+                <tr style="display:none;">
+                    <td colspan ="6">
+                        More Info
+                    </td>
+                </tr> 
+                <tr>
+                    <td>3</td>
+                    <td>BEC</td>
+                    <td>3</td>
+                    <td>2</td>
+                    <td>01:22</td>
+                    <td>Yes</td>
+                    <td><span class='link more-info'>More</span></td>
+                </tr>
+                <tr style="display:none;">
+                    <td colspan ="6">
+                        More Info
+                    </td>
+                </tr> 
+                <tr>
+                    <td>4</td>
+                    <td>REG</td>
+                    <td>3</td>
+                    <td>2</td>
+                    <td>01:22</td>
+                    <td>Yes</td>
+                    <td><span class='link more-info'>More</span></td>
+                </tr>
+                <tr style="display:none;">
+                    <td colspan ="6">
+                        More Info
+                    </td>
+                </tr> 
+            </tbody>
+        </table>
+
     </div>
 </div>
 
