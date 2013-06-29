@@ -26,7 +26,7 @@ class TestAccount extends UnitTestCase {
 
         BuildTestHeader("Get Questions", "service_question", "getAllQuestionsAndAnswersForUI", "Test getting questions", null, null);
 
-        $result = simulatePostRequest(array("Hash"=> $this->hash)), "service_question","getAllQuestionsAndAnswersForUI");
+        $result = simulatePostRequest(array("Hash"=> $this->hash), "service_question","getAllQuestionsAndAnswersForUI");
     
         BuildResultViewer($result, "service_question :: getAllQuestionsAndAnswersForUI");
                 
