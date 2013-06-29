@@ -24,7 +24,7 @@ class TestAccount extends UnitTestCase {
     
     function testGetQuestions(){
 
-        BuildTestHeader("Get Questions", "service_question", "getAllQuestionsAndAnswersForUI", "Test getting questions", null, null);
+        BuildTestHeader("Get Questions", "service_question", "getAllQuestionsAndAnswers", "Test getting questions", null, null);
 
         $result = simulatePostRequest(array("Hash"=> $this->hash), "service_question","getAllQuestionsAndAnswersForUI");
     
