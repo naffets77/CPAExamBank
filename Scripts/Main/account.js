@@ -623,7 +623,7 @@ $.COR.account.setStudyQuestionData = function (question) {
 
     $("#full-screen-container .answer-options table").html("");
 
-    for (var i = 0; i < question.answers.length; i++) {
+    for (var i = 0; i < question.Answers.length; i++) {
 
         var html = "<tr><td class='result-spacer'></td><td><input type='radio' id='study-question-answer-" + i + "' value='" + i + "' name='study-question-answer' /></td>";
         html += "<td><label for='study-question-answer-" + i + "'>" + question.Answers[i].DisplayText + "</label></td></tr>";
