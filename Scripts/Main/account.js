@@ -383,7 +383,7 @@ $.COR.account.startStudy = function () {
                                 type: "direction",
                                 index: 0
                             }];
-                            self.simulator.questions.concat(data.QuestionResponses);
+                            self.simulator.questions = self.simulator.questions.concat(data.QuestionResponses);
 
                             self.initQuestions();
                         }
