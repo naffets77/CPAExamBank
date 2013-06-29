@@ -1,16 +1,16 @@
 
 $.COR.account = {
-    offline : false,
+    offline: false,
     user: null,
     hash: null,
     licenses: null,
-    userSettings:null,
+    userSettings: null,
     simulator: {
         options: {},
-        live : false,
+        live: false,
         questions: null,
         questionIndex: null,
-        completed : false
+        completed: false
     }
 };
 
@@ -93,26 +93,26 @@ $.COR.account.hashHandler = function () {
 };
 
 $.COR.account.setupEvents = function () {
-    
+
     var self = this;
-  
-    
+
+
     // Navigation
-    
-    $("#user-account-navigation li").on("click", function(){
-       
-       if($(this).hasClass("current")){return;}
-       
-       // Nav LI UI Swapping
-       $("#user-account-navigation li").removeClass("current");
-       $(this).addClass("current");
-       
-       // Show/Hide Content
-       $(".account-content").addClass("hidden");
-       $("#account-content_" + $(this).attr("id").split("_")[1]).removeClass("hidden");
-              
+
+    $("#user-account-navigation li").on("click", function () {
+
+        if ($(this).hasClass("current")) { return; }
+
+        // Nav LI UI Swapping
+        $("#user-account-navigation li").removeClass("current");
+        $(this).addClass("current");
+
+        // Show/Hide Content
+        $(".account-content").addClass("hidden");
+        $("#account-content_" + $(this).attr("id").split("_")[1]).removeClass("hidden");
+
     });
-    
+
 
     // Logout
     $("#header-logout-container").on("click", function () {
@@ -127,27 +127,27 @@ $.COR.account.setupEvents = function () {
         location.hash = "";
 
         // TODO: Shold post a logout here to kill the session
-        
+
 
     });
 
 
-    
+
     /* ----- Settings Management ---- */
-    
+
     $("#account-settings-update-email").on("click", function (e) {
         e.preventDefault();
         if ($(this).hasClass("disabled")) { return; }
 
 
         var email = $("#account-settings-username").val();
-        
+
         if ($.COR.validateForm($(this).parents("form"))) {
-            
+
             var self = this;
-            
+
             $(this).html("Saving...").addClass("disabled");
-            
+
             var ph = new $.COR.Utilities.PostHandler({
                 service: "account", call: "updateLoginEmail",
                 params: { email: email, hash: self.hash },
@@ -159,16 +159,16 @@ $.COR.account.setupEvents = function () {
             });
 
             ph.submitPost();
-            
+
         }
-                    
+
     });
-    
-    $("#account-settings-update-password-button").on("click", function(e){
+
+    $("#account-settings-update-password-button").on("click", function (e) {
         e.preventDefault();
-                
+
         if ($.COR.validateForm($(this).parents("form")) && $(this).hasClass("disabled") == false) {
-            
+
             var self = this;
 
             $(this).html("Saving...").addClass("disabled");
@@ -193,33 +193,33 @@ $.COR.account.setupEvents = function () {
             ph.submitPost();
 
 
-        }     
-           
+        }
+
     });
-    
-    $("#account-settings-add-class-code-button").on("click", function(e){
-        
+
+    $("#account-settings-add-class-code-button").on("click", function (e) {
+
         e.preventDefault();
-        if($(this).hasClass("disabled")){return;}
-        
+        if ($(this).hasClass("disabled")) { return; }
+
         if ($.COR.account.user.IsInClass == 0 && $.COR.validateForm($(this).parents("form"))) {
-            
+
             var self = this;
-            
+
             $(this).html("Adding...").addClass("disabled");
-            
-            $.post("/PHP/AJAX/Account/AddClassCode.php",$(this).parents("form").serialize() + "&Data=true", function(data){
-                                
+
+            $.post("/PHP/AJAX/Account/AddClassCode.php", $(this).parents("form").serialize() + "&Data=true", function (data) {
+
                 alert("Added");
-                
-            });                
-        }        
-        
+
+            });
+        }
+
     });
 
     $("#account-settings-purchase-classes").on("click", function () {
 
-    }); 
+    });
 
 
     /* ----- Question Review ----- */
@@ -237,7 +237,7 @@ $.COR.account.setupEvents = function () {
 
 
     // Call setup on any other events that are sub of the account object
-    
+
 };
 
 
@@ -309,7 +309,7 @@ $.COR.account.showNewAccountPopup = function () {
             postData['UID'] = $.COR.account.user.AccountUserId;
 
 
-            
+
             var ph = new $.COR.postHandler({
                 service: "account", call: "completeTeacherRegistration",
                 params: postData,
@@ -319,7 +319,7 @@ $.COR.account.showNewAccountPopup = function () {
             });
 
             ph.submitPost();
-            
+
         });
 
     });
@@ -353,183 +353,169 @@ $.COR.account.startStudy = function () {
         $("#js-overlay-content-loading-questions").attr("contentSize")
     );
 
-    setTimeout(function () {
-        // Show Testing UI - full screen
-        $.COR.TPrep.showFullScreenOverlay(
-            $("#js-overlay-content-study-questions").html(),
-            $("#js-overlay-content-loading-questions").attr("contentSize"),
-            function () {
-                // Get Questions
 
+    // Show Testing UI - full screen
+    $.COR.TPrep.showFullScreenOverlay(
+        $("#js-overlay-content-study-questions").html(),
+        $("#js-overlay-content-loading-questions").attr("contentSize"),
+        function () {
+            // Get Questions
+
+            self.simulator.questionIndex = 0;
+
+            if (self.offline == true) {
                 self.simulator.questions = self.getOfflineQuestions();
-                self.simulator.questionIndex = 0;
+          
+                setTimeout(function () {
+                    self.initQuestions();
+                }, 1000);
+            }
+            else {
 
-                self.setupQuestionFooterNavigation(self.simulator.questions);
+                var ph = new $.COR.Utilities.PostHandler({
+                    service: "question", call: "getAllQuestionsAndAnswers",
+                    params: null,
+                    success: function (data) {
 
+                        if (data.QuestionResponses != null) {
 
-                // Local cache for events
-                var questions = self.simulator.questions;
-
-                $("#full-screen-container .footer-nav .prev").on('click', function () {
-                    self.simulator.questionIndex--;
-
-
-
-                    self.displayStudyQuestion(questions[self.simulator.questionIndex]);
-
-
-                });
-
-                $("#full-screen-container .footer-nav .next").on('click', function () {
-                    self.simulator.questionIndex++;
-
-                    // we already finished - just show results
-                    if (self.simulator.questionIndex >= questions.length && self.simulator.completed == true) {
-
-                        // Set Results footer navigation to active
-                        $("#full-screen-container .footer-questions-quicklink-holder .question-quicklink").removeClass('active');
-
-                        // Show results navigation
-                        $("#full-screen-container .footer-questions-quicklink-holder .results").addClass('active')
-
-                        $("#full-screen-container .footer-nav .next").addClass('hidden');
-
-                        $("#study-question-viewer-question-mc").fadeOut(function () {
-                            $("#study-question-viewer-results").fadeIn();
-                        });
-
-                    }
-                    else if (self.simulator.questionIndex == questions.length && self.simulator.completed == false) {
-                        // Were done show completed screen
-                        //var result = ("Are you sure you're done?");
-
-                        //if test confirm done
-                        if (self.simulator.options.mode == 'test') {
-
-                            var result = confirm("Are you sure you're done?");
-
-                            if (result) {
-                                self.completeTest();
-                            }
-
+                            self.simulator.questions = data.QuestionResponses;
+                            self.initQuestions();
                         }
                         else {
-
-                            var completed = true;
-
-
-                            var len = self.simulator.questions.length;
-
-                            // skip the first guy which is the placeholder for the description 
-                            for (var i = 1; i < len; i++) {
-
-                                if (self.simulator.questions[i].selectedAnswer == null) {
-                                    completed = false;
-                                    break;
-                                }
-                            }
-
-                            var showReview = completed ? true : confirm("Not all questions answerd, are you sure you want to continue?");
-
-                            if (showReview) {
-                                // show completion screen
-                                self.completeTest();
-                            }
-
+                            alert('Server Error, please refresh the page and try again');
                         }
-                    }
-                    else {
 
-                        self.displayStudyQuestion(questions[self.simulator.questionIndex]);
                     }
-
                 });
 
-                $("#full-screen-container .footer-questions-quicklink-holder .question-quicklink").on('click', function () {
-
-                    if ($(this).hasClass("active")) return;
-
-                    var index = $(this).attr("index");
-
-
-                    if ($(this).hasClass("results")) {
-
-                        $("#study-question-viewer-question-mc").fadeOut(function () {
-                            $("#study-question-viewer-results").fadeIn();
-                        });
-                    }
-                    else {
-                        self.displayStudyQuestion(questions[index]);
-                    }
-
-                    self.simulator.questionIndex = index;
-                });
-
-                $("#full-screen-container .footer-questions-quicklink-holder .flag").on('click', function (e) {
-
-                    $(this).toggleClass("set");
-
-                    e.stopPropagation();
-
-                });
-
-                $("#full-screen-container .study-question-viewer-exit").on('click', function () {
-                    self.exitSimulator();
-                });
+                ph.submitPost();
 
             }
-        );
 
 
 
-
-    }, 1000);
-
+        }
+    );
 };
 
-// Gets a set of questions for offline testing
-$.COR.account.getOfflineQuestions = function () {
 
-    return offlineObjects = [
-        {
-            type: "direction",
-            index: 0
-        },
-        {
-            text: "Question 1",
-            answers: [
-                    "Answer 1",
-                    "Answer 2",
-                    "Answer 3",
-                    "Answer 4"
-            ],
-            answerIndex: 1,
-            explanation: "Answer Explanation"
-        },
-        {
-            text: "Question 2",
-            answers: [
-                    "Answer 1",
-                    "Answer 2",
-                    "Answer 3",
-                    "Answer 4"
-            ],
-            answerIndex: 1,
-            explanation: "Answer Explanation"
-        },
-        {
-            text: "Question 3",
-            answers: [
-                    "Answer 1",
-                    "Answer 2",
-                    "Answer 3",
-                    "Answer 4"
-            ],
-            answerIndex: 1,
-            explanation: "Answer Explanation"
+
+$.COR.account.initQuestions = function () {
+
+    var self = this;
+
+    self.setupQuestionFooterNavigation(self.simulator.questions);
+
+    // Local cache for events
+    var questions = self.simulator.questions;
+
+    $("#full-screen-container .footer-nav .prev").on('click', function () {
+        self.simulator.questionIndex--;
+
+
+
+        self.displayStudyQuestion(questions[self.simulator.questionIndex]);
+
+
+    });
+
+    $("#full-screen-container .footer-nav .next").on('click', function () {
+        self.simulator.questionIndex++;
+
+        // we already finished - just show results
+        if (self.simulator.questionIndex >= questions.length && self.simulator.completed == true) {
+
+            // Set Results footer navigation to active
+            $("#full-screen-container .footer-questions-quicklink-holder .question-quicklink").removeClass('active');
+
+            // Show results navigation
+            $("#full-screen-container .footer-questions-quicklink-holder .results").addClass('active')
+
+            $("#full-screen-container .footer-nav .next").addClass('hidden');
+
+            $("#study-question-viewer-question-mc").fadeOut(function () {
+                $("#study-question-viewer-results").fadeIn();
+            });
+
         }
-    ];
+        else if (self.simulator.questionIndex == questions.length && self.simulator.completed == false) {
+            // Were done show completed screen
+            //var result = ("Are you sure you're done?");
 
+            //if test confirm done
+            if (self.simulator.options.mode == 'test') {
+
+                var result = confirm("Are you sure you're done?");
+
+                if (result) {
+                    self.completeTest();
+                }
+
+            }
+            else {
+
+                var completed = true;
+
+
+                var len = self.simulator.questions.length;
+
+                // skip the first guy which is the placeholder for the description 
+                for (var i = 1; i < len; i++) {
+
+                    if (self.simulator.questions[i].selectedAnswer == null) {
+                        completed = false;
+                        break;
+                    }
+                }
+
+                var showReview = completed ? true : confirm("Not all questions answerd, are you sure you want to continue?");
+
+                if (showReview) {
+                    // show completion screen
+                    self.completeTest();
+                }
+
+            }
+        }
+        else {
+
+            self.displayStudyQuestion(questions[self.simulator.questionIndex]);
+        }
+
+    });
+
+    $("#full-screen-container .footer-questions-quicklink-holder .question-quicklink").on('click', function () {
+
+        if ($(this).hasClass("active")) return;
+
+        var index = $(this).attr("index");
+
+
+        if ($(this).hasClass("results")) {
+
+            $("#study-question-viewer-question-mc").fadeOut(function () {
+                $("#study-question-viewer-results").fadeIn();
+            });
+        }
+        else {
+            self.displayStudyQuestion(questions[index]);
+        }
+
+        self.simulator.questionIndex = index;
+    });
+
+    $("#full-screen-container .footer-questions-quicklink-holder .flag").on('click', function (e) {
+
+        $(this).toggleClass("set");
+
+        e.stopPropagation();
+
+    });
+
+    $("#full-screen-container .study-question-viewer-exit").on('click', function () {
+        self.exitSimulator();
+    });
 
 }
 
@@ -567,7 +553,7 @@ $.COR.account.displayStudyQuestion = function (question) {
     var self = this;
 
 
-    if($("#full-screen-container  #study-question-viewer-results").is(":visible")){
+    if ($("#full-screen-container  #study-question-viewer-results").is(":visible")) {
         $("#full-screen-container  #study-question-viewer-results").hide();
     }
 
@@ -756,7 +742,7 @@ $.COR.account.completeTest = function () {
 }
 
 // Exit simulator
-$.COR.account.exitSimulator = function(){
+$.COR.account.exitSimulator = function () {
 
     this.simulator.live = false;
 
@@ -765,4 +751,52 @@ $.COR.account.exitSimulator = function(){
 
     $.COR.TPrep.hideFullScreenOverlay();
     location.hash = "study";
+}
+
+
+
+// Gets a set of questions for offline testing
+$.COR.account.getOfflineQuestions = function () {
+
+    return offlineObjects = [
+        {
+            type: "direction",
+            index: 0
+        },
+        {
+            text: "Question 1",
+            answers: [
+                    "Answer 1",
+                    "Answer 2",
+                    "Answer 3",
+                    "Answer 4"
+            ],
+            answerIndex: 1,
+            explanation: "Answer Explanation"
+        },
+        {
+            text: "Question 2",
+            answers: [
+                    "Answer 1",
+                    "Answer 2",
+                    "Answer 3",
+                    "Answer 4"
+            ],
+            answerIndex: 1,
+            explanation: "Answer Explanation"
+        },
+        {
+            text: "Question 3",
+            answers: [
+                    "Answer 1",
+                    "Answer 2",
+                    "Answer 3",
+                    "Answer 4"
+            ],
+            answerIndex: 1,
+            explanation: "Answer Explanation"
+        }
+    ];
+
+
 }
