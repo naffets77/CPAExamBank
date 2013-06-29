@@ -379,7 +379,12 @@ $.COR.account.startStudy = function () {
 
                         if (data.QuestionResponses != null) {
 
-                            self.simulator.questions = data.QuestionResponses;
+                            self.simulator.questions = [{
+                                type: "direction",
+                                index: 0
+                            }];
+                            self.simulator.questions.concat(data.QuestionResponses);
+
                             self.initQuestions();
                         }
                         else {
@@ -531,7 +536,7 @@ $.COR.account.setupQuestionFooterNavigation = function (questions) {
 
     for (var i = 0; i < len; i++) {
 
-        if (questions[i].text != undefined) {
+        if (questions[i].Question != undefined) {
 
             var html = "<div class='question-quicklink' index='" + i + "'>" + i + " <div class='flag'></div></div>";
             $("#full-screen-container .footer-questions-quicklink-holder").append(html);
@@ -613,15 +618,15 @@ $.COR.account.setStudyQuestionData = function (question) {
 
     $("#full-screen-container .answer-explanation").hide();
 
-    $("#full-screen-container .question-content").html(question.text);
-    $("#full-screen-container .answer-explanation-holder").html(question.explanation);
+    $("#full-screen-container .question-content").html(question.Question);
+    $("#full-screen-container .answer-explanation-holder").html(question.Explanation);
 
     $("#full-screen-container .answer-options table").html("");
 
     for (var i = 0; i < question.answers.length; i++) {
 
         var html = "<tr><td class='result-spacer'></td><td><input type='radio' id='study-question-answer-" + i + "' value='" + i + "' name='study-question-answer' /></td>";
-        html += "<td><label for='study-question-answer-" + i + "'>" + question.answers[i] + "</label></td></tr>";
+        html += "<td><label for='study-question-answer-" + i + "'>" + question.Answers[i].DisplayText + "</label></td></tr>";
         $("#full-screen-container .answer-options table").append(html);
     }
 
@@ -643,7 +648,7 @@ $.COR.account.setStudyQuestionData = function (question) {
         $("#full-screen-container .answer-options table input").attr('disabled', 'disabled');
 
         // Indicate Correct Answer
-        $($($('#full-screen-container .answer-options table tr')[question.answerIndex]).children()[0]).addClass('correct');
+        $($($('#full-screen-container .answer-options table tr')[question.CorrectAnswerIndex]).children()[0]).addClass('correct');
 
         // Show Explanation
         $("#full-screen-container .answer-explanation").show();
@@ -666,7 +671,7 @@ $.COR.account.selectAnswer = function (question, selectedInput) {
     if (this.simulator.options.mode == "study") {
 
         // Indicate Correct Answer
-        $($($(selectedInput).parents('tbody').children('tr')[question.answerIndex]).children()[0]).addClass('correct');
+        $($($(selectedInput).parents('tbody').children('tr')[question.CorrectAnswerIndex]).children()[0]).addClass('correct');
 
         // Show Explanation
         $("#full-screen-container .answer-explanation").show();
@@ -764,7 +769,7 @@ $.COR.account.getOfflineQuestions = function () {
             index: 0
         },
         {
-            text: "Question 1",
+            Question: "Question 1",
             answers: [
                     "Answer 1",
                     "Answer 2",
@@ -775,7 +780,7 @@ $.COR.account.getOfflineQuestions = function () {
             explanation: "Answer Explanation"
         },
         {
-            text: "Question 2",
+            Question: "Question 2",
             answers: [
                     "Answer 1",
                     "Answer 2",
@@ -786,7 +791,7 @@ $.COR.account.getOfflineQuestions = function () {
             explanation: "Answer Explanation"
         },
         {
-            text: "Question 3",
+            Question: "Question 3",
             answers: [
                     "Answer 1",
                     "Answer 2",
