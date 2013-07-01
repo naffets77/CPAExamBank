@@ -798,7 +798,7 @@ $.COR.account.completeTest = function () {
             var ph = new $.COR.Utilities.PostHandler({
                 service: "question", call: "getQuestionsAndAnswers",
                 params: {
-                    SectionTypeId: postQuestions,
+                    SectionTypeId: JSON.stringify(postQuestions),
                     QuestionAmount: $("#practice-question-count").val()
                 },
                 success: function (data) {
