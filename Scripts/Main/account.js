@@ -10,7 +10,9 @@ $.COR.account = {
         live: false,
         questions: null,
         questionIndex: null,
-        completed: false
+        completed: false,
+        currentQuestionTimer: 0,
+        questionTimerIntervalId: null
     }
 };
 
@@ -410,6 +412,7 @@ $.COR.account.initQuestions = function () {
 
     var self = this;
 
+    // Should be renamed to setup question, as it sets some defaults as well
     self.setupQuestionFooterNavigation(self.simulator.questions);
 
     // Local cache for events
@@ -543,6 +546,7 @@ $.COR.account.setupQuestionFooterNavigation = function (questions) {
 
             questions[i].index = i;
             questions[i].type = 'question';
+            questions[i].timeTaken = 0;
         }
     }
 
@@ -616,6 +620,10 @@ $.COR.account.setStudyQuestionData = function (question) {
 
     var self = this;
 
+    // Stop Timer for previous question
+    clearInterval(self.simulator.questionTimerIntervalId);
+
+
     $("#full-screen-container .answer-explanation").hide();
 
     $("#full-screen-container .question-content").html(question.Question);
@@ -636,6 +644,16 @@ $.COR.account.setStudyQuestionData = function (question) {
         self.selectAnswer(question, this);
     });
 
+
+    if (typeof question.selectedAnswer == "undefined") {
+
+        // Start Question Timer
+        self.simulator.questionTimerIntervalId = setInterval(function () {
+            question.timeTaken += 1;
+        }, 1000);
+
+    }
+    
 
     // Check if Study Mode and Question Answered - Disable Question
 
@@ -687,6 +705,9 @@ $.COR.account.selectAnswer = function (question, selectedInput) {
 $.COR.account.completeTest = function () {
 
     var self = this;
+
+    // Stop last questions timer
+    clearInterval(self.simulator.questionTimerIntervalId);
 
     $("#study-question-viewer-question-mc").fadeOut(function () {
         $("#study-question-viewer-results").fadeIn(function () {
@@ -770,36 +791,36 @@ $.COR.account.getOfflineQuestions = function () {
         },
         {
             Question: "Question 1",
-            answers: [
+            Answers: [
                     "Answer 1",
                     "Answer 2",
                     "Answer 3",
                     "Answer 4"
             ],
             answerIndex: 1,
-            explanation: "Answer Explanation"
+            Explanation: "Answer Explanation"
         },
         {
             Question: "Question 2",
-            answers: [
+            Answers: [
                     "Answer 1",
                     "Answer 2",
                     "Answer 3",
                     "Answer 4"
             ],
             answerIndex: 1,
-            explanation: "Answer Explanation"
+            Explanation: "Answer Explanation"
         },
         {
             Question: "Question 3",
-            answers: [
+            Answers: [
                     "Answer 1",
                     "Answer 2",
                     "Answer 3",
                     "Answer 4"
             ],
             answerIndex: 1,
-            explanation: "Answer Explanation"
+            Explanation: "Answer Explanation"
         }
     ];
 
