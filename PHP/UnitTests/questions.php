@@ -48,6 +48,19 @@ class TestAccount extends UnitTestCase {
         
     }
     
+    function testGetUserQuestionHistory(){
+
+        BuildTestHeader("Get Question History", "service_question", "getAccountUserQuestionHistory", "Test getting question History", null, null);
+
+        $result = simulatePostRequest(array("Hash"=> $this->hash, "AccountUserId" => 3, "QuestionAmount" => 20), "service_question","getAccountUserQuestionHistory");
+        
+        BuildResultViewer($result, "service_question :: getAccountUserQuestionHistory");
+        
+        $this->assertTrue(true);
+
+        
+    }
+    
 
     
     function testLogout(){

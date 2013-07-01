@@ -7,7 +7,7 @@
 
 
 <html>
-    <body>
+    <body style='padding-left:100px;'>
         <br /><br />
         <p>
             For best results don't select any filters when searching for a specific question!
