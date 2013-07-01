@@ -781,9 +781,20 @@ $.COR.account.completeTest = function () {
 
             //Save the questions
 
-            $.post("/PHP/services.php", "Questions=" + postQuestions, function(){
-                console.log("Saved");
-            }, 'json')
+            var ph = new $.COR.Utilities.PostHandler({
+                service: "question", call: "getQuestionsAndAnswers",
+                params: {
+                    SectionTypeId: postQuestions,
+                    QuestionAmount: $("#practice-question-count").val()
+                },
+                success: function (data) {
+
+                    console.log("Saved Questions");
+
+                }
+            });
+
+            ph.submitPost();
 
         });
     });
