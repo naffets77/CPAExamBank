@@ -43,29 +43,59 @@ else{
         
         echo "<h3> Reading File </h3>";
         
-        $row = 1;
-        if (($handle = fopen($_FILES["file"]["tmp_name"], "r")) !== FALSE) {
         
+        if (($handle = fopen($_FILES["file"]["tmp_name"], "r")) !== FALSE) {
+            
+            $row = 1;
             $lineCount = 0;
+            $questionCount = 1;
         
             while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-                //$num = count($data);
+                
                 //echo "<p> $num fields in line $row: <br /></p>\n";
                 
                 if($lineCount == 0){
-                    echo "<h4> --- New Question ---- </h4>";
+                    echo "<h4> --- New Question (" + $questionCount + ") ---- </h4>";
                 }
                 
+                switch($lineCount){
                 
+                    case 0:
+                        echo "<br />Processing Question <br />";
+                        break;
+                        
+                    case 1:
+                    break;
+                        echo "<br />Processing Answers<br />";
+                        break;
+                        
+                    case 2:
+                        echo "<br />Processing Explanation<br />";
+                        break;
+                    
+                    case 3:
+                        echo "<br />Processing Meta Data<br />";
+                        $lineCount = 0;
+                        $questionCount++;
+                        break;
                 
-                
+                }
+                /*
+                $num = count($data);
                 for ($c=0; $c < $num; $c++) {
                     echo $data[$c] . "<br />\n";
                 }
+                */
                 
-                
+                $lineCount ++;
                 $row++;
             }
+            
+            // End While
+            
+            echo "<h3> Finished Processing File</h3>,<br /> <div>Found $questionCount questions on $lineCount  ... $lineCount / $questionCount is " + ($lineCount / $questionCount) + " ... should be 4!</div>";
+            
+            
             fclose($handle);
         }
         else{
