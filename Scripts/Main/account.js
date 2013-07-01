@@ -781,7 +781,7 @@ $.COR.account.completeTest = function () {
 
             //Save the questions
 
-            $.post("/PHP/services.php", postQuestions, function(){
+            $.post("/PHP/services.php", "Questions=" + postQuestions, function(){
                 console.log("Saved");
             }, 'json')
 
