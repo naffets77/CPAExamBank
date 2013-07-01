@@ -754,21 +754,21 @@ $.COR.account.completeTest = function () {
                     selectedAnswer: question.selectedAnswer,
                     timeTaken: question.timeTaken,
                     mode: self.simulator.options.mode
-                })
+                });
 
 
                 postQuestions.push({
                     selectedAnswer: question.selectedAnswer,
                     timeTaken: question.timeTaken,
                     mode: self.simulator.options.mode
-                })
+                });
 
 
                 postQuestions.push({
                     selectedAnswer: question.selectedAnswer,
                     timeTaken: question.timeTaken,
                     mode: self.simulator.options.mode
-                })
+                });
 
 
                 if (question.selectedAnswer != null) {
