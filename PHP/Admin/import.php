@@ -49,6 +49,9 @@ else{
             $row = 1;
             $lineCount = 0;
             $questionCount = 1;
+            
+            $question = null;
+            $questions = new array();
         
             while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
                 
@@ -56,6 +59,7 @@ else{
                 
                 if($lineCount == 0){
                     echo "<h4> --- New Question (" . $questionCount . ") ---- </h4>";
+                    $question = new array();
                 }
                 
                 switch($lineCount){
@@ -63,43 +67,83 @@ else{
                     case 0:
                     
                         echo "<br />Row $lineCount - Processing Question <br />";
+                        
+                        $questionText = "";
+                        
+                        $num = count($data);
+                        
+                        for ($c=0; $c < $num; $c++) {
+                            $questionText .= "<p>{$data[$c]}</p>";
+                        }
+                        
+                        $question['text'] = $questionText;
+                        
                         $lineCount++;
                         break;
                         
                     case 1:
                     
                         echo "<br />Row $lineCount - Processing Answers<br />";
+                        
+                        $answers = array();
+                        
+                        for ($c=0; $c < $num; $c++) {
+                            array_push($answers,$data[$c]);
+                        }                        
+                        
+                        $question ['answers'] = $answers;
+                        
                         $lineCount++;
                         break;    
                         
                     case 2:
                     
                         echo "<br />Row $lineCount - Processing Explanation<br />";
+                        
+                        $explanationText = "";
+                        
+                        $num = count($data);
+                        
+                        for ($c=0; $c < $num; $c++) {
+                            $explanationText .= "<p>{$data[$c]}</p>";
+                        }
+                        
+                        $question['explanation'] = $explanationText;
+                        
                         $lineCount++;
                         break;
                     
                     case 3:
                     
                         echo "<br />Row $lineCount - Processing Meta Data<br />";
+                        
+                        $question['id'] = $data[0];
+                        $question['sectionType'] = $data[1];
+                        $question['referenceImage'] = $data[2];
+                        
+                        array_push($questions, $question);
+                        
                         $lineCount = 0;
                         $questionCount++;
                         break;
                 
                 }
-                /*
-                $num = count($data);
-                for ($c=0; $c < $num; $c++) {
-                    echo $data[$c] . "<br />\n";
-                }
-                */
-                
-                
+
+                               
                 $row++;
             }
             
             // End While
             
-            echo "<h3> Finished Processing File</h3>,<br /> <div>Found $questionCount questions on $lineCount  ... $lineCount / $questionCount is " . ($lineCount / $questionCount) . " ... should be 4!</div>";
+            echo "<h3> Finished Processing File</h3><br /> <div>Found $questionCount questions on $row  ... $row / $questionCount is " . ($lineCount / $questionCount) . " ... should be 4!</div>";
+            
+            echo "<h3> Dumping Questions...</h3>";
+            
+            echo "<pre style='font-size:10px;'>";
+            
+            var_dump($questions);
+            
+            echo "</pre>";
             
             
             fclose($handle);
