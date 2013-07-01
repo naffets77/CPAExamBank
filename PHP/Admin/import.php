@@ -1,4 +1,8 @@
 <?php
+
+    error_reporting(E_ALL);
+    ini_set('display_errors', '1');
+
     print_r($_POST);
     print_r($_FILES);
 ?>
@@ -42,7 +46,7 @@ else{
         echo "<h3> Reading File </h3>";
         
         $row = 1;
-        if (($handle = fopen($_FILES['uploadedfile']['tmp_name'], "r")) !== FALSE) {
+        if (($handle = fopen($_FILES["file"]["tmp_name"], "r")) !== FALSE) {
             while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
                 $num = count($data);
                 echo "<p> $num fields in line $row: <br /></p>\n";
