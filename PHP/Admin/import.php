@@ -174,6 +174,7 @@ function insertQuestions($questions){
         $question = $questions[$i];
         
         echo "<div> Inserting: {$question['referenceID']} </div>"; // This is 
+        
         // Insert Question - get ID Back
        
         // Insert Answers using the ID Provided

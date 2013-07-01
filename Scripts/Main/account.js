@@ -6,7 +6,12 @@ $.COR.account = {
     licenses: null,
     userSettings: null,
     simulator: {
-        options: {},
+        options: {
+            mode:null,
+            category:null,
+            questionCount:null,
+            strategy:null
+        },
         live: false,
         questions: null,
         questionIndex: null,
@@ -738,10 +743,19 @@ $.COR.account.completeTest = function () {
 
             var questions = self.simulator.questions;
 
+            var postQuestions = [];
+
             // skip first question
             for (var i = 1; i < questions.length; i++) {
 
                 var question = questions[i];
+
+                postQuestions.push({
+                    selectedAnswer: question.selectedAnswer,
+                    timeTaken: question.timeTaken,
+                    mode: self.simulator.options.mode
+                })
+
 
                 if (question.selectedAnswer != null) {
 
@@ -765,6 +779,11 @@ $.COR.account.completeTest = function () {
             $("#full-screen-container .results-num-skipped").html(skipped);
 
 
+            //Save the questions
+
+            $.post("/PHP/services.php", postQuestions, function(){
+                console.log("Saved");
+            }, 'json')
 
         });
     });
