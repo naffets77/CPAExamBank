@@ -55,7 +55,7 @@ else{
                 //echo "<p> $num fields in line $row: <br /></p>\n";
                 
                 if($lineCount == 0){
-                    echo "<h4> --- New Question (" + $questionCount + ") ---- </h4>";
+                    echo "<h4> --- New Question (" . $questionCount . ") ---- </h4>";
                 }
                 
                 switch($lineCount){
@@ -93,7 +93,7 @@ else{
             
             // End While
             
-            echo "<h3> Finished Processing File</h3>,<br /> <div>Found $questionCount questions on $lineCount  ... $lineCount / $questionCount is " + ($lineCount / $questionCount) + " ... should be 4!</div>";
+            echo "<h3> Finished Processing File</h3>,<br /> <div>Found $questionCount questions on $lineCount  ... $lineCount / $questionCount is " . ($lineCount / $questionCount) . " ... should be 4!</div>";
             
             
             fclose($handle);
