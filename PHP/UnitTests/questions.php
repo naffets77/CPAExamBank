@@ -41,7 +41,7 @@ class TestAccount extends UnitTestCase {
 
         $result = simulatePostRequest(array("Hash"=> $this->hash, "SectionTypeId" => 1, "QuestionAmount" => 5), "service_question","getQuestionsAndAnswers");
         
-        BuildResultViewer($result, "service_question :: getQuestionsAndAnswersForUI");
+        BuildResultViewer($result, "service_question :: getQuestionsAndAnswers");
         
         $this->assertTrue(true);
 
