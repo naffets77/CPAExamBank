@@ -148,7 +148,7 @@ else{
            
             fclose($handle);
             
-            insertQuestions();
+            insertQuestions($questions);
         }
         else{
             echo " <br /><br />Error w/setting file handle";
