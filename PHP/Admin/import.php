@@ -51,7 +51,7 @@ else{
             $questionCount = 1;
             
             $question = null;
-            $questions = new array();
+            $questions = array();
         
             while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
                 
@@ -59,7 +59,7 @@ else{
                 
                 if($lineCount == 0){
                     echo "<h4> --- New Question (" . $questionCount . ") ---- </h4>";
-                    $question = new array();
+                    $question = array();
                 }
                 
                 switch($lineCount){
