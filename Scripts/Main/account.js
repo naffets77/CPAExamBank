@@ -375,8 +375,11 @@ $.COR.account.startStudy = function () {
             else {
 
                 var ph = new $.COR.Utilities.PostHandler({
-                    service: "question", call: "getAllQuestionsAndAnswers",
-                    params: null,
+                    service: "question", call: "getQuestionsAndAnswers",
+                    params: {
+                        SectionTypeId: $("input:radio[name=practice-category]").val(),
+                        QuestionAmount: $("#practice-question-count").val()
+                    },
                     success: function (data) {
 
                         if (data.QuestionResponses != null) {

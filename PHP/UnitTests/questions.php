@@ -35,6 +35,19 @@ class TestAccount extends UnitTestCase {
     
     }
     
+    function testFilteredQuestions(){
+
+        BuildTestHeader("Get Questions", "service_question", "getQuestionsAndAnswers", "Test getting questions", null, null);
+
+        $result = simulatePostRequest(array("Hash"=> $this->hash, "SectionTypeId" => 1, "QuestionAmount" => 5), "service_question","getQuestionsAndAnswers");
+        
+        BuildResultViewer($result, "service_question :: getQuestionsAndAnswersForUI");
+        
+        $this->assertTrue(true);
+
+        
+    }
+    
 
     
     function testLogout(){
