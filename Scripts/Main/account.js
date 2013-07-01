@@ -757,6 +757,20 @@ $.COR.account.completeTest = function () {
                 })
 
 
+                postQuestions.push({
+                    selectedAnswer: question.selectedAnswer,
+                    timeTaken: question.timeTaken,
+                    mode: self.simulator.options.mode
+                })
+
+
+                postQuestions.push({
+                    selectedAnswer: question.selectedAnswer,
+                    timeTaken: question.timeTaken,
+                    mode: self.simulator.options.mode
+                })
+
+
                 if (question.selectedAnswer != null) {
 
                     // make all the wrong answers red in the navigation
