@@ -117,7 +117,7 @@ else{
                     
                         echo "<br />Row $lineCount - Processing Meta Data<br />";
                         
-                        $question['id'] = $data[0];
+                        $question['referenceID'] = $data[0];
                         $question['sectionType'] = $data[1];
                         $question['referenceImage'] = $data[2];
                         
@@ -145,8 +145,10 @@ else{
             
             echo "</pre>";
             
-            
+           
             fclose($handle);
+            
+            insertQuestions();
         }
         else{
             echo " <br /><br />Error w/setting file handle";
@@ -155,6 +157,30 @@ else{
         
     } 
    
+
+}
+
+
+
+
+function insertQuestions($questions){
+
+    $num = count($questions);
+    
+    echo "<h3> Inserting Questions into Database </h3>";
+    
+    for($i = 0; $i < $num ; $i++){
+    
+        $question = $qustions[$i];
+        
+        echo "<div> Inserting: {$question['referenceID']} </div>"; // This is 
+        // Insert Question - get ID Back
+       
+        // Insert Answers using the ID Provided
+    
+    
+    }
+
 
 }
 ?>
