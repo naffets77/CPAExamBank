@@ -3,8 +3,6 @@
     error_reporting(E_ALL);
     ini_set('display_errors', '1');
 
-    print_r($_POST);
-    print_r($_FILES);
 ?>
 
 
@@ -15,7 +13,7 @@ if(!isset($_POST['submit'])){
 <html>
     <body>
 
-    <form action="<?php echo $PHP_SELF;?>" method="post" enctype="multipart/form-data">
+    <form action="<?php echo $_SERVER;?>" method="post" enctype="multipart/form-data">
         <label for="file">Filename:</label>
         <input type="file" name="file" id="file"><br>
         <input type="submit" name="submit" value="Submit">
@@ -47,13 +45,26 @@ else{
         
         $row = 1;
         if (($handle = fopen($_FILES["file"]["tmp_name"], "r")) !== FALSE) {
+        
+            $lineCount = 0;
+        
             while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-                $num = count($data);
-                echo "<p> $num fields in line $row: <br /></p>\n";
-                $row++;
+                //$num = count($data);
+                //echo "<p> $num fields in line $row: <br /></p>\n";
+                
+                if($lineCount == 0){
+                    echo "<h4> --- New Question ---- </h4>";
+                }
+                
+                
+                
+                
                 for ($c=0; $c < $num; $c++) {
                     echo $data[$c] . "<br />\n";
                 }
+                
+                
+                $row++;
             }
             fclose($handle);
         }
