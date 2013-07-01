@@ -61,19 +61,25 @@ else{
                 switch($lineCount){
                 
                     case 0:
+                    
                         echo "<br />Row $lineCount - Processing Question <br />";
+                        $lineCount++;
                         break;
                         
                     case 1:
-                    break;
-                    echo "<br />Row $lineCount - Processing Answers<br />";
-                        break;
+                    
+                        echo "<br />Row $lineCount - Processing Answers<br />";
+                        $lineCount++;
+                        break;    
                         
                     case 2:
+                    
                         echo "<br />Row $lineCount - Processing Explanation<br />";
+                        $lineCount++;
                         break;
                     
                     case 3:
+                    
                         echo "<br />Row $lineCount - Processing Meta Data<br />";
                         $lineCount = 0;
                         $questionCount++;
@@ -87,7 +93,7 @@ else{
                 }
                 */
                 
-                $lineCount++;
+                
                 $row++;
             }
             
