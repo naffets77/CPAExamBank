@@ -233,6 +233,8 @@ $.COR.account.setupEvents = function () {
 
     $("#my-review-view-history").on("click", function () {
 
+        var thisElement = this;
+
         if ($(this).hasClass("disabled")) { return; }
 
         $(this).addClass("disabled");
@@ -246,7 +248,7 @@ $.COR.account.setupEvents = function () {
                 SectionTypeId: $("#my-review-section-type").val()
             },
             success: function (data) {
-                $(this).removeClass("disabled");
+                $(thisElement).removeClass("disabled");
                 self.BuildQuestionHistory(data.QuestionHistory);
             }
         });
@@ -380,8 +382,8 @@ $.COR.account.BuildQuestionHistory = function (QuestionHistory) {
                 "<td>" + question.TimesCorrect + "</td>" +
                 "<td>" + question.TimesIncorrect + "</td>" +
                 "<td>" + question.AverageTimePerQuestion + " s</td>" +
+                "<td>" + question.IsActive + "</td>" +
                 "<td><span class='link more-info'>More</span></td>" +
-                "<td>More</td>" +
             "</tr>"
         );
 
