@@ -236,6 +236,7 @@ $.COR.account.setupEvents = function () {
         if ($(this).hasClass("disabled")) { return; }
 
         $(this).addClass("disabled");
+        $("#review-results tbody").html("");
 
         var ph = new $.COR.Utilities.PostHandler({
             service: "question", call: "getAccountUserQuestionHistory",
@@ -246,7 +247,7 @@ $.COR.account.setupEvents = function () {
             },
             success: function (data) {
                 $(this).removeClass("disabled");
-
+                self.BuildQuestionHistory(data.QuestionHistory);
             }
         });
 
@@ -354,6 +355,37 @@ $.COR.account.showNewAccountPopup = function () {
         });
 
     });
+
+}
+
+
+
+
+// Question History Helpers
+
+$.COR.account.BuildQuestionHistory = function (QuestionHistory) {
+
+    
+
+    var len = QuestionHistory.length;
+
+    for (var i = 0; i < len; i++) {
+
+        var question = QuestionHistory[i];
+
+        $("#review-results tbody").append(
+            "<tr>"+
+                "<td>" + question.QuestionId + "</td>" +
+                "<td>" + question.SectionType + "</td>" +
+                "<td>" + question.TimesCorrect + "</td>" +
+                "<td>" + question.TimesIncorrect + "</td>" +
+                "<td>" + question.AverageTimePerQuestion + " s</td>" +
+                "<td><span class='link more-info'>More</span></td>" +
+                "<td>More</td>" +
+            "</tr>"
+        );
+
+    }
 
 }
 
