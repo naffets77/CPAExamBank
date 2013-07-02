@@ -127,6 +127,8 @@ body {
     background-image: -webkit-gradient( linear, left top, left bottom, color-stop(0, #EFEFEF), color-stop(0.02, #EFEFEF), color-stop(0.35, #FFFFFF) );
 }
 
+
+
     /* Adds a top shadow... kind of nice?*/
     body:before {
         content: "";
@@ -236,6 +238,11 @@ body {
     -moz-box-shadow: 0 0 35px 0px #ccc;
     -webkit-box-shadow: 0 0 35px 0px #ccc;
     box-shadow: 0 0 35px 0px #ccc;
+
+    border-radius: 0px 0px 5px 5px; 
+    -moz-border-radius: 0px 0px 5px 5px; 
+    -webkit-border-radius: 0px 0px 5px 5px; 
+
 }
 
 #header-logo {
@@ -255,31 +262,41 @@ body {
     float: right;
     padding-left: 0px;
     margin-top: 15px;
+    margin-right:-2px;
+
+    position:relative;
+    margin-bottom:-1px;
 }
 
     #header-navigation li {
         float: left;
         margin-top: 10px;
         margin-right: 20px;
-        font-size: 30px;
-        padding: 4px 8px;
+        font-size: 26px;
+        padding: 4px 16px;
     }
 
         #header-navigation li a {
             color: #666;
             text-decoration: none;
         }
-
+         
             #header-navigation li a:hover {
                 color: #38B2CE;
             }
 
         #header-navigation li.current {
             background-color: #fff;
+            border:1px solid #efefef;
+            border-bottom:none;
+            border-radius: 5px 5px 0px 0px; 
+            -moz-border-radius: 5px 5px 0px 0px; 
+            -webkit-border-radius: 5px 5px 0px 0px; 
+
         }
 
             #header-navigation li.current a {
-                color: #666 !important;
+                color: #222 !important;
             }
 
 

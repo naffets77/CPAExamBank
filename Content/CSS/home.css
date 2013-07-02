@@ -3,11 +3,22 @@
 
 /* SPLASH PAGE */
 
-.js-content-wrapper {
+.js-content-wrapper { /* this should be in shared*/
     background-color: #fff;
     float: left;
     clear: both;
     width: 100%;
+
+    border:solid 1px #eee;
+
+    background-image: linear-gradient(bottom, #FAFAFA 0%, #FAFAFA 2%, #FFFFFF 35%);
+    background-image: -o-linear-gradient(bottom, #FAFAFA 0%, #FAFAFA 2%, #FFFFFF 35%);
+    background-image: -moz-linear-gradient(bottom, #FAFAFA 0%, #FAFAFA 2%, #FFFFFF 35%);
+    background-image: -webkit-linear-gradient(bottom, #FAFAFA 0%, #FAFAFA 2%, #FFFFFF 35%);
+    background-image: -ms-linear-gradient(bottom, #FAFAFA 0%, #FAFAFA 2%, #FFFFFF 35%);
+    background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0, #FAFAFA), color-stop(0.02, #FAFAFA), color-stop(0.35, #FFFFFF) );
+
+
 }
 
     .js-content-wrapper .content {
@@ -324,12 +335,18 @@
 
 
 #js-content-wrapper-contact .content table {
-    margin-top:20px;
+    margin-top:30px;
 }
 
     #js-content-wrapper-contact .content table tr td {
-        padding-bottom:10px;
+        padding-bottom:30px;
     }
+
+    #js-content-wrapper-contact .content table tr td textarea{
+        width:400px;
+        height:150px;
+    }
+
 
 #js-content-wrapper-contact .content table tr td:first-child {
         padding-right:10px;

@@ -43,11 +43,11 @@ $.COR.pageSwap = function (inPageToHideId, inPageToShowId) {
 
     if (inPageToShowId == "home") {
         $(".js-content-wrapper").hide();
-        $("#js-content-wrapper-splash").fadeIn("slow");
+        $("#js-content-wrapper-splash").fadeIn(0);
     }
     else {
         $("#" + inPageToHideId).hide();
-        $("#" + inPageToShowId).fadeIn("slow");
+        $("#" + inPageToShowId).fadeIn(0);
     }
 
 
