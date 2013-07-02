@@ -231,6 +231,30 @@ $.COR.account.setupEvents = function () {
 
     /* ----- Question Review ----- */
 
+    $("#my-review-view-history").on("click", function () {
+
+        if ($(this).hasClass("disabled")) { return; }
+
+        $(this).addClass("disabled");
+
+        var ph = new $.COR.Utilities.PostHandler({
+            service: "question", call: "getAccountUserQuestionHistory",
+            params: {
+                AccountUserId: $.COR.user.AccountUserId,
+                QuestionAmount: 20,
+                SectionTypeId: $("#my-review-section-type").val()
+            },
+            success: function (data) {
+                $(this).removeClass("disabled");
+
+            }
+        });
+
+        ph.submitPost();
+
+
+    });
+
     $("#review-results .more-info").on("click", function () {
 
         if ($(this).html() == "More") {
