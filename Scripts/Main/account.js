@@ -240,7 +240,7 @@ $.COR.account.setupEvents = function () {
         var ph = new $.COR.Utilities.PostHandler({
             service: "question", call: "getAccountUserQuestionHistory",
             params: {
-                AccountUserId: $.COR.user.AccountUserId,
+                AccountUserId: $.COR.account.user.AccountUserId,
                 QuestionAmount: 20,
                 SectionTypeId: $("#my-review-section-type").val()
             },
