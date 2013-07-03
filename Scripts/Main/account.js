@@ -857,7 +857,7 @@ $.COR.account.completeTest = function () {
             var ph = new $.COR.Utilities.PostHandler({
                 service: "question", call: "saveQuestionHistory",
                 params: {
-                    SectionTypeId: JSON.stringify(postQuestions)
+                    QuestionHistory: JSON.stringify(postQuestions)
                 },
                 success: function (data) {
 
