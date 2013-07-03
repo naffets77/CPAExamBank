@@ -821,7 +821,7 @@ $.COR.account.completeTest = function () {
                 var selectedAnswer = question.selectedAnswer !== undefined ? question.Answers[question.selectedAnswer].QuestionToAnswersId : "0";
 
                 postQuestions.push({
-                    questionId: question.Answers[0].questionId,
+                    questionId: question.Answers[0].QuestionId,
                     accountUserId: $.COR.account.user.AccountUserId,
                     timeTaken: question.timeTaken,
                     mode: self.simulator.options.mode,
