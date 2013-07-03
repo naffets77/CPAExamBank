@@ -818,15 +818,20 @@ $.COR.account.completeTest = function () {
                 //    "answeredCorrectly": "0"
                 //},
 
-                var selectedAnswer = question.selectedAnswer !== undefined ? question.Answers[question.selectedAnswer].QuestionToAnswersId : "0";
+                var selectedAnswer = 0; //question.selectedAnswer !== undefined ? question.Answers[question.selectedAnswer].QuestionToAnswersId : "0";
+                var answeredCorrectly = 0;
+                if (question.selectedAnswer !== undefined) {
+                    selectedAnswer = question.Answers[question.selectedAnswer].QuestionToAnswersId;
+                    answeredCorrectly = question.correctAnswerIndex == question.selectedAnswer ? 1 : 0;
+                }
 
                 postQuestions.push({
                     questionId: question.Answers[0].QuestionId,
                     accountUserId: $.COR.account.user.AccountUserId,
                     timeTaken: question.timeTaken,
-                    mode: self.simulator.options.mode,
+                    mode: self.simulator.options.mode == 'study' ? 1 : 2,
                     selectedAnswer: selectedAnswer,
-                    answeredCorrectly: question.selectedAnswer !== undefined ? question.correctAnswerIndex == question.selectedAnswer : "0"
+                    answeredCorrectly: answeredCorrectly
                 });
 
 
