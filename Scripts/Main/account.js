@@ -818,7 +818,7 @@ $.COR.account.completeTest = function () {
                 //    "answeredCorrectly": "0"
                 //},
 
-                var selectedAnswer = question.selectedAnswer !== 'undefined' ? question.answers[question.selectedAnswer].QuestionToAnswersId : "0";
+                var selectedAnswer = question.selectedAnswer !== undefined ? question.answers[question.selectedAnswer].QuestionToAnswersId : "0";
 
                 postQuestions.push({
                     questionId: question.answers[question.selectedAnswer].questionId,
@@ -826,7 +826,7 @@ $.COR.account.completeTest = function () {
                     timeTaken: question.timeTaken,
                     mode: self.simulator.options.mode,
                     selectedAnswer: selectedAnswer,
-                    answeredCorrectly: question.selectedAnswer !== 'undefined' ? question.correctAnswerIndex == question.selectedAnswer : "0"
+                    answeredCorrectly: question.selectedAnswer !== undefined ? question.correctAnswerIndex == question.selectedAnswer : "0"
                 });
 
 
