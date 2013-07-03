@@ -3,16 +3,16 @@
 
 $.COR.services.login = function (email, password, successCallback, failcallback) {
 
-    var self = this;
+    var COR = $.COR;
 
-    if (this.account.offline == false) {
+    if (COR.account.offline == false) {
         var ph = new $.COR.Utilities.PostHandler({
             service: "account", call: "login",
             params: { email: email, password: $.COR.MD5(password) },
             success: function (data) {
 
                 if (data.Account != null) {
-                    self.account.setup(data, successCallback);
+                    COR.account.setup(data, successCallback);
                 }
                 else {
                     failcallback(data.LoginFailedReason);
@@ -41,7 +41,7 @@ $.COR.services.login = function (email, password, successCallback, failcallback)
         };
 
 
-        self.account.setup(data, successCallback);
+        COR.account.setup(data, successCallback);
     }
 }
 
