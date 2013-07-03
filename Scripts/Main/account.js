@@ -808,24 +808,25 @@ $.COR.account.completeTest = function () {
 
                 var question = questions[i];
 
-                postQuestions.push({
-                    selectedAnswer: question.selectedAnswer,
-                    timeTaken: question.timeTaken,
-                    mode: self.simulator.options.mode
-                });
 
+                //{
+                //    "questionId": "3",
+                //    "accountUserId": "3",
+                //    "timeTaken": 13,
+                //    "mode": "1",
+                //    "selectedAnswer": "12",
+                //    "answeredCorrectly": "0"
+                //},
 
-                postQuestions.push({
-                    selectedAnswer: question.selectedAnswer,
-                    timeTaken: question.timeTaken,
-                    mode: self.simulator.options.mode
-                });
-
+                var selectedAnswer = question.selectedAnswer !== 'undefined' ? question.answers[question.selectedAnswer].QuestionToAnswersId : "0";
 
                 postQuestions.push({
-                    selectedAnswer: question.selectedAnswer,
+                    questionId: question.answers[question.selectedAnswer].questionId,
+                    accountUserId: $.COR.account.user.AccountUserId,
                     timeTaken: question.timeTaken,
-                    mode: self.simulator.options.mode
+                    mode: self.simulator.options.mode,
+                    selectedAnswer: selectedAnswer,
+                    answeredCorrectly: question.selectedAnswer !== 'undefined' ? question.correctAnswerIndex == question.selectedAnswer : "0"
                 });
 
 
@@ -854,10 +855,9 @@ $.COR.account.completeTest = function () {
             //Save the questions
 
             var ph = new $.COR.Utilities.PostHandler({
-                service: "question", call: "getQuestionsAndAnswers",
+                service: "question", call: "saveQuestionHistory",
                 params: {
-                    SectionTypeId: JSON.stringify(postQuestions),
-                    QuestionAmount: $("#practice-question-count").val()
+                    SectionTypeId: JSON.stringify(postQuestions)
                 },
                 success: function (data) {
 
