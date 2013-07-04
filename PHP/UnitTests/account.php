@@ -15,7 +15,7 @@ class TestAccount extends UnitTestCase {
         $email = "steffan77@gmail.com";
         BuildTestHeader("Register New User", "service_account", "registerNewUser", "Test registering a new user - $email", null, null);
   
-        $sections = "[{'FAR': '0','AUD': '1','BEC': '0','REG': '1'}]";
+        $sections = '[{"FAR": "0","AUD": "1","BEC": "0","REG": "1"}]';
 
   
         $result = simulatePostRequest(array("email"=>$email, "password"=>"e368b9938746fa090d6afd3628355133","sections"=>$sections), "service_account","registerNewUser");
