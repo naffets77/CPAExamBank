@@ -12,7 +12,7 @@ class TestAccount extends UnitTestCase {
     
         $email = "registerTest_" . rand(5,25000) ."@cpaexambank.com";
     
-        $email = "steffan77@gmail.com";
+        $email = "steffan777@gmail.com";
         BuildTestHeader("Register New User", "service_account", "registerNewUser", "Test registering a new user - $email", null, null);
   
         $sections = '[{"FAR": "0","AUD": "1","BEC": "0","REG": "1"}]';

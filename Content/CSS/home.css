@@ -195,11 +195,17 @@
 
 /*** Product Tab ***/
 
+/* TODO: Get some overall styling going for stuff like this */
+#js-content-wrapper-product-pricing > p{
+    margin: 20px 20px 10px;
+    line-height:22px;
+    font-size:16px;
+}
 
 #pricing-holder {
     float: left;
     width: 920px;
-    margin: 20px;
+    margin: 10px 20px 20px;
 }
 
     #pricing-holder div {
@@ -285,6 +291,38 @@
     float: right;
     margin-right: 20px;
     margin-bottom: 50px;
+}
+
+#pricing-total{
+    float:right;
+    margin-right:30px;
+    font-size:40px;
+}
+
+#pricing-sign-up-more-info{
+    clear:both;
+    font-size:16px;
+    line-height:22px;
+    float:left;
+}
+
+#pricing-sign-up-more-info table{
+    margin:20px;
+}
+
+#pricing-sign-up-more-info table td{
+    padding:10px 10px 30px;
+    border:1px solid #efefef;
+    background-color:#8D0000;
+    color:#fff;
+}
+
+#pricing-sign-up-more-info table td:first-child{
+    font-weight:bold;
+    padding-right:20px;
+    width:230px;
+    background-color:#333;
+    color:#fff;
 }
 
 
@@ -428,6 +466,10 @@
 #js-overlay-register-content .title {
     font-size: 17px;
     font-weight: bold;
+}
+
+#js-overlay-register-content input{
+    visibility:visible;
 }
 
 #js-overlay-register-content tr td {

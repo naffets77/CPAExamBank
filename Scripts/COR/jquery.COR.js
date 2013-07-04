@@ -88,25 +88,30 @@ $.COR.pageEvents = function () {
 
         $("#invalid-account-message").hide();
 
-        var password = $("#home-login-password").val().length != 0 ? $("#home-login-password").val() : "testing";
-        var email = $("#home-login-username").val().length != 0 ? $("#home-login-username").val() : "steffan77@gmail.com";
+        var password = $("#home-login-password").val();
+        var email = $("#home-login-username").val();
 
-        self.pageSwap(getCurrentDisplayedId(), 'js-content-wrapper-login');
+        if (password.length != 0 && email.length != 0 && password != 'Password' && email != 'Email') {
 
-        self.services.login(
-            email,
-            password,
-            function () { // success function
+            self.pageSwap(getCurrentDisplayedId(), 'js-content-wrapper-login');
 
-                self.toggleAccountNavigation();
+            self.services.login(
+                email,
+                password,
+                function () { // success function
 
-                location.hash = "account";
-            },
-            function (failedReason) { // failure function (invalid email/password etc)
-                console.log("Error logging in : " + failedReason);
-                $("#invalid-account-message").show();
-            }
-        );
+                    self.toggleAccountNavigation();
+
+                    location.hash = "account";
+                },
+                function (failedReason) { // failure function (invalid email/password etc)
+                    console.log("Error logging in : " + failedReason);
+                    $("#invalid-account-message").show();
+                }
+            );
+        } else {
+            $("#invalid-account-message").show();
+        }
 
     });
 
