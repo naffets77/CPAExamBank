@@ -146,16 +146,8 @@
     border-right: 2px solid #efefef;
     border-bottom: 2px solid #efefef;
 
+    background: #5e9a9e; 
 
-    /*http://www.colorzilla.com/gradient-editor/#5e9a9e+0,5e9a9e+100;Custom*/
-    background: #5e9a9e; /* Old browsers */
-    background: -moz-linear-gradient(45deg, #5e9a9e 0%, #5e9a9e 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#5e9a9e), color-stop(100%,#5e9a9e)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(45deg, #5e9a9e 0%,#5e9a9e 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(45deg, #5e9a9e 0%,#5e9a9e 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(45deg, #5e9a9e 0%,#5e9a9e 100%); /* IE10+ */
-    background: linear-gradient(45deg, #5e9a9e 0%,#5e9a9e 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5e9a9e', endColorstr='#5e9a9e',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
     #home-product-container-top-left:hover {
@@ -170,15 +162,8 @@
     border-left: 2px solid #efefef;
     border-bottom: 2px solid #efefef;
    
-http://www.colorzilla.com/gradient-editor/#706b62+0,706b62+100;Custom
-    background: #706b62; /* Old browsers */
-    background: -moz-linear-gradient(45deg, #706b62 0%, #706b62 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#706b62), color-stop(100%,#706b62)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(45deg, #706b62 0%,#706b62 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(45deg, #706b62 0%,#706b62 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(45deg, #706b62 0%,#706b62 100%); /* IE10+ */
-    background: linear-gradient(45deg, #706b62 0%,#706b62 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#706b62', endColorstr='#706b62',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    background: #706b62; 
+
 }
 
     #home-product-container-top-right:hover {
@@ -195,16 +180,8 @@ http://www.colorzilla.com/gradient-editor/#706b62+0,706b62+100;Custom
     border-right: 2px solid #efefef;
     border-top: 2px solid #efefef;
 
+    background: #d95a1a; 
 
-    /* http://www.colorzilla.com/gradient-editor/#d95a1a+0,d95a1a+100;Custom */
-    background: #d95a1a; /* Old browsers */
-    background: -moz-linear-gradient(45deg, #d95a1a 0%, #d95a1a 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#d95a1a), color-stop(100%,#d95a1a)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(45deg, #d95a1a 0%,#d95a1a 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(45deg, #d95a1a 0%,#d95a1a 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(45deg, #d95a1a 0%,#d95a1a 100%); /* IE10+ */
-    background: linear-gradient(45deg, #d95a1a 0%,#d95a1a 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d95a1a', endColorstr='#d95a1a',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
     #home-product-container-bottom-left:hover {
@@ -219,15 +196,8 @@ http://www.colorzilla.com/gradient-editor/#706b62+0,706b62+100;Custom
     border-left: 2px solid #efefef;
     border-top: 2px solid #efefef;
 
-    /*http://www.colorzilla.com/gradient-editor/#9e7c92+0,9e7c92+100;Custom*/
-    background: #9e7c92; /* Old browsers */
-    background: -moz-linear-gradient(45deg, #9e7c92 0%, #9e7c92 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#9e7c92), color-stop(100%,#9e7c92)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(45deg, #9e7c92 0%,#9e7c92 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(45deg, #9e7c92 0%,#9e7c92 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(45deg, #9e7c92 0%,#9e7c92 100%); /* IE10+ */
-    background: linear-gradient(45deg, #9e7c92 0%,#9e7c92 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9e7c92', endColorstr='#9e7c92',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    background: #9e7c92; 
+
 }
 
     #home-product-container-bottom-right:hover {
@@ -246,7 +216,6 @@ http://www.colorzilla.com/gradient-editor/#706b62+0,706b62+100;Custom
     float: left;
     width: 920px;
     margin: 20px;
-    border-bottom: 2px solid #000;
 }
 
     #pricing-holder div {
@@ -255,78 +224,47 @@ http://www.colorzilla.com/gradient-editor/#706b62+0,706b62+100;Custom
 
     #pricing-holder .pricing-row {
         clear: both;
-        height: 100px;
+        height: 102px;
         width: 100%;
-        border-left: 2px solid #000;
-        border-top: 2px solid #000;
-        border-right: 2px solid #000;
     }
 
     #pricing-holder .row1 {
-    background: #5e9a9e; /* Old browsers */
-    background: -moz-linear-gradient(45deg, #5e9a9e 0%, #5e9a9e 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#5e9a9e), color-stop(100%,#5e9a9e)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(45deg, #5e9a9e 0%,#5e9a9e 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(45deg, #5e9a9e 0%,#5e9a9e 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(45deg, #5e9a9e 0%,#5e9a9e 100%); /* IE10+ */
-    background: linear-gradient(45deg, #5e9a9e 0%,#5e9a9e 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5e9a9e', endColorstr='#5e9a9e',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */;
+    background: #5e9a9e; 
     }
 
     #pricing-holder .row2 {
-    background: #706b62; /* Old browsers */
-    background: -moz-linear-gradient(45deg, #706b62 0%, #706b62 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#706b62), color-stop(100%,#706b62)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(45deg, #706b62 0%,#706b62 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(45deg, #706b62 0%,#706b62 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(45deg, #706b62 0%,#706b62 100%); /* IE10+ */
-    background: linear-gradient(45deg, #706b62 0%,#706b62 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#706b62', endColorstr='#706b62',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */;
+    background: #706b62;
     }
 
     #pricing-holder .row3 {
-    background: #d95a1a; /* Old browsers */
-    background: -moz-linear-gradient(45deg, #d95a1a 0%, #d95a1a 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#d95a1a), color-stop(100%,#d95a1a)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(45deg, #d95a1a 0%,#d95a1a 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(45deg, #d95a1a 0%,#d95a1a 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(45deg, #d95a1a 0%,#d95a1a 100%); /* IE10+ */
-    background: linear-gradient(45deg, #d95a1a 0%,#d95a1a 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d95a1a', endColorstr='#d95a1a',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */;
+    background: #d95a1a; 
     }
 
     #pricing-holder .row4 {
-    background: #9e7c92; /* Old browsers */
-    background: -moz-linear-gradient(45deg, #9e7c92 0%, #9e7c92 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#9e7c92), color-stop(100%,#9e7c92)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(45deg, #9e7c92 0%,#9e7c92 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(45deg, #9e7c92 0%,#9e7c92 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(45deg, #9e7c92 0%,#9e7c92 100%); /* IE10+ */
-    background: linear-gradient(45deg, #9e7c92 0%,#9e7c92 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9e7c92', endColorstr='#9e7c92',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */;
+    background: #9e7c92; 
+    }
+
+    #pricing-holder .col3 .pricing-row{
+        width:80px;
     }
 
 
     #pricing-holder .pricing-row .pricing-price {
         width: 150px;
         text-align: center;
-        font-size: 56px;
+        font-size: 51px;
         line-height: 90px;
         color: #fff;
-        text-shadow: 1px 1px #333;
-        border-right: 2px solid #000;
         height: 100px;
     }
 
     #pricing-holder .pricing-row .pricing-product-name {
-        text-align: center;
+        text-align: left;
         font-size: 26px;
         line-height: 90px;
         color: #fff;
-        text-shadow: 1px 1px #333;
         height: 100px;
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-right: 30px;
         width: 415px;
     }
 
@@ -334,7 +272,6 @@ http://www.colorzilla.com/gradient-editor/#706b62+0,706b62+100;Custom
         background-color: #333;
         color: #fff;
         height: 406px;
-        margin-left: 4px;
         width: 245px;
         border-top: 2px solid #000;
     }
