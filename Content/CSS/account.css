@@ -142,7 +142,6 @@
     }
 
     #review-results .my-info-question-data-row td{
-        height:0px;
         padding:0px;
     }
 
@@ -157,7 +156,7 @@
         background-color: #efefef;
     }
 
-    #review-results .my-info-quesiton-holder .my-info-question-text {
+    #review-results .my-info-question-holder .my-info-question-text {
         font-size:16px;
         color:#000;
         margin-bottom:15px;
