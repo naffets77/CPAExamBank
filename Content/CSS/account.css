@@ -141,6 +141,15 @@
         border-bottom: 1px solid #000;
     }
 
+    #review-results .my-info-question-data-row tr td{
+        height:0px;
+        padding:0px;
+    }
+
+        #review-results .my-info-question-data-row tr td .my-info-question-data{
+            display:none;
+        }
+
     #review-results .my-info-question-holder {
         text-align: left;
         margin-top: 10px;
