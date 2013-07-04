@@ -18,7 +18,7 @@ class TestAccount extends UnitTestCase {
     
         BuildResultViewer($result, "service_account :: registerNewUser");
                 
-        $this->assertTrue(true);
+        $this->assertTrue($result["Result"] != 0);
     
     
     }
