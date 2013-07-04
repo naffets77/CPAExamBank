@@ -313,16 +313,15 @@
 #pricing-sign-up-more-info table td{
     padding:10px 10px 30px;
     border:1px solid #efefef;
-    background-color:#8D0000;
-    color:#fff;
+
 }
 
 #pricing-sign-up-more-info table td:first-child{
     font-weight:bold;
     padding-right:20px;
     width:230px;
-    background-color:#333;
-    color:#fff;
+    background-color:#efefef;
+    color:#333;
 }
 
 
