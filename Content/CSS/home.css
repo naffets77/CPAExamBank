@@ -8,28 +8,24 @@
     float: left;
     clear: both;
     width: 100%;
-
-    border:solid 1px #eee;
-
+    border: solid 1px #eee;
     background-image: linear-gradient(bottom, #FAFAFA 0%, #FAFAFA 2%, #FFFFFF 35%);
     background-image: -o-linear-gradient(bottom, #FAFAFA 0%, #FAFAFA 2%, #FFFFFF 35%);
     background-image: -moz-linear-gradient(bottom, #FAFAFA 0%, #FAFAFA 2%, #FFFFFF 35%);
     background-image: -webkit-linear-gradient(bottom, #FAFAFA 0%, #FAFAFA 2%, #FFFFFF 35%);
     background-image: -ms-linear-gradient(bottom, #FAFAFA 0%, #FAFAFA 2%, #FFFFFF 35%);
     background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0, #FAFAFA), color-stop(0.02, #FAFAFA), color-stop(0.35, #FFFFFF) );
-
-
 }
 
     .js-content-wrapper .content {
-        margin:20px;
+        margin: 20px;
     }
 
 
 /* Home */
 
 #home-forgot-login {
-    cursor:pointer;
+    cursor: pointer;
 }
 
 #reset-password-holder {
@@ -69,35 +65,36 @@
     }
 
 #home-row-3 {
-    margin-bottom:40px;
-    float:left;
+    margin-bottom: 40px;
+    float: left;
 }
 
-#home-row-3 p {
-    width:580px;
-    float:left;
-    margin-left:20px;
-    font-size:17px;
-    line-height:20px;
-}
-
-    #home-row-3 p .bold {
-        font-size:20px;
+    #home-row-3 p {
+        width: 580px;
+        float: left;
+        margin-left: 20px;
+        font-size: 17px;
+        line-height: 20px;
     }
+
+        #home-row-3 p .bold {
+            font-size: 20px;
+        }
 
     #home-row-3 .register {
-        width:300px;
-        float:left;
-        background-color:#D8D8D8;
-        padding:20px;
+        width: 300px;
+        float: left;
+        background-color: #D8D8D8;
+        padding: 20px;
     }
+
         #home-row-3 .register table tr td {
-            padding-bottom:10px;
+            padding-bottom: 10px;
         }
 
-        #home-row-3 .register table tr td:first-child {
-            padding-right:10px;        
-        }
+            #home-row-3 .register table tr td:first-child {
+                padding-right: 10px;
+            }
 
         #home-row-3 .register input {
             width: 200px;
@@ -118,7 +115,6 @@
 
     #home-product-container .product, #home-product-container .product-price {
         font-size: 18px;
-        
         color: #fff;
         text-align: center;
         /*text-shadow: 1px 1px #fff;*/
@@ -127,13 +123,9 @@
 
     #home-product-container .product-price {
         font-size: 40px;
-        color:#fff;
-        margin-top:20px;
-
+        color: #fff;
+        margin-top: 20px;
         /*text-shadow: 1px 1px #fff;*/
-
-
-
     }
 
 
@@ -145,9 +137,7 @@
     float: left;
     border-right: 2px solid #efefef;
     border-bottom: 2px solid #efefef;
-
-    background: #5e9a9e; 
-
+    background: #5e9a9e;
 }
 
     #home-product-container-top-left:hover {
@@ -161,9 +151,7 @@
     float: right;
     border-left: 2px solid #efefef;
     border-bottom: 2px solid #efefef;
-   
-    background: #706b62; 
-
+    background: #706b62;
 }
 
     #home-product-container-top-right:hover {
@@ -172,16 +160,14 @@
     }
 
 
-    
+
 #home-product-container-bottom-left {
     width: 148px;
     height: 148px;
     float: left;
     border-right: 2px solid #efefef;
     border-top: 2px solid #efefef;
-
-    background: #d95a1a; 
-
+    background: #d95a1a;
 }
 
     #home-product-container-bottom-left:hover {
@@ -195,9 +181,7 @@
     float: right;
     border-left: 2px solid #efefef;
     border-top: 2px solid #efefef;
-
-    background: #9e7c92; 
-
+    background: #9e7c92;
 }
 
     #home-product-container-bottom-right:hover {
@@ -229,23 +213,23 @@
     }
 
     #pricing-holder .row1 {
-    background: #5e9a9e; 
+        background: #5e9a9e;
     }
 
     #pricing-holder .row2 {
-    background: #706b62;
+        background: #706b62;
     }
 
     #pricing-holder .row3 {
-    background: #d95a1a; 
+        background: #d95a1a;
     }
 
     #pricing-holder .row4 {
-    background: #9e7c92; 
+        background: #9e7c92;
     }
 
-    #pricing-holder .col3 .pricing-row{
-        width:80px;
+    #pricing-holder .col3 .pricing-row {
+        width: 115px;
     }
 
 
@@ -269,12 +253,15 @@
     }
 
     #pricing-holder .col2 {
-        background-color: #333;
+        background-color: #444;
         color: #fff;
-        height: 406px;
-        width: 245px;
-        border-top: 2px solid #000;
+        height: 408px;
+        width: 210px;
     }
+
+        #pricing-holder .col2 ol li {
+            margin: 20px 10px;
+        }
 
         #pricing-holder .col2 ul {
             margin: 20px;
@@ -289,14 +276,15 @@
         text-align: center;
     }
 
-        #pricing-holder .col3 input {
-            margin-top: 45px;
+
+        #pricing-holder .col3 .squaredTwo {
+            margin: 38px 45px;
         }
 
-#pricing-sign-up{
-    float:right;
-    margin-right:20px;
-    margin-bottom:50px;
+#pricing-sign-up {
+    float: right;
+    margin-right: 20px;
+    margin-bottom: 50px;
 }
 
 
@@ -305,115 +293,148 @@
 
 
 #js-content-wrapper-contact .content table {
-    margin-top:30px;
+    margin-top: 30px;
 }
 
     #js-content-wrapper-contact .content table tr td {
-        padding-bottom:30px;
+        padding-bottom: 30px;
     }
 
-    #js-content-wrapper-contact .content table tr td textarea{
-        width:400px;
-        height:150px;
-    }
+        #js-content-wrapper-contact .content table tr td textarea {
+            width: 400px;
+            height: 150px;
+        }
 
 
-#js-content-wrapper-contact .content table tr td:first-child {
-        padding-right:10px;
-        vertical-align:middle;  
-}
+        #js-content-wrapper-contact .content table tr td:first-child {
+            padding-right: 10px;
+            vertical-align: middle;
+        }
 
 /*** About Us Page Styles ***/
 
 #js-content-wrapper-contact .content {
-    margin-top:20px;
+    margin-top: 20px;
 }
+
+#aboutus-holder p{font-size:16px; line-height:22px;}
 
 
 /*** FAQs ***/
 
 #faq-holder {
     margin-left: 20px;
-    margin-bottom:50px;
-    float:left;
-    clear:both;
-    width:100%;
+    margin-bottom: 50px;
+    float: left;
+    clear: both;
+    width: 100%;
 }
 
-#faq-holder .col1 {
-    float:left; 
-    width:300px;
-    margin-top:10px;
-
-}
-
-    #faq-holder .col1 h2 {
-        font-size:15px;
-        font-weight:bold;
-        margin:0px;
-        margin-bottom:5px;
+    #faq-holder .col1 {
+        float: left;
+        width: 300px;
+        margin-top: 10px;
     }
 
-    #faq-holder .col1 ul li.section {
-        margin-bottom:20px;
-    }
-        #faq-holder .col1 ul li.section ul {
-            padding-top:10px;
+        #faq-holder .col1 h2 {
+            font-size: 15px;
+            font-weight: bold;
+            margin: 0px;
+            margin-bottom: 5px;
         }
 
-        #faq-holder .col1 ul li.section ul li {
+        #faq-holder .col1 ul li.section {
+            margin-bottom: 20px;
+        }
+
+            #faq-holder .col1 ul li.section ul {
+                padding-top: 10px;
+            }
+
+                #faq-holder .col1 ul li.section ul li {
+                    margin-bottom: 10px;
+                    margin-left: 5px;
+                    padding-left: 4px;
+                    border-left: 2px solid #fff;
+                }
+
+                    #faq-holder .col1 ul li.section ul li:hover {
+                        /*border-left: 2px solid #009999;*/
+                        border-left: 2px solid #8D0000;
+                        padding-left: 4px;
+                    }
+
+                    #faq-holder .col1 ul li.section ul li a {
+                        color: #333;
+                        text-decoration: none;
+                    }
+
+                        #faq-holder .col1 ul li.section ul li a.active {
+                            /*text-shadow: 0px 1px 0px #000;*/
+                            color:#8D0000;
+                            font-weight:bold;
+                        }
+
+
+
+
+    #faq-holder .col2 {
+        float: left;
+        margin-left: 20px;
+        width: 570px;
+        margin-top: -15px;
+    }
+
+    #faq-holder .col2 .faqs-content{
+        font-size:16px;
+        line-height:22px;
+    }
+
+        #faq-holder .col2 h2 {
+            font-size: 25px;
+            padding-left: 0px;
+            margin-left: 0px;
+            padding: 15px;
+            background-color: #8D0000;
+            color: #fff;
+            border-radius: 3px 3px 3px 3px;
+            -moz-border-radius: 3px 3px 3px 3px;
+            -webkit-border-radius: 3px 3px 3px 3px;
+        }
+
+        #faq-holder .col2 p{
+
+            margin:20px 0px;
+        }
+
+        #faq-holder .col2 ul{
+            list-style-type:disc;
+            margin:0px 0px 25px 40px;
+        }
+
+        #faq-holder .col2 ul li{
             margin-bottom:10px;
-            margin-left:5px;
-            padding-left:4px;
-            border-left:2px solid #fff;
         }
 
-            #faq-holder .col1 ul li.section ul li:hover {
-                border-left:2px solid #009999;
-                padding-left:4px;
-            }
-
-        #faq-holder .col1 ul li.section ul li a{
-            color:#333;
-            text-decoration:none;
+        #faq-holder .col2 table tr td:first-child{
+            padding-right:10px;
         }
 
-            #faq-holder .col1 ul li.section ul li a.active {
-                text-shadow:0px 1px 0px #000;
-            }
 
-
-
-
-#faq-holder .col2 {
-    float:left;
-    margin-left:20px;
-    width:570px;
-    margin-top:-15px;
-}
-
-    #faq-holder .col2 h2 {
-        font-size:25px;
-        padding-left:0px;
-        margin-left:0px;
-        padding:15px;
-        background-color:#38B2CE;
-        color:#fff;
-    }
 
 
 /*** Registration Popup ***/
 
-#js-overlay-register-content .title { 
-    font-size:17px; 
-    font-weight:bold;
+#js-overlay-register-content .title {
+    font-size: 17px;
+    font-weight: bold;
 }
 
 #js-overlay-register-content tr td {
-    padding:4px 10px;
+    padding: 4px 10px;
 }
 
-#js-overlay-register-content .register-close{
+#js-overlay-register-content .register-close {
     background-color: #000;
     color: #fff;
     position: absolute;
@@ -421,18 +442,11 @@
     right: -10px;
     padding: 4px 10px 9px 10px;
     font-weight: bold;
-
     -moz-border-radius: 20px;
     -webkit-border-radius: 20px;
     -khtml-border-radius: 20px;
     border-radius: 20px;
-
-    font-size:20px;
-
-    cursor:pointer;
-
-    border:2px solid #fff;
+    font-size: 20px;
+    cursor: pointer;
+    border: 2px solid #fff;
 }
-
-
-

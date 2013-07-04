@@ -95,6 +95,10 @@ h2 {
     text-decoration: none;
 }
 
+.cpa-red{
+    color:#8D0000;
+}
+
 .link, a {
     cursor: pointer;
 }
@@ -251,9 +255,11 @@ body {
     float: left;
     color: #000;
     font: 50px Tahoma, Helvetica, Arial, Sans-Serif;
-    text-align: center;
     color: #222;
-    text-shadow: 0px 2px 3px #555;
+}
+
+#header-logo .highlight{
+    color:#8D0000;
 }
 
 #header-navigation {
@@ -282,7 +288,7 @@ body {
         }
          
             #header-navigation li a:hover {
-                color: #38B2CE;
+                color:#8D0000;
             }
 
         #header-navigation li.current {

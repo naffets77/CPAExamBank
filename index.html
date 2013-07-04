@@ -1,75 +1,76 @@
 <html>
-    <head>
+<head>
 
-        <title>CPA Exam Bank - CPA Exam Questions</title>
+    <title>CPA Exam Bank - CPA Exam Questions</title>
 
-        <link href="Content/CSS/global.css" rel="stylesheet" />
-        <link href="Content/CSS/buttons.css" rel="stylesheet" />
-        <link href="Content/CSS/home.css" rel="stylesheet" />
-        <link href="Content/CSS/account.css" rel="stylesheet" />
-    </head>
-    <body>
+    <link href="Content/CSS/global.css" rel="stylesheet" />
+    <link href="Content/CSS/fancyInputs.css" rel="stylesheet" />
+    <link href="Content/CSS/buttons.css" rel="stylesheet" />
+    <link href="Content/CSS/home.css" rel="stylesheet" />
+    <link href="Content/CSS/account.css" rel="stylesheet" />
+</head>
+<body>
 
-        <div id="full-screen-overlay" class="hidden">
-        </div>
+    <div id="full-screen-overlay" class="hidden">
+    </div>
 
-        <div id="full-screen-container" class="full hidden">
-            <div class="content"></div>
-        </div>
+    <div id="full-screen-container" class="full hidden">
+        <div class="content"></div>
+    </div>
 
-        <div id="wrapper">
-            <div id="body">
+    <div id="wrapper">
+        <div id="body">
 
-                <div id="ServerErrorHandler" class="shadow-centered">
-                    <h2>There was an error trying to make your request.</h2> 
-                    <p>
-                        Please refresh the page and try again. If you are seeing this message and you have verified your internet 
-                        connection is valid then please <span class="link" style="color:#000;">contact us</span>.
-                    </p>
+            <div id="ServerErrorHandler" class="shadow-centered">
+                <h2>There was an error trying to make your request.</h2>
+                <p>
+                    Please refresh the page and try again. If you are seeing this message and you have verified your internet 
+                        connection is valid then please <span class="link" style="color: #000;">contact us</span>.
+                </p>
+            </div>
+
+
+            <div id="header">
+                <div id="header-logo">CPA<span class="highlight">ExamBank</span>.com</div>
+                <div id="header-login-container">
+                    <div id="invalid-account-message" class="arrow_box">Invalid Account</div>
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="text" id='home-login-username' value="Email" onclick="$(this).val('steffan77@gmail.com');" />
+                            </td>
+                            <td>
+                                <input type="text" id='home-login-password' value="Password" onclick="$(this).val('testing');" />
+                            </td>
+                            <td>
+                                <button id='login' style="margin-top: 1px">Login</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="padding-top: 4px;"><a href="#reset-password" id='home-forgot-login'>Forgot Password/Email?</a></td>
+                        </tr>
+                    </table>
                 </div>
-
-
-                <div id="header">
-                    <div id="header-logo">CPA<span class="cpa-blue">ExamBank</span>.com</div>
-                    <div id="header-login-container">
-                        <div id="invalid-account-message" class="arrow_box">Invalid Account</div>
-                        <table>
-                            <tr>
-                                <td>
-                                    <input type="text" id='home-login-username' value="Email" onclick="$(this).val('steffan77@gmail.com');" />
-                                </td>
-                                <td>
-                                    <input type="text" id='home-login-password' value="Password" onclick="$(this).val('testing');" />
-                                </td>
-                                <td>
-                                    <button id='login' style="margin-top:1px">Login</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" style="padding-top:4px;"><a href="#reset-password" id='home-forgot-login'>Forgot Password/Email?</a></td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div id="header-logout-container">
-                        Logout
-                    </div>
+                <div id="header-logout-container">
+                    Logout
                 </div>
-                 
-                <ul id="header-navigation">
-                    <li id="header-navigation_" class="current first"><a href='#'>Home</a></li>
-                    <li id="header-navigation_study" class="account account-only hidden"><a href='#study'>Study</a></li>
-                    <li id="Li1" class="account account-only hidden"><a href='#my-review'>My Review</a></li>
-                    <li id="header-navigation_my-info" class="account account-only hidden"><a href='#my-info'>My Info</a></li>
-                    <li id="header-navigation_product-pricing"><a href='#product-pricing'>Product Pricing</a></li>
-                    <li id="header-navigation_faqs" class="account"><a href='#faqs'>FAQs</a></li>
-                    <li id="header-navigation_about"><a href='#about'>About</a></li>
-                    <li id="header-navigation_contact" class="last account"><a href='#contact'>Contact</a></li>
-                </ul>
+            </div>
 
-                <!-- Home Page -->
-                <div id="js-content-wrapper-splash" class="js-content-wrapper hidden">
+            <ul id="header-navigation">
+                <li id="header-navigation_" class="current first"><a href='#'>Home</a></li>
+                <li id="header-navigation_study" class="account account-only hidden"><a href='#study'>Study</a></li>
+                <li id="Li1" class="account account-only hidden"><a href='#my-review'>My Review</a></li>
+                <li id="header-navigation_my-info" class="account account-only hidden"><a href='#my-info'>My Info</a></li>
+                <li id="header-navigation_product-pricing"><a href='#product-pricing'>Product Pricing</a></li>
+                <li id="header-navigation_faqs" class="account"><a href='#faqs'>FAQs</a></li>
+                <li id="header-navigation_about"><a href='#about'>About</a></li>
+                <li id="header-navigation_contact" class="last account"><a href='#contact'>Contact</a></li>
+            </ul>
 
-                    <!--
+            <!-- Home Page -->
+            <div id="js-content-wrapper-splash" class="js-content-wrapper hidden">
+
+                <!--
                     <div id="home-row1" class="body-content-col-container two-col hidden">
 
                         <h1>Over 250 Multiple Choice CPA Test Questions</h1>
@@ -165,153 +166,179 @@
                     </div>
                     -->
 
-                    <div id="home-row-1">
-                        <div id="home-product-container" class="shadow register-sign-up">
-                            <div id="home-product-container-top-left">
-                                <div class="product">Financial <br /> Accounting and Reporting</div>
-                                <div class="product-price">$5</div>
-                            </div>
-                            <div id="home-product-container-top-right">
-                                <div class="product">Auditing <br /> and <br /> Attestation</div>
-                                <div class="product-price">$5</div>
-                            </div>
-                            <div id="home-product-container-bottom-left">
-                                <div class="product">Business <br /> environment<br /> and concepts</div>
-                                <div class="product-price">$5</div>
-                            </div>
-                            <div id="home-product-container-bottom-right">
-                                <div class="product">Regualtion <br /> and <br /> Taxation</div>
-                                <div class="product-price">$5</div>
-                            </div>
+                <div id="home-row-1">
+                    <div id="home-product-container" class="shadow register-sign-up">
+                        <div id="home-product-container-top-left">
+                            <div class="product">Financial
+                                <br />
+                                Accounting and Reporting</div>
+                            <div class="product-price">$5</div>
                         </div>
-
-                        <p>
-                            The CPA Exam Bank is the leader in global CPA exam preparation materials. We produce thousands of online CPA exam practice questions to help you achieve the score you deserve. Each CPA exam question is created to provide students the opportunity to demonstrate sound understanding of fundamental concepts and equations. With our commitment to performance excellence, the CPA Exam Bank provides the highest quality in practice questions simulated in a real testing environment.
-
-
-
-                            <br /><br />
-                           Real questions. Real results. Join CPA Exam Bank today!
-                        </p>
-                    </div>
-
-                    <div id="home-row-2" class="shadow" style="margin-top:20px; background-color:#efefef;float:left; width:920px; margin:20px;">
-                        <ul>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipis</li>
-                            <li>Duis sed ligula et lectus cursus viverra</li>
-                            <li>Vestibulum quis ipsum justo. Praesent in mi ultricies</li>
-                            <li>Ut sagittis diam volutpat purus commodo tempor.</li>
-                            <li>Etiam lobortis quam in placerat mollis.</li>
-                            <li>Donec imperdiet ut nulla ut viverra.</li>
-                        </ul>
-                        <img style="height:300px; float:right; margin:20px;" src="Content/Images/Home/accountant.jpg" />
-                    </div>
-
-                    <div id="home-row-3">
-                        <h2>Register and Access  your account in 30 seconds</h2>
-                        <p>
-                            <span class='bold cpa-blue'>&gt;</span> Get started right now with free questions. 
-                            <br /><br />
-                            <span class='bold cpa-blue'>&gt;</span> No credit card required
-                            <br /><br />
-                            <span class='bold cpa-blue'>&gt;</span> Vivamus congue porta consequat. In hac habitasse platea dictumst.
-                            <br /><br />
-                            <span class='bold cpa-blue'>&gt;</span> Aliquam id facilisis metus. In eget erat est.
-                            <br /><br />
-                            <span class='bold cpa-blue'>&gt;</span> In hac habitasse platea dictumst.
-                        </p>
-                        <div class="register shadow">
-                            <table>
-                                <tr>
-                                    <td colspan="2"><h2 style="text-align:left; width:100%; padding:0px; margin:0px;">Quick Registration</h2></td>
-                                </tr>
-                                <tr>
-                                    <td>Email</td>
-                                    <td><input type="text" /></td>
-                                </tr>
-                                <tr>
-                                    <td>Password</td>
-                                    <td><input type="text" /></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>
-                                        <button class="btn-orange btn-medium">Get Started</button>
-                                    </td>
-                                </tr>
-                            </table>
+                        <div id="home-product-container-top-right">
+                            <div class="product">Auditing
+                                <br />
+                                and
+                                <br />
+                                Attestation</div>
+                            <div class="product-price">$5</div>
+                        </div>
+                        <div id="home-product-container-bottom-left">
+                            <div class="product">Business
+                                <br />
+                                environment<br />
+                                and concepts</div>
+                            <div class="product-price">$5</div>
+                        </div>
+                        <div id="home-product-container-bottom-right">
+                            <div class="product">Regualtion
+                                <br />
+                                and
+                                <br />
+                                Taxation</div>
+                            <div class="product-price">$5</div>
                         </div>
                     </div>
 
+                    <p>
+                        The CPA Exam Bank is the leader in global CPA exam preparation materials. We produce thousands of online CPA exam practice questions to help you achieve the score you deserve. Each CPA exam question is created to provide students the opportunity to demonstrate sound understanding of fundamental concepts and equations. With our commitment to performance excellence, the CPA Exam Bank provides the highest quality in practice questions simulated in a real testing environment.
+
+
+
+                            <br />
+                        <br />
+                        Real questions. Real results. Join CPA Exam Bank today!
+                    </p>
                 </div>
- 
 
-                <!-- Lost Login/Password -->
-                <div id="js-content-wrapper-reset-password" class="js-content-wrapper hidden">
-                
-                    <div id="reset-password-holder">
-                        
-                        <h1 class='bold' style="font-size:16px;">Reset Password</h1>
-                
-                        <p style="margin-top:10px; width:600px;">
-                            Hey did you forget your password? 
-                            <br /><br />No problem, put in the email that you registered with and we'll send you an email with a 
+                <div id="home-row-2" class="shadow" style="margin-top: 20px; background-color: #efefef; float: left; width: 920px; margin: 20px;">
+                    <ul>
+                        <li>Lorem ipsum dolor sit amet, consectetur adipis</li>
+                        <li>Duis sed ligula et lectus cursus viverra</li>
+                        <li>Vestibulum quis ipsum justo. Praesent in mi ultricies</li>
+                        <li>Ut sagittis diam volutpat purus commodo tempor.</li>
+                        <li>Etiam lobortis quam in placerat mollis.</li>
+                        <li>Donec imperdiet ut nulla ut viverra.</li>
+                    </ul>
+                    <img style="height: 300px; float: right; margin: 20px;" src="Content/Images/Home/accountant.jpg" />
+                </div>
+
+                <div id="home-row-3">
+                    <h2>Register and Access  your account in 30 seconds</h2>
+                    <p>
+                        <span class='bold cpa-red'>&gt;</span> Get started right now with free questions. 
+                            <br />
+                        <br />
+                        <span class='bold cpa-red'>&gt;</span> No credit card required
+                            <br />
+                        <br />
+                        <span class='bold cpa-red'>&gt;</span> Vivamus congue porta consequat. In hac habitasse platea dictumst.
+                            <br />
+                        <br />
+                        <span class='bold cpa-red'>&gt;</span> Aliquam id facilisis metus. In eget erat est.
+                            <br />
+                        <br />
+                        <span class='bold cpa-red'>&gt;</span> In hac habitasse platea dictumst.
+                    </p>
+                    <div class="register shadow">
+                        <table>
+                            <tr>
+                                <td colspan="2">
+                                    <h2 style="text-align: left; width: 100%; padding: 0px; margin: 0px;">Quick Registration</h2>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Email</td>
+                                <td>
+                                    <input type="text" /></td>
+                            </tr>
+                            <tr>
+                                <td>Password</td>
+                                <td>
+                                    <input type="text" /></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <button class="btn-red btn-medium shadow">Get Started</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- Lost Login/Password -->
+            <div id="js-content-wrapper-reset-password" class="js-content-wrapper hidden">
+
+                <div id="reset-password-holder">
+
+                    <h1 class='bold' style="font-size: 16px;">Reset Password</h1>
+
+                    <p style="margin-top: 10px; width: 600px;">
+                        Hey did you forget your password? 
+                            <br />
+                        <br />
+                        No problem, put in the email that you registered with and we'll send you an email with a 
                             temporary password. 
-                            <br /><br />
-                            If that doesn't work, and you think you may have forgotten your email address or mistyped it, then please contact 
+                            <br />
+                        <br />
+                        If that doesn't work, and you think you may have forgotten your email address or mistyped it, then please contact 
                             us and we'll get in touch to figure out what happened. 
-                        </p>
+                    </p>
 
-                        <form id="reset-account-form" style="margin-top:20px;">
-                            <table>
-                                <tr id="reset-account-row-username">
-                                    <td>Email</td>
-                                    <td><input id="reset-account-username" name="reset-account-username" class="Validate" validate="Required" type="text" /></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>
-                                        <button id="reset-account-update-password">Send Rest Email</button><span id="reset-account-swirly" style="display: none;">Updating...</span>
-                                        <span ignorevalidation='true' class='js-page-switch link' page-switch="js-content-wrapper-splash">Cancel</span>
-                                    </td>
-                                </tr>
-                            </table>
-                        </form>
-
-                    </div>
+                    <form id="reset-account-form" style="margin-top: 20px;">
+                        <table>
+                            <tr id="reset-account-row-username">
+                                <td>Email</td>
+                                <td>
+                                    <input id="reset-account-username" name="reset-account-username" class="Validate" validate="Required" type="text" /></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <button id="reset-account-update-password">Send Rest Email</button><span id="reset-account-swirly" style="display: none;">Updating...</span>
+                                    <span ignorevalidation='true' class='js-page-switch link' page-switch="js-content-wrapper-splash">Cancel</span>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
 
                 </div>
 
-                <!-- FAQs page -->
-                <div id="js-content-wrapper-faqs" class="js-content-wrapper hidden">
-                    
-                    <h2>FAQs</h2>
+            </div>
 
-                    <div id="faq-holder">
-                        <div class="col1">
-                            <ul class="nav">
-                                <li class="section">
-                                    <h2>About The CPA Exam</h2>
-                                    <ul>
-                                        <li><a href="#faqs/cpa-exam-structure">CPA Exam Structure</a></li>
-                                        <li><a href="#faqs/cpa-exam-question-types">Question Types</a></li>
-                                        <li><a href="#faqs/cpa-exam-question-scoring">Question Scoring</a></li>
-                                        <li><a href="#faqs/cpa-exam-time-allocation">Time Allocation</a></li>
-                                    </ul>
-                                </li>
-                                <li class="section">
-                                    <h2>What Is CPAExamBank.com?</h2>
-                                    <ul>
-                                        <li><a href="#faqs/cpa-exam-question-bank">Question Bank</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col2">
+            <!-- FAQs page -->
+            <div id="js-content-wrapper-faqs" class="js-content-wrapper hidden">
 
-                            <div id="faqs-default" class="faqs-question">
-                                <h2>First FAQ Quesiton - Only shows when you first show up...</h2>                                
-                                AUD: 4 hours 
+                <h2>FAQs</h2>
+
+                <div id="faq-holder">
+                    <div class="col1">
+                        <ul class="nav">
+                            <li class="section">
+                                <h2>About The CPA Exam</h2>
+                                <ul>
+                                    <li><a href="#faqs/cpa-exam-structure">CPA Exam Structure</a></li>
+                                    <li><a href="#faqs/cpa-exam-question-types">Question Types</a></li>
+                                    <li><a href="#faqs/cpa-exam-question-scoring">Question Scoring</a></li>
+                                    <li><a href="#faqs/cpa-exam-time-allocation">Time Allocation</a></li>
+                                </ul>
+                            </li>
+                            <li class="section">
+                                <h2>What Is CPAExamBank.com?</h2>
+                                <ul>
+                                    <li><a href="#faqs/cpa-exam-question-bank">Question Bank</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col2">
+
+                        <div id="faqs-default" class="faqs-question">
+                            <h2>First FAQ Quesiton - Only shows when you first show up...</h2>
+                            AUD: 4 hours 
 Format: 3 multiple choice testlets and 7 short task-based simulation questions 
 
 BEC - 3 hours 
@@ -322,458 +349,469 @@ Format:  3 multiple choice testlets and 7 short task-based simulations
 
 REG - 3 hours 
 Format: 3 multiple choice testlets and 6 short task-based simulations 
-                            </div>
+                        </div>
 
-                            <div id ="faqs_cpa-exam-structure" class="faqs-content hidden">
-                                <h2>CPA Exam Structure</h2>
-                                
-                                   <p>
-                                    The CPA exam consists of four sections:
-                                   </p>  
-  
-                                <ol>
-                                    Auditing and Attestation ( AUD )
+                        <div id="faqs_cpa-exam-structure" class="faqs-content hidden">
 
-                                    Business Environment and Concepts ( BEC)
+                            <h2>CPA Exam Structure</h2>
 
-                                    Financial Accounting and Reporting ( FAR )
+                            <p>
+                                The CPA exam consists of four sections:
+                            </p>
 
-                                    Regulation ( REG )
-                                </ol>
-                                    
-                                <p>
-                                    These four sections consist of multiple-choice questions.  
+                            <ul>
+                                <li>Auditing and Attestation ( AUD )</li>
+                                <li>Business Environment and Concepts ( BEC)</li>
+                                <li>Financial Accounting and Reporting ( FAR )</li>
+                                <li>Regulation ( REG )</li>
+                            </ul>
+
+                            <p>
+                                These four sections consist of multiple-choice questions.  
 
                                     Sections AUD, FAR and REG consist of task-based simulation questions (TBS) as well. BEC contains a section for written communication questions but no task-based simulation questions.  
-                                </p>
-                                    
-                                                     
-                                
+                            </p>
 
 
-                            </div>
 
-                            <div id ="faqs_cpa-exam-question-types" class="faqs-content hidden">
-                                <h2>CPA Question Types and Sections</h2>
-                                <p> 
-                                        1. Testlets (aka. Multiple choice questions) - The CPA exam is divided into 3 sections called testlets. 
+
+
+                        </div>
+
+                        <div id="faqs_cpa-exam-question-types" class="faqs-content hidden">
+                            <h2>CPA Question Types and Sections</h2>
+                            <p>
+                                <span class='bold'>1. Testlets (aka. Multiple choice questions)</span> - The CPA exam is divided into 3 sections called testlets. 
                                         A testlet consists of 10 to 25 questions.  Candidates will be able to address and return to quesetion 
                                         responses only within the current testlet.  80% of the CPA exam contains multiple choice questions. This is why we 
                                         urge many of you to build a strong foundation using our practice questions. The CPA Exam Bank contains thousands of 
                                         various multiple choice questions to keep you sharp and constantly challenged. Perfecting your strategy in answering 
                                         multiple choice questions will increase your chances of passing the CPA exam.
-                                    </p>
-                                    <p>
-                                        2. Simulations (aka Case studies) - Accounting is tested in simulations, also known as Case studies.  Simulations consist of a variety of tasks. 
+                            </p>
+                            <p>
+                                <span class='bold'>2. Simulations (aka Case studies)</span> - Accounting is tested in simulations, also known as Case studies.  Simulations consist of a variety of tasks. 
                                          These include: searching various database, utilizing spreadsheets/forms and completing written communication tasks.  
                                         Simulations are utilized to measure your analysis, communication and research abilities.
-                                    </p>
-                                                               
-                                
+                            </p>
 
-  
+                            Note: The BEC section does not contain simulations questions. All other sections will contain 1 or 2 simulation questions.  Simulation questions will require 20 - 40 minutes. 
+                        </div>
 
-Note: The BEC section does not contain simulations questions. All other sections will contain 1 or 2 simulation questions.  Simulation questions will require 20 - 40 minutes. 
-                            </div>
-
-                            <div id ="faqs_cpa-exam-question-scoring" class="faqs-content hidden">
-                                <h2>CPA Exam Scoring</h2>
-                                <p>
-                                     Scoring:
-
+                        <div id="faqs_cpa-exam-question-scoring" class="faqs-content hidden">
+                            <h2>CPA Exam Scoring</h2>
+                            <p>
                                 CPA exam sections are reported on a scaled from 0 to 99.  A total reported score of 75 must be achieved in order to pass each section.  
-                                The total score for the following sections; AUD, FAR AND REG are a weighted combination of scaled scores from the MC and TBS questions. 
-                                For the BEC section, the total score is a weighted combination from the MC and written communication tasks.  
-</p>                    
-                                <br /> 
-                                <p>
-                                    Remember, the total reported score which requires 75 to pass each section is NOT a percentage and should not be interpreted as a percentage.
-                                </p>
-                                
-                                 
-                            </div>
+                                    The total score for the following sections; AUD, FAR AND REG are a weighted combination of scaled scores from the MC and TBS questions. 
+                                    For the BEC section, the total score is a weighted combination from the MC and written communication tasks.  
+                            </p>
 
-                            <div id ="faqs_cpa-exam-time-allocation" class="faqs-content hidden">
-                                <h2>CPA Exam Time Allocation</h2>
-                              <p>
-                                   Time allotted:
-
-AUD: 4 hours 
-Format: 3 multiple choice testlets and 7 short task-based simulation questions 
-
-BEC - 3 hours 
-Format:  3 multiple choice testlets and 3 written simulations 
-
-FAR - 4 hours
-Format:  3 multiple choice testlets and 7 short task-based simulations 
-
-REG - 3 hours 
-Format: 3 multiple choice testlets and 6 short task-based simulations 
-
-                              </p>  
-                              
-                            </div>
-
-                            <div id ="faqs_cpa-exam-question-bank" class="faqs-content hidden">
-                                <h2>CPA Exam Question Bank</h2>
-                                <p>
-                                    The CPA Exam Bank is your opportunity to build and refine the necessary skills required to achieve your highest score on the exam.
-                                When you register with the CPA Exam Bank you will encounter thousands of questions that will continually challenge your understanding of critical topics,
-                                formulas and comprehensive analytical skills.  Let us be the foundation of your success while saving money! 
-                                </p>
-                                
-
-                            </div>
+                            <p>
+                                Remember, the total reported score which requires 75 to pass each section is NOT a percentage and should not be interpreted as a percentage.
+                            </p>
 
 
                         </div>
+
+                        <div id="faqs_cpa-exam-time-allocation" class="faqs-content hidden">
+                            <h2>CPA Exam Time Allocation</h2>
+                            <p>
+                                Each section is taken at a time.
+                            </p>
+                            <p>
+                                <table>
+                                    <tr><span class='bold'>AUD</span><td></td></tr>
+                                    <tr><td>Time:</td><td>4 hours</td></tr>
+                                    <tr><td>Format:</td><td>3 multiple choice testlets and 7 short task-based simulation questions </td></tr>
+                                </table>                                 
+                            </p>
+                            <p>
+                                <table>
+                                    <tr><td><span class='bold'>BEC</span></td></tr>
+                                    <tr><td>Time:</td><td>3 hours</td></tr>
+                                    <tr><td>Format:</td><td>3 multiple choice testlets and 3 written simulations </td></tr>
+                                </table> 
+                            </p>
+                            <p>
+                                <table>
+                                    <tr><td><span class='bold'>FAR</span></td></tr>
+                                    <tr><td>Time:</td><td>4 hours</td></tr>
+                                    <tr><td>Format:</td><td>3 multiple choice testlets and 7 short task-based simulations</td></tr>
+                                </table>
+                            </p>
+                            <p>
+                                <table>
+                                    <tr><td><span class='bold'>REG</span></td></tr>
+                                    <tr><td>Time:</td><td>3 hours</td></tr>
+                                    <tr><td>Format:</td><td>3 multiple choice testlets and 6 short task-based simulations </td></tr>
+                                </table>
+                            </p>
+
+                        </div>
+
+                        <div id="faqs_cpa-exam-question-bank" class="faqs-content hidden">
+                            <h2>CPA Exam Question Bank</h2>
+                            <p>
+                                The CPA Exam Bank is your opportunity to build and refine the necessary skills required to achieve your highest score on the exam.
+                                When you register with the CPA Exam Bank you will encounter thousands of questions that will continually challenge your understanding of critical topics,
+                                formulas and comprehensive analytical skills.  Let us be the foundation of your success while saving money! 
+                            </p>
+
+
+                        </div>
+
+
                     </div>
                 </div>
+            </div>
 
-                <!-- Privacy Policy page -->
-                <div id="js-content-wrapper-privacy-policy" class="js-content-wrapper hidden">
-                    <div id="privacy-policy-holder">
-                        <h2>
-	                        Privacy Policy
-                        </h2>
+            <!-- Privacy Policy page -->
+            <div id="js-content-wrapper-privacy-policy" class="js-content-wrapper hidden">
+                <div id="privacy-policy-holder">
+                    <h2>Privacy Policy
+                    </h2>
 
-                        <p>
-	                        Your privacy is very important to us. Accordingly, we have developed this Policy in order for you to understand how we collect, use, communicate and disclose and make use of personal information. The following outlines our privacy policy.
-                        </p>
+                    <p>
+                        Your privacy is very important to us. Accordingly, we have developed this Policy in order for you to understand how we collect, use, communicate and disclose and make use of personal information. The following outlines our privacy policy.
+                    </p>
 
-                        <ul class="privacy-policy-ul">
-	                        <li>
-		                        Before or at the time of collecting personal information, we will identify the purposes for which information is being collected.
-	                        </li>
-	                        <li>
-		                        We will collect and use of personal information solely with the objective of fulfilling those purposes specified by us and for other compatible purposes, unless we obtain the consent of the individual concerned or as required by law.		
-	                        </li>
-	                        <li>
-		                        We will only retain personal information as long as necessary for the fulfillment of those purposes. 
-	                        </li>
-	                        <li>
-		                        We will collect personal information by lawful and fair means and, where appropriate, with the knowledge or consent of the individual concerned. 
-	                        </li>
-	                        <li>
-		                        Personal data should be relevant to the purposes for which it is to be used, and, to the extent necessary for those purposes, should be accurate, complete, and up-to-date. 
-	                        </li>
-	                        <li>
-		                        We will protect personal information by reasonable security safeguards against loss or theft, as well as unauthorized access, disclosure, copying, use or modification.
-	                        </li>
-	                        <li>
-		                        We will make readily available to customers information about our policies and practices relating to the management of personal information. 
-	                        </li>
-                        </ul>
+                    <ul class="privacy-policy-ul">
+                        <li>Before or at the time of collecting personal information, we will identify the purposes for which information is being collected.
+                        </li>
+                        <li>We will collect and use of personal information solely with the objective of fulfilling those purposes specified by us and for other compatible purposes, unless we obtain the consent of the individual concerned or as required by law.		
+                        </li>
+                        <li>We will only retain personal information as long as necessary for the fulfillment of those purposes. 
+                        </li>
+                        <li>We will collect personal information by lawful and fair means and, where appropriate, with the knowledge or consent of the individual concerned. 
+                        </li>
+                        <li>Personal data should be relevant to the purposes for which it is to be used, and, to the extent necessary for those purposes, should be accurate, complete, and up-to-date. 
+                        </li>
+                        <li>We will protect personal information by reasonable security safeguards against loss or theft, as well as unauthorized access, disclosure, copying, use or modification.
+                        </li>
+                        <li>We will make readily available to customers information about our policies and practices relating to the management of personal information. 
+                        </li>
+                    </ul>
 
-                        <p>
-	                        We are committed to conducting our business in accordance with these principles in order to ensure that the confidentiality of personal information is protected and maintained. 
-                        </p>
-                        <p>
-                            <span class='js-page-switch link' page-switch="js-content-wrapper-splash">Back</span>
-                        </p>
-                    </div>
+                    <p>
+                        We are committed to conducting our business in accordance with these principles in order to ensure that the confidentiality of personal information is protected and maintained. 
+                    </p>
+                    <p>
+                        <span class='js-page-switch link' page-switch="js-content-wrapper-splash">Back</span>
+                    </p>
                 </div>
+            </div>
 
-                <!-- Terms of use page -->
-                <div id="js-content-wrapper-terms-of-use" class="js-content-wrapper hidden">
-                    <div id="terms-of-use-holder">
-                        <h2>
-	                        Web Site Terms and Conditions of Use
-                        </h2>
-                        <h3>
-	                        1. Terms
-                        </h3>
-                        <p>
-	                        By accessing this web site, you are agreeing to be bound by these 
+            <!-- Terms of use page -->
+            <div id="js-content-wrapper-terms-of-use" class="js-content-wrapper hidden">
+                <div id="terms-of-use-holder">
+                    <h2>Web Site Terms and Conditions of Use
+                    </h2>
+                    <h3>1. Terms
+                    </h3>
+                    <p>
+                        By accessing this web site, you are agreeing to be bound by these 
 	                        web site Terms and Conditions of Use, all applicable laws and regulations, 
 	                        and agree that you are responsible for compliance with any applicable local 
 	                        laws. If you do not agree with any of these terms, you are prohibited from 
 	                        using or accessing this site. The materials contained in this web site are 
 	                        protected by applicable copyright and trade mark law.
-                        </p>
-                        <h3>
-	                        2. Use License
-                        </h3>
-                        <ol class="terms-conditions-ol">
-	                        <li>
-		                        Permission is granted to temporarily download one copy of the materials 
+                    </p>
+                    <h3>2. Use License
+                    </h3>
+                    <ol class="terms-conditions-ol">
+                        <li>Permission is granted to temporarily download one copy of the materials 
 		                        (information or software) on Corviden's web site for personal, 
 		                        non-commercial transitory viewing only. This is the grant of a license, 
 		                        not a transfer of title, and under this license you may not:
 		
 		                        <ol class="terms-conditions-ol second-level">
-			                        <li>modify or copy the materials;</li>
-			                        <li>use the materials for any commercial purpose, or for any public display (commercial or non-commercial);</li>
-			                        <li>attempt to decompile or reverse engineer any software contained on Corviden's web site;</li>
-			                        <li>remove any copyright or other proprietary notations from the materials; or</li>
-			                        <li>transfer the materials to another person or "mirror" the materials on any other server.</li>
-		                        </ol>
-	                        </li>
-	                        <li>
-		                        This license shall automatically terminate if you violate any of these restrictions and may be terminated by Corviden at any time. Upon terminating your viewing of these materials or upon the termination of this license, you must destroy any downloaded materials in your possession whether in electronic or printed format.
-	                        </li>
-                        </ol>
-                        <h3>
-	                        3. Disclaimer
-                        </h3>
-                        <ol class="terms-conditions-ol">
-	                        <li>
-		                        The materials on Corviden's web site are provided "as is". Corviden makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties, including without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights. Further, Corviden does not warrant or make any representations concerning the accuracy, likely results, or reliability of the use of the materials on its Internet web site or otherwise relating to such materials or on any sites linked to this site.
-	                        </li>
-                        </ol>
-                        <h3>
-	                        4. Limitations
-                        </h3>
-                        <p>
-	                        In no event shall Corviden or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption,) arising out of the use or inability to use the materials on Corviden's Internet site, even if Corviden or a Corviden authorized representative has been notified orally or in writing of the possibility of such damage. Because some jurisdictions do not allow limitations on implied warranties, or limitations of liability for consequential or incidental damages, these limitations may not apply to you.
-                        </p>
-                        <h3>
-	                        5. Revisions and Errata
-                        </h3>
-                        <p>
-	                        The materials appearing on Corviden's web site could include technical, typographical, or photographic errors. Corviden does not warrant that any of the materials on its web site are accurate, complete, or current. Corviden may make changes to the materials contained on its web site at any time without notice. Corviden does not, however, make any commitment to update the materials.
-                        </p>
-                        <h3>
-	                        6. Links
-                        </h3>
-                        <p>
-	                        Corviden has not reviewed all of the sites linked to its Internet web site and is not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by Corviden of the site. Use of any such linked web site is at the user's own risk.
-                        </p>
+                                    <li>modify or copy the materials;</li>
+                                    <li>use the materials for any commercial purpose, or for any public display (commercial or non-commercial);</li>
+                                    <li>attempt to decompile or reverse engineer any software contained on Corviden's web site;</li>
+                                    <li>remove any copyright or other proprietary notations from the materials; or</li>
+                                    <li>transfer the materials to another person or "mirror" the materials on any other server.</li>
+                                </ol>
+                        </li>
+                        <li>This license shall automatically terminate if you violate any of these restrictions and may be terminated by Corviden at any time. Upon terminating your viewing of these materials or upon the termination of this license, you must destroy any downloaded materials in your possession whether in electronic or printed format.
+                        </li>
+                    </ol>
+                    <h3>3. Disclaimer
+                    </h3>
+                    <ol class="terms-conditions-ol">
+                        <li>The materials on Corviden's web site are provided "as is". Corviden makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties, including without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights. Further, Corviden does not warrant or make any representations concerning the accuracy, likely results, or reliability of the use of the materials on its Internet web site or otherwise relating to such materials or on any sites linked to this site.
+                        </li>
+                    </ol>
+                    <h3>4. Limitations
+                    </h3>
+                    <p>
+                        In no event shall Corviden or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption,) arising out of the use or inability to use the materials on Corviden's Internet site, even if Corviden or a Corviden authorized representative has been notified orally or in writing of the possibility of such damage. Because some jurisdictions do not allow limitations on implied warranties, or limitations of liability for consequential or incidental damages, these limitations may not apply to you.
+                    </p>
+                    <h3>5. Revisions and Errata
+                    </h3>
+                    <p>
+                        The materials appearing on Corviden's web site could include technical, typographical, or photographic errors. Corviden does not warrant that any of the materials on its web site are accurate, complete, or current. Corviden may make changes to the materials contained on its web site at any time without notice. Corviden does not, however, make any commitment to update the materials.
+                    </p>
+                    <h3>6. Links
+                    </h3>
+                    <p>
+                        Corviden has not reviewed all of the sites linked to its Internet web site and is not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by Corviden of the site. Use of any such linked web site is at the user's own risk.
+                    </p>
 
-                        <h3>
-	                        7. Site Terms of Use Modifications
-                        </h3>
-                        <p>
-	                        Corviden may revise these terms of use for its web site at any time without notice. By using this web site you are agreeing to be bound by the then current version of these Terms and Conditions of Use.
-                        </p>
-                        <h3>
-	                        8. Governing Law
-                        </h3>
-                        <p>
-	                        Any claim relating to Corviden's web site shall be governed by the laws of the State of California without regard to its conflict of law provisions.
-                        </p>
-                        <p>
-	                        General Terms and Conditions applicable to Use of a Web Site.
-                        </p>
-                        <p>
-                            <span class='js-page-switch link' page-switch="js-content-wrapper-splash">Back</span>
-                        </p>
-                    </div>
+                    <h3>7. Site Terms of Use Modifications
+                    </h3>
+                    <p>
+                        Corviden may revise these terms of use for its web site at any time without notice. By using this web site you are agreeing to be bound by the then current version of these Terms and Conditions of Use.
+                    </p>
+                    <h3>8. Governing Law
+                    </h3>
+                    <p>
+                        Any claim relating to Corviden's web site shall be governed by the laws of the State of California without regard to its conflict of law provisions.
+                    </p>
+                    <p>
+                        General Terms and Conditions applicable to Use of a Web Site.
+                    </p>
+                    <p>
+                        <span class='js-page-switch link' page-switch="js-content-wrapper-splash">Back</span>
+                    </p>
                 </div>
+            </div>
 
-                <!-- pricing page -->
-                <div id="js-content-wrapper-product-pricing" class="js-content-wrapper hidden">
-                    <h2>Product Pricing</h2>
+            <!-- pricing page -->
+            <div id="js-content-wrapper-product-pricing" class="js-content-wrapper hidden">
+                <h2>Product Pricing</h2>
 
-                    
-                    
-                    
 
-                    <div id="pricing-holder" class="shadow">
-                        <div class="col1">
-                            <div class="pricing-row row1">
-                                <div class="pricing-price">$5</div>
-                                <div class="pricing-product-name">Financial Accounting and Reporting</div>
-                            </div>
-                            <div class="pricing-row row2">
-                                <div class="pricing-price">$5</div>
-                                <div class="pricing-product-name">Auditing and Attestation</div>
-                            </div>
-                            <div class="pricing-row row3">
-                                <div class="pricing-price">$5</div>
-                                <div class="pricing-product-name">Business environment and concepts</div>
-                            </div>
-                            <div class="pricing-row row4">
-                                <div class="pricing-price">$5</div>
-                                <div class="pricing-product-name">Regualtion and Taxation</div>
-                            </div>
+
+
+
+                <div id="pricing-holder" class="shadow">
+                    <div class="col1">
+                        <div class="pricing-row row1">
+                            <div class="pricing-price">$5</div>
+                            <div class="pricing-product-name">Financial Accounting and Reporting</div>
                         </div>
-                        <div class="col2">
+                        <div class="pricing-row row2">
+                            <div class="pricing-price">$5</div>
+                            <div class="pricing-product-name">Auditing and Attestation</div>
+                        </div>
+                        <div class="pricing-row row3">
+                            <div class="pricing-price">$5</div>
+                            <div class="pricing-product-name">Business environment and concepts</div>
+                        </div>
+                        <div class="pricing-row row4">
+                            <div class="pricing-price">$5</div>
+                            <div class="pricing-product-name">Regualtion and Taxation</div>
+                        </div>
+                    </div>
+                    <div class="col2">
                         <ol>
-                           <li>Customizable practice questions</li> 
-                           <li>Genuine Prometric exam simulation</li>
-                           <li>Historical performance overview</li> 
-                           <li>Bi-modular question environments with performance analysis</li>
-                           <li>Access to over 100,000+ CPA exam questions and answers</li>
+                            <li>Customizable practice questions</li>
+                            <li>Genuine Prometric exam simulation</li>
+                            <li>Historical performance overview</li>
+                            <li>Bi-modular question environments with performance analysis</li>
+                            <li>Access to over 100,000+ CPA exam questions and answers</li>
 
-                            
-                       </ol>
-                            
-                                                    
+
+                        </ol>
+
+
+                    </div>
+                    <div class="col3">
+                        <div class="pricing-row row1">
+                            <div class="squaredTwo">
+                                <input type="checkbox" value="None" id="pricing-row1-check" name="check" />
+                                <label for="pricing-row1-check"></label>
+                            </div>
                         </div>
-                        <div class="col3">
-                            <div class="pricing-row row1"> <input type="checkbox" checked /> </div>
-                            <div class="pricing-row row2"> <input type="checkbox" checked /> </div>
-                            <div class="pricing-row row3"> <input type="checkbox" checked /> </div>
-                            <div class="pricing-row row4"> <input type="checkbox" checked /> </div>
+                        <div class="pricing-row row2">
+                            <div class="squaredTwo">
+                                <input type="checkbox" value="None" id="pricing-row2-check" name="check" />
+                                <label for="pricing-row2-check"></label>
+                            </div>
+                        </div>
+                        <div class="pricing-row row3">
+                            <div class="squaredTwo">
+                                <input type="checkbox" value="None" id="pricing-row3-check" name="check" />
+                                <label for="pricing-row3-check"></label>
+                            </div>
+                        </div>
+                        <div class="pricing-row row4">
+                            <div class="squaredTwo">
+                                <input type="checkbox" value="None" id="pricing-row4-check" name="check" />
+                                <label for="pricing-row4-check"></label>
+                            </div>
                         </div>
                     </div>
-
-                    <button id="pricing-sign-up" class="btn-orange btn-large shadow register-sign-up">
-                        Sign Up
-                    </button>
                 </div>
 
-                <!-- about us page -->
-                <div id="js-content-wrapper-about" class="js-content-wrapper hidden">
-                    
-                    <h2>About CPAExamBank.com</h2>
-                    
-                    <div class="content">
-                        <div id="aboutus-holder">
-                            <p>
-                                The CPA Exam bank was founded with one mission in mind; provide thousands of high quality test-simulated questions at an 
+                <button id="pricing-sign-up" class="btn-red btn-large shadow register-sign-up">
+                    Sign Up
+                </button>
+            </div>
+
+            <!-- about us page -->
+            <div id="js-content-wrapper-about" class="js-content-wrapper hidden">
+
+                <h2>About CPAExamBank.com</h2>
+
+                <div class="content">
+                    <div id="aboutus-holder">
+                        <p>
+                            The CPA Exam bank was founded with one mission in mind; provide thousands of high quality test-simulated questions at an 
                                 extremely affordable rate.  Just like you, the founders of the CPA Exam Bank have experienced the many trials from exam preparation. 
                                 Whether it be the financial impact from testing materials or an inadequate supply of practice questions we have experienced it all. 
                                 As a result, our questionnaire bank was formed.  We built the CPA Exam Bank to be specifically tailored to test your capability 
                                 within the most critical aspects of the exam while saving money. We are here to offer you an opportunity to invest in a bank where quality questions produce real results!  
-                                </p>
-                                                      
-                            <br />
-                            <p>Experience success with us here at The CPA Exam Bank. </p>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- contact us -->
-                <div id="js-content-wrapper-contact" class="js-content-wrapper hidden">
-
-                    <h2>Contact Us</h2>
-                    
-                    <div class="content">
-                        <p>
-                           The CPA Exam Bank greatly values your opinions/suggestions and is always striving to offer you the best experience possible.
-                           For questions concerning technical issues, subscriptions, partnering or business development please provide the following information below and click the submit button. 
                         </p>
-                    
-                        <table>
-                            <tr>
-                                <td>Contact Email</td>
-                                <td>
-                                    <input style="width:300px; margin-left:2px;" type="text" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Reason
-                                </td>
-                                <td>
-                                    <select>
-                                        <option>Questions</option>
-                                        <option>Comment</option>
-                                        <option>Problem</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Message</td>
-                                <td>
-                                    <textarea cols="70" rows="5"></textarea>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>
-                                    <button class="btn-orange btn-medium">Submit</button>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
 
-
-                    
-f
-                </div> 
-
-            </div>
-
-        </div>
-
-
-        <div id="footer-wrapper">
-            <footer>
-                <div id="footer-content-holder">
-                    <ul id="footer-nav">
-                        <li id="footer-nav-aboutus">About Us</li>
-                        <li id="footer-nav-contactus">Contact Us</li>
-                        <li id="footer-nav-support">Support</li>
-                        <li id="footer-nav-privacypolicy">Privacy Policy</li>
-                        <li id="footer-nav-termsofuse">Terms of Use</li>
-                    </ul>
-                    <div id="footer-row-1">
-                        Corviden &copy; 2013 - Learn with Corviden
-                    </div>
-                    <div id="footer-row-2">
-                        <div id="footer-logo"></div>
+                        <br />
+                        <p>Experience success with us here at The CPA Exam Bank. </p>
                     </div>
                 </div>
-            </footer>
-        </div>
 
-        <!-- register popup -->
-        <div id="js-overlay-register" contentSize="partial" class="hidden">
-            <div id="js-overlay-register-content">
-                <div class="register-close">X</div>
-                <table>
-                    <tr>
-                        <td colspan="2" class="title">Register</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Email
-                        </td>
-                        <td>
-                            <input type="text" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Password</td>
-                        <td>
-                            <input type="password" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="title">Interested In...</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><input type="checkbox" checked /> (FAR) Financial Accounting and Reporting</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><input type="checkbox" checked /> (AUD) Auditing and Attestation</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><input type="checkbox" checked /> (BEC) Business environment and concepts</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><input type="checkbox" checked /> (REG) Regualtion and Taxation</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><button class="btn-orange btn-medium">Get Started</button></td>
-                        <td></td>
-                    </tr>
-                </table>
             </div>
+
+            <!-- contact us -->
+            <div id="js-content-wrapper-contact" class="js-content-wrapper hidden">
+
+                <h2>Contact Us</h2>
+
+                <div class="content">
+                    <p>
+                        The CPA Exam Bank greatly values your opinions/suggestions and is always striving to offer you the best experience possible.
+                           For questions concerning technical issues, subscriptions, partnering or business development please provide the following information below and click the submit button. 
+                    </p>
+
+                    <table>
+                        <tr>
+                            <td>Contact Email</td>
+                            <td>
+                                <input style="width: 300px; margin-left: 2px;" type="text" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Reason
+                            </td>
+                            <td>
+                                <select>
+                                    <option>Questions</option>
+                                    <option>Comment</option>
+                                    <option>Problem</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Message</td>
+                            <td>
+                                <textarea cols="70" rows="5"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <button class="btn-orange btn-medium">Submit</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+
         </div>
 
+    </div>
 
 
-        <script src="Scripts/jquery-2.0.2.min.js"></script>
-        <script src="Scripts/Plugins/jquery.hashchange.js"></script>
-        <script src="Scripts/Plugins/jquery.hotkeys.js"></script>
+    <div id="footer-wrapper">
+        <footer>
+            <div id="footer-content-holder">
+                <ul id="footer-nav">
+                    <li id="footer-nav-aboutus">About Us</li>
+                    <li id="footer-nav-contactus">Contact Us</li>
+                    <li id="footer-nav-support">Support</li>
+                    <li id="footer-nav-privacypolicy">Privacy Policy</li>
+                    <li id="footer-nav-termsofuse">Terms of Use</li>
+                </ul>
+                <div id="footer-row-1">
+                    Corviden &copy; 2013 - Learn with Corviden
+                </div>
+                <div id="footer-row-2">
+                    <div id="footer-logo"></div>
+                </div>
+            </div>
+        </footer>
+    </div>
 
-        <script src="Scripts/COR/jquery.COR.js"></script>
-        <script src="Scripts/COR/jquery.COR.utilities.js"></script>
-        <script src="Scripts/COR/jquery.COR.services.js"></script>
-        
-        <script src="Scripts/Main/site.js"></script>
-        <script src="Scripts/Main/vahecpa.js"></script>
+    <!-- register popup -->
+    <div id="js-overlay-register" contentsize="partial" class="hidden">
+        <div id="js-overlay-register-content">
+            <div class="register-close">X</div>
+            <table>
+                <tr>
+                    <td colspan="2" class="title">Register</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Email
+                    </td>
+                    <td>
+                        <input type="text" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td>
+                        <input type="password" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="title">Interested In...</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="checkbox" checked />
+                        (FAR) Financial Accounting and Reporting</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="checkbox" checked />
+                        (AUD) Auditing and Attestation</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="checkbox" checked />
+                        (BEC) Business environment and concepts</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="checkbox" checked />
+                        (REG) Regualtion and Taxation</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button class="btn-red btn-medium">Get Started</button></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
 
-        <script src="Scripts/Main/account.js"></script>
-    </body>
+
+
+    <script src="Scripts/jquery-2.0.2.min.js"></script>
+    <script src="Scripts/Plugins/jquery.hashchange.js"></script>
+    <script src="Scripts/Plugins/jquery.hotkeys.js"></script>
+
+    <script src="Scripts/COR/jquery.COR.js"></script>
+    <script src="Scripts/COR/jquery.COR.utilities.js"></script>
+    <script src="Scripts/COR/jquery.COR.services.js"></script>
+
+    <script src="Scripts/Main/site.js"></script>
+    <script src="Scripts/Main/vahecpa.js"></script>
+
+    <script src="Scripts/Main/account.js"></script>
+</body>
 </html>

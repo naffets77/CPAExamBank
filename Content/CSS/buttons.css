@@ -83,3 +83,33 @@ button {
        background: -ms-linear-gradient(top, #ffc800, #ffbb00);
        background: -o-linear-gradient(top, #ffc800, #ffbb00);
     }
+
+
+
+.btn-red{
+
+    color:#fff;
+
+    background: rgb(135,101,101); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(135,101,101,1) 0%, rgba(137,63,63,1) 23%, rgba(141,0,0,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(135,101,101,1)), color-stop(23%,rgba(137,63,63,1)), color-stop(100%,rgba(141,0,0,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(135,101,101,1) 0%,rgba(137,63,63,1) 23%,rgba(141,0,0,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(135,101,101,1) 0%,rgba(137,63,63,1) 23%,rgba(141,0,0,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(135,101,101,1) 0%,rgba(137,63,63,1) 23%,rgba(141,0,0,1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom, rgba(135,101,101,1) 0%,rgba(137,63,63,1) 23%,rgba(141,0,0,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#876565', endColorstr='#8d0000',GradientType=0 ); /* IE6-9 */
+
+}
+
+    .btn-red:hover {
+
+       
+        background: rgb(146,110,110); /* Old browsers */
+        background: -moz-linear-gradient(top, rgba(146,110,110,1) 0%, rgba(152,70,70,1) 23%, rgba(168,0,0,1) 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(146,110,110,1)), color-stop(23%,rgba(152,70,70,1)), color-stop(100%,rgba(168,0,0,1))); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top, rgba(146,110,110,1) 0%,rgba(152,70,70,1) 23%,rgba(168,0,0,1) 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top, rgba(146,110,110,1) 0%,rgba(152,70,70,1) 23%,rgba(168,0,0,1) 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top, rgba(146,110,110,1) 0%,rgba(152,70,70,1) 23%,rgba(168,0,0,1) 100%); /* IE10+ */
+        background: linear-gradient(to bottom, rgba(146,110,110,1) 0%,rgba(152,70,70,1) 23%,rgba(168,0,0,1) 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#926e6e', endColorstr='#a80000',GradientType=0 ); /* IE6-9 */
+    }
