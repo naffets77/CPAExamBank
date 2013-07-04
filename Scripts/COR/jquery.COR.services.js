@@ -49,7 +49,7 @@ $.COR.services.login = function (email, password, successCallback, failcallback)
 
 $.COR.services.register = function (email, password, sections) {
 
-    if (COR.account.offline == false) {
+    if ($.COR.account.offline == false) {
         var ph = new $.COR.Utilities.PostHandler({
             service: "account", call: "registerNewUser",
             params: {
