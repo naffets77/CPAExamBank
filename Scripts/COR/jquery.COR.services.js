@@ -2,7 +2,7 @@
 
 
 
-$.COR.services.getQuestionHistoryMetrics() = function () {
+$.COR.services.getQuestionHistoryMetrics = function () {
 
     var ph = new $.COR.Utilities.PostHandler({
         service: "question", call: "getAccountUserQuestionHistory",
