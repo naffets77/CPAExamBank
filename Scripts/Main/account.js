@@ -261,10 +261,14 @@ $.COR.account.setupEvents = function () {
     $("#review-results .more-info").on("click", function () {
 
         if ($(this).html() == "More") {
-            $(this).parents('tr').next().slideToggle();
+            $(this).parents('tr').next().show(function () {
+                $(this).find('.my-info-question-data').slideDown();
+            });
             $(this).html('Less');
         } else {
-            $(this).parents('tr').next().slideToggle();
+            $(this).parents('tr').next().find('.my-info-question-data').slideUp(function () {
+                $(this).parents('tr').next().hide();
+            });
             $(this).html('More');
         }
     });
