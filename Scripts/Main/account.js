@@ -261,10 +261,10 @@ $.COR.account.setupEvents = function () {
     $("#review-results .more-info").on("click", function () {
 
         if ($(this).html() == "More") {
-            $(this).parents('tr').next().show();
+            $(this).parents('tr').next().slideToggle();
             $(this).html('Less');
         } else {
-            $(this).parents('tr').next().hide();
+            $(this).parents('tr').next().slideToggle();
             $(this).html('More');
         }
     });
