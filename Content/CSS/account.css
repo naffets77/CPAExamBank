@@ -146,7 +146,7 @@
         padding:0px;
     }
 
-        #review-results .my-info-question-data-row tr td .my-info-question-data{
+        #review-results .my-info-question-data-row .my-info-question-data{
             display:none;
         }
 
