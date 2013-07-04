@@ -1,6 +1,25 @@
 ﻿
 
 
+
+$.COR.services.getQuestionHistoryMetrics() = function () {
+
+    var ph = new $.COR.Utilities.PostHandler({
+        service: "question", call: "getAccountUserQuestionHistory",
+        params: {
+            AccountUserId: $.COR.account.user.AccountUserId,
+            QuestionAmount: 50,
+            SectionTypeId: $("#my-review-section-type").val()
+        },
+        success: function (data) {
+            $(thisElement).removeClass("disabled");
+            self.BuildQuestionHistory(data.QuestionHistory);
+        }
+    });
+
+}
+
+
 $.COR.services.login = function (email, password, successCallback, failcallback) {
 
     var COR = $.COR;
@@ -59,7 +78,7 @@ $.COR.services.register = function (email, password, sections) {
             },
             success: function (data) {
 
-                if (data.Account != null) {
+                if (data.Result == 1) {
                     //COR.account.setup(data, successCallback);
                     console.log("Registration Success");
                 }
@@ -79,3 +98,5 @@ $.COR.services.register = function (email, password, sections) {
 
 
 };
+
+

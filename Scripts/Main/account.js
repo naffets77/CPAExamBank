@@ -249,7 +249,7 @@ $.COR.account.setupEvents = function () {
             },
             success: function (data) {
                 $(thisElement).removeClass("disabled");
-                self.BuildQuestionHistory(data.QuestionHistory);
+                self.BuildQuestionHistory(data.QuestionHistoryMetrics);
             }
         });
 
