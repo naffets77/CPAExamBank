@@ -1,0 +1,206 @@
+
+<!--<?php
+
+    error_reporting(E_ALL);
+    ini_set('display_errors', '1');
+
+?>
+-->
+
+
+<html>
+	<head>
+        <title>Quesiton Manager</title>
+
+        <link href="/Content/CSS/global.css" rel="stylesheet" />
+        <link href="/Content/CSS/buttons.css" rel="stylesheet" />
+        <style type="text/css">
+
+            #search-wrapper, #login-wrapper {
+                width:960px;
+                margin:0px auto 250px;
+            }
+
+            #login-holder {
+                width:400px;
+                margin:20px auto;
+                background-color:#efefef;
+                border:1px solid #999;
+            }
+
+                #login-holder table {
+                    margin:20px auto;
+                }
+
+                    #login-holder table tr td {
+                        padding:4px 10px;
+                    }
+
+            #search-options {
+                width:920px;
+                background-color:#efefef;
+                border:1px solid #999;
+                padding:20px;
+                margin:20px 0 20px 0px;
+            }
+
+                #search-options table tr td {
+                    padding:5px 10px;
+                }
+
+                    #search-options table tr td:first-child {
+                        width:80px;
+                    }
+
+            #results {
+                width:962px;
+                border:1px solid #999;
+            }
+            #results tr td {
+                text-align:center;
+                padding:4px 10px;
+            }
+
+            #results thead tr td {
+                background-color:#aaa;
+                border-bottom:#000;
+                background: rgb(238,238,238); /* Old browsers */
+                background: -moz-linear-gradient(top,  rgba(238,238,238,1) 0%, rgba(204,204,204,1) 100%); /* FF3.6+ */
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(238,238,238,1)), color-stop(100%,rgba(204,204,204,1))); /* Chrome,Safari4+ */
+                background: -webkit-linear-gradient(top,  rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* Chrome10+,Safari5.1+ */
+                background: -o-linear-gradient(top,  rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* Opera 11.10+ */
+                background: -ms-linear-gradient(top,  rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* IE10+ */
+                background: linear-gradient(to bottom,  rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* W3C */
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 ); /* IE6-9 */
+
+            }
+
+        </style>
+	</head>
+    <body>
+
+        <div id="login-wrapper">
+            <div id="login-holder">
+                <table>
+                    <tr>
+                        <td>Username</td>
+                        <td><input type="text" id="login-username" /></td>
+                    </tr>
+                    <tr>
+                        <td>Password</td>
+                        <td><input type="text" id="login-password" /></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td style="color:red;"><span id="invalid-login" class="hidden">Invalid Login</span></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><button id="login">Access Admin Portal</button></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div id="search-wrapper" class="hidden">
+            <div id="search-options">
+                <table>
+                    <tr>
+                        <td colspan="2" style="width:500px;">
+                            For best results don't select any filters when searching for a specific question!
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <span style='font-weight:bold;'>To find a specific question, search by...</span><br />
+                            <select>
+                                <option>Select One (Optional)</option>
+                                <option>Question Reference ID</option>
+                                <option>Question Text</option>
+                            </select>
+                    
+                            <input type='text' />
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td colspan='2' style='padding-top:10px; font-weight:bold;'>
+                            Filter Options
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Approved
+                        </td>
+                        <td>
+                            <select>
+                                <option>Select To Apply Filter</option>
+                                <option>No</option>
+                                <option>Yes</option>
+                                <option>Both</option>
+                            </select>
+                        </td>
+                    </tr>
+			        <tr>
+				        <td>Section</td>
+				        <td>
+					        <select>
+                                <option>Select Section</option>
+                                <option>AUD</option>
+                                <option>FAR</option>
+                                <option>REG</option>
+                                <option>BEC</option>
+					        </select>
+				        </td>
+			        </tr>
+                    <tr>
+                        <td>Num Results</td>
+                        <td>
+                            <select>
+                                <option>5</option>
+                                <option selected="selected">10</option>
+                                <option>25</option>
+                                <option>50</option>
+                                <option>All</option>
+
+                            </select>
+                    
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <button id="search" class="btn-orange">Search</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div id="search-results-holder">
+                <div id="no-searches" class="hidden" style="font-weight:bold;">
+                    No Search Queries Yet! Use the above to search.
+                </div>
+                <div id="no-results" class="hidden"  style="font-weight:bold;">
+                    No Results
+                </div>
+                <table id="results">
+                    <thead>
+                        <tr>
+                            <td>ID</td>
+                            <td>Reference ID</td>
+                            <td>Section</td>
+                            <td>Approved</td>
+                            <td>Text</td>
+                            <td>Answers</td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    
+        <script src="/Scripts/jquery-2.0.2.min.js"></script>
+        <script src="/Scripts/COR/jquery.COR.js"></script>
+        <script src="/Scripts/COR/jquery.COR.services.js"></script>
+        <script src="/Scripts/Main/admin.js"></script>
+    </body>
+</html>
