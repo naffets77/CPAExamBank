@@ -55,7 +55,7 @@ $(document).on('ready', function () {
                 console.log(data);
 
                 for (var i = 0 ; i < data.QuestionResponses.length; i++) {
-                    appendSearchResultsRow(data.QuestionResponses[i];
+                    appendSearchResultsRow(data.QuestionResponses[i]);
                 }
 
             }
