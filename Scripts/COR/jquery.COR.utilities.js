@@ -117,3 +117,31 @@ $.COR.Utilities.PollHandler.prototype.stop = function () {
 $.COR.Utilities.PollHandler.prototype.updateInterval = function (newInterval) {
     this.interval = newInterval;
 }
+
+
+
+// Refresh Login - Relogins user on refresh if valid session
+
+$.COR.Utilities.refreshLogin = function (successCallback) {
+
+    $.COR.checkLogin(
+
+        // Sucessfully still logged in
+        function (data) {
+            $.COR.toggleAccountNavigation();
+            $.COR.account.setup(data, function () {
+                
+                successCallback();
+                //$.COR.pageSwap("js-content-wrapper-splash", "js-content-wrapper-user-account");
+            });
+        },
+
+        // Failed Login - Send Back To Home
+        function (reason) {
+
+            $.COR.toggleHomeNavigation();
+            $.COR.pageSwap($.COR.getCurrentDisplayedId(), "js-content-wrapper-splash");
+            console.log("Didn't log you in because : " + reason);
+        }
+    );
+}

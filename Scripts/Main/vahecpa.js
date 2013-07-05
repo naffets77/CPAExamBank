@@ -24,5 +24,25 @@ $(document).on('ready', function () {
     });
 
 
+    $("#pricing-holder .squaredTwo label").on('click', function () {
+        var amount = 0;
+
+
+        // This is necessary because the checkbox element doesn't change it's checked state till after this event occurs, so wait for that
+        setTimeout(function () {
+
+            $("#pricing-holder .squaredTwo input").each(function (index, element) {
+                if ($(element).prop("checked")) {
+                    amount += 5;
+                }
+            });
+
+            $("#pricing-total .amount").html(amount);
+        }, 50);
+
+    });
+
+
+
 
 });

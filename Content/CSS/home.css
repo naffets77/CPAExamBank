@@ -9,6 +9,8 @@
     clear: both;
     width: 100%;
     border: solid 1px #eee;
+    min-height:400px;
+
     background-image: linear-gradient(bottom, #FAFAFA 0%, #FAFAFA 2%, #FFFFFF 35%);
     background-image: -o-linear-gradient(bottom, #FAFAFA 0%, #FAFAFA 2%, #FFFFFF 35%);
     background-image: -moz-linear-gradient(bottom, #FAFAFA 0%, #FAFAFA 2%, #FFFFFF 35%);

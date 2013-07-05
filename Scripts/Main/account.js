@@ -67,33 +67,63 @@ $.COR.account.setup = function (data, successCallback) {
     });
 }
 
-$.COR.account.hashHandler = function () {
+$.COR.account.hashHandler = function (hashParts, loc) {
 
     if ($.COR.account.user != null) {
 
-        // WTF do these comments even mean?? WHAT WAS I DOING? _sigh_
-        // This case should only be called because we've just created a new user but havent finished filling out their information
-        //this.initUser(); // TODO: This was being called on every login, but apparently based on the above comment shouldn't be .. 
+        console.log("Account Page: " + loc);
+
+        if (hashParts.length == 1) {
+            $("#header-navigation-account_study").addClass('current');
+        }
+        else if (hashParts.length == 2 ) {
+
+            //Auto Header Nav - Page Nav
+             if (!$("#header-navigation-account_" + hashParts[1]).hasClass('current')) {
+                $("#header-navigation-account li").removeClass('current');
+                $("#header-navigation-account_" + hashParts[1]).addClass('current');
+            }
+
+            // We're going to handle subpages and 'default's by using a loc_default subpage and showing it
+            // We also assume that the rest of the subpages are loc_content (showing these would be used by doing two parts,
+            // i.e. part1/part and used in the else
+
+            // hide anything sub pages that might be open
+             $("." + hashParts[1] + "-content").addClass('hidden');
+
+            // Show the default
+
+             $("#" + hashParts[1] + "-default").removeClass('hidden');
+
+             $.COR.pageSwap($.COR.getCurrentDisplayedId(), 'js-content-wrapper-' + hashParts[1]);
+        }
+        else if(hashParts.length == 3) {
+            // It's a subpage!
+            //console.log("show: " + parts[0] + " @ " + parts[1]);
+
+            /*
+                Subpages work by using the #part1/part2 to build the content id that is shown : id='part1_part2'
+                In order to have multiple sub pages that show and hide, we assume that they are all on the same branch, 
+                so we can go to the parent hide everyone at that level, then show the one that we want to see...
+
+                Should work ... and scale to even deeper levels if needed!
+            */
+
+            var element = $("#" + hashParts[0] + "_" + hashParts[1]);
+            $(element).parent().children().addClass("hidden");
+            $(element).removeClass("hidden");
+
+            $.COR.pageSwap($.COR.getCurrentDisplayedId(), 'js-content-wrapper-' + hashParts[0]);
+
+            $(".nav a[href='#" + loc + "']").addClass('active');
+
+        }
+
+
     }
     else {
 
-        $.COR.toggleAccountNavigation();
-
-        $.COR.checkLogin(
-            function (data) {
-                $.COR.account.setup(data, function () {
-                    //$.COR.pageSwap("js-content-wrapper-splash", "js-content-wrapper-user-account");
-                });
-            },
-
-            function (reason) {
-
-                $.COR.toggleHomeNavigation();
-                $.COR.pageSwap($.COR.getCurrentDisplayedId(), "js-content-wrapper-splash");
-                console.log("Didn't log you in because : " + reason);
-            }
-        );
-
+        $.COR.Utilities.refreshLogin();
 
     }
 

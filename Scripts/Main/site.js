@@ -5,8 +5,8 @@ window.onfocus = function () { window.blurred = false; };
 
 var hashHandler = {
 
-    account: function () {
-        $.COR.account.hashHandler();
+    account: function (parts, loc) {
+        $.COR.account.hashHandler(parts, loc);
     },
     // have to use " " so i can have the hyphen... js pro move
     "start-practice": function () {
@@ -24,38 +24,8 @@ $(document).ready(function(){
         $.COR.account.offline = true;
     }
 
-
-
-
     // Initialization
     $.COR.pageEvents();
-
-
-    // Event handlers for Fancy Inputs
-
-    //$(".squaredTwo label").on('click', function () {
-    //    console.log("checkbox is: " + checkbox.prop("checked"));
-    //});
-
-    $("#pricing-holder .squaredTwo label").on('click', function () {
-        var amount = 0;
-
-
-        // This is necessary because the checkbox element doesn't change it's checked state till after this event occurs, so wait for that
-        setTimeout(function () {
-
-            $("#pricing-holder .squaredTwo input").each(function (index, element) {
-                if ($(element).prop("checked")) {
-                    amount += 5;
-                }
-            });
-
-            $("#pricing-total .amount").html(amount);
-        }, 50);
-
-    });
-    
-
 
     $(window).hashchange(function () {
 
@@ -64,14 +34,19 @@ $(document).ready(function(){
             var loc = location.hash.replace("#", "");
 
             if (loc != "") {
-                if (typeof hashHandler[loc] === 'function') {
-                    hashHandler[loc]();
+
+                var parts = loc.split("/");
+
+
+                if (typeof hashHandler[parts[0]] === 'function') {
+                    hashHandler[parts[0]](parts, loc);
                 }
                 else {
 
-                    var parts = loc.split("/");
                     
+
                     if (parts.length == 1) {
+
                         //Auto Header Nav - Page Nav
                         if (!$("#header-navigation_" + loc).hasClass('current')) {
                             $("#header-navigation li").removeClass('current');
@@ -103,6 +78,12 @@ $(document).ready(function(){
                             Should work ... and scale to even deeper levels if needed!
                         */
 
+                        //Auto Header Nav - Page Nav
+                        if (!$("#header-navigation_" + parts[0]).hasClass('current')) {
+                            $("#header-navigation li").removeClass('current');
+                            $("#header-navigation_" + parts[0]).addClass('current');
+                        }
+
                         var element = $("#" + parts[0] + "_" + parts[1]);
                         $(element).parent().children().addClass("hidden");
                         $(element).removeClass("hidden");
@@ -124,6 +105,31 @@ $(document).ready(function(){
             $.COR.pageSwap(null, "home");
         }
     });
+
+
+
+
+    $("#pricing-holder .squaredTwo label").on('click', function () {
+        var amount = 0;
+
+
+        // This is necessary because the checkbox element doesn't change it's checked state till after this event occurs, so wait for that
+        setTimeout(function () {
+
+            $("#pricing-holder .squaredTwo input").each(function (index, element) {
+                if ($(element).prop("checked")) {
+                    amount += 5;
+                }
+            });
+
+            $("#pricing-total .amount").html(amount);
+        }, 50);
+
+    });
+    
+
+
+
 
     $(window).hashchange();
 

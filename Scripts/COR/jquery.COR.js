@@ -360,19 +360,6 @@ $.COR.checkLogin = function (successCallback, failCallback) {
 
     ph.submitPost();
 
-    /*
-    $.post("/PHP/AJAX/Account/CheckLogin.php", "&Data=true", function (data) {
-
-        if (data.Account != null) {
-            successCallback(data);
-
-        }
-        else {
-            failcallback(data.LoginFailedReason);
-        }
-
-    }, "json");
-    */
 }
 
 
@@ -485,31 +472,16 @@ $.COR.validateField = function (Element, Validation) {
 $.COR.toggleAccountNavigation = function () {
 
     // Setup the navigation to change to the account set
-    $("#header-navigation li").each(function (index, element) {
-
-        $(element).hide();
-
-        if ($(element).hasClass("account")) {
-            $(element).show();
-        }
-
-    });
+    $("#header-navigation").hide();
+    $("#header-navigation-account").show();
 
     $("#header-navigation-study").trigger('click');
 };
 
 $.COR.toggleHomeNavigation = function () {
 
-    // Setup the navigation to change to the home / logged out set
-    $("#header-navigation li").each(function (index, element) {
-
-        $(element).show();
-
-        if ($(element).hasClass("account-only")) {
-            $(element).hide();
-        }
-
-    });
+    $("#header-navigation").show();
+    $("#header-navigation-account").hide();
 
     $("#header-navigation li").removeClass('current');
     $("#header-navigation_").addClass('current');
