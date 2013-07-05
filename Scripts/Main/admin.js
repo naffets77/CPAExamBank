@@ -52,7 +52,8 @@ $(document).on('ready', function () {
             service: "question", call: "getAllQuestionsAndAnswers",
             params: {},
             success: function (data) {
-                console.log(data);
+
+                $("#results tbody").html("");
 
                 for (var i = 0 ; i < data.QuestionResponses.length; i++) {
                     appendSearchResultsRow(data.QuestionResponses[i]);
@@ -72,7 +73,7 @@ $(document).on('ready', function () {
 
 
 function appendSearchResultsRow(QuestionData) {
-    $("#results tbody").html("");
+    
 
     var row = "<tr>" +
                 "<td>1</td>" +
