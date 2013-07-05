@@ -30,7 +30,7 @@ $.COR.account.setup = function (data, successCallback) {
 
     //Set Hash 
 
-    $(body).append("<input id='account-hash' type='hidden' value='" + data.Hash + "'></input>");
+    $('body').append("<input id='account-hash' type='hidden' value='" + data.Hash + "'></input>");
 
 
     $.get("/HTMLPartials/Account.html" + cacheInvalidator, function (loggedinPageHTML) {
