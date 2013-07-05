@@ -853,9 +853,9 @@ $.COR.account.completeTest = function () {
                 //    "answeredCorrectly": "0"
                 //},
 
-                var selectedAnswer = 0; //question.selectedAnswer !== undefined ? question.Answers[question.selectedAnswer].QuestionToAnswersId : "0";
+                var selectedAnswer = question.selectedAnswer; //question.selectedAnswer !== undefined ? question.Answers[question.selectedAnswer].QuestionToAnswersId : "0";
                 var answeredCorrectly = 0;
-                if (question.selectedAnswer !== undefined) {
+                if (selectedAnswer !== 0 || selectedAnswer !== -1) {
                     selectedAnswer = question.Answers[question.selectedAnswer].QuestionToAnswersId;
                     answeredCorrectly = question.correctAnswerIndex == question.selectedAnswer ? 1 : 0;
                 }
