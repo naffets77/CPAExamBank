@@ -717,7 +717,9 @@ $.COR.account.setStudyQuestionData = function (question) {
 
     var self = this;
 
-    question.selectedAnswer = 0;
+    if (question.selectedAnswer == -1) {
+        question.selectedAnswer = 0;
+    }
 
     // Stop Timer for previous question
     clearInterval(self.simulator.questionTimerIntervalId);
@@ -744,7 +746,7 @@ $.COR.account.setStudyQuestionData = function (question) {
     });
 
 
-    if (typeof question.selectedAnswer == "undefined") {
+    if (question.selectedAnswer == 0) {
 
         // Start Question Timer
         self.simulator.questionTimerIntervalId = setInterval(function () {
@@ -756,7 +758,7 @@ $.COR.account.setStudyQuestionData = function (question) {
 
     // Check if Study Mode and Question Answered - Disable Question
 
-    if ((typeof question.selectedAnswer != "undefined" && self.simulator.options.mode == 'study') || self.simulator.completed == true) {
+    if ((typeof question.selectedAnswer != 0 && self.simulator.options.mode == 'study') || self.simulator.completed == true) {
 
         // Set Checked Index
         $($($('#full-screen-container .answer-options table tr')[question.selectedAnswer]).find('input')).attr('checked', 'checked');
