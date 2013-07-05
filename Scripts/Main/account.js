@@ -643,6 +643,7 @@ $.COR.account.setupQuestionFooterNavigation = function (questions) {
             questions[i].index = i;
             questions[i].type = 'question';
             questions[i].timeTaken = 0;
+            questions[i].selectedAnswer = -1;
         }
     }
 
@@ -715,6 +716,8 @@ $.COR.account.displayStudyQuestion = function (question) {
 $.COR.account.setStudyQuestionData = function (question) {
 
     var self = this;
+
+    question.selectedAnswer = 0;
 
     // Stop Timer for previous question
     clearInterval(self.simulator.questionTimerIntervalId);
