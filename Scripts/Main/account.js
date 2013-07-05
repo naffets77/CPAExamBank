@@ -758,7 +758,7 @@ $.COR.account.setStudyQuestionData = function (question) {
 
     // Check if Study Mode and Question Answered - Disable Question
 
-    if ((typeof question.selectedAnswer != 0 && self.simulator.options.mode == 'study') || self.simulator.completed == true) {
+    if ((question.selectedAnswer != 0 && self.simulator.options.mode == 'study') || self.simulator.completed == true) {
 
         // Set Checked Index
         $($($('#full-screen-container .answer-options table tr')[question.selectedAnswer]).find('input')).attr('checked', 'checked');
