@@ -5,9 +5,9 @@ $(document).on('ready', function () {
 
 
     $("#login").on("click", function () {
-        $("#login-wrapper").hide();
-        $("#search-wrapper").fadeIn();
-        return;
+        //$("#login-wrapper").hide();
+        //$("#search-wrapper").fadeIn();
+        //return;
 
 
         $("#invalid-account-message").hide();
