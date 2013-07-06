@@ -417,7 +417,7 @@ $.COR.account.BuildQuestionHistory = function (QuestionResponse) {
             var questionIndex = "-"; // default set for skipped;
             if(summary.QuestionToAnswersId != 0){
                 for(var k = 0; k < response.QuestionResponse[0].Answers.length; k++){
-                    if (response.questionResponse[0].Answers[k].QuestionToAnswersId == summary.QuestionToAnswersId) {
+                    if (response.QuestionResponse[0].Answers[k].QuestionToAnswersId == summary.QuestionToAnswersId) {
                         questionIndex = k;
                         return;
                     }
