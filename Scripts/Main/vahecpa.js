@@ -15,6 +15,8 @@ $(document).on('ready', function () {
     });
 
 
+
+
     $("#faq-holder .section ul li a").on('click', function () {
 
         $("#faq-holder .section ul li a").removeClass("active");

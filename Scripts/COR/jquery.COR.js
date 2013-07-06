@@ -334,8 +334,6 @@ $.COR.getCurrentDisplayedId = function () {
     return myID;
 }
 
-
-
 $.COR.checkLogin = function (successCallback, failCallback) {
     var self = this;
 
@@ -363,11 +361,27 @@ $.COR.checkLogin = function (successCallback, failCallback) {
 }
 
 
+// If they've been logged out, then indicate they need to login
+$.COR.showLoginPopup = function () {
+
+    $.COR.TPrep.showFullScreenOverlay(
+        $("#js-overlay-relogin").html(),
+        $("#js-overlay-relogin").attr("contentSize"), function () {
+
+            $(".js-overlay-close").on('click', function () {
+                $.COR.TPrep.hideFullScreenOverlay();
+            });
+
+        });
+
+}
 
 
 
 
-// Validation Stuff
+
+
+// Validation Stuff (prob a utility...)
 
 $.COR.validateForm = function (formElement) {
 
@@ -565,16 +579,9 @@ $.COR.toggleAccountLogin = function () {
 })(jQuery);
 
 
-// Pubty Utils
 
-$.COR.getDisplayNameById = function (languageId) {
-    for (var i = 0; i < Global_Languages.length; i++) {
-        if (Global_Languages[i].Value == languageId) {
-            return Global_Languages[i].Name;
-        }
 
-    }
-};
+
 
 
 // Random Utils ( Should move to COR.utlities.
@@ -781,70 +788,5 @@ $.COR.MD5 = function (string) {
 }
 
 
-$.COR.Utilities.PostHandler = function (options) {
-
-    this.params = new Array();
-    this.service = options.service || null;
-    this.call = options.call || null;
-
-    this.succesCallback = options.success || null;
-    this.errroCallback = options.error || null;
-
-    this.addParam = function (name, value) {
-        var ParamObject = new Object();
-        ParamObject.name = name;
-        ParamObject.value = value;
-        this.params.push(ParamObject);
-    }
-
-    this.submitPost = function () {
-
-        var data = new Object();
-        data.service = this.service;
-        data.call = this.call;
-
-        for (var i = 0; i < this.params.length; i++) {
-            var ParamObj = this.params[i];
-            data[ParamObj.name] = ParamObj.value;
-        }
-
-        if ($("#account-hash").length > 0) {
-            data['Hash'] = $("#account-hash").val();
-        }
-
-        $.ajax({
-            type: "POST",
-            url: "/PHP/services.php",
-            data: data,
-            success: this.succesCallback,
-            error: function () {
-
-                // On server error show DC Box assuming we haven't already shown it!
-                if ($('#ServerErrorHandler').css("top") == -190) {
-                    $('#ServerErrorHandler').animate({ top: '+=131' }, 1000);
-                }
-
-                if (typeof (this.errorCallback) == "function") {
-                    this.errorCallback();
-                }
-            },
-            dataType: 'json'
-        });
-
-        /*
-        $.post("/PHP/services.php", data, function () {
-
-        }, 'json');
-        */
-    }
-
-
-    if (options.params != null) {
-        for (var key in options.params) {
-            this.addParam(key, options.params[key]);
-        }
-    }
-
-}
 
 

@@ -478,3 +478,11 @@ footer {
     cursor: pointer;
     border: 2px solid #fff;
 }
+
+
+.js-overlay-relogin-content table tr td{
+    padding-bottom:10px;
+}
+.js-overlay-relogin-content table tr td:first-child{
+    padding-right:5px;
+}

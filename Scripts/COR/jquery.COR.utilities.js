@@ -40,6 +40,8 @@ $.COR.Utilities.PostHandler = function (options) {
 
     this.submitPost = function () {
 
+        var self = this;
+
         var data = new Object();
         data.service = this.service;
         data.call = this.call;
@@ -57,7 +59,9 @@ $.COR.Utilities.PostHandler = function (options) {
             type: "POST",
             url: "/PHP/services.php",
             data: data,
-            success: this.succesCallback,
+            success: function (data) {
+                self.succesCallback(data);
+            },
             error: function () {
 
                 // On server error show DC Box assuming we haven't already shown it!

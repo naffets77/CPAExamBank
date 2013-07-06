@@ -844,6 +844,30 @@
         </div>
     </div>
 
+    <div id="js-overlay-relogin" class="hidden" contentsize="partial">
+        <div class="js-overlay-content js-overlay-relogin-content">
+            <div class="js-overlay-close">X</div>
+            <h2 style="margin-left:0px;">Login</h2>
+            <p style="margin:20px 0px;">
+                Your session has timed out, please re-login to continue. You will not lose any work or data.
+            </p>
+            <table>
+                <tr>
+                    <td>Username</td>
+                    <td><input type="text" id="relogin-username" /></td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><input type="text" id="relogin-password" /></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><button id="relogin" class="btn-red">Login</button></td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
 
 
     <script src="Scripts/jquery-2.0.2.min.js"></script>
