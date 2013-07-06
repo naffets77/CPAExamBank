@@ -475,7 +475,7 @@ $.COR.account.BuildQuestionHistory = function (QuestionResponse) {
                     "</td>" +
                 "</tr> ";
 
-        $("#review-results tbody").append(questionRow);
+        $("#review-results > tbody").append(questionRow);
 
     }
 
