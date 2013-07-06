@@ -419,7 +419,7 @@ $.COR.account.BuildQuestionHistory = function (QuestionResponse) {
                 for(var k = 0; k < response.QuestionResponse[0].Answers.length; k++){
                     if (response.QuestionResponse[0].Answers[k].QuestionToAnswersId == summary.QuestionsToAnswersId) {
                         questionIndex = k;
-                        return;
+                        break;
                     }
                 }
             }
