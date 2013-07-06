@@ -403,7 +403,7 @@ $.COR.account.BuildQuestionHistory = function (QuestionResponse) {
         for(var j = 0; j < response.QuestionResponse[0].Answers.length; j++){
             var correctClass = i == response.QuestionResponse[0].CorrectAnswerIndex ? "class='correct'" : "";
 
-            questionAnswers += "<li " + correctClass+ " >" + response.QuestionResponse[0].Answers.DisplayText + "</li>";
+            questionAnswers += "<li " + correctClass+ " >" + response.QuestionResponse[0].Answers[j].DisplayText + "</li>";
         }
 
         // Build Question History
@@ -450,10 +450,10 @@ $.COR.account.BuildQuestionHistory = function (QuestionResponse) {
                         "<div class='my-info-question-data'>" +
                             "<div class='my-info-question-holder'>" +
                                 "<div class='header bold'>Question</div>" +
-                                "<div class='my-info-question-text'>" + response.QuestionResponse.Question + "</div>" +
+                                "<div class='my-info-question-text'>" + response.QuestionResponse[0].Question + "</div>" +
                                 "<ol class='my-info-question-answers'>" + questionAnswers + "</ol>" +
                                 "<p class='my-info-explanation-text'>" +
-                                    "<span class='bold'>Explanation:</span><br /><span>" + response.QuestionResponse.Explanation + "</span>" +
+                                    "<span class='bold'>Explanation:</span><br /><span>" + response.QuestionResponse[0].Explanation + "</span>" +
                                 "</p>" +
                             "</div>" +
                             "<div class='my-info-question-history'>" +
