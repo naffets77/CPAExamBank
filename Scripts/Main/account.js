@@ -415,9 +415,9 @@ $.COR.account.BuildQuestionHistory = function (QuestionResponse) {
 
             // Figure out the index of the answer
             var questionIndex = "-"; // default set for skipped;
-            if(summary.QuestionToAnswersId != 0){
+            if(summary.QuestionsToAnswersId != 0){
                 for(var k = 0; k < response.QuestionResponse[0].Answers.length; k++){
-                    if (response.QuestionResponse[0].Answers[k].QuestionToAnswersId == summary.QuestionToAnswersId) {
+                    if (response.QuestionResponse[0].Answers[k].QuestionToAnswersId == summary.QuestionsToAnswersId) {
                         questionIndex = k;
                         return;
                     }
@@ -435,8 +435,8 @@ $.COR.account.BuildQuestionHistory = function (QuestionResponse) {
         }
 
 
-        $("#review-results tbody").append(
-            "<tr>"+
+        var questionRow =
+            "<tr>" +
                 "<td>" + response.Metrics[0].QuestionId + "</td>" +
                 "<td>" + response.Metrics[0].SectionType + "</td>" +
                 "<td>" + response.Metrics[0].TimesCorrect + "</td>" +
@@ -444,16 +444,16 @@ $.COR.account.BuildQuestionHistory = function (QuestionResponse) {
                 "<td>" + response.Metrics[0].AverageTimePerQuestion + " s</td>" +
                 "<td>" + response.Metrics[0].IsActive + "</td>" +
                 "<td><span class='link more-info'>More</span></td>" +
-            "</tr>"+
-            "<tr class='my-info-question-data-row'>"+
+            "</tr>" +
+            "<tr class='my-info-question-data-row'>" +
                     "<td colspan ='7'>" +
                         "<div class='my-info-question-data'>" +
                             "<div class='my-info-question-holder'>" +
                                 "<div class='header bold'>Question</div>" +
-                                "<div class='my-info-question-text'>"+ response.QuestionResponse.Question +"</div>" +
+                                "<div class='my-info-question-text'>" + response.QuestionResponse.Question + "</div>" +
                                 "<ol class='my-info-question-answers'>" + questionAnswers + "</ol>" +
                                 "<p class='my-info-explanation-text'>" +
-                                    "<span class='bold'>Explanation:</span><br />"+ response.QuestionResponse.Question +
+                                    "<span class='bold'>Explanation:</span><br /><span>" + response.QuestionResponse.Explanation + "</span>" +
                                 "</p>" +
                             "</div>" +
                             "<div class='my-info-question-history'>" +
@@ -464,7 +464,7 @@ $.COR.account.BuildQuestionHistory = function (QuestionResponse) {
                                             "<td>Selected Answer</td>" +
                                             "<td>Correct</td>" +
                                             "<td>Seconds Taken</td>" +
-                                            "<td>Mode</td>" + 
+                                            "<td>Mode</td>" +
                                             "<td>Date</td>" +
                                         "</tr>" +
                                     "</thead>" +
@@ -473,8 +473,9 @@ $.COR.account.BuildQuestionHistory = function (QuestionResponse) {
                             "</div>" +
                         "</div>" +
                     "</td>" +
-                "</tr> "
-        );
+                "</tr> ";
+
+        $("#review-results tbody").append(questionRow);
 
     }
 
