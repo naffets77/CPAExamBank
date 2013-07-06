@@ -401,7 +401,7 @@ $.COR.account.BuildQuestionHistory = function (QuestionResponse) {
         // Build Question Answers
         var questionAnswers = "";
         for(var j = 0; j < response.QuestionResponse[0].Answers.length; j++){
-            var correctClass = i == response.QuestionResponse[0].CorrectAnswerIndex ? "class='correct'" : "";
+            var correctClass = j == response.QuestionResponse[0].CorrectAnswerIndex ? "class='correct'" : "";
 
             questionAnswers += "<li " + correctClass+ " >" + response.QuestionResponse[0].Answers[j].DisplayText + "</li>";
         }
@@ -430,7 +430,7 @@ $.COR.account.BuildQuestionHistory = function (QuestionResponse) {
                                             "<td>" + summary.Correct + "</td>"+
                                             "<td>" + summary.TimeSpentOnQuestion + "</td>"+
                                             "<td>" + summary.SimulationMode + "</td>" + 
-                                            "<td>" + summary.SimulationDate + "</td>"+
+                                            "<td>" + summary.SimultationDate + "</td>" +
                                         "</tr>";
         }
 
