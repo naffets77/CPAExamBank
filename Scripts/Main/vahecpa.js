@@ -7,7 +7,7 @@ $(document).on('ready', function () {
             $("#js-overlay-register").html(),
             $("#js-overlay-register").attr("contentSize"), function () {
 
-                $(".register-close").on('click', function () {
+                $(".js-overlay-close").on('click', function () {
                     $.COR.TPrep.hideFullScreenOverlay();
                 });
 

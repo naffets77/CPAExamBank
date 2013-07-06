@@ -62,7 +62,7 @@ table {
     display: none;
 }
 
-.bold {
+.bold, strong {
     font-weight: bold;
 }
 
@@ -180,6 +180,7 @@ body {
     margin-left: -295px;
     margin-top: -300px;
     z-index: 1001;
+    font-size:16px;
 }
 
 #full-screen-container .content {
@@ -455,3 +456,25 @@ footer {
     }
 
 /* END GLOBAL NON PAGE SPECIFIC STYLES */
+
+
+
+/* POPUP Styles */
+
+
+.js-overlay-content .js-overlay-close {
+    background-color: #000;
+    color: #fff;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    padding: 4px 10px 9px 10px;
+    font-weight: bold;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -khtml-border-radius: 20px;
+    border-radius: 20px;
+    font-size: 20px;
+    cursor: pointer;
+    border: 2px solid #fff;
+}

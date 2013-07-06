@@ -145,3 +145,49 @@ $.COR.Utilities.refreshLogin = function (successCallback) {
         }
     );
 }
+
+
+// Popup handler
+
+$.COR.Utilities.showFullScreenOverlay = function (content, contentClassSize, events) {
+
+
+    if ($("#full-screen-container").is(":visible")) {
+
+        $("#full-screen-container .content").fadeOut(function () {
+            $(this).html("");
+
+            $("#full-screen-container .content").html(content).removeClass().addClass(contentClassSize + " content").fadeIn();
+
+            if (typeof events == 'function') {
+                events();
+            }
+
+            $("#full-screen-overlay").fadeIn();
+        });
+
+
+    }
+    else {
+        $("#full-screen-container .content").html(content);
+
+        $("#full-screen-container").removeClass().addClass(contentClassSize);
+
+        $("#full-screen-holder").show();
+        $("#full-screen-container").show();
+
+
+        if (typeof events == 'function') {
+            events();
+        }
+
+        $("#full-screen-overlay").fadeIn();
+    }
+}
+
+$.COR.Utilities.hideFullScreenOverlay = function () {
+
+    $("#full-screen-container").fadeOut(function () {
+        $("#full-screen-overlay").fadeOut(200);
+    });
+}

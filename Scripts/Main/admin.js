@@ -1,8 +1,29 @@
-﻿var offline = false;
+﻿var offline = true;
 
 
 $(document).on('ready', function () {
 
+    new TINY.editor.edit('editor', {
+        id: 'question-editor',
+        width: 860,
+        height: 100,
+        cssclass: 'te',
+        controlclass: 'tecontrol',
+        rowclass: 'teheader',
+        dividerclass: 'tedivider',
+        controls: ['bold', 'italic', 'underline', 'strikethrough', '|', 'subscript', 'superscript', '|',
+                  'orderedlist', 'unorderedlist', '|', 'outdent', 'indent', '|', 'leftalign',
+                  'centeralign', 'rightalign', 'blockjustify', '|', 'unformat', '|', 'undo', 'redo', 'n',
+                  'size', 'style', '|', 'image', 'hr', '|', 'cut', 'copy', 'paste', 'print'],
+        footer: true,
+        fonts: ['Verdana', 'Arial', 'Georgia', 'Trebuchet MS'],
+        xhtml: true,
+        cssfile: '/Scripts/Plugins/tinyeditor/style.css',
+        bodyid: 'editor',
+        footerclass: 'tefooter',
+        toggle: { text: 'source', activetext: 'wysiwyg', cssclass: 'toggle' },
+        resize: { cssclass: 'resize' }
+    });
 
     $("#login").on("click", function () {
 
@@ -68,7 +89,66 @@ $(document).on('ready', function () {
     });
 
 
+    // Question Wrapper Events
 
+    $("#back-to-search").on('click', function () {
+
+        $("#question-wrapper").hide();
+        $("#search-wrapper").fadeIn();
+    });
+
+    $("#question-manager-navigation li").on('click', function () {
+
+        if ($(this).hasClass('current')) { return; }
+
+        $("#question-manager-navigation li").removeClass('current');
+
+        $(this).addClass('current');
+
+        $(".question-manager-view").hide();
+
+        $("#question-manager_" + $(this).html()).fadeIn();
+    });
+
+
+    $('input:radio[name="edit-option"]').on('change', function () {
+        editor.i.contentWindow.document.body.innerHTML = $(this).parents('tr').find('label').html().trim();
+    });
+
+    $("#question-copy").on('click', function () {
+
+        $.COR.Utilities.showFullScreenOverlay(
+            $("#js-overlay-copy-question").html(),
+            $("#js-overlay-copy-question").attr("contentSize"), function () {
+
+                $(".js-overlay-close").on('click', function () {
+                    $.COR.Utilities.hideFullScreenOverlay();
+                });
+
+            });
+    });
+
+
+    // Editor updater
+    setInterval(function () {
+        if ($("#question-manager_Edit").is(":visible")) {
+
+            // get radio button selected html
+            var radio = $('input:radio[name="edit-option"]:checked');
+
+            // get html for radio button
+            var html = $(radio).parents('tr').find('label').html().trim();
+
+            // get html for text editor
+            editor.post();
+            var editorHtml = editor.t.value.trim();
+
+            if (editorHtml != html) {
+                $(radio).parents('tr').find('label').html(editorHtml);
+            }
+        }
+    }, 50);
+    
 });
 
 

@@ -279,7 +279,7 @@ $.COR.account.setupEvents = function () {
             },
             success: function (data) {
                 $(thisElement).removeClass("disabled");
-                self.BuildQuestionHistory(data.QuestionHistoryMetrics);
+                self.BuildQuestionHistory(data.QuestionHistoryReturns);
             }
         });
 
@@ -288,16 +288,7 @@ $.COR.account.setupEvents = function () {
 
     });
 
-    $("#review-results .more-info").on("click", function () {
-
-        if ($(this).html() == "More") {
-            $(this).parents('tr').next().find('.my-info-question-data').slideDown();
-            $(this).html('Less');
-        } else {
-            $(this).parents('tr').next().find('.my-info-question-data').slideUp();
-            $(this).html('More');
-        }
-    });
+    
 
 
     // Call setup on any other events that are sub of the account object
@@ -395,29 +386,108 @@ $.COR.account.showNewAccountPopup = function () {
 
 // Question History Helpers
 
-$.COR.account.BuildQuestionHistory = function (QuestionHistory) {
+$.COR.account.BuildQuestionHistory = function (QuestionResponse) {
+
 
     
 
-    var len = QuestionHistory.length;
+    var len = QuestionResponse.length;
 
     for (var i = 0; i < len; i++) {
 
-        var question = QuestionHistory[i];
+        var response = QuestionResponse[i];
+
+
+        // Build Question Answers
+        var questionAnswers = "";
+        for(var j = 0; j < response.QuestionResponse.Answers.length; j++){
+            var correctClass = i == response.QuestionResponse.CorrectAnswerIndex ? "span class='correct'" : "";
+
+            questionAnswers += "<li " + correctClass+ " >" + response.QuestionResponse.Answers.DisplayText + "</li>";
+        }
+
+        // Build Question History
+
+        var questionHistory = "";
+
+        for(var j = 0; j < response.Summary.length; j++){
+            var summary = response.Summary[j];
+
+            // Figure out the index of the answer
+            var questionIndex = "-"; // default set for skipped;
+            if(summary.QuestionToAnswersId != 0){
+                for(var k = 0; k < repsonse.QuestionResponse.Answers.length; k++){
+                    if(response.questionResponse.Answers[i].QuestionToAnswersId == summary.QuestionToAnswersId){
+                        questionIndex = k;
+                        return;
+                    }
+                }
+            }
+
+
+            questionAnswers +=           "<tr>"+
+                                            "<td>" + questionIndex + "</td>"+
+                                            "<td>" + summary.Correct + "</td>"+
+                                            "<td>" + summary.TimeSpentOnQuestion + "</td>"+
+                                            "<td>" + summary.SimulationMode + "</td>" + 
+                                            "<td>" + summary.SimulationDate + "</td>"+
+                                        "</tr>";
+        }
+
 
         $("#review-results tbody").append(
             "<tr>"+
-                "<td>" + question.QuestionId + "</td>" +
-                "<td>" + question.SectionType + "</td>" +
-                "<td>" + question.TimesCorrect + "</td>" +
-                "<td>" + question.TimesIncorrect + "</td>" +
-                "<td>" + question.AverageTimePerQuestion + " s</td>" +
-                "<td>" + question.IsActive + "</td>" +
+                "<td>" + response.Metrics.QuestionId + "</td>" +
+                "<td>" + response.Metrics.SectionType + "</td>" +
+                "<td>" + response.Metrics.TimesCorrect + "</td>" +
+                "<td>" + response.Metrics.TimesIncorrect + "</td>" +
+                "<td>" + response.Metrics.AverageTimePerQuestion + " s</td>" +
+                "<td>" + response.Metrics.IsActive + "</td>" +
                 "<td><span class='link more-info'>More</span></td>" +
-            "</tr>"
+            "</tr>"+
+            "<tr class='my-info-question-data-row'>"+
+                    "<td colspan ='7'>" +
+                        "<div class='my-info-question-data'>" +
+                            "<div class='my-info-question-holder'>" +
+                                "<div class='header bold'>Question</div>" +
+                                "<div class='my-info-question-text'>"+ response.QuestionResponse.Question +"</div>" +
+                                "<ol class='my-info-question-answers'>" + questionAnswers + "</ol>" +
+                                "<p class='my-info-explanation-text'>" +
+                                    "<span class='bold'>Explanation:</span><br />"+ response.QuestionResponse.Question +
+                                "</p>" +
+                            "</div>" +
+                            "<div class='my-info-question-history'>" +
+                                "<div class='my-info-question-history-header'>Your Summary</div>" +
+                                "<table>" +
+                                    "<thead>" +
+                                        "<tr>" +
+                                            "<td>Selected Answer</td>" +
+                                            "<td>Correct</td>" +
+                                            "<td>Seconds Taken</td>" +
+                                            "<td>Mode</td>" + 
+                                            "<td>Date</td>" +
+                                        "</tr>" +
+                                    "</thead>" +
+                                    "<tbody>" + questionAnswers + "</tbody>" +
+                                "</table>" +
+                            "</div>" +
+                        "</div>" +
+                    "</td>" +
+                "</tr> "
         );
 
     }
+
+    $("#review-results .more-info").on("click", function () {
+
+        if ($(this).html() == "More") {
+            $(this).parents('tr').next().find('.my-info-question-data').slideDown();
+            $(this).html('Less');
+        } else {
+            $(this).parents('tr').next().find('.my-info-question-data').slideUp();
+            $(this).html('More');
+        }
+    });
 
 }
 

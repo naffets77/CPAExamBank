@@ -13,11 +13,15 @@
 
     <link href="/Content/CSS/global.css" rel="stylesheet" />
     <link href="/Content/CSS/buttons.css" rel="stylesheet" />
+    <link href="/Scripts/Plugins/tinyeditor/style.css" rel="stylesheet" />
+
     <style type="text/css">
-        #search-wrapper, #login-wrapper {
+        #search-wrapper, #login-wrapper, #question-wrapper {
             width: 960px;
             margin: 0px auto 250px;
         }
+
+
 
         #login-holder {
             width: 400px;
@@ -34,12 +38,20 @@
                     padding: 4px 10px;
                 }
 
-        #search-options {
+        #search-options, #question-manager-holder {
             width: 920px;
-            background-color: #efefef;
             border: 1px solid #999;
             padding: 20px;
             margin: 20px 0 20px 0px;
+
+            background: rgb(238,238,238); /* Old browsers */
+            background: -moz-linear-gradient(top, rgba(238,238,238,1) 0%, rgba(204,204,204,1) 100%); /* FF3.6+ */
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(238,238,238,1)), color-stop(100%,rgba(204,204,204,1))); /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(top, rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(top, rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* Opera 11.10+ */
+            background: -ms-linear-gradient(top, rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* IE10+ */
+            background: linear-gradient(to bottom, rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 ); /* IE6-9 */
         }
 
             #search-options table tr td {
@@ -122,11 +134,69 @@
                 list-style-position: inside;
                 text-align: left;
             }
+
+
+
+        /* Quesiton Styles */
+        #back-to-search {
+            font-weight: bold;
+            margin-top: 50px;
+            cursor: pointer;
+            font-size: 18px;
+            display:inline-block;
+        }
+
+        #question-options {
+            float: right;
+            margin-top: 55px;
+        }
+
+            #question-options li {
+                float:left;
+                margin:0px 0 0 10px;
+            }
+
+        #question-manager-navigation {
+            float:right;
+        }
+
+        #question-manager-navigation li {
+            display:inline-block;
+            padding:2px 10px;
+            font-size:22px;
+            cursor:pointer;
+        }
+
+            #question-manager-navigation li.current {
+                font-weight:bold;
+            }
+
+        #edit-table {
+            width:850px;
+            margin-left:10px;
+        }
+        #edit-table tr td:first-child {
+            padding:5px 20px;
+        }
+
+        #edit-table tr td {
+            padding:5px 0px 20px;
+            vertical-align:top;
+            line-height:18px;
+        }
+
+
     </style>
 </head>
 <body>
 
-    <div id="login-wrapper">
+    <div id="full-screen-overlay" class="hidden"></div>
+
+    <div id="full-screen-container" class="full hidden">
+        <div class="content"></div>
+    </div>
+
+    <div id="login-wrapper" class="hidden">
         <div id="login-holder">
             <table>
                 <tr>
@@ -246,10 +316,167 @@
         </div>
     </div>
 
+    <div id="question-wrapper">
+
+        <div id="back-to-search">&lt;&lt; Back To Search</div>
+        <ul id="question-options">
+            <li><button id="question-copy" class="btn-orange">Copy</button></li>
+        </ul>
+        
+        <div id="question-manager-holder">
+            <ul id="question-manager-navigation">
+                <li class="current">Edit</li>
+                <li>Stats</li>
+            </ul>
+
+            <div id="question-manager_Edit" class="question-manager-view"> 
+                <h2>Edit</h2>
+                <textarea id="question-editor" style="width:600px; height:200px">
+                    The CPA should make inquiries of the predecessor auditor when he is approached to perform an audit for the first time. This is required because the predecessor may provide the successor the relevant information which will assist the successor in determining
+                </textarea>
+
+                <table id="edit-table">
+                    <tr>
+                        <td>Edit</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td style="font-weight:bold;">Status</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="checkbox" id="edit-enabled" /> &nbsp;<label for='edit-enabled'>Enabled</label></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="checkbox" id="edit-deprecated" /> &nbsp;<label for='edit-deprecated'>Deprecated</label></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td style="line-height:24px;">
+                            <input type="text" /> Quesiton Reference ID
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td style="font-weight:bold;">Question</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="radio" name="edit-option" id="edit-question" checked />
+                        </td>
+                        <td>
+                            <label for="edit-question">
+                                The CPA should make inquiries of the predecessor auditor when he is approached to perform an audit for the first time. This is required because the predecessor may provide the successor the relevant information which will assist the successor in determining
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td style="font-weight:bold;">Explanation</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input id="edit-explanation" type="radio" name="edit-option" checked />
+                        </td>
+                        <td>
+                            <label for="edit-explanation">
+                            The CPA should make inquiries of the predecessor auditor when he is approached to perform an audit for the first time. This is required because the predecessor may provide the successor the relevant information which will assist the successor in determining
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td style="font-weight:bold;">Answers</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input id="edit-answer1" type="radio" name="edit-option" />
+                        </td>
+                        <td>
+                            <label for="edit-answer1">
+                            The CPA should make inquiries of the predecessor auditor when he is approached to perform an audit for the first time. This is required because the predecessor may provide the successor the relevant information which will assist the successor in determining
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input id="edit-answer2" type="radio" name="edit-option" />
+                        </td>
+                        <td>
+                            <label for="edit-answer2">
+                            The CPA should make inquiries of the predecessor auditor when he is approached to perform an audit for the first time. This is required because the predecessor may provide the successor the relevant information which will assist the successor in determining
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input id="edit-answer3" type="radio" name="edit-option" />
+                        </td>
+                        <td>
+                            <label for="edit-answer3">
+                            The CPA should make inquiries of the predecessor auditor when he is approached to perform an audit for the first time. This is required because the predecessor may provide the successor the relevant information which will assist the successor in determining
+                            </label>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <input id="edit-answer4" type="radio" name="edit-option" />
+                        </td>
+                        <td>
+                            <label for="edit-answer4">
+                            The CPA should make inquiries of the predecessor auditor when he is approached to perform an audit for the first time. This is required because the predecessor may provide the successor the relevant information which will assist the successor in determining
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <button>Save</button>
+                        </td>
+                    </tr>
+                </table>
+
+
+
+            </div>
+
+
+            <div id="question-manager_Stats" class="question-manager-view hidden"> 
+                <h2>Stats - TBD</h2>
+
+                <p>
+                    Will contain various statistics that we can generate about individual questions based on usage stats. 
+                </p>
+                
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div id="js-overlay-copy-question" contentsize="partial" class="hidden">
+        <div id="js-overlay-copy-question-content" class="js-overlay-content">
+            <div class="js-overlay-close">X</div>
+            <p>
+                You can duplicate this quesiton, all data will be copied over except the Question Reference ID. The quesiton 
+                also will default as disabled. 
+            </p>
+            <br />
+            <button class="btn-orange">Continue</button>
+        </div>
+    </div>
+
+
     <script src="/Scripts/jquery-2.0.2.min.js"></script>
     <script src="/Scripts/COR/jquery.COR.js"></script>
-    <script src="/Scripts/Main/account.js"></script>
+    <script src="/Scripts/COR/jquery.COR.utilities.js"></script>
     <script src="/Scripts/COR/jquery.COR.services.js"></script>
+    <script src="/Scripts/Plugins/tinyeditor/tinyeditor.js"></script>
+
+    <script src="/Scripts/Main/account.js"></script>
     <script src="/Scripts/Main/admin.js"></script>
 </body>
 </html>
