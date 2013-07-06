@@ -400,10 +400,10 @@ $.COR.account.BuildQuestionHistory = function (QuestionResponse) {
 
         // Build Question Answers
         var questionAnswers = "";
-        for(var j = 0; j < response.QuestionResponse.Answers.length; j++){
-            var correctClass = i == response.QuestionResponse.CorrectAnswerIndex ? "span class='correct'" : "";
+        for(var j = 0; j < response.QuestionResponse[0].Answers.length; j++){
+            var correctClass = i == response.QuestionResponse[0].CorrectAnswerIndex ? "span class='correct'" : "";
 
-            questionAnswers += "<li " + correctClass+ " >" + response.QuestionResponse.Answers.DisplayText + "</li>";
+            questionAnswers += "<li " + correctClass+ " >" + response.QuestionResponse[0].Answers.DisplayText + "</li>";
         }
 
         // Build Question History
@@ -437,12 +437,12 @@ $.COR.account.BuildQuestionHistory = function (QuestionResponse) {
 
         $("#review-results tbody").append(
             "<tr>"+
-                "<td>" + response.Metrics.QuestionId + "</td>" +
-                "<td>" + response.Metrics.SectionType + "</td>" +
-                "<td>" + response.Metrics.TimesCorrect + "</td>" +
-                "<td>" + response.Metrics.TimesIncorrect + "</td>" +
-                "<td>" + response.Metrics.AverageTimePerQuestion + " s</td>" +
-                "<td>" + response.Metrics.IsActive + "</td>" +
+                "<td>" + response.Metrics[0].QuestionId + "</td>" +
+                "<td>" + response.Metrics[0].SectionType + "</td>" +
+                "<td>" + response.Metrics[0].TimesCorrect + "</td>" +
+                "<td>" + response.Metrics[0].TimesIncorrect + "</td>" +
+                "<td>" + response.Metrics[0].AverageTimePerQuestion + " s</td>" +
+                "<td>" + response.Metrics[0].IsActive + "</td>" +
                 "<td><span class='link more-info'>More</span></td>" +
             "</tr>"+
             "<tr class='my-info-question-data-row'>"+
