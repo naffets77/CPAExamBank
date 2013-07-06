@@ -401,7 +401,7 @@ $.COR.account.BuildQuestionHistory = function (QuestionResponse) {
         // Build Question Answers
         var questionAnswers = "";
         for(var j = 0; j < response.QuestionResponse[0].Answers.length; j++){
-            var correctClass = i == response.QuestionResponse[0].CorrectAnswerIndex ? "span class='correct'" : "";
+            var correctClass = i == response.QuestionResponse[0].CorrectAnswerIndex ? "class='correct'" : "";
 
             questionAnswers += "<li " + correctClass+ " >" + response.QuestionResponse[0].Answers.DisplayText + "</li>";
         }
