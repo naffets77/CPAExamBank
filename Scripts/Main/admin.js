@@ -1,4 +1,4 @@
-﻿var offline = true;
+﻿var offline = false;
 
 
 $(document).on('ready', function () {
