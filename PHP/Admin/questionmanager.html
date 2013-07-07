@@ -232,13 +232,13 @@
                 <tr>
                     <td colspan="2">
                         <span style='font-weight: bold;'>To find a specific question, search by...</span><br />
-                        <select>
-                            <option>Select One (Optional)</option>
-                            <option>Question Reference ID</option>
-                            <option>Question Text</option>
+                        <select id="search-helper-specific-search">
+                            <option value="0">Select One (Optional)</option>
+                            <option value="1">Question Reference ID</option>
+                            <option value="2">Question Text</option>
                         </select>
 
-                        <input type='text' />
+                        <input id="search-helper-specific-search-input" type='text' class="hidden" />
                     </td>
                 </tr>
 
@@ -251,10 +251,31 @@
                     </td>
                     <td>
                         <select>
+                            <option>Both</option>
+                            <option selected>No</option>
+                            <option>Yes</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Active
+                    </td>
+                    <td>
+                        <select>
                             <option>Select To Apply Filter</option>
                             <option>No</option>
+                            <option selected>Yes</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Depricated
+                    </td>
+                    <td>
+                        <select>
+                            <option>Select To Apply Filter</option>
+                            <option selected>No</option>
                             <option>Yes</option>
-                            <option>Both</option>
                         </select>
                     </td>
                 </tr>
@@ -345,7 +366,11 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td><input type="checkbox" id="edit-enabled" /> &nbsp;<label for='edit-enabled'>Enabled</label></td>
+                        <td><input type="checkbox" id="edit-active" /> &nbsp;<label for='edit-enabled'>Approved</label></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="checkbox" id="edit-active" /> &nbsp;<label for='edit-enabled'>Active</label></td>
                     </tr>
                     <tr>
                         <td></td>

@@ -1,4 +1,4 @@
-﻿var offline = false;
+﻿var offline = true;
 
 
 $(document).on('ready', function () {
@@ -88,6 +88,16 @@ $(document).on('ready', function () {
 
     });
 
+    $("#search-helper-specific-search").on('change', function () {
+
+        if ($(this).val() == 0) {
+            $("#search-helper-specific-search-input").hide();
+        }
+        else {
+            $("#search-helper-specific-search-input").show();
+        }
+
+    });
 
     // Question Wrapper Events
 
