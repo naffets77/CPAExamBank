@@ -1,4 +1,4 @@
-﻿var offline = true;
+﻿var offline = false;
 
 
 $(document).on('ready', function () {
@@ -179,6 +179,13 @@ function appendSearchResultsRow(QuestionData) {
 
     $("#results tbody").append(row);
 
+
+    $("#results tr").on('click', function () {
+        $("#search-wrapper").fadeOut(function () {
+            $("#question-wrapper").fadeIn();
+        });
+
+    });
 
 }
 
