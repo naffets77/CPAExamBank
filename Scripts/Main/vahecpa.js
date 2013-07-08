@@ -11,6 +11,69 @@ $(document).on('ready', function () {
                     $.COR.TPrep.hideFullScreenOverlay();
                 });
 
+                $(".registration-finish-button").on("click", function (e) {
+
+                    var clickedElement = this;
+                    var originalHTML = $(this).html();
+                    e.preventDefault();
+
+                    if ($.COR.validateForm($(this).parents("form"))) {
+
+                        var email = $("#full-screen-container .registration-email").val();
+                        var password = $("#full-screen-container .registration-password").val();
+
+                        var far = $("#full-screen-container .registration-far").is(":checked") ? "1" : "0";
+                        var aud = $("#full-screen-container .registration-aud").is(":checked") ? "1" : "0";
+                        var bec = $("#full-screen-container .registration-bec").is(":checked") ? "1" : "0";
+                        var reg = $("#full-screen-container .registration-reg").is(":checked") ? "1" : "0";
+
+                        var sections = [
+                            {
+                                "FAR": far,
+                                "AUD": aud,
+                                "BEC": bec,
+                                "REG": reg
+                            }
+                        ];
+
+                        $(this).html("One Sec...");
+
+                        $.COR.services.register(email, password, sections, function () {
+                            if (data.uid == null) {
+                                $("#full-screen-container .registration-email").parent().append("<span class='error-message'>Email Already Exists</span>");
+                                $("#registration-finish-button").html(originalHTML);
+                            }
+                            else {
+                                console.log("setup account from registration");
+                            }
+                        });
+
+                        
+
+                        /* 
+                        $.post("/PHP/AJAX/Account/Registration.php", registrationData + "&Data=true", function (data) {
+            
+                            self.log("Back from registration attempt");
+            
+                            // null = email already exists
+                            if (data.uid == null) {
+                                $("#registration-email").parent().append("<span class='error-message'>Email Already Exists</span>");
+                                $("#registration-finish-button").html(originalHTML);
+                            }
+                            else {
+                                self.login($("#registration-email").val(), "", function () {
+                                    self.pageSwap($(clickedElement).parents(".js-content-wrapper").attr("id"), "js-content-wrapper-user-account");
+                                });
+                            }
+                        }, "JSON");
+                        */
+
+                    }
+
+
+                });
+
+
             });
     });
 

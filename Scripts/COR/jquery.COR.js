@@ -78,11 +78,6 @@ $.COR.pageEvents = function () {
         location.hash = "";
     });
 
-    $("#register").on("click", function () {
-
-        self.pageSwap("js-content-wrapper-splash", "js-content-wrapper-register");
-    });
-
     $("#login").on("click", function () {
         self.log("Attempting Login");
 
@@ -115,48 +110,7 @@ $.COR.pageEvents = function () {
 
     });
 
-    $("#registration-finish-button").on("click", function (e) {
-
-        var clickedElement = this;
-        var originalHTML = $(this).html();
-        e.preventDefault();
-
-        if (self.validateForm($(this).parents("form"))) {
-
-            self.log("registration validated");
-
-            // Sets the password so that it will be serialized correctly
-            $("#phash").val(self.MD5(""));
-
-            var registrationData = $($(this).parents("form")).serialize();
-
-
-            self.log($(this).parents("form").serialize());
-
-            $(this).html("One Sec...");
-
-            /* */
-            $.post("/PHP/AJAX/Account/Registration.php", registrationData + "&Data=true", function (data) {
-
-                self.log("Back from registration attempt");
-
-                // null = email already exists
-                if (data.uid == null) {
-                    $("#registration-email").parent().append("<span class='error-message'>Email Already Exists</span>");
-                    $("#registration-finish-button").html(originalHTML);
-                }
-                else {
-                    self.login($("#registration-email").val(), "", function () {
-                        self.pageSwap($(clickedElement).parents(".js-content-wrapper").attr("id"), "js-content-wrapper-user-account");
-                    });
-                }
-            }, "JSON");
-
-
-        }
-
-
-    });
+    
 
     $("#reset-account-update-password").on("click", function (e) {
         e.preventDefault();

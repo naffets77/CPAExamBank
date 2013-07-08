@@ -796,57 +796,59 @@
     <div id="js-overlay-register" contentsize="partial" class="hidden">
         <div id="js-overlay-register-content" class="js-overlay-content">
             <div class="js-overlay-close">X</div>
-            <table>
-                <tr>
-                    <td colspan="2" class="title">Register</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Email
-                    </td>
-                    <td>
-                        <input type="text" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>Password</td>
-                    <td>
-                        <input type="password" />
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2" class="title">Interested In...</td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <input type="checkbox" checked />
-                        (FAR) Financial Accounting and Reporting</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <input type="checkbox" checked />
-                        (AUD) Auditing and Attestation</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <input type="checkbox" checked />
-                        (BEC) Business environment and concepts</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <input type="checkbox" checked />
-                        (REG) Regualtion and Taxation</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <button class="btn-red btn-medium">Get Started</button></td>
-                    <td></td>
-                </tr>
-            </table>
+            <form>
+                <table>
+                    <tr>
+                        <td colspan="2" class="title">Register</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Email
+                        </td>
+                        <td>
+                            <input type="text" class="registration-email Validate" validate="Required,Email" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Password</td>
+                        <td>
+                            <input type="password" class="registration-password Validate" validate="Required"  />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="title">Interested In...</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input class="registration-far" type="checkbox" checked />
+                            (FAR) Financial Accounting and Reporting</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input class="registration-aud" type="checkbox" checked />
+                            (AUD) Auditing and Attestation</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input class="registration-bec" type="checkbox" checked />
+                            (BEC) Business environment and concepts</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input class="registration-reg" type="checkbox" checked />
+                            (REG) Regualtion and Taxation</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <button class="registration-finish-button btn-red btn-medium">Get Started</button></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </form>
         </div>
     </div>
 

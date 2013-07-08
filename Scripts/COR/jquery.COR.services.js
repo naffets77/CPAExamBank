@@ -66,7 +66,7 @@ $.COR.services.login = function (email, password, successCallback, failcallback)
 
 
 
-$.COR.services.register = function (email, password, sections) {
+$.COR.services.register = function (email, password, sections, callback) {
 
     if ($.COR.account.offline == false) {
         var ph = new $.COR.Utilities.PostHandler({
@@ -74,18 +74,11 @@ $.COR.services.register = function (email, password, sections) {
             params: {
                 email: email,
                 password: $.COR.MD5(password),
-                sections: sections
+                sections: JSON.stringify(sections)
             },
             success: function (data) {
 
-                if (data.Result == 1) {
-                    //COR.account.setup(data, successCallback);
-                    console.log("Registration Success");
-                }
-                else {
-                    //failcallback(data.LoginFailedReason);
-                    console.log("Registration Failed:" + data.LoginFailedReason);
-                }
+                callback();
 
             }
         });
