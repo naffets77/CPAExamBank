@@ -47,7 +47,7 @@ $(document).on('ready', function () {
                                 // We're good to go lets setup the account object and change pages...
 
 
-                                COR.account.setup(data, function () {
+                                $.COR.account.setup(data, function () {
                                     self.toggleAccountNavigation();
                                     location.hash = "account";
                                 });
