@@ -48,7 +48,7 @@ $(document).on('ready', function () {
 
 
                                 $.COR.account.setup(response, function () {
-                                    self.toggleAccountNavigation();
+                                    $.COR.toggleAccountNavigation(); // TODO: This should be done on the account side of things
                                     location.hash = "account";
                                 });
                             }
