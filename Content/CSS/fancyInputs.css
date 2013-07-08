@@ -2,7 +2,7 @@
 
 /* HTML EXAMPLES AT THE BOTTOM */
 
-input[type=checkbox] {
+.squaredTwo input[type=checkbox] {
 	visibility: hidden;
 }
 
