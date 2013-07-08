@@ -38,13 +38,19 @@ $(document).on('ready', function () {
 
                         $(this).html("One Sec...");
 
-                        $.COR.services.register(email, password, sections, function () {
-                            if (data.uid == null) {
-                                $("#full-screen-container .registration-email").parent().append("<span class='error-message'>Email Already Exists</span>");
+                        $.COR.services.register(email, password, sections, function (response) {
+                            if (response.Result == "0") {
+                                $("#full-screen-container .registration-email").parent().append("<span class='error-message'>" + response.Reason + "</span>");
                                 $("#registration-finish-button").html(originalHTML);
                             }
                             else {
-                                console.log("setup account from registration");
+                                // We're good to go lets setup the account object and change pages...
+
+
+                                COR.account.setup(data, function () {
+                                    self.toggleAccountNavigation();
+                                    location.hash = "account";
+                                });
                             }
                         });
 

@@ -78,7 +78,7 @@ $.COR.services.register = function (email, password, sections, callback) {
             },
             success: function (data) {
 
-                callback();
+                callback(data);
 
             }
         });
