@@ -13,9 +13,13 @@ $(document).on('ready', function () {
 
                 $(".registration-finish-button").on("click", function (e) {
 
+                    if ($(this).hasClass("disabled")) { return; }
+
                     var clickedElement = this;
                     var originalHTML = $(this).html();
                     e.preventDefault();
+
+                    $(this).addClass('disabled');
 
                     if ($.COR.validateForm($(this).parents("form"))) {
 
@@ -41,7 +45,7 @@ $(document).on('ready', function () {
                         $.COR.services.register(email, password, sections, function (response) {
                             if (response.Result == "0") {
                                 $("#full-screen-container .registration-email").parent().append("<span class='error-message'>" + response.Reason + "</span>");
-                                $("#registration-finish-button").html(originalHTML);
+                                $("#registration-finish-button").removeClass("disabled").html(originalHTML);
                             }
                             else {
                                 // We're good to go lets setup the account object and change pages...
@@ -49,6 +53,7 @@ $(document).on('ready', function () {
 
                                 $.COR.account.setup(response, function () {
                                     $.COR.toggleAccountNavigation(); // TODO: This should be done on the account side of things
+                                    $.COR.TPrep.hideFullScreenOverlay();
                                     location.hash = "account";
                                 });
                             }
