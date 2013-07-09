@@ -205,7 +205,7 @@ function appendSearchResultsRow(QuestionData) {
 
     $("#results tr").on('click', function () {
 
-        var question = getQuestionById( $(this).attr("qid"));
+        setQuestionData(getQuestionById($(this).attr("qid")));
 
         $("#search-wrapper").fadeOut(function () {
             $("#question-wrapper").fadeIn();
@@ -254,4 +254,28 @@ function getQuestionById(questionId) {
     }
 
     return question;
+}
+
+function setQuestionData(question) {
+
+    // Read Only
+    $("#question-edit-id").html(question.QuestionId);
+
+
+    // Question Meta Data
+    $("#edit-qrid").html("not yet");
+    $("#edit-deprecated").attr('checked', '');
+    $("#edit-active").attr('checked', '');
+    $("#edit-approved").attr('checked', '');
+    
+    // Question Content Data
+    $("#edit-question-value").html(question.Question);
+    $("#edit-explanation-value").html(question.Explanation);
+
+    $("#edit-answer-1-value").html(question.Answers[0].DisplayText);
+    $("#edit-answer-2-value").html(question.Answers[1].DisplayText);
+    $("#edit-answer-3-value").html(question.Answers[2].DisplayText);
+    $("#edit-answer-4-value").html(question.Answers[3].DisplayText);
+
+
 }

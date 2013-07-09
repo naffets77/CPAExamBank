@@ -351,7 +351,7 @@
             </ul>
 
             <div id="question-manager_Edit" class="question-manager-view"> 
-                <h2>Edit</h2>
+                <h2>Edit <span id="question-edit-id"></span></h2>
                 <textarea id="question-editor" style="width:600px; height:200px">
                     The CPA should make inquiries of the predecessor auditor when he is approached to perform an audit for the first time. This is required because the predecessor may provide the successor the relevant information which will assist the successor in determining
                 </textarea>
@@ -366,7 +366,7 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td><input type="checkbox" id="edit-active" /> &nbsp;<label for='edit-enabled'>Approved</label></td>
+                        <td><input type="checkbox" id="edit-approved" /> &nbsp;<label for='edit-enabled'>Approved</label></td>
                     </tr>
                     <tr>
                         <td></td>
@@ -379,7 +379,7 @@
                     <tr>
                         <td></td>
                         <td style="line-height:24px;">
-                            <input type="text" /> Quesiton Reference ID
+                            <input type="text" id="edit-qrid" /> Quesiton Reference ID
                         </td>
                     </tr>
                     <tr>
@@ -391,7 +391,7 @@
                             <input type="radio" name="edit-option" id="edit-question" checked />
                         </td>
                         <td>
-                            <label for="edit-question">
+                            <label for="edit-question" id="edit-question-value">
                                 The CPA should make inquiries of the predecessor auditor when he is approached to perform an audit for the first time. This is required because the predecessor may provide the successor the relevant information which will assist the successor in determining
                             </label>
                         </td>
@@ -405,7 +405,7 @@
                             <input id="edit-explanation" type="radio" name="edit-option" checked />
                         </td>
                         <td>
-                            <label for="edit-explanation">
+                            <label for="edit-explanation" id="edit-explanation-value">
                             The CPA should make inquiries of the predecessor auditor when he is approached to perform an audit for the first time. This is required because the predecessor may provide the successor the relevant information which will assist the successor in determining
                             </label>
                         </td>
@@ -419,14 +419,14 @@
                             <input id="edit-answer1" type="radio" name="edit-option" />
                         </td>
                         <td>
-                            <label for="edit-answer1">
+                            <label for="edit-answer1" id="edit-answer-1-value">
                             The CPA should make inquiries of the predecessor auditor when he is approached to perform an audit for the first time. This is required because the predecessor may provide the successor the relevant information which will assist the successor in determining
                             </label>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <input id="edit-answer2" type="radio" name="edit-option" />
+                            <input id="edit-answer2" id="edit-answer-2-value" type="radio" name="edit-option" />
                         </td>
                         <td>
                             <label for="edit-answer2">
@@ -436,10 +436,10 @@
                     </tr>
                     <tr>
                         <td>
-                            <input id="edit-answer3" type="radio" name="edit-option" />
+                            <input id="edit-answer3"  type="radio" name="edit-option" />
                         </td>
                         <td>
-                            <label for="edit-answer3">
+                            <label for="edit-answer3" id="edit-answer-3-value">
                             The CPA should make inquiries of the predecessor auditor when he is approached to perform an audit for the first time. This is required because the predecessor may provide the successor the relevant information which will assist the successor in determining
                             </label>
                         </td>
@@ -450,7 +450,7 @@
                             <input id="edit-answer4" type="radio" name="edit-option" />
                         </td>
                         <td>
-                            <label for="edit-answer4">
+                            <label for="edit-answer4" id="edit-answer-4-value">
                             The CPA should make inquiries of the predecessor auditor when he is approached to perform an audit for the first time. This is required because the predecessor may provide the successor the relevant information which will assist the successor in determining
                             </label>
                         </td>
