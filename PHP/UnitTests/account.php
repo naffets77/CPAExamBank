@@ -28,138 +28,138 @@ class TestAccount extends UnitTestCase {
     }
 
 
-    //function testLogin() {
+    function testLogin() {
     
-    //    BuildTestHeader("Login", "service_account", "login", "Test logging in with a username/password", null, null);
+        BuildTestHeader("Login", "service_account", "login", "Test logging in with a username/password", null, null);
         
-    //    $result = simulatePostRequest(array("email"=>"demo_account@cpaexambank.com", "password"=>"e368b9938746fa090d6afd3628355133"), "service_account","login");
+        $result = simulatePostRequest(array("email"=>"demo_account@cpaexambank.com", "password"=>"e368b9938746fa090d6afd3628355133"), "service_account","login");
     
-    //    BuildResultViewer($result, "service_account :: login");
+        BuildResultViewer($result, "service_account :: login");
                 
-    //    $this->assertTrue(true);
-    //}
+        $this->assertTrue(true);
+    }
     
 
 
-    //function testRefreshLogin(){
-    //    BuildTestHeader("Check Valid Login (While Logged in)", "service_refreshLogin", "refreshLogin", "Testing refreshing the login", null, null);
+    function testRefreshLogin(){
+        BuildTestHeader("Check Valid Login (While Logged in)", "service_refreshLogin", "refreshLogin", "Testing refreshing the login", null, null);
         
         
-    //    //$result = simulatePostRequest(array("email"=>"demo_account@cpaexambank.com", "password"=>"e368b9938746fa090d6afd3628355133"), "service_account","login");
+        //$result = simulatePostRequest(array("email"=>"demo_account@cpaexambank.com", "password"=>"e368b9938746fa090d6afd3628355133"), "service_account","login");
         
-    //    //BuildResultViewer($result,"service_account :: login");
+        //BuildResultViewer($result,"service_account :: login");
         
-    //    $result = simulatePostRequest(null, "service_account","refreshLogin");
+        $result = simulatePostRequest(null, "service_account","refreshLogin");
     
-    //    BuildResultViewer($result,"service_account :: refreshLogin");
+        BuildResultViewer($result,"service_account :: refreshLogin");
         
-    //    $this->assertNotNull($result);
-    //}
-    
-    
-    //function testUpdateLoginEmail(){
+        $this->assertNotNull($result);
+    }
     
     
-    //    BuildTestHeader("Update Login Email", "service_updateLoginEmail", "updateLoginEmail", "Test updating email", null, null);
-        
-    //    $accountResult = simulatePostRequest(null, "service_account","refreshLogin");
-        
-    //    $result = simulatePostRequest(array("email"=>"updated_demo_account@cpaexambank.com", "Hash"=> $accountResult['Hash']), "service_account","updateLoginEmail");
+    function testUpdateLoginEmail(){
     
-    //    BuildResultViewer($result,"service_account :: updateLoginEmail"); 
-        
-    //    // clean up
-    //    $result = simulatePostRequest(array("email"=>"demo_account@cpaexambank.com", "Hash"=> $accountResult['Hash']), "service_account","updateLoginEmail");
     
-    //    BuildResultViewer($result,"service_account :: updateLoginEmail"); 
+        BuildTestHeader("Update Login Email", "service_updateLoginEmail", "updateLoginEmail", "Test updating email", null, null);
+        
+        $accountResult = simulatePostRequest(null, "service_account","refreshLogin");
+        
+        $result = simulatePostRequest(array("email"=>"updated_demo_account@cpaexambank.com", "Hash"=> $accountResult['Hash']), "service_account","updateLoginEmail");
+    
+        BuildResultViewer($result,"service_account :: updateLoginEmail"); 
+        
+        // clean up
+        $result = simulatePostRequest(array("email"=>"demo_account@cpaexambank.com", "Hash"=> $accountResult['Hash']), "service_account","updateLoginEmail");
+    
+        BuildResultViewer($result,"service_account :: updateLoginEmail"); 
           
-    //    $this->assertTrue(true);    
+        $this->assertTrue(true);    
     
-    //}
+    }
     
-    //function testUpdateLoginEmailExists(){
+    function testUpdateLoginEmailExists(){
         
-    //    BuildTestHeader("Update Login Email - Email Already Exists", "service_updateLoginEmail", "updateLoginEmail", "Test updating email", null, null);
+        BuildTestHeader("Update Login Email - Email Already Exists", "service_updateLoginEmail", "updateLoginEmail", "Test updating email", null, null);
         
-    //    $accountResult = simulatePostRequest(null, "service_account","refreshLogin");
+        $accountResult = simulatePostRequest(null, "service_account","refreshLogin");
         
-    //    $result = simulatePostRequest(array("email"=>"steffan77@gmail.com", "Hash"=> $accountResult['Hash']), "service_account","updateLoginEmail");
+        $result = simulatePostRequest(array("email"=>"steffan77@gmail.com", "Hash"=> $accountResult['Hash']), "service_account","updateLoginEmail");
     
-    //    BuildResultViewer($result,"service_account :: updateLoginEmail"); 
+        BuildResultViewer($result,"service_account :: updateLoginEmail"); 
                   
-    //    $this->assertTrue(true);     
-    //}
+        $this->assertTrue(true);     
+    }
     
-    //function testUpdateLoginEmailInvalid(){
+    function testUpdateLoginEmailInvalid(){
         
-    //    BuildTestHeader("Update Login Email - Email Invalid", "service_updateLoginEmail", "updateLoginEmail", "Test updating email", null, null);
+        BuildTestHeader("Update Login Email - Email Invalid", "service_updateLoginEmail", "updateLoginEmail", "Test updating email", null, null);
         
-    //    $accountResult = simulatePostRequest(null, "service_account","refreshLogin");
+        $accountResult = simulatePostRequest(null, "service_account","refreshLogin");
         
-    //    $result = simulatePostRequest(array("email"=>"steffan77", "Hash"=> $accountResult['Hash']), "service_account","updateLoginEmail");
+        $result = simulatePostRequest(array("email"=>"steffan77", "Hash"=> $accountResult['Hash']), "service_account","updateLoginEmail");
     
-    //    BuildResultViewer($result,"service_account :: updateLoginEmail"); 
+        BuildResultViewer($result,"service_account :: updateLoginEmail"); 
         
-    //    // clean up
-    //    $result = simulatePostRequest(array("email"=>"demo_account@cpaexambank.com", "Hash"=> $accountResult['Hash']), "service_account","updateLoginEmail");
+        // clean up
+        $result = simulatePostRequest(array("email"=>"demo_account@cpaexambank.com", "Hash"=> $accountResult['Hash']), "service_account","updateLoginEmail");
     
-    //    BuildResultViewer($result,"service_account :: updateLoginEmail"); 
+        BuildResultViewer($result,"service_account :: updateLoginEmail"); 
           
-    //    $this->assertTrue(true);     
-    //}
+        $this->assertTrue(true);     
+    }
     
-    //function testUpdatePassword(){
+    function testUpdatePassword(){
     
     
-    //    BuildTestHeader("Update Password", "service_updatePassword", "updatePassword", "Test updating password", null, null);
+        BuildTestHeader("Update Password", "service_updatePassword", "updatePassword", "Test updating password", null, null);
         
-    //    $accountResult = simulatePostRequest(array("email"=>"demo_account@cpaexambank.com", "password"=>"e368b9938746fa090d6afd3628355133"), "service_account","login");
+        $accountResult = simulatePostRequest(array("email"=>"demo_account@cpaexambank.com", "password"=>"e368b9938746fa090d6afd3628355133"), "service_account","login");
     
-    //    BuildResultViewer($accountResult, "service_account :: login");
+        BuildResultViewer($accountResult, "service_account :: login");
         
-    //    $result = simulatePostRequest(array("password"=>md5("testing"), "Hash"=> $accountResult['Hash']), "service_account","updatePassword");
+        $result = simulatePostRequest(array("password"=>md5("testing"), "Hash"=> $accountResult['Hash']), "service_account","updatePassword");
     
-    //    BuildResultViewer($result,"service_account :: updatePassword"); 
+        BuildResultViewer($result,"service_account :: updatePassword"); 
         
-    //    // clean up
-    //    $result = simulatePostRequest(array("password"=>"e368b9938746fa090d6afd3628355133", "Hash"=> $accountResult['Hash']), "service_account","updatePassword");
+        // clean up
+        $result = simulatePostRequest(array("password"=>"e368b9938746fa090d6afd3628355133", "Hash"=> $accountResult['Hash']), "service_account","updatePassword");
     
-    //    BuildResultViewer($result,"service_account :: updatePassword"); 
+        BuildResultViewer($result,"service_account :: updatePassword"); 
           
-    //    $this->assertTrue(true);    
+        $this->assertTrue(true);    
     
-    //}
+    }
 
     
-    //function testLogout(){
-    //    BuildTestHeader("Logout", "service_account", "logout", "Test logging out", null, null);
+    function testLogout(){
+        BuildTestHeader("Logout", "service_account", "logout", "Test logging out", null, null);
                 
-    //    $result = simulatePostRequest(null, "service_account","logout");
+        $result = simulatePostRequest(null, "service_account","logout");
     
-    //    BuildResultViewer($result,"service_account :: logout");
+        BuildResultViewer($result,"service_account :: logout");
  
-    //    // Check that there isn't a valid log
+        // Check that there isn't a valid log
             
-    //    $result = simulatePostRequest(null, "service_account","refreshLogin");
-    //    BuildResultViewer($result,"service_account :: refreshLogin");
+        $result = simulatePostRequest(null, "service_account","refreshLogin");
+        BuildResultViewer($result,"service_account :: refreshLogin");
         
-    //    $this->assertNull($result['Account']);
-    //}
+        $this->assertNull($result['Account']);
+    }
     
-    //function testInvalidRefreshLogin(){
-    //    BuildTestHeader("Check Valid Login (While Logged out)", "service_refreshLogin", "refreshLogin", "Testing refreshing the login", null, null);
+    function testInvalidRefreshLogin(){
+        BuildTestHeader("Check Valid Login (While Logged out)", "service_refreshLogin", "refreshLogin", "Testing refreshing the login", null, null);
         
         
-    //    //$result = simulatePostRequest(array("email"=>"demo_account@cpaexambank.com", "password"=>"e368b9938746fa090d6afd3628355133"), "service_account","login");
+        //$result = simulatePostRequest(array("email"=>"demo_account@cpaexambank.com", "password"=>"e368b9938746fa090d6afd3628355133"), "service_account","login");
         
-    //    //BuildResultViewer($result,"service_account :: login");
+        //BuildResultViewer($result,"service_account :: login");
         
-    //    $result = simulatePostRequest(null, "service_account","refreshLogin");
+        $result = simulatePostRequest(null, "service_account","refreshLogin");
     
-    //    BuildResultViewer($result,"service_account :: refreshLogin");
+        BuildResultViewer($result,"service_account :: refreshLogin");
         
-    //    $this->assertNull($result['Account']);
-    //}
+        $this->assertNull($result['Account']);
+    }
     
 }
  
