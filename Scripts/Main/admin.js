@@ -1,5 +1,6 @@
 ﻿var offline = false;
 
+var QuestionResponses;
 
 $(document).on('ready', function () {
 
@@ -74,11 +75,9 @@ $(document).on('ready', function () {
             params: {},
             success: function (data) {
 
-                $("#results tbody").html("");
+                QuestionResponses = data.QuestionResponses;
+                buildSearchResults(data);
 
-                for (var i = 0 ; i < data.QuestionResponses.length; i++) {
-                    appendSearchResultsRow(data.QuestionResponses[i]);
-                }
 
             }
         });
@@ -162,11 +161,25 @@ $(document).on('ready', function () {
 });
 
 
+function buildSearchResults(data) {
+    $("#results tbody").html("");
+
+    for (var i = 0 ; i < data.QuestionResponses.length; i++) {
+
+
+        // Will do filtering/searching here...
+
+
+        appendSearchResultsRow(data.QuestionResponses[i]);
+    }
+}
+
+
 function appendSearchResultsRow(QuestionData) {
     
 
-    var row = "<tr>" +
-                "<td>1</td>" +
+    var row = "<tr qid='" + QuestionData.QuestionId + "'>" +
+                "<td>" + QuestionData.QuestionId + "</td>" +
                 "<td>Section1S3</td>" +
                 "<td>AUD</td>" +
                 "<td>No</td>"+
@@ -191,6 +204,9 @@ function appendSearchResultsRow(QuestionData) {
 
 
     $("#results tr").on('click', function () {
+
+        var question = getQuestionById( $(this).attr("qid"));
+
         $("#search-wrapper").fadeOut(function () {
             $("#question-wrapper").fadeIn();
         });
@@ -221,4 +237,21 @@ function getDummyResultRowData() {
             ]
     }
 
+}
+
+
+function getQuestionByID(questionId) {
+
+    var q = QuestionResponses;
+    var len = q.length;
+
+    var question = null;
+
+    for (var i = 0; i < len; i++) {
+        if (q[i].QuestionId == quesitonId) {
+            question = q[i];
+        }
+    }
+
+    return question;
 }
