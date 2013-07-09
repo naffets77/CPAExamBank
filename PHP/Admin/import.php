@@ -2,7 +2,9 @@
 
     error_reporting(E_ALL);
     ini_set('display_errors', '1');
-
+	include_once("../config.php");
+	//openDBConnection(); 
+	//include_once(library_configuration::$environment_librarypath."/database.php");
 ?>
 
 
@@ -119,7 +121,8 @@ else{
                         
                         $question['referenceID'] = $data[0];
                         $question['sectionType'] = $data[1];
-                        $question['referenceImage'] = $data[2];
+						$question['answerIndex'] = (string)((int)$data[2] - 1);
+                        $question['referenceImage'] = $data[3];
                         
                         array_push($questions, $question);
                         
@@ -166,22 +169,94 @@ else{
 function insertQuestions($questions){
 
     $num = count($questions);
+    $mysqli = new mysqli("198.211.105.160","root","!Naffets77", "ciborium_dev");
+    //get SectionType enum; TODO: use enum_ class
+	$SectionTypeResult = $mysqli->query("SELECT SectionType, SectionTypeId FROM SectionType");
+	$SectionTypes = array();
+	while($row = mysqli_fetch_assoc($SectionTypeResult)){
+		$SectionTypes[$row["SectionType"]] = $row["SectionTypeId"];
+	}
+	echo "Current Modules and their ids: <br />";
+	print_r($SectionTypes);
+	
+	echo "<h3> Inserting Questions into Database </h3>";
     
-    echo "<h3> Inserting Questions into Database </h3>";
-    
+	
+
     for($i = 0; $i < $num ; $i++){
     
         $question = $questions[$i];
-        
+        $question['referenceID'] = isset($question['referenceID']) ? trim($question['referenceID']) : "";
+		$question['sectionType'] = isset($question['sectionType']) ? strtoupper(trim($question['sectionType'])) : "";
+		
         echo "<div> Inserting: {$question['referenceID']} </div>"; // This is 
-        
-        // Insert Question - get ID Back
-       
-        // Insert Answers using the ID Provided
+		if(!empty($question['referenceID']) ){
+			//check that QuestionClientId doesn't exist already in Question table
+			$escapedQuestionClientId = $mysqli->real_escape_string($question['referenceID']);
+			$QuestionClientIdResult = $mysqli->query("SELECT QuestionClientId FROM Question WHERE QuestionClientId = '".$escapedQuestionClientId."';");
+			if(mysqli_num_rows($QuestionClientIdResult) == 0){
+				
+				//Check that the section type is valid
+				if(array_key_exists($question['sectionType'], $SectionTypes)){
+					$SectionTypeId = $SectionTypes[$question['sectionType']];
+					
+					//escape string the insert fields
+					$escapedDisplayText = $mysqli->real_escape_string($question['text']);
+					$escapedExplanation = $mysqli->real_escape_string($question['explanation']);
+					$escapedQuestionClientImage = $mysqli->real_escape_string($question['referenceImage']);
+					
+					//perform the question insert
+					$query = "INSERT INTO Question VALUES(DEFAULT, '".$escapedQuestionClientId."', 1, '', '".$escapedDisplayText."', '".$escapedExplanation."', ".$SectionTypeId.", '', '".$escapedQuestionClientImage."', 0, 1, 0, 0, 0, CURRENT_TIMESTAMP, 'import.php', NOW(), 'import.php');";
+					$mysqli->query($query);
+					$QuestionId = $mysqli->insert_id;
+					
+					//insert the answers
+					$AnswerSortIndex = 1;
+					foreach($question['answers'] as $key => $value){
+						$IsCorrectAnswer = (string)$key == $question['answerIndex'] ? 1 : 0;
+						$escapedDisplayAnswerText = $mysqli->real_escape_string(trim($value));
+						if(!empty($escapedDisplayAnswerText)){
+							$query = "INSERT INTO QuestionToAnswers VALUES(DEFAULT, '".$QuestionId."', ".$AnswerSortIndex.", '', '".$escapedDisplayAnswerText."', ".$IsCorrectAnswer.", 0, 1, CURRENT_TIMESTAMP, 'import.php', NOW(), 'import.php');";
+							$mysqli->query($query);
+						}
+						$AnswerSortIndex += 1;
+					}
+					
+				}
+				else{
+					echo "<p>Question's SectionType (trim/to upper) ".$question['sectionType']." was not valid</p>";
+				}
+			}
+			else{
+				echo "<p>Question's RefrenceId is already in the database</p>";
+			}
+			
+		}
+		else{
+			echo "<p>Question's RefrenceId was not set or empty.</p>";
+		}
     
     
     }
-
+	//mysql::close();
 
 }
+
+function openDBConnection(){
+
+	//TODO: ciborium_dev change it to be dynamic
+	$mysqli = new mysqli("198.211.105.160","root","!Naffets77", "ciborium_dev");  
+
+    if ($mysqli->connect_error) {
+        die('Connect Error (' . $mysqli->connect_errno . ') '
+                . $mysqli->connect_error);
+    }
+
+	return $mysql;
+}
+
+function closeDBConnection(){
+	//mysqli::close();
+}
+
 ?>
