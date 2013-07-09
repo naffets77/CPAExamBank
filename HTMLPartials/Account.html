@@ -376,7 +376,77 @@
 <!-- Overlay for when we're loading questions -->   
 <div id="js-overlay-content-loading-questions" contentSize="full" class="hidden">
 
-    <div class="load-questions">
+    <div class="load-questions-explanation-wrapper">
+
+        <div id="study-question-viewer-study-directions" class="load-questions-explanation shadow hidden">
+
+            <h2>Starting CPA Exam Simulation</h2>
+                
+            <h3>Mode: Study</h3>
+            
+            <div style="width:600px;">
+                
+                <p>
+                    In the study mode, when you mark an answer it is your final decision! After you select 
+                    the answer you think is correct, the correct answer will be immediatley indicated and an 
+                    explanation will be provided. Your progress will not be saved unless you get to the end of the test or exit! You do not have 
+                    to answer all of the questions. If you skip a question it will be ignored, and not included in 
+                    questions that you have answered.   
+                </p>
+            </div>
+
+            <div class="exit-explanation">
+                <p>
+                    <strong>Important:</strong><br />
+                    To make sure your progress is saved either complete all questions or use 
+                    the exit button at the top of the simulator.
+                </p>
+
+                <div class="exit-icon">Exit Icon</div>
+            </div>
+                
+            
+            
+            <button class="btn-orange start-study btn-medium">Continue</button>
+
+        </div>
+
+        <div id="study-question-viewer-test-directions" class="load-questions-explanation shadow hidden">
+
+            <h2>Starting CPA Exam Simulation</h2>
+                
+            <h3>Mode: Test</h3>
+            
+            <div style="width:600px;">
+                
+                <p>
+                    In the test mode we try and recreate the experience you will have when you are taking the CPA Exam. You will 
+                    not be immediatley graded on questions you complete (unlike study mode). After you finish the exam by clicking continue
+                    from the last quesiton your answers will be tallied. After you complete the exam, your progress will be saved and you will be able to review all of your questions and see 
+                    explanations for each question. Incorrect questions will be indicated in the quesiton navigation at the bottom of the screen.  
+                </p>
+            </div>
+
+            <div class="exit-explanation">
+                <p>
+                    <strong>Important:</strong><br />
+                    To make sure your progress is saved either complete all questions or use 
+                    the exit button at the top of the simulator.
+                </p>
+
+                <div class="exit-icon">Exit Icon</div>
+            </div>
+                
+            
+            
+            <button class="btn-orange start-study btn-medium">Continue</button>
+
+
+        </div>
+
+    </div>
+
+    <div class="load-questions hidden">
         <table>
             <tr>
                 <td><img style="position:absolute; margin-top:1px; margin-left:-10px;" src="../Content/Images/Shared/ajax-loader-small.gif" /></td>
@@ -397,42 +467,7 @@
                 <div class="study-question-viewer-exit">Exit</div>
             </div>
 
-            <div id="study-question-viewer-study-directions" class="study-quesitons-content hidden">
 
-                <h2>CPA Exam Study Mode</h2>
-                
-                <p>
-                    In the study mode, when you mark an answer it is your final decision! After you select 
-                    the answer you think is correct, the correct answer will be immediatley indicated and an 
-                    explanation will be provided. 
-                </p>
-                <p>
-                    Your progress will not be saved unless you get to the end of the test or exit! You do not have 
-                    to answer all of the questions. If you skip a question it will be ignored, and not included in 
-                    questions that you have answered. 
-                </p>
-                <button class="btn-orange btn-medium">Start Study Mode</button>
-
-            </div>
-
-            <div id="study-question-viewer-test-directions" class="hidden study-quesitons-content">
-
-                <h2>CPA Exam Test Mode</h2>
-
-                <p>
-                    In the test mode we try and recreate the experience you will have when you are taking the CPA Exam. You will 
-                    not be immediatley graded on questions you complete (unlike study mode). After you finish the exam by clicking continue
-                    from the last quesiton your answers will be tallied. 
-                </p>
-                <p>
-                    After you complete the exam, your progress will be saved and you will be able to review all of your questions and see 
-                    explanations for each question. Incorrect questions will be indicated in the quesiton navigation at the bottom of the screen. 
-                </p>
-
-                <button class="btn-orange btn-medium">Start Test Mode</button>
-
-
-            </div>
 
             <div id="study-question-viewer-directions" class="study-quesitons-content">
             
@@ -595,7 +630,6 @@
 
 </div>
    
-
 
 <!-- Logged In Page 
 <div id="js-content-wrapper-user-account" class="js-content-wrapper hidden">

@@ -233,6 +233,61 @@
         margin: 0px auto;
     }
 
+    #full-screen-container .load-questions-explanation-wrapper{
+        margin:0px auto;
+        width:960px;
+    }
+
+    #full-screen-container .load-questions-explanation{
+        padding:10px 0px;
+        float:left;
+        width:960px;
+    }
+
+    #full-screen-container .load-questions-explanation h2{
+        margin:20px;
+    }
+
+    #full-screen-container .load-questions-explanation h3{
+        margin:20px;
+        font-weight:bold;
+    }
+
+
+    #full-screen-container .load-questions-explanation p{
+        margin:20px 20px 20px 40px;
+        width:500px;
+        line-height:22px;
+    }
+
+    #full-screen-container .load-questions-explanation .exit-explanation{
+        margin-left:20px;
+        background-color:#efefef;
+        float:left;
+    }
+
+    #full-screen-container .load-questions-explanation .exit-explanation p{
+        float:left;
+        margin-left:20px;
+        width:400px;
+    }
+
+    #full-screen-container .load-questions-explanation .exit-icon{
+        background-image: url("/Content/Images/Account/spritesheet.png");
+        width: 60px;
+        background-position: 61px -9px;
+        margin: 20px;
+        padding: 41px 0px 5px 0px;
+        text-align: center;
+        border:solid 1px #999;
+        float:right;
+    }
+
+    #full-screen-container .load-questions-explanation .start-study{
+        margin:20px;
+        float:left;
+        clear:both;
+    }
 
 /* Study Question Styles */
 

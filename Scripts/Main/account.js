@@ -510,31 +510,42 @@ $.COR.account.startStudy = function () {
     this.simulator.options.strategy = $("[name=practice-strategy]:checked").val();
 
 
-    // Build data objects w/options
 
-    // Show UI 'getting questions' - full screen
+
+
+
 
     $.COR.TPrep.showFullScreenOverlay(
         $("#js-overlay-content-loading-questions").html(),
-        $("#js-overlay-content-loading-questions").attr("contentSize")
-    );
-
-
-    // Show Testing UI - full screen
-    $.COR.TPrep.showFullScreenOverlay(
-        $("#js-overlay-content-study-questions").html(),
         $("#js-overlay-content-loading-questions").attr("contentSize"),
         function () {
-            // Get Questions
+            // Show Explanation for Mode
+            if (self.simulator.options.mode == "study") {
+                $("#study-question-viewer-study-directions").show();
+                $("#study-question-viewer-test-directions").hide();
+            }
+            else {
+                $("#study-question-viewer-study-directions").hide();
+                $("#study-question-viewer-test-directions").show();
+            }
+
 
             self.simulator.questionIndex = 0;
 
             if (self.offline == true) {
-                self.simulator.questions = self.getOfflineQuestions();
-          
+                
+
                 setTimeout(function () {
-                    self.initQuestions();
-                }, 1000);
+
+                    self.simulator.questions = self.getOfflineQuestions();
+
+                    if ($("#full-screen-container .load-questions").is(":visible")) {
+                        setTimeout(function () {
+                            self.showSimulator();
+                        }, 1000);
+                    }
+
+                }, 5000);
             }
             else {
 
@@ -546,6 +557,8 @@ $.COR.account.startStudy = function () {
                     },
                     success: function (data) {
 
+
+
                         if (data.QuestionResponses != null) {
 
                             self.simulator.questions = [{
@@ -554,7 +567,12 @@ $.COR.account.startStudy = function () {
                             }];
                             self.simulator.questions = self.simulator.questions.concat(data.QuestionResponses);
 
-                            self.initQuestions();
+                            if ($("#full-screen-container .load-questions").is(":visible")) {
+                                setTimeout(function () {
+                                    self.showSimulator();
+                                }, 1000);
+                            }
+                            
                         }
                         else {
                             alert('Server Error, please refresh the page and try again');
@@ -569,11 +587,39 @@ $.COR.account.startStudy = function () {
 
 
 
+            $(".start-study").on('click', function () {
+
+                if (self.simulator.questions == null) {
+                    $("#full-screen-container .load-questions-explanation-wrapper").hide();
+                    $("#full-screen-container .load-questions").show();
+                }
+                else {
+                    self.showSimulator();
+                }
+
+            });
+            
+
         }
     );
+
+
+
 };
 
+$.COR.account.showSimulator = function () {
 
+    var self = this;
+
+    $.COR.TPrep.showFullScreenOverlay(
+        $("#js-overlay-content-study-questions").html(),
+        $("#js-overlay-content-loading-questions").attr("contentSize"),
+        function () {
+            self.initQuestions();
+        }
+    );
+
+}
 
 $.COR.account.initQuestions = function () {
 
