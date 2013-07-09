@@ -240,7 +240,7 @@ function getDummyResultRowData() {
 }
 
 
-function getQuestionByID(questionId) {
+function getQuestionById(questionId) {
 
     var q = QuestionResponses;
     var len = q.length;
@@ -248,7 +248,7 @@ function getQuestionByID(questionId) {
     var question = null;
 
     for (var i = 0; i < len; i++) {
-        if (q[i].QuestionId == quesitonId) {
+        if (q[i].QuestionId == questionId) {
             question = q[i];
         }
     }
