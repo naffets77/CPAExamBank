@@ -541,7 +541,7 @@ $.COR.account.startStudy = function () {
                 var ph = new $.COR.Utilities.PostHandler({
                     service: "question", call: "getQuestionsAndAnswers",
                     params: {
-                        SectionTypeId: $("input:radio[name=practice-category]").val(),
+                        SectionTypeId: $("input:radio[name=practice-category]:checked").val(),
                         QuestionAmount: $("#practice-question-count").val()
                     },
                     success: function (data) {
