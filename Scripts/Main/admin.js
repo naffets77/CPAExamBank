@@ -154,50 +154,34 @@ $(document).on('ready', function () {
 
         var self = this;
 
-        /*
-        $("#edit-qrid").val(question.QuestionClientId);
-        $("#edit-question-image").val(question.QuestionClientImage);
-        $("#edit-deprecated").attr('checked', question.IsDeprecated == "0" ? false : true);
-        $("#edit-active").attr('checked', question.IsActive == "0" ? false : true);
-        $("#edit-approved").attr('checked', question.IsApprovedForUse == "0" ? false : true);
-        $("#edit-correct-answer-index").val(parseInt(question.CorrectAnswerIndex) + 1);
-
-        // Question Content Data
-        $("#edit-question-value").html(question.Question);
-        $("#edit-explanation-value").html(question.Explanation);
-
-        $("#edit-answer-1-value").html(question.Answers[0].DisplayText);
-        $("#edit-answer-2-value").html(question.Answers[1].DisplayText);
-        $("#edit-answer-3-value").html(question.Answers[2].DisplayText);
-        $("#edit-answer-4-value").html(question.Answers[3].DisplayText);
-        */
-
         var ph = new $.COR.Utilities.PostHandler({
             service: "question", call: "updateQuestion",
             params: {
-                CorrectAnswerIndex: parseInt($("#edit-correct-answer-index").val()) - 1 , // change back to 0 indexed
-                QuestionClientId: $("#edit-qrid").val(),
-                QuestionClientImage: $("#edit-question-image").val(),
-                IsApprovedForUse: $("#edit-approved").is(":checked") ? "1" : "0",
-                IsDeprecated: $("#edit-deprecated").is(":checked") ? "1" : "0",
-                IsActive: $("#edit-active").is(":checked") ? "1" : "0",
-                Explanation: $("#edit-explanation-value").html(),
-                Question: $("#edit-question-value").html(),
-                Answers: [
-                        {
-                            DisplayText: $("#edit-answer-1-value").html(),
-                        },
-                        {
-                            DisplayText: $("#edit-answer-2-value").html(),
-                        },
-                        {
-                            DisplayText: $("#edit-answer-3-value").html(),
-                        },
-                        {
-                            DisplayText: $("#edit-answer-4-value").html(),
-                        }
+                QuestionUpdateResponse: JSON.stringify({
+                    CorrectAnswerIndex: parseInt($("#edit-correct-answer-index").val()) - 1, // change back to 0 indexed
+                    QuestionClientId: $("#edit-qrid").val(),
+                    QuestionClientImage: $("#edit-question-image").val(),
+                    IsApprovedForUse: $("#edit-approved").is(":checked") ? "1" : "0",
+                    IsDeprecated: $("#edit-deprecated").is(":checked") ? "1" : "0",
+                    IsActive: $("#edit-active").is(":checked") ? "1" : "0",
+                    Explanation: $("#edit-explanation-value").html(),
+                    Question: $("#edit-question-value").html(),
+                    Answers: [
+                            {
+                                DisplayText: $("#edit-answer-1-value").html(),
+                            },
+                            {
+                                DisplayText: $("#edit-answer-2-value").html(),
+                            },
+                            {
+                                DisplayText: $("#edit-answer-3-value").html(),
+                            },
+                            {
+                                DisplayText: $("#edit-answer-4-value").html(),
+                            }
 
-                ]
+                    ]
+                })
             },
             success: function (data) {
 
