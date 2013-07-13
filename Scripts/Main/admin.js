@@ -187,7 +187,7 @@ function validateSearchResults(questionResponse) {
     var filterFound = false;
 
     // Will do filtering/searching here...
-    if ($("#search-helper-specific-search").val() !== 0) {
+    if ($("#search-helper-specific-search").val() !== "0") {
 
         filterFound = true;
 
