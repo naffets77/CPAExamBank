@@ -222,10 +222,14 @@ function validateSearchResults(questionResponse) {
             filterFound = true;
         }
 
+        if ($("#search-section").val() != "0") {
 
-        if($("#search-section").val() == questionResponse.SectionTypeId){
-            result = true;
             filterFound = true;
+
+            if ($("#search-section").val() == questionResponse.SectionTypeId) {
+                result = true;
+                
+            }
         }
 
 
