@@ -183,10 +183,14 @@ function buildSearchResults(QuestionResponses) {
 
 function validateSearchResults(questionResponse) {
 
-    var result = true;
+    var result = false;
+    var filterFound = false;
 
     // Will do filtering/searching here...
     if ($("#search-helper-specific-search").val() !== 0) {
+
+        filterFound = true;
+
         var searchValue = $("#search-helper-specific-search-input").val();
         switch ($("#search-helper-specific-search").val()) {
             case "1":
@@ -204,23 +208,33 @@ function validateSearchResults(questionResponse) {
     else {
 
         if ($("#search-approved").is(":checked")) {
-            result = questionResponse.IsApprovedForUse == 1; 
+            result = questionResponse.IsApprovedForUse == 1;
+            filterFound = true;
         }
 
         if ($("#search-active").is(":checked")) {
             result = questionResponse.IsActive == 1;
+            filterFound = true;
         }
 
         if ($("#search-deprecated").is(":checked")) {
             result = questionResponse.IsDeprecated == 1;
+            filterFound = true;
         }
 
 
-        result = $("#search-section").val() == questionResponse.SectionTypeId;
+        if($("#search-section").val() == questionResponse.SectionTypeId){
+            result = true;
+            filterFound = true;
+        }
 
 
     }
 
+    // No filters : Set to true
+    if (!filterFound) {
+        result = true;
+    }
 
     return result;
 }
@@ -229,17 +243,17 @@ function validateSearchResults(questionResponse) {
 function appendSearchResultsRow(QuestionData) {
     
     var SectionName = "-";
-    switch (QuestionData.SectiontypeId) {
-        case 1:
+    switch (QuestionData.SectionTypeId) {
+        case "1":
             SectionName = "FAR";
             break;
-        case 2:
+        case "2":
             SectionName = "AUD";
             break;
-        case 3:
+        case "3":
             SectionName = "BEC";
             break;
-        case 4:
+        case "4":
             SectionName = "REG";
             break;
     }
