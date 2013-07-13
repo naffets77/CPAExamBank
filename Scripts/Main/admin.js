@@ -176,14 +176,14 @@ function buildSearchResults(QuestionResponses) {
     for (var i = 0 ; i < QuestionResponses.length; i++) {
 
         if (validateSearchResults(QuestionResponses[i])) {
-            appendSearchResultsRow();
+            appendSearchResultsRow(QuestionResponses[i]);
         }
     }
 }
 
 function validateSearchResults(questionResponse) {
 
-    var result = false;
+    var result = true;
 
     // Will do filtering/searching here...
     if ($("#search-helper-specific-search").val() !== 0) {
@@ -245,7 +245,7 @@ function appendSearchResultsRow(QuestionData) {
     }
 
     var Approved = QuestionData.IsApprovedForUse == "1" ? "Yes" : "No";
-    var Deprecated = "No"; //QuestionData.IsDeprecated == "1" ? "Yes" : "No";
+    var Deprecated = QuestionData.IsDeprecated == "1" ? "Yes" : "No";
     var Active = QuestionData.IsActive == "1" ? "Yes" : "No";
 
     var row = "<tr qid='" + QuestionData.QuestionId + "'>" +
