@@ -1,4 +1,4 @@
-﻿var offline = false;
+﻿var offline = true;
 
 var QuestionResponses = null;
 
@@ -65,7 +65,10 @@ $(document).on('ready', function () {
     $("#search").on('click', function () {
 
         if (offline == true) {
+            QuestionResponses = [];
+
             appendSearchResultsRow(getDummyResultRowData());
+            QuestionResponses.push(getDummyResultRowData());
             return;
         }
 
@@ -144,6 +147,70 @@ $(document).on('ready', function () {
             });
     });
 
+    $("#edit-save-all").on('click', function () {
+        if ($(this).hasClass('disabled')) { return; }
+        $(this).addClass('disabled').html("Saving...");
+
+
+        var self = this;
+
+        /*
+        $("#edit-qrid").val(question.QuestionClientId);
+        $("#edit-question-image").val(question.QuestionClientImage);
+        $("#edit-deprecated").attr('checked', question.IsDeprecated == "0" ? false : true);
+        $("#edit-active").attr('checked', question.IsActive == "0" ? false : true);
+        $("#edit-approved").attr('checked', question.IsApprovedForUse == "0" ? false : true);
+        $("#edit-correct-answer-index").val(parseInt(question.CorrectAnswerIndex) + 1);
+
+        // Question Content Data
+        $("#edit-question-value").html(question.Question);
+        $("#edit-explanation-value").html(question.Explanation);
+
+        $("#edit-answer-1-value").html(question.Answers[0].DisplayText);
+        $("#edit-answer-2-value").html(question.Answers[1].DisplayText);
+        $("#edit-answer-3-value").html(question.Answers[2].DisplayText);
+        $("#edit-answer-4-value").html(question.Answers[3].DisplayText);
+        */
+
+        var ph = new $.COR.Utilities.PostHandler({
+            service: "question", call: "updateQuestion",
+            params: {
+                CorrectAnswerIndex: parseInt($("#edit-correct-answer-index").val()) - 1 , // change back to 0 indexed
+                QuestionClientId: $("#edit-qrid").val(),
+                QuestionClientImage: $("#edit-question-image").val(),
+                IsApprovedForUse: $("#edit-approved").is(":checked") ? "1" : "0",
+                IsDeprecated: $("#edit-deprecated").is(":checked") ? "1" : "0",
+                IsActive: $("#edit-active").is(":checked") ? "1" : "0",
+                Explanation: $("#edit-explanation-value").html(),
+                Question: $("#edit-question-value").html(),
+                Answers: [
+                        {
+                            DisplayText: $("#edit-answer-1-value").html(),
+                        },
+                        {
+                            DisplayText: $("#edit-answer-2-value").html(),
+                        },
+                        {
+                            DisplayText: $("#edit-answer-3-value").html(),
+                        },
+                        {
+                            DisplayText: $("#edit-answer-4-value").html(),
+                        }
+
+                ]
+            },
+            success: function (data) {
+
+                $(self).removeClass('disabled').html("Save");
+                $(self).removeClass('disabled').html("Save");
+
+            }
+        });
+
+        ph.submitPost();
+        
+
+    });
 
     // Editor updater
     setInterval(function () {
@@ -194,13 +261,13 @@ function validateSearchResults(questionResponse) {
         var searchValue = $("#search-helper-specific-search-input").val();
         switch ($("#search-helper-specific-search").val()) {
             case "1":
-                result = questionResponse.QuestionClientImage == searchValue;
+                result = questionResponse.QuestionClientId == searchValue;
                 break;
             case "2":
                 result = questionResponse.Quesiton.match("/" + searchValue + "/g"); 
                 break;
             case "3":
-                result = questionResponse.replace("jpeg", "").match(searchValue);
+                result = questionResponse.QuestionClientImage.replace("jpeg", "").match(searchValue);
                 break;
         }
         
@@ -306,31 +373,6 @@ function appendSearchResultsRow(QuestionData) {
 
 }
 
-function getDummyResultRowData() {
-    return {
-        CorrectAnswerIndex: 0,
-        Explanation: "<p>The answer is option A. Signing of payrolls checks is a management function which  impairs the independence of the CPA</p><p></p><p></p><p></p><p></p><p></p>",
-        Question: "<p>What procedure should be followed to detect frauds that occur while updating checking account balances and print out details of overdrawn accounts when computer programmer never print overdrawn accounts?</p><p></p><p></p><p></p><p></p><p></p>",
-        Answers: [
-                {
-                    DisplayText: "Master file of Checking account balances should be totalled through running control total and compared with printout.",
-                },
-                {
-                    DisplayText: "Testing the client's program and verfication of the subsidiary file with use of test Date approach by the author",
-                },
-                {
-                    DisplayText: "A program check  of Valid customer code",
-                },
-                {
-                    DisplayText: "Compilation from documented source files on periodic basis and comparison with current programs in use.",
-                }
-
-            ]
-    }
-
-}
-
-
 function getQuestionById(questionId) {
 
     var q = QuestionResponses;
@@ -349,15 +391,36 @@ function getQuestionById(questionId) {
 
 function setQuestionData(question) {
 
+
+    var SectionName = "-";
+    switch (question.SectionTypeId) {
+        case "1":
+            SectionName = "FAR";
+            break;
+        case "2":
+            SectionName = "AUD";
+            break;
+        case "3":
+            SectionName = "BEC";
+            break;
+        case "4":
+            SectionName = "REG";
+            break;
+    }
+
     // Read Only
     $("#question-edit-id").html(question.QuestionId);
+    $("#edit-section-type").html(SectionName);
 
 
+    
     // Question Meta Data
-    $("#edit-qrid").html("not yet");
-    $("#edit-deprecated").attr('checked', '');
-    $("#edit-active").attr('checked', '');
-    $("#edit-approved").attr('checked', '');
+    $("#edit-qrid").val(question.QuestionClientId);
+    $("#edit-question-image").val(question.QuestionClientImage);
+    $("#edit-deprecated").attr('checked', question.IsDeprecated == "0" ? false : true);
+    $("#edit-active").attr('checked', question.IsActive == "0" ? false : true);
+    $("#edit-approved").attr('checked', question.IsApprovedForUse == "0" ? false : true);
+    $("#edit-correct-answer-index").val(parseInt(question.CorrectAnswerIndex) + 1);
     
     // Question Content Data
     $("#edit-question-value").html(question.Question);
@@ -368,5 +431,36 @@ function setQuestionData(question) {
     $("#edit-answer-3-value").html(question.Answers[2].DisplayText);
     $("#edit-answer-4-value").html(question.Answers[3].DisplayText);
 
+
+}
+
+function getDummyResultRowData() {
+    return {
+        CorrectAnswerIndex: 1,
+        QuestionClientId: "AUS1S1",
+        QuestionClientImage: "123",
+        IsApprovedForUse: "2",
+        IsDeprecated: "0",
+        IsActive: "1",
+        SectionTypeId: "1",
+        QuestionId: "1",
+        Explanation: "<p>The answer is option A. Signing of payrolls checks is a management function which  impairs the independence of the CPA</p><p></p><p></p><p></p><p></p><p></p>",
+        Question: "<p>What procedure should be followed to detect frauds that occur while updating checking account balances and print out details of overdrawn accounts when computer programmer never print overdrawn accounts?</p><p></p><p></p><p></p><p></p><p></p>",
+        Answers: [
+                {
+                    DisplayText: "Master file of Checking account balances should be totalled through running control total and compared with printout.",
+                },
+                {
+                    DisplayText: "Testing the client's program and verfication of the subsidiary file with use of test Date approach by the author",
+                },
+                {
+                    DisplayText: "A program check  of Valid customer code",
+                },
+                {
+                    DisplayText: "Compilation from documented source files on periodic basis and comparison with current programs in use.",
+                }
+
+        ]
+    }
 
 }

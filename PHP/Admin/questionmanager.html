@@ -330,11 +330,15 @@
 
             <div id="question-manager_Edit" class="question-manager-view"> 
                 <h2>Edit <span id="question-edit-id"></span></h2>
-                <textarea id="question-editor" style="width:600px; height:200px">
-                    The CPA should make inquiries of the predecessor auditor when he is approached to perform an audit for the first time. This is required because the predecessor may provide the successor the relevant information which will assist the successor in determining
-                </textarea>
 
                 <table id="edit-table">
+                    <tr>
+                        <td>Info</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><span style="font-weight:bold;">Section Type:</span> <span id="edit-section-type"></span></td>
+                    </tr>
                     <tr>
                         <td>Edit</td>
                     </tr>
@@ -358,6 +362,33 @@
                         <td></td>
                         <td style="line-height:24px;">
                             <input type="text" id="edit-qrid" /> Quesiton Reference ID
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td style="line-height:24px;">
+                            <input type="text" id="edit-question-image" /> Reference Image ID
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td style="line-height:24px;">
+                            <select id="edit-correct-answer-index" style="width:80px;">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                            </select>
+                            &nbsp; Correct Answer Index
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            
+                            <textarea id="question-editor" style="width:600px; height:200px; margin-bottom:0px; padding-bottom:0px;">
+                                The CPA should make inquiries of the predecessor auditor when he is approached to perform an audit for the first time. This is required because the predecessor may provide the successor the relevant information which will assist the successor in determining
+                            </textarea>
+
                         </td>
                     </tr>
                     <tr>
@@ -436,7 +467,7 @@
                     <tr>
                         <td></td>
                         <td>
-                            <button>Save</button>
+                            <button id="edit-save-all">Save</button>
                         </td>
                     </tr>
                 </table>
