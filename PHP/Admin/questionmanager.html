@@ -236,73 +236,48 @@
                             <option value="0">Select One (Optional)</option>
                             <option value="1">Question Reference ID</option>
                             <option value="2">Question Text</option>
+                            <option value="3">Image Name</option>
                         </select>
 
                         <input id="search-helper-specific-search-input" type='text' class="hidden" />
                     </td>
                 </tr>
 
-                <tr>
+                <tr class="filter-option">
                     <td colspan='2' style='padding-top: 10px; font-weight: bold;'>Filter Options
                     </td>
                 </tr>
-                <tr>
+                <tr class="filter-option">
                     <td>Approved
                     </td>
                     <td>
-                        <select>
-                            <option>Both</option>
-                            <option selected>No</option>
-                            <option>Yes</option>
-                        </select>
+                        <input id="search-approved" type="checkbox" />
                     </td>
                 </tr>
-                <tr>
+                <tr class="filter-option">
                     <td>Active
                     </td>
                     <td>
-                        <select>
-                            <option>Select To Apply Filter</option>
-                            <option>No</option>
-                            <option selected>Yes</option>
-                        </select>
+                        <input id="search-active" type="checkbox" />
                     </td>
                 </tr>
-                <tr>
+                <tr class="filter-option">
                     <td>Depricated
                     </td>
                     <td>
-                        <select>
-                            <option>Select To Apply Filter</option>
-                            <option selected>No</option>
-                            <option>Yes</option>
-                        </select>
+                        <input id="search-depricated" type="checkbox" />
                     </td>
                 </tr>
-                <tr>
+                <tr class="filter-option">
                     <td>Section</td>
                     <td>
-                        <select>
-                            <option>Select Section</option>
-                            <option>AUD</option>
-                            <option>FAR</option>
-                            <option>REG</option>
-                            <option>BEC</option>
+                        <select id="search-section">
+                            <option value="0">Select Section</option>
+                            <option value="2">AUD</option>
+                            <option value="1">FAR</option>
+                            <option value="4">REG</option>
+                            <option value="3">BEC</option>
                         </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Num Results</td>
-                    <td>
-                        <select>
-                            <option>5</option>
-                            <option selected="selected">10</option>
-                            <option>25</option>
-                            <option>50</option>
-                            <option>All</option>
-
-                        </select>
-
                     </td>
                 </tr>
                 <tr>
@@ -327,7 +302,10 @@
                         <td>ID</td>
                         <td>Reference ID</td>
                         <td>Section</td>
+                        <td>JPEG</td>
                         <td>Approved</td>
+                        <td>Depricated</td>
+                        <td>Active</td>
                         <td>Text</td>
                         <td>Answers</td>
                     </tr>

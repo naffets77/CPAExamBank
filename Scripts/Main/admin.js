@@ -1,6 +1,6 @@
-﻿var offline = false;
+﻿var offline = true;
 
-var QuestionResponses;
+var QuestionResponses = null;
 
 $(document).on('ready', function () {
 
@@ -70,19 +70,24 @@ $(document).on('ready', function () {
         }
 
 
-        var ph = new $.COR.Utilities.PostHandler({
-            service: "question", call: "getAllQuestionsAndAnswers",
-            params: {},
-            success: function (data) {
+        if (QuestionResponses == null) {
+            var ph = new $.COR.Utilities.PostHandler({
+                service: "question", call: "getAllQuestionsAndAnswers",
+                params: {},
+                success: function (data) {
 
-                QuestionResponses = data.QuestionResponses;
-                buildSearchResults(data);
+                    QuestionResponses = data.QuestionResponses;
+                    buildSearchResults(data);
 
 
-            }
-        });
+                }
+            });
 
-        ph.submitPost();
+            ph.submitPost();
+        }
+        else {
+            buildSearchResults(data);
+        }
 
 
     });
@@ -91,9 +96,11 @@ $(document).on('ready', function () {
 
         if ($(this).val() == 0) {
             $("#search-helper-specific-search-input").hide();
+            $(".filter-option").show();
         }
         else {
             $("#search-helper-specific-search-input").show();
+            $(".filter-option").hide();
         }
 
     });
@@ -162,27 +169,93 @@ $(document).on('ready', function () {
 
 
 function buildSearchResults(data) {
+
+
     $("#results tbody").html("");
 
     for (var i = 0 ; i < data.QuestionResponses.length; i++) {
 
-
-        // Will do filtering/searching here...
-
-
-        appendSearchResultsRow(data.QuestionResponses[i]);
+        if (validateSearchResults(data.QuestionResponses[i])) {
+            appendSearchResultsRow();
+        }
     }
+}
+
+function validateSearchResults(questionResponse) {
+
+    var result = false;
+
+    // Will do filtering/searching here...
+    if ($("#search-helper-specific-search").val() !== 0) {
+        var searchValue = $("#search-helper-specific-search-input").val();
+        switch ($("#search-helper-specific-search").val()) {
+            case "1":
+                result = questionResponse.QuestionClientImage == searchValue;
+                break;
+            case "2":
+                result = questionResponse.Quesiton.match("/" + searchValue + "/g"); 
+                break;
+            case "3":
+                result = questionResponse.replace("jpeg", "").match(searchValue);
+                break;
+        }
+        
+    }
+    else {
+
+        if ($("#search-approved").is(":checked")) {
+            result = questionResponse.IsApprovedForUse == 1; 
+        }
+
+        if ($("#search-active").is(":checked")) {
+            result = questionResponse.IsActive == 1;
+        }
+
+        if ($("#search-depricated").is(":checked")) {
+            result = questionResponse.IsDepricated == 1;
+        }
+
+
+        result = $("#search-section").val() == questionResponse.SectionTypeId;
+
+
+    }
+
+
+    return result;
 }
 
 
 function appendSearchResultsRow(QuestionData) {
     
+    var SectionName = "-";
+    switch (QuestionData.SectiontypeId) {
+        case 1:
+            SectionName = "FAR";
+            break;
+        case 2:
+            SectionName = "AUD";
+            break;
+        case 3:
+            SectionName = "BEC";
+            break;
+        case 4:
+            SectionName = "REG";
+            break;
+    }
+
+    var Approved = QuestionData.IsApprovedForUse == "1" ? "Yes" : "No";
+    var Depricated = "No"; //QuestionData.IsDepricated == "1" ? "Yes" : "No";
+    var Active = QuestionData.IsActive == "1" ? "Yes" : "No";
 
     var row = "<tr qid='" + QuestionData.QuestionId + "'>" +
                 "<td>" + QuestionData.QuestionId + "</td>" +
-                "<td>Section1S3</td>" +
-                "<td>AUD</td>" +
-                "<td>No</td>"+
+                "<td>" + QuestionData.QuestionClientId + "</td>" +
+                "<td>" + SectionName + "</td>" +
+                "<td>" + QuestionData.QuestionClientImage + "</td>" +
+                "<td>" + Approved + "</td>" +
+                "<td>" + Depricated + "</td>" +
+                "<td>" + Active + "</td>" +
                 "<td class='question'>" + QuestionData.Question + "</td><td class='answers'><ul>";
 
 
