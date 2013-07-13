@@ -77,7 +77,7 @@ $(document).on('ready', function () {
                 success: function (data) {
 
                     QuestionResponses = data.QuestionResponses;
-                    buildSearchResults(data);
+                    buildSearchResults(QuestionResponses);
 
 
                 }
