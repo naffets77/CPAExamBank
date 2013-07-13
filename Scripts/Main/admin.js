@@ -158,6 +158,7 @@ $(document).on('ready', function () {
             service: "question", call: "updateQuestion",
             params: {
                 QuestionUpdateResponse: JSON.stringify({
+                    QuestionId: $("#edit-question-id").html(),
                     CorrectAnswerIndex: parseInt($("#edit-correct-answer-index").val()) - 1, // change back to 0 indexed
                     QuestionClientId: $("#edit-qrid").val(),
                     QuestionClientImage: $("#edit-question-image").val(),
@@ -169,15 +170,23 @@ $(document).on('ready', function () {
                     Answers: [
                             {
                                 DisplayText: $("#edit-answer-1-value").html(),
+                                QuestionToAnswersId: $("#edit-answer-1-value").attr("qaid"),
+                                IsAnswerToQuestion: (parseInt($("#edit-correct-answer-index").val()) - 1) == 0 ? "1" : "0"
                             },
                             {
                                 DisplayText: $("#edit-answer-2-value").html(),
+                                QuestionToAnswersId: $("#edit-answer-2-value").attr("qaid"),
+                                IsAnswerToQuestion: (parseInt($("#edit-correct-answer-index").val()) - 1) == 1 ? "1" : "0"
                             },
                             {
                                 DisplayText: $("#edit-answer-3-value").html(),
+                                QuestionToAnswersId: $("#edit-answer-3-value").attr("qaid"),
+                                IsAnswerToQuestion: (parseInt($("#edit-correct-answer-index").val()) - 1) == 2 ? "1" : "0"
                             },
                             {
                                 DisplayText: $("#edit-answer-4-value").html(),
+                                QuestionToAnswersId: $("#edit-answer-4-value").attr("qaid"),
+                                IsAnswerToQuestion: (parseInt($("#edit-correct-answer-index").val()) - 1) == 3 ? "1" : "0"
                             }
 
                     ]
@@ -393,7 +402,7 @@ function setQuestionData(question) {
     }
 
     // Read Only
-    $("#question-edit-id").html(question.QuestionId);
+    $("#edit-question-id").html(question.QuestionId);
     $("#edit-section-type").html(SectionName);
 
 
@@ -415,6 +424,10 @@ function setQuestionData(question) {
     $("#edit-answer-3-value").html(question.Answers[2].DisplayText);
     $("#edit-answer-4-value").html(question.Answers[3].DisplayText);
 
+    $("#edit-answer-1-value").attr("qaid", question.Answers[0].DisplayText);
+    $("#edit-answer-2-value").attr("qaid", question.Answers[1].DisplayText);
+    $("#edit-answer-3-value").attr("qaid", question.Answers[2].DisplayText);
+    $("#edit-answer-4-value").attr("qaid", question.Answers[3].DisplayText);
 
 }
 
