@@ -86,7 +86,7 @@ $(document).on('ready', function () {
             ph.submitPost();
         }
         else {
-            buildSearchResults(data);
+            buildSearchResults(QuestionResponses);
         }
 
 
