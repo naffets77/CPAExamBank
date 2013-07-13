@@ -424,10 +424,10 @@ function setQuestionData(question) {
     $("#edit-answer-3-value").html(question.Answers[2].DisplayText);
     $("#edit-answer-4-value").html(question.Answers[3].DisplayText);
 
-    $("#edit-answer-1-value").attr("qaid", question.Answers[0].DisplayText);
-    $("#edit-answer-2-value").attr("qaid", question.Answers[1].DisplayText);
-    $("#edit-answer-3-value").attr("qaid", question.Answers[2].DisplayText);
-    $("#edit-answer-4-value").attr("qaid", question.Answers[3].DisplayText);
+    $("#edit-answer-1-value").attr("qaid", question.Answers[0].QuestionToAnswersId);
+    $("#edit-answer-2-value").attr("qaid", question.Answers[1].QuestionToAnswersId);
+    $("#edit-answer-3-value").attr("qaid", question.Answers[2].QuestionToAnswersId);
+    $("#edit-answer-4-value").attr("qaid", question.Answers[3].QuestionToAnswersId);
 
 }
 
