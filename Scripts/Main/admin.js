@@ -211,8 +211,8 @@ function validateSearchResults(questionResponse) {
             result = questionResponse.IsActive == 1;
         }
 
-        if ($("#search-depricated").is(":checked")) {
-            result = questionResponse.IsDepricated == 1;
+        if ($("#search-deprecated").is(":checked")) {
+            result = questionResponse.IsDeprecated == 1;
         }
 
 
@@ -245,7 +245,7 @@ function appendSearchResultsRow(QuestionData) {
     }
 
     var Approved = QuestionData.IsApprovedForUse == "1" ? "Yes" : "No";
-    var Depricated = "No"; //QuestionData.IsDepricated == "1" ? "Yes" : "No";
+    var Deprecated = "No"; //QuestionData.IsDeprecated == "1" ? "Yes" : "No";
     var Active = QuestionData.IsActive == "1" ? "Yes" : "No";
 
     var row = "<tr qid='" + QuestionData.QuestionId + "'>" +
@@ -254,7 +254,7 @@ function appendSearchResultsRow(QuestionData) {
                 "<td>" + SectionName + "</td>" +
                 "<td>" + QuestionData.QuestionClientImage + "</td>" +
                 "<td>" + Approved + "</td>" +
-                "<td>" + Depricated + "</td>" +
+                "<td>" + Deprecated + "</td>" +
                 "<td>" + Active + "</td>" +
                 "<td class='question'>" + QuestionData.Question + "</td><td class='answers'><ul>";
 
