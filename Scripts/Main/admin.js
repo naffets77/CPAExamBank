@@ -1,4 +1,4 @@
-﻿var online = false;
+﻿var offline = false;
 
 var QuestionResponses = null;
 
