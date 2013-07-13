@@ -168,14 +168,14 @@ $(document).on('ready', function () {
 });
 
 
-function buildSearchResults(data) {
+function buildSearchResults(QuestionResponses) {
 
 
     $("#results tbody").html("");
 
-    for (var i = 0 ; i < data.QuestionResponses.length; i++) {
+    for (var i = 0 ; i < QuestionResponses.length; i++) {
 
-        if (validateSearchResults(data.QuestionResponses[i])) {
+        if (validateSearchResults(QuestionResponses[i])) {
             appendSearchResultsRow();
         }
     }
