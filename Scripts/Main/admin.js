@@ -419,6 +419,9 @@ function setQuestionData(question) {
     $("#edit-approved").attr('checked', question.IsApprovedForUse == "0" ? false : true);
     $("#edit-correct-answer-index").val(parseInt(question.CorrectAnswerIndex) + 1);
     
+    // Set Editor defaulting w/the question text
+    editor.i.contentWindow.document.body.innerHTML = question.Question;
+
     // Question Content Data
     $("#edit-question-value").html(question.Question);
     $("#edit-explanation-value").html(question.Explanation);
