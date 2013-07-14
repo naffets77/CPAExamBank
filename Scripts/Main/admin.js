@@ -67,8 +67,9 @@ $(document).on('ready', function () {
         if (offline == true) {
             QuestionResponses = [];
 
-            appendSearchResultsRow(getDummyResultRowData());
             QuestionResponses.push(getDummyResultRowData());
+            buildSearchResults(QuestionResponses);
+            
             return;
         }
 
@@ -239,6 +240,16 @@ function buildSearchResults(QuestionResponses) {
             appendSearchResultsRow(QuestionResponses[i]);
         }
     }
+
+    $("#results tr").on('click', function () {
+        console.log("Setting Question: " + $(this).attr("qid"));
+        setQuestionData(getQuestionById($(this).attr("qid")));
+
+        $("#search-wrapper").fadeOut(function () {
+            $("#question-wrapper").fadeIn();
+        });
+
+    });
 }
 
 function validateSearchResults(questionResponse) {
@@ -354,15 +365,7 @@ function appendSearchResultsRow(QuestionData) {
     $("#results tbody").append(row);
 
 
-    $("#results tr").on('click', function () {
-        console.log("Setting Question: " + $(this).attr("qid"));
-        setQuestionData(getQuestionById($(this).attr("qid")));
 
-        $("#search-wrapper").fadeOut(function () {
-            $("#question-wrapper").fadeIn();
-        });
-
-    });
 
 }
 
