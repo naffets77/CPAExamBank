@@ -355,7 +355,7 @@ function appendSearchResultsRow(QuestionData) {
 
 
     $("#results tr").on('click', function () {
-
+        console.log("Setting Question: " + $(this).attr("qid"));
         setQuestionData(getQuestionById($(this).attr("qid")));
 
         $("#search-wrapper").fadeOut(function () {
@@ -376,6 +376,7 @@ function getQuestionById(questionId) {
     for (var i = 0; i < len; i++) {
         if (q[i].QuestionId == questionId) {
             question = q[i];
+            break;
         }
     }
 
