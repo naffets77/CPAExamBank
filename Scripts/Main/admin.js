@@ -407,6 +407,10 @@ function getQuestionById(questionId) {
 function setQuestionData(question) {
 
 
+    // Reset the Radio Button for Question/Answers to the Question Option
+    $("input[name='edit-option']").prop("checked", "false");
+    $("#edit-question").prop("checked", "true");
+
     var SectionName = "-";
     switch (question.SectionTypeId) {
         case "1":
