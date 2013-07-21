@@ -4,27 +4,7 @@ var QuestionResponses = null;
 
 $(document).on('ready', function () {
 
-    new TINY.editor.edit('editor', {
-        id: 'question-editor',
-        width: 860,
-        height: 100,
-        cssclass: 'te',
-        controlclass: 'tecontrol',
-        rowclass: 'teheader',
-        dividerclass: 'tedivider',
-        controls: ['bold', 'italic', 'underline', 'strikethrough', '|', 'subscript', 'superscript', '|',
-                  'orderedlist', 'unorderedlist', '|', 'outdent', 'indent', '|', 'leftalign',
-                  'centeralign', 'rightalign', 'blockjustify', '|', 'unformat', '|', 'undo', 'redo', 'n',
-                  'size', 'style', '|', 'image', 'hr', '|', 'cut', 'copy', 'paste', 'print'],
-        footer: true,
-        fonts: ['Verdana', 'Arial', 'Georgia', 'Trebuchet MS'],
-        xhtml: true,
-        cssfile: '/Scripts/Plugins/tinyeditor/style.css',
-        bodyid: 'editor',
-        footerclass: 'tefooter',
-        toggle: { text: 'source', activetext: 'wysiwyg', cssclass: 'toggle' },
-        resize: { cssclass: 'resize' }
-    });
+    setupTinyEditor();
 
     $("#login").on("click", function () {
 
@@ -197,10 +177,16 @@ $(document).on('ready', function () {
             },
             success: function (data) {
 
+                // Update Cached Questions
                 updateQuestion(QuestionResponseDTO);
 
-                $(self).removeClass('disabled').html("Save");
+                // Re-Build Search Results So that Table Is Updated
+                buildSearchResults(QuestionResponses);
 
+                // Make sure it's on the screen long enough to see
+                setTimeout(function () {
+                    $(self).removeClass('disabled').html("Save");
+                }, 500);
             }
         });
 
@@ -492,3 +478,32 @@ function getDummyResultRowData() {
 }
 
 
+
+
+// Setup
+
+function setupTinyEditor() {
+
+    new TINY.editor.edit('editor', {
+        id: 'question-editor',
+        width: 860,
+        height: 100,
+        cssclass: 'te',
+        controlclass: 'tecontrol',
+        rowclass: 'teheader',
+        dividerclass: 'tedivider',
+        controls: ['bold', 'italic', 'underline', 'strikethrough', '|', 'subscript', 'superscript', '|',
+                  'orderedlist', 'unorderedlist', '|', 'outdent', 'indent', '|', 'leftalign',
+                  'centeralign', 'rightalign', 'blockjustify', '|', 'unformat', '|', 'undo', 'redo', 'n',
+                  'size', 'style', '|', 'image', 'hr', '|', 'cut', 'copy', 'paste', 'print'],
+        footer: true,
+        fonts: ['Verdana', 'Arial', 'Georgia', 'Trebuchet MS'],
+        xhtml: true,
+        cssfile: '/Scripts/Plugins/tinyeditor/style.css',
+        bodyid: 'editor',
+        footerclass: 'tefooter',
+        toggle: { text: 'source', activetext: 'wysiwyg', cssclass: 'toggle' },
+        resize: { cssclass: 'resize' }
+    });
+
+}
