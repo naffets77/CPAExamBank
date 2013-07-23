@@ -61,6 +61,19 @@ class TestAccount extends UnitTestCase {
         
     }
     
+    function testCopyQuestion(){
+
+        BuildTestHeader("Copy Question", "service_question", "copyQuestion", "Test coppying a question", null, null);
+
+        $result = simulatePostRequest(array("Hash"=> $this->hash, "QuestionId" => 1), "service_question","copyQuestion");
+        
+        BuildResultViewer($result, "service_question :: copyQuestion");
+        
+        $this->assertTrue(true);
+
+        
+    }
+    
 
     
     function testLogout(){
