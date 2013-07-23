@@ -22,6 +22,8 @@ class TestAccount extends UnitTestCase {
         $this->assertTrue(true);
     }
     
+    
+    /*
     function testGetQuestions(){
 
         BuildTestHeader("Get Questions", "service_question", "getAllQuestionsAndAnswers", "Test getting questions", null, null);
@@ -60,6 +62,7 @@ class TestAccount extends UnitTestCase {
 
         
     }
+    */
     
     function testCopyQuestion(){
 
