@@ -195,6 +195,43 @@ $(document).on('ready', function () {
 
     });
 
+    // Question Copy
+
+    $("#js-overlay-copy-question-content .btn-orange").on('click', function () {
+
+        if ($(this).hasClass('disabled')) { return; }
+        $(this).addClass('disabled');
+
+        $(this).html("Copying...");
+
+        var ph = new $.COR.Utilities.PostHandler({
+            service: "question", call: "copyQuestion",
+            params: {
+                QuestionId: $("#edit-question-id").html()
+            },
+            success: function (data) {
+
+                // Add question to array
+                QuestionResponses.push(data.QuestionResponse[0]);
+
+                // Remove client reference ID
+                $("#edit-question-image").html("");
+
+                // Set current question ID
+                $("#edit-question-id").html(data.QuestionResponse[0].QuestionId);
+
+                // Hide Popup
+                $.colorbox("close");
+
+                $(this).html("Continue").removeClass('disabled');
+
+            }
+        });
+
+        ph.submitPost();
+
+    });
+
     // Editor updater
     setInterval(function () {
         if ($("#question-manager_Edit").is(":visible")) {
