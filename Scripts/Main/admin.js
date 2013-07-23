@@ -197,7 +197,7 @@ $(document).on('ready', function () {
 
     // Question Copy
 
-    $("#js-overlay-copy-question-content .btn-orange").on('click', function () {
+    $("#full-screen-container .btn-orange").on('click', function () {
 
         if ($(this).hasClass('disabled')) { return; }
         $(this).addClass('disabled');
