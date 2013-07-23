@@ -149,10 +149,13 @@ $(document).on('ready', function () {
                             // Set current question ID
                             $("#edit-question-id").html(data.QuestionResponse[0].QuestionId);
 
-                            // Hide Popup
-                            $.colorbox("close");
-
+                            // Reset
                             $(this).html("Continue").removeClass('disabled');
+
+                            // Hide Popup
+                            $.COR.Utilities.hideFullScreenOverlay();
+
+                            
 
                         }
                     });

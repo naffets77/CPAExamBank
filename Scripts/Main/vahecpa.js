@@ -11,6 +11,12 @@ $(document).on('ready', function () {
                     $.COR.TPrep.hideFullScreenOverlay();
                 });
 
+                $("#full-screen-container .registration-far").prop('checked', $("#pricing-row1-check").prop('checked'));
+                $("#full-screen-container .registration-aud").prop('checked', $("#pricing-row2-check").prop('checked'));
+                $("#full-screen-container .registration-bec").prop('checked', $("#pricing-row3-check").prop('checked'));
+                $("#full-screen-container .registration-reg").prop('checked', $("#pricing-row4-check").prop('checked'));
+
+
                 $(".registration-finish-button").on("click", function (e) {
 
                     if ($(this).hasClass("disabled")) { return; }
@@ -58,26 +64,6 @@ $(document).on('ready', function () {
                                 });
                             }
                         });
-
-                        
-
-                        /* 
-                        $.post("/PHP/AJAX/Account/Registration.php", registrationData + "&Data=true", function (data) {
-            
-                            self.log("Back from registration attempt");
-            
-                            // null = email already exists
-                            if (data.uid == null) {
-                                $("#registration-email").parent().append("<span class='error-message'>Email Already Exists</span>");
-                                $("#registration-finish-button").html(originalHTML);
-                            }
-                            else {
-                                self.login($("#registration-email").val(), "", function () {
-                                    self.pageSwap($(clickedElement).parents(".js-content-wrapper").attr("id"), "js-content-wrapper-user-account");
-                                });
-                            }
-                        }, "JSON");
-                        */
 
                     }
 
