@@ -23,7 +23,7 @@ class TestAccount extends UnitTestCase {
     }
     
     
-    /*
+    
     function testGetQuestions(){
 
         BuildTestHeader("Get Questions", "service_question", "getAllQuestionsAndAnswers", "Test getting questions", null, null);
@@ -36,7 +36,7 @@ class TestAccount extends UnitTestCase {
 
     
     }
-    
+    /*
     function testFilteredQuestions(){
 
         BuildTestHeader("Get Questions", "service_question", "getQuestionsAndAnswers", "Test getting questions", null, null);
@@ -62,7 +62,7 @@ class TestAccount extends UnitTestCase {
 
         
     }
-    */
+    
     
     function testCopyQuestion(){
 
@@ -77,7 +77,7 @@ class TestAccount extends UnitTestCase {
         
     }
     
-
+     */
     
     function testLogout(){
         BuildTestHeader("Logout", "service_account", "logout", "Test logging out", null, null);
