@@ -273,11 +273,11 @@ $.COR.account.setupEvents = function () {
         var ph = new $.COR.Utilities.PostHandler({
             service: "question", call: "getAccountUserQuestionHistory",
             params: {
-                Filters: {
+                Filters: JSON.stringify({
                     "SectionTypeId": "5",
                     "ResultId": "4",
                     "OrderById": "3"
-                }
+                })
             },
             success: function (data) {
                 $(thisElement).removeClass("disabled");
