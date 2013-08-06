@@ -304,7 +304,7 @@ $.COR.checkLogin = function (successCallback, failCallback) {
                 successCallback(data);
             }
             else {
-                failcallback(data.LoginFailedReason);
+                failCallback(data.LoginFailedReason);
             }
 
         }
