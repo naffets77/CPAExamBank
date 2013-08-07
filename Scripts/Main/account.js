@@ -976,7 +976,7 @@ $.COR.account.completeTest = function () {
                 var answeredCorrectly = 0;
                 if (selectedAnswer !== 0 && selectedAnswer !== -1) {
                     selectedAnswer = question.Answers[question.selectedAnswer].QuestionToAnswersId;
-                    answeredCorrectly = question.correctAnswerIndex == question.selectedAnswer ? 1 : 0;
+                    answeredCorrectly = question.CorrectAnswerIndex == question.selectedAnswer ? 1 : 0;
                 }
 
                 postQuestions.push({
