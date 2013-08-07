@@ -274,9 +274,9 @@ $.COR.account.setupEvents = function () {
             service: "question", call: "getAccountUserQuestionHistory",
             params: {
                 Filters: JSON.stringify({
-                    "SectionTypeId": "5",
-                    "ResultId": "4",
-                    "OrderById": "3"
+                    "SectionTypeId": $("#my-review-section-type").val(),
+                    "ResultId": $("#my-review-result-type").val(),
+                    "OrderById": $("#my-review-order-by").val()
                 })
             },
             success: function (data) {
