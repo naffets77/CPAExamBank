@@ -992,7 +992,7 @@ $.COR.account.completeTest = function () {
                 if (question.selectedAnswer != null) {
 
                     // make all the wrong answers red in the navigation
-                    if (question.selectedAnswer != question.answerIndex) {
+                    if (question.selectedAnswer != question.CorrectAnswerIndex) {
                         incorrect++;
                         $("#full-screen-container .footer-questions-quicklink-holder [index=" + question.index + "]").addClass("incorrect");
                     }
