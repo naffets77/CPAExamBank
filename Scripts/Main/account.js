@@ -901,7 +901,7 @@ $.COR.account.selectAnswer = function (question, selectedInput) {
     var selectedAnswer = $(selectedInput).val();
 
     // set question answered
-    question.selectedAnswer = selectedAnswer;
+    question.selectedAnswer = parseInt(selectedAnswer);
 
     // update footer UI to indicate question was answered
     $(".question-quicklink[index=" + question.index + "]").addClass("answered");
