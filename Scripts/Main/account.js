@@ -291,7 +291,13 @@ $.COR.account.setupEvents = function () {
     });
 
     
+    /* ----- Simulator ----- */
+    $(window).bind('beforeunload', function () {
 
+        if ($.COR.account.simulator.live == true) {
+            return 'If you leave now you will lose your progress. If you want to save your progress exit the simulator before you leave this page.';
+        }
+    });
 
     // Call setup on any other events that are sub of the account object
 
@@ -500,6 +506,11 @@ $.COR.account.BuildQuestionHistory = function (QuestionResponse) {
 
 $.COR.account.startStudy = function () {
     var self = this;
+
+    if ($.COR.account.user == null) {
+        $.COR.Utilities.refreshLogin();
+    }
+
 
     this.simulator.live = true;
     this.simulator.completed = false;
