@@ -509,6 +509,7 @@ $.COR.account.startStudy = function () {
 
     if ($.COR.account.user == null) {
         $.COR.Utilities.refreshLogin();
+        return;
     }
 
 

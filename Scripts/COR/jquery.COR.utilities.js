@@ -135,8 +135,13 @@ $.COR.Utilities.refreshLogin = function (successCallback) {
             $.COR.toggleAccountNavigation();
             $.COR.account.setup(data, function () {
                 
-                successCallback();
-                //$.COR.pageSwap("js-content-wrapper-splash", "js-content-wrapper-user-account");
+                if (typeof successCallback == 'function') {
+                    successCallback();
+                }
+                else {
+                    window.location = "#account";
+                }
+                
             });
         },
 
