@@ -557,3 +557,15 @@
             background-position: -342px 35px;
             float: right;
         }
+
+
+#study-question-viewer-exit-uncompleted p {
+    font-size: 27px;
+    width: 600px;
+    margin: 60px auto 35px;
+}
+
+#study-question-viewer-exit-uncompleted button {
+    float: left;
+    margin:20px;
+}

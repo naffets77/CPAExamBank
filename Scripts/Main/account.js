@@ -752,6 +752,29 @@ $.COR.account.initQuestions = function () {
         self.exitSimulator();
     });
 
+    $("#full-screen-container .exit-simulator-view-results").on('click', function () {
+        $("#study-question-viewer-exit-uncompleted").hide();
+        $("#study-question-viewer-footer").show();
+        self.completeTest();
+    });
+
+    $("#full-screen-container .exit-simulator-exit").on('click', function(){
+        self.simulator.live = false;
+        $("#full-screen-container #study-questions-viewer-wrapper").unbind().remove();
+        $.COR.TPrep.hideFullScreenOverlay();
+        location.hash = "study";
+    });
+
+    $("#full-screen-container .exit-simulator-go-back").on('click', function () {
+        $("#study-question-viewer-exit-uncompleted").hide();
+        $("#study-question-viewer-footer").show();
+        $("#study-question-viewer-question-mc").fadeIn();
+    });
+
+    // Make sure visible
+    $("#full-screen-container #study-question-viewer-directions").show();
+    $("#full-screen-container #study-question-viewer-footer").show();
+
 }
 
 // Builds the dynamic footer UI
@@ -1046,13 +1069,18 @@ $.COR.account.completeTest = function () {
 // Exit simulator
 $.COR.account.exitSimulator = function () {
 
-    this.simulator.live = false;
 
-    $("#full-screen-container #study-questions-viewer-wrapper").unbind().remove();
-
-
-    $.COR.TPrep.hideFullScreenOverlay();
-    location.hash = "study";
+    if ($("#full-screen-container .study-quesitons-content:visible").attr("id") == "study-question-viewer-question-mc") {
+        $(".study-quesitons-content").hide();
+        $("#study-question-viewer-footer").hide();
+        $("#study-question-viewer-exit-uncompleted").fadeIn();
+    }
+    else {
+        this.simulator.live = false;
+        $("#full-screen-container #study-questions-viewer-wrapper").unbind().remove();
+        $.COR.TPrep.hideFullScreenOverlay();
+        location.hash = "study";
+    }
 }
 
 
