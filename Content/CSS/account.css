@@ -141,16 +141,16 @@
         border-bottom: 1px solid #000;
     }
 
-    #review-results .my-info-question-data-row td{
-        padding:0px;
+    #review-results .my-info-question-data-row td {
+        padding: 0px;
     }
 
-        #review-results .my-info-question-data-row .my-info-question-data{
-            display:none;
-        }
+    #review-results .my-info-question-data-row .my-info-question-data {
+        display: none;
+    }
 
-        #review-results .my-info-question-data-row .my-info-question-data p{
-            line-height:22px;
+        #review-results .my-info-question-data-row .my-info-question-data p {
+            line-height: 22px;
         }
 
     #review-results .my-info-question-holder {
@@ -158,55 +158,54 @@
         margin-top: 10px;
         padding: 20px;
         background-color: #efefef;
-        border:1px solid #ddd;
-        border-bottom:none;
+        border: 1px solid #ddd;
+        border-bottom: none;
     }
 
-    #review-results .my-info-question-holder .header{
-        margin-bottom:10px;
-        font-size:18px;
-    }
-
-    #review-results .my-info-question-holder .my-info-question-text {
-        font-size:16px;
-        color:#000;
-        margin-bottom:15px;
-    }
-
-    #review-results .my-info-question-holder .my-info-explanation-text{
-        margin-left:20px;
-    }
-
-    #review-results .my-info-question-holder .my-info-question-answers li{
-        padding-left:30px;
-        padding-bottom:10px;
-        margin-bottom:10px;
-        list-style-type:decimal;
-        list-style-position:inside;
-        
-    }
-
-        #review-results .my-info-question-holder .my-info-question-answers li.correct {
-            background-image: url('/Content/Images/Account/green-arrow.png');
-            background-repeat:no-repeat;
-            background-size:18px;
-            background-position:2px -1px;
-            font-weight:bold;
+        #review-results .my-info-question-holder .header {
+            margin-bottom: 10px;
+            font-size: 18px;
         }
+
+        #review-results .my-info-question-holder .my-info-question-text {
+            font-size: 16px;
+            color: #000;
+            margin-bottom: 15px;
+        }
+
+        #review-results .my-info-question-holder .my-info-explanation-text {
+            margin-left: 20px;
+        }
+
+        #review-results .my-info-question-holder .my-info-question-answers li {
+            padding-left: 30px;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+            list-style-type: decimal;
+            list-style-position: inside;
+        }
+
+            #review-results .my-info-question-holder .my-info-question-answers li.correct {
+                background-image: url('/Content/Images/Account/green-arrow.png');
+                background-repeat: no-repeat;
+                background-size: 18px;
+                background-position: 2px -1px;
+                font-weight: bold;
+            }
 
     #review-results .my-info-question-history {
         padding: 20px;
         background-color: #efefef;
         margin-bottom: 20px;
-        border:1px solid #ddd;
-        border-top:none;
+        border: 1px solid #ddd;
+        border-top: none;
     }
 
         #review-results .my-info-question-history .my-info-question-history-header {
             text-align: left;
             font-weight: bold;
             margin-bottom: 5px;
-            font-size:18px;
+            font-size: 18px;
         }
 
         #review-results .my-info-question-history table {
@@ -218,9 +217,9 @@
                 font-weight: normal;
             }
 
-        #review-results .my-info-question-history table tbody td{
-            padding:10px;
-        }
+            #review-results .my-info-question-history table tbody td {
+                padding: 10px;
+            }
 
 /* Overlay Content */
 
@@ -233,60 +232,65 @@
         margin: 0px auto;
     }
 
-    #full-screen-container .load-questions-explanation-wrapper{
-        margin:0px auto;
-        width:960px;
+#full-screen-container .load-questions-explanation-wrapper {
+    margin: 0px auto;
+    width: 960px;
+}
+
+#full-screen-container .load-questions-explanation {
+    padding: 10px 0px;
+    float: left;
+    width: 960px;
+}
+
+    #full-screen-container .load-questions-explanation h2 {
+        margin: 20px;
     }
 
-    #full-screen-container .load-questions-explanation{
-        padding:10px 0px;
-        float:left;
-        width:960px;
-    }
-
-    #full-screen-container .load-questions-explanation h2{
-        margin:20px;
-    }
-
-    #full-screen-container .load-questions-explanation h3{
-        margin:20px;
-        font-weight:bold;
+    #full-screen-container .load-questions-explanation h3 {
+        margin: 20px;
+        font-weight: bold;
     }
 
 
-    #full-screen-container .load-questions-explanation p{
-        margin:20px 20px 20px 40px;
-        width:500px;
-        line-height:22px;
+    #full-screen-container .load-questions-explanation p {
+        margin: 20px 20px 20px 40px;
+        width: 500px;
+        line-height: 22px;
     }
 
-    #full-screen-container .load-questions-explanation .exit-explanation{
-        margin-left:20px;
-        background-color:#efefef;
-        float:left;
+    #full-screen-container .load-questions-explanation .exit-explanation {
+        margin-left: 20px;
+        background-color: #efefef;
+        float: left;
     }
 
-    #full-screen-container .load-questions-explanation .exit-explanation p{
-        float:left;
-        margin-left:20px;
-        width:400px;
-    }
+        #full-screen-container .load-questions-explanation .exit-explanation p {
+            float: left;
+            margin-left: 20px;
+            width: 400px;
+        }
 
-    #full-screen-container .load-questions-explanation .exit-icon{
+    #full-screen-container .load-questions-explanation .exit-icon {
         background-image: url("/Content/Images/Account/spritesheet.png");
         width: 60px;
         background-position: 61px -9px;
         margin: 20px;
         padding: 41px 0px 5px 0px;
         text-align: center;
-        border:solid 1px #999;
-        float:right;
+        border: solid 1px #999;
+        float: right;
     }
 
-    #full-screen-container .load-questions-explanation .start-study{
-        margin:20px;
-        float:left;
-        clear:both;
+    #full-screen-container .load-questions-explanation .start-study {
+        margin: 20px;
+        float: left;
+        clear: both;
+    }
+
+    #full-screen-container .load-questions-explanation .exit-study {
+        margin: 26px 0 0 0;
+        float: left;
     }
 
 /* Study Question Styles */
@@ -567,5 +571,5 @@
 
 #study-question-viewer-exit-uncompleted button {
     float: left;
-    margin:20px;
+    margin: 20px;
 }

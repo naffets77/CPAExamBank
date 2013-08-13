@@ -612,8 +612,10 @@ $.COR.account.startStudy = function () {
                 }
 
             });
-            
 
+            $(".exit-study").on('click', function () {
+                $.COR.Utilities.hideFullScreenOverlay();
+            });
         }
     );
 
@@ -1070,7 +1072,7 @@ $.COR.account.completeTest = function () {
 $.COR.account.exitSimulator = function () {
 
 
-    if ($("#full-screen-container .study-quesitons-content:visible").attr("id") == "study-question-viewer-question-mc") {
+    if ($("#full-screen-container .study-quesitons-content:visible").attr("id") != "study-question-viewer-results") {
         $(".study-quesitons-content").hide();
         $("#study-question-viewer-footer").hide();
         $("#study-question-viewer-exit-uncompleted").fadeIn();
