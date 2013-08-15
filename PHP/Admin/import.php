@@ -178,10 +178,6 @@ function insertQuestions($questions){
 	}
 	echo "Current Modules and their ids: <br />";
 	print_r($SectionTypes);
-	
-	echo "<h3> Inserting Questions into Database </h3>";
-    
-	
 
     for($i = 0; $i < $num ; $i++){
     
@@ -206,21 +202,28 @@ function insertQuestions($questions){
 					$escapedQuestionClientImage = $mysqli->real_escape_string($question['referenceImage']);
 					
 					//perform the question insert
-					$query = "INSERT INTO Question VALUES(DEFAULT, '".$escapedQuestionClientId."', 1, '', '".$escapedDisplayText."', '".$escapedExplanation."', ".$SectionTypeId.", '', '".$escapedQuestionClientImage."', 0, 1, 0, 0, 0, CURRENT_TIMESTAMP, 'import.php', NOW(), 'import.php');";
+					$query = "INSERT INTO Question (QuestionId, QuestionClientId, QuestionTypeId, DisplayName, DisplayText, Explanation, SectionTypeId, Tags, QuestionClientImage, HasHTMLInName, HasHTMLInText, IsSamplable, IsApprovedForUse, IsActive, IsDeprecated, DateLastModified, LastModifiedBy, DateCreated, CreatedBy) 
+								VALUES(DEFAULT, '".$escapedQuestionClientId."', 1, '', '".$escapedDisplayText."', '".$escapedExplanation."', ".$SectionTypeId.", '', '".$escapedQuestionClientImage."', 0, 1, 0, 0, 0, 0, CURRENT_TIMESTAMP, 'import.php', NOW(), 'import.php');";
 					$mysqli->query($query);
 					$QuestionId = $mysqli->insert_id;
 					
-					//insert the answers
-					$AnswerSortIndex = 1;
-					foreach($question['answers'] as $key => $value){
-						$IsCorrectAnswer = (string)$key == $question['answerIndex'] ? 1 : 0;
-						$escapedDisplayAnswerText = $mysqli->real_escape_string(trim($value));
-						if(!empty($escapedDisplayAnswerText)){
-							$query = "INSERT INTO QuestionToAnswers VALUES(DEFAULT, '".$QuestionId."', ".$AnswerSortIndex.", '', '".$escapedDisplayAnswerText."', ".$IsCorrectAnswer.", 0, 1, CURRENT_TIMESTAMP, 'import.php', NOW(), 'import.php');";
-							$mysqli->query($query);
+					if($QuestionId > 0){
+						//insert the answers
+						$AnswerSortIndex = 1;
+						foreach($question['answers'] as $key => $value){
+							$IsCorrectAnswer = (string)$key == $question['answerIndex'] ? 1 : 0;
+							$escapedDisplayAnswerText = $mysqli->real_escape_string(trim($value));
+							if(!empty($escapedDisplayAnswerText)){
+								$query = "INSERT INTO QuestionToAnswers VALUES(DEFAULT, '".$QuestionId."', ".$AnswerSortIndex.", '', '".$escapedDisplayAnswerText."', ".$IsCorrectAnswer.", 0, 1, CURRENT_TIMESTAMP, 'import.php', NOW(), 'import.php');";
+								$mysqli->query($query);
+							}
+							$AnswerSortIndex += 1;
 						}
-						$AnswerSortIndex += 1;
 					}
+					else{
+						echo " Question failed to insert.";
+					}
+					
 					
 				}
 				else{
