@@ -18,6 +18,36 @@
         <div class="content"></div>
     </div>
 
+    <div id="header-wrapper">
+        <div id="header">
+            <!--<div id="header-logo">CPA<span class="highlight">ExamBank</span>.com</div>-->
+            <img id="header-logo" src="/Content/Images/Shared/Logos/Logo1.png" />
+            <div id="header-login-container">
+                <div id="invalid-account-message" class="arrow_box">Invalid Account</div>
+                <table>
+                    <tr>
+                        <td>
+                            <input type="text" id='home-login-username' value="Email" onclick="$(this).val('steffan77@gmail.com');" />
+                        </td>
+                        <td>
+                            <input type="text" id='home-login-password' value="Password" onclick="$(this).val('testing');" />
+                        </td>
+                        <td>
+                            <button id='login' style="margin-top: 1px">Login</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="padding-top: 4px;"><a href="#reset-password" id='home-forgot-login'>Forgot Password/Email?</a></td>
+                    </tr>
+                </table>
+            </div>
+            <div id="header-logout-container">
+                Logout
+            </div>
+        </div>
+
+    </div>
+
     <div id="wrapper">
         <div id="body">
 
@@ -30,31 +60,6 @@
             </div>
 
 
-            <div id="header">
-                <div id="header-logo">CPA<span class="highlight">ExamBank</span>.com</div>
-                <div id="header-login-container">
-                    <div id="invalid-account-message" class="arrow_box">Invalid Account</div>
-                    <table>
-                        <tr>
-                            <td>
-                                <input type="text" id='home-login-username' value="Email" onclick="$(this).val('steffan77@gmail.com');" />
-                            </td>
-                            <td>
-                                <input type="text" id='home-login-password' value="Password" onclick="$(this).val('testing');" />
-                            </td>
-                            <td>
-                                <button id='login' style="margin-top: 1px">Login</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" style="padding-top: 4px;"><a href="#reset-password" id='home-forgot-login'>Forgot Password/Email?</a></td>
-                        </tr>
-                    </table>
-                </div>
-                <div id="header-logout-container">
-                    Logout
-                </div>
-            </div>
 
             <ul class="header-navigation" id="header-navigation">
                 <li id="header-navigation_" class="current first"><a href='#'>Home</a></li>
@@ -770,7 +775,6 @@
         </div>
 
     </div>
-
 
     <div id="footer-wrapper">
         <footer>
