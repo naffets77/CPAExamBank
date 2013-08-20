@@ -190,11 +190,14 @@ body {
 
 #wrapper {
     width: 960px;
-    margin: 0px auto;
+    margin: 105px auto 0;
 }
 
 #header-wrapper {
-    background-color:#21465D
+    background-color:#21465D;
+    width:100%;
+    position:fixed;
+    z-index:10;
 }
 
 
@@ -243,7 +246,7 @@ body {
 
 #header {
     width: 960px;
-    height:85px;
+    height:105px;
     margin-bottom: 20px;
     margin:0px auto;
     /*
@@ -260,7 +263,7 @@ body {
 
 #header-logo {
     cursor: pointer;
-    margin: 12px 0 10px 0px;
+    margin: 20px 0 10px 0px;
 }
 
 
@@ -338,7 +341,7 @@ body {
 }
 
 #header-login-container table {
-    margin-top: 5px;
+    margin-top: 15px;
 }
 
     #header-login-container table tr td {

@@ -56,43 +56,56 @@
 
 #home-row-2 {
     margin-top: 20px;
-    background-color: #fff;
+    background-color: #888888;
     float: left;
     width: 920px;
     margin: 20px;
-    border-top:1px solid #efefef;
-    border-bottom:1px solid #efefef;
 }
+
+    #home-row-2  h2{
+        color:#fff;
+        font-weight:bold;
+    }
 
 
     #home-row-2 ul {
         float: left;
-        margin: 58px 20px 20px;
-        width: 390px;
+        margin: 55px 20px 20px;
+        width: 386px;
     }
 
         #home-row-2 ul li.active {
             cursor: auto;
             background-position: 336px -30px;
+
+            -moz-box-shadow: none;
+            -webkit-box-shadow: none;
+            box-shadow: none;
         }
 
         #home-row-2 ul li {
             font-size: 24px;
-            margin-bottom: 40px;
-            border: 1px solid #999;
+            margin-bottom: 55px;
+            border: 1px solid #EFEFEF;
             padding: 10px;
-            color: #FFF;
+            color: #000;
             cursor: pointer;
-            background: url("/Content/Images/Home/arrows2.png") no-repeat 336px 7px #21465D;
+            background: url("/Content/Images/Home/arrows2.png") no-repeat 336px 7px #FFF;
+            font-weight: bold;
+
+            -moz-box-shadow: 5px 5px 16px #333;
+            -webkit-box-shadow: 5px 5px 16px #333;
+            box-shadow: 5px 5px 16px #333;
         }
 
     #home-row-2 .image-viewer{
-        background-image:url(/Content/Images/Home/accountant.jpg);
+        background-image:url(/Content/Images/Home/ss1.png);
         height: 320px; 
         width:450px;
         float: right; 
         margin: 20px;
         position:relative;
+        border:2px solid #666;
     }
 
     #home-row-2 .image-viewer .caption-overlay{
@@ -102,9 +115,9 @@
         width:450px;
         height:85px;
         background-color:#000;
-        -moz-opacity: 0.88;
-        opacity: 0.88;
-        -ms-filter:"progid:DXImageTransform.Microsoft.Alpha"(Opacity=88);
+        -moz-opacity: 0.75;
+        opacity: 0.75;
+        -ms-filter:"progid:DXImageTransform.Microsoft.Alpha"(Opacity=70);
     }
 
     #home-row-2 .image-viewer .caption-text{
@@ -138,7 +151,7 @@
     #home-row-3 .register {
         width: 300px;
         float: left;
-        background-color: #D8D8D8;
+        background-color: #888888;
         padding: 20px;
     }
 
