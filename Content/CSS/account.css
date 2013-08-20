@@ -434,6 +434,16 @@
     width: 100%;
     padding: 4px 0px;
 }
+    #study-question-viewer-header .logo {
+        margin-left: 21px;
+        height: 40px;
+        margin-top: 6px;    
+        -moz-opacity: 0.20;
+        opacity: 0.20;
+        -ms-filter:"progid:DXImageTransform.Microsoft.Alpha"(Opacity=20);
+
+    }
+    
 
     #study-question-viewer-header .study-question-viewer-exit {
         background-image: url("/Content/Images/Account/spritesheet.png");

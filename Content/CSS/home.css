@@ -9,8 +9,7 @@
     clear: both;
     width: 100%;
     border: solid 1px #eee;
-    min-height:400px;
-
+    min-height: 400px;
     background-image: linear-gradient(bottom, #FAFAFA 0%, #FAFAFA 2%, #FFFFFF 35%);
     background-image: -o-linear-gradient(bottom, #FAFAFA 0%, #FAFAFA 2%, #FFFFFF 35%);
     background-image: -moz-linear-gradient(bottom, #FAFAFA 0%, #FAFAFA 2%, #FFFFFF 35%);
@@ -55,15 +54,68 @@
     margin-top: 25px;
 }
 
-#home-row-2 ul {
+#home-row-2 {
+    margin-top: 20px;
+    background-color: #fff;
     float: left;
-    margin: 30px 20px 20px;
-    width: 415px;
+    width: 920px;
+    margin: 20px;
+    border-top:1px solid #efefef;
+    border-bottom:1px solid #efefef;
 }
 
-    #home-row-2 ul li {
-        font-size: 19px;
-        margin-bottom: 20px;
+
+    #home-row-2 ul {
+        float: left;
+        margin: 58px 20px 20px;
+        width: 390px;
+    }
+
+        #home-row-2 ul li.active {
+            cursor: auto;
+            background-position: 336px -30px;
+        }
+
+        #home-row-2 ul li {
+            font-size: 24px;
+            margin-bottom: 40px;
+            border: 1px solid #999;
+            padding: 10px;
+            color: #FFF;
+            cursor: pointer;
+            background: url("/Content/Images/Home/arrows2.png") no-repeat 336px 7px #21465D;
+        }
+
+    #home-row-2 .image-viewer{
+        background-image:url(/Content/Images/Home/accountant.jpg);
+        height: 320px; 
+        width:450px;
+        float: right; 
+        margin: 20px;
+        position:relative;
+    }
+
+    #home-row-2 .image-viewer .caption-overlay{
+        position:absolute;
+        bottom:0px;
+        left:0px;
+        width:450px;
+        height:85px;
+        background-color:#000;
+        -moz-opacity: 0.88;
+        opacity: 0.88;
+        -ms-filter:"progid:DXImageTransform.Microsoft.Alpha"(Opacity=88);
+    }
+
+    #home-row-2 .image-viewer .caption-text{
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        width: 430px;
+        height: 60px;
+        color: #FFF;
+        padding: 10px;
+        line-height:20px;
     }
 
 #home-row-3 {
@@ -198,10 +250,10 @@
 /*** Product Tab ***/
 
 /* TODO: Get some overall styling going for stuff like this */
-#js-content-wrapper-product-pricing > p{
+#js-content-wrapper-product-pricing > p {
     margin: 20px 20px 10px;
-    line-height:22px;
-    font-size:16px;
+    line-height: 22px;
+    font-size: 16px;
 }
 
 #pricing-holder {
@@ -295,36 +347,35 @@
     margin-bottom: 50px;
 }
 
-#pricing-total{
-    float:right;
-    margin-right:30px;
-    font-size:40px;
+#pricing-total {
+    float: right;
+    margin-right: 30px;
+    font-size: 40px;
 }
 
-#pricing-sign-up-more-info{
-    clear:both;
-    font-size:16px;
-    line-height:22px;
-    float:left;
+#pricing-sign-up-more-info {
+    clear: both;
+    font-size: 16px;
+    line-height: 22px;
+    float: left;
 }
 
-#pricing-sign-up-more-info table{
-    margin:20px;
-}
+    #pricing-sign-up-more-info table {
+        margin: 20px;
+    }
 
-#pricing-sign-up-more-info table td{
-    padding:10px 10px 30px;
-    border:1px solid #efefef;
+        #pricing-sign-up-more-info table td {
+            padding: 10px 10px 30px;
+            border: 1px solid #efefef;
+        }
 
-}
-
-#pricing-sign-up-more-info table td:first-child{
-    font-weight:bold;
-    padding-right:20px;
-    width:230px;
-    background-color:#efefef;
-    color:#333;
-}
+            #pricing-sign-up-more-info table td:first-child {
+                font-weight: bold;
+                padding-right: 20px;
+                width: 230px;
+                background-color: #efefef;
+                color: #333;
+            }
 
 
 
@@ -356,7 +407,10 @@
     margin-top: 20px;
 }
 
-#aboutus-holder p{font-size:16px; line-height:22px;}
+#aboutus-holder p {
+    font-size: 16px;
+    line-height: 22px;
+}
 
 
 /*** FAQs ***/
@@ -410,8 +464,8 @@
 
                         #faq-holder .col1 ul li.section ul li a.active {
                             /*text-shadow: 0px 1px 0px #000;*/
-                            color:#8D0000;
-                            font-weight:bold;
+                            color: #8D0000;
+                            font-weight: bold;
                         }
 
 
@@ -424,10 +478,10 @@
         margin-top: -15px;
     }
 
-    #faq-holder .col2 .faqs-content{
-        font-size:16px;
-        line-height:22px;
-    }
+        #faq-holder .col2 .faqs-content {
+            font-size: 16px;
+            line-height: 22px;
+        }
 
         #faq-holder .col2 h2 {
             font-size: 25px;
@@ -441,22 +495,21 @@
             -webkit-border-radius: 3px 3px 3px 3px;
         }
 
-        #faq-holder .col2 p{
-
-            margin:20px 0px;
+        #faq-holder .col2 p {
+            margin: 20px 0px;
         }
 
-        #faq-holder .col2 ul{
-            list-style-type:disc;
-            margin:0px 0px 25px 40px;
+        #faq-holder .col2 ul {
+            list-style-type: disc;
+            margin: 0px 0px 25px 40px;
         }
 
-        #faq-holder .col2 ul li{
-            margin-bottom:10px;
-        }
+            #faq-holder .col2 ul li {
+                margin-bottom: 10px;
+            }
 
-        #faq-holder .col2 table tr td:first-child{
-            padding-right:10px;
+        #faq-holder .col2 table tr td:first-child {
+            padding-right: 10px;
         }
 
 
@@ -469,11 +522,10 @@
     font-weight: bold;
 }
 
-#js-overlay-register-content input{
-    visibility:visible;
+#js-overlay-register-content input {
+    visibility: visible;
 }
 
 #js-overlay-register-content tr td {
     padding: 4px 10px;
 }
-
