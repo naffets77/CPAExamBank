@@ -158,6 +158,125 @@ $.COR.Utilities.refreshLogin = function (successCallback) {
 
 // Popup handler
 
+$.COR.Utilities.FullScreenOverlay = {
+
+    cache :[],
+
+    loadExternal : function(externalPath, contentClassSize, events){
+
+        if (this.isCached(externalPath)) {
+            var self = this;
+
+            $.get(externalPath, function (html) {
+                self.cache.push({
+                    id: externalPath,
+                    html: html,
+                    sizeClass: contentClassSize,
+                    events: events
+                });
+
+                self.show(externalPath);
+            });
+        }
+        else {
+            self.show(externalPath);
+        }
+
+    },
+    loadLocal : function(id, contentClassSize, events){
+
+        if (this.isCached(id)) {
+            this.show(id);
+        } else {
+
+            this.cache.push({
+                id: id,
+                html: $("#" + id).html(),
+                sizeClass: contentClassSize,
+                events: events
+            });
+
+            this.show(id);
+        }
+
+    },
+    show: function (id) {
+        var self = this;
+
+        this.hide(function () {
+
+            // We can assume overlay is hidden and empty
+
+            var cachedContent = self.getCachedById(id);
+
+            $("#full-screen-container .content").html(cachedContent.html);
+            $("#full-screen-container").removeClass().addClass(cachedContent.sizeClass + " content");
+
+            cachedContent.events();
+            if (typeof cachedContent.events == 'function') {
+                cachedContent.events();
+            }
+
+            $("#full-screen-overlay").fadeIn();
+
+        });
+    },
+    hide: function (callback) {
+        if ($("#full-screen-container").is(":visible")) {
+            $("#full-screen-container").fadeOut(function () {
+                $("#full-screen-overlay").fadeOut(200, function () {
+                    if (typeof callback == "function") {
+                        $("#full-screen-container .content").empty();
+                        callback();
+                    }
+                });
+            });
+        }
+        else {
+            if (typeof callback == "function") {
+                $("#full-screen-container .content").empty();
+                callback();
+            }
+        }
+    },
+
+    // Helpers
+    isCached: function (id) {
+        var localCache = this.cache;
+        var result = false;
+
+        for (var i = 0; i < localCache; i++) {
+            var cachedItem = localCache[i];
+
+            if (cachedItem.id == id) {
+                result = true;
+                break;
+            }
+        }
+
+        return result;
+    },
+    getCachedById: function(id){
+        var localCache = this.cache;
+        var result = null;
+
+        for (var i = 0; i < localCache.length; i++) {
+            var cachedItem = localCache[i];
+
+            if (cachedItem.id == id) {
+                result = cachedItem;
+                break;
+            }
+        }
+
+        return result;
+    }
+};
+
+$.COR.Utilities.loadFullScreenOverlay = function (external, contentClassSize, events) {
+
+}
+
 $.COR.Utilities.showFullScreenOverlay = function (content, contentClassSize, events) {
 
 
@@ -200,3 +319,39 @@ $.COR.Utilities.hideFullScreenOverlay = function () {
         $("#full-screen-overlay").fadeOut(200);
     });
 }
+
+
+
+//show: function (content, contentClassSize, events) {
+//    if ($("#full-screen-container").is(":visible")) {
+
+//        $("#full-screen-container .content").fadeOut(function () {
+//            $(this).html("");
+
+//            $("#full-screen-container .content").html(content).removeClass().addClass(contentClassSize + " content").fadeIn();
+
+//            if (typeof events == 'function') {
+//                events();
+//            }
+
+//            $("#full-screen-overlay").fadeIn();
+//        });
+
+
+//    }
+//    else {
+//        $("#full-screen-container .content").html(content);
+
+//        $("#full-screen-container").removeClass().addClass(contentClassSize);
+
+//        $("#full-screen-holder").show();
+//        $("#full-screen-container").show();
+
+
+//        if (typeof events == 'function') {
+//            events();
+//        }
+
+//        $("#full-screen-overlay").fadeIn();
+//    }
+//},
