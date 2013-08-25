@@ -301,6 +301,13 @@ $.COR.account.setupEvents = function () {
 
     // Call setup on any other events that are sub of the account object
 
+
+    /* ----- Tooltips ------*/
+
+    $('.tooltip').powerTip({
+        followMouse:true
+    });
+
 };
 
 

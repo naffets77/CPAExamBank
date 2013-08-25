@@ -50,20 +50,61 @@
     }
 
 #subscription-holder {
-    margin-top: 20px;
-    border: 1px solid #efefef;
-    padding: 20px;
-    width: 420px;
-    margin-bottom: 26px;
-}
-
-#subscription-options li {
-    margin: 0px 0px 20px;
+    width: 460px;
 }
 
 #subscription-options {
-    margin-bottom: 10px;
+    margin:20px 0px;
+    width:100%;
 }
+
+#subscription-options thead tr td{
+    color:#000;
+}
+
+#subscription-options tr td{
+    text-align: center;
+    color: #FFF;
+    font-size: 22px;
+    vertical-align: middle;
+    padding: 12px 10px;
+}
+
+#subscription-options tr td:first-child{
+    width:65px;
+}
+
+#subscription-options tr td:last-child{
+    width:30px;
+}
+
+#subscription-options tr.far td{
+    background-color:#5e9a9e;
+}
+
+#subscription-options tr.aud td{
+    background-color:#706b62;
+}
+
+#subscription-options tr.bec td{
+    background-color:#d95a1a;
+}
+
+#subscription-options tr.reg td{
+    background-color:#9e7c92;
+}
+
+#subscription-options tr td .squaredTwo{
+    margin:0px;
+}
+
+#account-update-subscription{
+    float:right;
+}
+
+
+
+
 
 /* Practice Content */
 

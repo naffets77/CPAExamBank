@@ -13,10 +13,11 @@
                         </td>
                     </tr>                        
                     <tr id='account-settings-update-button-tr'>
-                        <td></td>
+                        
                         <td>
                             <button id='account-settings-update-email' class="btn-orange">Update</button>
                         </td>
+                        <td></td>
                     </tr>
                 </table>
             </form>
@@ -76,25 +77,102 @@
 
             <div id="subscription-holder">
 
-                <ul id="subscription-options">
-                    <li>
-                        <input type="checkbox" /> Auditing And Attestation (AUD)
-                    </li>
-                    <li>
-                        <input type="checkbox" /> Business Environment and Concepts (BEC)
-                    </li>
-                    <li>
-                        <input type="checkbox" /> Financial Accounting and Reporting (FAR)
-                    </li>
-                    <li>
-                        <input type="checkbox" /> Regulation (REG)
-                    </li>
-                    <li>
-                        Total: <span id="subscription-total">$0</span>
-                    </li>
-                </ul>
+                <table id="subscription-options">
+                    <thead style="display:none;">
+                        <tr>
+                            <td>Section</td>
+                            <td>Status</td>
+                            <td>Date<span class="tooltip" data-powertip="The date when your subscription expires or renews."></span></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
 
-                <button class="btn-orange btn-medium"> Update Subscription </button>
+                    </thead>
+                    <tbody>
+                        <tr class="aud">
+                            <td>
+                                AUD <span class="tooltip" data-powertip="Auditing And Attestation">?</span>
+                            </td>
+                            <td>
+                                Inactive
+                            </td>
+                            <td>
+                                -
+                            </td>
+                            <td>
+                                $0
+                            </td>
+                            <td>
+                                <div class="squaredTwo">
+                                    <input type="checkbox" value="None" id="account_subscription_check-aud" name="check" />
+                                    <label for="account_subscription_check-aud"></label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="bec">
+                            <td>
+                                BEC <span class="tooltip" data-powertip="Business Environment and Concepts">?</span>
+                            </td>
+                            <td>
+                                Inactive
+                            </td>
+                            <td>
+                                -
+                            </td>
+                            <td>
+                                $0
+                            </td>
+                            <td>
+                                <div class="squaredTwo">
+                                    <input type="checkbox" value="None" id="account_subscription_check-bec" name="check" />
+                                    <label for="account_subscription_check-bec"></label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="far">
+                            <td>
+                                FAR <span class="tooltip" data-powertip="Financial Accounting and Reporting">?</span>
+                            </td>
+                            <td>
+                                Inactive
+                            </td>
+                            <td>
+                                -
+                            </td>
+                            <td>
+                                $0
+                            </td>
+                            <td>
+                                <div class="squaredTwo">
+                                    <input type="checkbox" value="None" id="account_subscription_check-far" name="check" />
+                                    <label for="account_subscription_check-far"></label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="reg">
+                            <td>
+                                REG <span class="tooltip" data-powertip="Regulation">?</span>
+                            </td>
+                            <td>
+                                Inactive
+                            </td>
+                            <td>
+                                -
+                            </td>
+                            <td>
+                                $0
+                            </td>
+                            <td>
+                                <div class="squaredTwo">
+                                    <input type="checkbox" value="None" id="account_subscription_check-reg" name="check" />
+                                    <label for="account_subscription_check-reg"></label>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <button id="account-update-subscription" class="btn-red btn-medium"> Update Subscription </button>
 
             </div>
 
