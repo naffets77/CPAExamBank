@@ -441,7 +441,7 @@ $.COR.account.BuildQuestionHistory = function (QuestionResponse) {
 
 
             questionHistory += "<tr>" +
-                                            "<td>" + questionIndex + "</td>"+
+                                            //"<td>" + questionIndex + "</td>"+
                                             "<td>" + summary.Correct + "</td>"+
                                             "<td>" + summary.TimeSpentOnQuestion + "</td>"+
                                             "<td>" + summary.SimulationMode + "</td>" + 
@@ -476,7 +476,7 @@ $.COR.account.BuildQuestionHistory = function (QuestionResponse) {
                                 "<table>" +
                                     "<thead>" +
                                         "<tr>" +
-                                            "<td>Selected Answer</td>" +
+                                            //"<td>Selected Answer</td>" +
                                             "<td>Correct</td>" +
                                             "<td>Seconds Taken</td>" +
                                             "<td>Mode</td>" +
