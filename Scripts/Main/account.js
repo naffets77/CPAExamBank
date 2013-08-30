@@ -1088,7 +1088,7 @@ $.COR.account.exitSimulator = function () {
         this.simulator.live = false;
         $("#full-screen-container #study-questions-viewer-wrapper").unbind().remove();
         $.COR.TPrep.hideFullScreenOverlay();
-        location.hash = "study";
+        location.hash = "account/study";
     }
 }
 
