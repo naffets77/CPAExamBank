@@ -771,7 +771,7 @@ $.COR.account.initQuestions = function () {
         self.simulator.live = false;
         $("#full-screen-container #study-questions-viewer-wrapper").unbind().remove();
         $.COR.TPrep.hideFullScreenOverlay();
-        location.hash = "study";
+        location.hash = "account/study";
     });
 
     $("#full-screen-container .exit-simulator-go-back").on('click', function () {
