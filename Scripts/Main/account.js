@@ -43,91 +43,31 @@ $.COR.account.setup = function (data, successCallback) {
         self.settings = data.UserSettings;
 
         $("#account-settings-username").val(self.user.LoginName);
-        $("#account-settings-first-name").val(self.user.FirstName);
-        $("#account-settings-last-name").val(self.user.LastName);
-
-        $("#account-settings-naitive-language").val(self.user.PrimaryLanguageId);
-        $("#account-settings-practice-language").val(self.user.SoughtLanguageId);
-        $("#account-settings-practice-language-proficiency").val(self.user.SoughtLanguageProficiencyId);
-
         $("#account-settings-current-password").val(self.user.LoginPassword);
 
         self.setupEvents();
 
-        $("#header-login-container").hide();
-        $("#header-logout-container").show();
-
-
-        $("#home-login-password").val("");
-        $("#home-login-username").val("");
+        
+        
 
         self.initUser();
 
-        successCallback();
+        // Force login to take 1500ms
+
+        setTimeout(function () {
+            // Show proper UI
+            $.COR.pageSwap($.COR.getCurrentDisplayedId(), "js-content-wrapper-study");
+
+            $("#header-navigation li").removeClass('current');
+            $("#header-navigation_study").addClass('current');
+
+
+            successCallback();
+        }, 1500);
+
+         
     });
 }
-
-$.COR.account.hashHandler = function (hashParts, loc) {
-
-    if ($.COR.account.user != null) {
-
-        console.log("Account Page: " + loc);
-
-        if (hashParts.length == 1) {
-            $("#header-navigation-account_study").addClass('current');
-        }
-        else if (hashParts.length == 2 ) {
-
-            //Auto Header Nav - Page Nav
-             if (!$("#header-navigation-account_" + hashParts[1]).hasClass('current')) {
-                $("#header-navigation-account li").removeClass('current');
-                $("#header-navigation-account_" + hashParts[1]).addClass('current');
-            }
-
-            // We're going to handle subpages and 'default's by using a loc_default subpage and showing it
-            // We also assume that the rest of the subpages are loc_content (showing these would be used by doing two parts,
-            // i.e. part1/part and used in the else
-
-            // hide anything sub pages that might be open
-             $("." + hashParts[1] + "-content").addClass('hidden');
-
-            // Show the default
-
-             $("#" + hashParts[1] + "-default").removeClass('hidden');
-
-             $.COR.pageSwap($.COR.getCurrentDisplayedId(), 'js-content-wrapper-' + hashParts[1]);
-        }
-        else if(hashParts.length == 3) {
-            // It's a subpage!
-            //console.log("show: " + parts[0] + " @ " + parts[1]);
-
-            /*
-                Subpages work by using the #part1/part2 to build the content id that is shown : id='part1_part2'
-                In order to have multiple sub pages that show and hide, we assume that they are all on the same branch, 
-                so we can go to the parent hide everyone at that level, then show the one that we want to see...
-
-                Should work ... and scale to even deeper levels if needed!
-            */
-
-            var element = $("#" + hashParts[0] + "_" + hashParts[1]);
-            $(element).parent().children().addClass("hidden");
-            $(element).removeClass("hidden");
-
-            $.COR.pageSwap($.COR.getCurrentDisplayedId(), 'js-content-wrapper-' + hashParts[0]);
-
-            $(".nav a[href='#" + loc + "']").addClass('active');
-
-        }
-
-
-    }
-    else {
-
-        $.COR.Utilities.refreshLogin();
-
-    }
-
-};
 
 $.COR.account.setupEvents = function () {
 
@@ -326,11 +266,6 @@ $.COR.account.initUser = function () {
     if ($.COR.account.user.IsRegistrationInfoObtained == "0") {
         this.showNewAccountPopup();
     }
-
-    $.COR.pageSwap($.COR.getCurrentDisplayedId(), "js-content-wrapper-study");
-
-    $("#header-navigation li").removeClass('current');
-    $("#header-navigation_study").addClass('current');
 }
 
 $.COR.account.showNewAccountPopup = function () {

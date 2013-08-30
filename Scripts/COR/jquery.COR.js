@@ -7,6 +7,11 @@
         MD5: null,
         DisableCache: true,
 
+        // Everything that is customizable for a given site goes in here
+        site : {
+            loginCallback : null
+        },
+
         Utilities: {
             PostHandler: {}
         },
@@ -35,6 +40,16 @@
 
 
 
+$.COR.init = function (options) {
+
+    // Called when login is completed
+    this.site.loginCallback = options.loginCallback;
+
+
+
+};
+
+// This should be a Utility
 $.COR.log = function (logMessage) {
     if (this.debug)
         console.log("***************  " + logMessage)
@@ -59,7 +74,9 @@ $.COR.pageEvents = function () {
 
     var self = $.COR;
 
-
+    /*
+        Searched - One result found, used for resetting Email... 
+    */
     $(".js-page-switch").on("click", function (e) {
 
         e.preventDefault();
@@ -74,9 +91,6 @@ $.COR.pageEvents = function () {
 
     });
 
-    $("#header-logo").on("click", function () {
-        location.hash = "";
-    });
 
     $("#login").on("click", function () {
         self.log("Attempting Login");
@@ -88,7 +102,8 @@ $.COR.pageEvents = function () {
 
         if (password.length != 0 && email.length != 0 && password != 'Password' && email != 'Email') {
 
-            self.pageSwap(getCurrentDisplayedId(), 'js-content-wrapper-login');
+            $("#header-login-container").hide();
+            self.pageSwap($.COR.getCurrentDisplayedId(), 'js-content-wrapper-login');
 
             self.services.login(
                 email,
@@ -97,7 +112,8 @@ $.COR.pageEvents = function () {
 
                     self.toggleAccountNavigation();
 
-                    location.hash = "account";
+                    self.site.loginCallback();
+                    //location.hash = "account";
                 },
                 function (failedReason) { // failure function (invalid email/password etc)
                     console.log("Error logging in : " + failedReason);
@@ -110,39 +126,7 @@ $.COR.pageEvents = function () {
 
     });
 
-    
 
-    $("#reset-account-update-password").on("click", function (e) {
-        e.preventDefault();
-        $('#reset-account-reason').html('');
-        $('#reset-account-update-password').attr('disabled', true);
-        $('#reset-account-swirly').removeAttr('style');
-
-        if (self.validateForm($(this).parents("form"))) {
-            //console.log('validation succeeded');
-
-            //get form data into JSON object
-            var ResetData = $($(this).parents("form")).serialize();
-
-            //submit to form for processing
-            $.post("/PHP/AJAX/Account/ForgotPassword.php", ResetData + "&Data=true", function (data) {
-                if (data.PasswordUpdated != null) {
-
-
-                    $('#reset-account-reason').html(data.Reason);
-                }
-                else {
-
-                    $('#reset-account-reason').html('Error in request');
-                }
-            }, "JSON");
-        }
-        else {
-            //console.log('validation failed');
-        }
-        $('#reset-account-swirly').css('display', 'none');
-        $('#reset-account-update-password').removeAttr('disabled');
-    });
 
     $("input[name='reset-account-accounttype']").change(function () {
         //console.log("AccountType changed");
@@ -156,21 +140,6 @@ $.COR.pageEvents = function () {
 
     //*************** header events **********************************\\
 
-    $('#header-navigation-my-info').on('click', function () {
-        if ($(this).hasClass('current')) { return; }
-        $(this).parent().children().removeClass('current');
-        $(this).addClass('current');
-
-        self.pageSwap(getCurrentDisplayedId(), 'js-content-wrapper-my-info');
-    });
-
-    $('#header-navigation-study').on('click', function () {
-        if ($(this).hasClass('current')) { return; }
-        $(this).parent().children().removeClass('current');
-        $(this).addClass('current');
-
-        self.pageSwap(getCurrentDisplayedId(), 'js-content-wrapper-practice');
-    });
 
     $('#home-forgot-login').on('click', function () {
         $('#reset-account-form input[type=text]').val('');
@@ -178,17 +147,11 @@ $.COR.pageEvents = function () {
         $('#reset-account-form input[name=reset-account-accounttype]:eq(1)').click();
         //get security questions from db
         //TODO
-        self.pageSwap(getCurrentDisplayedId(), 'js-content-wrapper-reset-account');
+        self.pageSwap($.COR.getCurrentDisplayedId(), 'js-content-wrapper-reset-account');
     });
 
 
     //*************** END header events **********************************\\
-
-    function getCurrentDisplayedId() {
-        var myID = "";
-        myID = $('#body').find('div.js-content-wrapper').not(':hidden').attr('id');
-        return myID;
-    }
 
 }
 

@@ -2,6 +2,22 @@
 window.onfocus = function () { window.blurred = false; };
 
 
+var siteOptions = {
+
+    loginCallback: function () {
+
+        $("#header-logout-container").show();
+        $("#home-login-password").val("");
+        $("#home-login-username").val("");
+        location.hash = "account";
+    }
+
+};
+
+
+$.COR.init(siteOptions);
+
+
 $(document).ready(function () {
     $.CPAEB.init();
 
@@ -114,24 +130,9 @@ $(document).ready(function () {
 
 
 
-    //$("#pricing-holder .squaredTwo label").on('click', function () {
-    //    var amount = 0;
-
-
-    //    // This is necessary because the checkbox element doesn't change it's checked state till after this event occurs, so wait for that
-    //    setTimeout(function () {
-
-    //        $("#pricing-holder .squaredTwo input").each(function (index, element) {
-    //            if ($(element).prop("checked")) {
-    //                amount += 5;
-    //            }
-    //        });
-
-    //        $("#pricing-total .amount").html(amount);
-    //    }, 50);
-
-    //});
-
+    $("#header-logo").on("click", function () {
+        location.hash = "";
+    });
 
 
 
@@ -158,7 +159,7 @@ $.CPAEB.init = function () {
 
     var singlePages = ["product-pricing", "about", "contact"];
     var accountPages = ["study", "my-review", "my-info","faqs","contact"];
-    var singlePopups = ["privacy-policy", "terms-of-service"];
+    var singlePopups = ["privacy-policy", "terms-of-service","reset-password"];
 
     var pageHashCallback = function (hash) {
 
@@ -203,7 +204,51 @@ $.CPAEB.init = function () {
             var fileName = loc.replace(/-/g, '');
 
             // No idea how to handle actions of externally loaded popups, or any kind of hash driven popups at all...
-            $.COR.Utilities.FullScreenOverlay.loadExternal("/HTMLPartials/Home/" + fileName + ".html", "medium", true, function () { });
+            $.COR.Utilities.FullScreenOverlay.loadExternal("/HTMLPartials/Home/" + fileName + ".html", "medium", true, function () {
+
+
+                switch (loc) {
+
+                    case "reset-password":
+
+                        $("#reset-account-update-password").on("click", function (e) {
+                            e.preventDefault();
+                            $('#reset-account-reason').html('');
+                            $('#reset-account-update-password').attr('disabled', true);
+                            $('#reset-account-swirly').removeAttr('style');
+
+                            if (self.validateForm($(this).parents("form"))) {
+                                //console.log('validation succeeded');
+
+                                //get form data into JSON object
+                                var ResetData = $($(this).parents("form")).serialize();
+
+                                //submit to form for processing
+                                $.post("/PHP/AJAX/Account/ForgotPassword.php", ResetData + "&Data=true", function (data) {
+                                    if (data.PasswordUpdated != null) {
+
+
+                                        $('#reset-account-reason').html(data.Reason);
+                                    }
+                                    else {
+
+                                        $('#reset-account-reason').html('Error in request');
+                                    }
+                                }, "JSON");
+                            }
+                            else {
+                                //console.log('validation failed');
+                            }
+                            $('#reset-account-swirly').css('display', 'none');
+                            $('#reset-account-update-password').removeAttr('disabled');
+                        });
+
+                        break;
+
+                }
+
+
+            });
 
             result = true;
         }
