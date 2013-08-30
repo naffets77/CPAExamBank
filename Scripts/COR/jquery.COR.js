@@ -152,99 +152,9 @@ $.COR.pageEvents = function () {
             $("#reset-account-row-teachercode").css('display', 'none');
     });
 
-    //*************** footer events **********************************\\
-    $('#footer-nav-aboutus').on('click', function () {
-        self.pageSwap(getCurrentDisplayedId(), 'js-content-wrapper-aboutus');
-    });
 
-    $('#footer-nav-contactus').on('click', function () {
-        self.pageSwap(getCurrentDisplayedId(), 'js-content-wrapper-contactus');
-    });
-
-    $('#footer-nav-support').on('click', function () {
-        var FAQAjax = $.post("/PHP/AJAX/Support/GetFAQs.php", "SetId=1&HTMLEntities=false&Data=true", function (data) {
-            if (data.ResultsFound != null) {
-                var myHTML = "<ol id='support-FAQs'>";
-                var mySQLObject = null;
-                for (var i = 0; i < data['FAQs'].length; i++) {
-                    mySQLObject = data['FAQs'][i];
-                    myHTML += "<li id='FAQ-" + mySQLObject['FAQCopyId'] + "'>";
-                    myHTML += "<div class='support-FAQs-question'>" + mySQLObject['Question'] + "</div>";
-                    myHTML += "<div class='support-FAQs-answer'>" + mySQLObject['Answer'] + "</div>";
-                    myHTML += "</li>";
-                }
-                myHTML += "</ol>";
-                $('#support-FAQs-holder').html(myHTML);
-            }
-        }, "json");
-        self.pageSwap(getCurrentDisplayedId(), 'js-content-wrapper-support');
-    });
-
-    $('#footer-nav-privacypolicy').on('click', function () {
-        self.pageSwap(getCurrentDisplayedId(), 'js-content-wrapper-privacypolicy');
-    });
-
-    $('#footer-nav-termsofuse').on('click', function () {
-        self.pageSwap(getCurrentDisplayedId(), 'js-content-wrapper-termsofuse');
-    });
-    //*************** END footer events **********************************\\
 
     //*************** header events **********************************\\
-
-    //// TODO: nav links need to be refactored to be handled automatically... shouldn't be driven by id's like this.. (i blame marcus)
-    $('#header-navigation-home').on('click', function () {
-        if ($(this).hasClass('current')) { return; }
-        $(this).parent().children().removeClass('current');
-        $(this).addClass('current');
-        self.pageSwap(getCurrentDisplayedId(), 'js-content-wrapper-splash');
-    });
-
-    $('#header-navigation-aboutus').on('click', function () {
-        if ($(this).hasClass('current')) { return; }
-        $(this).parent().children().removeClass('current');
-        $(this).addClass('current');
-        self.pageSwap(getCurrentDisplayedId(), 'js-content-wrapper-aboutus');
-    });
-
-    $('#header-navigation-pricing').on('click', function () {
-        if ($(this).hasClass('current')) { return; }
-        $(this).parent().children().removeClass('current');
-        $(this).addClass('current');
-        self.pageSwap(getCurrentDisplayedId(), 'js-content-wrapper-pricing');
-    });
-
-    $('#header-navigation-faqs').on('click', function () {
-        if ($(this).hasClass('current')) { return; }
-        $(this).parent().children().removeClass('current');
-        $(this).addClass('current');
-
-        var FAQAjax = $.post("/PHP/AJAX/Support/GetFAQs.php", "SetId=2&HTMLEntities=false&Data=true", function (data) {
-            if (data.ResultsFound != null) {
-                var myHTML = "<ol id='home-FAQs'>";
-                var mySQLObject = null;
-                for (var i = 0; i < data['FAQs'].length; i++) {
-                    mySQLObject = data['FAQs'][i];
-                    myHTML += "<li id='FAQ-" + mySQLObject['FAQCopyId'] + "'>";
-                    myHTML += "<div class='support-FAQs-question'>" + mySQLObject['Question'] + "</div>";
-                    myHTML += "<div class='support-FAQs-answer'>" + mySQLObject['Answer'] + "</div>";
-                    myHTML += "</li>";
-                }
-                myHTML += "</ol>";
-                $('#faqs-FAQs-holder').html(myHTML);
-            }
-        }, "json");
-
-        self.pageSwap(getCurrentDisplayedId(), 'js-content-wrapper-faqs');
-    });
-
-    $('#header-navigation-contactus').on('click', function () {
-
-        if ($(this).hasClass('current')) { return; }
-        $(this).parent().children().removeClass('current');
-        $(this).addClass('current');
-
-        self.pageSwap(getCurrentDisplayedId(), 'js-content-wrapper-contactus');
-    });
 
     $('#header-navigation-my-info').on('click', function () {
         if ($(this).hasClass('current')) { return; }
@@ -744,3 +654,34 @@ $.COR.MD5 = function (string) {
 
 
 
+// attach the .compare method to Array's prototype to call it on any array
+Array.prototype.compare = function (array) {
+    // if the other array is a falsy value, return
+    if (!array)
+        return false;
+
+    // compare lengths - can save a lot of time
+    if (this.length != array.length)
+        return false;
+
+    for (var i = 0; i < this.length; i++) {
+        // Check if we have nested arrays
+        if (this[i] instanceof Array && array[i] instanceof Array) {
+            // recurse into the nested arrays
+            if (!this[i].compare(array[i]))
+                return false;
+        }
+        else if (this[i] != array[i]) {
+            // Warning - two different object instances will never be equal: {x:20} != {x:20}
+            return false;
+        }
+    }
+    return true;
+}
+
+
+if (!Date.now) {
+    Date.now = function now() {
+        return +(new Date);
+    };
+}

@@ -92,16 +92,16 @@ $.COR.Utilities.PostHandler = function (options) {
 
 $.COR.Utilities.PollHandler = function (options) {
 
-   this.ph = new $.COR.Utilities.PostHandler({
-       service: options.service,
-       call: options.call,
-       params: options.params,
-       success: options.sucess,
-       error: options.error
+    this.ph = new $.COR.Utilities.PostHandler({
+        service: options.service,
+        call: options.call,
+        params: options.params,
+        success: options.sucess,
+        error: options.error
     });
 
-   this.interval = options.interval || 10000;
-   this.intervalReference = null;
+    this.interval = options.interval || 10000;
+    this.intervalReference = null;
 }
 
 $.COR.Utilities.PollHandler.prototype.start = function () {
@@ -134,14 +134,14 @@ $.COR.Utilities.refreshLogin = function (successCallback) {
         function (data) {
             $.COR.toggleAccountNavigation();
             $.COR.account.setup(data, function () {
-                
+
                 if (typeof successCallback == 'function') {
                     successCallback();
                 }
                 else {
                     window.location = "#account";
                 }
-                
+
             });
         },
 
@@ -160,11 +160,14 @@ $.COR.Utilities.refreshLogin = function (successCallback) {
 
 $.COR.Utilities.FullScreenOverlay = {
 
-    cache :[],
+    cache: [],
+    closeWithHash : false,
 
-    loadExternal : function(externalPath, contentClassSize, events){
+    loadExternal: function (externalPath, contentClassSize, closeWithHash, events) {
 
-        if (this.isCached(externalPath)) {
+        this.closeWithHash = closeWithHash;
+
+        if (!this.isCached(externalPath)) {
             var self = this;
 
             $.get(externalPath, function (html) {
@@ -179,11 +182,13 @@ $.COR.Utilities.FullScreenOverlay = {
             });
         }
         else {
-            self.show(externalPath);
+            this.show(externalPath);
         }
 
     },
-    loadLocal : function(id, contentClassSize, events){
+    loadLocal: function (id, contentClassSize, closeWithHash, events) {
+
+        this.closeWithHash = closeWithHash;
 
         if (this.isCached(id)) {
             this.show(id);
@@ -210,6 +215,7 @@ $.COR.Utilities.FullScreenOverlay = {
             var cachedContent = self.getCachedById(id);
 
             $("#full-screen-container .content").html(cachedContent.html);
+            
             $("#full-screen-container").removeClass().addClass(cachedContent.sizeClass + " content");
 
             cachedContent.events();
@@ -217,7 +223,28 @@ $.COR.Utilities.FullScreenOverlay = {
                 cachedContent.events();
             }
 
-            $("#full-screen-overlay").fadeIn();
+            if (cachedContent.sizeClass !== "full") {
+
+                $("#full-screen-container .content").prepend("<div class='js-overlay-close'>X</div>");
+
+                $(".js-overlay-close").on('click', function () {
+
+                    if (self.closeWithHash) {
+                        history.back()
+                    }
+                    else {
+                        $.COR.Utilities.FullScreenOverlay.hide();
+                    }
+                });
+
+            }
+
+
+            $("#full-screen-overlay").fadeIn(function () {
+                if (!$("#full-screen-container").is(":visible")) {
+                    $("#full-screen-container").fadeIn();
+                }
+            });
 
         });
     },
@@ -245,7 +272,7 @@ $.COR.Utilities.FullScreenOverlay = {
         var localCache = this.cache;
         var result = false;
 
-        for (var i = 0; i < localCache; i++) {
+        for (var i = 0; i < localCache.length; i++) {
             var cachedItem = localCache[i];
 
             if (cachedItem.id == id) {
@@ -256,7 +283,7 @@ $.COR.Utilities.FullScreenOverlay = {
 
         return result;
     },
-    getCachedById: function(id){
+    getCachedById: function (id) {
         var localCache = this.cache;
         var result = null;
 
@@ -272,6 +299,8 @@ $.COR.Utilities.FullScreenOverlay = {
         return result;
     }
 };
+
+/* These will be depricated when the Full Screen Overlay Utility is completed */
 
 $.COR.Utilities.loadFullScreenOverlay = function (external, contentClassSize, events) {
 
@@ -321,37 +350,107 @@ $.COR.Utilities.hideFullScreenOverlay = function () {
 }
 
 
+$.COR.Utilities.HashHandler = {
 
-//show: function (content, contentClassSize, events) {
-//    if ($("#full-screen-container").is(":visible")) {
+    hashRequests: null,
+    defaultHashRequest:null,
 
-//        $("#full-screen-container .content").fadeOut(function () {
-//            $(this).html("");
+    init: function (options) { // Registers the window.hashchange handler
 
-//            $("#full-screen-container .content").html(content).removeClass().addClass(contentClassSize + " content").fadeIn();
+        var self = this;
 
-//            if (typeof events == 'function') {
-//                events();
-//            }
-
-//            $("#full-screen-overlay").fadeIn();
-//        });
+        this.hashRequests = options.hashRequests;
+        this.defaultHashRequest = options.defaultHashRequest;
 
 
-//    }
-//    else {
-//        $("#full-screen-container .content").html(content);
+        // Register handlers to be checked, they will be checked in this order
+        var handlers = [
+            self._processPages//,
+            //self._processDefaultHandler
+        ];
 
-//        $("#full-screen-container").removeClass().addClass(contentClassSize);
+        $(window).hashchange(function () {
 
-//        $("#full-screen-holder").show();
-//        $("#full-screen-container").show();
+            var hash = self._processHash();
+
+            // Process hash handlers, will stop when result is true
+
+            var result = false;
+
+            for (var i = 0; i < handlers.length; i++) {
+
+                if (!result) {
+                    result = handlers[i](hash, self);
+                }
+            }
+
+            if (!result) {
+                result = self._processDefaultHandler(hash, self);
+            }
 
 
-//        if (typeof events == 'function') {
-//            events();
-//        }
+            if (!result) {
+                console.log("Hash Not Found");
+            }
 
-//        $("#full-screen-overlay").fadeIn();
-//    }
-//},
+
+        });
+
+
+    },
+
+    buildHashRequest : function(options){
+        return {
+            type: options.type,
+            pages : options.pages,
+            callback: options.callback,
+        };
+    },
+
+    addHashRequest : function(hashRequest){
+        this.hashRequests.push(hashRequest);
+    },
+    // Private Functions
+
+    _processHash: function () {
+        var parts = "";
+        if (location !== undefined) {
+
+            var loc = location.hash.replace("#", "");
+
+            if (loc != "") {
+                parts = loc.split("/");
+            }
+        }
+
+        return parts;
+    },
+
+    _processPages: function (hash, self) {
+        var result = false;
+
+        var locIHR = self.hashRequests;
+
+        for (var i = 0; i < locIHR.length; i++) {
+
+            if (typeof locIHR[i].callback == "function" && !result) {
+                result = locIHR[i].callback(hash);
+            }
+        }
+
+        return result;
+    },
+
+    _processDefaultHandler: function (hash, self) {
+        var result = false;
+        var locDHR = self.defaultHashRequest;
+
+        if (locDHR != null && typeof locDHR.callback == "function") {
+            locDHR.callback(locDHR.match)
+            result = true;
+        }
+
+        return result;
+    }
+
+};

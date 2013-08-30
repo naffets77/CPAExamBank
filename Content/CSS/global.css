@@ -183,15 +183,26 @@ body {
     z-index: 1001;
 }
 
-#full-screen-container.partial {
+#full-screen-container.small {
     background-color: #fff;
     position: fixed;
     width: 550px;
     padding: 20px;
-    top: 50%;
     left: 50%;
     margin-left: -295px;
-    margin-top: -300px;
+    margin-top: 50px;
+    z-index: 1001;
+    font-size:16px;
+}
+
+#full-screen-container.medium {
+    background-color: #fff;
+    position: fixed;
+    width: 800px;
+    padding: 20px;
+    left: 50%;
+    margin-left: -400px;
+    margin-top: 50px;
     z-index: 1001;
     font-size:16px;
 }
@@ -476,7 +487,7 @@ footer {
 /* POPUP Styles */
 
 
-.js-overlay-content .js-overlay-close {
+#full-screen-container .js-overlay-close {
     background-color: #000;
     color: #fff;
     position: absolute;
