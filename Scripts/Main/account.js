@@ -174,27 +174,17 @@ $.COR.account.setupEvents = function () {
 
     });
 
-    $("#account-settings-add-class-code-button").on("click", function (e) {
+    $("#account-update-subscription").on("click", function () {
 
-        e.preventDefault();
-        if ($(this).hasClass("disabled")) { return; }
+        $.COR.Utilities.FullScreenOverlay.loadExternal("/HTMLPartials/Account/UpdateSubscription.html", "medium", true, function () {
+            $.COR.log("Loaded Subscription Update");
 
-        if ($.COR.account.user.IsInClass == 0 && $.COR.validateForm($(this).parents("form"))) {
 
-            var self = this;
 
-            $(this).html("Adding...").addClass("disabled");
 
-            $.post("/PHP/AJAX/Account/AddClassCode.php", $(this).parents("form").serialize() + "&Data=true", function (data) {
 
-                alert("Added");
 
-            });
-        }
-
-    });
-
-    $("#account-settings-purchase-classes").on("click", function () {
+        });
 
     });
 
