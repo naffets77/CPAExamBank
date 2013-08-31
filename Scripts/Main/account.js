@@ -210,6 +210,9 @@ $.COR.account.setupEvents = function () {
         $(this).addClass("disabled");
         $("#review-results tbody").html("");
 
+        $("#review-messages .review-messages-content").hide();
+        $("#review-messages-no-results").show();
+
         var ph = new $.COR.Utilities.PostHandler({
             service: "question", call: "getAccountUserQuestionHistory",
             params: {
@@ -222,6 +225,10 @@ $.COR.account.setupEvents = function () {
             success: function (data) {
                 $(thisElement).removeClass("disabled");
                 self.BuildQuestionHistory(data.QuestionHistoryReturns);
+
+                $("#review-messages-no-results").hide();
+                $("#review-results").show();
+
             }
         });
 

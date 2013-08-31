@@ -167,7 +167,7 @@
     padding: 4px 8px 4px 0px;
 }
 
-#review-messages {
+#review-messages .review-messages-content{
     border-top: 1px solid #000;
     margin-top: 10px;
     padding-top: 10px;
@@ -175,13 +175,11 @@
 
 #review-messages .review-messages-content p {
     margin:20px 0px;
-    font-size:22px;
 }
 
 #review-messages .review-messages-content h3 {
     margin:20px 0px;
     font-weight:bold;
-    font-size:24px;
     color:#21465D;
 }
 
@@ -189,7 +187,6 @@
     margin:20px 0px 20px 20px;
     list-style-type:disc;
     list-style-position:inside;
-    font-size:22px;
     color:#666;
 }
 
