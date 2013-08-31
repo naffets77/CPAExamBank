@@ -210,6 +210,8 @@ $.COR.account.setupEvents = function () {
         $(this).addClass("disabled");
         $("#review-results tbody").html("");
 
+        // Fix UI
+        $("#review-results").hide();
         $("#review-messages .review-messages-content").hide();
         $("#review-messages-no-results").show();
 
@@ -226,8 +228,10 @@ $.COR.account.setupEvents = function () {
                 $(thisElement).removeClass("disabled");
                 self.BuildQuestionHistory(data.QuestionHistoryReturns);
 
-                $("#review-messages-no-results").hide();
-                $("#review-results").show();
+                setTimeout(function () {
+                    $("#review-messages-no-results").hide();
+                    $("#review-results").show();
+                }, 1000);
 
             }
         });
