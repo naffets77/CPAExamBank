@@ -28,7 +28,7 @@ $.COR.account.setup = function (data, successCallback) {
     var self = this;
     var cacheInvalidator = $.COR.DisableCache ? "?num=" + Math.floor(Math.random() * 11000) : "";
 
-    //Set Hash 
+    // Set Account Hash For Validating Requests
 
     $('body').append("<input id='account-hash' type='hidden' value='" + data.Hash + "'></input>");
 
@@ -45,12 +45,13 @@ $.COR.account.setup = function (data, successCallback) {
         $("#account-settings-username").val(self.user.LoginName);
         $("#account-settings-current-password").val(self.user.LoginPassword);
 
+        $("#contact-us-email").val(self.user.LoginName);
+
         self.setupEvents();
 
-        
-        
-
         self.initUser();
+
+        $("#contact-us-email").val(self.user.LoginName);
 
         // Force login to take 1500ms
 
@@ -100,6 +101,8 @@ $.COR.account.setupEvents = function () {
         // Swap Logout with Login UI
         $("#header-logout-container").hide();
         $("#header-login-container").show();
+
+        $("#contact-us-email").val("");
 
         location.hash = "";
 
@@ -176,12 +179,69 @@ $.COR.account.setupEvents = function () {
 
     $("#account-update-subscription").on("click", function () {
 
-        $.COR.Utilities.FullScreenOverlay.loadExternal("/HTMLPartials/Account/UpdateSubscription.html", "medium", true, function () {
+        $(".account-update-subscription-error-message").hide();
+
+        var subscriptionAmount = 0;
+        $('#subscription-options .amount').each(function (index, element) {
+            if ($(element).parents('tr').find('.squaredTwo input').is(':checked')) {
+                subscriptionAmount += parseInt($(element).html().replace("$", ""));
+            }
+        });
+
+        // Validations
+        var validates = true;
+        // Check if there was no change
+
+        // If no change and no subs checked
+        if (subscriptionAmount == 0) {
+            $("#account-upodate-no-subscriptions-selected").show();
+            validates = false;
+        }
+
+        if (!validates) return; // exit if we didn't validate
+
+        // otherwise show subscription update popup
+        $.COR.Utilities.FullScreenOverlay.loadExternal("/HTMLPartials/Account/UpdateSubscription.html", "medium", false, function () {
+
+            $("#update-subscription-holder .amount-charged").html("$" + subscriptionAmount);
+
             $.COR.log("Loaded Subscription Update");
 
+            // We gotta figure out which we're showing -- update or get CC info
 
+            $("#update-subscription-holder .credit-card-info").show();
+            //$("#update-subscription-holder .update-subscription").show();
+            
 
+            $("#update-subscription-holder .save-credit-info").on('click', function () {
 
+                $("#update-subscription-holder .credit-card-info").hide();
+
+                // Show Processing
+                $("#update-subscription-holder .processing").show();
+
+                // Start Stripe
+                setTimeout(function () {
+                    $("#update-subscription-holder .processing").hide();
+                    $("#update-subscription-holder .subscription-completed").show();
+                }, 1500);
+
+            });
+
+            $("#update-subscription-holder .update-plan").on('click', function () {
+
+                $("#update-subscription-holder .update-subscription").hide();
+
+                // Show Processing
+                $("#update-subscription-holder .processing").show();
+
+                // Start Stripe
+                setTimeout(function () {
+                    $("#update-subscription-holder .processing").hide();
+                    $("#update-subscription-holder .subscription-completed").show();
+                }, 1500);
+
+            });
 
 
         });

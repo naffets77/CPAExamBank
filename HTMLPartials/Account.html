@@ -102,8 +102,8 @@
                             <td>
                                 -
                             </td>
-                            <td>
-                                $0
+                            <td class="amount">
+                                $20
                             </td>
                             <td>
                                 <div class="squaredTwo">
@@ -122,8 +122,8 @@
                             <td>
                                 -
                             </td>
-                            <td>
-                                $0
+                            <td class="amount">
+                                $20
                             </td>
                             <td>
                                 <div class="squaredTwo">
@@ -142,8 +142,8 @@
                             <td>
                                 -
                             </td>
-                            <td>
-                                $0
+                            <td class="amount">
+                                $20
                             </td>
                             <td>
                                 <div class="squaredTwo">
@@ -162,8 +162,8 @@
                             <td>
                                 -
                             </td>
-                            <td>
-                                $0
+                            <td class="amount">
+                                $20
                             </td>
                             <td>
                                 <div class="squaredTwo">
@@ -177,6 +177,13 @@
 
                 <button id="account-update-subscription" class="btn-red btn-medium"> Update Subscription </button>
 
+                <div id="account-upodate-no-subscriptions-selected" class="account-update-subscription-error-message" style="display:none; clear:both; float:right; margin-top:15px; font-weight:bold;">
+                    Hey! You gotta have at least one section selected. 
+                </div>
+
+                <div id="account-upodate-no-subscriptions-change-detected" class="account-update-subscription-error-message" style="display:none; clear:both; float:right; margin-top:15px; font-weight:bold;">
+                    Hey! You haven't changed your subscriptions, nothing to update.  
+                </div>
             </div>
 
 
@@ -343,7 +350,7 @@
 
     <div class="content">
     
-        <h2>Practice Options</h2>
+        <h2 style="margin-left:0px">Practice Options</h2>
 
         <div style="float:left; width:100%; margin-bottom:20px;">
             <table id="practice-options">

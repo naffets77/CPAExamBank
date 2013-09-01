@@ -103,6 +103,19 @@
 }
 
 
+#update-subscription-holder h1 {
+    font-weight:bold;
+    font-size:16px;
+    margin:20px 0px;
+}
+
+#update-subscription-holder .credit-card-info table {
+    margin-top:20px;
+}
+
+    #update-subscription-holder .credit-card-info table tr td {
+        padding:4px 10px;
+    }
 
 
 
@@ -670,3 +683,6 @@
     float: left;
     margin: 20px;
 }
+
+
+

@@ -1,11 +1,98 @@
 ﻿<div id="update-subscription-holder">
 
-    <div class="credit-card-info">
-        credit card info
+    <div class="credit-card-info" style="display:none;">
+
+        <h1>The easiest way to study for the CPA</h1>
+        <p>
+            You will have access to the sections you have puchased for one month. After one month we will charge your card for 
+            any sections you have enabled in your account. You can at any time enable or disable sections and you will be 
+            charged accordingly when your subscription is up. 
+        </p>
+
+        <h1>Setting up your Payment Information</h1>
+        <p>
+            Your credit card information is not ever sent to or saved on our servers. We use a third party 
+            payment processing plan that manages the security of your credit card information. 
+            <br /><br />
+            You can find out more information about how we handle your credit card and on the <a href="/#account/faqs" target='_blank'>FAQs</a>.
+        </p>
+
+        
+        <div style="padding:20px; margin-top:20px; background-color:#efefef;">
+            
+            <h1 style="margin-top:0px;">Credit Card Information</h1>
+
+            <table>
+                <tr>
+                    <td>Number</td>
+                    <td colspan="3"><input type="text" style="width:202px;" /></td>
+                </tr>
+                <tr>
+                    <td>Exp. Month</td>
+                    <td> <input style="width:40px; text-align:center;" type="text" maxlength="2" /></td>
+                    <td>Exp. Year</td>
+                    <td><input style="width:60px; text-align:center;" type="text" maxlength="4" /></td>
+                </tr>
+                <tr>
+                    <td>CVC</td>
+                    <td colspan="2"><input  style="width:40px; text-align:center;" type="text" maxlength="3" /></td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="padding-top:20px; padding-bottom:20px; font-weight:bold;">
+                        Your card will be charged <span class="amount-charged"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4"><button class="save-credit-info btn-red medium">Start Subscription</button></td>
+                </tr>
+            </table>
+        </div>
+
     </div>
 
     <div class="processing" style="display:none;">
-        Processing
+        
+        <h1>Processing...</h1>
+    
+    </div>
+
+    <div class="update-subscription" style="display:none;">
+        
+        <h1>Updating Subscription</h1>
+
+        <p>
+            We will be making a change to your subscription. You're total subscription amount is now 
+            <span class="amount-charged"></span>. We will be charging immediatley a pro-rated amount less 
+            than the full amount of the additional sections right now (We don't know this amount because it's 
+            handled by our payment processor). 
+            <br /><br />
+            For more information or any questions you may have check the <span class="link">FAQs</span>
+        </p>
+
+        <p style="margin-top:20px; margin-bottom:20px; font-weight:bold;">
+            Your subscription total charge will become <span class="amount-charged"></span>, and the first charge for the full amount 
+            will be <span class='subscription-renews-date'>some date</span>.
+        </p>
+
+        <button class="btn-red btn-medium update-plan">Confirm Plan Update</button>
+
+    </div>
+
+    <div class="subscription-completed" style="display:none;">
+        <h1>Subscription Information Updated</h1>
+        <p style="margin-top:20px;">
+            We have succesfully updated your subscription!
+        </p>
+
+        <p style="margin-top:20px;">
+            Your subscription will be active until you choose to deactivate it in your account settings. If you choose to 
+            deactivate your subscription, you will still be able to have access to questions for that subscription up 
+            until the date that it expires. At any point you can re-activate it in your settings. 
+        </p>
+
+        <p style="margin-top:20px;">
+            <span class="link">Start Studying!</span>
+        </p>
     </div>
 
 </div>

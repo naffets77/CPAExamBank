@@ -3,9 +3,14 @@
     // Adding COR ot jQuery
     $.COR = {
 
+        // These should be moved to config..
         debug: true,
         MD5: null,
         DisableCache: true,
+
+        config : {
+            stripeKey: "pk_test_JyW7jbQudHJwV36CAQNiM63O"
+        },
 
         // Everything that is customizable for a given site goes in here
         site : {
