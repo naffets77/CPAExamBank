@@ -35,19 +35,59 @@
         padding-bottom: 20px;
     }
 
+#home-row-1 h1{
+    float: right;
+    text-align: left;
+    width: 590px;
+    font-weight: bold;
+    font-size: 22px;
+    margin-top: 23px;
+}
 
 
-#home-row-1 p {
+#home-row-1 ul {
     float: left;
     width: 570px;
-    margin: 20px;
-    line-height: 30px;
-    font-size: 22px;
-    margin-top: 25px;
+    margin-top: 15px;
+    margin-left:20px;
 }
+
+#home-row-1 ul li{
+    margin-bottom: 25px;
+    font-size: 18px;
+    line-height: 22px;
+    list-style-type: circle;
+}
+
+
 
 #home-row-1{
     margin: 20px 0px 20px 20px;
+    float:left;
+    clear:both;
+}
+
+
+
+#home-row-1_5{
+    margin: 20px 0px 20px 0px;
+    float: left;
+    clear: both;
+    background: url("/Content/Images/Home/accountant.jpg") no-repeat 490px 20px;
+    width: 100%;
+    background-color: #EFEFEF;
+    padding: 20px 0px;
+}
+
+
+#home-row-1_5 p{
+    float: left;
+    width: 445px;
+    margin: 0px;
+    line-height: 24px;
+    font-size: 18px;
+    margin-top: 14px;
+    margin-left: 20px;
 }
 
 #home-row-2 {
@@ -170,7 +210,7 @@
     width: 300px;
     border: 4px solid #efefef;
     cursor: pointer;
-    margin: 20px 20px 20px 0px;
+    margin: 35px 20px 20px 0px;
     float: left;
 }
 

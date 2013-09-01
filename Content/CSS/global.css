@@ -381,13 +381,12 @@ body {
 
 footer {
     clear: both;
-    color: #000;
+    color: #999;
     text-align: center;
     padding: 20px 0px 50px;
     margin: 0px auto;
     width: 800px;
     margin: 0px auto;
-    color: #fff;
 }
 
 #footer-content-holder {
@@ -415,7 +414,11 @@ footer {
         }
 
         #footer-nav li a {
-            color:#fff;
+            color:#999;
+        }
+
+        #footer-nav li a:hover{
+            color:#fff
         }
 
 #footer-row-1 {
