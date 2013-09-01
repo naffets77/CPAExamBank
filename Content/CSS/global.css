@@ -162,9 +162,9 @@ body {
     width: 100%;
     height: 100%;
     z-index: 1000;
-    background-color: #000000;
-    opacity: 0.7;
-    filter: alpha(opacity=70);
+    background-color: #161616;
+    opacity: 0.6;
+    filter: alpha(opacity=60);
 }
 
 #full-screen-container.full {
@@ -217,9 +217,9 @@ body {
 
 
 #footer-wrapper {
-    background-color: #000;
+    background-color: #333;
     clear: both;
-    background-image: url('/Content/Images/Textures/grey_wash_wall.png');
+    /*background-image: url('/Content/Images/Textures/grey_wash_wall.png');*/
     padding-bottom:50px;
 }
 
@@ -229,6 +229,8 @@ body {
     height: 10px;
     z-index: 10;
     position: absolute;
+
+    display:none;
 
     -webkit-box-shadow: 0px -5px 10px rgba(0, 0, 0, .3);
     -moz-box-shadow: 0px -5px 10px rgba(0, 0, 0, .3);
@@ -276,7 +278,7 @@ body {
 
 #header-logo {
     cursor: pointer;
-    margin: 35px 0 10px 0px;
+    margin: 18px 0 10px 0px;
     float:left;
 }
 
