@@ -9,7 +9,11 @@
     clear: both;
     width: 100%;
     min-height: 400px;
-    margin-bottom:50px;
+    /*margin-bottom:50px;*/
+    padding-bottom:50px;
+
+    border-left:1px solid #efefef;
+    border-right:1px solid #efefef;
 }
 
     .js-content-wrapper .content {
@@ -42,12 +46,16 @@
     margin-top: 25px;
 }
 
+#home-row-1{
+    margin: 20px 0px 20px 20px;
+}
+
 #home-row-2 {
     margin-top: 20px;
     background-color: #888888;
     float: left;
     width: 920px;
-    margin: 20px 0px;
+    margin: 20px 0px 20px 20px;
 }
 
     #home-row-2  h2{

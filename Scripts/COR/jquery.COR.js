@@ -110,6 +110,8 @@ $.COR.pageEvents = function () {
             $("#header-login-container").hide();
             self.pageSwap($.COR.getCurrentDisplayedId(), 'js-content-wrapper-login');
 
+            $("#header-navigation").hide();
+
             self.services.login(
                 email,
                 password,
