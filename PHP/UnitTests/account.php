@@ -7,6 +7,8 @@
     
 class TestAccount extends UnitTestCase {
 
+    public $hash;
+
     function testRegistration(){
  
     
