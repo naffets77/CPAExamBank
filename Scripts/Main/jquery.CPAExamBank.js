@@ -41,7 +41,7 @@ $(document).ready(function () {
 
             $("#pricing-holder .squaredTwo input").each(function (index, element) {
                 if ($(element).prop("checked")) {
-                    amount += 5;
+                    amount += 20;
                 }
             });
 
