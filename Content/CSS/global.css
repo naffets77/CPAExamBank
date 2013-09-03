@@ -280,8 +280,9 @@ body {
 
 #header-logo {
     cursor: pointer;
-    margin: 18px 0 10px 0px;
-    float:left;
+    margin: 14px 0 10px 26px;
+    float: left;
+    height: 100px;
 }
 
 
