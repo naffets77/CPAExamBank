@@ -207,7 +207,7 @@ $.COR.account.setupEvents = function () {
 
             // We gotta figure out which we're showing -- update or get CC info
 
-            if (self.subscriptions == null) {
+            if (self.subscriptions.length == 0) {
 
 
                 if ($.COR.debug == true) {
