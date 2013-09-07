@@ -19,7 +19,6 @@ $.COR.services.getQuestionHistoryMetrics = function () {
 
 }
 
-
 $.COR.services.login = function (email, password, successCallback, failcallback) {
 
     var COR = $.COR;
@@ -31,7 +30,8 @@ $.COR.services.login = function (email, password, successCallback, failcallback)
             success: function (data) {
 
                 if (data.Account != null) {
-                    COR.account.setup(data, successCallback);
+                    // this isn't generic, the call to account should be in the success callback too much of passing the success callback around!
+                    COR.account.setup(data, successCallback); 
                 }
                 else {
                     failcallback(data.LoginFailedReason);
@@ -54,6 +54,8 @@ $.COR.services.login = function (email, password, successCallback, failcallback)
             Licenses: {
                 Active: "1"
             },
+            Subscriptions: null,
+
             UserSettings: {
                 ShowNewUserTour: "false"
             }
@@ -63,8 +65,6 @@ $.COR.services.login = function (email, password, successCallback, failcallback)
         COR.account.setup(data, successCallback);
     }
 }
-
-
 
 $.COR.services.register = function (email, password, sections, callback) {
 
@@ -92,4 +92,51 @@ $.COR.services.register = function (email, password, sections, callback) {
 
 };
 
+$.COR.services.createSubscription = function (token, successCallback) {
+
+    if (COR.account.offline == false) {
+
+        var ph = new $.COR.Utilities.PostHandler({
+            service: "account", call: "createNewSubscriber",
+            params: {
+                token: token
+            },
+            success: function (data) {
+                successCallback(data);
+            }
+        });
+
+        ph.submitPost();
+
+
+    }
+    else {
+
+    }
+
+}
+
+$.COR.services.chargeSubscription = function (subscription) {
+
+    if (COR.account.offline == false) {
+
+        var ph = new $.COR.Utilities.PostHandler({
+            service: "account", call: "chargeSubscription",
+            params: {
+                moduleSelection: subscription
+            },
+            success: function (data) {
+                successCallback(data);
+            }
+        });
+
+        ph.submitPost();
+
+
+    }
+    else {
+
+    }
+
+}
 

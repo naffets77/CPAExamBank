@@ -4,6 +4,7 @@ $.COR.account = {
     user: null,
     hash: null,
     licenses: null,
+    subscriptions:null,
     userSettings: null,
     simulator: {
         options: {
@@ -37,10 +38,7 @@ $.COR.account.setup = function (data, successCallback) {
 
         $("#body").append(loggedinPageHTML);
 
-        self.user = data.Account;
-        self.hash = data.Hash;
-        self.licenses = data.Licenses;
-        self.settings = data.UserSettings;
+        self.setUserData(data);
 
         $("#account-settings-username").val(self.user.LoginName);
         $("#account-settings-current-password").val(self.user.LoginPassword);
@@ -209,39 +207,112 @@ $.COR.account.setupEvents = function () {
 
             // We gotta figure out which we're showing -- update or get CC info
 
-            $("#update-subscription-holder .credit-card-info").show();
-            //$("#update-subscription-holder .update-subscription").show();
+            if (self.subscriptions == null) {
+
+
+                if ($.COR.debug == true) {
+                    $('#card-number').val("4242424242424242");
+                    $('#card-cvc').val("333");
+                    $('#card-expiry-month').val("12");
+                    $('#card-expiry-year').val("2013");
+                }
+
+                $("#update-subscription-holder .credit-card-info").show();
+
+                $("#update-subscription-holder .save-credit-info").on('click', function () {
+
+                    $("#update-subscription-holder .credit-card-info").hide();
+
+                    // Show Processing
+                    $("#update-subscription-holder .processing").show();
+
+                    Stripe.setPublishableKey($.COR.config.stripeKey);
+
+                    Stripe.card.createToken({
+                        number: $('#card-number').val(),
+                        cvc: $('#card-cvc').val(),
+                        exp_month: $('#card-expiry-month').val(),
+                        exp_year: $('#card-expiry-year').val()
+                    }, function (status, response) {
+
+                        if (response.error) {
+
+                            // show the errors on the form
+                            $(".payment-errors").text(response.error.message);
+                        } else {
+
+                            // token contains id, last4, and card type
+                            var token = response['id'];
+
+                            // Create Customer
+                            $.COR.services.createSubscription(token, function () {
+
+                                // Refresh Login
+                                $.COR.checkLogin(function (data) {
+
+                                    
+
+                                    var subscription = {
+                                        "AUD": $("#account_subscription_check-aud").prop('checked') ? 1 : 0,
+                                        "FAR": $("#account_subscription_check-far").prop('checked') ? 1 : 0,
+                                        "BEC": $("#account_subscription_check-bec").prop('checked') ? 1 : 0,
+                                        "REG": $("#account_subscription_check-reg").prop('checked') ? 1 : 0
+                                    };
+
+                                    $.COR.services.createSubscription(subscription, function () {
+
+                                        $.COR.checkLogin(function (data) {
+
+                                            self.setUserData(data);
+
+                                            // Use Token to load stuff
+                                            $("#update-subscription-holder .processing").hide();
+                                            $("#update-subscription-holder .subscription-completed").show();
+
+                                        });
+
+
+                                    });
+
+                                });
+
+                            });
+
+                        }
+
+                    });
+
+                    // Start Stripe
+                    setTimeout(function () {
+
+                    }, 1500);
+
+                });
+            }
+            else {
+
+                $("#update-subscription-holder .update-subscription").show();
+
+                $("#update-subscription-holder .update-plan").on('click', function () {
+
+                    $("#update-subscription-holder .update-subscription").hide();
+
+                    // Show Processing
+                    $("#update-subscription-holder .processing").show();
+
+                    // Start Stripe
+                    setTimeout(function () {
+                        $("#update-subscription-holder .processing").hide();
+                        $("#update-subscription-holder .subscription-completed").show();
+                    }, 1500);
+
+                });
+            }
             
 
-            $("#update-subscription-holder .save-credit-info").on('click', function () {
 
-                $("#update-subscription-holder .credit-card-info").hide();
 
-                // Show Processing
-                $("#update-subscription-holder .processing").show();
-
-                // Start Stripe
-                setTimeout(function () {
-                    $("#update-subscription-holder .processing").hide();
-                    $("#update-subscription-holder .subscription-completed").show();
-                }, 1500);
-
-            });
-
-            $("#update-subscription-holder .update-plan").on('click', function () {
-
-                $("#update-subscription-holder .update-subscription").hide();
-
-                // Show Processing
-                $("#update-subscription-holder .processing").show();
-
-                // Start Stripe
-                setTimeout(function () {
-                    $("#update-subscription-holder .processing").hide();
-                    $("#update-subscription-holder .subscription-completed").show();
-                }, 1500);
-
-            });
+            
 
 
         });
@@ -392,7 +463,14 @@ $.COR.account.showNewAccountPopup = function () {
 
 }
 
+$.COR.account.setUserData = function (data) {
+    this.user = data.Account;
+    this.hash = data.Hash;
+    this.licenses = data.Licenses;
+    this.subscriptions = data.Subscriptions;
+    this.settings = data.UserSettings;
 
+}
 
 
 // Question History Helpers
