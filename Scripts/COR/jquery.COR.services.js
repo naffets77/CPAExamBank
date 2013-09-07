@@ -94,7 +94,7 @@ $.COR.services.register = function (email, password, sections, callback) {
 
 $.COR.services.createSubscription = function (token, successCallback) {
 
-    if (COR.account.offline == false) {
+    if ($.COR.account.offline == false) {
 
         var ph = new $.COR.Utilities.PostHandler({
             service: "account", call: "createNewSubscriber",
@@ -118,7 +118,7 @@ $.COR.services.createSubscription = function (token, successCallback) {
 
 $.COR.services.chargeSubscription = function (subscription) {
 
-    if (COR.account.offline == false) {
+    if ($.COR.account.offline == false) {
 
         var ph = new $.COR.Utilities.PostHandler({
             service: "account", call: "chargeSubscription",
