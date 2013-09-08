@@ -40,14 +40,7 @@ $.COR.account.setup = function (data, successCallback) {
         $("#body").append(loggedinPageHTML);
 
         self.setUserData(data);
-
-        $("#account-settings-username").val(self.user.LoginName);
-        $("#account-settings-current-password").val(self.user.LoginPassword);
-
-        $("#contact-us-email").val(self.user.LoginName);
-
         self.setupEvents();
-
         self.initUser();
 
         $("#contact-us-email").val(self.user.LoginName);
@@ -255,15 +248,6 @@ $.COR.account.setupEvents = function () {
 
                                 // Refresh Login
                                 $.COR.checkLogin(function (data) {
-
-                                    
-
-                                    //var subscription = {
-                                    //    "AUD": $("#account_subscription_check-aud").prop('checked') ? 1 : 0,
-                                    //    "FAR": $("#account_subscription_check-far").prop('checked') ? 1 : 0,
-                                    //    "BEC": $("#account_subscription_check-bec").prop('checked') ? 1 : 0,
-                                    //    "REG": $("#account_subscription_check-reg").prop('checked') ? 1 : 0
-                                    //};
 
                                     var subscription = JSON.stringify({
                                             "AUD": $("#account_subscription_check-aud").prop('checked') ? 1 : 0,
@@ -483,6 +467,29 @@ $.COR.account.setUserData = function (data) {
     this.subscriptions = data.Subscriptions;
     this.settings = data.UserSettings;
     this.stripePublicKey = data.StripePublicKey;
+
+    $("#account-settings-username").val(this.user.LoginName);
+    $("#account-settings-current-password").val(this.user.LoginPassword);
+    $("#contact-us-email").val(this.user.LoginName);
+
+    for (var subscription in data.Subscriptions) {
+        var subname = subscription.toLowerCase();
+
+        if (data.Subscriptions[subscription].cancellationDate == null) {
+            $("#account_subscription_check-" + subname).prop('checked', true);
+
+            var tr = $("#account_subscription_check-" + subname).parents('tr');
+
+            var date = new Date(data.Subscriptions[subscription].ExpirationDate.split(" ")[0]);
+
+            $(tr).find('.date').html($.COR.Utilities.formatDate(date));
+            $(tr).find('.status').html("Active");
+        }
+
+
+
+    }
+
 
 }
 

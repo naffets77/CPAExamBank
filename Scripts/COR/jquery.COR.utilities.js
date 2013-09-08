@@ -1,6 +1,10 @@
 ﻿
 
 
+$.COR.Utilities.formatDate = function (date) {
+    return date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear();
+}
+
 $.COR.Utilities.cycleButton = function (buttonElement, cycleName, originalName, fadeoutTime, cycleNameTime) {
 
     fadeoutTime = fadeoutTime | 1000;

@@ -54,7 +54,14 @@ $.COR.services.login = function (email, password, successCallback, failcallback)
             Licenses: {
                 Active: "1"
             },
-            Subscriptions: null,
+            Subscriptions: {
+                FAR: {
+                    CancellationDate: null,
+                    CurrentSubscriptionDate: "2013-09-08 22:24:14",
+                    ExpirationDate: "2013-10-08 22:24:14",
+                    FirstSubscribedDate: "2013-09-08 22:24:14",
+                }
+            },
 
             UserSettings: {
                 ShowNewUserTour: "false"
@@ -116,7 +123,7 @@ $.COR.services.createSubscription = function (token, successCallback) {
 
 }
 
-$.COR.services.chargeSubscription = function (subscription) {
+$.COR.services.chargeSubscription = function (subscription, successCallback) {
 
     if ($.COR.account.offline == false) {
 
