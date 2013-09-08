@@ -265,7 +265,7 @@ $.COR.account.setupEvents = function () {
                                         "REG": $("#account_subscription_check-reg").prop('checked') ? 1 : 0
                                     };
 
-                                    $.COR.services.createSubscription(subscription, function () {
+                                    $.COR.services.chargeSubscription(subscription, function () {
 
                                         $.COR.checkLogin(function (data) {
 
