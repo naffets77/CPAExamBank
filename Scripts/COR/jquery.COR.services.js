@@ -97,7 +97,7 @@ $.COR.services.createSubscription = function (token, successCallback) {
     if ($.COR.account.offline == false) {
 
         var ph = new $.COR.Utilities.PostHandler({
-            service: "account", call: "createNewSubscriber",
+            service: "stripe", call: "createNewSubscriber",
             params: {
                 token: token
             },
@@ -121,7 +121,7 @@ $.COR.services.chargeSubscription = function (subscription) {
     if ($.COR.account.offline == false) {
 
         var ph = new $.COR.Utilities.PostHandler({
-            service: "account", call: "chargeSubscription",
+            service: "stripe", call: "chargeSubscription",
             params: {
                 moduleSelection: subscription
             },
