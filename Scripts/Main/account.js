@@ -4,6 +4,7 @@ $.COR.account = {
     user: null,
     hash: null,
     licenses: null,
+    stripePublicKey: null,
     subscriptions:null,
     userSettings: null,
     simulator: {
@@ -231,7 +232,7 @@ $.COR.account.setupEvents = function () {
                     // Show Processing
                     $("#update-subscription-holder .processing").show();
 
-                    Stripe.setPublishableKey($.COR.config.stripeKey);
+                    Stripe.setPublishableKey(self.stripePublicKey);
 
                     Stripe.card.createToken({
                         number: $('#card-number').val(),
@@ -474,6 +475,7 @@ $.COR.account.setUserData = function (data) {
     this.licenses = data.Licenses;
     this.subscriptions = data.Subscriptions;
     this.settings = data.UserSettings;
+    this.stripePublicKey = data.StripePublicKey;
 
 }
 
