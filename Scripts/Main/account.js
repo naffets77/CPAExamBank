@@ -258,12 +258,19 @@ $.COR.account.setupEvents = function () {
 
                                     
 
-                                    var subscription = {
-                                        "AUD": $("#account_subscription_check-aud").prop('checked') ? 1 : 0,
-                                        "FAR": $("#account_subscription_check-far").prop('checked') ? 1 : 0,
-                                        "BEC": $("#account_subscription_check-bec").prop('checked') ? 1 : 0,
-                                        "REG": $("#account_subscription_check-reg").prop('checked') ? 1 : 0
-                                    };
+                                    //var subscription = {
+                                    //    "AUD": $("#account_subscription_check-aud").prop('checked') ? 1 : 0,
+                                    //    "FAR": $("#account_subscription_check-far").prop('checked') ? 1 : 0,
+                                    //    "BEC": $("#account_subscription_check-bec").prop('checked') ? 1 : 0,
+                                    //    "REG": $("#account_subscription_check-reg").prop('checked') ? 1 : 0
+                                    //};
+
+                                    var subscription = JSON.stringify({
+                                            "AUD": $("#account_subscription_check-aud").prop('checked') ? 1 : 0,
+                                            "FAR": $("#account_subscription_check-far").prop('checked') ? 1 : 0,
+                                            "BEC": $("#account_subscription_check-bec").prop('checked') ? 1 : 0,
+                                            "REG": $("#account_subscription_check-reg").prop('checked') ? 1 : 0
+                                    })
 
                                     $.COR.services.chargeSubscription(subscription, function () {
 
