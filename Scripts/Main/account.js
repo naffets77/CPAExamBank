@@ -221,6 +221,11 @@ $.COR.account.setupEvents = function () {
 
                 $("#update-subscription-holder .save-credit-info").on('click', function () {
 
+                    if($(this).hasClass('disabled')){return;}
+                    $(this).addClass('disabled');
+
+
+
                     $("#update-subscription-holder .credit-card-info").hide();
 
                     // Show Processing
