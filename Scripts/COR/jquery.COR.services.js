@@ -99,7 +99,7 @@ $.COR.services.createSubscription = function (token, successCallback) {
         var ph = new $.COR.Utilities.PostHandler({
             service: "stripe", call: "createNewSubscriber",
             params: {
-                token: token
+                stripeToken: token
             },
             success: function (data) {
                 successCallback(data);
