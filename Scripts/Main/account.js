@@ -185,7 +185,7 @@ $.COR.account.setupEvents = function () {
         // Check if there was no change
 
         // If no change and no subs checked
-        if (subscriptionAmount == 0) {
+        if (subscriptionAmount == 0 && self.subscriptions.length == 0) {
             $("#account-upodate-no-subscriptions-selected").show();
             validates = false;
         }
@@ -249,14 +249,9 @@ $.COR.account.setupEvents = function () {
                                 // Refresh Login
                                 $.COR.checkLogin(function (data) {
 
-                                    var subscription = JSON.stringify({
-                                            "AUD": $("#account_subscription_check-aud").prop('checked') ? 1 : 0,
-                                            "FAR": $("#account_subscription_check-far").prop('checked') ? 1 : 0,
-                                            "BEC": $("#account_subscription_check-bec").prop('checked') ? 1 : 0,
-                                            "REG": $("#account_subscription_check-reg").prop('checked') ? 1 : 0
-                                    })
+                                    var subscriptions = self.getSubscriptionsForServer();
 
-                                    $.COR.services.chargeSubscription(subscription, function () {
+                                    $.COR.services.chargeSubscription(subscriptions, function () {
 
                                         $.COR.checkLogin(function (data) {
 
@@ -297,11 +292,21 @@ $.COR.account.setupEvents = function () {
                     // Show Processing
                     $("#update-subscription-holder .processing").show();
 
-                    // Start Stripe
-                    setTimeout(function () {
-                        $("#update-subscription-holder .processing").hide();
-                        $("#update-subscription-holder .subscription-completed").show();
-                    }, 1500);
+                    var subscriptions = self.getSubscriptionsForServer();
+
+                    $.COR.services.chargeSubscription(subscriptions, function () {
+
+                        $.COR.checkLogin(function (data) {
+
+                            self.setUserData(data);
+
+                            // Use Token to load stuff
+                            $("#update-subscription-holder .processing").hide();
+                            $("#update-subscription-holder .subscription-completed").show();
+
+                        });
+
+                    });
 
                 });
             }
@@ -491,6 +496,18 @@ $.COR.account.setUserData = function (data) {
     }
 
 
+}
+
+
+// Subscription Helpers
+
+$.COR.account.getSubscriptionsForServer = function(){
+    return JSON.stringify({
+        "AUD": $("#account_subscription_check-aud").prop('checked') ? 1 : 0,
+        "FAR": $("#account_subscription_check-far").prop('checked') ? 1 : 0,
+        "BEC": $("#account_subscription_check-bec").prop('checked') ? 1 : 0,
+        "REG": $("#account_subscription_check-reg").prop('checked') ? 1 : 0
+    });
 }
 
 
