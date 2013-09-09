@@ -287,6 +287,10 @@ $.COR.account.setupEvents = function () {
 
                 $("#update-subscription-holder .update-plan").on('click', function () {
 
+                    if ($(this).hasClass('disabled')) { return; }
+                    $(this).addClass('disabled');
+
+
                     $("#update-subscription-holder .update-subscription").hide();
 
                     // Show Processing
@@ -478,17 +482,26 @@ $.COR.account.setUserData = function (data) {
     $("#contact-us-email").val(this.user.LoginName);
 
     for (var subscription in data.Subscriptions) {
+
         var subname = subscription.toLowerCase();
+        var tr = $("#account_subscription_check-" + subname).parents('tr');
+        var date = new Date(data.Subscriptions[subscription].ExpirationDate.split(" ")[0]);
+
+        $(tr).find('.date').html($.COR.Utilities.formatDate(date));
 
         if (data.Subscriptions[subscription].cancellationDate == null) {
-            $("#account_subscription_check-" + subname).prop('checked', true);
 
-            var tr = $("#account_subscription_check-" + subname).parents('tr');
-
-            var date = new Date(data.Subscriptions[subscription].ExpirationDate.split(" ")[0]);
-
-            $(tr).find('.date').html($.COR.Utilities.formatDate(date));
+            $("#account_subscription_check-" + subname).prop('checked', true);            
             $(tr).find('.status').html("Active");
+        }
+        else if (new Date(data.Subscriptions[subscription].expirationDate) > new Date()) {
+            $("#account_subscription_check-" + subname).prop('checked', false);
+            $(tr).find('.status').html("Expires On");
+        }
+        else {
+            $("#account_subscription_check-" + subname).prop('checked', false);
+            $(tr).find('.status').html("Expired");
+            $(tr).find('.date').html("-");
         }
 
 
