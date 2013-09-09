@@ -103,11 +103,14 @@ $(document).ready(function () {
                         else {
                             // We're good to go lets setup the account object and change pages...
 
+                            $.COR.services.login(email, password, function () {
 
-                            $.COR.account.setup(response, function () {
-                                $.COR.toggleAccountNavigation(); // TODO: This should be done on the account side of things
-                                $.COR.TPrep.hideFullScreenOverlay();
-                                location.hash = "account";
+                                $.COR.account.setup(response, function () {
+                                    $.COR.toggleAccountNavigation(); // TODO: This should be done on the account side of things
+                                    $.COR.TPrep.hideFullScreenOverlay();
+                                    location.hash = "account";
+                                });
+
                             });
                         }
                     });

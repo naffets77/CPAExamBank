@@ -103,6 +103,19 @@ $.COR.account.setupEvents = function () {
 
     });
 
+    // Simulator
+    $("#practice-options [name='practice-category']").on("change", function () {
+
+        if ($(this).parents("tr").hasClass("trial")) {
+            $("#practice-question-count").val(5);
+            $("#practice-question-count").attr("disabled", "disabled");
+        }
+        else {
+            $("#practice-question-count").val(20);
+            $("#practice-question-count").removeAttr("disabled");
+        }
+
+    });
 
 
     /* ----- Settings Management ---- */
@@ -487,8 +500,13 @@ $.COR.account.setUserData = function (data) {
         something to loop through. There's probably a better way to do this...
     */
 
+    // default everything to false
+    $("#subscription-options input").prop('checked', false);
+    $("#practice-options [name='practice-category']").parents("tr").addClass("trial");
 
-    if(data.Subscriptions.length === undefined){
+    var AUDEnabled = false;
+
+    if (data.Subscriptions.length === undefined) {
         for (var subscription in data.Subscriptions) {
 
             var subname = subscription.toLowerCase();
@@ -500,11 +518,24 @@ $.COR.account.setUserData = function (data) {
             if (data.Subscriptions[subscription].CancellationDate == null) {
 
                 $("#account_subscription_check-" + subname).prop('checked', true);
+                $("#practice-category_" + subname).parents('tr').removeClass("trial");
                 $(tr).find('.status').html("Active");
+
+                if (subname == "aud") {
+                    AUDEnabled = true;
+                }
+
             }
             else if (new Date(data.Subscriptions[subscription].ExpirationDate) > new Date()) {
                 $("#account_subscription_check-" + subname).prop('checked', false);
+                $("#practice-category_" + subname).parents('tr').removeClass("trial");
                 $(tr).find('.status').html("Expires On");
+                
+
+                if (subname == "aud") {
+                    AUDEnabled = true;
+                }
+
             }
             else {
                 $("#account_subscription_check-" + subname).prop('checked', false);
@@ -512,6 +543,18 @@ $.COR.account.setUserData = function (data) {
                 $(tr).find('.date').html("-");
             }
         }
+    }
+
+
+
+    // setup the default selected section when studying (AUD)
+    if (!AUDEnabled) {
+        $("#practice-question-count").val(5);
+        $("#practice-question-count").attr("disabled","disabled");
+    }
+    else {
+        $("#practice-question-count").val(20);
+        $("#practice-question-count").removeAttr("disabled");
     }
 
 

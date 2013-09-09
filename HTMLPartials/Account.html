@@ -360,36 +360,48 @@
                     </td>
                     <td>
                         <table style="padding-left:0px;">
-                            <tr>
+                            <tr class="trial">
                                 <td>
-                                    <input type="radio" name="practice-category" value="2" checked/>
+                                    <input  id="practice-category_aud" type="radio" name="practice-category" value="2" checked/>
                                 </td>
                                 <td>
-                                    Auditing And Attestation (AUD)
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="radio" name="practice-category" value="3" />
+                                    <label for='practice-category_aud'>AUD - Auditing And Attestation</label>
                                 </td>
                                 <td>
-                                    Business Environment and Concepts (BEC)
+                                    <a href="#account/my-info" class="trial" style="color:red;">Subscribe <span class="tooltip" data-powertip="You will only have access to 5 questions until you subscribe">?</span></a>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr class="trial">
                                 <td>
-                                    <input type="radio" name="practice-category" value="1" />
+                                    <input  id="practice-category_bec" type="radio" name="practice-category" value="3" />
                                 </td>
                                 <td>
-                                    Financial Accounting and Reporting (FAR)
+                                    <label for="practice-category_bec">BEC - Business Environment and Concepts</label>
+                                </td>
+                                <td>
+                                    <a href="#account/my-info" class="trial" style="color:red;">Subscribe <span class="tooltip" data-powertip="You will only have access to 5 questions until you subscribe">?</span></a>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr class="trial">
                                 <td>
-                                    <input type="radio" name="practice-category" value="4" />
+                                    <input  id="practice-category_far" type="radio" name="practice-category" value="1" />
                                 </td>
                                 <td>
-                                    Regulation (REG)
+                                    <label for="practice-category_far">FAR - Financial Accounting and Reporting</label>
+                                </td>
+                                <td>
+                                    <a href="#account/my-info" class="trial" style="color:red;">Subscribe <span class="tooltip" data-powertip="You will only have access to 5 questions until you subscribe">?</span></a>
+                                </td>
+                            </tr>
+                            <tr class="trial">
+                                <td>
+                                    <input  id="practice-category_reg" type="radio" name="practice-category" value="4" />
+                                </td>
+                                <td>
+                                    <label for="practice-category_reg">REG - Regulation</label>
+                                </td>
+                                <td>
+                                    <a href="#account/my-info" class="trial" style="color:red;">Subscribe <span class="tooltip" data-powertip="You will only have access to 5 questions until you subscribe">?</span></a>
                                 </td>
                             </tr>
                         </table> 
@@ -399,6 +411,7 @@
                     <td>Number of Questions</td>
                     <td>
                         <select id="practice-question-count" style="margin-left:10px;">
+                            <option>5</option> 
                             <option>10</option>
                             <option selected>20</option>
                             <option>30</option>
