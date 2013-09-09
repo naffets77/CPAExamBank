@@ -481,31 +481,37 @@ $.COR.account.setUserData = function (data) {
     $("#account-settings-current-password").val(this.user.LoginPassword);
     $("#contact-us-email").val(this.user.LoginName);
 
-    for (var subscription in data.Subscriptions) {
+    /*
+        The data.Subscriptions object coverts a little odd from PHP. If it's empty then it's an array and has a length, 
+        if it's not empty then it's an object w/out a length. If the length property is undefined then we know we have 
+        something to loop through. There's probably a better way to do this...
+    */
 
-        var subname = subscription.toLowerCase();
-        var tr = $("#account_subscription_check-" + subname).parents('tr');
-        var date = new Date(data.Subscriptions[subscription].ExpirationDate.split(" ")[0]);
 
-        $(tr).find('.date').html($.COR.Utilities.formatDate(date));
+    if(data.Subscriptions.length === undefined){
+        for (var subscription in data.Subscriptions) {
 
-        if (data.Subscriptions[subscription].CancellationDate == null) {
+            var subname = subscription.toLowerCase();
+            var tr = $("#account_subscription_check-" + subname).parents('tr');
+            var date = new Date(data.Subscriptions[subscription].ExpirationDate.split(" ")[0]);
 
-            $("#account_subscription_check-" + subname).prop('checked', true);            
-            $(tr).find('.status').html("Active");
+            $(tr).find('.date').html($.COR.Utilities.formatDate(date));
+
+            if (data.Subscriptions[subscription].CancellationDate == null) {
+
+                $("#account_subscription_check-" + subname).prop('checked', true);
+                $(tr).find('.status').html("Active");
+            }
+            else if (new Date(data.Subscriptions[subscription].ExpirationDate) > new Date()) {
+                $("#account_subscription_check-" + subname).prop('checked', false);
+                $(tr).find('.status').html("Expires On");
+            }
+            else {
+                $("#account_subscription_check-" + subname).prop('checked', false);
+                $(tr).find('.status').html("Expired");
+                $(tr).find('.date').html("-");
+            }
         }
-        else if (new Date(data.Subscriptions[subscription].ExpirationDate) > new Date()) {
-            $("#account_subscription_check-" + subname).prop('checked', false);
-            $(tr).find('.status').html("Expires On");
-        }
-        else {
-            $("#account_subscription_check-" + subname).prop('checked', false);
-            $(tr).find('.status').html("Expired");
-            $(tr).find('.date').html("-");
-        }
-
-
-
     }
 
 
