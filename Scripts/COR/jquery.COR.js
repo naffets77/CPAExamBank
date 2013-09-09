@@ -171,7 +171,8 @@ $.COR.getCurrentDisplayedId = function () {
 $.COR.checkLogin = function (successCallback, failCallback) {
     var self = this;
 
-    self.pageSwap($.COR.getCurrentDisplayedId(), 'js-content-wrapper-login');
+    // Do this outside of the lib, too specific
+    //self.pageSwap($.COR.getCurrentDisplayedId(), 'js-content-wrapper-login');
 
 
     var ph = new $.COR.Utilities.PostHandler({

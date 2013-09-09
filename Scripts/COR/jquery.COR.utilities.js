@@ -132,6 +132,8 @@ $.COR.Utilities.PollHandler.prototype.updateInterval = function (newInterval) {
 
 $.COR.Utilities.refreshLogin = function (successCallback) {
 
+    self.pageSwap($.COR.getCurrentDisplayedId(), 'js-content-wrapper-login');
+
     $.COR.checkLogin(
 
         // Sucessfully still logged in
