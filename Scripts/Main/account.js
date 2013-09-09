@@ -489,12 +489,12 @@ $.COR.account.setUserData = function (data) {
 
         $(tr).find('.date').html($.COR.Utilities.formatDate(date));
 
-        if (data.Subscriptions[subscription].cancellationDate == null) {
+        if (data.Subscriptions[subscription].CancellationDate == null) {
 
             $("#account_subscription_check-" + subname).prop('checked', true);            
             $(tr).find('.status').html("Active");
         }
-        else if (new Date(data.Subscriptions[subscription].expirationDate) > new Date()) {
+        else if (new Date(data.Subscriptions[subscription].ExpirationDate) > new Date()) {
             $("#account_subscription_check-" + subname).prop('checked', false);
             $(tr).find('.status').html("Expires On");
         }
