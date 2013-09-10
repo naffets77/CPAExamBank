@@ -13,7 +13,7 @@ button {
 
 .btn-small, button {
     font-size: 12px;
-    padding: 4px 14px;
+    padding: 6px 16px;
 }
 
 .btn-large {
@@ -43,7 +43,7 @@ button {
     /*-moz-border-radius: 6px;
     -webkit-border-radius: 6px;
     border-radius: 6px;*/
-    border: 1px solid #dcdcdc;
+    border: 0px solid #dcdcdc;
     display: inline-block;
     color: #333;
     font-family: arial;
