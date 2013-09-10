@@ -136,6 +136,7 @@
         float:left;
         background-color:transparent;
         position:relative;
+        width:20px;
     }
         #practice-options .subscribe-message .icon {
             height: 17px;
@@ -146,6 +147,7 @@
             displaY: block;
             position: absolute;
             margin-top: -6px;
+            padding:0px;
         }
 
 #practice-explanation {

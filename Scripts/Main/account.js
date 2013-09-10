@@ -399,7 +399,8 @@ $.COR.account.setupEvents = function () {
     /* ----- Tooltips ------*/
 
     $('.tooltip').powerTip({
-        followMouse:true
+        followMouse: true
+        //placement:'ne'
     });
 
 };
