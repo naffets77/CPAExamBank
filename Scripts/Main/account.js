@@ -106,9 +106,12 @@ $.COR.account.setupEvents = function () {
     // Simulator
     $("#practice-options [name='practice-category']").on("change", function () {
 
+        $(".subscribe-message").hide();
+
         if ($(this).parents("tr").hasClass("trial")) {
             $("#practice-question-count").val(5);
             $("#practice-question-count").attr("disabled", "disabled");
+            $(this).parents("tr").first().find(".subscribe-message").css("display","block");
         }
         else {
             $("#practice-question-count").val(20);
@@ -550,7 +553,8 @@ $.COR.account.setUserData = function (data) {
     // setup the default selected section when studying (AUD)
     if (!AUDEnabled) {
         $("#practice-question-count").val(5);
-        $("#practice-question-count").attr("disabled","disabled");
+        $("#practice-question-count").attr("disabled", "disabled");
+        $("#practice-category_aud").parents("tr").first().find(".subscribe-message").css('display','block');
     }
     else {
         $("#practice-question-count").val(20);

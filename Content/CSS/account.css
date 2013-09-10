@@ -127,6 +127,27 @@
     width: 60%;
 }
 
+#practice-options-section-types tr td{
+    padding:10px 2px;
+}
+
+    #practice-options .subscribe-message {
+        display:none;
+        float:left;
+        background-color:transparent;
+        position:relative;
+    }
+        #practice-options .subscribe-message .icon {
+            height: 17px;
+            width: 20px;
+            background-color: transparent;
+            background-image: url('/Content/Images/Account/lock.png');
+            background-size: 18px;
+            displaY: block;
+            position: absolute;
+            margin-top: -6px;
+        }
+
 #practice-explanation {
     float: right;
     width: 35%;
