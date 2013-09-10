@@ -2,7 +2,7 @@
 
 
 $.COR.Utilities.formatDate = function (date) {
-    return date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear();
+    return (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
 }
 
 $.COR.Utilities.cycleButton = function (buttonElement, cycleName, originalName, fadeoutTime, cycleNameTime) {
