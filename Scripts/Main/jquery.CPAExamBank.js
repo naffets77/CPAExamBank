@@ -403,27 +403,18 @@ $.CPAEB.init = function () {
         if (hash.length == 1 && loc == "account") {
 
             if ($.COR.account.user != null) {
-                $.COR.Utilities.HashHandler.addHashRequest(
-                    $.COR.Utilities.HashHandler.buildHashRequest({
-                        callback: accountPagesCallback
-                    })
-                );
 
-                $.COR.Utilities.HashHandler.addHashRequest(
-                    $.COR.Utilities.HashHandler.buildHashRequest({
-                        callback: accountStartPracticeCallback
-                    })
-                );
-
+                $.CPAEB.setupAccountHashHandling();
                 $("#header-navigation-account_study").addClass('current');
-
                 result = true;
+
             }
             else {
 
                 self.hideLoginUI();
 
                 $.COR.Utilities.refreshLogin(function () {
+                    $.CPAEB.setupAccountHashHandling();
                     $("#header-navigation-account_study").addClass('current');
                 });
                 result = true;
@@ -472,6 +463,21 @@ $.CPAEB.hideLoginUI = function () {
     $("#header-logout-container").show();
     $("#home-login-password").val("");
     $("#home-login-username").val("");
+}
+
+$.CPAEB.setupAccountHashHandling = function () {
+
+    $.COR.Utilities.HashHandler.addHashRequest(
+        $.COR.Utilities.HashHandler.buildHashRequest({
+            callback: accountPagesCallback
+        })
+    );
+
+    $.COR.Utilities.HashHandler.addHashRequest(
+        $.COR.Utilities.HashHandler.buildHashRequest({
+            callback: accountStartPracticeCallback
+        })
+    );
 }
 
 /* TODO: Clean up all this stuff... */
