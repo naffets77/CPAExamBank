@@ -310,6 +310,8 @@ $.CPAEB.init = function () {
 
             if ($.COR.account.user != null) {
 
+                result = true;
+
                 $.COR.log("Account Page: " + loc);
 
                 if (hash.length == 1) {
@@ -362,7 +364,14 @@ $.CPAEB.init = function () {
             }
             else {
 
-                $.COR.Utilities.refreshLogin();
+                self.hideLoginUI();
+
+                $.COR.Utilities.refreshLogin(function () {
+                    //$.CPAEB.setupAccountHashHandling(accountPagesCallback, accountStartPracticeCallback);
+                    $(window).hashchange();
+                    
+                });
+                result = true;
 
             }
 
