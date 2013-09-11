@@ -362,7 +362,7 @@ $.CPAEB.init = function () {
 
 
             }
-            else {
+            else { // I don't think this will ever get called...
 
                 self.hideLoginUI();
 
@@ -428,6 +428,18 @@ $.CPAEB.init = function () {
                 });
                 result = true;
             }
+        }
+
+        // We need to refresh login and try again
+        else if (loc == "account" && hash.length > 1) {
+
+            self.hideLoginUI();
+
+            $.COR.Utilities.refreshLogin(function () {
+                $.CPAEB.setupAccountHashHandling(accountPagesCallback, accountStartPracticeCallback);
+                $(window).hashchange();
+            });
+            result = true;
         }
 
         return result;
