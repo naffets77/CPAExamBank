@@ -5,6 +5,7 @@
 
         // These should be moved to config..
         debug: true,
+        googleTracking: false,
         MD5: null,
         DisableCache: true,
 
@@ -159,6 +160,14 @@ $.COR.pageEvents = function () {
 
 
     //*************** END header events **********************************\\
+
+    if (this.googleTracking) {
+
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = '/Scripts/GoogleAnalyticsTrackingCode.js';
+        $("body").append(script);
+    }
 
 }
 

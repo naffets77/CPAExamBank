@@ -402,21 +402,26 @@ $.CPAEB.init = function () {
 
         if (hash.length == 1 && loc == "account") {
 
-            $.COR.Utilities.HashHandler.addHashRequest(
-                $.COR.Utilities.HashHandler.buildHashRequest({
-                    callback: accountPagesCallback
-                })
-            );
+            if ($.COR.account.user != null) {
+                $.COR.Utilities.HashHandler.addHashRequest(
+                    $.COR.Utilities.HashHandler.buildHashRequest({
+                        callback: accountPagesCallback
+                    })
+                );
 
-            $.COR.Utilities.HashHandler.addHashRequest(
-                $.COR.Utilities.HashHandler.buildHashRequest({
-                    callback: accountStartPracticeCallback
-                })
-            );
+                $.COR.Utilities.HashHandler.addHashRequest(
+                    $.COR.Utilities.HashHandler.buildHashRequest({
+                        callback: accountStartPracticeCallback
+                    })
+                );
 
-            $("#header-navigation-account_study").addClass('current');
+                $("#header-navigation-account_study").addClass('current');
 
-            result = true;
+                result = true;
+            }
+            else {
+                $.COR.Utilities.refreshLogin();
+            }
         }
 
         
