@@ -6,9 +6,7 @@ var siteOptions = {
 
     loginCallback: function () {
 
-        $("#header-logout-container").show();
-        $("#home-login-password").val("");
-        $("#home-login-username").val("");
+        this.hideLoginUI();
         location.hash = "account";
     }
 
@@ -152,6 +150,8 @@ $(document).ready(function () {
 
 
 $.CPAEB.init = function () {
+
+    var self = this;
 
     var singlePages = ["product-pricing", "about", "contact"];
     var accountPages = ["study", "my-review", "my-info","faqs","contact"];
@@ -420,15 +420,17 @@ $.CPAEB.init = function () {
                 result = true;
             }
             else {
-                $.COR.Utilities.refreshLogin();
+                $.COR.Utilities.refreshLogin(function () {
+                    
+                    $.COR.toggleAccountNavigation();  // this function should be somewhere else
+                    self.hideLoginUI();
+
+                });
                 result = true;
             }
         }
 
-        
-
         return result;
-
     };
 
 
@@ -465,7 +467,11 @@ $.CPAEB.init = function () {
 
 }
 
-
+$.CPAEB.hideLoginUI = function () {
+    $("#header-logout-container").show();
+    $("#home-login-password").val("");
+    $("#home-login-username").val("");
+}
 
 /* TODO: Clean up all this stuff... */
 
