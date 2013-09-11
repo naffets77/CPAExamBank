@@ -465,10 +465,19 @@ $.CPAEB.init = function () {
         ],
         defaultHashRequest: $.COR.Utilities.HashHandler.buildHashRequest({
             callback: function () {
+                
+                // Show Home Page If No User
+                if ($.COR.account.user == null) {
+                    $.COR.Utilities.FullScreenOverlay.hide();
+                    $.COR.toggleHomeNavigation();
+                    $.COR.pageSwap(null, "home");
+                }
 
-                $.COR.Utilities.FullScreenOverlay.hide();
-                $.COR.toggleHomeNavigation();
-                $.COR.pageSwap(null, "home");
+                // Show Default Account Page Otherwise
+                else{
+                    $.COR.account.showDefaultPage();
+                }
+
                 return true;
             }
         })

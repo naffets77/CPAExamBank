@@ -49,10 +49,7 @@ $.COR.account.setup = function (data, successCallback) {
 
         setTimeout(function () {
             // Show proper UI
-            $.COR.pageSwap($.COR.getCurrentDisplayedId(), "js-content-wrapper-study");
-
-            $("#header-navigation li").removeClass('current');
-            $("#header-navigation_study").addClass('current');
+            self.showDefaultPage();
 
 
             successCallback();
@@ -565,6 +562,13 @@ $.COR.account.setUserData = function (data) {
 
 }
 
+$.COR.account.showDefaultPage = function () {
+
+    $.COR.pageSwap($.COR.getCurrentDisplayedId(), "js-content-wrapper-study");
+
+    $("#header-navigation li").removeClass('current');
+    $("#header-navigation_study").addClass('current');
+}
 
 // Subscription Helpers
 
