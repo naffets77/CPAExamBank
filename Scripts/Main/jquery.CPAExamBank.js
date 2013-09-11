@@ -431,7 +431,7 @@ $.CPAEB.init = function () {
         }
 
         // We need to refresh login and try again
-        else if (loc == "account" && hash.length > 1) {
+        else if (loc == "account" && hash.length > 1 && $.COR.account.user == null) {
 
             self.hideLoginUI();
 
