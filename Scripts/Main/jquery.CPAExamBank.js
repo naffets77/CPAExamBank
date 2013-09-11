@@ -420,10 +420,13 @@ $.CPAEB.init = function () {
                 result = true;
             }
             else {
+
+                self.hideLoginUI();
+
                 $.COR.Utilities.refreshLogin(function () {
                     
-                    $.COR.toggleAccountNavigation();  // this function should be somewhere else
-                    self.hideLoginUI();
+                    //$.COR.toggleAccountNavigation();  // this function should be somewhere else
+                    
 
                 });
                 result = true;
