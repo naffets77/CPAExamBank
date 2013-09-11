@@ -6,7 +6,7 @@ var siteOptions = {
 
     loginCallback: function () {
 
-        this.hideLoginUI();
+        $.CPAEB.hideLoginUI();
         location.hash = "account";
     }
 
