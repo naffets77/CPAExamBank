@@ -108,7 +108,7 @@ $.COR.pageEvents = function () {
 
         if (password.length != 0 && email.length != 0 && password != 'Password' && email != 'Email') {
 
-            $("#header-login-container").hide();
+            //$("#header-login-container").hide();
             self.pageSwap($.COR.getCurrentDisplayedId(), 'js-content-wrapper-login');
 
             $("#header-navigation").hide();

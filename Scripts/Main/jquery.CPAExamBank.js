@@ -468,6 +468,7 @@ $.CPAEB.init = function () {
 }
 
 $.CPAEB.hideLoginUI = function () {
+    $("#header-login-container").hide();
     $("#header-logout-container").show();
     $("#home-login-password").val("");
     $("#home-login-username").val("");
