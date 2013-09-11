@@ -424,10 +424,7 @@ $.CPAEB.init = function () {
                 self.hideLoginUI();
 
                 $.COR.Utilities.refreshLogin(function () {
-                    
-                    //$.COR.toggleAccountNavigation();  // this function should be somewhere else
-                    
-
+                    $("#header-navigation-account_study").addClass('current');
                 });
                 result = true;
             }
