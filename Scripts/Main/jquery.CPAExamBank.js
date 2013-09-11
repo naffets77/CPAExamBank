@@ -421,6 +421,7 @@ $.CPAEB.init = function () {
             }
             else {
                 $.COR.Utilities.refreshLogin();
+                result = true;
             }
         }
 
