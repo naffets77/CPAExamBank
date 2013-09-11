@@ -404,7 +404,7 @@ $.CPAEB.init = function () {
 
             if ($.COR.account.user != null) {
 
-                $.CPAEB.setupAccountHashHandling();
+                $.CPAEB.setupAccountHashHandling(accountPagesCallback, accountStartPracticeCallback);
                 $("#header-navigation-account_study").addClass('current');
                 result = true;
 
@@ -414,7 +414,7 @@ $.CPAEB.init = function () {
                 self.hideLoginUI();
 
                 $.COR.Utilities.refreshLogin(function () {
-                    $.CPAEB.setupAccountHashHandling();
+                    $.CPAEB.setupAccountHashHandling(accountPagesCallback, accountStartPracticeCallback);
                     $("#header-navigation-account_study").addClass('current');
                 });
                 result = true;
@@ -465,7 +465,7 @@ $.CPAEB.hideLoginUI = function () {
     $("#home-login-username").val("");
 }
 
-$.CPAEB.setupAccountHashHandling = function () {
+$.CPAEB.setupAccountHashHandling = function (accountPagesCallback, accountStartPracticeCallback) {
 
     $.COR.Utilities.HashHandler.addHashRequest(
         $.COR.Utilities.HashHandler.buildHashRequest({
