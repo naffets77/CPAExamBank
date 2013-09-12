@@ -1,0 +1,188 @@
+﻿
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Scientific Calculator</title>
+
+<style type="text/css">
+body {
+background-color:beige;
+font-size:10pt;
+}
+input.advanced {
+font-size:9pt;
+width:.75cm;
+padding:0;
+margin:0;
+}
+input.clear, input.number, input.operand, input.equal, input.other {
+font-size:15pt;
+}
+input.clear, input.number, input.operand, input.equal, input.other {
+width:1cm;
+font-weight:bold;
+padding:2px;
+}
+input.keyshortcut {
+background-color:beige;
+color:beige;
+text-decoration:none;
+border:none;
+}
+input.clear {
+background-color:#aa2222;
+border-color:#aa2222;
+color:white;
+}
+input.number {
+background-color:#CCaa99;
+border-color:#CCaa99;
+color:black;
+}
+input.operand {
+background-color:#aaaacc;
+border-color:#aaaacc;
+color:black;
+}
+input.equal {
+background-color:#444444;
+border-color:#444444;
+color:white;
+}
+input.other {
+background-color:#9ac693;
+border-color:#9ac693;
+color:black;
+}
+input.advanced {
+background-color:lightgray;
+border-color:lightgray;
+color:black;
+}
+input.line {
+background-color:#cccc99;
+border-color:#cccc99;
+font-size:15pt;
+font-weight:bold;
+width:100%;
+}
+select {
+background-color:#cccccc;
+border-color:#cccccc;
+color:black;
+}
+</style>
+
+
+    <script src="../jquery-2.0.3.min.js"></script>
+    <script src="../COR/jquery.COR.js"></script>
+    <script src="../COR/jquery.COR.utilities.js"></script>
+    <script type="text/javascript" src="../COR/Utilities/jquery.COR.utilities.calculator.js"></script>
+</head>
+<body onload="load_calc();document.calculator.line.focus();">
+
+
+<form name=calculator onSubmit="do_calculation();return false;">
+<input class=line type=text name="line" onChange="line_change();">
+<br>
+<table summary="Calculator"><tr><td valign=top>
+<table class=keypad summary="Button Keypad"><tr>
+<td><input type="button" value="C" class="clear" accesskey=c onClick="clear_calc();" title="Clear (Alt-c)"></td>
+<td><input type="button" value="(" class="other" onClick="append_calc('(',0);" title="Grouping Parenthesis"></td>
+<td><input type="button" value=")" class="other" onClick="append_calc(')',0);" title="Grouping Parenthesis"></td>
+<td><input type="button" value="+" class="operand" onClick="append_calc(' + ',1);" title="Addition"></td>
+<td rowspan=5>
+<input type="button" value="&amp;" class="advanced" onClick="append_calc(' &amp; ',2);" title="Bitwise And"><br>
+<input type="button" value="|" class="advanced" onClick="append_calc(' | ',2);" title="Bitwise Or"><br>
+<input type="button" value="^" class="advanced" onClick="append_calc(' ^ ',2);" title="Bitwise xOr"><br>
+<input type="button" value="~" class="advanced" onClick="append_calc(' ~ ',2);" title="Bitwise Negation"><br>
+<input type="button" value="&lt;&lt;" class="advanced" onClick="append_calc(' &lt;&lt; ',2);" title="Bitwise Left Shift"><br>
+<input type="button" value="&gt;&gt;" class="advanced" onClick="append_calc(' &gt;&gt; ',2);" title="Bitwise Right Shift"><br>
+<input type="button" value="%" class="advanced" onClick="append_calc(' % ',2);" title="Modular Division"><br>
+<input type="button" value="," class="advanced" onClick="append_calc(', ',2);" title="Comma for functions"><br>
+</td></tr><tr>
+<td><input type="button" value="7" class="number" onClick="append_calc('7',0);" title="Seven"></td>
+<td><input type="button" value="8" class="number" onClick="append_calc('8',0);" title="Eight"></td>
+<td><input type="button" value="9" class="number" onClick="append_calc('9',0);" title="Nine"></td>
+<td><input type="button" value="-" class="operand" onClick="append_calc(' - ',1);" title="Subtraction"></td>
+</tr><tr>
+<td><input type="button" value="4" class="number" onClick="append_calc('4',0);" title="Four"></td>
+<td><input type="button" value="5" class="number" onClick="append_calc('5',0);" title="Five"></td>
+<td><input type="button" value="6" class="number" onClick="append_calc('6',0);" title="Six"></td>
+<td><input type="button" value="*" class="operand" onClick="append_calc(' * ',1);" title="Multiplication"></td>
+</tr><tr>
+<td><input type="button" value="1" class="number" onClick="append_calc('1',0);" title="One"></td>
+<td><input type="button" value="2" class="number" onClick="append_calc('2',0);" title="Two"></td>
+<td><input type="button" value="3" class="number" onClick="append_calc('3',0);" title="Three"></td>
+<td><input type="button" value="&#247;" class="operand" onClick="append_calc(' / ',1);" title="Division"></td>
+</tr><tr>
+<td><input type="button" value="EE" class="other" onClick="append_calc('e',2);" title="Scientific Notation Exponent"></td>
+<td><input type="button" value="0" class="number" onClick="append_calc('0',0);" title="Zero"></td>
+<td><input type="button" value="." class="other" onClick="append_calc('.',2);" title="Decimal Point"></td>
+<td><input type="button" value="=" class="equal" accesskey=e onClick="do_calculation();" title="Enter (Alt-e)"></td>
+</tr></table>
+</td><td valign=top>
+<p><small>Display:</small><br>
+<select name=display class=display onChange="display_result();save_calc();" title="(Alt-d)">
+<option selected>Decimal (Mixed Notation)
+<option>Decimal (Scientific Notation)
+<option>Decimal (Engineering Notation)
+<option>Hexadecimal
+<option>Octal
+<option>Binary
+</select></p>
+<p><select name=history class=history onChange="if(this.selectedIndex>0)set_calc(this.options[this.selectedIndex].text);" title="View previous entries (Alt-h)">
+<option>History:
+<option><option><option><option><option><option><option><option><option>
+<option><option><option><option><option><option><option><option><option><option>
+</select></p>
+<p><select name=mathConstants class=mathConstants onChange="append_calc(this.options[this.selectedIndex].value,0);this.selectedIndex=0;">
+<option>Math Constants:
+<option value="ans ">last result
+<option value="E ">e
+<option value="LN10 ">ln(10)
+<option value="LN2 ">ln(2)
+<option value="LOG10E ">log10(e)
+<option value="LOG2E ">log2(e)
+<option value="PI ">&pi;
+<option value="SQRT1_2 ">sqrt(1/2)
+<option value="SQRT2 ">sqrt(2)
+</select></p>
+<p><select name=mathFunctions class=mathFunctions onChange="append_calc(this.options[this.selectedIndex].value,0);this.selectedIndex=0;">
+<option>Math Functions:
+<option value="abs(">abs
+<option value="acos(">acos
+<option value="asin(">asin
+<option value="atan(">atan
+<option value="atan2(">atan2
+<option value="ceil(">ceil
+<option value="cos(">cos
+<option value="exp(">exp
+<option value="floor(">floor
+<option value="log(">log
+<option value="max(">max
+<option value="min(">min
+<option value="pow(">pow
+<option value="random()">random
+<option value="round(">round
+<option value="sin(">sin
+<option value="sqrt(">sqrt
+<option value="tan(">tan
+</select></p>
+<p><input type="button" value="H" accesskey=h class="keyshortcut" onClick="display_nextHistory();">
+<input type="button" value="D" accesskey=d class="keyshortcut" onClick="next_display_method();">
+<input type="button" value="M" accesskey=m class="keyshortcut" onClick="display_method(0);">
+<input type="button" value="S" accesskey=s class="keyshortcut" onClick="display_method(1);">
+<input type="button" value="G" accesskey=g class="keyshortcut" onClick="display_method(2);">
+<input type="button" value="B" accesskey=b class="keyshortcut" onClick="display_method(5);">
+<input type="button" value="O" accesskey=o class="keyshortcut" onClick="display_method(4);">
+<input type="button" value="X" accesskey=x class="keyshortcut" onClick="display_method(3);">
+<input type="button" value="A" accesskey=a class="keyshortcut" onClick="append_calc('ans ',0);"></p>
+</td></tr></table>
+</form>
+<div style="height:1in;"></div>
+<form><input type="button" class=popup value="Popup Calculator" onclick="javascript:window.open('calculator.html','calculator'+new Date().getTime(),'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=yes,copyhistory=no,width=450,height=300');"></form>
+
+
+</body>
+</html>

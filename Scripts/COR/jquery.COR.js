@@ -331,7 +331,7 @@ $.COR.toggleAccountNavigation = function () {
 
     // Setup the navigation to change to the account set
     $("#header-navigation").hide();
-    $("#header-navigation-account").show();
+    $("#header-navigation-account").fadeIn();
 
     $("#header-navigation-study").trigger('click');
 };

@@ -143,7 +143,8 @@ $(document).ready(function () {
 
     // Adding COR ot jQuery
     $.CPAEB = {
-
+        events: [],
+        pages: {}
     };
 
 })(jQuery);
@@ -392,10 +393,10 @@ $.CPAEB.init = function () {
 
     var accountStartPracticeCallback = function (hash) {
 
-        var loc = hash[0];
+        var loc = hash[1];
         var result = false;
 
-        if (hash.length == 1 && loc == "start-practice") {
+        if (hash.length == 2 && loc == "start-practice") {
             $.COR.account.startStudy();
             result = true;
         }
@@ -485,6 +486,9 @@ $.CPAEB.init = function () {
     });
 
 
+    for (var i = 0; i < this.events.length; i++) {
+        this.events[i]();
+    }
 
 }
 
@@ -508,6 +512,10 @@ $.CPAEB.setupAccountHashHandling = function (accountPagesCallback, accountStartP
             callback: accountStartPracticeCallback
         })
     );
+}
+
+$.CPAEB.registerEvents = function (eventsFunction) {
+    $.CPAEB.events.push(eventsFunction);
 }
 
 /* TODO: Clean up all this stuff... */

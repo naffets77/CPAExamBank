@@ -958,9 +958,16 @@ $.COR.account.initQuestions = function () {
     });
 
     $("#full-screen-container .exit-simulator-go-back").on('click', function () {
+
         $("#study-question-viewer-exit-uncompleted").hide();
         $("#study-question-viewer-footer").show();
-        $("#study-question-viewer-question-mc").fadeIn();
+
+        if (self.simulator.questionIndex == 0) {
+            $("#study-question-viewer-directions").fadeIn();
+        }
+        else {
+            $("#study-question-viewer-question-mc").fadeIn();
+        }
     });
 
     // Make sure visible
