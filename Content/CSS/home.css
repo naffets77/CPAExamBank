@@ -408,8 +408,9 @@
 
     #faq-holder .col1 {
         float: left;
-        width: 300px;
+        width: 250px;
         margin-top: 10px;
+        margin-right: 40px;
     }
 
         #faq-holder .col1 h2 {
@@ -456,8 +457,7 @@
 
     #faq-holder .col2 {
         float: left;
-        margin-left: 20px;
-        width: 570px;
+        width: 655px;
         margin-top: -15px;
     }
 
@@ -479,7 +479,7 @@
         }
 
         #faq-holder .col2 p {
-            margin: 20px 0px;
+            margin: 20px 20px 20px 0;
         }
 
         #faq-holder .col2 ul {

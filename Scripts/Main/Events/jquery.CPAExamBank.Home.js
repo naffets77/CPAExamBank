@@ -4,7 +4,8 @@ $.CPAEB.pages.home = {
 	slider: {
 		currentIndex: 4,
 		maxIndex: 5,
-		lastAction : null
+		lastAction: null,
+		animating : false
 	}
 }
 
@@ -13,6 +14,8 @@ $.CPAEB.pages.home.events = function () {
 	var self = $.CPAEB.pages.home;
 
 	$("#slides .prev").on('click', function () {
+
+		if (self.slider.animating == true) { return }
 
 		self.slider.lastAction = new Date();
 
@@ -24,6 +27,8 @@ $.CPAEB.pages.home.events = function () {
 
 	$("#slides .next").on('click', function () {
 
+		if (self.slider.animating == true) { return }
+
 		self.slider.lastAction = new Date();
 
 		self.slider.currentIndex = self.slider.currentIndex + 1 > self.slider.maxIndex ? 1 : self.slider.currentIndex + 1;
@@ -33,6 +38,8 @@ $.CPAEB.pages.home.events = function () {
 	});
 
 	$("#slides .pagination li").on('click', function () {
+
+		if (self.slider.animating == true) { return }
 
 		self.slider.lastAction = new Date();
 
@@ -66,22 +73,29 @@ $.CPAEB.pages.home.slider.updatePagination = function () {
 
 $.CPAEB.pages.home.slider.updateSlides = function (animation) {
 
+	var self = this;
+
+	this.animating = true;
+
 	var currentSlideIndex = this.currentIndex - 1;
 
 	var slideArray = $("#slides .slides_control .slide");
 
 	if (animation == 'fade') {
 		$("#slides .slides_control .slide:visible").fadeOut(function () {
-			$(slideArray[currentSlideIndex]).fadeIn();
+			$(slideArray[currentSlideIndex]).fadeIn(function () {
+				self.animating = false;
+			});
 		});
 	}
 	else {
 
 		var showAnimation = animation == 'left' ? 'right' : 'left';
 
-		console.log("Sliding : " + animation);
 		$("#slides .slides_control .slide:visible").hide('slide',{direction:animation},600,function () {
-			$(slideArray[currentSlideIndex]).show('slide', { direction: showAnimation }, 1000);
+			$(slideArray[currentSlideIndex]).show('slide', { direction: showAnimation }, 1000, function () {
+				self.animating = false;
+			});
 		});
 	}
 	

@@ -186,12 +186,7 @@ $.COR.account.setupEvents = function () {
 
         $(".account-update-subscription-error-message").hide();
 
-        var subscriptionAmount = 0;
-        $('#subscription-options .amount').each(function (index, element) {
-            if ($(element).parents('tr').find('.squaredTwo input').is(':checked')) {
-                subscriptionAmount += parseInt($(element).html().replace("$", ""));
-            }
-        });
+        var subscriptionAmount = self.getSubscriptionTotal();
 
         // Validations
         var validates = true;
@@ -208,7 +203,7 @@ $.COR.account.setupEvents = function () {
         // otherwise show subscription update popup
         $.COR.Utilities.FullScreenOverlay.loadExternal("/HTMLPartials/Account/UpdateSubscription.html", "medium", false, function () {
 
-            $("#update-subscription-holder .amount-charged").html("$" + subscriptionAmount);
+            $("#update-subscription-holder .amount-charged").html("$" + self.getSubscriptionTotal());
 
             $.COR.log("Loaded Subscription Update");
 
@@ -297,6 +292,8 @@ $.COR.account.setupEvents = function () {
             else {
 
                 $("#update-subscription-holder .update-subscription").show();
+
+
 
                 $("#update-subscription-holder .update-plan").on('click', function () {
 
@@ -581,6 +578,18 @@ $.COR.account.getSubscriptionsForServer = function(){
     });
 }
 
+$.COR.account.getSubscriptionTotal = function () {
+
+    var subscriptionAmount = 0;
+    $('#subscription-options .amount').each(function (index, element) {
+        if ($(element).parents('tr').find('.squaredTwo input').is(':checked')) {
+            subscriptionAmount += parseInt($(element).html().replace("$", ""));
+        }
+    });
+
+    return subscriptionAmount;
+
+}
 
 // Question History Helpers
 

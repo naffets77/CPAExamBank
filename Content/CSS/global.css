@@ -222,7 +222,7 @@ body {
     background-color: #333;
     clear: both;
     /*background-image: url('/Content/Images/Textures/grey_wash_wall.png');*/
-    padding-bottom:50px;
+    height:250px;
 }
 
 #footer-wrapper-shadow {
@@ -336,8 +336,8 @@ body {
     float: right;
     margin-top: 0px;
     font-size: 12px;
-    margin-right: 20px;
     margin-bottom: 10px;
+    margin-right:6px;
 }
 
 #invalid-account-message {
@@ -386,7 +386,7 @@ footer {
     text-align: center;
     padding: 20px 0px 50px;
     margin: 0px auto;
-    width: 800px;
+    width: 960px;
     margin: 0px auto;
 }
 
@@ -398,15 +398,16 @@ footer {
 }
 
 #footer-nav {
-    width: 520px;
-    margin: 10px auto;
+    margin:10px 0px;
     list-style-type: none;
 }
 
     #footer-nav li {
-        float: left;
         margin-right: 20px;
         font-size: 17px;
+        float: left;
+        clear: both;
+        margin: 4px;
     }
 
         #footer-nav li:hover {
@@ -427,7 +428,6 @@ footer {
     margin-top: 10px;
     float: left;
     width: 100%;
-    padding: 10px 0px 25px;
 }
 
 #footer-row-2 {
@@ -510,4 +510,40 @@ footer {
 }
 .js-overlay-relogin-content table tr td:first-child{
     padding-right:5px;
+}
+
+
+#terms-of-use-holder h2, #privacy-policy-holder h2 {
+    margin:0px 0px 20px 0px;
+}
+
+#terms-of-use-holder h3, #privacy-policy-holder h3 {
+    margin-bottom:5px;
+}
+
+#terms-of-use-holder p, #privacy-policy-holder p {
+    margin-bottom:20px;
+    font-size:13px;
+}
+
+#terms-of-use-holder ul, #privacy-policy-holder ul {
+    margin-bottom:20px;
+    list-style-type:disc;
+    font-size:13px;
+}
+
+#terms-of-use-holder ul li, #privacy-policy-holder ul li{
+    margin-bottom:10px;
+    margin-left:20px;
+}
+
+#terms-of-use-holder ol, #privacy-policy-holder ol {
+    margin-bottom:20px;
+    font-size:13px;
+    list-style-type:decimal;
+}
+
+#terms-of-use-holder ol li, #privacy-policy-holder ol li{
+    margin-bottom:10px;
+    margin-left:20px;
 }
