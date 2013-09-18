@@ -415,6 +415,11 @@ $.COR.account.initUser = function () {
     if ($.COR.account.user.IsRegistrationInfoObtained == "0") {
         this.showNewAccountPopup();
     }
+
+
+    if (this.user.IsAdmin == "1") {
+        $("#practice-question-count").append("<option value='-1'>All</option>");
+    }
 }
 
 $.COR.account.showNewAccountPopup = function () {
