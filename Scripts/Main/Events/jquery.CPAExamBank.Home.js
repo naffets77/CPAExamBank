@@ -27,7 +27,7 @@ $.CPAEB.pages.home.events = function () {
 	        };
 
 	        var ph = new $.COR.Utilities.PostHandler({
-	            service: "general", call: "contactEmail",
+	            service: "general", call: "submitContactUsRequest",
 	            params: data,
 	            success: function (data) {
 
