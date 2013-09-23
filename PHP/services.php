@@ -2,7 +2,7 @@
 
     include_once("config.php");
     
-    $services = array("service_account","service_question","service_stripe");
+    $services = array("service_account","service_question","service_stripe","service_general");
 
 
     // Verify that we have a service call that is valid
