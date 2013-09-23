@@ -13,6 +13,38 @@ $.CPAEB.pages.home.events = function () {
 
 	var self = $.CPAEB.pages.home;
 
+
+
+	$("#contact-us-submit-form").on('click', function () {
+
+	    var email = $("#contact-us-email").val();
+
+	    if (email.length != 0) {
+	        var data = {
+	            contactEmail: email,
+	            reason: $("#contact-us-reason").val(),
+	            message: $("#contact-us-message").val()
+	        };
+
+	        var ph = new $.COR.Utilities.PostHandler({
+	            service: "general", call: "contactEmail",
+	            params: data,
+	            success: function (data) {
+
+	                $("#contact-us-message").val("");
+	                alert("Email Received");
+	            }
+	        });
+
+	        ph.submitPost();
+	    }
+	    else {
+	        alert("Email Required");
+	    }
+
+	});
+
+    // Slider  Events
 	$("#slides .prev").on('click', function () {
 
 		if (self.slider.animating == true) { return }
@@ -67,7 +99,6 @@ $.CPAEB.pages.home.slider.updatePagination = function () {
 
 	// array is 0 index, slider is 1 index
 	$(liArray[this.currentIndex - 1]).addClass('current');
-
 
 }
 
