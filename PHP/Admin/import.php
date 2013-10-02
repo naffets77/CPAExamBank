@@ -1,3 +1,7 @@
+                                                                     
+                                                                     
+                                                                     
+                                             
 <?php
 
     error_reporting(E_ALL);
@@ -167,9 +171,10 @@ else{
 
 
 function insertQuestions($questions){
-
+	global $GLOBAL_database;
+	
     $num = count($questions);
-    $mysqli = new mysqli("198.211.105.160","root","!Naffets77", "ciborium_dev");
+    $mysqli = new mysqli("198.211.105.160","root","!Naffets77", $GLOBAL_database);
     //get SectionType enum; TODO: use enum_ class
 	$SectionTypeResult = $mysqli->query("SELECT SectionType, SectionTypeId FROM SectionType");
 	$SectionTypes = array();
@@ -245,21 +250,20 @@ function insertQuestions($questions){
 
 }
 
-function openDBConnection(){
+// function openDBConnection(){
 
-	//TODO: ciborium_dev change it to be dynamic
-	$mysqli = new mysqli("198.211.105.160","root","!Naffets77", "ciborium_dev");  
+	// $mysqli = new mysqli("198.211.105.160","root","!Naffets77", $GLOBAL_database);  
 
-    if ($mysqli->connect_error) {
-        die('Connect Error (' . $mysqli->connect_errno . ') '
-                . $mysqli->connect_error);
-    }
+    // if ($mysqli->connect_error) {
+        // die('Connect Error (' . $mysqli->connect_errno . ') '
+                // . $mysqli->connect_error);
+    // }
 
-	return $mysql;
-}
+	// return $mysql;
+// }
 
-function closeDBConnection(){
-	//mysqli::close();
-}
+// function closeDBConnection(){
+	// //mysqli::close();
+// }
 
 ?>
