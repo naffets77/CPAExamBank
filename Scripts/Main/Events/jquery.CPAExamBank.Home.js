@@ -2,8 +2,8 @@
 $.CPAEB.pages.home = {
 
 	slider: {
-		currentIndex: 4,
-		maxIndex: 5,
+		currentIndex: 2,
+		maxIndex: 3,
 		lastAction: null,
 		animating : false
 	}
@@ -88,7 +88,7 @@ $.CPAEB.pages.home.events = function () {
 
 	setInterval(function () {
 		self.slider.autoSlide();
-	}, 4000);
+	}, 6000);
 
 }
 

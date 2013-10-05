@@ -664,8 +664,8 @@
 
 #slides .pagination {
     position: absolute;
-    left: 45%;
-    bottom: -10px;
+    left: 50%;
+    bottom: -30px;
     margin-left: -10px;
 }
 
