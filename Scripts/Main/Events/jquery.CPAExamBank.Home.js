@@ -13,7 +13,21 @@ $.CPAEB.pages.home.events = function () {
 
 	var self = $.CPAEB.pages.home;
 
+	$("#home-login-username").on('click', function(){
 
+	    if ($(this).val() == 'Email') {
+	        $(this).val("");
+	    }
+
+	})
+
+	$("#home-login-password").on('click', function () {
+
+	    if ($(this).val() == 'Password') {
+	        $(this).val("");
+	    }
+
+	})
 
 	$("#contact-us-submit-form").on('click', function () {
 
