@@ -40,15 +40,17 @@ button {
     background: linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf',GradientType=0);
     background-color: #ededed;
-    /*-moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
-    border-radius: 6px;*/
     border: 0px solid #dcdcdc;
     display: inline-block;
     color: #333;
     font-family: arial;
     font-weight: bold;
     text-decoration: none;
+
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+
 }
 
     .btn-grey:hover, button:hover {

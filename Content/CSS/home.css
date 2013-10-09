@@ -629,7 +629,7 @@
 #slides .next,
 #slides .prev {
     position: absolute;
-    top: 30%;
+    top: 47%;
     display: block;
     z-index: 10;
     width: 17px;
