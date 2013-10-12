@@ -28,6 +28,10 @@ $.COR.Utilities.cycleButton = function (buttonElement, cycleName, originalName, 
 
 $.COR.Utilities.PostHandler = function (options) {
 
+    this.postAttempt = {
+        options : options
+    }
+
     this.params = new Array();
     this.service = options.service || null;
     this.call = options.call || null;
