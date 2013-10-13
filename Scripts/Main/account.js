@@ -120,6 +120,21 @@ $.COR.account.setupEvents = function () {
 
     /* ----- Settings Management ---- */
 
+    $("#js-content-wrapper-my-info .nav li").on('click', function () {
+
+        if ($(this).hasClass('active')) { return; }
+        $("#js-content-wrapper-my-info .nav li").removeClass('active');
+        $(this).addClass('active');
+
+
+        var id = $(this).attr("accountsettings");
+
+        $(".account-settings-section").hide();
+
+        $("#account-settings-" + id).fadeIn();
+
+    });
+
     $("#account-settings-update-email").on("click", function (e) {
         e.preventDefault();
         if ($(this).hasClass("disabled")) { return; }

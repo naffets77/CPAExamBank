@@ -35,6 +35,59 @@
 
 /* Setting Styles */
 
+#js-content-wrapper-my-info .col1 {
+    float:left;
+    width:130px;
+}
+
+#js-content-wrapper-my-info .col2 {
+    float:left;
+    width:810px;
+    margin-top:35px;
+}
+
+#js-content-wrapper-my-info .col1 .nav {
+    margin-top:60px;
+}
+
+    #js-content-wrapper-my-info .col1 .nav li {
+        cursor:pointer;
+        font-weight:bold;
+        margin-bottom:10px;
+    }
+
+    #js-content-wrapper-my-info .col1 .nav li.active {
+        text-decoration:underline;
+    }
+
+#credit-card-info-holder {
+    background-color: #333;
+    padding: 20px 10px;
+}
+
+#credit-card-info-holder table tr td {
+    padding-right:25px;
+    font-size:16px;
+    color: #fff;
+}
+
+.account-section-info {
+    float: right;
+    margin-top: 20px;
+    width: 265px;
+    background-color: #efefef;
+    padding: 0px 20px 20px;
+    line-height: 20px;
+}
+
+    .account-section-info h3 {
+        font-weight:bold;
+        margin:20px 0px 10px;
+    }
+    .account-section-info p {
+        margin: 10px 0px;
+    }
+
 #js-content-wrapper-my-info .account-settings {
     margin-left: 20px;
 }

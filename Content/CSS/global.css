@@ -113,6 +113,9 @@ h2 {
     cursor:pointer;
 }
 
+.error-message {
+    color:red;
+}
 
 
 
