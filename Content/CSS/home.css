@@ -588,6 +588,26 @@
 
 
 
+.register-row {
+
+    float:left;
+    margin:40px 0px 10px;
+    padding:10px 0px 30px;
+    background-color:#21465D;
+    color:#fff;
+    width:960px;
+    text-align:center;
+}
+
+
+    .register-row .btn-orange {
+        margin:0px auto;
+        color:#000;
+        display:block;
+        width:200px;
+        cursor:pointer;
+    }
+
 
 
 /*
