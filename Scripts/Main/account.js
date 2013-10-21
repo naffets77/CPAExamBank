@@ -197,6 +197,16 @@ $.COR.account.setupEvents = function () {
 
     });
 
+    $("#account-change-credit-card").on("click", function () {
+        $.COR.Utilities.FullScreenOverlay.loadExternal("/HTMLPartials/Account/UpdateSubscription.html", "medium", false, function () {
+
+            $(".save-credit-info").html("Update Card");
+            $("#update-subscription-holder .credit-card-info").show();
+
+        });
+
+    });
+
     $("#account-update-subscription").on("click", function () {
 
         $(".account-update-subscription-error-message").hide();
@@ -233,6 +243,8 @@ $.COR.account.setupEvents = function () {
                     $('#card-expiry-month').val("12");
                     $('#card-expiry-year').val("2013");
                 }
+
+                $(".save-credit-info").html("Start Subscription");
 
                 $("#update-subscription-holder .credit-card-info").show();
 
