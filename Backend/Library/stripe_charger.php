@@ -588,7 +588,7 @@ class stripe_charger{
 
     public static function test_CreateToken(){
 
-        Stripe::setApiKey("sk_test_mkGsLqEW6SLnZa487HYfJVLf");
+        Stripe::setApiKey("sk_test_nZvhxHClm4cR4fA9rv4Um4aU");
 
         $tokenInputArray = array(
             'card' => array(
@@ -607,7 +607,7 @@ class stripe_charger{
 
     public static function test_RetrieveToken(){
 
-        Stripe::setApiKey("sk_test_mkGsLqEW6SLnZa487HYfJVLf");
+        Stripe::setApiKey("sk_test_nZvhxHClm4cR4fA9rv4Um4aU");
         $inStripeTokenID = "tok_2Uiw4sdKVCELj0";
 
         $retrievalResponse = stripe_charger::retrieveToken($inStripeTokenID);
@@ -617,7 +617,7 @@ class stripe_charger{
 
     public static function test_CreateNewCustomer($inEmail = null){
 
-        Stripe::setApiKey("sk_test_mkGsLqEW6SLnZa487HYfJVLf");
+        Stripe::setApiKey("sk_test_nZvhxHClm4cR4fA9rv4Um4aU");
 
         $tokenInputArray = array(
             'card' => array(
@@ -655,7 +655,7 @@ class stripe_charger{
 
     public static function test_OneTimeCharge(){
 
-        Stripe::setApiKey("sk_test_mkGsLqEW6SLnZa487HYfJVLf");
+        Stripe::setApiKey("sk_test_nZvhxHClm4cR4fA9rv4Um4aU");
         $myStripeCustomerID = "cus_2U6IvqZvGj8txU"; //email: customer10139@example.com
         $myChargeAmount = 101;
 
@@ -666,7 +666,7 @@ class stripe_charger{
     }
 
     public static function test_NewSubscriptionCharge($inEmail = null){
-        Stripe::setApiKey("sk_test_mkGsLqEW6SLnZa487HYfJVLf");
+        Stripe::setApiKey("sk_test_nZvhxHClm4cR4fA9rv4Um4aU");
 
         $timestamp = (string)time();
         $email = ($inEmail != null && validate::emailAddress($inEmail)) ? $inEmail : "customer10139-".$timestamp."@example.com";
@@ -691,7 +691,7 @@ class stripe_charger{
     }
 
     public static function test_CardDeclined(){
-        Stripe::setApiKey("sk_test_mkGsLqEW6SLnZa487HYfJVLf");
+        Stripe::setApiKey("sk_test_nZvhxHClm4cR4fA9rv4Um4aU");
 
         $returnArray =  array(
             'Result' => 0,
