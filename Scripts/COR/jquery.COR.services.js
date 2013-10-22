@@ -147,3 +147,23 @@ $.COR.services.chargeSubscription = function (subscription, successCallback) {
 
 }
 
+$.COR.services.sendResetEmail = function (options, successCallback, failedCallback) {
+    //sendResetPasswordEmail
+
+
+    var ph = new $.COR.Utilities.PostHandler({
+        service: "account", call: "sendResetPasswordEmail",
+        params: {
+            email: options.email
+        },
+        success: function (data) {
+            successCallback();
+        },
+        error: function () {
+            failedCallback();
+        }
+    });
+
+    ph.submitPost();
+}
+

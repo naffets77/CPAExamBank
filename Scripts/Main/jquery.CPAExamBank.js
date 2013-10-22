@@ -208,36 +208,29 @@ $.CPAEB.init = function () {
 
                     case "reset-password":
 
-                        $("#reset-account-update-password").on("click", function (e) {
+                        $("#reset-account-update-password").off("click").on("click", function (e) {
                             e.preventDefault();
                             $('#reset-account-reason').html('');
-                            $('#reset-account-update-password').attr('disabled', true);
+                            $('#reset-account-update-password').attr('disabled', true).hide();
                             $('#reset-account-swirly').removeAttr('style');
 
-                            if (self.validateForm($(this).parents("form"))) {
-                                //console.log('validation succeeded');
+                            if ($.COR.validateForm($(this).parents("form"))) {
 
-                                //get form data into JSON object
-                                var ResetData = $($(this).parents("form")).serialize();
+                                $.COR.services.sendResetEmail({email:$("#reset-account-username").val()}, function () {
+                                    $("#reset-password-holder").hide();
+                                    $("#reset-password-complete-holder").fadeIn();
+                                },
+                                function () {
+                                    $('#reset-account-swirly').css('display', 'none');
+                                    $('#reset-account-update-password').removeAttr('disabled').show();
+                                    alert("Error: Please Try Again Or Contact Us");
+                                });
 
-                                //submit to form for processing
-                                $.post("/PHP/AJAX/Account/ForgotPassword.php", ResetData + "&Data=true", function (data) {
-                                    if (data.PasswordUpdated != null) {
-
-
-                                        $('#reset-account-reason').html(data.Reason);
-                                    }
-                                    else {
-
-                                        $('#reset-account-reason').html('Error in request');
-                                    }
-                                }, "JSON");
                             }
                             else {
-                                //console.log('validation failed');
+                                $('#reset-account-swirly').css('display', 'none');
+                                $('#reset-account-update-password').removeAttr('disabled').show();
                             }
-                            $('#reset-account-swirly').css('display', 'none');
-                            $('#reset-account-update-password').removeAttr('disabled');
                         });
 
                         break;

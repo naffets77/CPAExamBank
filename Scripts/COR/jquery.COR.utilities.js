@@ -166,6 +166,8 @@ $.COR.Utilities.refreshLogin = function (successCallback) {
 }
 
 
+
+
 // Popup handler
 
 $.COR.Utilities.FullScreenOverlay = {

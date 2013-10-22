@@ -262,7 +262,7 @@ body {
     background-color: #FFE26C;
     border: solid 1px #000;
     top: -190px;
-    z-index: 10;
+    z-index: 2001;
 }
 
     #ServerErrorHandler h2 {
