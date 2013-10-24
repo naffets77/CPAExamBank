@@ -590,13 +590,13 @@
 
 .register-row {
 float: left;
-margin: 40px 0px 10px;
+margin: 40px 0px 10px 20px;
 padding: 10px 0px 30px;
 background-color: #21465D;
 color: #fff;
 width: 920px;
 text-align: center;
-margin-left: 20px;
+
 }
 
 
@@ -627,7 +627,7 @@ margin-left: 20px;
 
 
     .slides_container .slide {
-        width: 960px;
+        width: 920px;
         height: 350px;
         position: absolute;
         top: 0px;
