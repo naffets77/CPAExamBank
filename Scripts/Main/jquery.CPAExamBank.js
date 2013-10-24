@@ -156,7 +156,7 @@ $.CPAEB.init = function () {
 
     var singlePages = ["product-pricing", "about", "contact"];
     var accountPages = ["study", "my-review", "my-info","faqs","contact"];
-    var singlePopups = ["privacy-policy", "terms-of-service","reset-password"];
+    var singlePopups = ["privacy-policy", "terms-of-service","reset-password", "set-password"];
 
     var pageHashCallback = function (hash) {
 
@@ -231,6 +231,38 @@ $.CPAEB.init = function () {
                                 $('#reset-account-swirly').css('display', 'none');
                                 $('#reset-account-update-password').removeAttr('disabled').show();
                             }
+                        });
+
+                        break;
+
+                    case "set-password":
+
+                        $("#reset-account-update-new-password").off("click").on("click", function () {
+                            
+                            var self = this;
+
+                            $('#reset-account-reason').html('');
+                            $(self).attr('disabled', true).hide();
+                            $('#reset-account-swirly').removeAttr('style');
+
+                            if ($.COR.validateForm($(this).parents("form"))) {
+
+                                //$.COR.services.sendResetEmail({ email: $("#reset-account-username").val() }, function () {
+                                //    $("#reset-password-holder").hide();
+                                //    $("#reset-password-complete-holder").fadeIn();
+                                //},
+                                //function () {
+                                //    $('#reset-account-swirly').css('display', 'none');
+                                //    $(self).removeAttr('disabled').show();
+                                //    alert("Error: Please Try Again Or Contact Us");
+                                //});
+
+                            }
+                            else {
+                                $('#reset-account-swirly').css('display', 'none');
+                                $(self).removeAttr('disabled').show();
+                            }
+
                         });
 
                         break;
