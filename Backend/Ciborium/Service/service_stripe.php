@@ -134,5 +134,45 @@ class service_stripe{
         }
     }
 
+    static function removeCreditCard(){
+        $myArray = array(
+            "Reason" => "",
+            "Result" => 0
+        );
+
+        if(ciboriumlib_account::checkValidLogin(self::$service, __FUNCTION__)){
+
+            $hash = validate::requirePostField('Hash', self::$service, __FUNCTION__);
+            $hashCheckReturn = validate::requireValidHash(self::$service, __FUNCTION__);
+
+            $checkValueArray = array(
+                "hashCheckResult" => (bool)$hashCheckReturn['Result']
+            );
+
+            if(in_array(null, $checkValueArray)){
+                $inCheckValueArray = util_general::stringValuesInAssociativeArray($checkValueArray);
+                $inMessage = "Missing one or more POST variables in ".self::$service."::".__FUNCTION__." . ";
+                $inMessageAppend = array();
+                foreach($inCheckValueArray as $key => $value){
+
+                    array_push($inMessageAppend, $key."==".$value);
+                }
+                $inMessage .= $inMessageAppend;
+                util_errorlogging::LogBrowserError(3, $inMessage, __METHOD__, __FILE__);
+
+                $myArray['Reason'] = "Missing required variable(s)";
+                return $myArray;
+            }
+
+            return ciborium_stripe::removeCreditCard($_SESSION['Licenses']->LicenseId, $_SESSION['Licenses']->StripeCustomerId, $_SESSION['Licenses']->StripeCreditCardId, __METHOD__);
+
+        }
+        else{
+            $myArray['Reason'] = "User was no longer logged in";
+            return $myArray;
+        }
+
+    }
+
 }
 ?>

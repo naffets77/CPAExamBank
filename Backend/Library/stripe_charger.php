@@ -254,12 +254,12 @@ class stripe_charger{
                 $returnArray['Result'] = 1;
                 $returnArray['Reason'] = "Charge test was successful";
 
-                if($chargeArray['failure_code'] == null){
+                if($charge['failure_code'] == null){
                     $returnArray['Result'] = 1;
                     $returnArray['Reason'] = "Charge test was successful";
                 }
                 else{
-                    $returnArray['Reason'] = "Charge was not successful from Stripe. Code was ".$chargeArray['failure_code']." with Message of ".$chargeArray['failure_message']." .";
+                    $returnArray['Reason'] = "Charge was not successful from Stripe. Code was ".$charge['failure_code']." with Message of ".$charge['failure_message']." .";
                 }
             }
             else{
@@ -528,12 +528,13 @@ class stripe_charger{
         );
 
         try{
+            //TODO: see why this doesn't work
             $customer = Stripe_Customer::retrieve($inStripeCustomerID);
             if($customer != null){
                 $creditCard = $customer->cards->retrieve($inStripeCreditCardID);
                 if($creditCard != null){
                     $ccLastFour = $creditCard->last4;
-                    $creditCard->delete();
+                    //$creditCard->delete();
                     $returnArray['Result'] = 1;
                     $returnArray['Reason'] = "Credit card ".$ccLastFour." removed";
                     $returnArray['Customer'] = Stripe_Customer::retrieve($inStripeCustomerID);
@@ -807,6 +808,51 @@ class stripe_charger{
         return $returnArray;
     }
 
+    public static function test_RemoveCreditCard($inEmail = null){
+        Stripe::setApiKey("sk_test_nZvhxHClm4cR4fA9rv4Um4aU");
+
+        $tokenInputArray = array(
+            'card' => array(
+                'name' => "Prep UnitTest",
+                'number' => "4242424242424242",
+                'exp_month' => 7,
+                'exp_year' => 2016,
+                'cvc' => "314"
+            )
+        );
+        $timestamp = (string)time();
+        $email = ($inEmail != null && validate::emailAddress($inEmail)) ? $inEmail : "customer10139-".$timestamp."@example.com";
+
+        $tokenCreationResponse = stripe_charger::createToken($tokenInputArray);
+
+        if($tokenCreationResponse['Result']){
+            $tokenArray = util_general::getProtectedValue($tokenCreationResponse['Token'], "_values");
+            $customerCreationResponse = stripe_charger::createCustomer($email, $tokenArray['id']);
+            $customerArray = util_general::getProtectedValue($customerCreationResponse['Customer'], "_values");
+            if(validate::isNotNullOrEmpty_String($customerArray['default_card'])){
+                return stripe_charger::removeCreditCard($customerArray['id'], $customerArray['default_card']);
+            }
+            else{
+                return array(
+                    'Result' => 0,
+                    'Reason' => "There was an issue creating the customer object.",
+                    'Customer' => null
+                );
+            }
+        }
+        else{
+
+            return array(
+                'Result' => 0,
+                'Reason' => "There was an issue creating the token.",
+                'Customer' => null
+            );
+        }
+
+
+
+        return $returnArray;
+    }
 }
 
 

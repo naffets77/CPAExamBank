@@ -554,7 +554,7 @@ class account
                 "Result" => 0,
                 "Account" => null,
                 "Hash" => $inAccountHash,
-                "Licenses" => $Licenses,
+                "Licenses" => $License,
                 "UserSettings" => $UserSettings
             );
         }
@@ -609,9 +609,10 @@ class account
         return database::select("LicenseToSectionType", $selectArray, $whereClause, $orderBy, $limit, $preparedArray, __METHOD__);
     }
 
-    public static function updateLicenseForNewStripeCustomer($inLicenseId, $inStripeCustomerId, $inCCBrand, $inLast4CC, $inCCExpirationDateTime, $inCaller){
+    public static function updateLicenseForNewStripeCustomer($inLicenseId, $inStripeCustomerId, $inCCBrand, $inLast4CC, $inCCExpirationDateTime, $inStripeCreditCardId, $inCaller){
         $updateArray = array(
             'StripeCustomerId' => ':StripeCustomerId',
+            'StripeCreditCardId' => ':StripeCreditCardId',
             'CC_Brand' => ':CC_Brand',
             'CC_LastFour' => ':CC_LastFour',
             'DateCC_Expiration' => ':DateCC_Expiration',
@@ -619,6 +620,7 @@ class account
         );
         $updatePrepare = array(
             ':StripeCustomerId' => $inStripeCustomerId,
+            ':StripeCreditCardId' => $inStripeCreditCardId,
             ':CC_Brand' => $inCCBrand,
             ':CC_LastFour' => $inLast4CC,
             ':DateCC_Expiration' => $inCCExpirationDateTime,
@@ -653,6 +655,27 @@ class account
             $updateArray['DateCancellation'] = ':DateCancellation';
             $updatePrepare[':DateCancellation'] = $inDateCancellation;
         }
+
+        $whereClause = "LicenseId = '".$inLicenseId."'";
+
+        return database::update("License", $updateArray, $updatePrepare, $whereClause, __METHOD__);
+    }
+
+    public static function updateLicenseForCreditCardRemoval($inLicenseId, $inCaller){
+        $updateArray = array(
+            'StripeCreditCardId' => ':StripeCreditCardId',
+            'CC_Brand' => ':CC_Brand',
+            'CC_LastFour' => ':CC_LastFour',
+            'DateCC_Expiration' => ':DateCC_Expiration',
+            'LastModifiedBy' => ':LastModifiedBy'
+        );
+        $updatePrepare = array(
+            ':StripeCreditCardId' => "",
+            ':CC_Brand' => "",
+            ':CC_LastFour' => "",
+            ':DateCC_Expiration' => null,
+            ':LastModifiedBy' => $inCaller
+        );
 
         $whereClause = "LicenseId = '".$inLicenseId."'";
 

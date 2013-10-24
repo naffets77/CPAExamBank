@@ -66,7 +66,7 @@ class ciborium_stripe{
             $cardArray = stripe_charger::getCardArrayFromStripeCustomerObject($createCustomerResponse['Customer']);
             $myArray['CustomerId'] = $customerArray['id'];
 
-            $updateResult = account::updateLicenseForNewStripeCustomer($inLicenseId, $customerArray['id'], $cardArray['type'], $cardArray['last4'], util_datetime::getDateStringToDateTime($cardArray['exp_month']."/1/".$cardArray['exp_year']), __METHOD__);
+            $updateResult = account::updateLicenseForNewStripeCustomer($inLicenseId, $customerArray['id'], $cardArray['type'], $cardArray['last4'], util_datetime::getDateStringToDateTime($cardArray['exp_month']."/1/".$cardArray['exp_year']), $cardArray['id'], __METHOD__);
         }
         else{
             $myArray['Reason'] = "Error creating customer.";
@@ -237,6 +237,67 @@ class ciborium_stripe{
             $errorMessage = "Subscription not found for inModuleArray (".implode(", ", $errorMessageAppend)."). Called by ".$inCaller;
             util_errorlogging::LogGeneralError(3, $errorMessage, __METHOD__, __FILE__);
         }
+
+        return $myArray;
+    }
+
+    /**
+     * @param $inStripeCustomerID
+     * @param $inStripeCreditCardID
+     * @param $inCaller
+     */
+    public static function removeCreditCard($inLicenseId, $inStripeCustomerId, $inStripeCreditCardId, $inCaller){
+        $myArray = array(
+            'Reason' => "",
+            'Result' => 0
+        );
+
+        //Verify inputs
+        if(!validate::tryParseInt($inLicenseId)){
+            $myArray['Reason'] = "Invalid input";
+            $errorMessage = $myArray['Reason']." for LicenseId ".(string)$inLicenseId.".";
+            util_errorlogging::LogBrowserError(3, $errorMessage, __METHOD__, __FILE__);
+            return $myArray;
+        }
+        if(!validate::isNotNullOrEmpty_String(trim($inStripeCustomerId))){
+            $myArray['Reason'] = "Invalid input";
+            $errorMessage = $myArray['Reason']." for StripeCustomerId ".$inStripeCustomerId.".";
+            util_errorlogging::LogBrowserError(3, $errorMessage, __METHOD__, __FILE__);
+            return $myArray;
+        }
+        if(!validate::isNotNullOrEmpty_String(trim($inStripeCreditCardId))){
+            $myArray['Reason'] = "Invalid input";
+            $errorMessage = $myArray['Reason']." for StripeCreditCardId ".$inStripeCreditCardId.".";
+            util_errorlogging::LogBrowserError(3, $errorMessage, __METHOD__, __FILE__);
+            return $myArray;
+        }
+
+        $removeCardResponse = stripe_charger::removeCreditCard($inStripeCustomerId, $inStripeCreditCardId);
+
+        if($removeCardResponse['Result']){
+            $myArray['Reason'] = $removeCardResponse['Reason'];
+            $updateResult = account::updateLicenseForCreditCardRemoval($inLicenseId, __METHOD__);
+
+            if($updateResult){
+                $myArray['Result'] = 1;
+            }
+            else{
+                $myArray['Reason'] .= " However, credit card data was not removed from system.";
+                $errorMessage = $myArray['Reason']." . Called by ".$inCaller;
+                util_errorlogging::LogGeneralError(3, $errorMessage, __METHOD__, __FILE__);
+            }
+        }
+        else{
+            $myArray['Reason'] = "Error removing credit card.";
+            if($removeCardResponse['StripeException'] != null){
+                $errorMessage = "Error removing credit card. Stripe threw an exception. Message: ".$removeCardResponse['Reason']." . Called by ".$inCaller;
+            }
+            else{
+                $errorMessage = "Error removing credit card. The removal was not completed. Message: ".$removeCardResponse['Reason']." . Called by ".$inCaller;
+            }
+            util_errorlogging::LogGeneralError(3, $errorMessage, __METHOD__, __FILE__);
+        }
+
 
         return $myArray;
     }
