@@ -90,7 +90,7 @@ class ciborium_email{
 
             //string replacements in template
             //$myAccountHash = account::createAccountHash($myAccount->AccountUserId);
-            $myPasswordResetURL = util_general::getBaseURL()."/?Action=ResetPassword&User=".$myAccount->LoginName."&Hash=".$myAccount->ResetHashKey;
+            $myPasswordResetURL = util_general::getBaseURL()."/#Action=ResetPassword&User=".$myAccount->LoginName."&Hash=".$myAccount->ResetHashKey;
             $myQueue->Body = str_replace("~PASSWORD_RESET_URL~", $myPasswordResetURL , $myQueue->Body);
             $myQueue->Body = str_replace("~BASE_URL~", util_general::getBaseURL(), $myQueue->Body);
             $EmailBodyDate = $inUseTodayAsSentDate ? util_datetime::getDateNow() : util_datetime::getDateTimeToDate($myAccount->CreatedDate);

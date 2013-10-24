@@ -519,6 +519,64 @@ class stripe_charger{
         return $returnArray;
     }
 
+    public static function removeCreditCard($inStripeCustomerID, $inStripeCreditCardID){
+        $returnArray = array(
+            'Result' => 0,
+            'Reason' => "",
+            'Customer' => null,
+            'StripeException' => null
+        );
+
+        try{
+            $customer = Stripe_Customer::retrieve($inStripeCustomerID);
+            if($customer != null){
+                $creditCard = $customer->cards->retrieve($inStripeCreditCardID);
+                if($creditCard != null){
+                    $ccLastFour = $creditCard->last4;
+                    $creditCard->delete();
+                    $returnArray['Result'] = 1;
+                    $returnArray['Reason'] = "Credit card ".$ccLastFour." removed";
+                    $returnArray['Customer'] = Stripe_Customer::retrieve($inStripeCustomerID);
+                }
+                else{
+                    $returnArray['Reason'] = "Stripe credit card not found.";
+                }
+            }
+            else{
+                $returnArray['Reason'] = "Stripe customer not found.";
+            }
+        }
+        catch(Stripe_CardError $e) {
+            $returnArray['StripeException'] = $e;
+            $returnArray['Reason'] = "Stripe threw a Stripe_CardError. Message: ".$e->getMessage();
+        }
+        catch (Stripe_InvalidRequestError $e) {
+            // Invalid parameters were supplied to Stripe's API
+            $returnArray['StripeException'] = $e;
+            $returnArray['Reason'] = "Stripe threw a Stripe_InvalidRequestError. Message: ".$e->getMessage();
+        }
+        catch (Stripe_AuthenticationError $e) {
+            // Authentication with Stripe's API failed
+            // (maybe you changed API keys recently)
+            $returnArray['StripeException'] = $e;
+            $returnArray['Reason'] = "Stripe threw a Stripe_AuthenticationError. Message: ".$e->getMessage();
+        }
+        catch (Stripe_ApiConnectionError $e) {
+            // Network communication with Stripe failed
+            $returnArray['StripeException'] = $e;
+            $returnArray['Reason'] = "Stripe threw a Stripe_ApiConnectionError. Message: ".$e->getMessage();
+        }
+        catch (Stripe_Error $e) {
+            // Display a very generic error to the user
+            $returnArray['StripeException'] = $e;
+            $returnArray['Reason'] = "Stripe threw a Stripe_Error. Message: ".$e->getMessage();
+        }
+        catch(Exception $ex){
+            $returnArray['Reason'] = "Generic exception removing card for StripeCustomerID ".$inStripeCustomerID.": ".$ex->getMessage();
+        }
+
+        return $returnArray;
+    }
 
     /*
      * Helper functions

@@ -24,5 +24,6 @@ class library_configuration{
 
     public static $salt = "cibor14";
     public static $timeout = 43200; //43200 s = 12 hours; have to update in Library config.php as well
+    public static $hashexpiration = 60;
 }
 ?>

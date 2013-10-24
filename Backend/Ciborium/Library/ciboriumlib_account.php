@@ -338,7 +338,7 @@ class ciboriumlib_account{
                     $myNewPassword = md5("ciborium".(string)$myAccountUser->AccountUserId.(string)$currentTime);
                     $myHashKey = md5($myNewPassword);
 
-                    $resetHashDuration = 3600; //1800 = 30 minutes
+                    $resetHashDuration = ciborium_configuration::$hashexpiration;
                     $resetStatusSet = self::setPasswordResetStatus($myAccountUser->AccountUserId, true, $myHashKey, util_datetime::getPHPTimeToDateTime(time() + $resetHashDuration), $inCaller." via ".__METHOD__);
 
                     if($resetStatusSet['Result']){
