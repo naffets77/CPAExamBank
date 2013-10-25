@@ -241,6 +241,13 @@ $.CPAEB.init = function () {
                             
                             var self = this;
 
+
+                            // First we validate link
+
+                            // Now that we're logged on we'll update password
+
+                            // Then we'll display completed
+
                             $('#reset-account-reason').html('');
                             $(self).attr('disabled', true).hide();
                             $('#reset-account-swirly').removeAttr('style');

@@ -1,6 +1,28 @@
 ﻿
 
 
+$.COR.services.validatePasswordRestLink = function(email, password, successCallback){
+
+    var ph = new $.COR.Utilities.PostHandler({
+        service: "account", call: "sendResetPasswordEmail",
+        params: {
+            email: options.email
+        },
+        success: function (data) {
+            successCallback();
+        },
+        error: function () {
+            failedCallback();
+        }
+    });
+
+    ph.submitPost();
+
+
+
+}
+
+
 
 $.COR.services.getQuestionHistoryMetrics = function () {
 
