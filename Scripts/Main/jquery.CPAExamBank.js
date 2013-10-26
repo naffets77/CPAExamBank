@@ -106,8 +106,9 @@ $(document).ready(function () {
                                     $.COR.TPrep.hideFullScreenOverlay();
 
                                     // TODO: This should be handled better
-                                    $("#header-logout-container").hide();
-                                    $("#header-login-container").show();
+                                    $("#header-login-container").hide();
+                                    $("#header-logout-container").show();
+                                    
 
                                     location.hash = "account";
                                 });
