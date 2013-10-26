@@ -283,9 +283,11 @@ $.CPAEB.init = function () {
 
                             if ($.COR.validateForm($(this).parents("form"))) {
 
+                                var password = $.COR.MD5($("#reset-account-new-password").val());
+
                                 // set new password
                                 $.COR.services.resetPassword(
-                                    { password: $("#reset-account-new-password").val(), hash: tempUser.Hash },
+                                    { password: password, hash: tempUser.Hash },
                                     function (data) {
                                         
                                         $("#set-password-holder").hide();
