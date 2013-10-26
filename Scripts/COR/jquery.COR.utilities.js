@@ -8,7 +8,7 @@ $.COR.Utilities.formatDate = function (date) {
 }
 
 $.COR.Utilities.getURLParameter = function(paramName) {
-    var searchString = window.location.search.substring(1),
+    var searchString = window.location.href.split("?")[1],
         i, val, params = searchString.split("&");
 
     for (i=0;i<params.length;i++) {
