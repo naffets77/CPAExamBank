@@ -131,8 +131,7 @@ class stripe_charger{
                 $customerArray = stripe_charger::getCustomerArrayFromStripeCustomerObject($customer);
                 //check customer object
                 if($customerArray['email'] == $inEmail){
-                    $cardObject = util_general::getProtectedValue($customerArray['cards'], "_values");
-                    $cardArray = util_general::getProtectedValue($cardObject['data'][0], "_values");
+                    $cardArray = stripe_charger::getCardArrayFromStripeCustomerObject($customer);
                     if($cardArray != null){
                         $returnArray['Result'] = 1;
                         $returnArray['Reason'] = "Creation of new customer successful.";
@@ -234,6 +233,78 @@ class stripe_charger{
 
         return $returnArray;
     }
+
+    public static function deleteCustomer($inStripeCustomerID){
+
+        $returnArray = array(
+            'Result' => 0,
+            'Reason' => "",
+            'AlreadyDeleted' => 0,
+            'Customer' => null,
+            'StripeException' => null
+        );
+
+        try{
+            $customer = Stripe_Customer::retrieve($inStripeCustomerID);
+
+            if($customer != null){
+                $customerInitialArray = stripe_charger::getCustomerArrayFromStripeCustomerObject($customer);
+                if(!array_key_exists('deleted', $customerInitialArray)){
+                    $customer->delete();
+                    $deletedCustomer = Stripe_Customer::retrieve($inStripeCustomerID);
+                    $deletedCustomerArray = stripe_charger::getCustomerArrayFromStripeCustomerObject($deletedCustomer);
+                    if(array_key_exists('deleted', $deletedCustomerArray) && (bool)$deletedCustomerArray['deleted']){
+                        $returnArray['Customer'] = $deletedCustomer;
+                        $returnArray['Result'] = 1;
+                        $returnArray['Reason'] = "Customer deleted successfully.";
+                    }
+                    else{
+                        $returnArray['Reason'] = "Customer was not deleted correctly for Customer ID ".$inStripeCustomerID;
+                    }
+                }
+                else{
+                    $returnArray['Result'] = 1;
+                    $returnArray['AlreadyDeleted'] = 1;
+                    $returnArray['Reason'] = "Customer was already deleted for Customer ID ".$inStripeCustomerID;
+                }
+            }
+            else{
+                $returnArray['Reason'] = "Customer was not found for Customer ID ".$inStripeCustomerID;
+            }
+
+        }
+        catch(Stripe_CardError $e) {
+            $returnArray['StripeException'] = $e;
+            $returnArray['Reason'] = "Stripe threw a Stripe_CardError. Message: ".$e->getMessage();
+        }
+        catch (Stripe_InvalidRequestError $e) {
+            // Invalid parameters were supplied to Stripe's API
+            $returnArray['StripeException'] = $e;
+            $returnArray['Reason'] = "Stripe threw a Stripe_InvalidRequestError. Message: ".$e->getMessage();
+        }
+        catch (Stripe_AuthenticationError $e) {
+            // Authentication with Stripe's API failed
+            // (maybe you changed API keys recently)
+            $returnArray['StripeException'] = $e;
+            $returnArray['Reason'] = "Stripe threw a Stripe_AuthenticationError. Message: ".$e->getMessage();
+        }
+        catch (Stripe_ApiConnectionError $e) {
+            // Network communication with Stripe failed
+            $returnArray['StripeException'] = $e;
+            $returnArray['Reason'] = "Stripe threw a Stripe_ApiConnectionError. Message: ".$e->getMessage();
+        }
+        catch (Stripe_Error $e) {
+            // Display a very generic error to the user
+            $returnArray['StripeException'] = $e;
+            $returnArray['Reason'] = "Stripe threw a Stripe_Error. Message: ".$e->getMessage();
+        }
+        catch (Exception $ex){
+            $returnArray['Reason'] = "Generic exception retrieving token. Message: ".$ex->getMessage();
+        }
+
+        return $returnArray;
+    }
+
 
     public static function chargeOneTimePurchaseByInput($inChargeInputArray){
 
