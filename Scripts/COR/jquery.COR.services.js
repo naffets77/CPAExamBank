@@ -192,7 +192,7 @@ $.COR.services.updatePassword = function (options, successCallback) {
 
     var ph = new $.COR.Utilities.PostHandler({
         service: "account", call: "updatePassword",
-        params: { password: options.password, newPassword: options.newPassword},
+        params: { password: options.password, newPassword: options.newPassword, confirmPassword: options.newPassword},
         success: function (data) {
 
             successCallback(data);
