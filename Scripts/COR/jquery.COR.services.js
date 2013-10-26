@@ -192,7 +192,7 @@ $.COR.services.updatePassword = function (options, successCallback) {
 
     var ph = new $.COR.Utilities.PostHandler({
         service: "account", call: "updatePassword",
-        params: { password: options.password, newPassword: options.newPassword, hash: options.hash },
+        params: { password: options.password, newPassword: options.newPassword},
         success: function (data) {
 
             successCallback(data);
@@ -208,7 +208,7 @@ $.COR.services.resetPassword = function (options, successCallback) {
 
     var ph = new $.COR.Utilities.PostHandler({
         service: "account", call: "resetPassword",
-        params: {  newPassword: options.password, confirmPassword: options.password, hash: options.hash },
+        params: {  newPassword: options.password, confirmPassword: options.password, Hash: options.hash },
         success: function (data) {
 
             successCallback(data);
