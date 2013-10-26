@@ -247,7 +247,7 @@ $.CPAEB.init = function () {
                         else {
 
                             // First we validate link
-                            $.COR.services.validatePasswordRestLink({
+                            $.COR.services.validatePasswordResetLink({
                                 email: email,
                                 hash : hash
                             },

@@ -1,13 +1,13 @@
 ﻿
 
 
-$.COR.services.validatePasswordRestLink = function(options, successCallback){
+$.COR.services.validatePasswordResetLink = function(options, successCallback){
 
     var ph = new $.COR.Utilities.PostHandler({
         service: "account", call: "loginFromResetURL",
         params: {
             email : options.email,
-            hash : options.hash
+            hashkey : options.hash
         },
         success: function (data) {
             successCallback();
