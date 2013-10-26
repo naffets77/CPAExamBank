@@ -88,7 +88,7 @@ class ciborium_email{
             $myQueue->Body = self::getEmailTemplateAsString(ciborium_configuration::$ciborium_emailtemplatepath."/".enum_EmailTemplates::PasswordReset);
             $myQueue->Attachments = array();
 
-            //string replacements in template
+            //string replacements in template Comment
             //$myAccountHash = account::createAccountHash($myAccount->AccountUserId);
             $myPasswordResetURL = util_general::getBaseURL()."/#ResetPassword?User=".$myAccount->LoginName."&Hash=".$myAccount->ResetHashKey;
             $myQueue->Body = str_replace("~PASSWORD_RESET_URL~", $myPasswordResetURL , $myQueue->Body);
