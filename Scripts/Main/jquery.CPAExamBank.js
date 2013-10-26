@@ -237,12 +237,37 @@ $.CPAEB.init = function () {
 
                     case "set-password":
 
+                        var email = $.COR.Utilities.getURLParameter("User");
+                        var hash = $.COR.Utilities.getURLParameter("Hash")
+
+                        var tempUser = null;
+
+
+                        if (email == null || hash == null) {
+                            $("#set-password-check-hash-holder").hide();
+                            $("#reset-password-error-holder").fadeIn();
+                        }
+                        else {
+
+                            // First we validate link
+                            $.COR.services.validatePasswordRestLink({
+                                email: email,
+                                hash : hash
+                            },
+                            function (data) {
+                                $("#set-password-check-hash-holder").hide();
+                                $("#set-password-holder").fadeIn();
+                                tempUser = data;
+                            })
+
+                        }
+
+
+
+
                         $("#reset-account-update-new-password").off("click").on("click", function () {
                             
                             var self = this;
-
-
-                            // First we validate link
 
                             // Now that we're logged on we'll update password
 

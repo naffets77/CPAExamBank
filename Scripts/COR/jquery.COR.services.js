@@ -1,12 +1,13 @@
 ﻿
 
 
-$.COR.services.validatePasswordRestLink = function(email, password, successCallback){
+$.COR.services.validatePasswordRestLink = function(options, successCallback){
 
     var ph = new $.COR.Utilities.PostHandler({
-        service: "account", call: "sendResetPasswordEmail",
+        service: "account", call: "loginFromResetURL",
         params: {
-            email: options.email
+            email : options.email,
+            hash : options.hash
         },
         success: function (data) {
             successCallback();
@@ -21,8 +22,6 @@ $.COR.services.validatePasswordRestLink = function(email, password, successCallb
 
 
 }
-
-
 
 $.COR.services.getQuestionHistoryMetrics = function () {
 
