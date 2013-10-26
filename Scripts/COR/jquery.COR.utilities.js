@@ -253,7 +253,6 @@ $.COR.Utilities.FullScreenOverlay = {
             
             $("#full-screen-container").removeClass().addClass(cachedContent.sizeClass + " content");
 
-            cachedContent.events();
             if (typeof cachedContent.events == 'function') {
                 cachedContent.events();
             }
