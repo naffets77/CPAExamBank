@@ -449,6 +449,12 @@ $.COR.Utilities.HashHandler = {
             var loc = location.hash.replace("#", "");
 
             if (loc != "") {
+
+                // get rid of the url parameters
+                if (loc.indexOf("?") != -1) {
+                    loc = loc.split("?")[0];
+                }
+
                 parts = loc.split("/");
             }
         }

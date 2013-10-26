@@ -19,10 +19,7 @@ $.COR.init(siteOptions);
 $(document).ready(function () {
     $.CPAEB.init();
 
-
-    var urlVars = getUrlVars();
-
-    if (urlVars.offline != undefined && urlVars.offline == 'true') {
+    if ($.COR.Utilities.getURLParameter("offline") != null) {
         $.COR.account.offline = true;
     }
 
@@ -621,16 +618,4 @@ $.COR.TPrep.hideFullScreenOverlay = function () {
     $("#full-screen-container").fadeOut(function () {
         $("#full-screen-overlay").fadeOut(200);
     });
-}
-
-
-function getUrlVars() {
-    var vars = [], hash;
-    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-    for (var i = 0; i < hashes.length; i++) {
-        hash = hashes[i].split('=');
-        vars.push(hash[0]);
-        vars[hash[0]] = hash[1];
-    }
-    return vars;
 }
