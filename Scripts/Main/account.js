@@ -175,8 +175,8 @@ $.COR.account.setupEvents = function () {
             var newPassword = $.COR.MD5($("#account-settings-new-password").val());
 
 
-            $.COR.services.resetPassword(
-                { password: newPassword, hash: self.hash },
+            $.COR.services.updatePassword(
+                { newPassword: password, newPassword: $("#account-settings-old-password"), hash: self.hash },
                 function (data) {
 
                     $("#account-settings-old-password").val("");

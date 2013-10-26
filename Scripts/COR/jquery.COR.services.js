@@ -188,11 +188,27 @@ $.COR.services.sendResetEmail = function (options, successCallback, failedCallba
 
 // Account Services
 
+$.COR.services.updatePassword = function (options, successCallback) {
+
+    var ph = new $.COR.Utilities.PostHandler({
+        service: "account", call: "updatePassword",
+        params: { password: options.password, newPassword: options.newPassword, hash: options.hash },
+        success: function (data) {
+
+            successCallback(data);
+
+        }
+    });
+
+    ph.submitPost();
+
+}
+
 $.COR.services.resetPassword = function (options, successCallback) {
 
     var ph = new $.COR.Utilities.PostHandler({
         service: "account", call: "updatePassword",
-        params: { password: options.password, hash: options.hash },
+        params: {  newPassword: options.password, confirmPassword: options.password, hash: options.hash },
         success: function (data) {
 
             successCallback(data);
