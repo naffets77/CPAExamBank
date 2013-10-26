@@ -219,6 +219,7 @@ $.COR.account.setupEvents = function () {
             $(".save-credit-info").html("Update Card");
             $("#update-subscription-holder .credit-card-info").show();
             $(".update-credit-card").show();
+            $(".update-credit-card").css("visibility", "visible");
 
         });
 
