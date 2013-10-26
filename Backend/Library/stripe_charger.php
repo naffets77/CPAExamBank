@@ -528,13 +528,12 @@ class stripe_charger{
         );
 
         try{
-            //TODO: see why this doesn't work
             $customer = Stripe_Customer::retrieve($inStripeCustomerID);
             if($customer != null){
                 $creditCard = $customer->cards->retrieve($inStripeCreditCardID);
                 if($creditCard != null){
                     $ccLastFour = $creditCard->last4;
-                    //$creditCard->delete();
+                    $creditCard->delete();
                     $returnArray['Result'] = 1;
                     $returnArray['Reason'] = "Credit card ".$ccLastFour." removed";
                     $returnArray['Customer'] = Stripe_Customer::retrieve($inStripeCustomerID);
