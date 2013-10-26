@@ -104,6 +104,11 @@ $(document).ready(function () {
                                 $.COR.account.setup(response, function () {
                                     $.COR.toggleAccountNavigation(); // TODO: This should be done on the account side of things
                                     $.COR.TPrep.hideFullScreenOverlay();
+
+                                    // TODO: This should be handled better
+                                    $("#header-logout-container").hide();
+                                    $("#header-login-container").show();
+
                                     location.hash = "account";
                                 });
 
