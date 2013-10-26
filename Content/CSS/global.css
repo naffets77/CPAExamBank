@@ -184,7 +184,7 @@ body {
 
 #full-screen-container.small {
     background-color: #fff;
-    position: fixed;
+    position: absolute;
     width: 550px;
     padding: 20px;
     left: 50%;
@@ -196,7 +196,7 @@ body {
 
 #full-screen-container.medium {
     background-color: #fff;
-    position: fixed;
+    position: absolute;
     width: 800px;
     padding: 20px;
     left: 50%;
@@ -403,6 +403,8 @@ footer {
 #footer-nav {
     margin:10px 0px;
     list-style-type: none;
+    float:left;
+    width:300px;
 }
 
     #footer-nav li {
@@ -426,20 +428,17 @@ footer {
             color:#fff
         }
 
+#footer-watermark-logo{
+
+    float:right;
+}
+
 #footer-row-1 {
     clear: both;
     margin-top: 10px;
     float: left;
     width: 100%;
 }
-
-#footer-row-2 {
-    clear: both;
-    float: left;
-    width: 100%;
-    margin-top: 20px;
-}
-
 
 .js-content-wrapper .content {
     margin: 20px;
