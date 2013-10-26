@@ -172,7 +172,7 @@ $.COR.account.setupEvents = function () {
             var self = this;
 
             $(this).html("Saving...").addClass("disabled");
-            var oldPassword = $("#account-settings-old-password").val();
+            var oldPassword = $.COR.MD5($("#account-settings-old-password").val());
             var newPassword = $.COR.MD5($("#account-settings-new-password").val());
 
 
