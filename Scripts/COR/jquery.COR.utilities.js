@@ -8,15 +8,20 @@ $.COR.Utilities.formatDate = function (date) {
 }
 
 $.COR.Utilities.getURLParameter = function(paramName) {
-    var searchString = window.location.href.split("?")[1],
-        i, val, params = searchString.split("&");
+    var searchString = window.location.href.split("?")[1];
 
-    for (i=0;i<params.length;i++) {
-        val = params[i].split("=");
-        if (val[0] == paramName) {
-            return unescape(val[1]);
+    if (searchString !== undefined) {
+
+        params = searchString.split("&");
+
+        for (var i=0;i<params.length;i++) {
+            var val = params[i].split("=");
+            if (val[0] == paramName) {
+                return unescape(val[1]);
+            }
         }
     }
+
     return null;
 }
 
