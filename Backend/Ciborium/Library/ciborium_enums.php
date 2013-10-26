@@ -133,6 +133,7 @@ class enum_StripeUnitTests{
     const test_NewSubscriptionCharge = 5;
     const test_CardDeclined = 6;
     const test_RemoveCreditCard = 7;
+    const test_AddCreditCard = 8;
 }
 
 class enum_ResponseCodes{

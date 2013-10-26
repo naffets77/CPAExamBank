@@ -12,7 +12,7 @@ require_once("/srv/lib/stripe-php/Stripe.php");
 
 echo "<h1>Stripe Unit Tests</h1>";
 //which test to run?
-$TestID = enum_StripeUnitTests::test_RemoveCreditCard;
+$TestID = enum_StripeUnitTests::test_AddCreditCard;
 
 //test one time charge on existing customer
 switch($TestID){
@@ -79,7 +79,19 @@ switch($TestID){
     case enum_StripeUnitTests::test_RemoveCreditCard:
         $returnArray = stripe_charger::test_RemoveCreditCard();
         $result = $returnArray['Result'] ? "pass" : "fail";
-        echo "Result of creating new subscription for customer is: ".$result."<br/>";
+        echo "Result of removing a credit card for customer is: ".$result."<br/>";
+        echo "Message is: ".$returnArray['Reason']."<br/><br/>";
+
+        echo "Printing customer object...<br/>";
+        echo "<pre>";
+        print_r($returnArray['Customer']);
+        echo "</pre>";
+        break;
+
+    case enum_StripeUnitTests::test_AddCreditCard:
+        $returnArray = stripe_charger::test_AddCreditCard();
+        $result = $returnArray['Result'] ? "pass" : "fail";
+        echo "Result of adding a new credit card for customer is: ".$result."<br/>";
         echo "Message is: ".$returnArray['Reason']."<br/><br/>";
 
         echo "Printing customer object...<br/>";
@@ -92,5 +104,6 @@ switch($TestID){
         echo "Invalid stripe Unit test input.";
         break;
 }
+
 
 ?>

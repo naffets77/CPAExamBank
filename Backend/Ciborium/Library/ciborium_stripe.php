@@ -28,6 +28,7 @@ class ciborium_stripe{
      * Library: createNewSubscriber()
      * Creates a new Stripe Customer object
      *
+     * @param $inLicenseId
      * @param $inEmail
      * @param $inStripeTokenID
      * @param $inCaller
@@ -242,9 +243,14 @@ class ciborium_stripe{
     }
 
     /**
-     * @param $inStripeCustomerID
-     * @param $inStripeCreditCardID
+     * Library: removeCreditCard()
+     * Removes credit card for the license in system and in Stripe
+     *
+     * @param $inLicenseId
+     * @param $inStripeCustomerId
+     * @param $inStripeCreditCardId
      * @param $inCaller
+     * @return array
      */
     public static function removeCreditCard($inLicenseId, $inStripeCustomerId, $inStripeCreditCardId, $inCaller){
         $myArray = array(
@@ -268,6 +274,13 @@ class ciborium_stripe{
         if(!validate::isNotNullOrEmpty_String(trim($inStripeCreditCardId))){
             $myArray['Reason'] = "Invalid input";
             $errorMessage = $myArray['Reason']." for StripeCreditCardId ".$inStripeCreditCardId.".";
+            util_errorlogging::LogBrowserError(3, $errorMessage, __METHOD__, __FILE__);
+            return $myArray;
+        }
+
+        if(!account::verifyLicenseExistsById($inLicenseId)){
+            $myArray['Reason'] = "License does not exist for user.";
+            $errorMessage = $myArray['Reason']." LicenseID was ".(string)$inLicenseId.".";
             util_errorlogging::LogBrowserError(3, $errorMessage, __METHOD__, __FILE__);
             return $myArray;
         }
@@ -298,6 +311,81 @@ class ciborium_stripe{
             util_errorlogging::LogGeneralError(3, $errorMessage, __METHOD__, __FILE__);
         }
 
+
+        return $myArray;
+    }
+
+    /**
+     * Library: addCreditCard()
+     * Adds credit card for the license in system and in Stripe
+     *
+     * @param $inLicenseId
+     * @param $inStripeCustomerId
+     * @param $inStripeCCToken
+     * @param $inCaller
+     * @return array
+     */
+    public static function addCreditCard($inLicenseId, $inStripeCustomerId, $inStripeCCToken, $inCaller){
+        $myArray = array(
+            'Reason' => "",
+            'Result' => 0
+        );
+
+        //Verify inputs
+        if(!validate::tryParseInt($inLicenseId)){
+            $myArray['Reason'] = "Invalid input";
+            $errorMessage = $myArray['Reason']." for LicenseId ".(string)$inLicenseId.".";
+            util_errorlogging::LogBrowserError(3, $errorMessage, __METHOD__, __FILE__);
+            return $myArray;
+        }
+        if(!validate::isNotNullOrEmpty_String(trim($inStripeCustomerId))){
+            $myArray['Reason'] = "Invalid input";
+            $errorMessage = $myArray['Reason']." for StripeCustomerId ".$inStripeCustomerId.".";
+            util_errorlogging::LogBrowserError(3, $errorMessage, __METHOD__, __FILE__);
+            return $myArray;
+        }
+        if(!validate::isNotNullOrEmpty_String(trim($inStripeCCToken))){
+            $myArray['Reason'] = "Invalid input";
+            $errorMessage = $myArray['Reason']." for StripeCreditCardId ".$inStripeCCToken.".";
+            util_errorlogging::LogBrowserError(3, $errorMessage, __METHOD__, __FILE__);
+            return $myArray;
+        }
+
+        if(!account::verifyLicenseExistsById($inLicenseId)){
+            $myArray['Reason'] = "License does not exist for user.";
+            $errorMessage = $myArray['Reason']." LicenseID was ".(string)$inLicenseId.".";
+            util_errorlogging::LogBrowserError(3, $errorMessage, __METHOD__, __FILE__);
+            return $myArray;
+        }
+
+        $addCreditCardResponse = stripe_charger::addCreditCard($inStripeCustomerId, $inStripeCCToken);
+
+        if($addCreditCardResponse['Result']){
+            $myArray['Reason'] = $addCreditCardResponse['Reason'];
+            //$customerArray = stripe_charger::getCustomerArrayFromStripeCustomerObject($addCreditCardResponse['Customer']);
+            $cardArray = stripe_charger::getCardArrayFromStripeCustomerObject($addCreditCardResponse['Customer']);
+
+            $updateResult = account::updateLicenseForCreditCardAddition($inLicenseId, $cardArray['id'], $cardArray['type'], $cardArray['last4'], util_datetime::getDateStringToDateTime($cardArray['exp_month']."/1/".$cardArray['exp_year']), $inCaller);
+
+            if($updateResult){
+                $myArray['Result'] = 1;
+            }
+            else{
+                $myArray['Reason'] .= " However, credit card data was not added to our system for LicenseId ".(string)$inLicenseId.". StripeCardID was ".$cardArray['id'];
+                $errorMessage = $myArray['Reason']." . Called by ".$inCaller;
+                util_errorlogging::LogGeneralError(3, $errorMessage, __METHOD__, __FILE__);
+            }
+        }
+        else{
+            $myArray['Reason'] = "Error removing credit card.";
+            if($addCreditCardResponse['StripeException'] != null){
+                $errorMessage = "Error adding credit card. Stripe threw an exception. Message: ".$addCreditCardResponse['Reason']." . Called by ".$inCaller;
+            }
+            else{
+                $errorMessage = "Error adding credit card. The removal was not completed. Message: ".$addCreditCardResponse['Reason']." . Called by ".$inCaller;
+            }
+            util_errorlogging::LogGeneralError(3, $errorMessage, __METHOD__, __FILE__);
+        }
 
         return $myArray;
     }

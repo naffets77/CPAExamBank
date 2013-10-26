@@ -128,8 +128,7 @@ class stripe_charger{
 
             if($customer != null){
                 $returnArray['Customer'] = $customer;
-
-                $customerArray = util_general::getProtectedValue($customer, "_values");
+                $customerArray = stripe_charger::getCustomerArrayFromStripeCustomerObject($customer);
                 //check customer object
                 if($customerArray['email'] == $inEmail){
                     $cardObject = util_general::getProtectedValue($customerArray['cards'], "_values");
@@ -578,6 +577,65 @@ class stripe_charger{
         return $returnArray;
     }
 
+    public static function addCreditCard($inStripeCustomerID, $inStripeCCToken){
+        $returnArray = array(
+            'Result' => 0,
+            'Reason' => "",
+            'Customer' => null,
+            'StripeException' => null
+        );
+
+        try{
+            $customer = Stripe_Customer::retrieve($inStripeCustomerID);
+            if($customer != null){
+                $customer->cards->create(array("card" => $inStripeCCToken));
+                $returnArray['Customer'] = Stripe_Customer::retrieve($inStripeCustomerID);
+
+                $cardArray = stripe_charger::getCardArrayFromStripeCustomerObject($returnArray['Customer']);
+                if(!empty($cardArray)){
+                    $returnArray['Result'] = 1;
+                    $returnArray['Reason'] = "Credit card added successfully.";
+                }
+                else{
+                    $returnArray['Reason'] = "Credit card was not added for CustomerID ".$inStripeCustomerID.". TokenID ".$inStripeCCToken;
+                }
+            }
+            else{
+                $returnArray['Reason'] = "Stripe customer not found.";
+            }
+        }
+        catch(Stripe_CardError $e) {
+            $returnArray['StripeException'] = $e;
+            $returnArray['Reason'] = "Stripe threw a Stripe_CardError. Message: ".$e->getMessage();
+        }
+        catch (Stripe_InvalidRequestError $e) {
+            // Invalid parameters were supplied to Stripe's API
+            $returnArray['StripeException'] = $e;
+            $returnArray['Reason'] = "Stripe threw a Stripe_InvalidRequestError. Message: ".$e->getMessage();
+        }
+        catch (Stripe_AuthenticationError $e) {
+            // Authentication with Stripe's API failed
+            // (maybe you changed API keys recently)
+            $returnArray['StripeException'] = $e;
+            $returnArray['Reason'] = "Stripe threw a Stripe_AuthenticationError. Message: ".$e->getMessage();
+        }
+        catch (Stripe_ApiConnectionError $e) {
+            // Network communication with Stripe failed
+            $returnArray['StripeException'] = $e;
+            $returnArray['Reason'] = "Stripe threw a Stripe_ApiConnectionError. Message: ".$e->getMessage();
+        }
+        catch (Stripe_Error $e) {
+            // Display a very generic error to the user
+            $returnArray['StripeException'] = $e;
+            $returnArray['Reason'] = "Stripe threw a Stripe_Error. Message: ".$e->getMessage();
+        }
+        catch(Exception $ex){
+            $returnArray['Reason'] = "Generic exception adding card for StripeCustomerID ".$inStripeCustomerID.": ".$ex->getMessage();
+        }
+
+        return $returnArray;
+    }
+
     /*
      * Helper functions
      *
@@ -848,10 +906,66 @@ class stripe_charger{
             );
         }
 
+        return $returnArray;
+    }
 
+    public static function test_AddCreditCard($inEmail = null){
+        Stripe::setApiKey("sk_test_nZvhxHClm4cR4fA9rv4Um4aU");
+
+        $tokenInputArray = array(
+            'card' => array(
+                'name' => "Prep UnitTestAdd",
+                'number' => "4242424242424242",
+                'exp_month' => 7,
+                'exp_year' => 2016,
+                'cvc' => "314"
+            )
+        );
+        $timestamp = (string)time();
+        $email = ($inEmail != null && validate::emailAddress($inEmail)) ? $inEmail : "customer10139-".$timestamp."@example.com";
+
+        $tokenCreationResponse = stripe_charger::createToken($tokenInputArray);
+
+        if($tokenCreationResponse['Result']){
+            $tokenArray = util_general::getProtectedValue($tokenCreationResponse['Token'], "_values");
+            $customerInputArray = array(
+                'email' => $email
+            );
+            $customer = Stripe_Customer::create($customerInputArray);
+            if($customer != null){
+                $customerArray = stripe_charger::getCustomerArrayFromStripeCustomerObject($customer);
+
+                if(!validate::isNotNullOrEmpty_String($customerArray['default_card'])){
+                    return stripe_charger::addCreditCard($customerArray['id'], $tokenArray['id']);
+                }
+                else{
+                    return array(
+                        'Result' => 0,
+                        'Reason' => "There was an issue creating the customer object. Credit card was set already.",
+                        'Customer' => null
+                    );
+                }
+            }
+            else{
+                return array(
+                    'Result' => 0,
+                    'Reason' => "There was an issue creating the customer object. Customer was null.",
+                    'Customer' => null
+                );
+            }
+        }
+        else{
+
+            return array(
+                'Result' => 0,
+                'Reason' => "There was an issue creating the token.",
+                'Customer' => null
+            );
+        }
 
         return $returnArray;
     }
+
 }
 
 

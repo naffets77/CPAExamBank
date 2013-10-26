@@ -682,6 +682,27 @@ class account
         return database::update("License", $updateArray, $updatePrepare, $whereClause, __METHOD__);
     }
 
+    public static function updateLicenseForCreditCardAddition($inLicenseId, $inStripeCreditCardId, $inCCBrand, $inCCLastFour, $inCCExpirationDate, $inCaller){
+        $updateArray = array(
+            'StripeCreditCardId' => ':StripeCreditCardId',
+            'CC_Brand' => ':CC_Brand',
+            'CC_LastFour' => ':CC_LastFour',
+            'DateCC_Expiration' => ':DateCC_Expiration',
+            'LastModifiedBy' => ':LastModifiedBy'
+        );
+        $updatePrepare = array(
+            ':StripeCreditCardId' => $inStripeCreditCardId,
+            ':CC_Brand' => $inCCBrand,
+            ':CC_LastFour' => $inCCLastFour,
+            ':DateCC_Expiration' => $inCCExpirationDate,
+            ':LastModifiedBy' => $inCaller
+        );
+
+        $whereClause = "LicenseId = '".$inLicenseId."'";
+
+        return database::update("License", $updateArray, $updatePrepare, $whereClause, __METHOD__);
+    }
+
     public static function getAccountUserIdByLicenseId($inLicenseId){
 
         $selectArray = array("AccountUserId");
