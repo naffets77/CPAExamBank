@@ -10,10 +10,7 @@ $.COR.services.validatePasswordResetLink = function(options, successCallback){
             hashkey : options.hash
         },
         success: function (data) {
-            successCallback();
-        },
-        error: function () {
-            failedCallback();
+            successCallback(data);
         }
     });
 
@@ -169,8 +166,6 @@ $.COR.services.chargeSubscription = function (subscription, successCallback) {
 }
 
 $.COR.services.sendResetEmail = function (options, successCallback, failedCallback) {
-    //sendResetPasswordEmail
-
 
     var ph = new $.COR.Utilities.PostHandler({
         service: "account", call: "sendResetPasswordEmail",
@@ -188,3 +183,23 @@ $.COR.services.sendResetEmail = function (options, successCallback, failedCallba
     ph.submitPost();
 }
 
+
+
+
+// Account Services
+
+$.COR.services.resetPassword = function (options, successCallback) {
+
+    var ph = new $.COR.Utilities.PostHandler({
+        service: "account", call: "updatePassword",
+        params: { password: options.password, hash: options.hash },
+        success: function (data) {
+
+            successCallback(data);
+
+        }
+    });
+
+    ph.submitPost();
+
+}

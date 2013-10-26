@@ -249,13 +249,20 @@ $.CPAEB.init = function () {
                             // First we validate link
                             $.COR.services.validatePasswordResetLink({
                                 email: email,
-                                hash : hash
+                                hash: hash
                             },
                             function (data) {
-                                $("#set-password-check-hash-holder").hide();
-                                $("#set-password-holder").fadeIn();
-                                tempUser = data;
-                            })
+
+                                if (data.Hash !== undefined) {
+                                    $("#set-password-check-hash-holder").hide();
+                                    $("#set-password-holder").fadeIn();
+                                    tempUser = data;
+                                }
+                                else {
+                                    $("#set-password-check-hash-holder").hide();
+                                    $("#reset-password-error-holder").fadeIn();
+                                }
+                            });
 
                         }
 
@@ -276,15 +283,15 @@ $.CPAEB.init = function () {
 
                             if ($.COR.validateForm($(this).parents("form"))) {
 
-                                //$.COR.services.sendResetEmail({ email: $("#reset-account-username").val() }, function () {
-                                //    $("#reset-password-holder").hide();
-                                //    $("#reset-password-complete-holder").fadeIn();
-                                //},
-                                //function () {
-                                //    $('#reset-account-swirly').css('display', 'none');
-                                //    $(self).removeAttr('disabled').show();
-                                //    alert("Error: Please Try Again Or Contact Us");
-                                //});
+                                // set new password
+                                $.COR.services.resetPassword(
+                                    { password: $("#reset-account-new-password").val(), hash: tempUser.hash },
+                                    function (data) {
+                                        
+                                        $("#reset-password-error-holder").hide();
+                                        $("#reset-password-complete-holder").fadeIn();
+                                    });
+
 
                             }
                             else {
