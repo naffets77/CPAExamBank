@@ -21,11 +21,13 @@ class ciboriumlib_account{
     public static function login($inEmail, $inMD5Password){
         if(validate::emailAddress($inEmail)){
             $myAccountObjectArray = account::login($inEmail, $inMD5Password, true);
-            //add/remove entries
-            $myAccountObjectArray['Account'] = self::returnAccountDTO($myAccountObjectArray['Account']);
-            $myAccountObjectArray['Licenses'] = self::returnLicenseDTO($myAccountObjectArray['Licenses']);
-            $myAccountObjectArray['UserSettings'] = self::returnAccountSettingsDTO($myAccountObjectArray['UserSettings']);
-            //unset($myAccountObjectArray['Hash']);
+            if($myAccountObjectArray['Result']){
+                //add/remove entries
+                $myAccountObjectArray['Account'] = self::returnAccountDTO($myAccountObjectArray['Account']);
+                $myAccountObjectArray['Licenses'] = self::returnLicenseDTO($myAccountObjectArray['Licenses']);
+                $myAccountObjectArray['UserSettings'] = self::returnAccountSettingsDTO($myAccountObjectArray['UserSettings']);
+            }
+
             return $myAccountObjectArray;
         }
         else{

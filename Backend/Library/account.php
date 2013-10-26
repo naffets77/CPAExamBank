@@ -82,7 +82,7 @@ class account
         }
 
         // Indicates the user is 'signed on'
-        if($inUpdateLastLoggedIn == true){
+        if(array_key_exists("Account", $returnArray) && $inUpdateLastLoggedIn == true){
             self::updateAccountUserLastLogin($userAccountForSession->AccountUserId, __METHOD__);
         }
         return $returnArray;
