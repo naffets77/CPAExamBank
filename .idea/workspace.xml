@@ -2,20 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Library/account.php" afterPath="$PROJECT_DIR$/Backend/Library/account.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_enums.php" afterPath="$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_enums.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_stripe.php" afterPath="$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_stripe.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Ciborium/TestTools/mrtest_StripeUnitTests.php" afterPath="$PROJECT_DIR$/Backend/Ciborium/TestTools/mrtest_StripeUnitTests.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Ciborium/Service/service_stripe.php" afterPath="$PROJECT_DIR$/Backend/Ciborium/Service/service_stripe.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Library/stripe_charger.php" afterPath="$PROJECT_DIR$/Backend/Library/stripe_charger.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="VaheCPA.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1382600303805" ignored="false" />
+    <file path="/Dummy.txt" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1382765160003" ignored="false" />
     <file path="/mrtest_StripeUnitTests.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1382595913773" ignored="false" />
     <file path="/stripe_charger.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1382598975810" ignored="false" />
-    <file path="/a.dummy" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1382592242780" ignored="false" />
+    <file path="/a.dummy" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1382601241982" ignored="false" />
     <file path="/config.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1382592787644" ignored="false" />
     <file path="/ciboriumlib_account.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1382593126052" ignored="false" />
     <file path="/ciborium_enums.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1382595197131" ignored="false" />
@@ -41,34 +35,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="account.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Backend/Library/account.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="555" column="41" selection-start="20013" selection-end="20013" vertical-scroll-proportion="0.6106557">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="stripe_charger.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Backend/Library/stripe_charger.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="256" column="52" selection-start="10240" selection-end="10240" vertical-scroll-proportion="-12.307693">
-              <folding>
-                <element signature="n#createToken#0;n#stripe_charger#0;n#!!top" expanded="false" />
-                <element signature="n#retrieveToken#0;n#stripe_charger#0;n#!!top" expanded="false" />
-                <element signature="n#retrieveCustomer#0;n#stripe_charger#0;n#!!top" expanded="false" />
-                <element signature="n#chargeOneTimePurchase#0;n#stripe_charger#0;n#!!top" expanded="false" />
-                <element signature="n#chargeSubscription#0;n#stripe_charger#0;n#!!top" expanded="false" />
-                <element signature="n#cancelSubscription#0;n#stripe_charger#0;n#!!top" expanded="false" />
-                <element signature="n#verifySubscriptionExistsById#0;n#stripe_charger#0;n#!!top" expanded="false" />
-                <element signature="n#getSubscriptionArrayFromStripeCustomerObject#0;n#stripe_charger#0;n#!!top" expanded="false" />
-                <element signature="n#getPlanArrayFromStripeCustomerObject#0;n#stripe_charger#0;n#!!top" expanded="false" />
-                <element signature="n#test_CreateToken#0;n#stripe_charger#0;n#!!top" expanded="false" />
-                <element signature="n#test_RetrieveToken#0;n#stripe_charger#0;n#!!top" expanded="false" />
-                <element signature="n#test_CreateNewCustomer#0;n#stripe_charger#0;n#!!top" expanded="false" />
-                <element signature="n#test_OneTimeCharge#0;n#stripe_charger#0;n#!!top" expanded="false" />
-              </folding>
+            <state line="256" column="52" selection-start="10240" selection-end="10240" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -76,11 +47,8 @@
       <file leaf-file-name="ciborium_stripe.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_stripe.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="248" column="113" selection-start="12630" selection-end="12630" vertical-scroll-proportion="-69.96154">
-              <folding>
-                <element signature="n#chargeSubscription#0;n#ciborium_stripe#0;n#!!top" expanded="false" />
-                <element signature="n#removeCreditCard#0;n#ciborium_stripe#0;n#!!top" expanded="false" />
-              </folding>
+            <state line="248" column="113" selection-start="12630" selection-end="12630" vertical-scroll-proportion="11.115385">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -88,12 +56,8 @@
       <file leaf-file-name="service_stripe.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Service/service_stripe.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="136" column="39" selection-start="5743" selection-end="5743" vertical-scroll-proportion="-13.384615">
-              <folding>
-                <element signature="n#chargeSubscription#0;n#service_stripe#0;n#!!top" expanded="false" />
-                <element signature="n#createNewSubscriber#0;n#service_stripe#0;n#!!top" expanded="false" />
-                <element signature="n#removeCreditCard#0;n#service_stripe#0;n#!!top" expanded="false" />
-              </folding>
+            <state line="136" column="39" selection-start="5743" selection-end="5743" vertical-scroll-proportion="-10.230769">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -101,7 +65,7 @@
       <file leaf-file-name="validate.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Backend/Library/validate.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="27" selection-start="1596" selection-end="1596" vertical-scroll-proportion="5.0384617">
+            <state line="45" column="27" selection-start="1596" selection-end="1596" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -110,16 +74,25 @@
       <file leaf-file-name="ciborium_enums.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_enums.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="134" column="16" selection-start="3228" selection-end="3228" vertical-scroll-proportion="-9.461538">
+            <state line="134" column="16" selection-start="3228" selection-end="3228" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ciborium_email.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ciborium_email.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_email.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="86" column="65" selection-start="4408" selection-end="4408" vertical-scroll-proportion="-7.3846154">
+            <state line="88" column="44" selection-start="4606" selection-end="4606" vertical-scroll-proportion="0.22020726">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ciboriumlib_account.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciboriumlib_account.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="390" column="42" selection-start="16097" selection-end="16097" vertical-scroll-proportion="-26.153847">
               <folding />
             </state>
           </provider>
@@ -152,20 +125,20 @@
         <option value="$PROJECT_DIR$/Backend/Library/ConfigFiles/config_qa.php" />
         <option value="$PROJECT_DIR$/Backend/Library/ConfigFiles/config_stage.php" />
         <option value="$PROJECT_DIR$/Backend/Ciborium/Library/ciboriumlib_account.php" />
-        <option value="$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_email.php" />
         <option value="$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_enums.php" />
         <option value="$PROJECT_DIR$/Backend/Ciborium/TestTools/mrtest_StripeUnitTests.php" />
         <option value="$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_stripe.php" />
         <option value="$PROJECT_DIR$/Backend/Ciborium/Service/service_stripe.php" />
         <option value="$PROJECT_DIR$/Backend/Library/stripe_charger.php" />
         <option value="$PROJECT_DIR$/Backend/Library/account.php" />
+        <option value="$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_email.php" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="98" />
-    <option name="y" value="13" />
+    <option name="x" value="95" />
+    <option name="y" value="16" />
     <option name="width" value="1782" />
     <option name="height" value="981" />
   </component>
@@ -195,7 +168,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -364,6 +336,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -387,6 +360,7 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
+    <property name="FullScreen" value="false" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
   </component>
@@ -441,20 +415,31 @@
       <created>1382593426997</created>
       <updated>1382593426997</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Created unit test for remove credit card. Created service and BL to remove credit card. NOTE: stripe remove cc is not working yet. Need to fix it.">
+      <created>1382600429468</created>
+      <updated>1382600429468</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Merge branch 'master' of https://github.com/naffets77/VaheCPA&#10;&#10;Conflicts:&#10;&#9;Backend/Ciborium/Library/ciborium_email.php&#10;">
+      <created>1382601070638</created>
+      <updated>1382601070639</updated>
+    </task>
+    <task id="LOCAL-00005" summary="testing git commit">
+      <created>1382765166071</created>
+      <updated>1382765166071</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="98" y="13" width="1782" height="981" extended-state="0" />
-    <editor active="false" />
+    <frame x="95" y="16" width="1782" height="981" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3288835" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3288835" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3288835" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3288835" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2" sideWeight="0.67111653" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20465116" sideWeight="0.67111653" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -463,6 +448,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3288835" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -510,7 +496,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created unit test for remove credit card. Created service and BL to remove credit card. NOTE: stripe remove cc is not working yet. Need to fix it." />
+    <option name="LAST_COMMIT_MESSAGE" value="testing git commit" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -527,6 +513,9 @@
     <MESSAGE value="Testing git commit from PHP storm." />
     <MESSAGE value="Made hash expiration part of config file. Added just api call for remove card and fixed # in reset url." />
     <MESSAGE value="Created unit test for remove credit card. Created service and BL to remove credit card. NOTE: stripe remove cc is not working yet. Need to fix it." />
+    <MESSAGE value="Resolve Conflicts:&#10;&#9;Backend/Ciborium/Library/ciborium_email.php&#10;" />
+    <MESSAGE value="Merge branch 'master' of https://github.com/naffets77/VaheCPA&#10;&#10;Conflicts:&#10;&#9;Backend/Ciborium/Library/ciborium_email.php&#10;" />
+    <MESSAGE value="testing git commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -536,9 +525,7 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Backend/Library/ConfigFiles/config_prod.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="39" selection-start="837" selection-end="837" vertical-scroll-proportion="0.8822355">
-          <folding />
-        </state>
+        <state line="26" column="39" selection-start="837" selection-end="837" vertical-scroll-proportion="0.8822355" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Backend/Ciborium/ConfigFiles/library_stage.php">
@@ -564,16 +551,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Backend/Library/config.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="38" selection-start="829" selection-end="829" vertical-scroll-proportion="0.8023952">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_email.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="86" column="65" selection-start="4408" selection-end="4408" vertical-scroll-proportion="-7.3846154">
-          <folding />
-        </state>
+        <state line="26" column="38" selection-start="829" selection-end="829" vertical-scroll-proportion="0.8023952" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/config.php">
@@ -583,86 +561,66 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciboriumlib_account.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="340" column="81" selection-start="13662" selection-end="13662" vertical-scroll-proportion="0.24385247">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Backend/Ciborium/TestTools/mrtest_StripeUnitTests.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="51" selection-start="112" selection-end="112" vertical-scroll-proportion="0.06786427">
-          <folding />
-        </state>
+        <state line="2" column="51" selection-start="112" selection-end="112" vertical-scroll-proportion="0.06786427" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Backend/Library/database.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="310" column="27" selection-start="13250" selection-end="13250" vertical-scroll-proportion="-2.0938125">
-          <folding />
-        </state>
+        <state line="310" column="27" selection-start="13250" selection-end="13250" vertical-scroll-proportion="-2.0938125" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_enums.php">
+    <entry file="file://$PROJECT_DIR$/Backend/Library/account.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="134" column="16" selection-start="3228" selection-end="3228" vertical-scroll-proportion="-9.461538">
+        <state line="552" column="38" selection-start="19905" selection-end="19905" vertical-scroll-proportion="19.229507" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Library/stripe_charger.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="256" column="52" selection-start="10240" selection-end="10240" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Backend/Library/validate.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="27" selection-start="1596" selection-end="1596" vertical-scroll-proportion="5.0384617">
+        <state line="45" column="27" selection-start="1596" selection-end="1596" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_enums.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="134" column="16" selection-start="3228" selection-end="3228" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciboriumlib_account.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="390" column="42" selection-start="16097" selection-end="16097" vertical-scroll-proportion="-26.153847">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Service/service_stripe.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="136" column="39" selection-start="5743" selection-end="5743" vertical-scroll-proportion="-13.384615">
-          <folding>
-            <element signature="n#chargeSubscription#0;n#service_stripe#0;n#!!top" expanded="false" />
-            <element signature="n#createNewSubscriber#0;n#service_stripe#0;n#!!top" expanded="false" />
-            <element signature="n#removeCreditCard#0;n#service_stripe#0;n#!!top" expanded="false" />
-          </folding>
+        <state line="136" column="39" selection-start="5743" selection-end="5743" vertical-scroll-proportion="-10.230769">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_stripe.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="248" column="113" selection-start="12630" selection-end="12630" vertical-scroll-proportion="-69.96154">
-          <folding>
-            <element signature="n#chargeSubscription#0;n#ciborium_stripe#0;n#!!top" expanded="false" />
-            <element signature="n#removeCreditCard#0;n#ciborium_stripe#0;n#!!top" expanded="false" />
-          </folding>
+        <state line="248" column="113" selection-start="12630" selection-end="12630" vertical-scroll-proportion="11.115385">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/Library/stripe_charger.php">
+    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_email.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="256" column="52" selection-start="10240" selection-end="10240" vertical-scroll-proportion="-12.307693">
-          <folding>
-            <element signature="n#createToken#0;n#stripe_charger#0;n#!!top" expanded="false" />
-            <element signature="n#retrieveToken#0;n#stripe_charger#0;n#!!top" expanded="false" />
-            <element signature="n#retrieveCustomer#0;n#stripe_charger#0;n#!!top" expanded="false" />
-            <element signature="n#chargeOneTimePurchase#0;n#stripe_charger#0;n#!!top" expanded="false" />
-            <element signature="n#chargeSubscription#0;n#stripe_charger#0;n#!!top" expanded="false" />
-            <element signature="n#cancelSubscription#0;n#stripe_charger#0;n#!!top" expanded="false" />
-            <element signature="n#verifySubscriptionExistsById#0;n#stripe_charger#0;n#!!top" expanded="false" />
-            <element signature="n#getSubscriptionArrayFromStripeCustomerObject#0;n#stripe_charger#0;n#!!top" expanded="false" />
-            <element signature="n#getPlanArrayFromStripeCustomerObject#0;n#stripe_charger#0;n#!!top" expanded="false" />
-            <element signature="n#test_CreateToken#0;n#stripe_charger#0;n#!!top" expanded="false" />
-            <element signature="n#test_RetrieveToken#0;n#stripe_charger#0;n#!!top" expanded="false" />
-            <element signature="n#test_CreateNewCustomer#0;n#stripe_charger#0;n#!!top" expanded="false" />
-            <element signature="n#test_OneTimeCharge#0;n#stripe_charger#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/Library/account.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="555" column="41" selection-start="20013" selection-end="20013" vertical-scroll-proportion="0.6106557">
+        <state line="88" column="44" selection-start="4606" selection-end="4606" vertical-scroll-proportion="0.22020726">
           <folding />
         </state>
       </provider>
