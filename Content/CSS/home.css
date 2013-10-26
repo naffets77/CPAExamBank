@@ -634,6 +634,7 @@ text-align: center;
         left: 990px;
         z-index:5;
         display: none;
+        cursor:pointer;
     }
 
         .slides_container .slide.current {
