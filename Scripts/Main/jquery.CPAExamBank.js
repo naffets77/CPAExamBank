@@ -288,7 +288,7 @@ $.CPAEB.init = function () {
                                     { password: $("#reset-account-new-password").val(), hash: tempUser.Hash },
                                     function (data) {
                                         
-                                        $("#reset-password-error-holder").hide();
+                                        $("#set-password-holder").hide();
                                         $("#reset-password-complete-holder").fadeIn();
                                     });
 
