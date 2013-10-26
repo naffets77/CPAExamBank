@@ -285,7 +285,7 @@ $.CPAEB.init = function () {
 
                                 // set new password
                                 $.COR.services.resetPassword(
-                                    { password: $("#reset-account-new-password").val(), hash: tempUser.hash },
+                                    { password: $("#reset-account-new-password").val(), hash: tempUser.Hash },
                                     function (data) {
                                         
                                         $("#reset-password-error-holder").hide();
