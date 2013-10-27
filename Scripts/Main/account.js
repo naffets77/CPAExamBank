@@ -230,12 +230,16 @@ $.COR.account.setupEvents = function () {
             $(".remove-credit-card-info").on('click', function () {
 
                 $("#update-subscription-holder .credit-card-info").hide();
+
+                $(".js-overlay-close").hide();
                 $("#update-subscription-holder .processing").fadeIn();
 
                 $.COR.services.removeCreditCard({}, function (data) {
 
                     if (data.Result == 0) {
+                        $(".js-overlay-close").show();
                         $("#update-subscription-holder .processing").hide();
+
                         $("#update-subscription-holder .error").fadeIn();
                     }
                     else {
@@ -246,6 +250,8 @@ $.COR.account.setupEvents = function () {
                             self.setUserData(data);
 
                             // Use Token to load stuff
+
+                            $(".js-overlay-close").show();
                             $("#update-subscription-holder .processing").hide();
                             $("#update-subscription-holder .credit-card-removed").fadeIn();
 
@@ -259,6 +265,9 @@ $.COR.account.setupEvents = function () {
             $(".update-credit-info").on('click', function () {
 
                 $("#update-subscription-holder .credit-card-info").hide();
+
+
+                $(".js-overlay-close").hide();
                 $("#update-subscription-holder .processing").fadeIn();
 
                 Stripe.setPublishableKey(self.stripePublicKey);
@@ -283,6 +292,8 @@ $.COR.account.setupEvents = function () {
                         $.COR.services.changeCreditCard({token:token}, function (data) {
 
                             if (data.Result == 0) {
+
+                                $(".js-overlay-close").show();
                                 $("#update-subscription-holder .processing").hide();
                                 $("#update-subscription-holder .error").fadeIn();
                             }
@@ -294,6 +305,7 @@ $.COR.account.setupEvents = function () {
                                     self.setUserData(data);
 
                                     // Use Token to load stuff
+                                    $(".js-overlay-close").show();
                                     $("#update-subscription-holder .processing").hide();
                                     $("#update-subscription-holder .credit-card-updated").fadeIn();
 
@@ -363,7 +375,7 @@ $.COR.account.setupEvents = function () {
 
                     $("#update-subscription-holder .credit-card-info").hide();
 
-                    // Show Processing
+                    $(".js-overlay-close").hide();
                     $("#update-subscription-holder .processing").show();
 
                     Stripe.setPublishableKey(self.stripePublicKey);
@@ -399,6 +411,7 @@ $.COR.account.setupEvents = function () {
                                             self.setUserData(data);
 
                                             // Use Token to load stuff
+                                            $(".js-overlay-close").show();
                                             $("#update-subscription-holder .processing").hide();
                                             $("#update-subscription-holder .subscription-completed").show();
 
@@ -432,6 +445,7 @@ $.COR.account.setupEvents = function () {
                     $("#update-subscription-holder .update-subscription").hide();
 
                     // Show Processing
+                    $(".js-overlay-close").hide();
                     $("#update-subscription-holder .processing").show();
 
                     var subscriptions = self.getSubscriptionsForServer();
@@ -443,6 +457,7 @@ $.COR.account.setupEvents = function () {
                             self.setUserData(data);
 
                             // Use Token to load stuff
+                            $(".js-overlay-close").show();
                             $("#update-subscription-holder .processing").hide();
                             $("#update-subscription-holder .subscription-completed").show();
 
