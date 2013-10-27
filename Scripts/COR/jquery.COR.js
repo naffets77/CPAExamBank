@@ -126,6 +126,8 @@ $.COR.pageEvents = function () {
                 function (failedReason) { // failure function (invalid email/password etc)
                     console.log("Error logging in : " + failedReason);
                     $("#invalid-account-message").show();
+                    self.pageSwap($.COR.getCurrentDisplayedId(), "js-content-wrapper-contact");
+                    
                 }
             );
         } else {
