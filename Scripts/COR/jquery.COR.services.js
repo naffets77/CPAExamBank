@@ -1,24 +1,8 @@
 ﻿
 
 
-$.COR.services.validatePasswordResetLink = function(options, successCallback){
+// Question Services
 
-    var ph = new $.COR.Utilities.PostHandler({
-        service: "account", call: "loginFromResetURL",
-        params: {
-            email : options.email,
-            hashkey : options.hash
-        },
-        success: function (data) {
-            successCallback(data);
-        }
-    });
-
-    ph.submitPost();
-
-
-
-}
 
 $.COR.services.getQuestionHistoryMetrics = function () {
 
@@ -37,6 +21,79 @@ $.COR.services.getQuestionHistoryMetrics = function () {
 
 }
 
+
+
+
+// Subscriber Services
+
+$.COR.services.createSubscription = function (token, successCallback) {
+
+    if ($.COR.account.offline == false) {
+
+        var ph = new $.COR.Utilities.PostHandler({
+            service: "stripe", call: "createNewSubscriber",
+            params: {
+                stripeToken: token
+            },
+            success: function (data) {
+                successCallback(data);
+            }
+        });
+
+        ph.submitPost();
+
+
+    }
+    else {
+
+    }
+
+}
+
+$.COR.services.chargeSubscription = function (subscription, successCallback) {
+
+    if ($.COR.account.offline == false) {
+
+        var ph = new $.COR.Utilities.PostHandler({
+            service: "stripe", call: "chargeSubscription",
+            params: {
+                moduleSelection: subscription
+            },
+            success: function (data) {
+                successCallback(data);
+            }
+        });
+
+        ph.submitPost();
+
+
+    }
+    else {
+
+    }
+
+}
+
+$.COR.services.removeCreditCard = function (successCallback) {
+
+    var ph = new $.COR.Utilities.PostHandler({
+        service: "stripe", call: "removeCreditCard",
+        params: {},
+        success: function (data) {
+            successCallback(data);
+        }
+    });
+
+    ph.submitPost();
+
+
+
+}
+
+
+
+// Account Services
+
 $.COR.services.login = function (email, password, successCallback, failcallback) {
 
     var COR = $.COR;
@@ -49,7 +106,7 @@ $.COR.services.login = function (email, password, successCallback, failcallback)
 
                 if (data.Account != null) {
                     // this isn't generic, the call to account should be in the success callback too much of passing the success callback around!
-                    COR.account.setup(data, successCallback); 
+                    COR.account.setup(data, successCallback);
                 }
                 else {
                     failcallback(data.LoginFailedReason);
@@ -117,51 +174,19 @@ $.COR.services.register = function (email, password, sections, callback) {
 
 };
 
-$.COR.services.createSubscription = function (token, successCallback) {
+$.COR.services.updatePassword = function (options, successCallback) {
 
-    if ($.COR.account.offline == false) {
+    var ph = new $.COR.Utilities.PostHandler({
+        service: "account", call: "updatePassword",
+        params: { password: options.password, newPassword: options.newPassword, confirmPassword: options.newPassword},
+        success: function (data) {
 
-        var ph = new $.COR.Utilities.PostHandler({
-            service: "stripe", call: "createNewSubscriber",
-            params: {
-                stripeToken: token
-            },
-            success: function (data) {
-                successCallback(data);
-            }
-        });
+            successCallback(data);
 
-        ph.submitPost();
+        }
+    });
 
-
-    }
-    else {
-
-    }
-
-}
-
-$.COR.services.chargeSubscription = function (subscription, successCallback) {
-
-    if ($.COR.account.offline == false) {
-
-        var ph = new $.COR.Utilities.PostHandler({
-            service: "stripe", call: "chargeSubscription",
-            params: {
-                moduleSelection: subscription
-            },
-            success: function (data) {
-                successCallback(data);
-            }
-        });
-
-        ph.submitPost();
-
-
-    }
-    else {
-
-    }
+    ph.submitPost();
 
 }
 
@@ -183,24 +208,22 @@ $.COR.services.sendResetEmail = function (options, successCallback, failedCallba
     ph.submitPost();
 }
 
-
-
-
-// Account Services
-
-$.COR.services.updatePassword = function (options, successCallback) {
+$.COR.services.validatePasswordResetLink = function (options, successCallback) {
 
     var ph = new $.COR.Utilities.PostHandler({
-        service: "account", call: "updatePassword",
-        params: { password: options.password, newPassword: options.newPassword, confirmPassword: options.newPassword},
+        service: "account", call: "loginFromResetURL",
+        params: {
+            email: options.email,
+            hashkey: options.hash
+        },
         success: function (data) {
-
             successCallback(data);
-
         }
     });
 
     ph.submitPost();
+
+
 
 }
 
@@ -208,7 +231,7 @@ $.COR.services.resetPassword = function (options, successCallback) {
 
     var ph = new $.COR.Utilities.PostHandler({
         service: "account", call: "resetPassword",
-        params: {  newPassword: options.password, confirmPassword: options.password, Hash: options.hash },
+        params: { newPassword: options.password, confirmPassword: options.password, Hash: options.hash },
         success: function (data) {
 
             successCallback(data);

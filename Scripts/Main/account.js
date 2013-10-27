@@ -214,12 +214,28 @@ $.COR.account.setupEvents = function () {
     });
 
     $("#account-change-credit-card").on("click", function () {
-        $.COR.Utilities.FullScreenOverlay.loadExternal("/HTMLPartials/Account/UpdateSubscription.html", "medium", false, function () {
+        $.COR.Utilities.FullScreenOverlay.loadExternal("/HTMLPartials/Account/ChangeCreditCard.html", "medium", false, function () {
 
-            $(".save-credit-info").html("Update Card");
             $("#update-subscription-holder .credit-card-info").show();
-            $(".update-credit-card").show();
-            $(".update-credit-card").css("visibility", "visible");
+            $("#update-subscription-holder .amount-charged").html("$" + self.getSubscriptionTotal());
+
+            $(".remove-credit-card-info").on('click', function () {
+
+                $("#update-subscription-holder .credit-card-info").hide();
+                $("#update-subscription-holder .credit-card-removed").fadeIn();
+
+
+            });
+
+            $(".update-credit-info").on('click', function () {
+
+                $("#update-subscription-holder .credit-card-info").hide();
+                $("#update-subscription-holder .credit-card-updated").fadeIn();
+
+
+            });
+
+
 
         });
 
