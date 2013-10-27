@@ -593,6 +593,8 @@ $.CPAEB.registerEvents = function (eventsFunction) {
 
 $.COR.TPrep = {};
 
+
+// TODO Get rid of all of this and replace with Utitlities Popup code
 $.COR.TPrep.showFullScreenOverlay = function (content, contentClassSize, events) {
 
 
@@ -601,7 +603,7 @@ $.COR.TPrep.showFullScreenOverlay = function (content, contentClassSize, events)
         $("#full-screen-container .content").fadeOut(function () {
             $(this).html("");
 
-            $("#full-screen-container .content").html(content).removeClass().addClass(contentClassSize + " content").fadeIn();
+            $("#full-screen-container .content").html(content).attr("class","").addClass(contentClassSize + " content").fadeIn();
 
             if (typeof events == 'function') {
                 events();
@@ -615,7 +617,7 @@ $.COR.TPrep.showFullScreenOverlay = function (content, contentClassSize, events)
     else {
         $("#full-screen-container .content").html(content);
 
-        $("#full-screen-container").removeClass().addClass(contentClassSize);
+        $("#full-screen-container").attr("class", "").addClass(contentClassSize);
 
         $("#full-screen-holder").show();
         $("#full-screen-container").show();
