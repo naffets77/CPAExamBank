@@ -108,8 +108,11 @@ $.COR.pageEvents = function () {
 
         if (password.length != 0 && email.length != 0 && password != 'Password' && email != 'Email') {
 
+            var tempPage = $.COR.getCurrentDisplayedId(); // We need to be able to get back if the login failed
+
+
             //$("#header-login-container").hide();
-            self.pageSwap($.COR.getCurrentDisplayedId(), 'js-content-wrapper-login');
+            self.pageSwap(tempPage, 'js-content-wrapper-login');
 
             $("#header-navigation").hide();
 
@@ -127,7 +130,7 @@ $.COR.pageEvents = function () {
                     console.log("Error logging in : " + failedReason);
                     $("#invalid-account-message").show();
                     $("#header-navigation").show();
-                    self.pageSwap($.COR.getCurrentDisplayedId(), "js-content-wrapper-contact");
+                    self.pageSwap($.COR.getCurrentDisplayedId(), tempPage); // tempPage keeps track of page clicked on when trying to login
                     
                 }
             );
