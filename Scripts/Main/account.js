@@ -239,8 +239,17 @@ $.COR.account.setupEvents = function () {
                         $("#update-subscription-holder .error").fadeIn();
                     }
                     else {
-                        $("#update-subscription-holder .processing").hide();
-                        $("#update-subscription-holder .credit-card-removed").fadeIn();
+
+                        // Refresh Login
+                        $.COR.checkLogin(function (data) {
+
+                            self.setUserData(data);
+
+                            // Use Token to load stuff
+                            $("#update-subscription-holder .processing").hide();
+                            $("#update-subscription-holder .credit-card-removed").fadeIn();
+
+                        });
                     }
                 });
 
@@ -285,7 +294,7 @@ $.COR.account.setupEvents = function () {
                                     self.setUserData(data);
 
                                     // Use Token to load stuff
-                                    $("#update-subscription-holder .credit-card-info").hide();
+                                    $("#update-subscription-holder .processing").hide();
                                     $("#update-subscription-holder .credit-card-updated").fadeIn();
 
                                 });
@@ -331,7 +340,7 @@ $.COR.account.setupEvents = function () {
 
             // We gotta figure out which we're showing -- update or get CC info
 
-            if (self.subscriptions.length == 0) {
+            if (self.subscriptions.length == 0 || self.licenses.StripeCreditCardId == "") {
 
 
                 if ($.COR.debug == true) {
