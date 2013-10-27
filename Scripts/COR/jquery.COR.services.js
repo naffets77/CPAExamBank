@@ -90,6 +90,23 @@ $.COR.services.removeCreditCard = function (successCallback) {
 
 }
 
+$.COR.services.changeCreditCard = function (options, successCallback) {
+
+    if ($.COR.account.offline == false) {
+
+        var ph = new $.COR.Utilities.PostHandler({
+            service: "stripe", call: "updateNewCreditCard",
+            params: {
+                stripeToken: options.token
+            },
+            success: function (data) {
+                successCallback(data);
+            }
+        });
+
+        ph.submitPost();
+    }
+}
 
 
 // Account Services
@@ -242,3 +259,4 @@ $.COR.services.resetPassword = function (options, successCallback) {
     ph.submitPost();
 
 }
+
