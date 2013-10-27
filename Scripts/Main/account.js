@@ -717,6 +717,9 @@ $.COR.account.setUserData = function (data) {
         $("#subscription-credit-card-last-four").html("****-****-****-" + data.Licenses.CC_LastFour);
         $("#credit-card-on-file").show();
     }
+    else {
+        $("#credit-card-on-file").hide();
+    }
 
 }
 
