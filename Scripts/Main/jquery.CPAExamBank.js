@@ -102,8 +102,7 @@ $(document).ready(function () {
                             // We should be able to automatically log them in...
                             $.COR.services.login(email, password, function () {
 
-                                // We're good to go lets setup the account object and change pages...
-                                $.COR.account.setup(response, function () {
+
                                     $.COR.toggleAccountNavigation(); // TODO: This should be done on the account side of things
                                     $.COR.TPrep.hideFullScreenOverlay();
 
@@ -113,7 +112,7 @@ $(document).ready(function () {
                                     
 
                                     location.hash = "account";
-                                });
+                                
 
                             });
                         }
