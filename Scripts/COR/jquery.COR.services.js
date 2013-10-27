@@ -74,7 +74,7 @@ $.COR.services.chargeSubscription = function (subscription, successCallback) {
 
 }
 
-$.COR.services.removeCreditCard = function (successCallback) {
+$.COR.services.removeCreditCard = function (options, successCallback) {
 
     var ph = new $.COR.Utilities.PostHandler({
         service: "stripe", call: "removeCreditCard",
