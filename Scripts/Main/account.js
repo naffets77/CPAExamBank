@@ -661,8 +661,8 @@ $.COR.account.setUserData = function (data) {
 
     // setup the credit card information if it's available
 
-    if (data.license.StripeCreditCardId != "") {
-        $("#subscription-credit-card-last-four").html("****-****-****-" + data.license.CC_LastFour);
+    if (data.Licenses.StripeCreditCardId != "") {
+        $("#subscription-credit-card-last-four").html("****-****-****-" + data.Licenses.CC_LastFour);
         $("#credit-card-on-file").show();
     }
 
