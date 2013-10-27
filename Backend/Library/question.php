@@ -249,6 +249,11 @@ class question{
         return database::callStoredProcedure("sp_getAccountUserQuestionHistoryById", $parametersArray, __METHOD__);
     }
 
+    public static function deleteAccountUserQuestionHistoryById($inAccountUserId){
+        $parametersArray = array($inAccountUserId);
+        return database::callStoredProcedure("sp_DELETEAccountUserQuestionHistoryById", $parametersArray, __METHOD__);
+    }
+
     public static function getAccountUserQuestionHistoryMetricsById($inAccountUserId){
         $parametersArray = array($inAccountUserId);
         return database::callStoredProcedure("sp_getAccountUserQuestionHistoryMetricsById", $parametersArray, __METHOD__);

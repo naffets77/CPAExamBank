@@ -178,14 +178,15 @@ class ciborium_question{
     }
 
     /**
+     *
      * Library: getAccountUserQuestionHistoryById()
-     * Gets all user's public question history
+     * Gets all questions and answers history for a user
      *
-     * @param int $inAccountUserId
-     *
+     * @param $inAccountUserId
+     * @param $inCaller
      * @return array
-     *      Reason
      *      Result
+     *      Reason
      *      QuestionHistoryReturns
      */
     public static function getAccountUserQuestionHistoryById($inAccountUserId, $inCaller){
@@ -237,6 +238,44 @@ class ciborium_question{
 
         }
 
+        return $returnArray;
+    }
+
+    /**
+     *
+     * Library: deleteAccountUserHistoryById()
+     * Deletes all questions and answer history for a user
+     *
+     * @param $inAccountUserId
+     * @param $inCaller
+     * @return array
+     *      Result
+     *      Reason
+     */
+    public static function deleteAccountUserHistoryById($inAccountUserId, $inCaller){
+        $returnArray = array(
+            'Result' => 0,
+            'Reason' => ""
+        );
+
+        //Verify inputs
+        if(!validate::tryParseInt($inAccountUserId)){
+            $returnArray['Reason'] = "Invalid input";
+            $errorMessage = $returnArray['Reason']." for user id. Was not an integer.";
+            util_errorlogging::LogBrowserError(3, $errorMessage, __METHOD__, __FILE__);
+            return $returnArray;
+        }
+
+        if(!account::verifyAccountUserExistsById($inAccountUserId)){
+            $returnArray['Reason'] = "User does not exist.";
+            $errorMessage = $returnArray['Reason']." AccountUserId was ".$inAccountUserId;
+            util_errorlogging::LogBrowserError(3, $errorMessage, __METHOD__, __FILE__);
+            return $returnArray;
+        }
+
+        question::deleteAccountUserQuestionHistoryById($inAccountUserId);
+        $returnArray['Result'] = 1;
+        $returnArray['Reason'] = "User's question history was deleted.";
         return $returnArray;
     }
 

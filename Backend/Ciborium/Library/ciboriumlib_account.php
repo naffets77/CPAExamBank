@@ -247,28 +247,28 @@ class ciboriumlib_account{
 
         //Verify inputs
         if(!validate::isNotNullOrEmpty_String($inEmail)){
-            $myArray['Reason'] = "Invalid input";
-            $errorMessage = $myArray['Reason']." for Email address. Was null or empty.";
+            $returnArray['Reason'] = "Invalid input";
+            $errorMessage = $returnArray['Reason']." for Email address. Was null or empty.";
             util_errorlogging::LogBrowserError(3, $errorMessage, __METHOD__, __FILE__);
-            return $myArray;
+            return $returnArray;
         }
         if(!validate::isNotNullOrEmpty_String(trim($inMD5Password))){
-            $myArray['Reason'] = "Invalid input";
-            $errorMessage = $myArray['Reason']." for password. Was null or empty";
+            $returnArray['Reason'] = "Invalid input";
+            $errorMessage = $returnArray['Reason']." for password. Was null or empty";
             util_errorlogging::LogBrowserError(3, $errorMessage, __METHOD__, __FILE__);
-            return $myArray;
+            return $returnArray;
         }
         if(!validate::isNotNullOrEmpty_Array($inSectionsArray)){
-            $myArray['Reason'] = "Invalid input";
-            $errorMessage = $myArray['Reason']." for Sections array. Was null or empty.";
+            $returnArray['Reason'] = "Invalid input";
+            $errorMessage = $returnArray['Reason']." for Sections array. Was null or empty.";
             util_errorlogging::LogBrowserError(3, $errorMessage, __METHOD__, __FILE__);
-            return $myArray;
+            return $returnArray;
         }
         if(!validate::isNotNullOrEmpty_String($inReferralSource)){
-            $myArray['Reason'] = "Invalid input";
-            $errorMessage = $myArray['Reason']." for referral source. Was null or empty.";
+            $returnArray['Reason'] = "Invalid input";
+            $errorMessage = $returnArray['Reason']." for referral source. Was null or empty.";
             util_errorlogging::LogBrowserError(3, $errorMessage, __METHOD__, __FILE__);
-            return $myArray;
+            return $returnArray;
         }
 
         //logout to clear any errant session
