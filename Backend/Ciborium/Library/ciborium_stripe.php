@@ -45,6 +45,12 @@ class ciborium_stripe{
         );
 
         //Verify inputs
+        if(!validate::tryParseInt($inLicenseId)){
+            $myArray['Reason'] = "Invalid input";
+            $errorMessage = $myArray['Reason']." for StripeToken ".$inStripeTokenID.".";
+            util_errorlogging::LogBrowserError(3, $errorMessage, __METHOD__, __FILE__);
+            return $myArray;
+        }
         if(!validate::isNotNullOrEmpty_String(trim($inStripeTokenID))){
             $myArray['Reason'] = "Invalid input";
             $errorMessage = $myArray['Reason']." for StripeToken ".$inStripeTokenID.".";
@@ -57,28 +63,45 @@ class ciborium_stripe{
             util_errorlogging::LogBrowserError(3, $errorMessage, __METHOD__, __FILE__);
             return $myArray;
         }
-
-        $createCustomerResponse = stripe_charger::createCustomer($inEmail, $inStripeTokenID);
-
-        if($createCustomerResponse['Result']){
-            $myArray['Reason'] = "Customer created successfully.";
-            $myArray['Result'] = 1;
-            $customerArray = stripe_charger::getCustomerArrayFromStripeCustomerObject($createCustomerResponse['Customer']);
-            $cardArray = stripe_charger::getCardArrayFromStripeCustomerObject($createCustomerResponse['Customer']);
-            $myArray['CustomerId'] = $customerArray['id'];
-
-            $updateResult = account::updateLicenseForNewStripeCustomer($inLicenseId, $customerArray['id'], $cardArray['type'], $cardArray['last4'], util_datetime::getDateStringToDateTime($cardArray['exp_month']."/1/".$cardArray['exp_year']), $cardArray['id'], __METHOD__);
+        if(!account::verifyLicenseExistsById($inLicenseId)){
+            $myArray['Reason'] = "License does not exist ";
+            $errorMessage = $myArray['Reason']." for LicenseId ".$inLicenseId.".";
+            util_errorlogging::LogBrowserError(3, $errorMessage, __METHOD__, __FILE__);
+            return $myArray;
         }
-        else{
-            $myArray['Reason'] = "Error creating customer.";
-            if($createCustomerResponse['StripeException'] != null){
-                $errorMessage = "Error creating customer for email ".$inEmail.", Stripe threw an exception. Message: ".$createCustomerResponse['Reason']." . Called by ".$inCaller;
+
+        $accountUserLicense = account::getLicenseById($inLicenseId)[0];
+
+        if(!validate::isNotNullOrEmpty_String($accountUserLicense->StripeCustomerId)){
+            $createCustomerResponse = stripe_charger::createCustomer($inEmail, $inStripeTokenID);
+
+            if($createCustomerResponse['Result']){
+                $myArray['Reason'] = "Customer created successfully.";
+                $myArray['Result'] = 1;
+                $customerArray = stripe_charger::getCustomerArrayFromStripeCustomerObject($createCustomerResponse['Customer']);
+                $cardArray = stripe_charger::getCardArrayFromStripeCustomerObject($createCustomerResponse['Customer']);
+                $myArray['CustomerId'] = $customerArray['id'];
+
+                $updateResult = account::updateLicenseForNewStripeCustomer($inLicenseId, $customerArray['id'], $cardArray['type'], $cardArray['last4'], util_datetime::getDateStringToDateTime($cardArray['exp_month']."/1/".$cardArray['exp_year']), $cardArray['id'], __METHOD__);
             }
             else{
-                $errorMessage = "Error creating customer for email ".$inEmail.", the cancellation was not completed. Message: ".$createCustomerResponse['Reason']." . Called by ".$inCaller;
+                $myArray['Reason'] = "Error creating customer.";
+                if($createCustomerResponse['StripeException'] != null){
+                    $errorMessage = "Error creating customer for email ".$inEmail.", Stripe threw an exception. Message: ".$createCustomerResponse['Reason']." . Called by ".$inCaller;
+                }
+                else{
+                    $errorMessage = "Error creating customer for email ".$inEmail.", the cancellation was not completed. Message: ".$createCustomerResponse['Reason']." . Called by ".$inCaller;
+                }
+                util_errorlogging::LogGeneralError(3, $errorMessage, __METHOD__, __FILE__);
             }
-            util_errorlogging::LogGeneralError(3, $errorMessage, __METHOD__, __FILE__);
         }
+        else{
+            $myArray['Reason'] = "User is already a subscriber";
+            $errorMessage = $myArray['Reason']." for LicenseId ".$inLicenseId;
+            util_errorlogging::LogBrowserError(3, $errorMessage, __METHOD__, __FILE__);
+        }
+
+
 
         return $myArray;
     }
