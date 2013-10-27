@@ -225,7 +225,7 @@ $.COR.account.setupEvents = function () {
                 $("#update-subscription-holder .credit-card-info").hide();
                 $("#update-subscription-holder .processing").fadeIn();
 
-                $.COR.services.resetPassword({}, function(){
+                $.COR.services.removeCreditCard({}, function () {
                     $("#update-subscription-holder .credit-card-info").hide();
                     $("#update-subscription-holder .credit-card-removed").fadeIn();
                 });
