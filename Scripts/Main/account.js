@@ -220,6 +220,13 @@ $.COR.account.setupEvents = function () {
             $("#update-subscription-holder .credit-card-info").show();
             $("#update-subscription-holder .amount-charged").html("$" + self.getSubscriptionTotal());
 
+            if ($.COR.debug == true) {
+                $('#card-number').val("4242424242424242");
+                $('#card-cvc').val("333");
+                $('#card-expiry-month').val("12");
+                $('#card-expiry-year').val("2013");
+            }
+
             $(".remove-credit-card-info").on('click', function () {
 
                 $("#update-subscription-holder .credit-card-info").hide();
@@ -228,11 +235,11 @@ $.COR.account.setupEvents = function () {
                 $.COR.services.removeCreditCard({}, function (data) {
 
                     if (data.Result == 0) {
-                        $("#update-subscription-holder .credit-card-info").hide();
+                        $("#update-subscription-holder .processing").hide();
                         $("#update-subscription-holder .error").fadeIn();
                     }
                     else {
-                        $("#update-subscription-holder .credit-card-info").hide();
+                        $("#update-subscription-holder .processing").hide();
                         $("#update-subscription-holder .credit-card-removed").fadeIn();
                     }
                 });
