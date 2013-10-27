@@ -650,7 +650,14 @@ $.COR.account.setUserData = function (data) {
 
                 $("#account_subscription_check-" + subname).prop('checked', true);
                 $("#practice-category_" + subname).parents('tr').removeClass("trial");
-                $(tr).find('.status').html("Active");
+
+                // They may have removed their credit card, if that's the case it's 'Expires On'
+                if (data.Licenses.StripeCreditCardId != "") {
+                    $(tr).find('.status').html("Active");
+                }
+                else {
+                    $(tr).find('.status').html("Expires On");
+                }
 
                 if (subname == "aud") {
                     AUDEnabled = true;
