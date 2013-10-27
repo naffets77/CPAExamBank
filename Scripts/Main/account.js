@@ -34,45 +34,29 @@ $.COR.account.setup = function (data, successCallback) {
 
     $('body').append("<input id='account-hash' type='hidden' value='" + data.Hash + "'></input>");
 
-    self.setUserData(data);
-    self.setupEvents();
-    self.initUser();
 
-    $("#contact-us-email").val(self.user.LoginName);
+    $.get("/HTMLPartials/Account.html" + cacheInvalidator, function (loggedinPageHTML) {
 
-    // Force login to take 1500ms
+        $("#body").append(loggedinPageHTML);
 
-    setTimeout(function () {
-        // Show proper UI
-        self.showDefaultPage();
+        self.setUserData(data);
+        self.setupEvents();
+        self.initUser();
 
+        $("#contact-us-email").val(self.user.LoginName);
 
-        successCallback();
-    }, 1500);
+        // Force login to take 1500ms
 
-
-    //$.get("/HTMLPartials/Account.html" + cacheInvalidator, function (loggedinPageHTML) {
-
-    //    $("#body").append(loggedinPageHTML);
-
-    //    self.setUserData(data);
-    //    self.setupEvents();
-    //    self.initUser();
-
-    //    $("#contact-us-email").val(self.user.LoginName);
-
-    //    // Force login to take 1500ms
-
-    //    setTimeout(function () {
-    //        // Show proper UI
-    //        self.showDefaultPage();
+        setTimeout(function () {
+            // Show proper UI
+            self.showDefaultPage();
 
 
-    //        successCallback();
-    //    }, 1500);
+            successCallback();
+        }, 1500);
 
          
-    //});
+    });
 }
 
 $.COR.account.setupEvents = function () {
