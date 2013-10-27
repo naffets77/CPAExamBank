@@ -302,7 +302,7 @@ class account
      * @param $inMethodName
      * @return bool|string
      */
-    public static function  updateLoginName($inAccountUserId, $inEmail, $inMethodName){
+    public static function  updateLoginName($inAccountUserId, $inEmail, $inMethodName, $inUpdateContactEmail = true){
 
         $updateArray = array(
             'LoginName' => ':LoginName',
@@ -310,6 +310,33 @@ class account
         );
         $updatePrepare = array(
             ':LoginName' => $inEmail,
+            ':LastModifiedBy' => $inMethodName
+        );
+
+        if($inUpdateContactEmail){
+            $updateArray['ContactEmail'] = ":ContactEmail";
+            $updatePrepare[':ContactEmail'] = $inEmail;
+        }
+
+        $whereClause = "AccountUserId = '".$inAccountUserId."'";
+
+        return database::update("AccountUser", $updateArray, $updatePrepare, $whereClause, __METHOD__);
+    }
+
+    /**
+     * @param $inAccountUserId
+     * @param $inEmail
+     * @param $inMethodName
+     * @return bool|string
+     */
+    public static function  updateContactEmail($inAccountUserId, $inEmail, $inMethodName){
+
+        $updateArray = array(
+            'ContactEmail' => ':ContactEmail',
+            'LastModifiedBy' => ':LastModifiedBy'
+        );
+        $updatePrepare = array(
+            ':ContactEmail' => $inEmail,
             ':LastModifiedBy' => $inMethodName
         );
 

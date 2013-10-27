@@ -50,7 +50,7 @@ class service_account{
             util_errorlogging::LogBrowserError(3, $inMessage, __METHOD__, __FILE__);
             return array(
                 'Result' => 0,
-                'Reason' => "Missing requried variable(s)"
+                'Reason' => "Missing required variable(s)"
             );
         }
 
@@ -160,7 +160,7 @@ class service_account{
                 }
                 $inMessage .= $inMessageAppend;
                 util_errorlogging::LogBrowserError(3, $inMessage, __METHOD__, __FILE__);
-                $myArray['Reason'] = "Missing requried variable(s)";
+                $myArray['Reason'] = "Missing required variable(s)";
                 return $myArray;
             }
 
@@ -173,6 +173,62 @@ class service_account{
         }
 
     }
+
+
+    /**
+     * Service: updateContactEmail()
+     * Updates user's login name (email)
+     *
+     * POST Input:
+     *      Hash
+     *      email
+     *
+     * @return array
+     *      Reason
+     *      Result
+     */
+    static function updateContactEmail(){
+        $myArray = array(
+            "Reason" => "",
+            "Result" => 0
+        );
+
+        if(ciboriumlib_account::checkValidLogin(self::$service, __FUNCTION__)){
+            $accountUserId = $_SESSION['Account']->AccountUserId;
+            $email =  validate::requirePostField('email', self::$service, __FUNCTION__);
+            $hash = validate::requirePostField('Hash', self::$service, __FUNCTION__);
+            $hashCheckReturn = validate::requireValidHash(self::$service, __FUNCTION__);
+
+            $checkValueArray = array(
+                "email" => $email,
+                "Hash" => $hash,
+                'hashCheckResult' => (bool)$hashCheckReturn['Result']
+            );
+
+            if(in_array(null, $checkValueArray) || !$checkValueArray['hashCheckResult'])
+            {
+                $inCheckValueArray = util_general::stringValuesInAssociativeArray($checkValueArray);
+                $inMessage = "Missing one or more POST variables OR hash check failed in ".self::$service."::".__FUNCTION__." . ";
+                $inMessageAppend = array();
+                foreach($inCheckValueArray as $key => $value){
+                    array_push($inMessageAppend, $key."==".$value);
+                }
+                $inMessage .= $inMessageAppend;
+                util_errorlogging::LogBrowserError(3, $inMessage, __METHOD__, __FILE__);
+                $myArray['Reason'] = "Missing required variable(s)";
+                return $myArray;
+            }
+
+            $myResultArray = ciboriumlib_account::updateContactEmail($accountUserId, $email);
+            return $myResultArray;
+        }
+        else{
+            $myArray['Reason'] = "User was no longer logged in";
+            return $myArray;
+        }
+
+    }
+
 
     /**
      * Service: registerNewUser()

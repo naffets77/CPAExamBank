@@ -160,7 +160,7 @@ class ciboriumlib_account{
      * @param $inNewEmail
      * @return array
      */
-    public static function updateLoginEmail($inAccountUserId, $inNewEmail){
+    public static function updateLoginEmail($inAccountUserId, $inNewEmail, $inUpdateContactEmail = true){
 
         $myArray = array(
             "Reason" => "",
@@ -172,12 +172,16 @@ class ciboriumlib_account{
             if(!account::verifyAccountUserExistsByLoginName($myEmail)){
                 //check if user exists now
                 if(account::verifyAccountUserExistsById($inAccountUserId)){
-                    $result = account::updateLoginName($inAccountUserId, $myEmail, __METHOD__);
+                    $updateContactEmail = (bool)$inUpdateContactEmail;
+                    $result = account::updateLoginName($inAccountUserId, $myEmail, __METHOD__, $updateContactEmail);
                     $myArray['Reason'] = $result === true ? "" : "Error updating entry";
                     $myArray['Result'] = $result === true ? 1 : 0;
                     //update session
                     if($result && isset($_SESSION['Account'])){
                         $_SESSION['Account']->LoginName = $myEmail;
+                        if($updateContactEmail){
+                            $_SESSION['Account']->ContactEmail = $myEmail;
+                        }
                     }
                 }
                 else{
@@ -194,6 +198,56 @@ class ciboriumlib_account{
 
         return $myArray;
     }
+
+    /**
+     * @param $inAccountUserId
+     * @param $inNewEmail
+     * @return array
+     */
+    public static function updateContactEmail($inAccountUserId, $inNewEmail){
+
+        $myArray = array(
+            "Reason" => "",
+            "Result" => 0
+        );
+
+        //Verify inputs
+        if(!validate::isNotNullOrEmpty_String(trim($inNewEmail))){
+            $myArray['Reason'] = "Invalid input";
+            $errorMessage = $myArray['Reason']." for Email address. Was null or empty.";
+            util_errorlogging::LogBrowserError(3, $errorMessage, __METHOD__, __FILE__);
+            return $myArray;
+        }
+
+        $myEmail = trim($inNewEmail);
+        if(validate::tryParseInt($inAccountUserId) && validate::emailAddress($myEmail)){
+            //lookup email first
+            if(!account::verifyAccountUserExistsByLoginName($myEmail)){
+                //check if user exists now
+                if(account::verifyAccountUserExistsById($inAccountUserId)){
+                    $result = account::updateContactEmail($inAccountUserId, $myEmail, __METHOD__);
+                    $myArray['Reason'] = $result === true ? "" : "Error updating entry";
+                    $myArray['Result'] = $result === true ? 1 : 0;
+                    //update session
+                    if($result && isset($_SESSION['Account'])){
+                        $_SESSION['Account']->ContactEmail = $myEmail;
+                    }
+                }
+                else{
+                    $myArray['Reason'] = "User not found";
+                }
+            }
+            else{
+                $myArray['Reason'] = "Email already in use.";
+            }
+        }
+        else{
+            $myArray['Reason'] = "User or new email was invalid.";
+        }
+
+        return $myArray;
+    }
+
 
     public static function updateLoginPassword($inAccountUserId, $inNewMD5Password, $inCaller){
 
