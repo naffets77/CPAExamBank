@@ -271,18 +271,25 @@ $.COR.account.setupEvents = function () {
                         var token = response['id'];
 
                         // Create Customer
-                        $.COR.services.changeCreditCard({token:token}, function () {
+                        $.COR.services.changeCreditCard({token:token}, function (data) {
 
-                            // Refresh Login
-                            $.COR.checkLogin(function (data) {
+                            if (data.Result == 0) {
+                                $("#update-subscription-holder .processing").hide();
+                                $("#update-subscription-holder .error").fadeIn();
+                            }
+                            else {
 
-                                self.setUserData(data);
+                                // Refresh Login
+                                $.COR.checkLogin(function (data) {
 
-                                // Use Token to load stuff
-                                $("#update-subscription-holder .credit-card-info").hide();
-                                $("#update-subscription-holder .credit-card-updated").fadeIn();
+                                    self.setUserData(data);
 
-                            });
+                                    // Use Token to load stuff
+                                    $("#update-subscription-holder .credit-card-info").hide();
+                                    $("#update-subscription-holder .credit-card-updated").fadeIn();
+
+                                });
+                            }
 
                         });
 
