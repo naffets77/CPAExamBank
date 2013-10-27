@@ -288,7 +288,7 @@ $.COR.account.setupEvents = function () {
                         // token contains id, last4, and card type
                         var token = response['id'];
 
-                        // Create Customer
+                        // Update Credit Card
                         $.COR.services.changeCreditCard({token:token}, function (data) {
 
                             if (data.Result == 0) {
@@ -396,9 +396,8 @@ $.COR.account.setupEvents = function () {
                             // token contains id, last4, and card type
                             var token = response['id'];
 
-                            // Create Customer
-                            $.COR.services.createSubscription(token, function () {
 
+                            var successFunction = function () {
                                 // Refresh Login
                                 $.COR.checkLogin(function (data) {
 
@@ -422,7 +421,21 @@ $.COR.account.setupEvents = function () {
 
                                 });
 
-                            });
+                            }
+
+                            if (self.licenses.StripeCustomerId == "") {
+
+                                // Create Customer
+                                $.COR.services.createSubscription(token, function () {
+                                    successFunction();
+                                });
+                            }
+                            else {
+                                // Customer is already created, just need to update credit card
+                                $.COR.services.changeCreditCard({token:token}, function (data) {
+                                    successFunction();
+                                });
+                            }
 
                         }
 
