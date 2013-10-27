@@ -214,6 +214,7 @@ $.COR.account.setupEvents = function () {
     });
 
     $("#account-change-credit-card").on("click", function () {
+
         $.COR.Utilities.FullScreenOverlay.loadExternal("/HTMLPartials/Account/ChangeCreditCard.html", "medium", false, function () {
 
             $("#update-subscription-holder .credit-card-info").show();
@@ -222,7 +223,12 @@ $.COR.account.setupEvents = function () {
             $(".remove-credit-card-info").on('click', function () {
 
                 $("#update-subscription-holder .credit-card-info").hide();
-                $("#update-subscription-holder .credit-card-removed").fadeIn();
+                $("#update-subscription-holder .processing").fadeIn();
+
+                $.COR.services.resetPassword({}, function(){
+                    $("#update-subscription-holder .credit-card-info").hide();
+                    $("#update-subscription-holder .credit-card-removed").fadeIn();
+                });
 
 
             });
@@ -230,9 +236,45 @@ $.COR.account.setupEvents = function () {
             $(".update-credit-info").on('click', function () {
 
                 $("#update-subscription-holder .credit-card-info").hide();
-                $("#update-subscription-holder .credit-card-updated").fadeIn();
+                $("#update-subscription-holder .processing").fadeIn();
 
+                Stripe.setPublishableKey(self.stripePublicKey);
 
+                Stripe.card.createToken({
+                    number: $('#card-number').val(),
+                    cvc: $('#card-cvc').val(),
+                    exp_month: $('#card-expiry-month').val(),
+                    exp_year: $('#card-expiry-year').val()
+                }, function (status, response) {
+
+                    if (response.error) {
+
+                        // show the errors on the form
+                        $(".payment-errors").text(response.error.message);
+                    } else {
+
+                        // token contains id, last4, and card type
+                        var token = response['id'];
+
+                        // Create Customer
+                        $.COR.services.changeCreditCard({token:token}, function () {
+
+                            // Refresh Login
+                            $.COR.checkLogin(function (data) {
+
+                                self.setUserData(data);
+
+                                // Use Token to load stuff
+                                $("#update-subscription-holder .credit-card-info").hide();
+                                $("#update-subscription-holder .credit-card-updated").fadeIn();
+
+                            });
+
+                        });
+
+                    }
+
+                });
             });
 
 
@@ -342,11 +384,6 @@ $.COR.account.setupEvents = function () {
                         }
 
                     });
-
-                    // Start Stripe
-                    setTimeout(function () {
-
-                    }, 1500);
 
                 });
             }
