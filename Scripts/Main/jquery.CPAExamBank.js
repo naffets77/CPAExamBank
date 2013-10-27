@@ -90,7 +90,9 @@ $(document).ready(function () {
 
                     $(this).html("One Sec...");
 
-                    $.COR.services.register(email, password, sections, function (response) {
+                    var refSource = $.COR.Utilities.getURLParameter("source") ? $.COR.Utilities.getURLParameter("source") : "none";
+
+                    $.COR.services.register(email, password, sections, refSource, function (response) {
                         if (response.Result == "0") {
                             $("#full-screen-container .registration-email").parent().append("<span class='error-message'>" + response.Reason + "</span>");
                             $("#registration-finish-button").removeClass("disabled").html(originalHTML);
