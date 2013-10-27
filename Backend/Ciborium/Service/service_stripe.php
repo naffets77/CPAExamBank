@@ -216,5 +216,63 @@ class service_stripe{
 
     }
 
+    static function updateNewCreditCard(){
+
+        $myArray = array(
+            "Reason" => "",
+            "Result" => 0
+        );
+
+        if(ciboriumlib_account::checkValidLogin(self::$service, __FUNCTION__)){
+
+            $hash = validate::requirePostField('Hash', self::$service, __FUNCTION__);
+            $hashCheckReturn = validate::requireValidHash(self::$service, __FUNCTION__);
+            $stripeToken = validate::requirePostField('stripeToken', self::$service, __FUNCTION__);
+
+            $checkValueArray = array(
+                "hashCheckResult" => (bool)$hashCheckReturn['Result'],
+                "stripeToken" => $stripeToken
+            );
+
+            if(in_array(null, $checkValueArray) || !$checkValueArray['hashCheckResult']){
+                $inCheckValueArray = util_general::stringValuesInAssociativeArray($checkValueArray);
+                $inMessage = "Missing one or more POST variables in ".self::$service."::".__FUNCTION__." . ";
+                $inMessageAppend = array();
+                foreach($inCheckValueArray as $key => $value){
+
+                    array_push($inMessageAppend, $key."==".$value);
+                }
+                $inMessage .= $inMessageAppend;
+                util_errorlogging::LogBrowserError(3, $inMessage, __METHOD__, __FILE__);
+
+                $myArray['Reason'] = "Missing required variable(s)";
+                return $myArray;
+            }
+
+            $removeCardResponse = ciborium_stripe::removeCreditCard($_SESSION['Licenses']->LicenseId, $_SESSION['Licenses']->StripeCustomerId, $_SESSION['Licenses']->StripeCreditCardId, __METHOD__);
+
+            if($removeCardResponse['Result']){
+                $addCardResponse = ciborium_stripe::addCreditCard($_SESSION['Licenses']->LicenseId, $_SESSION['Licenses']->StripeCustomerId, $stripeToken, __METHOD__);
+
+                if($addCardResponse['Result']){
+                    return $addCardResponse;
+                }
+                else{
+                    $myArray['Reason'] = "Error updating credit card";
+                    return $myArray;
+                }
+            }
+            else{
+                $myArray['Reason'] = "Error updating credit card";
+                return $myArray;
+            }
+
+        }
+        else{
+            $myArray['Reason'] = "User was no longer logged in";
+            return $myArray;
+        }
+    }
+
 }
 ?>

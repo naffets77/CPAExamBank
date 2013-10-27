@@ -609,7 +609,8 @@ class stripe_charger{
                     $returnArray['Customer'] = Stripe_Customer::retrieve($inStripeCustomerID);
                 }
                 else{
-                    $returnArray['Reason'] = "Stripe credit card not found.";
+                    $returnArray['Reason'] = "Stripe credit card not found. May have been removed already.";
+                    $returnArray['Result'] = 1;
                 }
             }
             else{

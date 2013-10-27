@@ -293,6 +293,11 @@ class ciborium_stripe{
 
             if($updateResult){
                 $myArray['Result'] = 1;
+                $ValuesArray = array(
+                    'SystemNotes' => $removeCardResponse['Reason'],
+                    'UserNotes' => "-None Entered-"
+                );
+                account::insertIntoLicenseTransactionHistory($inLicenseId, enum_LicenseTransactionType::Changed, $ValuesArray, $inCaller);
             }
             else{
                 $myArray['Reason'] .= " However, credit card data was not removed from system.";
@@ -350,7 +355,6 @@ class ciborium_stripe{
             util_errorlogging::LogBrowserError(3, $errorMessage, __METHOD__, __FILE__);
             return $myArray;
         }
-
         if(!account::verifyLicenseExistsById($inLicenseId)){
             $myArray['Reason'] = "License does not exist for user.";
             $errorMessage = $myArray['Reason']." LicenseID was ".(string)$inLicenseId.".";
@@ -358,33 +362,44 @@ class ciborium_stripe{
             return $myArray;
         }
 
-        $addCreditCardResponse = stripe_charger::addCreditCard($inStripeCustomerId, $inStripeCCToken);
+        $myLicense = account::getLicenseById($inLicenseId);
+        if(!validate::isNotNullOrEmpty_String($myLicense[0]->StripeCreditCardId)){
+            $addCreditCardResponse = stripe_charger::addCreditCard($inStripeCustomerId, $inStripeCCToken);
 
-        if($addCreditCardResponse['Result']){
-            $myArray['Reason'] = $addCreditCardResponse['Reason'];
-            //$customerArray = stripe_charger::getCustomerArrayFromStripeCustomerObject($addCreditCardResponse['Customer']);
-            $cardArray = stripe_charger::getCardArrayFromStripeCustomerObject($addCreditCardResponse['Customer']);
+            if($addCreditCardResponse['Result']){
+                $myArray['Reason'] = $addCreditCardResponse['Reason'];
+                //$customerArray = stripe_charger::getCustomerArrayFromStripeCustomerObject($addCreditCardResponse['Customer']);
+                $cardArray = stripe_charger::getCardArrayFromStripeCustomerObject($addCreditCardResponse['Customer']);
 
-            $updateResult = account::updateLicenseForCreditCardAddition($inLicenseId, $cardArray['id'], $cardArray['type'], $cardArray['last4'], util_datetime::getDateStringToDateTime($cardArray['exp_month']."/1/".$cardArray['exp_year']), $inCaller);
+                $updateResult = account::updateLicenseForCreditCardAddition($inLicenseId, $cardArray['id'], $cardArray['type'], $cardArray['last4'], util_datetime::getDateStringToDateTime($cardArray['exp_month']."/1/".$cardArray['exp_year']), $inCaller);
 
-            if($updateResult){
-                $myArray['Result'] = 1;
+                if($updateResult){
+                    $myArray['Result'] = 1;
+                    $ValuesArray = array(
+                        'SystemNotes' => "Credit card added.",
+                        'UserNotes' => "-None Entered-"
+                    );
+                    account::insertIntoLicenseTransactionHistory($inLicenseId, enum_LicenseTransactionType::Changed, $ValuesArray, $inCaller);
+                }
+                else{
+                    $myArray['Reason'] .= " However, credit card data was not added to our system for LicenseId ".(string)$inLicenseId.". StripeCardID was ".$cardArray['id'];
+                    $errorMessage = $myArray['Reason']." . Called by ".$inCaller;
+                    util_errorlogging::LogGeneralError(3, $errorMessage, __METHOD__, __FILE__);
+                }
             }
             else{
-                $myArray['Reason'] .= " However, credit card data was not added to our system for LicenseId ".(string)$inLicenseId.". StripeCardID was ".$cardArray['id'];
-                $errorMessage = $myArray['Reason']." . Called by ".$inCaller;
+                $myArray['Reason'] = "Error adding credit card.";
+                if($addCreditCardResponse['StripeException'] != null){
+                    $errorMessage = "Error adding credit card. Stripe threw an exception. Message: ".$addCreditCardResponse['Reason']." . Called by ".$inCaller;
+                }
+                else{
+                    $errorMessage = "Error adding credit card. The removal was not completed. Message: ".$addCreditCardResponse['Reason']." . Called by ".$inCaller;
+                }
                 util_errorlogging::LogGeneralError(3, $errorMessage, __METHOD__, __FILE__);
             }
         }
         else{
-            $myArray['Reason'] = "Error removing credit card.";
-            if($addCreditCardResponse['StripeException'] != null){
-                $errorMessage = "Error adding credit card. Stripe threw an exception. Message: ".$addCreditCardResponse['Reason']." . Called by ".$inCaller;
-            }
-            else{
-                $errorMessage = "Error adding credit card. The removal was not completed. Message: ".$addCreditCardResponse['Reason']." . Called by ".$inCaller;
-            }
-            util_errorlogging::LogGeneralError(3, $errorMessage, __METHOD__, __FILE__);
+            $myArray['Reason'] = "There is a credit card on file already.";
         }
 
         return $myArray;

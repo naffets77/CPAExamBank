@@ -196,11 +196,13 @@ class service_account{
         $email = validate::requirePostField('email', self::$service, __FUNCTION__);
         $password = validate::requirePostField('password', self::$service, __FUNCTION__);
         $sections= validate::requirePostField('sections', self::$service, __FUNCTION__);
+        $referralSource = validate::requirePostField('referralSource', self::$service, __FUNCTION__);
 
         $checkValueArray = array(
             "email" => $email,
             "password" => $password,
-            'sections' => $sections
+            'sections' => $sections,
+            'referralSource' => $referralSource
         );
 
         if(in_array(null, $checkValueArray))
@@ -220,7 +222,7 @@ class service_account{
         $myJSONObject = json_decode($sections, true);
         if(json_last_error() == JSON_ERROR_NONE){
             $sectionsArray = $myJSONObject[0];
-            $myResultArray = ciboriumlib_account::registerNewUser($email, $password, $sectionsArray);
+            $myResultArray = ciboriumlib_account::registerNewUser($email, $password, $sectionsArray, $referralSource, __METHOD__);
             return $myResultArray;
         }
         else{

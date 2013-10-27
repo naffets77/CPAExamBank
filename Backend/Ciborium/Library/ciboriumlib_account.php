@@ -233,20 +233,49 @@ class ciboriumlib_account{
     /**
      * @param $inEmail
      * @param $inMD5Password
+     * @param $inSectionsArray
+     * @param $inReferralSource
+     * @param $inCaller
      * @return array
      */
-    public static function registerNewUser($inEmail, $inMD5Password, $inSectionsArray){
+    public static function registerNewUser($inEmail, $inMD5Password, $inSectionsArray, $inReferralSource, $inCaller){
         $returnArray = array(
             'Result' => 0,
             'Reason' => "",
             'Login' => ""
         );
 
+        //Verify inputs
+        if(!validate::isNotNullOrEmpty_String($inEmail)){
+            $myArray['Reason'] = "Invalid input";
+            $errorMessage = $myArray['Reason']." for Email address. Was null or empty.";
+            util_errorlogging::LogBrowserError(3, $errorMessage, __METHOD__, __FILE__);
+            return $myArray;
+        }
+        if(!validate::isNotNullOrEmpty_String(trim($inMD5Password))){
+            $myArray['Reason'] = "Invalid input";
+            $errorMessage = $myArray['Reason']." for password. Was null or empty";
+            util_errorlogging::LogBrowserError(3, $errorMessage, __METHOD__, __FILE__);
+            return $myArray;
+        }
+        if(!validate::isNotNullOrEmpty_Array($inSectionsArray)){
+            $myArray['Reason'] = "Invalid input";
+            $errorMessage = $myArray['Reason']." for Sections array. Was null or empty.";
+            util_errorlogging::LogBrowserError(3, $errorMessage, __METHOD__, __FILE__);
+            return $myArray;
+        }
+        if(!validate::isNotNullOrEmpty_String($inReferralSource)){
+            $myArray['Reason'] = "Invalid input";
+            $errorMessage = $myArray['Reason']." for referral source. Was null or empty.";
+            util_errorlogging::LogBrowserError(3, $errorMessage, __METHOD__, __FILE__);
+            return $myArray;
+        }
+
         //logout to clear any errant session
         ciboriumlib_account::logout();
         $myEmail = trim($inEmail);
         $myPassword = trim($inMD5Password);
-        if(validate::isNotNullOrEmpty_String($myEmail) && validate::emailAddress($myEmail) && validate::isNotNullOrEmpty_String($myPassword)){
+        if(validate::emailAddress($myEmail) && validate::isValidMd5($inMD5Password)){
             //lookup email first
             if(!account::verifyAccountUserExistsByLoginName($myEmail)){
                 //check if sections array is valid
@@ -257,7 +286,7 @@ class ciboriumlib_account{
                     $IsInterestedInBEC = $inSectionsArray['BEC'] == "1" ? true : false;
                     $IsInterestedInREG = $inSectionsArray['REG'] == "1" ? true : false;
 
-                    $AccountUserId = account::insertIntoAccountUser($myEmail, $myPassword, __METHOD__);
+                    $AccountUserId = account::insertIntoAccountUser($myEmail, $myPassword, $inReferralSource, $inCaller);
                     if($AccountUserId > 0){
                         $ValuesArray = array(
                             'FAR' => $IsInterestedInFAR,
@@ -266,21 +295,21 @@ class ciboriumlib_account{
                             'REG' => $IsInterestedInREG
                         );
 
-                        $AccountUserSettingsId = account::insertIntoAccountUserSettings($AccountUserId, $ValuesArray, __METHOD__);
+                        $AccountUserSettingsId = account::insertIntoAccountUserSettings($AccountUserId, $ValuesArray, $inCaller);
                         if($AccountUserSettingsId > 0){
 
-                            $AccountUserLicenseId = account::insertIntoLicenseDefault($AccountUserId, __METHOD__);
+                            $AccountUserLicenseId = account::insertIntoLicenseDefault($AccountUserId, $inCaller);
                             if($AccountUserLicenseId > 0){
                                 $ValuesArray = array(
-                                    'SystemNotes' => "Auto Created when user was registered by ".__METHOD__."()",
+                                    'SystemNotes' => "Auto Created when user was registered by ".$inCaller."()",
                                     'UserNotes' => "-None Entered-"
                                 );
-                                $AccountUserLicenseTransactionHistoryId = account::insertIntoLicenseTransactionHistory($AccountUserLicenseId, 1, $ValuesArray, __METHOD__);
+                                $AccountUserLicenseTransactionHistoryId = account::insertIntoLicenseTransactionHistory($AccountUserLicenseId, enum_LicenseTransactionType::Assigned, $ValuesArray, $inCaller);
                                 if($AccountUserLicenseTransactionHistoryId > 0){
                                     $returnArray['Result'] = 1;
                                     $returnArray['Login'] = $myEmail;
                                     //email new user registration email
-                                    ciborium_email::sendEmail_NewUserRegistered($AccountUserId, __METHOD__, true);
+                                    ciborium_email::sendEmail_NewUserRegistered($AccountUserId, $inCaller, true);
 
                                     return account::login($myEmail, $myPassword, true);
                                 }

@@ -145,10 +145,11 @@ class account
     /**
      * @param $inEmail
      * @param $inPassword
+     * @param $inReferralSource
      * @param $inLastModifiedBy
      * @return int|string
      */
-    public static function insertIntoAccountUser($inEmail, $inPassword, $inLastModifiedBy){
+    public static function insertIntoAccountUser($inEmail, $inPassword, $inReferralSource, $inLastModifiedBy){
 
         $myEmail = trim($inEmail);
         $myPassword = trim($inPassword);
@@ -168,6 +169,7 @@ class account
             'LoginName' => ':LoginName',
             'LoginPassword' => ':LoginPassword',
             'ContactEmail' => ':ContactEmail',
+            'ReferralSource' => ':ReferralSource',
             'LastModifiedBy' => ':LastModifiedBy',
             'DateCreated' => ':DateCreated',
             'CreatedBy' => ':CreatedBy'
@@ -176,6 +178,7 @@ class account
             ':LoginName' => $myEmail,
             ':LoginPassword' => $myPassword,
             ':ContactEmail' => $myEmail,
+            ':ReferralSource' => $inReferralSource,
             ':LastModifiedBy' => $inLastModifiedBy,
             ':DateCreated' => util_datetime::getDateTimeNow(),
             ':CreatedBy' => $inLastModifiedBy
@@ -706,6 +709,16 @@ class account
     public static function getAccountUserIdByLicenseId($inLicenseId){
 
         $selectArray = array("AccountUserId");
+        $whereClause = "LicenseId = '".$inLicenseId."'";
+        $orderBy = "";
+        $limit = "";
+        $preparedArray = null;
+
+        return database::select("License", $selectArray, $whereClause, $orderBy, $limit, $preparedArray, __METHOD__);
+    }
+
+    public static function getLicenseById($inLicenseId){
+        $selectArray = null;  //or array("field1", "field2"...)
         $whereClause = "LicenseId = '".$inLicenseId."'";
         $orderBy = "";
         $limit = "";
