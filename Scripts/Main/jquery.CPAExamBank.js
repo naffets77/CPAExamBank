@@ -411,7 +411,7 @@ $.CPAEB.init = function () {
             callback: function () {
                 
                 // Show Home Page If No User
-                if ($.COR.account.user == null) {
+                if ($.COR.account == undefined || $.COR.account.user == null) {
                     $.COR.Utilities.FullScreenOverlay.hide();
                     $.COR.toggleHomeNavigation();
                     $.COR.pageSwap(null, "home");
