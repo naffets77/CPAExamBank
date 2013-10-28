@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Ciborium/Library/ConfigFiles/config_prod.php" afterPath="$PROJECT_DIR$/Backend/Ciborium/Library/ConfigFiles/config_prod.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Ciborium/Library/ConfigFiles/config_qa.php" afterPath="$PROJECT_DIR$/Backend/Ciborium/Library/ConfigFiles/config_qa.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Ciborium/Library/ConfigFiles/config_stage.php" afterPath="$PROJECT_DIR$/Backend/Ciborium/Library/ConfigFiles/config_stage.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Library/ConfigFiles/stripe_config_prod.php" afterPath="$PROJECT_DIR$/Backend/Library/ConfigFiles/stripe_config_prod.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Ciborium/Library/EmailTemplates/PasswordReset.html" afterPath="$PROJECT_DIR$/Backend/Ciborium/Library/EmailTemplates/PasswordReset.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Library/utilities/util_general.php" afterPath="$PROJECT_DIR$/Backend/Library/utilities/util_general.php" />
     </list>
     <ignored path="VaheCPA.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -44,21 +42,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ContactUs_Company.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/EmailTemplates/ContactUs_Company.html">
+      <file leaf-file-name="stripe_config_prod.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Backend/Library/ConfigFiles/stripe_config_prod.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="125" selection-start="494" selection-end="494" vertical-scroll-proportion="-7.1923075">
-              <folding>
-                <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
+            <state line="14" column="53" selection-start="453" selection-end="453" vertical-scroll-proportion="-9.153846">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="stripe_config_prod.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Backend/Library/ConfigFiles/stripe_config_prod.php">
+      <file leaf-file-name="ciborium_email.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_email.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="53" selection-start="453" selection-end="453" vertical-scroll-proportion="0.49583334">
+            <state line="94" column="77" selection-start="5070" selection-end="5070" vertical-scroll-proportion="-12.423077">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="util_general.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Backend/Library/utilities/util_general.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="65" column="44" selection-start="1915" selection-end="1915" vertical-scroll-proportion="0.45109782">
               <folding />
             </state>
           </provider>
@@ -82,60 +87,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ciborium_email.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_email.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="67" column="47" selection-start="3553" selection-end="3553" vertical-scroll-proportion="-8.5">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ciboriumlib_account.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciboriumlib_account.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="425" column="56" selection-start="17223" selection-end="17223" vertical-scroll-proportion="-7.6153846">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="config.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/config.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="4" selection-start="928" selection-end="963" vertical-scroll-proportion="-12.576923">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="config_stage.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ConfigFiles/config_stage.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="39" selection-start="973" selection-end="973" vertical-scroll-proportion="-16.346153">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="config_qa.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ConfigFiles/config_qa.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="39" selection-start="955" selection-end="955" vertical-scroll-proportion="-16.346153">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="config_prod.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ConfigFiles/config_prod.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="40" selection-start="972" selection-end="972" vertical-scroll-proportion="-16.346153">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FindManager">
@@ -154,7 +105,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/Backend/Ciborium/StoredProceduresAndTriggers/StoredProcedures/sp_DELETEAccountUserQuestionHistoryById.sql" />
         <option value="$PROJECT_DIR$/Backend/Library/account.php" />
         <option value="$PROJECT_DIR$/Backend/Ciborium/Service/service_account.php" />
         <option value="$PROJECT_DIR$/Backend/Ciborium/Library/ciboriumlib_account.php" />
@@ -165,11 +115,12 @@
         <option value="$PROJECT_DIR$/Backend/Ciborium/Library/EmailTemplates/_Test-HTMLEmail.html" />
         <option value="$PROJECT_DIR$/Backend/Ciborium/Library/EmailTemplates/RegistrationCompleted.html" />
         <option value="$PROJECT_DIR$/Backend/Ciborium/Library/EmailTemplates/ContactUs_Company.html" />
-        <option value="$PROJECT_DIR$/Backend/Ciborium/Library/EmailTemplates/PasswordReset.html" />
         <option value="$PROJECT_DIR$/Backend/Ciborium/Library/ConfigFiles/config_stage.php" />
         <option value="$PROJECT_DIR$/Backend/Ciborium/Library/ConfigFiles/config_qa.php" />
         <option value="$PROJECT_DIR$/Backend/Ciborium/Library/ConfigFiles/config_prod.php" />
         <option value="$PROJECT_DIR$/Backend/Library/ConfigFiles/stripe_config_prod.php" />
+        <option value="$PROJECT_DIR$/Backend/Ciborium/Library/EmailTemplates/PasswordReset.html" />
+        <option value="$PROJECT_DIR$/Backend/Library/utilities/util_general.php" />
       </list>
     </option>
   </component>
@@ -450,6 +401,32 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="EmailTemplates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="VaheCPA" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="VaheCPA" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Backend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Ciborium" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Library" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="ConfigFiles" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -667,13 +644,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Backend/Library/account.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="785" column="56" selection-start="28636" selection-end="28636" vertical-scroll-proportion="-5.9615383">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Service/service_stripe.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="227" column="29" selection-start="9310" selection-end="9310" vertical-scroll-proportion="-147.76923">
@@ -695,51 +665,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/EmailTemplates/RegistrationCompleted.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="100" selection-start="2243" selection-end="2267" vertical-scroll-proportion="-12.576923">
-          <folding>
-            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/EmailTemplates/PasswordReset.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="124" selection-start="1900" selection-end="1900" vertical-scroll-proportion="-8.653846">
-          <folding>
-            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/EmailTemplates/ContactUs_Company.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="125" selection-start="494" selection-end="494" vertical-scroll-proportion="-7.1923075">
           <folding>
             <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_email.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="47" selection-start="3553" selection-end="3553" vertical-scroll-proportion="-8.5">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciboriumlib_account.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="425" column="56" selection-start="17223" selection-end="17223" vertical-scroll-proportion="-7.6153846">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="4" selection-start="928" selection-end="963" vertical-scroll-proportion="-12.576923">
-          <folding />
         </state>
       </provider>
     </entry>
@@ -771,6 +702,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="4" selection-start="928" selection-end="963" vertical-scroll-proportion="0.68125">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciboriumlib_account.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="425" column="56" selection-start="17223" selection-end="17223" vertical-scroll-proportion="0.42398286">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Backend/Library/ConfigFiles/stripe_config_qa.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="33" selection-start="185" selection-end="217" vertical-scroll-proportion="-3.9230769">
@@ -778,9 +723,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/EmailTemplates/PasswordReset.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="30" selection-start="1456" selection-end="1456" vertical-scroll-proportion="0.34583333">
+          <folding>
+            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Backend/Library/ConfigFiles/stripe_config_prod.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="53" selection-start="453" selection-end="453" vertical-scroll-proportion="0.49583334">
+        <state line="14" column="53" selection-start="453" selection-end="453" vertical-scroll-proportion="-9.153846">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/EmailTemplates/RegistrationCompleted.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="48" column="100" selection-start="2243" selection-end="2267" vertical-scroll-proportion="-7.6923075">
+          <folding>
+            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_email.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="94" column="77" selection-start="5070" selection-end="5070" vertical-scroll-proportion="-12.423077">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Library/utilities/util_general.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="65" column="44" selection-start="1915" selection-end="1915" vertical-scroll-proportion="0.45109782">
           <folding />
         </state>
       </provider>

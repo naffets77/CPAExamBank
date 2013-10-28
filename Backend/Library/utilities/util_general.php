@@ -63,7 +63,7 @@ class util_general{
     public static function getBaseURL(){
         $env = library_configuration::$environment;
         if($env == "prod"){
-            return "http://www.cpaexambank.com";
+            return "http://cpaexambank.com";
         }
         else{
             return "http://".$env.".cpaexambank.com";
