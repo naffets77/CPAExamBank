@@ -1232,7 +1232,7 @@ $.COR.account.setStudyQuestionData = function (question) {
 
     var self = this;
 
-    if (question.selectedAnswer == -1) {
+    if (question.selectedAnswer == -1 && self.simulator.options.mode != 'study') {
         question.selectedAnswer = 0;
     }
 
