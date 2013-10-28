@@ -128,7 +128,7 @@ class service_question{
             }
 
 
-            if($myLicenseToSectionTypeResult || (int)$_SESSION['Licenses']->SubscriptionTypeId == enum_SubscriptionType::Free){
+            if($myLicenseToSectionTypeResult || (int)$_SESSION['Licenses']->SubscriptionTypeId == enum_SubscriptionType::Free || (int)$QuestionAmount == enum_PracticeNumberOfQuestions::FreeLimit){
 
                 //If Free license, limit number of return questions automatically
                $QuestionAmount = (int)$_SESSION['Licenses']->SubscriptionTypeId == enum_SubscriptionType::Free ? enum_PracticeNumberOfQuestions::FreeLimit : $QuestionAmount;
