@@ -1299,10 +1299,18 @@ $.COR.account.setStudyQuestionData = function (question) {
 
     // Check if Study Mode and Question Answered - Disable Question
 
-    if ((question.selectedAnswer != 0 && self.simulator.options.mode == 'study') || self.simulator.completed == true) {
+    if ((question.selectedAnswer != 0  && self.simulator.options.mode == 'study') || self.simulator.completed == true) {
+
+        var SelectedAnswerIndex;
+        for (var i = 0; i < question.Answers.length; i++) {
+            if (question.selectedAnswer = question.Answers[i].QuestionToAnswersId) {
+                SelectedAnswerIndex = i;
+            }
+        }
+
 
         // Set Checked Index
-        $($($('#full-screen-container .answer-options table tr')[question.selectedAnswer]).find('input')).attr('checked', 'checked');
+        $($($('#full-screen-container .answer-options table tr')[SelectedAnswerIndex]).find('input')).attr('checked', 'checked');
 
         // Set Questions Disabled
         $("#full-screen-container .answer-options table input").attr('disabled', 'disabled');
