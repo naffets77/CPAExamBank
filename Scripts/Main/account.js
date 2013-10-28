@@ -676,11 +676,14 @@ $.COR.account.setUserData = function (data) {
 
             $(tr).find('.date').html($.COR.Utilities.formatDate(date));
 
-            if (new Date(data.Subscriptions[subscription].ExpirationDate.split(" ")[0]) > new Date()) {
-                $("#account_subscription_check-" + subname).prop('checked', false);
+            var NotExpired = new Date(data.Subscriptions[subscription].ExpirationDate.split(" ")[0]) > new Date();
+
+            if (data.Subscriptions[subscription].CancellationDate == null && NotExpired && data.Licenses.StripeCreditCardId != "") {
+
+                $("#account_subscription_check-" + subname).prop('checked', true);
                 $("#practice-category_" + subname).parents('tr').removeClass("trial");
-                $(tr).find('.status').html("Expires On");
-                
+
+                $(tr).find('.status').html("Active");
 
                 if (subname == "aud") {
                     AUDEnabled = true;
@@ -688,18 +691,12 @@ $.COR.account.setUserData = function (data) {
 
             }
 
-            else if (data.Subscriptions[subscription].CancellationDate == null) {
-
-                $("#account_subscription_check-" + subname).prop('checked', true);
+            // It hasn't expired but it's not active
+            else if (NotExpired) {
+                $("#account_subscription_check-" + subname).prop('checked', false);
                 $("#practice-category_" + subname).parents('tr').removeClass("trial");
-
-                // They may have removed their credit card, if that's the case it's 'Expires On'
-                if (data.Licenses.StripeCreditCardId != "") {
-                    $(tr).find('.status').html("Active");
-                }
-                else {
-                    $(tr).find('.status').html("Expires On");
-                }
+                $(tr).find('.status').html("Expires On");
+                
 
                 if (subname == "aud") {
                     AUDEnabled = true;
