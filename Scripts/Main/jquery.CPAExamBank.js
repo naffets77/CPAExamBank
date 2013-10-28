@@ -2,6 +2,17 @@
 window.onfocus = function () { window.blurred = false; };
 
 
+(function ($) {
+
+    // Adding COR ot jQuery
+    $.CPAEB = {
+        events: [],
+        pages: {}
+    };
+
+})(jQuery);
+
+
 var siteOptions = {
 
     loginCallback: function () {
@@ -143,15 +154,7 @@ $(document).ready(function () {
 
 
 
-(function ($) {
 
-    // Adding COR ot jQuery
-    $.CPAEB = {
-        events: [],
-        pages: {}
-    };
-
-})(jQuery);
 
 
 $.CPAEB.init = function () {
