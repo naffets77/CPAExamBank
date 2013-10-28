@@ -215,7 +215,7 @@ class question{
 
     public static function getAllQuestionsByIds($inQuestionIdArray){
         $QuestionIds = validate::isNotNullOrEmpty_Array($inQuestionIdArray) ? implode(", ", $inQuestionIdArray) : "0";
-        $selectArray = array("QuestionId", "DisplayText", "Explanation");
+        $selectArray = array("QuestionId", "DisplayText", "Explanation", "QuestionClientId");
         $whereClause = "QuestionId IN (".$QuestionIds.") ";
         $orderBy = "QuestionId ASC";
         $limit = "";
