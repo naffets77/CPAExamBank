@@ -84,19 +84,21 @@ $.COR.account.setupEvents = function () {
     // Logout
     $("#header-logout-container").on("click", function () {
 
-        // Clear Account User & stop polling and things like that?
-        self.user = null;
+        // Put this all back later
+        //// Clear Account User & stop polling and things like that?
+        //self.user = null;
 
-        // Swap Logout with Login UI
-        $("#header-logout-container").hide();
-        $("#header-login-container").show();
+        //// Swap Logout with Login UI
+        //$("#header-logout-container").hide();
+        //$("#header-login-container").show();
 
-        $("#contact-us-email").val("");
+        //$("#contact-us-email").val("");
 
-        location.hash = "";
+        //location.hash = "";
 
-        // TODO: Shold post a logout here to kill the session
+        //// TODO: Shold post a logout here to kill the session
 
+        window.location = "/";
 
     });
 
