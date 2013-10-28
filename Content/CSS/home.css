@@ -398,7 +398,7 @@
 
 /*** FAQs ***/
 
-#faq-holder {
+.faq-holder {
     margin-left: 20px;
     margin-bottom: 50px;
     float: left;
@@ -406,47 +406,47 @@
     width: 100%;
 }
 
-    #faq-holder .col1 {
+    .faq-holder .col1 {
         float: left;
         width: 250px;
         margin-top: 10px;
         margin-right: 40px;
     }
 
-        #faq-holder .col1 h2 {
+        .faq-holder .col1 h2 {
             font-size: 15px;
             font-weight: bold;
             margin: 0px;
             margin-bottom: 5px;
         }
 
-        #faq-holder .col1 ul li.section {
+        .faq-holder .col1 ul li.section {
             margin-bottom: 20px;
         }
 
-            #faq-holder .col1 ul li.section ul {
+            .faq-holder .col1 ul li.section ul {
                 padding-top: 10px;
             }
 
-                #faq-holder .col1 ul li.section ul li {
+                .faq-holder .col1 ul li.section ul li {
                     margin-bottom: 10px;
                     margin-left: 5px;
                     padding-left: 4px;
                     border-left: 2px solid #fff;
                 }
 
-                    #faq-holder .col1 ul li.section ul li:hover {
+                    .faq-holder .col1 ul li.section ul li:hover {
                         /*border-left: 2px solid #009999;*/
                         border-left: 2px solid #8D0000;
                         padding-left: 4px;
                     }
 
-                    #faq-holder .col1 ul li.section ul li a {
+                    .faq-holder .col1 ul li.section ul li a {
                         color: #333;
                         text-decoration: none;
                     }
 
-                        #faq-holder .col1 ul li.section ul li a.active {
+                        .faq-holder .col1 ul li.section ul li a.active {
                             /*text-shadow: 0px 1px 0px #000;*/
                             color: #8D0000;
                             font-weight: bold;
@@ -455,18 +455,18 @@
 
 
 
-    #faq-holder .col2 {
+    .faq-holder .col2 {
         float: left;
         width: 655px;
         margin-top: -15px;
     }
 
-        #faq-holder .col2 .faqs-content {
+        .faq-holder .col2 .faqs-content, .faq-holder .col2 .accountfaqs-content {
             font-size: 16px;
             line-height: 22px;
         }
 
-        #faq-holder .col2 h2 {
+        .faq-holder .col2 h2 {
             font-size: 25px;
             padding-left: 0px;
             margin-left: 0px;
@@ -478,20 +478,20 @@
             -webkit-border-radius: 3px 3px 3px 3px;
         }
 
-        #faq-holder .col2 p {
+        .faq-holder .col2 p {
             margin: 20px 20px 20px 0;
         }
 
-        #faq-holder .col2 ul {
+        .faq-holder .col2 ul {
             list-style-type: disc;
             margin: 0px 0px 25px 40px;
         }
 
-            #faq-holder .col2 ul li {
+            .faq-holder .col2 ul li {
                 margin-bottom: 10px;
             }
 
-        #faq-holder .col2 table tr td:first-child {
+        .faq-holder .col2 table tr td:first-child {
             padding-right: 10px;
         }
 

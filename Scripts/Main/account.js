@@ -1399,7 +1399,7 @@ $.COR.account.completeTest = function () {
                 });
 
 
-                if (question.selectedAnswer != null) {
+                if (question.selectedAnswer != -1) {
 
                     // make all the wrong answers red in the navigation
                     if (answeredCorrectly == 0) {

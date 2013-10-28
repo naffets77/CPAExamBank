@@ -32,7 +32,7 @@ $.CPAEB.init = function () {
     var self = this;
 
     var singlePages = ["product-pricing", "about", "contact"];
-    var accountPages = ["study", "my-review", "my-info","faqs","contact"];
+    var accountPages = ["study", "my-review", "my-info","accountfaqs","contact"];
     var singlePopups = ["privacy-policy", "terms-of-service","reset-password", "set-password"];
 
     var pageHashCallback = function (hash) {
@@ -221,10 +221,13 @@ $.CPAEB.init = function () {
         if (element.length > 0) {
 
             //Auto Header Nav - Page Nav
-            if (!$("#header-navigation_" + parts[0]).hasClass('current')) {
-                $("#header-navigation li").removeClass('current');
-                $("#header-navigation_" + parts[0]).addClass('current');
-            }
+            //if (!$("#header-navigation_" + parts[0]).hasClass('current')) {
+            //    $("#header-navigation li").removeClass('current');
+            //    $("#header-navigation_" + parts[0]).addClass('current');
+            //}
+
+            $("#header-navigation li").removeClass('current');
+            $("#header-navigation_" + parts[0]).addClass('current');
 
 
             $(element).parent().children().addClass("hidden");
@@ -249,7 +252,7 @@ $.CPAEB.init = function () {
         var result = false;
         var loc = hash[0] + "/" + hash[1];
 
-        if (hash.length == 2 && $.inArray(hash[1], accountPages) != -1) {
+        if (hash.length >= 2 && $.inArray(hash[1], accountPages) != -1) {
 
 
             if ($.COR.account.user != null) {
@@ -284,7 +287,23 @@ $.CPAEB.init = function () {
                 }
                 else if (hash.length == 3) {
                     // It's a subpage!
-                    $.COR.log.log("show: " + parts[0] + " @ " + parts[1]);
+                    $.COR.log("show: " + hash[0] + " @ " + hash[1] + " @ " + hash[2]);
+
+                    var loc = hash[0] + "/" + hash[1] + "/" + hash[2];
+
+                    // Make sure header is visible
+                    if (!$("#header-navigation-account_" + hash[1]).hasClass('current')) {
+                        $("#header-navigation-account li").removeClass('current');
+                        $("#header-navigation-account_" + hash[1]).addClass('current');
+                    }
+
+                    // hide anything sub pages that might be open
+                    $("." + hash[1] + "-content").addClass('hidden');
+
+                    // Show the default
+
+                    $("#" + hash[1] + "_" + hash[2]).removeClass('hidden');
+
 
                     /*
                         Subpages work by using the #part1/part2 to build the content id that is shown : id='part1_part2'
@@ -294,11 +313,13 @@ $.CPAEB.init = function () {
                         Should work ... and scale to even deeper levels if needed!
                     */
 
-                    var element = $("#" + hash[0] + "_" + hash[1]);
-                    $(element).parent().children().addClass("hidden");
-                    $(element).removeClass("hidden");
+                    //var element = $("#" + hash[0] + "_" + hash[1]);
+                    //$(element).parent().children().addClass("hidden");
+                    //$(element).removeClass("hidden");
 
-                    $.COR.pageSwap($.COR.getCurrentDisplayedId(), 'js-content-wrapper-' + hash[0]);
+                    $.COR.pageSwap($.COR.getCurrentDisplayedId(), 'js-content-wrapper-' + hash[1]);
+
+                    $(".nav a").removeClass('active');
 
                     $(".nav a[href='#" + loc + "']").addClass('active');
 
