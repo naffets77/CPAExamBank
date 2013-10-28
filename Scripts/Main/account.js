@@ -901,12 +901,6 @@ $.COR.account.startStudy = function () {
     this.simulator.options.mode = $("[name=practice-mode]:checked").val();
     this.simulator.options.strategy = $("[name=practice-strategy]:checked").val();
 
-
-
-    $("#full-screen-container .question-meta-data").show();
-
-
-
     $.COR.TPrep.showFullScreenOverlay(
         $("#js-overlay-content-loading-questions").html(),
         $("#js-overlay-content-loading-questions").attr("contentSize"),
@@ -1320,6 +1314,12 @@ $.COR.account.setStudyQuestionData = function (question) {
 
         // Show Explanation
         $("#full-screen-container .answer-explanation").show();
+    }
+
+    if ($.COR.account.user.IsAdmin == "1") {
+        $("#full-screen-container .question-meta-data").show();
+        $("#study-question-meta-question-id").html(question.QuestionId);
+        $("#study-question-meta-client-id").html(question.QuestionClientId);
     }
 
 }
