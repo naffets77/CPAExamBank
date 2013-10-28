@@ -108,6 +108,23 @@ $.COR.services.changeCreditCard = function (options, successCallback) {
     }
 }
 
+$.COR.services.addCreditCard = function (options, successCallback) {
+    if ($.COR.account.offline == false) {
+
+        var ph = new $.COR.Utilities.PostHandler({
+            service: "stripe", call: "addCreditCard",
+            params: {
+                stripeToken: options.token
+            },
+            success: function (data) {
+                successCallback(data);
+            }
+        });
+
+        ph.submitPost();
+    }
+}
+
 
 // Account Services
 

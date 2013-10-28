@@ -251,7 +251,7 @@ $.COR.Utilities.FullScreenOverlay = {
 
             $("#full-screen-container .content").html(cachedContent.html);
             
-            $("#full-screen-container").removeClass().addClass(cachedContent.sizeClass + " content");
+            $("#full-screen-container").attr("class","").addClass(cachedContent.sizeClass + " content");
 
             if (typeof cachedContent.events == 'function') {
                 cachedContent.events();
@@ -348,7 +348,7 @@ $.COR.Utilities.showFullScreenOverlay = function (content, contentClassSize, eve
         $("#full-screen-container .content").fadeOut(function () {
             $(this).html("");
 
-            $("#full-screen-container .content").html(content).removeClass().addClass(contentClassSize + " content").fadeIn();
+            $("#full-screen-container .content").html(content).attr("class","").addClass(contentClassSize + " content").fadeIn();
 
             if (typeof events == 'function') {
                 events();
@@ -362,7 +362,7 @@ $.COR.Utilities.showFullScreenOverlay = function (content, contentClassSize, eve
     else {
         $("#full-screen-container .content").html(content);
 
-        $("#full-screen-container").removeClass().addClass(contentClassSize);
+        $("#full-screen-container").attr("class", "").addClass(contentClassSize);
 
         $("#full-screen-holder").show();
         $("#full-screen-container").show();

@@ -84,19 +84,21 @@ $.COR.account.setupEvents = function () {
     // Logout
     $("#header-logout-container").on("click", function () {
 
-        // Clear Account User & stop polling and things like that?
-        self.user = null;
+        // Put this all back later
+        //// Clear Account User & stop polling and things like that?
+        //self.user = null;
 
-        // Swap Logout with Login UI
-        $("#header-logout-container").hide();
-        $("#header-login-container").show();
+        //// Swap Logout with Login UI
+        //$("#header-logout-container").hide();
+        //$("#header-login-container").show();
 
-        $("#contact-us-email").val("");
+        //$("#contact-us-email").val("");
 
-        location.hash = "";
+        //location.hash = "";
 
-        // TODO: Shold post a logout here to kill the session
+        //// TODO: Shold post a logout here to kill the session
 
+        window.location = "/";
 
     });
 
@@ -288,7 +290,7 @@ $.COR.account.setupEvents = function () {
                         // token contains id, last4, and card type
                         var token = response['id'];
 
-                        // Create Customer
+                        // Update Credit Card
                         $.COR.services.changeCreditCard({token:token}, function (data) {
 
                             if (data.Result == 0) {
@@ -396,9 +398,8 @@ $.COR.account.setupEvents = function () {
                             // token contains id, last4, and card type
                             var token = response['id'];
 
-                            // Create Customer
-                            $.COR.services.createSubscription(token, function () {
 
+                            var successFunction = function () {
                                 // Refresh Login
                                 $.COR.checkLogin(function (data) {
 
@@ -422,7 +423,21 @@ $.COR.account.setupEvents = function () {
 
                                 });
 
-                            });
+                            }
+
+                            if (self.licenses.StripeCustomerId == "") {
+
+                                // Create Customer
+                                $.COR.services.createSubscription(token, function () {
+                                    successFunction();
+                                });
+                            }
+                            else {
+                                // Customer is already created, just need to update credit card
+                                $.COR.services.addCreditCard({ token: token }, function (data) {
+                                    successFunction();
+                                });
+                            }
 
                         }
 
@@ -1260,7 +1275,7 @@ $.COR.account.setStudyQuestionData = function (question) {
 
     for (var i = 0; i < question.Answers.length; i++) {
 
-        var html = "<tr><td class='result-spacer'></td><td><input type='radio' id='study-question-answer-" + i + "' value='" + i + "' name='study-question-answer' /></td>";
+        var html = "<tr><td class='result-spacer'></td><td><input type='radio' id='study-question-answer-" + i + "' value='" + question.Answers[i].QuestionToAnswersId + "' name='study-question-answer' /></td>";
         html += "<td><label for='study-question-answer-" + i + "'>" + question.Answers[i].DisplayText + "</label></td></tr>";
         $("#full-screen-container .answer-options table").append(html);
     }
@@ -1284,10 +1299,18 @@ $.COR.account.setStudyQuestionData = function (question) {
 
     // Check if Study Mode and Question Answered - Disable Question
 
-    if ((question.selectedAnswer != 0 && self.simulator.options.mode == 'study') || self.simulator.completed == true) {
+    if ((question.selectedAnswer != 0  && self.simulator.options.mode == 'study') || self.simulator.completed == true) {
+
+        var SelectedAnswerIndex;
+        for (var i = 0; i < question.Answers.length; i++) {
+            if (question.selectedAnswer == question.Answers[i].QuestionToAnswersId) {
+                SelectedAnswerIndex = i;
+            }
+        }
+
 
         // Set Checked Index
-        $($($('#full-screen-container .answer-options table tr')[question.selectedAnswer]).find('input')).attr('checked', 'checked');
+        $($($('#full-screen-container .answer-options table tr')[SelectedAnswerIndex]).find('input')).attr('checked', 'checked');
 
         // Set Questions Disabled
         $("#full-screen-container .answer-options table input").attr('disabled', 'disabled');
@@ -1382,8 +1405,8 @@ $.COR.account.completeTest = function () {
                 var selectedAnswer = question.selectedAnswer; //question.selectedAnswer !== undefined ? question.Answers[question.selectedAnswer].QuestionToAnswersId : "0";
                 var answeredCorrectly = 0;
                 if (selectedAnswer !== 0 && selectedAnswer !== -1) {
-                    selectedAnswer = question.Answers[question.selectedAnswer].QuestionToAnswersId;
-                    answeredCorrectly = question.CorrectAnswerIndex == question.selectedAnswer ? 1 : 0;
+
+                    answeredCorrectly = question.Answers[question.CorrectAnswerIndex].QuestionToAnswersId == question.selectedAnswer ? 1 : 0;
                 }
 
                 postQuestions.push({
@@ -1399,7 +1422,7 @@ $.COR.account.completeTest = function () {
                 if (question.selectedAnswer != null) {
 
                     // make all the wrong answers red in the navigation
-                    if (question.selectedAnswer != question.CorrectAnswerIndex) {
+                    if (answeredCorrectly == 0) {
                         incorrect++;
                         $("#full-screen-container .footer-questions-quicklink-holder [index=" + question.index + "]").addClass("incorrect");
                     }
