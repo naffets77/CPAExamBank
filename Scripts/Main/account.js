@@ -1179,9 +1179,8 @@ $.COR.account.displayStudyQuestion = function (question) {
     }
 
     if (question.type == "direction") {
-        $("#study-question-viewer-question-mc").hide(function () {
-            $("#study-question-viewer-directions").fadeIn();
-        });
+        $("#study-question-viewer-question-mc").hide();
+        $("#study-question-viewer-directions").fadeIn();
     }
     else {
 
