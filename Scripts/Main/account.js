@@ -1397,7 +1397,7 @@ $.COR.account.completeTest = function () {
                 var selectedAnswer = question.selectedAnswer; //question.selectedAnswer !== undefined ? question.Answers[question.selectedAnswer].QuestionToAnswersId : "0";
                 var answeredCorrectly = 0;
                 if (selectedAnswer !== 0 && selectedAnswer !== -1) {
-                    selectedAnswer = question.Answers[question.selectedAnswer].QuestionToAnswersId;
+
                     answeredCorrectly = question.CorrectAnswerIndex == question.selectedAnswer ? 1 : 0;
                 }
 
