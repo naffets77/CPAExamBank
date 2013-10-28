@@ -1303,7 +1303,7 @@ $.COR.account.setStudyQuestionData = function (question) {
 
         var SelectedAnswerIndex;
         for (var i = 0; i < question.Answers.length; i++) {
-            if (question.selectedAnswer = question.Answers[i].QuestionToAnswersId) {
+            if (question.selectedAnswer == question.Answers[i].QuestionToAnswersId) {
                 SelectedAnswerIndex = i;
             }
         }
