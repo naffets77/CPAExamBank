@@ -986,6 +986,7 @@ class ciborium_question{
             $Response->QuestionId = $Question->QuestionId;
             $Response->Question = $Question->DisplayText;
             $Response->Explanation = $Question->Explanation;
+            $Response->QuestionClientId = $Question->QuestionClientId;
             //find answers for this question
             $answerCount = 0;
             foreach($answerObjects as $stdAnswerIndex => $Answer){

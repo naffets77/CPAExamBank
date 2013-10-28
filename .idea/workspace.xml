@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_stripe.php" afterPath="$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_stripe.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_question.php" afterPath="$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_question.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="VaheCPA.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -20,7 +21,7 @@
     <file path="/service_account.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1382902008941" ignored="false" />
     <file path="/sp_DELETEAccountUserQuestionHistoryById.sql" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1382840239597" ignored="false" />
     <file path="/question.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1382840647995" ignored="false" />
-    <file path="/ciborium_question.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1382841120468" ignored="false" />
+    <file path="/ciborium_question.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1382928940828" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,10 +41,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ciborium_question.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ciborium_question.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_question.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="458" column="51" selection-start="18422" selection-end="18422" vertical-scroll-proportion="-21.923077">
+            <state line="992" column="64" selection-start="41116" selection-end="41116" vertical-scroll-proportion="0.8196721">
               <folding>
                 <element signature="n#getAccountUserQuestionHistoryById#0;n#ciborium_question#0;n#!!top" expanded="false" />
               </folding>
@@ -60,37 +61,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="service_stripe.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Service/service_stripe.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="227" column="29" selection-start="9310" selection-end="9310" vertical-scroll-proportion="-11.576923">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ciborium_stripe.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ciborium_stripe.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_stripe.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="236" column="51" selection-start="12068" selection-end="12068" vertical-scroll-proportion="0.42307693">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="stripe_charger.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Backend/Library/stripe_charger.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="795" column="36" selection-start="33676" selection-end="33678" vertical-scroll-proportion="-2.9607842">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="service_general.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Service/service_general.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+            <state line="232" column="16" selection-start="11631" selection-end="11631" vertical-scroll-proportion="-5.019608">
               <folding />
             </state>
           </provider>
@@ -99,16 +73,7 @@
       <file leaf-file-name="service_question.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Service/service_question.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="265" column="71" selection-start="11069" selection-end="11069" vertical-scroll-proportion="-8.5">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ciboriumlib_account.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciboriumlib_account.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="417" column="42" selection-start="16720" selection-end="16720" vertical-scroll-proportion="-5.9615383">
+            <state line="135" column="66" selection-start="5930" selection-end="5930" vertical-scroll-proportion="-12.230769">
               <folding />
             </state>
           </provider>
@@ -117,7 +82,7 @@
       <file leaf-file-name="account.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Backend/Library/account.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="328" column="27" selection-start="12976" selection-end="12976" vertical-scroll-proportion="-19.423077">
+            <state line="785" column="56" selection-start="28636" selection-end="28636" vertical-scroll-proportion="-5.9615383">
               <folding />
             </state>
           </provider>
@@ -126,7 +91,7 @@
       <file leaf-file-name="question.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Backend/Library/question.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="253" column="36" selection-start="12919" selection-end="12919" vertical-scroll-proportion="0.0">
+            <state line="132" column="56" selection-start="7043" selection-end="7055" vertical-scroll-proportion="-86.30769">
               <folding />
             </state>
           </provider>
@@ -161,11 +126,11 @@
         <option value="$PROJECT_DIR$/Backend/Ciborium/Service/service_stripe.php" />
         <option value="$PROJECT_DIR$/Backend/Ciborium/StoredProceduresAndTriggers/StoredProcedures/sp_DELETEAccountUserQuestionHistoryById.sql" />
         <option value="$PROJECT_DIR$/Backend/Library/question.php" />
-        <option value="$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_question.php" />
         <option value="$PROJECT_DIR$/Backend/Library/account.php" />
         <option value="$PROJECT_DIR$/Backend/Ciborium/Service/service_account.php" />
         <option value="$PROJECT_DIR$/Backend/Ciborium/Library/ciboriumlib_account.php" />
         <option value="$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_stripe.php" />
+        <option value="$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_question.php" />
       </list>
     </option>
   </component>
@@ -644,13 +609,6 @@
         <state line="471" column="27" selection-start="19592" selection-end="19592" vertical-scroll-proportion="-0.8722555" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/Library/question.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="253" column="36" selection-start="12919" selection-end="12919" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Backend/Ciborium/StoredProceduresAndTriggers/StoredProcedures/sp_DELETEAccountUserQuestionHistoryById.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="17" selection-start="97" selection-end="136" vertical-scroll-proportion="0.045454547">
@@ -661,44 +619,9 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/Library/account.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="328" column="27" selection-start="12976" selection-end="12976" vertical-scroll-proportion="-19.423077">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Service/service_general.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciboriumlib_account.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="417" column="42" selection-start="16720" selection-end="16720" vertical-scroll-proportion="-5.9615383">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Service/service_account.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="280" column="61" selection-start="9314" selection-end="9314" vertical-scroll-proportion="0.69164884">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Service/service_question.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="265" column="71" selection-start="11069" selection-end="11069" vertical-scroll-proportion="-8.5">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Service/service_stripe.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="227" column="29" selection-start="9310" selection-end="9310" vertical-scroll-proportion="-11.576923">
           <folding />
         </state>
       </provider>
@@ -710,26 +633,68 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_question.php">
+    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciboriumlib_account.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="458" column="51" selection-start="18422" selection-end="18422" vertical-scroll-proportion="-21.923077">
-          <folding>
-            <element signature="n#getAccountUserQuestionHistoryById#0;n#ciborium_question#0;n#!!top" expanded="false" />
-          </folding>
+        <state line="417" column="42" selection-start="16720" selection-end="16720" vertical-scroll-proportion="0.33190578">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Library/account.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="785" column="56" selection-start="28636" selection-end="28636" vertical-scroll-proportion="-5.9615383">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Library/question.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="132" column="56" selection-start="7043" selection-end="7055" vertical-scroll-proportion="-86.30769">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Service/service_stripe.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="227" column="29" selection-start="9310" selection-end="9310" vertical-scroll-proportion="-11.576923">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Service/service_general.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Backend/Library/stripe_charger.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="795" column="36" selection-start="33676" selection-end="33678" vertical-scroll-proportion="-2.9607842">
+        <state line="795" column="36" selection-start="33676" selection-end="33678" vertical-scroll-proportion="0.3172269">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_stripe.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="236" column="51" selection-start="12068" selection-end="12068" vertical-scroll-proportion="0.42307693">
+        <state line="232" column="16" selection-start="11631" selection-end="11631" vertical-scroll-proportion="-5.019608">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Service/service_question.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="135" column="66" selection-start="5930" selection-end="5930" vertical-scroll-proportion="-12.230769">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_question.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="992" column="64" selection-start="41116" selection-end="41116" vertical-scroll-proportion="0.8196721">
+          <folding>
+            <element signature="n#getAccountUserQuestionHistoryById#0;n#ciborium_question#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
