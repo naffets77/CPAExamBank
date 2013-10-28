@@ -1232,7 +1232,7 @@ $.COR.account.setStudyQuestionData = function (question) {
 
     var self = this;
 
-    if (question.selectedAnswer == -1 && self.simulator.options.mode != 'study') {
+    if (question.selectedAnswer == -1) {
         question.selectedAnswer = 0;
     }
 
@@ -1399,8 +1399,16 @@ $.COR.account.completeTest = function () {
                 });
 
 
-                if (question.selectedAnswer != -1) {
-
+                if (question.selectedAnswer == 0) {
+                    if (self.simulator.options.mode == 'study') {
+                        skipped++;
+                    }
+                    else {
+                        incorrect++;
+                        $("#full-screen-container .footer-questions-quicklink-holder [index=" + question.index + "]").addClass("incorrect");
+                    }
+                }
+                else{
                     // make all the wrong answers red in the navigation
                     if (answeredCorrectly == 0) {
                         incorrect++;
@@ -1409,9 +1417,6 @@ $.COR.account.completeTest = function () {
                     else {
                         correct++
                     }
-                }
-                else {
-                    skipped++;
                 }
             }
 
