@@ -694,7 +694,7 @@ $.COR.account.setUserData = function (data) {
                 }
 
             }
-            else if (new Date(data.Subscriptions[subscription].ExpirationDate) > new Date()) {
+            else if (new Date(data.Subscriptions[subscription].ExpirationDate.split(" ")[0]) > new Date()) {
                 $("#account_subscription_check-" + subname).prop('checked', false);
                 $("#practice-category_" + subname).parents('tr').removeClass("trial");
                 $(tr).find('.status').html("Expires On");
@@ -903,7 +903,7 @@ $.COR.account.startStudy = function () {
 
 
 
-
+    $("#full-screen-container .question-meta-data").show();
 
 
 

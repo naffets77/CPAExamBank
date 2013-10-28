@@ -610,7 +610,7 @@
         <div class="study-question-viewer-page shadow-centered" id="study-question-viewer-page">
 
             <div id="study-question-viewer-header">
-                <img class="Logo" src="/Content/Images/Shared/Logos/Logo2.png" />
+                <img style="margin-top:5px; margin-left:20px; height:40px;" class="Logo" src="/Content/Images/Shared/Logos/Logo2.png" />
                 <div class="study-question-viewer-exit">Exit</div>
             </div>
 
@@ -683,6 +683,19 @@
                 <div class="answer-explanation hidden">
                     <h3>Explanation:</h3>
                     <div class="answer-explanation-holder"></div>
+                </div>
+                <div class="question-meta-data hidden" style="margin-top:20px;">
+                    <h3>Question Information (Admin Only)</h3>
+                    <table>
+                        <tr>
+                            <td style="padding-right:5px;">Question Id</td>
+                            <td id="study-question-meta-question-id"></td>
+                        </tr>
+                        <tr>
+                            <td style="padding-right:5px;">Client Id</td>
+                            <td id="study-question-meta-client-id"></td>
+                        </tr>
+                    </table>
                 </div>
             </div>
 
