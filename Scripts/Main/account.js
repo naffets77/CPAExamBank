@@ -185,32 +185,13 @@ $.COR.account.setupEvents = function () {
                     $("#account-settings-old-password").val("");
                     $("#account-settings-new-password").val("")
                     $("#account-settings-new-password-again").val("")
+                    $("#account-settings-current-password").val(newPassword);
 
                     $.COR.account.user.LoginPassword = newPassword;
                     $.COR.Utilities.cycleButton(self, "Saved", "Update");
                     $(self).removeClass("disabled");
             });
             
-
-            //var ph = new $.COR.Utilities.PostHandler({
-            //    service: "account", call: "updatePassword",
-            //    params: { password: newPassword, hash: self.hash },
-            //    success: function (data) {
-
-            //        $("#account-settings-old-password").val("");
-            //        $("#account-settings-new-password").val("")
-            //        $("#account-settings-new-password-again").val("")
-
-            //        $.COR.account.user.LoginPassword = newPassword;
-            //        $.COR.Utilities.cycleButton(self, "Saved", "Update");
-            //        $(self).removeClass("disabled");
-
-            //    }
-            //});
-
-            //ph.submitPost();
-
-
         }
 
     });
