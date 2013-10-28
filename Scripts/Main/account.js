@@ -1275,7 +1275,7 @@ $.COR.account.setStudyQuestionData = function (question) {
 
     for (var i = 0; i < question.Answers.length; i++) {
 
-        var html = "<tr><td class='result-spacer'></td><td><input type='radio' id='study-question-answer-" + i + "' value='" + question.Answers.QuestionToAnswersId + "' name='study-question-answer' /></td>";
+        var html = "<tr><td class='result-spacer'></td><td><input type='radio' id='study-question-answer-" + i + "' value='" + question.Answers[i].QuestionToAnswersId + "' name='study-question-answer' /></td>";
         html += "<td><label for='study-question-answer-" + i + "'>" + question.Answers[i].DisplayText + "</label></td></tr>";
         $("#full-screen-container .answer-options table").append(html);
     }
