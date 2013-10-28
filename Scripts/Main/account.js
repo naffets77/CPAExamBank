@@ -1398,7 +1398,7 @@ $.COR.account.completeTest = function () {
                 var answeredCorrectly = 0;
                 if (selectedAnswer !== 0 && selectedAnswer !== -1) {
 
-                    answeredCorrectly = question.CorrectAnswerIndex == question.selectedAnswer ? 1 : 0;
+                    answeredCorrectly = question.Answers[question.CorrectAnswerIndex].QuestionToAnswersId == question.selectedAnswer ? 1 : 0;
                 }
 
                 postQuestions.push({
@@ -1414,7 +1414,7 @@ $.COR.account.completeTest = function () {
                 if (question.selectedAnswer != null) {
 
                     // make all the wrong answers red in the navigation
-                    if (question.selectedAnswer != question.CorrectAnswerIndex) {
+                    if (answeredCorrectly == 0) {
                         incorrect++;
                         $("#full-screen-container .footer-questions-quicklink-holder [index=" + question.index + "]").addClass("incorrect");
                     }
