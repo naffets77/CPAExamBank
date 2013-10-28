@@ -233,7 +233,7 @@ class ciborium_stripe{
                 $myExpirationDate = util_datetime::getPHPTimeToDateTime($subscriptionArray['current_period_end']);
                 $myCancelledDate = util_datetime::getPHPTimeToDateTime($subscriptionArray['canceled_at']);
 
-                ciborium_stripe::updateForSubscriptionChange($inLicenseId, $mySubscriptions[0]->SubscriptionTypeId, $mySubscribedDate, $myExpirationDate, $inCaller, $myCancelledDate, false);
+                ciborium_stripe::updateForSubscriptionChange($inLicenseId, enum_SubscriptionType::Free, $mySubscribedDate, $myExpirationDate, $inCaller, $myCancelledDate, false);
                 ciborium_stripe::LogLicenseTransactionFromSystem($inLicenseId, $LicenseTransactionValuesArray, __METHOD__);
 
                 $myArray['Result'] = 1;
