@@ -27,136 +27,6 @@ var siteOptions = {
 $.COR.init(siteOptions);
 
 
-$(document).ready(function () {
-    $.CPAEB.init();
-
-    if ($.COR.Utilities.getURLParameter("offline") != null) {
-        $.COR.account.offline = true;
-    }
-
-    // Initialization
-    $.COR.pageEvents();
-
-
-    $("#pricing-holder .squaredTwo label").on('click', function () {
-        var amount = 0;
-
-
-        // This is necessary because the checkbox element doesn't change it's checked state till after this event occurs, so wait for that
-        setTimeout(function () {
-
-            $("#pricing-holder .squaredTwo input").each(function (index, element) {
-                if ($(element).prop("checked")) {
-                    amount += 20;
-                }
-            });
-
-            $("#pricing-total .amount").html(amount);
-        }, 50);
-
-    });
-
-
-
-    $(".register-sign-up").on('click', function () {
-
-
-        $.COR.Utilities.FullScreenOverlay.loadLocal("js-overlay-register", $("#js-overlay-register").attr("contentSize"), false, function () {
-
-
-            $("#full-screen-container .registration-far").prop('checked', $("#pricing-row1-check").prop('checked'));
-            $("#full-screen-container .registration-aud").prop('checked', $("#pricing-row2-check").prop('checked'));
-            $("#full-screen-container .registration-bec").prop('checked', $("#pricing-row3-check").prop('checked'));
-            $("#full-screen-container .registration-reg").prop('checked', $("#pricing-row4-check").prop('checked'));
-
-
-            $(".registration-finish-button").on("click", function (e) {
-
-                if ($(this).hasClass("disabled")) { return; }
-
-                var clickedElement = this;
-                var originalHTML = $(this).html();
-                e.preventDefault();
-
-                $(this).addClass('disabled');
-
-                if ($.COR.validateForm($(this).parents("form"))) {
-
-                    var email = $("#full-screen-container .registration-email").val();
-                    var password = $("#full-screen-container .registration-password").val();
-
-                    var far = $("#full-screen-container .registration-far").is(":checked") ? "1" : "0";
-                    var aud = $("#full-screen-container .registration-aud").is(":checked") ? "1" : "0";
-                    var bec = $("#full-screen-container .registration-bec").is(":checked") ? "1" : "0";
-                    var reg = $("#full-screen-container .registration-reg").is(":checked") ? "1" : "0";
-
-                    var sections = [
-                        {
-                            "FAR": far,
-                            "AUD": aud,
-                            "BEC": bec,
-                            "REG": reg
-                        }
-                    ];
-
-                    $(this).html("One Sec...");
-
-                    var refSource = $.COR.Utilities.getURLParameter("source") ? $.COR.Utilities.getURLParameter("source") : "none";
-
-                    $.COR.services.register(email, password, sections, refSource, function (response) {
-                        if (response.Result == "0") {
-                            $("#full-screen-container .registration-email").parent().append("<span class='error-message'>" + response.Reason + "</span>");
-                            $("#registration-finish-button").removeClass("disabled").html(originalHTML);
-                        }
-                        else {
-
-                            // We should be able to automatically log them in...
-                            $.COR.services.login(email, password, function () {
-
-
-                                    $.COR.toggleAccountNavigation(); // TODO: This should be done on the account side of things
-                                    $.COR.TPrep.hideFullScreenOverlay();
-
-                                    // TODO: This should be handled better
-                                    $("#header-login-container").hide();
-                                    $("#header-logout-container").show();
-                                    
-
-                                    location.hash = "account";
-                                
-
-                            });
-                        }
-                    });
-
-                }
-
-
-            });
-
-        });
-    });
-
-
-
-    $("#header-logo").on("click", function () {
-        location.hash = "";
-    });
-
-
-
-
-
-    $(window).hashchange();
-
-
-});
-
-
-
-
-
-
 $.CPAEB.init = function () {
 
     var self = this;
@@ -640,3 +510,134 @@ $.COR.TPrep.hideFullScreenOverlay = function () {
         $("#full-screen-overlay").fadeOut(200);
     });
 }
+
+
+
+
+
+
+$(document).ready(function () {
+    $.CPAEB.init();
+
+    if ($.COR.Utilities.getURLParameter("offline") != null) {
+        $.COR.account.offline = true;
+    }
+
+    // Initialization
+    $.COR.pageEvents();
+
+
+    $("#pricing-holder .squaredTwo label").on('click', function () {
+        var amount = 0;
+
+
+        // This is necessary because the checkbox element doesn't change it's checked state till after this event occurs, so wait for that
+        setTimeout(function () {
+
+            $("#pricing-holder .squaredTwo input").each(function (index, element) {
+                if ($(element).prop("checked")) {
+                    amount += 20;
+                }
+            });
+
+            $("#pricing-total .amount").html(amount);
+        }, 50);
+
+    });
+
+
+
+    $(".register-sign-up").on('click', function () {
+
+
+        $.COR.Utilities.FullScreenOverlay.loadLocal("js-overlay-register", $("#js-overlay-register").attr("contentSize"), false, function () {
+
+
+            $("#full-screen-container .registration-far").prop('checked', $("#pricing-row1-check").prop('checked'));
+            $("#full-screen-container .registration-aud").prop('checked', $("#pricing-row2-check").prop('checked'));
+            $("#full-screen-container .registration-bec").prop('checked', $("#pricing-row3-check").prop('checked'));
+            $("#full-screen-container .registration-reg").prop('checked', $("#pricing-row4-check").prop('checked'));
+
+
+            $(".registration-finish-button").on("click", function (e) {
+
+                if ($(this).hasClass("disabled")) { return; }
+
+                var clickedElement = this;
+                var originalHTML = $(this).html();
+                e.preventDefault();
+
+                $(this).addClass('disabled');
+
+                if ($.COR.validateForm($(this).parents("form"))) {
+
+                    var email = $("#full-screen-container .registration-email").val();
+                    var password = $("#full-screen-container .registration-password").val();
+
+                    var far = $("#full-screen-container .registration-far").is(":checked") ? "1" : "0";
+                    var aud = $("#full-screen-container .registration-aud").is(":checked") ? "1" : "0";
+                    var bec = $("#full-screen-container .registration-bec").is(":checked") ? "1" : "0";
+                    var reg = $("#full-screen-container .registration-reg").is(":checked") ? "1" : "0";
+
+                    var sections = [
+                        {
+                            "FAR": far,
+                            "AUD": aud,
+                            "BEC": bec,
+                            "REG": reg
+                        }
+                    ];
+
+                    $(this).html("One Sec...");
+
+                    var refSource = $.COR.Utilities.getURLParameter("source") ? $.COR.Utilities.getURLParameter("source") : "none";
+
+                    $.COR.services.register(email, password, sections, refSource, function (response) {
+                        if (response.Result == "0") {
+                            $("#full-screen-container .registration-email").parent().append("<span class='error-message'>" + response.Reason + "</span>");
+                            $("#registration-finish-button").removeClass("disabled").html(originalHTML);
+                        }
+                        else {
+
+                            // We should be able to automatically log them in...
+                            $.COR.services.login(email, password, function () {
+
+
+                                $.COR.toggleAccountNavigation(); // TODO: This should be done on the account side of things
+                                $.COR.TPrep.hideFullScreenOverlay();
+
+                                // TODO: This should be handled better
+                                $("#header-login-container").hide();
+                                $("#header-logout-container").show();
+
+
+                                location.hash = "account";
+
+
+                            });
+                        }
+                    });
+
+                }
+
+
+            });
+
+        });
+    });
+
+
+
+    $("#header-logo").on("click", function () {
+        location.hash = "";
+    });
+
+
+
+
+
+    $(window).hashchange();
+
+
+});
+
