@@ -676,7 +676,19 @@ $.COR.account.setUserData = function (data) {
 
             $(tr).find('.date').html($.COR.Utilities.formatDate(date));
 
-            if (data.Subscriptions[subscription].CancellationDate == null) {
+            if (new Date(data.Subscriptions[subscription].ExpirationDate.split(" ")[0]) > new Date()) {
+                $("#account_subscription_check-" + subname).prop('checked', false);
+                $("#practice-category_" + subname).parents('tr').removeClass("trial");
+                $(tr).find('.status').html("Expires On");
+                
+
+                if (subname == "aud") {
+                    AUDEnabled = true;
+                }
+
+            }
+
+            else if (data.Subscriptions[subscription].CancellationDate == null) {
 
                 $("#account_subscription_check-" + subname).prop('checked', true);
                 $("#practice-category_" + subname).parents('tr').removeClass("trial");
@@ -694,17 +706,7 @@ $.COR.account.setUserData = function (data) {
                 }
 
             }
-            else if (new Date(data.Subscriptions[subscription].ExpirationDate.split(" ")[0]) > new Date()) {
-                $("#account_subscription_check-" + subname).prop('checked', false);
-                $("#practice-category_" + subname).parents('tr').removeClass("trial");
-                $(tr).find('.status').html("Expires On");
-                
 
-                if (subname == "aud") {
-                    AUDEnabled = true;
-                }
-
-            }
             else {
                 $("#account_subscription_check-" + subname).prop('checked', false);
                 $(tr).find('.status').html("Expired");
