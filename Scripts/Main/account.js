@@ -434,7 +434,7 @@ $.COR.account.setupEvents = function () {
                             }
                             else {
                                 // Customer is already created, just need to update credit card
-                                $.COR.services.changeCreditCard({token:token}, function (data) {
+                                $.COR.services.addCreditCard({ token: token }, function (data) {
                                     successFunction();
                                 });
                             }
