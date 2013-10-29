@@ -375,7 +375,7 @@ function appendSearchResultsRow(QuestionData) {
                 "<td>" + Approved + "</td>" +
                 "<td>" + Deprecated + "</td>" +
                 "<td>" + Active + "</td>" +
-                "<td class='question'>" + QuestionData.Question + "</td><td class='answers'><ul>";
+                "<td class='question'>" + $(QuestionData.Question).html() + "</td><td class='answers'><ul>";
 
 
     for (var i = 0; i < QuestionData.Answers.length; i++) {
@@ -398,6 +398,8 @@ function appendSearchResultsRow(QuestionData) {
 
 
 }
+
+
 
 function updateQuestion(questionResponseDTO) {
 
