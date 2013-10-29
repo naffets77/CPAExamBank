@@ -56,7 +56,7 @@ $(document).on('ready', function () {
 
         if (QuestionResponses == null) {
             var ph = new $.COR.Utilities.PostHandler({
-                service: "question", call: "getAllQuestionsAndAnswers",
+                service: "question", call: "getAllQuestionsAndAnswers_Manager",
                 params: {},
                 success: function (data) {
 
