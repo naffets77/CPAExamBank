@@ -39,21 +39,21 @@ class util_general{
         if(is_object($inVar))
             return get_class($inVar);
         if(is_null($inVar))
-            return 'null';
+            return "null";
         if(is_string($inVar))
-            return 'string';
+            return "string";
         if(is_array($inVar))
-            return 'array';
+            return "array";
         if(is_int($inVar))
-            return 'integer';
+            return "integer";
         if(is_bool($inVar))
-            return 'boolean';
+            return "boolean";
         if(is_float($inVar))
-            return 'float';
+            return "float";
         if(is_resource($inVar))
-            return 'resource';
+            return "resource";
         //throw new NotImplementedException();
-        return 'unknown';
+        return "unknown";
     }
 
     public static function cleanBitValue($inBitValue){

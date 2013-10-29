@@ -37,7 +37,7 @@ class service_general{
 
                 array_push($inMessageAppend, $key."==".$value);
             }
-            $inMessage .= $inMessageAppend;
+            $inMessage .= implode(", ", $inMessageAppend);
             util_errorlogging::LogBrowserError(enum_LogType::Normal, $inMessage, __METHOD__, __FILE__);
 
             $myArray['Reason'] = "Missing required variable(s)";

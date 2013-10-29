@@ -158,7 +158,7 @@ class service_account{
                 foreach($inCheckValueArray as $key => $value){
                     array_push($inMessageAppend, $key."==".$value);
                 }
-                $inMessage .= $inMessageAppend;
+                $inMessage .= implode(", ", $inMessageAppend);
                 util_errorlogging::LogBrowserError(3, $inMessage, __METHOD__, __FILE__);
                 $myArray['Reason'] = "Missing required variable(s)";
                 return $myArray;
@@ -213,7 +213,7 @@ class service_account{
                 foreach($inCheckValueArray as $key => $value){
                     array_push($inMessageAppend, $key."==".$value);
                 }
-                $inMessage .= $inMessageAppend;
+                $inMessage .= implode(", ", $inMessageAppend);
                 util_errorlogging::LogBrowserError(3, $inMessage, __METHOD__, __FILE__);
                 $myArray['Reason'] = "Missing required variable(s)";
                 return $myArray;
@@ -269,7 +269,7 @@ class service_account{
             foreach($inCheckValueArray as $key => $value){
                 array_push($inMessageAppend, $key."==".$value);
             }
-            $inMessage .= $inMessageAppend;
+            $inMessage .= implode(", ", $inMessageAppend);
             util_errorlogging::LogBrowserError(3, $inMessage, __METHOD__, __FILE__);
             $myArray['Reason'] = "Missing requried variable(s)";
             return $myArray;
@@ -332,7 +332,7 @@ class service_account{
                 foreach($inCheckValueArray as $key => $value){
                     array_push($inMessageAppend, $key."==".$value);
                 }
-                $inMessage .= $inMessageAppend;
+                $inMessage .= implode(", ", $inMessageAppend);
                 util_errorlogging::LogBrowserError(3, $inMessage, __METHOD__, __FILE__);
                 $myArray['Reason'] = "Missing requried variable(s)";
                 return $myArray;
@@ -388,7 +388,7 @@ class service_account{
                 foreach($inCheckValueArray as $key => $value){
                     array_push($inMessageAppend, $key."==".$value);
                 }
-                $inMessage .= $inMessageAppend;
+                $inMessage .= implode(", ", $inMessageAppend);
                 util_errorlogging::LogBrowserError(3, $inMessage, __METHOD__, __FILE__);
                 $myArray['Reason'] = "Missing requried variable(s)";
                 return $myArray;
@@ -463,7 +463,7 @@ class service_account{
             foreach($inCheckValueArray as $key => $value){
                 array_push($inMessageAppend, $key."==".$value);
             }
-            $inMessage .= $inMessageAppend;
+            $inMessage .= implode(", ", $inMessageAppend);
             util_errorlogging::LogBrowserError(3, $inMessage, __METHOD__, __FILE__);
             $myArray['Reason'] = "Missing requried variable(s)";
             return $myArray;
@@ -498,7 +498,7 @@ class service_account{
             foreach($inCheckValueArray as $key => $value){
                 array_push($inMessageAppend, $key."==".$value);
             }
-            $inMessage .= $inMessageAppend;
+            $inMessage .= implode(", ", $inMessageAppend);
             util_errorlogging::LogBrowserError(3, $inMessage, __METHOD__, __FILE__);
             $myArray['Reason'] = "Missing requried variable(s)";
             return $myArray;
