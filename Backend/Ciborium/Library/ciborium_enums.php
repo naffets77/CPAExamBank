@@ -139,8 +139,9 @@ class enum_StripeUnitTests{
 class enum_ResponseCodes{
     const Successful = 1;
     const InvalidInput = 2;
-    const ExceptionThrown = 3;
-    const Incomplete = 4;
-    const InProgress = 5;
+    const LoginExpired = 3;
+    const ErrorThrown = 4;
+    const Incomplete = 5;
+    const InProgress = 6;
 }
 ?>

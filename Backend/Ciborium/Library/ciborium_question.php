@@ -17,20 +17,29 @@ class ciborium_question{
      * Library: getAllQuestionsAndAnswersForUI()
      * Gets all admin questions form database
      *
+     * @param bool inGetIsActive
      *
      * @return array
      *      Reason
      *      Result
      *      QuestionResponses
      */
-    public static function getAllQuestionsAndAnswersForUI(){
+    public static function getAllQuestionsAndAnswersForUI($inGetIsActive = true){
         $returnArray = array(
             'Result' => 1,
             'Reason' => "",
             'QuestionResponses' => array()
         );
 
-        $questionObjects = question::getAllQuestionsForAdminUI(3, 5, "");
+        //Verify inputs
+        if(!is_bool($inGetIsActive)){
+            $returnArray['Reason'] = "Invalid input";
+            $errorMessage = $returnArray['Reason']." for inGetIsActive. Not a boolean";
+            util_errorlogging::LogBrowserError(3, $errorMessage, __METHOD__, __FILE__);
+            return $returnArray;
+        }
+
+        $questionObjects = question::getAllQuestionsForAdminUI(3, 5, "", $inGetIsActive);
 
         if(count($questionObjects) > 0){
             $responsesArray = self::buildQuestionsAndAnswersArray_Admin($questionObjects);
@@ -50,6 +59,8 @@ class ciborium_question{
      *
      * @param int $inSectionTypeId
      * @param int $inMaxNumberOfQuestionsToReturn
+     * @param int $inAccountUserId
+     * @param bool $inIsAdmin
      * @param int $inQuestionTypeId
      *
      * @return array
@@ -284,6 +295,8 @@ class ciborium_question{
      * Gets all user's public question history with filters
      *
      * @param int $inAccountUserId
+     * @param array $inFilterArray
+     * @param string $inCaller
      *
      * @return array
      *      Reason

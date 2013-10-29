@@ -14,7 +14,7 @@ class service_question{
 
     /**
      * Service: getAllQuestionsAndAnswers()
-     * Gets all questions and answers for Admin portal
+     * Gets all questions and answers for simulator
      *
      * POST Input:
      *      Hash
@@ -53,6 +53,57 @@ class service_question{
                 return $myArray;
             }
 
+            $myResponse = ciborium_question::getAllQuestionsAndAnswersForUI(false);
+            return $myResponse;
+
+        }
+        else{
+            $myArray['Reason'] = "User was no longer logged in or does not have sufficient privileges";
+            return $myArray;
+        }
+    }
+
+    /**
+     * Service: getAllQuestionsAndAnswers_Manager()
+     * Gets all questions and answers for Question Manager portal
+     *
+     * POST Input:
+     *      Hash
+     *
+     * @return array
+     *      Reason
+     *      Result
+     *      %array(questionResponse)
+     */
+    static function getAllQuestionsAndAnswers_Manager(){
+        $myArray = array(
+            "Reason" => "",
+            "Result" => 0
+        );
+        if(ciboriumlib_account::checkValidLogin(self::$service, __FUNCTION__) && (bool)$_SESSION['Account']->IsAdmin){
+            $hash = validate::requirePostField('Hash', self::$service, __FUNCTION__);
+            $hashCheckReturn = validate::requireValidHash(self::$service, __FUNCTION__);
+
+            $checkValueArray = array(
+                "Hash" => $hash,
+                "hashCheckResult" => (bool)$hashCheckReturn['Result']
+            );
+
+            if(in_array(null, $checkValueArray) || !$checkValueArray['hashCheckResult']){
+                $inCheckValueArray = util_general::stringValuesInAssociativeArray($checkValueArray);
+                $inMessage = "Missing one or more POST variables in ".self::$service."::".__FUNCTION__." . ";
+                $inMessageAppend = array();
+                foreach($inCheckValueArray as $key => $value){
+
+                    array_push($inMessageAppend, $key."==".$value);
+                }
+                $inMessage .= implode(", ", $inMessageAppend);
+                util_errorlogging::LogBrowserError(enum_LogType::Normal, $inMessage, __METHOD__, __FILE__);
+
+                $myArray['Reason'] = "Missing required variable(s)";
+                return $myArray;
+            }
+
             $myResponse = ciborium_question::getAllQuestionsAndAnswersForUI();
             return $myResponse;
 
@@ -63,10 +114,9 @@ class service_question{
         }
     }
 
-
     /**
      * Service: getQuestionsAndAnswers()
-     * Gets all questions and answers for the public UI
+     * Gets questions and answers for the public UI
      *
      * POST Input:
      *      Hash

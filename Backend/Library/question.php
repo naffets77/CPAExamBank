@@ -133,7 +133,7 @@ class question{
         return database::select("Question", $selectArray, $whereClause, $orderBy, $limit, $preparedArray, __METHOD__);
     }
 
-	public static function getAllQuestionsForAdminUI($inQuestionTypeId = 3, $inSectionTypeId = 5, $inLimit = ""){
+	public static function getAllQuestionsForAdminUI($inQuestionTypeId = 3, $inSectionTypeId = 5, $inLimit = "", $inGetIsActive = true){
 
         $QuestionTypeId = "3";
         $SectionTypeId = "5";
@@ -161,7 +161,7 @@ class question{
 
         //$selectArray = array("QuestionId", "DisplayText", "Explanation");
         $selectArray = null;
-        $whereClause = "IsApprovedForUse IN (0,1) AND IsActive IN (0,1) AND IsDeprecated IN (0,1) ";
+        $whereClause = $inGetIsActive ? "IsApprovedForUse IN (0,1) AND IsActive IN (0,1) AND IsDeprecated IN (0,1) " : "IsApprovedForUse IN (0,1) AND IsActive IN (0) AND IsDeprecated IN (0,1) ";
         //$whereClause = "";
         $whereClause .= $boolGetAllQuestionTypeIds ? "AND QuestionTypeId IN (SELECT QuestionTypeId FROM QuestionType WHERE QuestionTypeId <> 3) " : "AND QuestionTypeId IN (".$QuestionTypeId.") ";
         $whereClause .= $boolGetAllSectionTypeIds ? "AND SectionTypeId IN (SELECT SectionTypeId FROM SectionType WHERE SectionTypeId <> 5) " : "AND SectionTypeId IN (".$SectionTypeId.") ";
