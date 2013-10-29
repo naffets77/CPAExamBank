@@ -580,17 +580,19 @@ $(document).ready(function () {
             $("#full-screen-container .registration-reg").prop('checked', $("#pricing-row4-check").prop('checked'));
 
 
-            $(".registration-finish-button").on("click", function (e) {
+            $("#full-screen-container .registration-finish-button").on("click", function (e) {
+
+                e.preventDefault();
 
                 if ($(this).hasClass("disabled")) { return; }
 
                 var clickedElement = this;
                 var originalHTML = $(this).html();
-                e.preventDefault();
+                
 
                 $(this).addClass('disabled');
 
-                if ($.COR.validateForm($(this).parents("form"))) {
+                if ($.COR.validateForm($("#full-screen-container .registration-popup-form"))) {
 
                     var email = $("#full-screen-container .registration-email").val();
                     var password = $("#full-screen-container .registration-password").val();
@@ -616,7 +618,7 @@ $(document).ready(function () {
                     $.COR.services.register(email, password, sections, refSource, function (response) {
                         if (response.Result == "0") {
                             $("#full-screen-container .registration-email").parent().append("<span class='error-message'>" + response.Reason + "</span>");
-                            $("#registration-finish-button").removeClass("disabled").html(originalHTML);
+                            $("#full-screen-container .registration-finish-button").removeClass("disabled").html(originalHTML);
                         }
                         else {
 
@@ -639,6 +641,9 @@ $(document).ready(function () {
                         }
                     });
 
+                }
+                else {
+                    $("#full-screen-container .registration-finish-button").removeClass("disabled").html(originalHTML);
                 }
 
 

@@ -168,8 +168,8 @@ body {
     height: 100%;
     z-index: 1000;
     background-color: #161616;
-    opacity: 0.6;
-    filter: alpha(opacity=60);
+    opacity: 0.9;
+    filter: alpha(opacity=90);
 }
 
 #full-screen-container.full {
@@ -186,28 +186,47 @@ body {
     background-color: #fff;
     position: absolute;
     width: 550px;
-    padding: 20px;
     left: 50%;
     margin-left: -295px;
     margin-top: 50px;
     z-index: 1001;
     font-size:16px;
+    border: 4px solid #21465D;
 }
 
 #full-screen-container.medium {
     background-color: #fff;
     position: absolute;
     width: 800px;
-    padding: 20px;
     left: 50%;
     margin-left: -400px;
     margin-top: 50px;
     z-index: 1001;
     font-size:16px;
+    border: 4px solid #21465D;
 }
 
-#full-screen-container .content {
-    margin: 20px;
+#full-screen-container .content h1{
+    font-size: 25px;
+    background-color: #21465D;
+    padding: 10px 0px 20px 20px;
+    color: #FFF;
+    font-weight: bold;
+}
+
+#full-screen-container .content .js-overlay-register-content-container{
+    margin:20px;
+}
+
+#full-screen-container .content .js-overlay-register-content-footer{
+    background-color: #EFEFEF;
+    padding: 20px 20px;
+    position: relative;
+}
+
+#full-screen-container .content .js-overlay-register-content-footer button{
+    display:block;
+    margin:0px auto;
 }
 
 #wrapper {
@@ -366,7 +385,7 @@ body {
     }
 
 #header-login-container input {
-    width: 120px;
+    width: 150px;
     color: #999;
     padding: 2px 0 2px 4px;
 }
@@ -493,8 +512,8 @@ footer {
     background-color: #000;
     color: #fff;
     position: absolute;
-    top: -10px;
-    right: -10px;
+    top: -20px;
+    right: -20px;
     padding: 4px 10px 9px 10px;
     font-weight: bold;
     -moz-border-radius: 20px;

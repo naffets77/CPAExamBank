@@ -156,11 +156,13 @@
     float:right;
 }
 
+#update-subscription-holder{
+    min-height:300px;
+}
 
 #update-subscription-holder h1 {
     font-weight:bold;
     font-size:16px;
-    margin:20px 0px;
 }
 
 #update-subscription-holder .credit-card-info table {

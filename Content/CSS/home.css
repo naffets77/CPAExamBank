@@ -505,12 +505,18 @@
     font-weight: bold;
 }
 
-#js-overlay-register-content input {
+#js-overlay-register-content input[type=text],#js-overlay-register-content input[type=password]  {
     visibility: visible;
+    padding:4px 6px;
+    width:200px;
 }
 
-#js-overlay-register-content tr td {
-    padding: 4px 10px;
+#js-overlay-register-content table{
+    width:100%;
+}
+
+#js-overlay-register-content tr td, #set-password-holder tr td {
+    padding: 5px 10px 5px 0px;
 }
 
 
@@ -628,7 +634,7 @@ text-align: center;
 
     .slides_container .slide {
         width: 920px;
-        height: 350px;
+        height: 400px;
         position: absolute;
         top: 0px;
         left: 990px;
