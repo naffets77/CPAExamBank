@@ -4,7 +4,7 @@
     $.COR = {
 
         // These should be moved to config..
-        debug: true,
+        debug: false,
         googleTracking: false,
         MD5: null,
         DisableCache: true,
