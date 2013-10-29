@@ -566,10 +566,18 @@
 }
 
 #study-question-viewer-question-mc .question-content {
+    line-height:20px;
     margin-top: 40px;
     margin-left:40px;
     font-size: 16px;
 }
+
+/* Question Styles */
+
+    #study-question-viewer-question-mc .question-content table tr td:first-child {
+        padding-right:20px;
+    }
+
 
 #study-question-viewer-question-mc .question-meta-data{
     margin-top: 50px;
@@ -585,6 +593,7 @@
 
     #study-question-viewer-question-mc .answer-options table tr td {
         padding: 15px 10px 4px 0;
+        line-height:20px;
     }
 
         #study-question-viewer-question-mc .answer-options table tr td.result-spacer {
@@ -596,7 +605,7 @@
                 width: 20px;
                 background-size: 18px;
                 background-repeat: no-repeat;
-                background-position: 0px 6px;
+                background-position: 0px 17px;
                 padding-right: 0px;
             }
 
@@ -606,6 +615,10 @@
 
     #study-question-viewer-question-mc .answer-explanation .answer-explanation-holder {
         margin-top: 20px;
+        margin-left:40px;
+        background-color:#efefef;
+        padding:20px;
+        line-height:20px;
     }
 
 #study-question-viewer-results .results-summary {
