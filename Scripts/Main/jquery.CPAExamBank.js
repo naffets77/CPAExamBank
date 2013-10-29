@@ -544,7 +544,7 @@ $(document).ready(function () {
         $.COR.account.offline = true;
     }
 
-    if ($.COR.Utilities.getURLParameter("offline") != null) {
+    if ($.COR.Utilities.getURLParameter("debug") != null) {
         $.COR.debug = true;
     }
 
