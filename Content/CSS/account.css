@@ -506,6 +506,8 @@
 
     #study-question-viewer-page h3 {
         font-weight: bold;
+        margin-top:40px; 
+        margin-left:40px;
     }
 
     #study-question-viewer-page a {
