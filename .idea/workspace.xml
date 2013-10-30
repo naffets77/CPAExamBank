@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Library/validate.php" afterPath="$PROJECT_DIR$/Backend/Library/validate.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Backend/Ciborium/TestTools/mrQuestionAnswerViewer.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Ciborium/StoredProceduresAndTriggers/StoredProcedures/sp_fixQuestionsAndAnswersWithBadData.sql" afterPath="$PROJECT_DIR$/Backend/Ciborium/StoredProceduresAndTriggers/StoredProcedures/sp_fixQuestionsAndAnswersWithBadData.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="VaheCPA.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -22,7 +24,7 @@
     <file path="/question.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1383022859445" ignored="false" />
     <file path="/ciborium_question.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1383022782071" ignored="false" />
     <file path="/service_question.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1383022498972" ignored="false" />
-    <file path="/sp_fixQuestionsAndAnswersWithBadData.sql" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1383111936977" ignored="false" />
+    <file path="/sp_fixQuestionsAndAnswersWithBadData.sql" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1383118968868" ignored="false" />
     <file path="/sp_getQuestionsAndAnswersWithBadData.sql" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1383112387031" ignored="false" />
     <file path="/validate.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1383113987239" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -56,7 +58,7 @@
       <file leaf-file-name="service_question.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Service/service_question.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="130" column="45" selection-start="4894" selection-end="4894" vertical-scroll-proportion="0.0">
+            <state line="185" column="66" selection-start="7976" selection-end="7976" vertical-scroll-proportion="-12.115385">
               <folding />
             </state>
           </provider>
@@ -65,7 +67,7 @@
       <file leaf-file-name="ciborium_question.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_question.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="139" column="57" selection-start="5666" selection-end="5666" vertical-scroll-proportion="0.0">
+            <state line="130" column="88" selection-start="5313" selection-end="5313" vertical-scroll-proportion="-12.423077">
               <folding />
             </state>
           </provider>
@@ -83,16 +85,46 @@
       <file leaf-file-name="question.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Backend/Library/question.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="174" column="24" selection-start="9400" selection-end="9400" vertical-scroll-proportion="-32.692307">
+            <state line="171" column="29" selection-start="9279" selection-end="9279" vertical-scroll-proportion="-13.076923">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="validate.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="database.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Backend/Library/database.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="65" column="27" selection-start="2272" selection-end="2272" vertical-scroll-proportion="-10.230769">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="validate.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Backend/Library/validate.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="79" column="164" selection-start="3063" selection-end="3063" vertical-scroll-proportion="0.6852332">
+            <state line="79" column="164" selection-start="3063" selection-end="3063" vertical-scroll-proportion="-20.346153">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sp_fixQuestionsAndAnswersWithBadData.sql" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Backend/Ciborium/StoredProceduresAndTriggers/StoredProcedures/sp_fixQuestionsAndAnswersWithBadData.sql">
+          <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="12" selection-start="0" selection-end="2684" vertical-scroll-proportion="-0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mrQuestionAnswerViewer.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Backend/Ciborium/TestTools/mrQuestionAnswerViewer.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="51" column="2" selection-start="2220" selection-end="2220" vertical-scroll-proportion="1.80625">
               <folding />
             </state>
           </provider>
@@ -116,7 +148,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/Backend/Ciborium/Library/ConfigFiles/config_stage.php" />
         <option value="$PROJECT_DIR$/Backend/Ciborium/Library/ConfigFiles/config_qa.php" />
         <option value="$PROJECT_DIR$/Backend/Ciborium/Library/ConfigFiles/config_prod.php" />
         <option value="$PROJECT_DIR$/Backend/Library/ConfigFiles/stripe_config_prod.php" />
@@ -130,8 +161,9 @@
         <option value="$PROJECT_DIR$/Backend/Ciborium/Service/service_question.php" />
         <option value="$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_question.php" />
         <option value="$PROJECT_DIR$/Backend/Ciborium/StoredProceduresAndTriggers/StoredProcedures/sp_getQuestionsAndAnswersWithBadData.sql" />
-        <option value="$PROJECT_DIR$/Backend/Ciborium/StoredProceduresAndTriggers/StoredProcedures/sp_fixQuestionsAndAnswersWithBadData.sql" />
         <option value="$PROJECT_DIR$/Backend/Library/validate.php" />
+        <option value="$PROJECT_DIR$/Backend/Ciborium/StoredProceduresAndTriggers/StoredProcedures/sp_fixQuestionsAndAnswersWithBadData.sql" />
+        <option value="$PROJECT_DIR$/Backend/Ciborium/TestTools/mrQuestionAnswerViewer.php" />
       </list>
     </option>
   </component>
@@ -588,6 +620,7 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3288835" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3288835" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21627907" sideWeight="0.67111653" order="0" side_tool="false" content_ui="combo" />
@@ -599,7 +632,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3288835" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3288835" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -677,20 +709,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Backend/Library/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/Library/ConfigFiles/config_prod.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Service/service_stripe.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="244" column="42" selection-start="10325" selection-end="10325" vertical-scroll-proportion="-5.9615383" />
@@ -715,20 +733,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Service/service_question.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="130" column="45" selection-start="4894" selection-end="4894" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_question.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="139" column="57" selection-start="5666" selection-end="5666" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciboriumlib_account.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="206" column="77" selection-start="7675" selection-end="7675" vertical-scroll-proportion="0.0">
@@ -742,13 +746,6 @@
       </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/StoredProceduresAndTriggers/StoredProcedures/sp_fixQuestionsAndAnswersWithBadData.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="12" selection-start="168" selection-end="168" vertical-scroll-proportion="0.10939511">
           <folding />
         </state>
       </provider>
@@ -770,13 +767,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/Library/question.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="174" column="24" selection-start="9400" selection-end="9400" vertical-scroll-proportion="-32.692307">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Service/service_account.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="373" column="44" selection-start="12953" selection-end="12953" vertical-scroll-proportion="-12.423077">
@@ -786,7 +776,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Backend/Library/validate.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="79" column="164" selection-start="3063" selection-end="3063" vertical-scroll-proportion="0.6852332">
+        <state line="79" column="164" selection-start="3063" selection-end="3063" vertical-scroll-proportion="-20.346153">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Library/question.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="171" column="29" selection-start="9279" selection-end="9279" vertical-scroll-proportion="-13.076923">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Library/database.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="65" column="27" selection-start="2272" selection-end="2272" vertical-scroll-proportion="-10.230769">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Service/service_question.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="185" column="66" selection-start="7976" selection-end="7976" vertical-scroll-proportion="-12.115385">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_question.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="130" column="88" selection-start="5313" selection-end="5313" vertical-scroll-proportion="-12.423077">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/StoredProceduresAndTriggers/StoredProcedures/sp_fixQuestionsAndAnswersWithBadData.sql">
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="12" selection-start="0" selection-end="2684" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/TestTools/mrQuestionAnswerViewer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="2" selection-start="2220" selection-end="2220" vertical-scroll-proportion="1.80625">
           <folding />
         </state>
       </provider>
