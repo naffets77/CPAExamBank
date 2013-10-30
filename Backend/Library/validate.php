@@ -77,7 +77,7 @@ class validate {
         }
 
         if( $_SESSION['AccountHash'] != $_POST['Hash'] ){
-            $errorMessage = "Service error in ".$service."-".$function.". AccountHash did not match POST Hash.";
+            $errorMessage = "Service error in ".$service."-".$function.". AccountHash (".$_SESSION['AccountHash'].") did not match POST Hash (".$_POST['Hash'].").";
             util_errorlogging::LogBrowserError(3, $errorMessage, __METHOD__, __FILE__);
             $result = false;
             $reason = "Expected variable(s) did not match.";
