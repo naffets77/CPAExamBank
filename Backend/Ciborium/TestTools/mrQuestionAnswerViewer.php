@@ -24,29 +24,57 @@ include_once(ciborium_configuration::$ciborium_librarypath."/ciborium_general.ph
 include_once(service_configuration::$ciborium_servicepath."/service_account.php");
 include_once(service_configuration::$ciborium_servicepath."/service_stripe.php");
 
-$questionId = 508;
-$whereClause = "QuestionId = ".$questionId;
-$myQuestionObjects = database::select("Question", null, $whereClause, "", "", null, "mrtest");
-$myAnswerObjects = database::select("QuestionToAnswers", null, $whereClause, "", "", null, "mrtest");
+$questionId = 0;
+if($_GET['qid'] != null && validate::tryParseInt($_GET['qid']) && (int)$_GET['qid'] > 0 ){
+    $questionId = (int)$_GET['qid'];
+}
 
-echo "<h2>Question</h2>";
-echo $myQuestionObjects[0]->DisplayText;
-
-echo "<h2>Explanation</h2>";
-echo $myQuestionObjects[0]->Explanation;
-
-echo "<h2>Answers</h2>";
-if($myAnswerObjects != null){
-    foreach($myAnswerObjects as $key => $value){
-        echo $value->DisplayText."<br />";
+if(validate::isNotNullOrEmpty_String($_GET['qcid'])){
+    $myQuestionClientId = $_GET['qcid'];
+    $selectArray = array("QuestionId");
+    $prepareArray = array(":QuestionClientId" => $myQuestionClientId);
+    $myQuestion = database::select("Question", $selectArray, "QuestionClientId = :QuestionClientId", "", "", $prepareArray, "mrtest");
+    if(!empty($myQuestion)){
+        $questionId = (int)$myQuestion[0]->QuestionId;
     }
 }
+$whereClause = "QuestionId = ".$questionId;
+$myQuestionObjects = database::select("Question", null, $whereClause, "", "", null, "mrtest");
+
+echo "<h2>Question (id ".$questionId.")</h2>";
+if($myQuestionObjects){
+    $myAnswerObjects = database::select("QuestionToAnswers", null, $whereClause, "", "", null, "mrtest");
+    echo $myQuestionObjects[0]->DisplayText;
+
+    echo "<h2>Explanation</h2>";
+    echo $myQuestionObjects[0]->Explanation;
+
+    echo "<h2>Answers</h2>";
+    echo "<ul>";
+    if(!empty($myAnswerObjects)){
+        foreach($myAnswerObjects as $key => $value){
+            if($value->IsAnswerToQuestion){
+                echo "<li>".$value->DisplayText."</li>";
+            }
+            else{
+                echo "<li style='list-style-type: circle;'>".$value->DisplayText."</li>";
+            }
+        }
+    }
+    else{
+        echo "Answers object was empty.<br />";
+    }
+    echo "</ul>";
+
+    echo "<h2>JSON Data</h2>";
+    $QResponsesArray = ciborium_question::buildQuestionsAndAnswersArray($myQuestionObjects);
+    echo "<code>";
+    echo str_replace(array("\\/"), "/" , htmlspecialchars(json_encode($QResponsesArray, JSON_PRETTY_PRINT), ENT_NOQUOTES));
+    echo "</code>";
+}
 else{
-    echo "Answers object was null.<br />";
+    echo "No question found.";
 }
 
-echo "<h2>JSON Data</h2>";
-$QResponsesArray = ciborium_question::buildQuestionsAndAnswersArray($myQuestionObjects);
-echo json_encode($QResponsesArray);
 
 ?>
