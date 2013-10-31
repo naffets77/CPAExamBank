@@ -456,6 +456,17 @@ $.CPAEB.init = function () {
 
 }
 
+$.CPAEB.hookupGoogleAnalyticsEventWatcher = function () {
+
+    $(document).on('click', 'a', function () {
+        console.log("Link clicked: " + $(this).html());
+    });
+
+    $(document).on('click', 'button', function () {
+        console.log("Button clicked: " + $(this).html());
+    });
+}
+
 $.CPAEB.hideLoginUI = function () {
     $("#header-login-container").hide();
     $("#header-logout-container").show();
@@ -488,7 +499,7 @@ $.CPAEB.registerEvents = function (eventsFunction) {
 $.COR.TPrep = {};
 
 
-// TODO Get rid of all of this and replace with Utitlities Popup code
+// TODO Get rid of all of this and replace with Utilities Popup code
 $.COR.TPrep.showFullScreenOverlay = function (content, contentClassSize, events) {
 
 
@@ -539,6 +550,7 @@ $.COR.TPrep.hideFullScreenOverlay = function () {
 
 $(document).ready(function () {
     $.CPAEB.init();
+    $.CPAEB.hookupGoogleAnalyticsEventWatcher();
 
     if ($.COR.Utilities.getURLParameter("offline") != null) {
         $.COR.account.offline = true;

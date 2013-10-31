@@ -427,6 +427,11 @@ $.COR.Utilities.HashHandler = {
                 console.log("Hash Not Found");
             }
 
+            ga('send', 'pageview', {
+                'page': location.hash
+            });
+
+
 
         });
 
