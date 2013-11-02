@@ -544,7 +544,92 @@ $.COR.TPrep.hideFullScreenOverlay = function () {
 }
 
 
+$.COR.ShowRegPopup = function (successCallback) {
 
+    $.COR.Utilities.FullScreenOverlay.loadLocal("js-overlay-register", $("#js-overlay-register").attr("contentSize"), false, function () {
+
+        $("#full-screen-container .registration-far").prop('checked', $("#pricing-row1-check").prop('checked'));
+        $("#full-screen-container .registration-aud").prop('checked', $("#pricing-row2-check").prop('checked'));
+        $("#full-screen-container .registration-bec").prop('checked', $("#pricing-row3-check").prop('checked'));
+        $("#full-screen-container .registration-reg").prop('checked', $("#pricing-row4-check").prop('checked'));
+
+
+        $("#full-screen-container .registration-finish-button").on("click", function (e) {
+
+            e.preventDefault();
+
+            if ($(this).hasClass("disabled")) { return; }
+
+            var clickedElement = this;
+            var originalHTML = $(this).html();
+
+
+            $(this).addClass('disabled');
+
+            if ($.COR.validateForm($("#full-screen-container .registration-popup-form"))) {
+
+                var email = $("#full-screen-container .registration-email").val();
+                var password = $("#full-screen-container .registration-password").val();
+
+                var far = $("#full-screen-container .registration-far").is(":checked") ? "1" : "0";
+                var aud = $("#full-screen-container .registration-aud").is(":checked") ? "1" : "0";
+                var bec = $("#full-screen-container .registration-bec").is(":checked") ? "1" : "0";
+                var reg = $("#full-screen-container .registration-reg").is(":checked") ? "1" : "0";
+
+                var sections = [
+                    {
+                        "FAR": far,
+                        "AUD": aud,
+                        "BEC": bec,
+                        "REG": reg
+                    }
+                ];
+
+                $(this).html("One Sec...");
+
+                var refSource = $.COR.Utilities.getURLParameter("source") ? $.COR.Utilities.getURLParameter("source") : "none";
+
+                $.COR.services.register(email, password, sections, refSource, function (response) {
+                    if (response.Result == "0") {
+                        $("#full-screen-container .registration-email").parent().append("<span class='error-message'>" + response.Reason + "</span>");
+                        $("#full-screen-container .registration-finish-button").removeClass("disabled").html(originalHTML);
+                    }
+                    else {
+
+                        // We should be able to automatically log them in...
+                        $.COR.services.login(email, password, function () {
+
+
+                            $.COR.toggleAccountNavigation(); // TODO: This should be done on the account side of things
+                            $.COR.TPrep.hideFullScreenOverlay();
+
+                            // TODO: This should be handled better
+                            $("#header-login-container").hide();
+                            $("#header-logout-container").show();
+
+
+                            location.hash = "account";
+
+
+                        });
+                    }
+                });
+
+            }
+            else {
+                $("#full-screen-container .registration-finish-button").removeClass("disabled").html(originalHTML);
+            }
+
+
+        });
+
+
+        if (typeof successCallback == "function") {
+            successCallback();
+        }
+
+    });
+}
 
 
 
@@ -586,86 +671,8 @@ $(document).ready(function () {
 
     $(".register-sign-up").on('click', function () {
 
-
-        $.COR.Utilities.FullScreenOverlay.loadLocal("js-overlay-register", $("#js-overlay-register").attr("contentSize"), false, function () {
-
-
-            $("#full-screen-container .registration-far").prop('checked', $("#pricing-row1-check").prop('checked'));
-            $("#full-screen-container .registration-aud").prop('checked', $("#pricing-row2-check").prop('checked'));
-            $("#full-screen-container .registration-bec").prop('checked', $("#pricing-row3-check").prop('checked'));
-            $("#full-screen-container .registration-reg").prop('checked', $("#pricing-row4-check").prop('checked'));
-
-
-            $("#full-screen-container .registration-finish-button").on("click", function (e) {
-
-                e.preventDefault();
-
-                if ($(this).hasClass("disabled")) { return; }
-
-                var clickedElement = this;
-                var originalHTML = $(this).html();
-                
-
-                $(this).addClass('disabled');
-
-                if ($.COR.validateForm($("#full-screen-container .registration-popup-form"))) {
-
-                    var email = $("#full-screen-container .registration-email").val();
-                    var password = $("#full-screen-container .registration-password").val();
-
-                    var far = $("#full-screen-container .registration-far").is(":checked") ? "1" : "0";
-                    var aud = $("#full-screen-container .registration-aud").is(":checked") ? "1" : "0";
-                    var bec = $("#full-screen-container .registration-bec").is(":checked") ? "1" : "0";
-                    var reg = $("#full-screen-container .registration-reg").is(":checked") ? "1" : "0";
-
-                    var sections = [
-                        {
-                            "FAR": far,
-                            "AUD": aud,
-                            "BEC": bec,
-                            "REG": reg
-                        }
-                    ];
-
-                    $(this).html("One Sec...");
-
-                    var refSource = $.COR.Utilities.getURLParameter("source") ? $.COR.Utilities.getURLParameter("source") : "none";
-
-                    $.COR.services.register(email, password, sections, refSource, function (response) {
-                        if (response.Result == "0") {
-                            $("#full-screen-container .registration-email").parent().append("<span class='error-message'>" + response.Reason + "</span>");
-                            $("#full-screen-container .registration-finish-button").removeClass("disabled").html(originalHTML);
-                        }
-                        else {
-
-                            // We should be able to automatically log them in...
-                            $.COR.services.login(email, password, function () {
-
-
-                                $.COR.toggleAccountNavigation(); // TODO: This should be done on the account side of things
-                                $.COR.TPrep.hideFullScreenOverlay();
-
-                                // TODO: This should be handled better
-                                $("#header-login-container").hide();
-                                $("#header-logout-container").show();
-
-
-                                location.hash = "account";
-
-
-                            });
-                        }
-                    });
-
-                }
-                else {
-                    $("#full-screen-container .registration-finish-button").removeClass("disabled").html(originalHTML);
-                }
-
-
-            });
-
-        });
+        $.COR.ShowRegPopup();
+        
     });
 
 
@@ -675,6 +682,42 @@ $(document).ready(function () {
     });
 
 
+    // This stuff should go in jquery.CPAEXAMBANK.Home.js ?
+    $(".register-row input").on('click focus', function () {
+
+        $(this).val("");
+
+        if ($(this).attr("originalvalue") == "password") {
+            $(this).attr("type", "password");
+        }
+    });
+
+    $(".register-row input").on('blur', function () {
+
+        if ($(this).val() == "") {
+            $(this).val($(this).attr("originalvalue"));
+
+            if ($(this).attr("originalvalue") == "password") {
+                $(this).attr("type", "text");
+            }
+        }
+
+    });
+
+    $(".register-row .sign-up").on('click', function () {
+
+        $.COR.ShowRegPopup(function () {
+            if($(".register-row .registration-email").val() != $(".register-row .registration-email").attr("originalvalue")){
+                $("#full-screen-container .registration-email").val($(".register-row .registration-email").val());
+            }
+            if ($(".register-row .registration-password").val() != $(".register-row .registration-password").attr("originalvalue")) {
+                $("#full-screen-container .registration-password").val($(".register-row .registration-password").val());
+            }
+
+            $(".registration-finish-button").trigger('click');
+        });
+
+    })
 
 
 
