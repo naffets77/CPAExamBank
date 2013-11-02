@@ -618,7 +618,7 @@
 
     #slides .slide ul {
         float: left;
-        width: 478px;
+        width: 410px;
         margin-left: 60px;
         margin-top: 30px;
         line-height: 30px;
@@ -667,11 +667,12 @@
 }
 
 #slide-graphic-1 {
-    height: 240px;
-    width: 341px;
-    background-position: 0px -440px !important;
-    margin-top: 35px;
+    background-image: url('/Content/Images/Home/screenshot2.png') !important;
+    height: 234px;
+    width: 400px;
+    margin-top: 25px;
 }
+
 
 #slide-graphic-2 {
     height: 240px;
