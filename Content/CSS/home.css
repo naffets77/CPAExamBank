@@ -5,6 +5,7 @@
 
 .js-content-wrapper { /* this should be in shared*/
     background-color: #fff;
+    background-color:#0C77A8;
     float: left;
     clear: both;
     width: 100%;
@@ -612,8 +613,8 @@
 
     #slides .slide h2 {
         font-size: 30px;
-        text-align: right;
-        color: #21455D;
+        text-align: center;
+        color: #fff;
     }
 
     #slides .slide ul {
@@ -705,15 +706,15 @@
         display: none;
         cursor: pointer;
         padding: 0px 20px;
-        border: 2px solid #000;
-        border-radius: 3px 3px 3px 3px;
+        border:1px solid #0C77A8;
+        /*border-radius: 3px 3px 3px 3px;
         -moz-border-radius: 3px 3px 3px 3px;
         -webkit-border-radius: 3px 3px 3px 3px;
         -webkit-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
         -moz-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
-        box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
-        color: #21455D;
-        background-color: #F8F8F2;
+        box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);*/
+        color: #fff;
+        background-color: #0C77A8;
         /*background: rgb(112,150,174);
 background: -moz-linear-gradient(-45deg,  rgba(112,150,174,1) 0%, rgba(33,69,93,1) 100%);
 background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(112,150,174,1)), color-stop(100%,rgba(33,69,93,1)));
