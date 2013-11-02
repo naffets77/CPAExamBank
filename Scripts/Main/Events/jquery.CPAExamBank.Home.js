@@ -102,7 +102,7 @@ $.CPAEB.pages.home.events = function () {
 
 	setInterval(function () {
 		self.slider.autoSlide();
-	}, 6000);
+	}, 8000);
 
 }
 
