@@ -101,7 +101,7 @@ $.CPAEB.pages.home.events = function () {
 	});
 
 	setInterval(function () {
-		//self.slider.autoSlide();
+		self.slider.autoSlide();
 	}, 8000);
 
 }
