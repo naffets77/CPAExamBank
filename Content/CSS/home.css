@@ -482,14 +482,14 @@
     font-weight: bold;
 }
 
-#js-overlay-register-content input[type=text],#js-overlay-register-content input[type=password]  {
+#js-overlay-register-content input[type=text], #js-overlay-register-content input[type=password] {
     visibility: visible;
-    padding:4px 6px;
-    width:200px;
+    padding: 4px 6px;
+    width: 200px;
 }
 
-#js-overlay-register-content table{
-    width:100%;
+#js-overlay-register-content table {
+    width: 100%;
 }
 
 #js-overlay-register-content tr td, #set-password-holder tr td {
@@ -572,23 +572,33 @@
 
 
 .register-row {
-float: left;
-margin: 40px 0px 10px 20px;
-padding: 10px 0px 30px;
-background-color: #21465D;
-color: #fff;
-width: 920px;
-text-align: center;
-
+    float: left;
+    margin: 40px 0px 10px 20px;
+    padding: 10px 0px 30px;
+    background-color: #21465D;
+    color: #fff;
+    width: 920px;
+    text-align: center;
 }
+
+    .register-row input {
+        padding:4px 10px;
+        width:250px;
+        margin-right:10px;
+        font-size:22px;
+
+    }
+
+    .register-row input.watermark{
+        color:#999;
+    }
 
 
     .register-row .btn-orange {
-        margin:0px auto;
-        color:#000;
-        display:block;
-        width:200px;
-        cursor:pointer;
+        margin: 0px auto;
+        color: #000;
+        width: 200px;
+        cursor: pointer;
     }
 
 
@@ -600,29 +610,122 @@ text-align: center;
     position: relative;
 }
 
+    #slides .slide h2 {
+        font-size: 30px;
+        text-align: right;
+        color: #21455D;
+    }
+
+    #slides .slide ul {
+        float: left;
+        width: 478px;
+        margin-left: 60px;
+        margin-top: 30px;
+        line-height: 30px;
+    }
+
+        #slides .slide ul li {
+            font-size: 22px;
+            margin-bottom: 40px;
+            list-style-type: disc;
+        }
+
+#slide1 ul {
+    float: left;
+    width: 498px;
+    margin-left: 40px;
+    margin-top: 30px;
+    line-height: 30px;
+}
+
+    #slide1 ul li {
+        margin-bottom: 30px !important;
+    }
+
+#slide2 ul {
+    float: left;
+    width: 498px;
+    margin-left: 40px;
+    margin-top: 30px;
+    line-height: 30px;
+}
+
+    #slide2 ul li {
+    }
+
+#slide3 ul {
+    width: 274px !important;
+}
+
+    #slide3 ul li {
+    }
+
+#slides .slide .graphic {
+    background: url('/Content/Images/Home/Spritesheet.gif') no-repeat 0px 0px;
+    float: left;
+    clear: both;
+}
+
+#slide-graphic-1 {
+    height: 240px;
+    width: 341px;
+    background-position: 0px -440px !important;
+    margin-top: 35px;
+}
+
+#slide-graphic-2 {
+    height: 240px;
+    width: 341px;
+    background-position: 0px -440px !important;
+    margin-top: 40px;
+}
+
+#slide-graphic-3 {
+    height: 317px;
+    width: 546px;
+    background-position: 0px -118px !important;
+}
+
 
 .slides_container {
-    width: 960px;
-    overflow: hidden;
+    width: 920px;
     position: relative;
     display: none;
 }
 
 
     .slides_container .slide {
-        width: 920px;
+        width: 880px;
         height: 400px;
         position: absolute;
         top: 0px;
         left: 990px;
-        z-index:5;
+        z-index: 5;
         display: none;
-        cursor:pointer;
+        cursor: pointer;
+        padding: 0px 20px;
+        border: 2px solid #000;
+        border-radius: 3px 3px 3px 3px;
+        -moz-border-radius: 3px 3px 3px 3px;
+        -webkit-border-radius: 3px 3px 3px 3px;
+        -webkit-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+        -moz-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+        box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+        color: #21455D;
+        background-color: #F8F8F2;
+        /*background: rgb(112,150,174);
+background: -moz-linear-gradient(-45deg,  rgba(112,150,174,1) 0%, rgba(33,69,93,1) 100%);
+background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(112,150,174,1)), color-stop(100%,rgba(33,69,93,1)));
+background: -webkit-linear-gradient(-45deg,  rgba(112,150,174,1) 0%,rgba(33,69,93,1) 100%);
+background: -o-linear-gradient(-45deg,  rgba(112,150,174,1) 0%,rgba(33,69,93,1) 100%);
+background: -ms-linear-gradient(-45deg,  rgba(112,150,174,1) 0%,rgba(33,69,93,1) 100%);
+background: linear-gradient(135deg,  rgba(112,150,174,1) 0%,rgba(33,69,93,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7096ae', endColorstr='#21455d',GradientType=1 );*/
     }
 
         .slides_container .slide.current {
-            display:block;
-            z-index:5;
+            display: block;
+            z-index: 5;
         }
 
 
