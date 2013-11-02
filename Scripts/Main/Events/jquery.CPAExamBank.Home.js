@@ -67,7 +67,7 @@ $.CPAEB.pages.home.events = function () {
 
 		self.slider.currentIndex = self.slider.currentIndex == 1 ? self.slider.maxIndex : self.slider.currentIndex - 1;
 		self.slider.updatePagination();
-		self.slider.updateSlides('left');
+		self.slider.updateSlides('right');
 
 	});
 
@@ -79,7 +79,7 @@ $.CPAEB.pages.home.events = function () {
 
 		self.slider.currentIndex = self.slider.currentIndex + 1 > self.slider.maxIndex ? 1 : self.slider.currentIndex + 1;
 		self.slider.updatePagination();
-		self.slider.updateSlides('right');
+		self.slider.updateSlides('left');
 
 	});
 
@@ -158,7 +158,7 @@ $.CPAEB.pages.home.slider.autoSlide = function () {
 
 	self.slider.currentIndex = self.slider.currentIndex + 1 > self.slider.maxIndex ? 1 : self.slider.currentIndex + 1;
 	self.slider.updatePagination();
-	self.slider.updateSlides('right');
+	self.slider.updateSlides('left');
 }
 
 
