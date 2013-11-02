@@ -332,7 +332,7 @@ body {
             }
 
         .header-navigation li.current {
-            background-color: #fff;
+            background-color: #e7ebf2;
             border: 1px solid #efefef;
             border-bottom: none;
             border-radius: 5px 5px 0px 0px;
