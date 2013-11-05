@@ -108,11 +108,14 @@ $.COR.account.setupEvents = function () {
         $(".subscribe-message").hide();
 
         if ($(this).parents("tr").hasClass("trial")) {
-            $("#practice-question-count").val(5);
+            $("#practice-question-count").append("<option id='practice-question-trial-amount' value='25'>25</option>");
+            $("#practice-question-count").val(25);
             $("#practice-question-count").attr("disabled", "disabled");
             $(this).parents("tr").first().find(".subscribe-message").css("display","block");
         }
         else {
+            $("#practice-question-trial-amount").remove();
+
             $("#practice-question-count").val(20);
             $("#practice-question-count").removeAttr("disabled");
         }
@@ -700,7 +703,8 @@ $.COR.account.setUserData = function (data) {
 
     // setup the default selected section when studying (AUD)
     if (!AUDEnabled) {
-        $("#practice-question-count").val(5);
+        $("#practice-question-count").append("<option id='practice-question-trial-amount' value='25'>25</option>");
+        $("#practice-question-count").val(25);
         $("#practice-question-count").attr("disabled", "disabled");
         $("#practice-category_aud").parents("tr").first().find(".subscribe-message").css('display','block');
     }
