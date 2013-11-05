@@ -82,7 +82,7 @@ class account
         }
 
         // Indicates the user is 'signed on'
-        if(array_key_exists("Account", $returnArray) && $inUpdateLastLoggedIn == true){
+        if(isset($_SESSION['Account']) && $inUpdateLastLoggedIn == true){
             self::updateAccountUserLastLogin($userAccountForSession->AccountUserId, __METHOD__);
         }
         return $returnArray;
@@ -117,7 +117,7 @@ class account
             "Result" => ""
         );
 
-        if(validate::tryParseInt($inAccountUserId)){
+        if(!validate::tryParseInt($inAccountUserId)){
             $myArray['Reason'] = "ID was not an integer";
             $myArray['Result'] = 0;
 
@@ -133,7 +133,7 @@ class account
             ':LastModifiedBy' => $inMethodName
         );
 
-        $whereClause = "AccountUserId = '".$inAccountUserId."'";
+        $whereClause = "AccountUserId = ".$inAccountUserId."";
         $myArray['Result'] = database::update("AccountUserSettings", $updateArray, $updatePrepare, $whereClause, __METHOD__);
         return $myArray;
     }
