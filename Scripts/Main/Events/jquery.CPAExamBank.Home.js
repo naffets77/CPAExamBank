@@ -13,21 +13,41 @@ $.CPAEB.pages.home.events = function () {
 
 	var self = $.CPAEB.pages.home;
 
-	$("#home-login-username").on('click', function(){
+	$("#home-login-username").on('click', function () {
 
 	    if ($(this).val() == 'Email') {
 	        $(this).val("");
 	    }
 
-	})
+	});
+
+	$("#home-login-username").on('blur', function () {
+
+	    if ($(this).val() == "") {
+	        $(this).val("Email");
+	    }
+
+	});
+
 
 	$("#home-login-password").on('click', function () {
 
 	    if ($(this).val() == 'Password') {
 	        $(this).val("");
+	        $(this).attr("type","password");
 	    }
 
 	})
+
+	$("#home-login-password").on('blur', function () {
+
+	    if ($(this).val() == "") {
+	        $(this).attr("type", "text");
+	        $(this).val("Password");
+	    }
+
+	});
+
 
 	$("#contact-us-submit-form").on('click', function () {
 
