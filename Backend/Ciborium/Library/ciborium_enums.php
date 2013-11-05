@@ -46,7 +46,7 @@ class enum_LicenseTransactionType{
 class enum_SubscriptionType{
 
     //See LicenseTransactionType table
-    //Current as of 6/27/2013
+    //Current as of 11/2/2013
     const Free = 1;
     const FAR = 2;
     const AUD = 3;
@@ -62,7 +62,8 @@ class enum_SubscriptionType{
     const FAR_AUD_REG = 13;
     const FAR_AUD_BEC_REG = 14;
     const Perpetual = 15; //not public
-
+    const AUD_BEC_REG = 16;
+    const FAR_BEC_REG = 17;
 
 }
 
@@ -84,7 +85,7 @@ class enum_LogType{
 }
 
 class enum_PracticeNumberOfQuestions{
-    const FreeLimit = 5;
+    const FreeLimit = 25;
     const Ten = 10;
     const Twenty = 20;
     const Thirty = 30;

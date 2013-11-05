@@ -61,14 +61,16 @@ class ciborium_question{
      * @param int $inMaxNumberOfQuestionsToReturn
      * @param int $inAccountUserId
      * @param bool $inIsAdmin
+     * @param bool $inIsFreeAccount
      * @param int $inQuestionTypeId
+     *
      *
      * @return array
      *      Reason
      *      Result
      *      QuestionResponses
      */
-    public static function getQuestionsAndAnswersBySectionType($inSectionTypeId, $inMaxNumberOfQuestionsToReturn, $inAccountUserId, $inIsAdmin, $inQuestionTypeId = 1){
+    public static function getQuestionsAndAnswersBySectionType($inSectionTypeId, $inMaxNumberOfQuestionsToReturn, $inAccountUserId, $inIsAdmin, $inIsFreeAccount = false, $inQuestionTypeId = 1){
         $returnArray = array(
             'Result' => 1,
             'Reason' => "",
@@ -125,7 +127,7 @@ class ciborium_question{
         }
 
         if($QuestionLimit != "0" && $QuestionLimit != ""){
-            $questionObjects = question::getAllQuestionsForPublicUI($AccountUserId, $inQuestionTypeId, $SectionTypeId, $QuestionLimit);
+            $questionObjects = question::getAllQuestionsForPublicUI($AccountUserId, $inQuestionTypeId, $SectionTypeId, $QuestionLimit, (bool)$inIsFreeAccount);
 
             if(count($questionObjects) > 0){
                 $responsesArray = self::buildQuestionsAndAnswersArray($questionObjects);

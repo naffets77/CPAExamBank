@@ -7,7 +7,7 @@ include_once(library_configuration::$environment_librarypath."/database.php");
 
 class question{
 
-    public static function getAllQuestionsForPublicUI($inAccountUserId, $inQuestionTypeId = 3, $inSectionTypeId = 5, $inLimit = ""){
+    public static function getAllQuestionsForPublicUI($inAccountUserId, $inQuestionTypeId = 3, $inSectionTypeId = 5, $inLimit = "", $inIsFreeAccount = false){
 
         $QuestionTypeId = "3";
         $SectionTypeId = "5";
@@ -39,96 +39,102 @@ class question{
         //$whereClause = "";
         $whereClause .= $boolGetAllQuestionTypeIds ? "AND QuestionTypeId IN (SELECT QuestionTypeId FROM QuestionType WHERE QuestionTypeId <> 3) " : "AND QuestionTypeId IN (".$QuestionTypeId.") ";
         $whereClause .= $boolGetAllSectionTypeIds ? "AND SectionTypeId IN (SELECT SectionTypeId FROM SectionType WHERE SectionTypeId <> 5) " : "AND SectionTypeId IN (".$SectionTypeId.") ";
+        $whereClause .= $inIsFreeAccount ? "AND IsSamplable IN (1) " : ""; //free account limitation
         $orderBy = "";
         $limit = validate::tryParseInt($inLimit) ? (string)$inLimit : "";
         $preparedArray = null;
 
-        //Getting which QuestionIds to return based off of user's history
-        $FilterArray = array(
-            'SectionTypeId' => $SectionTypeId,
-            'ResultId' => 4,
-            'OrderById' => 4
-        );
-        $QuestionHistoryMetrics = question::getAccountUserQuestionHistoryMetricsWithFiltersById($inAccountUserId, $FilterArray);
+        //only have to do logic on question history if it is not a free account
+        if(!$inIsFreeAccount){
+            //Getting which QuestionIds to return based off of user's history
+            $FilterArray = array(
+                'SectionTypeId' => $SectionTypeId,
+                'ResultId' => 4,
+                'OrderById' => 4
+            );
 
-        if(count($QuestionHistoryMetrics) > 0 && $limit != ""){
-            $QuestionIdsArray = array();
-            $QuestionIdsToExcludeArray = array();
-            $RightQuestionIdsArray = array();
-            $WrongQuestionIdsArray = array();
-            //TODO: Add these to config file
-            $numRightTimesLimit = 10;
-            //$numWrongTimesLimit = 7;
-            $numTimesAnsweredLimit = 22;
-            $percent_right = 0.2;
-            $percent_wrong = 0.5;
-            $questionLimit = (int)$inLimit;
-            $amountRightToReturn = floor($questionLimit * $percent_right);
-            $amountWrongToReturn = floor($questionLimit * $percent_wrong);
-            $amountNewToReturn = $questionLimit - $amountRightToReturn - $amountWrongToReturn;
+            $QuestionHistoryMetrics = question::getAccountUserQuestionHistoryMetricsWithFiltersById($inAccountUserId, $FilterArray);
 
-            foreach ($QuestionHistoryMetrics as $stdIndex => $QHObject) {
-                $totalTimesAnswered = (int)$QHObject->TimesCorrect + (int)$QHObject->TimesIncorrect;
-                if($totalTimesAnswered < $numTimesAnsweredLimit){
-                    //add as a "right" question
-                    if($QHObject->TimesCorrect < $numRightTimesLimit && $QHObject->TimesCorrect > 0){
-                        $RightQuestionIdsArray[] = (int)$QHObject->QuestionId;
+            if(count($QuestionHistoryMetrics) > 0 && $limit != ""){
+                $QuestionIdsArray = array();
+                $QuestionIdsToExcludeArray = array();
+                $RightQuestionIdsArray = array();
+                $WrongQuestionIdsArray = array();
+                //TODO: Add these to config file
+                $numRightTimesLimit = 10;
+                //$numWrongTimesLimit = 7;
+                $numTimesAnsweredLimit = 22;
+                $percent_right = 0.2;
+                $percent_wrong = 0.5;
+                $questionLimit = (int)$inLimit;
+                $amountRightToReturn = floor($questionLimit * $percent_right);
+                $amountWrongToReturn = floor($questionLimit * $percent_wrong);
+                $amountNewToReturn = $questionLimit - $amountRightToReturn - $amountWrongToReturn;
+
+                foreach ($QuestionHistoryMetrics as $stdIndex => $QHObject) {
+                    $totalTimesAnswered = (int)$QHObject->TimesCorrect + (int)$QHObject->TimesIncorrect;
+                    if($totalTimesAnswered < $numTimesAnsweredLimit){
+                        //add as a "right" question
+                        if($QHObject->TimesCorrect < $numRightTimesLimit && $QHObject->TimesCorrect > 0){
+                            $RightQuestionIdsArray[] = (int)$QHObject->QuestionId;
+                            $QuestionIdsToExcludeArray[] = (int)$QHObject->QuestionId;
+                        }
+
+                        //add as a wrong question
+                        if($QHObject->TimesCorrect == 0 && $QHObject->TimesIncorrect > 0){
+                            $WrongQuestionIdsArray[] = (int)$QHObject->QuestionId;
+                            $QuestionIdsToExcludeArray[] = (int)$QHObject->QuestionId;
+                        }
+                    }
+                    else{
                         $QuestionIdsToExcludeArray[] = (int)$QHObject->QuestionId;
                     }
+                }
 
-                    //add as a wrong question
-                    if($QHObject->TimesCorrect == 0 && $QHObject->TimesIncorrect > 0){
-                        $WrongQuestionIdsArray[] = (int)$QHObject->QuestionId;
-                        $QuestionIdsToExcludeArray[] = (int)$QHObject->QuestionId;
+                //compile the initial question ids from history
+                if(count($RightQuestionIdsArray) > $amountRightToReturn){
+                    $RightQuestionIdsArray = array_slice($RightQuestionIdsArray, 0, $amountRightToReturn);
+                }
+                if(count($WrongQuestionIdsArray) > $amountWrongToReturn){
+                    $WrongQuestionIdsArray = array_slice($WrongQuestionIdsArray, 0, $amountWrongToReturn);
+                }
+                $QuestionIdsArray = array_merge($QuestionIdsArray, $RightQuestionIdsArray);
+                $QuestionIdsArray = array_merge($QuestionIdsArray, $WrongQuestionIdsArray);
+
+                $QuestionIdsArray = array_unique($QuestionIdsArray);
+
+
+                //check to see if there is a need for supplemental questions
+                $NewQuestionLimit = $questionLimit - count($QuestionIdsArray);
+                if($NewQuestionLimit > 0){
+
+                    $NewQuestionIdsArray = array();
+                    $NewQuestionIdsObjects = question::getRemainingQuestionIdsForSimulation($QuestionIdsToExcludeArray, $SectionTypeId, $NewQuestionLimit);
+
+                    //if there are enough to fulfill request
+                    if(count($NewQuestionIdsObjects) > 0 && count($NewQuestionIdsObjects) == $NewQuestionLimit){
+                        foreach ($NewQuestionIdsObjects as $stdIndex => $Object) {
+                            $NewQuestionIdsArray[] = (int)$Object->QuestionId;
+                        }
+                        $QuestionIdsArray = array_merge($QuestionIdsArray, $NewQuestionIdsArray);
+                    }
+                    //not enough to fill request, need to provide some questions regardless;
+                    //only exlude the right and wrong questions this time
+                    else{
+                        $NewQuestionIdsObjects = question::getRemainingQuestionIdsForSimulation($QuestionIdsArray, $SectionTypeId, $NewQuestionLimit);
+                        foreach ($NewQuestionIdsObjects as $stdIndex => $Object) {
+                            $NewQuestionIdsArray[] = (int)$Object->QuestionId;
+                        }
+                        $QuestionIdsArray = array_merge($QuestionIdsArray, $NewQuestionIdsArray);
                     }
                 }
-                else{
-                    $QuestionIdsToExcludeArray[] = (int)$QHObject->QuestionId;
-                }
+
+                //add to where clause
+                $myQuestionIds = validate::isNotNullOrEmpty_Array($QuestionIdsArray) ? implode(", ", $QuestionIdsArray) : "0";
+                $whereClause .= "AND QuestionId IN (".$myQuestionIds.") ";
             }
-
-            //compile the initial question ids from history
-            if(count($RightQuestionIdsArray) > $amountRightToReturn){
-                $RightQuestionIdsArray = array_slice($RightQuestionIdsArray, 0, $amountRightToReturn);
-            }
-            if(count($WrongQuestionIdsArray) > $amountWrongToReturn){
-                $WrongQuestionIdsArray = array_slice($WrongQuestionIdsArray, 0, $amountWrongToReturn);
-            }
-            $QuestionIdsArray = array_merge($QuestionIdsArray, $RightQuestionIdsArray);
-            $QuestionIdsArray = array_merge($QuestionIdsArray, $WrongQuestionIdsArray);
-
-            $QuestionIdsArray = array_unique($QuestionIdsArray);
-
-
-            //check to see if there is a need for supplemental questions
-            $NewQuestionLimit = $questionLimit - count($QuestionIdsArray);
-            if($NewQuestionLimit > 0){
-
-                $NewQuestionIdsArray = array();
-                $NewQuestionIdsObjects = question::getRemainingQuestionIdsForSimulation($QuestionIdsToExcludeArray, $SectionTypeId, $NewQuestionLimit);
-
-                //if there are enough to fulfill request
-                if(count($NewQuestionIdsObjects) > 0 && count($NewQuestionIdsObjects) == $NewQuestionLimit){
-                    foreach ($NewQuestionIdsObjects as $stdIndex => $Object) {
-                        $NewQuestionIdsArray[] = (int)$Object->QuestionId;
-                    }
-                    $QuestionIdsArray = array_merge($QuestionIdsArray, $NewQuestionIdsArray);
-                }
-                //not enough to fill request, need to provide some questions regardless;
-                //only exlude the right and wrong questions this time
-                else{
-                    $NewQuestionIdsObjects = question::getRemainingQuestionIdsForSimulation($QuestionIdsArray, $SectionTypeId, $NewQuestionLimit);
-                    foreach ($NewQuestionIdsObjects as $stdIndex => $Object) {
-                        $NewQuestionIdsArray[] = (int)$Object->QuestionId;
-                    }
-                    $QuestionIdsArray = array_merge($QuestionIdsArray, $NewQuestionIdsArray);
-                }
-            }
-
-            //add to where clause
-            $myQuestionIds = validate::isNotNullOrEmpty_Array($QuestionIdsArray) ? implode(", ", $QuestionIdsArray) : "0";
-            $whereClause .= "AND QuestionId IN (".$myQuestionIds.") ";
         }
+
 
         return database::select("Question", $selectArray, $whereClause, $orderBy, $limit, $preparedArray, __METHOD__);
     }

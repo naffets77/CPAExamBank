@@ -167,7 +167,7 @@ class service_question{
             //Check SectionTypeId against the Licenses->SubscriptionTypeId to see if it is valid
             //$mySubscriptionCheckResponse = ciborium_question::checkValidSectionTypeToSubscriptionType($_SESSION['Licenses']->SubscriptionTypeId, $SectionTypeId, __METHOD__."[".$_SESSION['Account']->AccountUserId."]");
 
-            $myLicenseToSectionTypeResult = false;
+            $myLicenseToSectionTypeResult = false; //for checking if user is still subscribed actively (not expired) to the section
             $mySectionTypeId = (int)$SectionTypeId;
             foreach ($_SESSION['Subscriptions'] as $stdKey => $object) {
                 $myExpirationTime = util_datetime::getDateTimeToPHPTime($object->DateExpiration);
@@ -181,9 +181,9 @@ class service_question{
             if($myLicenseToSectionTypeResult || (int)$_SESSION['Licenses']->SubscriptionTypeId == enum_SubscriptionType::Free || (int)$QuestionAmount == enum_PracticeNumberOfQuestions::FreeLimit){
 
                 //If Free license, limit number of return questions automatically
-               $QuestionAmount = (int)$_SESSION['Licenses']->SubscriptionTypeId == enum_SubscriptionType::Free ? enum_PracticeNumberOfQuestions::FreeLimit : $QuestionAmount;
-
-                $myResponse = ciborium_question::getQuestionsAndAnswersBySectionType($SectionTypeId, $QuestionAmount, $_SESSION['Account']->AccountUserId, $_SESSION['Account']->IsAdmin, 1);
+                $QuestionAmount = (int)$_SESSION['Licenses']->SubscriptionTypeId == enum_SubscriptionType::Free ? enum_PracticeNumberOfQuestions::FreeLimit : $QuestionAmount;
+                $isFreeAccount = ((int)$_SESSION['Licenses']->SubscriptionTypeId == enum_SubscriptionType::Free) || !$myLicenseToSectionTypeResult ? true : false;
+                $myResponse = ciborium_question::getQuestionsAndAnswersBySectionType($SectionTypeId, $QuestionAmount, $_SESSION['Account']->AccountUserId, $_SESSION['Account']->IsAdmin, $isFreeAccount, enum_QuestionType::MultipleChoice);
                 return $myResponse;
             }
             else{
