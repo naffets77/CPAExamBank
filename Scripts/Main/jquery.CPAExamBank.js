@@ -671,8 +671,14 @@ $(document).ready(function () {
 
     $(".register-sign-up").on('click', function () {
 
+        // make sure to scroll to top of the page
+
         $.COR.ShowRegPopup();
         
+        $('body,html').animate({
+            scrollTop: 0
+        }, 800);
+
     });
 
 
