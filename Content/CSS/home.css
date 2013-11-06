@@ -47,11 +47,11 @@
 
 #home-row-1 p {
     float: right;
-    width: 565px;
+    width: 510px;
     margin: 0 0 20px 0;
     font-size: 16px;
     line-height: 26px;
-    margin-right: 26px;
+    margin-right: 80px;
 }
 
 
@@ -133,7 +133,7 @@
     width: 300px;
     border: 4px solid #efefef;
     cursor: pointer;
-    margin: 65px 20px 20px 0px;
+    margin: 63px 20px 20px 0px;
     float: left;
 }
 
