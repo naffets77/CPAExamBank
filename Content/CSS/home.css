@@ -5,7 +5,7 @@
 
 .js-content-wrapper { /* this should be in shared*/
     background-color: #fff;
-    background-color:#e7ebf2;
+    background-color: #e7ebf2;
     float: left;
     clear: both;
     width: 100%;
@@ -42,10 +42,10 @@
     font-weight: bold;
     font-size: 22px;
     margin-top: 23px;
-    margin-bottom:20px;
+    margin-bottom: 20px;
 }
 
-#home-row-1 p{
+#home-row-1 p {
     float: right;
     width: 565px;
     margin: 0 0 20px 0;
@@ -358,19 +358,32 @@
 }
 
     #js-content-wrapper-contact .content table tr td {
-        padding-bottom: 30px;
+        padding-bottom: 20px;
     }
 
-        #js-content-wrapper-contact .content table tr td textarea {
-            width: 400px;
-            height: 150px;
-        }
+#js-content-wrapper-contact input {
+    padding:4px 6px;
+    font-size:18px;
+}
+
+#js-content-wrapper-contact select {
+    padding:4px 6px;
+    font-size:18px;
+}
+
+#js-content-wrapper-contact .content table tr td textarea {
+    width: 660px;
+    height: 150px;
+    font-size:18px;
+    padding:4px;
+}
 
 
-        #js-content-wrapper-contact .content table tr td:first-child {
-            padding-right: 10px;
-            vertical-align: middle;
-        }
+#js-content-wrapper-contact .content table tr td:first-child {
+    padding-right: 10px;
+    vertical-align: middle;
+    font-weight:bold;
+}
 
 /*** About Us Page Styles ***/
 
@@ -590,23 +603,21 @@
     width: 960px;
     text-align: center;
     background-color: #fff;
-
-    -moz-box-shadow:inset 0px 2px 10px #999,inset 0px -2px 10px #999;
+    -moz-box-shadow: inset 0px 2px 10px #999,inset 0px -2px 10px #999;
     -webkit-box-shadow: inset 0px 2px 10px #999,inset 0px -2px 10px #999;
     box-shadow: inset 0px 2px 10px #999,inset 0px -2px 10px #999;
 }
 
     .register-row input {
-        padding:4px 10px;
-        width:250px;
-        margin-right:10px;
-        font-size:22px;
-
+        padding: 4px 10px;
+        width: 250px;
+        margin-right: 10px;
+        font-size: 22px;
     }
 
-    .register-row input.watermark{
-        color:#999;
-    }
+        .register-row input.watermark {
+            color: #999;
+        }
 
 
     .register-row .btn-orange {
@@ -616,7 +627,7 @@
         cursor: pointer;
         padding: 15px 20px;
         border-radius: 25px;
-        border:solid 3px #fff;
+        border: solid 3px #fff;
     }
 
 
@@ -723,7 +734,7 @@
         display: none;
         cursor: pointer;
         padding: 0px 20px;
-        border:1px solid #e7ebf2;
+        border: 1px solid #e7ebf2;
         /*border-radius: 3px 3px 3px 3px;
         -moz-border-radius: 3px 3px 3px 3px;
         -webkit-border-radius: 3px 3px 3px 3px;
