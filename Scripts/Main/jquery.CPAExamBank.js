@@ -673,6 +673,8 @@ $(document).ready(function () {
 
         // make sure to scroll to top of the page
 
+        ga('send', 'event', 'button', 'click', 'show register popup', $(this).attr("id"));
+
         $.COR.ShowRegPopup();
         
         $('body,html').animate({
