@@ -576,6 +576,7 @@ $.COR.ShowRegPopup = function (successCallback) {
 
                 var email = $("#full-screen-container .registration-email").val();
                 var password = $("#full-screen-container .registration-password").val();
+                var promoCode = $("#full-screen-container #registration-promo-code")
 
                 var far = $("#full-screen-container .registration-far").is(":checked") ? "1" : "0";
                 var aud = $("#full-screen-container .registration-aud").is(":checked") ? "1" : "0";
@@ -595,7 +596,9 @@ $.COR.ShowRegPopup = function (successCallback) {
 
                 var refSource = $.COR.Utilities.getURLParameter("source") ? $.COR.Utilities.getURLParameter("source") : "none";
 
-                $.COR.services.register(email, password, sections, refSource, function (response) {
+                $.COR.services.register(email, password, sections, refSource, promoCode, function (response) {
+
+                    // this will need to be updated to check if promo code was expired
                     if (response.Result == "0") {
                         $("#full-screen-container .registration-email").parent().append("<span class='error-message'>" + response.Reason + "</span>");
                         $("#full-screen-container .registration-finish-button").removeClass("disabled").html(originalHTML);
