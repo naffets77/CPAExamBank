@@ -558,6 +558,9 @@ $.COR.ShowRegPopup = function (successCallback) {
             $("#full-screen-container .registration-promo-code-row").show();
             $("#full-screen-container .registration-promotion-code").val($.COR.Utilities.getURLParameter("promo"));
         }
+        else {
+            $("#full-screen-container .registration-promotion-code").val('none');
+        }
 
 
         $("#full-screen-container .registration-finish-button").on("click", function (e) {
