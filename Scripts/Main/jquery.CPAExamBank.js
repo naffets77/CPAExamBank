@@ -576,7 +576,7 @@ $.COR.ShowRegPopup = function (successCallback) {
 
                 var email = $("#full-screen-container .registration-email").val();
                 var password = $("#full-screen-container .registration-password").val();
-                var promoCode = $("#full-screen-container #registration-promo-code")
+                var promoCode = $("#full-screen-container #registration-promo-code").val();
 
                 var far = $("#full-screen-container .registration-far").is(":checked") ? "1" : "0";
                 var aud = $("#full-screen-container .registration-aud").is(":checked") ? "1" : "0";
