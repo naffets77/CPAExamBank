@@ -394,7 +394,7 @@ class ciboriumlib_account{
                 }
             }
             else{
-                $returnArray['Reason'] = "Email address already in use.";
+                $returnArray['Reason'] = "Email already in use.";
             }
         }
         else{
