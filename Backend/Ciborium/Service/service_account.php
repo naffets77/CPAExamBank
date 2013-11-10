@@ -280,7 +280,7 @@ class service_account{
         $myJSONObject = json_decode($sections, true);
         if(json_last_error() == JSON_ERROR_NONE){
             $sectionsArray = $myJSONObject[0];
-            $myResultArray = ciboriumlib_account::registerNewUser($email, $password, $sectionsArray, $referralSource, $promoCode __METHOD__);
+            $myResultArray = ciboriumlib_account::registerNewUser($email, $password, $sectionsArray, $referralSource, $promoCode, __METHOD__);
             return $myResultArray;
         }
         else{
