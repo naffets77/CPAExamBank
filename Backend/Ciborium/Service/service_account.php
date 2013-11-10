@@ -259,7 +259,8 @@ class service_account{
             "email" => $email,
             "password" => $password,
             'sections' => $sections,
-            'referralSource' => $referralSource
+            'referralSource' => $referralSource,
+			'promoCode' => $promoCode
         );
 
         if(in_array(null, $checkValueArray))
@@ -272,14 +273,14 @@ class service_account{
             }
             $inMessage .= implode(", ", $inMessageAppend);
             util_errorlogging::LogBrowserError(3, $inMessage, __METHOD__, __FILE__);
-            $myArray['Reason'] = "Missing requried variable(s)";
+            $myArray['Reason'] = "Missing required variable(s)";
             return $myArray;
         }
 
         $myJSONObject = json_decode($sections, true);
         if(json_last_error() == JSON_ERROR_NONE){
             $sectionsArray = $myJSONObject[0];
-            $myResultArray = ciboriumlib_account::registerNewUser($email, $password, $sectionsArray, $referralSource, __METHOD__);
+            $myResultArray = ciboriumlib_account::registerNewUser($email, $password, $sectionsArray, $referralSource, $promoCode __METHOD__);
             return $myResultArray;
         }
         else{
