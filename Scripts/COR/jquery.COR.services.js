@@ -182,7 +182,7 @@ $.COR.services.login = function (email, password, successCallback, failcallback)
     }
 }
 
-$.COR.services.register = function (email, password, sections, refSource, callback) {
+$.COR.services.register = function (email, password, sections, refSource, promoCode, callback) {
 
     if ($.COR.account.offline == false) {
         var ph = new $.COR.Utilities.PostHandler({
@@ -190,6 +190,7 @@ $.COR.services.register = function (email, password, sections, refSource, callba
             params: {
                 email: email,
                 password: $.COR.MD5(password),
+                promoCode: promoCode,
                 sections: JSON.stringify(sections),
                 referralSource : refSource
             },

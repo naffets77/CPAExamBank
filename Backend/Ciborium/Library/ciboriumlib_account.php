@@ -292,7 +292,7 @@ class ciboriumlib_account{
      * @param $inCaller
      * @return array
      */
-    public static function registerNewUser($inEmail, $inMD5Password, $inSectionsArray, $inReferralSource, $inCaller){
+    public static function registerNewUser($inEmail, $inMD5Password, $inSectionsArray, $inReferralSource, $inPromoCode, $inCaller){
         $returnArray = array(
             'Result' => 0,
             'Reason' => "",
@@ -324,7 +324,12 @@ class ciboriumlib_account{
             util_errorlogging::LogBrowserError(3, $errorMessage, __METHOD__, __FILE__);
             return $returnArray;
         }
-
+        if(!validate::isNotNullOrEmpty_String($inPromoCode)){
+            $returnArray['Reason'] = "Invalid input";
+            $errorMessage = $returnArray['Reason']." for referral source. Was null or empty.";
+            util_errorlogging::LogBrowserError(3, $errorMessage, __METHOD__, __FILE__);
+            return $returnArray;
+        }
         //logout to clear any errant session
         ciboriumlib_account::logout();
         $myEmail = trim($inEmail);

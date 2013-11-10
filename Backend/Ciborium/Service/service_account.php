@@ -253,6 +253,7 @@ class service_account{
         $password = validate::requirePostField('password', self::$service, __FUNCTION__);
         $sections= validate::requirePostField('sections', self::$service, __FUNCTION__);
         $referralSource = validate::requirePostField('referralSource', self::$service, __FUNCTION__);
+		$promoCode = validate::requirePostField('promoCode', self::$service, __FUNCTION__);
 
         $checkValueArray = array(
             "email" => $email,
