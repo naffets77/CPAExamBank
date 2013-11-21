@@ -372,4 +372,15 @@ class question{
         return database::callStoredProcedure("sp_CopyQuestionAndAnswersById", $parametersArray, __METHOD__);
     }
 
+    public static function getQuestionCategories(){
+
+        $selectArray = array("QuestionCategoryId", "DisplayName");  //or array("field1", "field2"...)
+        $whereClause = "";
+        $orderBy = "";
+        $limit = "";
+        $preparedArray = null;
+
+        return database::select("QuestionCategory", $selectArray, $whereClause, $orderBy, $limit, $preparedArray, __METHOD__);
+    }
+
 }

@@ -544,6 +544,7 @@ class ciborium_question{
                 $QuestionResponse->IsDeprecated = (int)$myJSONArray['IsDeprecated'];
                 $QuestionResponse->QuestionClientImage = $myJSONArray['QuestionClientImage'];
                 $QuestionResponse->QuestionClientId = $myJSONArray['QuestionClientId'];
+                $QuestionResponse->QuestionCategoryId = (int)$myJSONArray['QuestionCategoryId'];
                 //$QuestionResponse->SectionTypeId = (int)$myJSONArray['SectionTypeId'];
 
                 /*foreach ($QuestionResponse->Answers as $AnswerIndex => $Answer) {
@@ -792,6 +793,18 @@ class ciborium_question{
                 $myBool = false;
             }
 
+            //question category id
+            if(isset($inArray['QuestionCategoryId'])){
+                if(!validate::isNotNullOrEmpty_String($inArray['QuestionCategoryId'])){
+                    $returnArray['Reason'] .= "QuestionCategoryId was an empty string or null. ";
+                    $myBool = false;
+                }
+            }
+            else{
+                $returnArray['Reason'] .= "QuestionClientId was not set. ";
+                $myBool = false;
+            }
+
             //question client image
             if(isset($inArray['QuestionClientImage'])){
                 /*if(!validate::isNotNullOrEmpty_String($inArray['QuestionClientImage'])){
@@ -801,6 +814,18 @@ class ciborium_question{
             }
             else{
                 $returnArray['Reason'] .= "QuestionClientImage was not set. ";
+                $myBool = false;
+            }
+
+            //IsSamplable
+            if(isset($inArray['IsSamplable'])){
+                if(!validate::tryParseInt($inArray['IsSamplable'])){
+                    $returnArray['Reason'] .= "IsSamplable was not an integer. ";
+                    $myBool = false;
+                }
+            }
+            else{
+                $returnArray['Reason'] .= "IsApprovedForUse was not set. ";
                 $myBool = false;
             }
 
@@ -816,18 +841,6 @@ class ciborium_question{
                 $myBool = false;
             }
 
-            //IsDeprecated
-            if(isset($inArray['IsDeprecated'])){
-                if(!validate::tryParseInt($inArray['IsDeprecated'])){
-                    $returnArray['Reason'] .= "IsDeprecated was not an integer. ";
-                    $myBool = false;
-                }
-            }
-            else{
-                $returnArray['Reason'] .= "IsDeprecated was not set. ";
-                $myBool = false;
-            }
-
             //IsActive
             if(isset($inArray['IsActive'])){
                 if(!validate::tryParseInt($inArray['IsActive'])){
@@ -837,6 +850,18 @@ class ciborium_question{
             }
             else{
                 $returnArray['Reason'] .= "IsActive was not set. ";
+                $myBool = false;
+            }
+
+            //IsDeprecated
+            if(isset($inArray['IsDeprecated'])){
+                if(!validate::tryParseInt($inArray['IsDeprecated'])){
+                    $returnArray['Reason'] .= "IsDeprecated was not an integer. ";
+                    $myBool = false;
+                }
+            }
+            else{
+                $returnArray['Reason'] .= "IsDeprecated was not set. ";
                 $myBool = false;
             }
 
@@ -999,6 +1024,7 @@ class ciborium_question{
             $Response = new questionResponse();
             $Response->Result = 1;
             $Response->QuestionId = $Question->QuestionId;
+            $Response->QuestionCategoryId = $Question->QuestionCategoryId;
             $Response->Question = $Question->DisplayText;
             $Response->Explanation = $Question->Explanation;
             $Response->QuestionClientId = $Question->QuestionClientId;
@@ -1045,6 +1071,7 @@ class ciborium_question{
             $Response->Result = 1;
             $Response->QuestionClientId = $Question->QuestionClientId;
             $Response->QuestionTypeId = $Question->QuestionTypeId;
+            $Response->QuestionCategoryId = $Question->QuestionCategoryId;
             $Response->SectionTypeId = $Question->SectionTypeId;
             $Response->QuestionClientImage = $Question->QuestionClientImage;
             $Response->IsApprovedForUse = $Question->IsApprovedForUse;
@@ -1098,6 +1125,7 @@ class ciborium_question{
             //'Tags' => ':Tags',
             'QuestionClientImage' => ':QuestionClientImage',
             'QuestionClientId' => ':QuestionClientId',
+            'QuestionCategoryId' => ':QuestionCategoryId',
             'IsApprovedForUse' => ':IsApprovedForUse',
             'IsActive' => ':IsActive',
             'IsDeprecated' => ':IsDeprecated',
@@ -1112,6 +1140,7 @@ class ciborium_question{
             //':Tags' => $inQuestionResponse->Tags,
             ':QuestionClientImage' => $inQuestionResponse->QuestionClientImage,
             ':QuestionClientId' => $inQuestionResponse->QuestionClientId,
+            ':QuestionCategoryId' => $inQuestionResponse->QuestionCategoryId,
             ':IsApprovedForUse' => $inQuestionResponse->IsApprovedForUse,
             ':IsActive' => $inQuestionResponse->IsActive,
             ':IsDeprecated' => $inQuestionResponse->IsDeprecated,
@@ -1273,6 +1302,29 @@ class ciborium_question{
         return $myArray;
     }
 
+    public static function getQuestionCategories($inCaller){
+
+        $returnArray = array(
+            'Result' => 0,
+            'Reason' => "",
+            'QuestionCategories' => array()
+        );
+
+        $questionCategories = question::getQuestionCategories();
+
+        if(count($questionCategories) > 0){
+            $returnArray['Result'] = 1;
+            $returnArray['QuestionCategories'] = $questionCategories;
+        }
+        else{
+            $returnArray['Reason'] = "No question categories found.";
+            $message = "No question categories found. ".__METHOD__."() . Called by ".$inCaller."()";
+            util_errorlogging::LogGeneralError(enum_LogType::Normal, $message, __METHOD__, __FILE__);
+        }
+
+        return $returnArray;
+    }
+
 }
 
 class questionResponse{
@@ -1280,6 +1332,7 @@ class questionResponse{
     public $Reason; //string
     public $QuestionClientId; //string
     public $QuestionTypeId; //int
+    public $QuestionCategoryId; //int
     public $SectionTypeId; //int
     public $QuestionClientImage; //string
     public $IsApprovedForUse; //int
@@ -1298,6 +1351,7 @@ class questionResponse{
         $this->Reason = "";
         $this->QuestionClientId = "";
         $this->QuestionTypeId = 1;
+        $this->QuestionCategoryId = enum_QuestionCategory::None;
         $this->SectionTypeId = 0;
         $this->QuestionClientImage = "";
         $this->IsApprovedForUse = 0;

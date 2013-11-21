@@ -145,4 +145,12 @@ class enum_ResponseCodes{
     const Incomplete = 5;
     const InProgress = 6;
 }
+
+
+class enum_QuestionCategory{
+    //See QuestionCategory table
+    //last updated 11/20/2013
+    const None = 1;
+    const DisplayName2 = 2;
+}
 ?>

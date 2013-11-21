@@ -432,6 +432,16 @@ class service_question{
             return $myArray;
         }
     }
+
+    static function getQuestionCategories(){
+        $returnArray = array(
+            "Result" => 0,
+            "Reason" => "Error retrieving question categories"
+        );
+
+        $response = ciborium_question::getQuestionCategories(__METHOD__);
+        return $response != null ? $response : $returnArray;
+    }
 }
 
 ?>
