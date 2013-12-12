@@ -5,6 +5,7 @@ CREATE PROCEDURE sp_DELETEAccountUserById(IN inAccountUserId INT)
 		DELETE FROM `LicenseTransactionHistory` WHERE `LicenseId` IN (SELECT LicenseId FROM License WHERE AccountUserId = inAccountUserId);
 		DELETE FROM `LicenseToSectionType` WHERE `LicenseId` IN (SELECT LicenseId FROM License WHERE AccountUserId = inAccountUserId);
 		DELETE FROM `License` WHERE `AccountUserId` = inAccountUserId;
+    DELETE FROM `AccountUserToPromotion` WHERE `AccountUserId` = inAccountUserId;
 		DELETE FROM `AccountUserHistory` WHERE `AccountUserId` = inAccountUserId;
 		DELETE FROM `AccountUserQuestionHistory` WHERE `AccountUserId` = inAccountUserId;
 		DELETE FROM `AccountUserSettings` WHERE `AccountUserId` = inAccountUserId;
