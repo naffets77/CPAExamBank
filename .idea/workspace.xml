@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_promotion.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Backend/Library/promotion.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_enums.php" afterPath="$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_enums.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Library/utilities/util_datetime.php" afterPath="$PROJECT_DIR$/Backend/Library/utilities/util_datetime.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Backend/Ciborium/Service/service_promotion.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_promotion.php" afterPath="$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_promotion.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="VaheCPA.iws" />
@@ -34,8 +32,9 @@
     <file path="/Sync_QuestionDataFromPRODtoDEV.sql" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1385019251243" ignored="false" />
     <file path="/sp_DELETEAccountUserById.sql" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1386827382577" ignored="false" />
     <file path="/promotion.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1386840186167" ignored="false" />
-    <file path="/ciborium_promotion.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1386842574044" ignored="false" />
+    <file path="/ciborium_promotion.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1386844587326" ignored="false" />
     <file path="/util_datetime.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1386842178359" ignored="false" />
+    <file path="/service_promotion.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1386844150243" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,15 +54,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="service_question.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Service/service_question.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="421" column="32" selection-start="17553" selection-end="17553" vertical-scroll-proportion="-0.65384614">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ciborium_enums.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_enums.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -76,16 +66,34 @@
       <file leaf-file-name="promotion.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Backend/Library/promotion.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="113" column="0" selection-start="3641" selection-end="3641" vertical-scroll-proportion="-23.0">
+            <state line="113" column="0" selection-start="3641" selection-end="3641" vertical-scroll-proportion="-73.88461">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ciborium_promotion.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ciborium_promotion.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_promotion.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="74" selection-start="2755" selection-end="2755" vertical-scroll-proportion="0.7601626">
+            <state line="23" column="99" selection-start="1241" selection-end="1241" vertical-scroll-proportion="-9.153846">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="service_promotion.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Service/service_promotion.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="20" selection-start="602" selection-end="625" vertical-scroll-proportion="0.18508655">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="service_account.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Service/service_account.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="141" column="12" selection-start="3918" selection-end="5224" vertical-scroll-proportion="-3.9230769">
               <folding />
             </state>
           </provider>
@@ -154,7 +162,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/Backend/Library/utilities/util_general.php" />
         <option value="$PROJECT_DIR$/Backend/Ciborium/StoredProceduresAndTriggers/StoredProcedures/sp_getQuestionsAndAnswersWithBadData.sql" />
         <option value="$PROJECT_DIR$/Backend/Library/validate.php" />
         <option value="$PROJECT_DIR$/Backend/Ciborium/StoredProceduresAndTriggers/StoredProcedures/sp_fixQuestionsAndAnswersWithBadData.sql" />
@@ -169,6 +176,7 @@
         <option value="$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_enums.php" />
         <option value="$PROJECT_DIR$/Backend/Library/promotion.php" />
         <option value="$PROJECT_DIR$/Backend/Library/utilities/util_datetime.php" />
+        <option value="$PROJECT_DIR$/Backend/Ciborium/Service/service_promotion.php" />
         <option value="$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_promotion.php" />
       </list>
     </option>
@@ -377,59 +385,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="StoredProceduresAndTriggers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="VaheCPA" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="VaheCPA" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Backend" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Ciborium" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="StoredProceduresAndTriggers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SyncScripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="VaheCPA" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="VaheCPA" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Backend" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Ciborium" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="StoredProceduresAndTriggers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="StoredProcedures" />
+              <option name="myItemId" value="Service" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -667,19 +623,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/StoredProceduresAndTriggers/StoredProcedures/sp_getAccountUserQuestionHistoryMetricsById.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="4" selection-start="744" selection-end="797" vertical-scroll-proportion="0.056833558" />
-      </provider>
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_email.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-2.902439" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Backend/Library/utilities/util_errorlogging.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="57" column="27" selection-start="2382" selection-end="2382" vertical-scroll-proportion="1.1597869">
@@ -769,16 +712,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Service/service_account.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="141" column="12" selection-start="3918" selection-end="5224" vertical-scroll-proportion="-3.9230769">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Backend/Library/promotion.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="113" column="0" selection-start="3641" selection-end="3641" vertical-scroll-proportion="-23.0">
+        <state line="113" column="0" selection-start="3641" selection-end="3641" vertical-scroll-proportion="-73.88461">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_promotion.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="74" selection-start="2755" selection-end="2755" vertical-scroll-proportion="0.7601626">
+        <state line="23" column="99" selection-start="1241" selection-end="1241" vertical-scroll-proportion="-9.153846">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Service/service_promotion.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="20" selection-start="602" selection-end="625" vertical-scroll-proportion="0.18508655">
           <folding />
         </state>
       </provider>

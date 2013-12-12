@@ -11,8 +11,50 @@ include_once(ciborium_configuration::$ciborium_librarypath."/ciborium_email.php"
 
 class ciborium_promotion{
 
+
+    public static function validatePromotionCodeForUser($inPromotionCode, $inAccountUserId, $inCaller){
+        $returnArray = array(
+            'Result' => 0,
+            'Reason' => ""
+        );
+
+        $result = promotion::validateActivePromotionByCode($inPromotionCode, $inCaller);
+        if($result['Result']){
+            //TODO: create function to check AU promo table
+            $returnArray['Reason'] = "Promo code was valid, but check for user not implemented yet.";
+        }
+        else{
+            return $result;
+        }
+
+        return $returnArray;
+    }
+
+    /**
+     * @param $inPromotionCode
+     * @param $inCaller
+     * @return array
+     */
+    public static function validateActivePromotionByCode($inPromotionCode, $inCaller){
+        $returnArray = array(
+            'Result' => 0,
+            'Reason' => ""
+        );
+
+        $promotionId = promotion::verifyPromotionExistsByCode($inPromotionCode);
+        if($promotionId){
+            return ciborium_promotion::validateActivePromotion($promotionId, $inCaller);
+        }
+        else{
+            $returnArray['Reason'] = "Promotion code not found.";
+        }
+
+        return $returnArray;
+    }
+
     /**
      * @param $inPromotionId
+     * @param $inCaller
      * @return array
      */
     public static function validateActivePromotion($inPromotionId, $inCaller){
