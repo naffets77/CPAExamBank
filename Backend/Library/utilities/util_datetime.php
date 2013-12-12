@@ -35,6 +35,11 @@ class util_datetime
         return date('m/d/Y', $myTimeStamp);
     }
 
+    public static function getDateTimeToDateWithTime($inDateTime){
+        $myTimeStamp = strtotime($inDateTime);
+        return date('m/d/Y at H:i:s', $myTimeStamp);
+    }
+
     public static function getCurrentYear4Digit(){
         return date('Y', time());
     }

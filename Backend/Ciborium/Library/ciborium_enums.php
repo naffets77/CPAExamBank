@@ -153,4 +153,13 @@ class enum_QuestionCategory{
     const None = 1;
     const DisplayName2 = 2;
 }
+
+class enum_PromotionType{
+    //See PromotionType table
+    //last updated 12/12/2013
+    const PercentOff_OneTime = 1;
+    const PercentOff_Monthly = 2;
+    const AmountOff_OneTime = 3;
+    const AmountOff_Monthly = 4;
+}
 ?>
