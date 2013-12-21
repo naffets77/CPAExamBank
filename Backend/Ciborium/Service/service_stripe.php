@@ -36,6 +36,7 @@ class service_stripe{
             $hash = validate::requirePostField('Hash', self::$service, __FUNCTION__);
             $hashCheckReturn = validate::requireValidHash(self::$service, __FUNCTION__);
             $moduleSelection = validate::requirePostField('moduleSelection', self::$service, __FUNCTION__);
+            $promoCode = isset($_POST['promoCode']) ? $_POST['promoCode'] : null;
 
             $checkValueArray = array(
                 "moduleSelection" => $moduleSelection,
@@ -68,7 +69,8 @@ class service_stripe{
                 $myJSONString = trim($moduleSelection);
                 if(validate::isValidJSONString($myJSONString)){
                     $moduleArray = json_decode($myJSONString, true);
-                    return $myStripeCharge = ciborium_stripe::chargeSubscription($_SESSION['Licenses']->StripeCustomerId, $moduleArray, $_SESSION['Licenses']->SubscriptionTypeId, $_SESSION['Licenses']->LicenseId, $_SESSION['Licenses']->AccountUserId, __METHOD__);
+
+                    return $myStripeCharge = ciborium_stripe::chargeSubscription($_SESSION['Licenses']->StripeCustomerId, $moduleArray, $_SESSION['Licenses']->SubscriptionTypeId, $_SESSION['Licenses']->LicenseId, $_SESSION['Licenses']->AccountUserId, __METHOD__, $promoCode);
                 }
                 else{
                     $myArray['Reason'] = "Invalid variable(s)";

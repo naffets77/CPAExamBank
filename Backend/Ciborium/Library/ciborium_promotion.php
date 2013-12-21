@@ -15,16 +15,38 @@ class ciborium_promotion{
     public static function validatePromotionCodeForUser($inPromotionCode, $inAccountUserId, $inCaller){
         $returnArray = array(
             'Result' => 0,
-            'Reason' => ""
+            'Reason' => "",
+            'Status' => enum_PromotionToUserStatus::Unknown,
+            'PromotionId' => 0
         );
 
-        $result = promotion::validateActivePromotionByCode($inPromotionCode, $inCaller);
-        if($result['Result']){
-            //TODO: create function to check AU promo table
-            $returnArray['Reason'] = "Promo code was valid, but check for user not implemented yet.";
+        $returnArray['PromotionId'] = promotion::verifyPromotionExistsByCode($inPromotionCode);
+        if($returnArray['PromotionId']){
+            $activeCheckResult = ciborium_promotion::validateActivePromotion($returnArray['PromotionId'], $inCaller);
+
+            if($activeCheckResult['Result']){
+                $returnArray['Status'] = ciborium_promotion::checkPromotionStatusForUser($returnArray['PromotionId'], $inAccountUserId, $inCaller);
+                switch($returnArray['Status']){
+                    case enum_PromotionToUserStatus::Applied:
+                        $returnArray['Reason'] = "Promo code was already applied to this account.";
+                        break;
+                    case enum_PromotionToUserStatus::Unredeemed;
+                        //$insertID = promotion::insertAccountUserToPromotion($promotionId, $inAccountUserId, $inCaller);
+                        $returnArray['Result'] = 1;
+                        $returnArray['Reason'] = "Promo code is valid and has not been redeemed by this account yet.";
+                        break;
+                    case enum_PromotionToUserStatus::Redeemed:
+                        $returnArray['Result'] = 1;
+                        $returnArray['Reason'] = "Promo code is redeemed and ready for application by this account.";
+                        break;
+                }
+            }
+            else{
+                $returnArray['Reason'] = "Promo code is no longer active.";
+            }
         }
         else{
-            return $result;
+            $returnArray['Reason'] = "Promo code was not found.";
         }
 
         return $returnArray;
@@ -111,6 +133,42 @@ class ciborium_promotion{
         }
 
         return $returnArray;
+    }
+
+    /**
+     * @param $inPromotionId
+     * @param $inAccountUserId
+     * @param $inCaller
+     * @return array
+     */
+    public static function checkPromotionStatusForUser($inPromotionId, $inAccountUserId, $inCaller){
+        $returnArray = array(
+            'Status' => enum_PromotionToUserStatus::Unredeemed,
+            'AccountUserToPromotion' => null
+        );
+
+        $promoToUserObjects = promotion::getAccountUserToPromotion($inPromotionId, $inAccountUserId, $inCaller);
+        if(count($promoToUserObjects) > 0){
+            $returnArray['AccountUserToPromotion'] = $promoToUserObjects[0];
+            if($returnArray['AccountUserToPromotion']->DateApplied != null){
+                $returnArray['Status'] = enum_PromotionToUserStatus::Applied;
+            }
+            else{
+                $returnArray['Status'] = enum_PromotionToUserStatus::Redeemed;
+            }
+        }
+
+        return $returnArray;
+    }
+
+    /**
+     * @param $inPromotionId
+     * @param $inAccountUserId
+     * @param $inCaller
+     * @return string
+     */
+    public static function createPromotionStatusForUser($inPromotionId, $inAccountUserId, $inCaller){
+        return promotion::insertAccountUserToPromotion($inPromotionId, $inAccountUserId, $inCaller);
     }
 
     //TODO: add PST etc to expiration time

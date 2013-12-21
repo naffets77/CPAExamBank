@@ -162,4 +162,11 @@ class enum_PromotionType{
     const AmountOff_OneTime = 3;
     const AmountOff_Monthly = 4;
 }
+
+class enum_PromotionToUserStatus{
+    const Applied = 1; //used up already
+    const Redeemed = 2; //code is active, but unused
+    const Unredeemed = 3;
+    const Unknown = 4;
+}
 ?>

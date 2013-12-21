@@ -43,8 +43,10 @@ class service_promotion{
                 $returnArray['Reason'] = "Missing required variable(s)";
                 return $returnArray;
             }
+            $response = ciborium_promotion::validatePromotionCodeForUser($promoCode, $accountUserId, __METHOD__);
+            unset($response['PromotionId']);
 
-            return ciborium_promotion::validatePromotionCodeForUser($promoCode, $accountUserId, __METHOD__);
+            return $response;
 
         }
         elseif($promoCode != null){

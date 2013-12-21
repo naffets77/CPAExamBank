@@ -67,7 +67,7 @@ try{
                 'REG' => 0
             );
 
-            $chargeResult = ciborium_stripe::chargeSubscription($customerArray['id'], $moduleArray, $myResult['Licenses']->SubscriptionTypeId, $myResult['Licenses']->LicenseId, $myResult['Account']->AccountUserId, "mrtest.php");
+            $chargeResult = ciborium_stripe::chargeSubscription($customerArray['id'], $moduleArray, $myResult['Licenses']->SubscriptionTypeId, $myResult['Licenses']->LicenseId, $myResult['Account']->AccountUserId, "mrtest.php", null);
 
             if($chargeResult['Result']){
                 echo "Success in charging customer. Message: ".$chargeResult['Reason']."<br />";

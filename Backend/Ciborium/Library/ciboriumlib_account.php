@@ -7,6 +7,7 @@ include_once(ciborium_configuration::$environment_librarypath."/validate.php");
 include_once(ciborium_configuration::$environment_librarypath."/database.php");
 include_once(ciborium_configuration::$environment_librarypath."/account.php");
 include_once(ciborium_configuration::$ciborium_librarypath."/ciborium_email.php");
+include_once(ciborium_configuration::$ciborium_librarypath."/ciborium_promotion.php");
 /**
  * Account library for Ciborium project
  */

@@ -708,6 +708,68 @@ class stripe_charger{
         return $returnArray;
     }
 
+    public static function applyDiscountToCustomer($inStripeCustomerId, $inStripeCouponId, $inCaller){
+
+        $returnArray = array(
+            'Result' => 0,
+            'Reason' => "",
+            'Customer' => null,
+            'StripeException' => null
+        );
+
+        try{
+            // get customer
+            $retrieveCustomerResponse = stripe_charger::retrieveCustomer($inStripeCustomerId);
+            $coupon = Stripe_Coupon::retrieve($inStripeCouponId);
+            if($retrieveCustomerResponse['Result'] && $coupon != null){
+                $returnArray['Customer'] = $retrieveCustomerResponse['Customer'];
+                $customerArray = util_general::getProtectedValue($returnArray['Customer'], "_values");
+                if($customerArray->discount != null){
+                    $returnArray['Customer']->deleteDiscount();
+                }
+
+                //apply coupon
+                $returnArray['Customer']->coupon = $inStripeCouponId;
+                $returnArray['Customer']->save();
+                $returnArray['Result'] = 1;
+            }
+            else{
+                $returnArray['Reason'] = "Customer and/or coupon not found for StripeCustomerId ".$inStripeCustomerId." and StripeCouponId ".$inStripeCouponId.".";
+            }
+        }
+        catch(Stripe_CardError $e) {
+            // Since it's a decline, Stripe_CardError will be caught
+            $returnArray['StripeException'] = $e;
+            $returnArray['Reason'] = "Stripe threw a Stripe_CardError. Message: ".$e->getMessage().". Caller was ".$inCaller;
+        }
+        catch (Stripe_InvalidRequestError $e) {
+            // Invalid parameters were supplied to Stripe's API
+            $returnArray['StripeException'] = $e;
+            $returnArray['Reason'] = "Stripe threw a Stripe_InvalidRequestError. Message: ".$e->getMessage().". Caller was ".$inCaller;
+        }
+        catch (Stripe_AuthenticationError $e) {
+            // Authentication with Stripe's API failed
+            // (maybe you changed API keys recently)
+            $returnArray['StripeException'] = $e;
+            $returnArray['Reason'] = "Stripe threw a Stripe_AuthenticationError. Message: ".$e->getMessage().". Caller was ".$inCaller;
+        }
+        catch (Stripe_ApiConnectionError $e) {
+            // Network communication with Stripe failed
+            $returnArray['StripeException'] = $e;
+            $returnArray['Reason'] = "Stripe threw a Stripe_ApiConnectionError. Message: ".$e->getMessage().". Caller was ".$inCaller;
+        }
+        catch (Stripe_Error $e) {
+            // Display a very generic error to the user
+            $returnArray['StripeException'] = $e;
+            $returnArray['Reason'] = "Stripe threw a Stripe_Error. Message: ".$e->getMessage().". Caller was ".$inCaller;
+        }
+        catch(Exception $ex){
+            $returnArray['Reason'] = "Generic exception applying a coupon to a customer. Message: ".$ex->getMessage().". Caller was ".$inCaller;
+        }
+
+        return $returnArray;
+    }
+
     /*
      * Helper functions
      *
@@ -769,6 +831,7 @@ class stripe_charger{
 
         return $cardArray;
     }
+
 
     /*
      * Test functions

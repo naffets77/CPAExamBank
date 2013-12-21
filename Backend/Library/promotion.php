@@ -112,6 +112,77 @@ class promotion
 
     }
 
+    /**
+     * @param $inPromotionId
+     * @param $inAccountUserId
+     * @param $inCaller
+     * @return array|null
+     */
+    public static function getAccountUserToPromotion($inPromotionId, $inAccountUserId, $inCaller){
+        if(validate::tryParseInt($inPromotionId) && validate::tryParseInt($inAccountUserId)){
+            $selectArray = null;  //or array("field1", "field2"...)
+            $whereClause = "PromotionId = '".$inPromotionId."' AND AccountUserId = '".$inAccountUserId."'";
+            $orderBy = "";
+            $limit = "";
+            $preparedArray = null;
+
+            return database::select("AccountUserToPromotion", $selectArray, $whereClause, $orderBy, $limit, $preparedArray, __METHOD__);
+        }
+        else{
+            $errorMessage = "PromotionId and/or AccountUserId were not integers. Called by ".$inCaller;
+            util_errorlogging::LogGeneralError(3, $errorMessage, __METHOD__, __FILE__);
+            return array();
+        }
+    }
+
+    /**
+     * @param $inPromotionId
+     * @param $inAccountUserId
+     * @param $inCaller
+     * @return int|string
+     */
+    public static function insertAccountUserToPromotion($inPromotionId, $inAccountUserId, $inCaller){
+        $inputArray = array(
+            'AccountUserId' => ':AccountUserId',
+            'PromotionId' => ':PromotionId',
+            'LastModifiedBy' => ':LastModifiedBy',
+            'DateCreated' => ':DateCreated',
+            'CreatedBy' => ':CreatedBy'
+        );
+        $insertPrepare = array(
+            ':AccountUserId' => $inAccountUserId,
+            ':PromotionId' => $inPromotionId,
+            ':LastModifiedBy' => $inCaller,
+            ':DateCreated' => util_datetime::getDateTimeNow(),
+            ':CreatedBy' => $inCaller
+        );
+        $insertColumns = array_keys($inputArray);
+        $insertValues = array_values($inputArray);
+
+        return database::insert("AccountUserToPromotion", $insertColumns, $insertValues, $insertPrepare, __METHOD__);
+
+    }
+
+    /**
+     * @param $inAccountUserToPromotionId
+     * @param $inCaller
+     * @return bool|string
+     */
+    public static function applyAccountUserToPromotion($inAccountUserToPromotionId, $inCaller){
+        $updateArray = array(
+            'DateApplied' => ':DateApplied',
+            'LastModifiedBy' => ':LastModifiedBy'
+        );
+        $updatePrepare = array(
+            ':DateApplied' => util_datetime::getDateTimeNow(),
+            ':LastModifiedBy' => $inCaller
+        );
+
+        $whereClause = "AccountUserToPromotionId = '".$inAccountUserToPromotionId."'";
+
+        return database::update("AccountUserToPromotion", $updateArray, $updatePrepare, $whereClause, __METHOD__);
+
+    }
 }
 
 ?>

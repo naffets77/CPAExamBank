@@ -2,6 +2,7 @@
 require_once(realpath(__DIR__)."/config.php");
 include_once(ciborium_configuration::$ciborium_librarypath."/ciborium_enums.php");
 include_once(ciborium_configuration::$ciborium_librarypath."/ciborium_question.php");
+include_once(ciborium_configuration::$ciborium_librarypath."/ciborium_promotion.php");
 include_once(ciborium_configuration::$environment_librarypath."/utilities/util_datetime.php");
 include_once(ciborium_configuration::$environment_librarypath."/utilities/util_errorlogging.php");
 include_once(ciborium_configuration::$environment_librarypath."/validate.php");
@@ -92,7 +93,7 @@ class ciborium_stripe{
                 else{
                     $errorMessage = "Error creating customer for email ".$inEmail.", the cancellation was not completed. Message: ".$createCustomerResponse['Reason']." . Called by ".$inCaller;
                 }
-                util_errorlogging::LogGeneralError(3, $errorMessage, __METHOD__, __FILE__);
+                util_errorlogging::LogGeneralError(enum_LogType::Normal, $errorMessage, __METHOD__, __FILE__);
             }
         }
         else{
@@ -116,41 +117,60 @@ class ciborium_stripe{
      * @param $inLicenseId
      * @param $inAccountUserId
      * @param $inCaller
+     * @param $inPromotionCode
      * @return array
      *      Reason
      *      Result
      *      ConfirmationNumber
      *      CancelledSubscription
      */
-    public static function chargeSubscription($inStripeCustomerID, $inModuleArray, $inSubscriptionTypeId, $inLicenseId, $inAccountUserId, $inCaller){
-        $myArray = array(
+    public static function chargeSubscription($inStripeCustomerID, $inModuleArray, $inSubscriptionTypeId, $inLicenseId, $inAccountUserId, $inCaller, $inPromotionCode = null){
+        $returnArray = array(
             'Reason' => "",
             'Result' => 0,
             'ConfirmationNumber' => null,
             'CancelledSubscription' => 0
         );
 
+        //if promotion code was passed in
+        $promotionId = null;
+        $promotion = null;
+        $accountUserToPromotion = null;
+        if(validate::isNotNullOrEmpty_String($inPromotionCode)){
+            $promoCodeResultArray = ciborium_promotion::validatePromotionCodeForUser($inPromotionCode, $inAccountUserId, $inCaller);
+            if($promoCodeResultArray['Result']){
+                //TODO: may have to check against subscription array one day
+                $promotionId = $promoCodeResultArray['PromotionId'];
+                $promotion = promotion::getPromotionById($promotionId)[0];
+                $accountUserToPromotion = promotion::getAccountUserToPromotion($promotionId, $inAccountUserId, $inCaller)[0];
+            }
+            else{
+                $returnArray['Reason'] = "Promo code invalid";
+                return $returnArray;
+            }
+        }
+
         $isNewSubscriber = ciborium_stripe::isSubscriberNew($inLicenseId);
 
         //Verify inputs
         if(!validate::isNotNullOrEmpty_String(trim($inStripeCustomerID))){
-            $myArray['Reason'] = "Invalid input";
-            $errorMessage = $myArray['Reason']." for inStripeCustomerID ".$inStripeCustomerID.".";
+            $returnArray['Reason'] = "Invalid input";
+            $errorMessage = $returnArray['Reason']." for inStripeCustomerID ".$inStripeCustomerID.".";
             util_errorlogging::LogBrowserError(2, $errorMessage, __METHOD__, __FILE__);
-            return $myArray;
+            return $returnArray;
         }
         $checkModuleSelectionResponse = ciborium_stripe::checkValidModuleSelectionArray($inModuleArray);
         if(!$checkModuleSelectionResponse['Result']){
-            $myArray['Reason'] = "Invalid input";
-            $errorMessage = $myArray['Reason']." for inModuleArray. ".$checkModuleSelectionResponse['Reason'].".";
+            $returnArray['Reason'] = "Invalid input";
+            $errorMessage = $returnArray['Reason']." for inModuleArray. ".$checkModuleSelectionResponse['Reason'].".";
             util_errorlogging::LogBrowserError(3, $errorMessage, __METHOD__, __FILE__);
-            return $myArray;
+            return $returnArray;
         }
         if(!validate::isNotNullOrEmpty_String(trim($inSubscriptionTypeId)) || !validate::tryParseInt($inSubscriptionTypeId) ){
-            $myArray['Reason'] = "Invalid input";
-            $errorMessage = $myArray['Reason']." for inSubscriptionTypeId ".$inSubscriptionTypeId.".";
+            $returnArray['Reason'] = "Invalid input";
+            $errorMessage = $returnArray['Reason']." for inSubscriptionTypeId ".$inSubscriptionTypeId.".";
             util_errorlogging::LogBrowserError(3, $errorMessage, __METHOD__, __FILE__);
-            return $myArray;
+            return $returnArray;
         }
 
         //query for subscription
@@ -173,11 +193,20 @@ class ciborium_stripe{
 
             if($myCurrentSubscriptionTypeId != $mySubscriptions[0]->SubscriptionTypeId){
 
+                //apply promotion code if applicable
+                if($promotion != null){
+                    $applyPromotionResponse = ciborium_stripe::applyDiscountToCustomer($inStripeCustomerID, $promotion->StripeCouponId, $inCaller);
+                    if(!$applyPromotionResponse['Result']){
+                        $errorMessage = "Tried to apply promo code id ".$promotion->StripeCouponId." to user ".$inAccountUserId." (StripeCustomerId ".$inStripeCustomerID.") and failed. See error logs for details.";
+                        util_errorlogging::LogGeneralError(enum_LogType::Normal, $errorMessage, __METHOD__, __FILE__);
+                    }
+                }
+
                 //charge it
                 $chargeResponse = stripe_charger::chargeSubscription($inStripeCustomerID, $mySubscriptions[0]->StripePlanId);
                 if($chargeResponse['Result']){
-                    $myArray['Result'] = 1;
-                    $myArray['Reason'] = "Charge completed successfully.";
+                    $returnArray['Result'] = 1;
+                    $returnArray['Reason'] = "Charge completed successfully.";
                     $LicenseTransactionValuesArray = array(
                         'LicenseTransactionTypeId' => enum_LicenseTransactionType::Subscribed,
                         'SystemNotes' => "New subscription (".$mySubscriptions[0]->StripePlanId.") charged via ".$inCaller."."
@@ -192,7 +221,7 @@ class ciborium_stripe{
 
                     //if old id wasn't free one
                     if($myCurrentSubscriptionTypeId != enum_SubscriptionType::Free){
-                        $myArray['Reason'] = "Update completed successfully.";
+                        $returnArray['Reason'] = "Update completed successfully.";
                         $LicenseTransactionValuesArray['LicenseTransactionTypeId'] = enum_LicenseTransactionType::Changed;
                         $LicenseTransactionValuesArray['SystemNotes'] = "Subscription plan updated from ".$myCurrentSubscriptionTypeId." to ".$mySubscriptions[0]->SubscriptionTypeId." via ".$inCaller.".";
                         ciborium_stripe::updateForSubscriptionChange($inLicenseId, $mySubscriptions[0]->SubscriptionTypeId, $mySubscribedDate, $myExpirationDate, $inCaller, null, false);
@@ -206,14 +235,14 @@ class ciborium_stripe{
                     //$myArray['ConfirmationNumber'] = rand(1000000, 9000000); //TODO: finish this
                 }
                 else{
-                    $myArray['Reason'] = "Invalid input";
+                    $returnArray['Reason'] = "Invalid input";
                     $errorMessage = "Failed to charge subscription for StripeCustomerID (".$inStripeCustomerID.") and StripePlanID (".$mySubscriptions[0]->StripePlanId."). Message: ".$chargeResponse['Reason']." Called by ".$inCaller;
-                    util_errorlogging::LogGeneralError(1, $errorMessage, __METHOD__, __FILE__);
+                    util_errorlogging::LogGeneralError(enum_LogType::Blocker, $errorMessage, __METHOD__, __FILE__);
                 }
 
             }
             else{
-                $myArray['Reason'] = "Subscription already active for module selection.";
+                $returnArray['Reason'] = "Subscription already active for module selection.";
             }
         }
         elseif(!$isNewSubscriber && ciborium_stripe::isCancelSubscription($inModuleArray)){
@@ -236,33 +265,33 @@ class ciborium_stripe{
                 ciborium_stripe::updateForSubscriptionChange($inLicenseId, enum_SubscriptionType::Free, $mySubscribedDate, $myExpirationDate, $inCaller, $myCancelledDate, false);
                 ciborium_stripe::LogLicenseTransactionFromSystem($inLicenseId, $LicenseTransactionValuesArray, __METHOD__);
 
-                $myArray['Result'] = 1;
-                $myArray['CancelledSubscription'] = 1;
+                $returnArray['Result'] = 1;
+                $returnArray['CancelledSubscription'] = 1;
 
                 //TODO: maybe send email one day...
             }
             else{
-                $myArray['Reason'] = "Tried to cancel, but there was response was not completed.";
+                $returnArray['Reason'] = "Tried to cancel, but there was response was not completed.";
                 if($cancelResponse['StripeException'] !== null){
                     $errorMessage = "While cancelling subscription for StripeCustomerID ".$inStripeCustomerID.", Stripe threw an exception. Message: ".$cancelResponse['Reason']." . Called by ".$inCaller;
                 }
                 else{
                     $errorMessage = "While cancelling for StripeCustomerID ".$inStripeCustomerID.", the cancellation was not completed. Message: ".$cancelResponse['Reason']." . Called by ".$inCaller;
                 }
-                util_errorlogging::LogGeneralError(3, $errorMessage, __METHOD__, __FILE__);
+                util_errorlogging::LogGeneralError(enum_LogType::Normal, $errorMessage, __METHOD__, __FILE__);
             }
         }
         else{
-            $myArray['Reason'] = "Invalid input";
+            $returnArray['Reason'] = "Invalid input";
             $errorMessageAppend = array();
             foreach($inModuleArray as $key => $value){
                 array_push($errorMessageAppend, $key."==".$value);
             }
             $errorMessage = "Subscription not found for inModuleArray (".implode(", ", $errorMessageAppend)."). Called by ".$inCaller;
-            util_errorlogging::LogGeneralError(3, $errorMessage, __METHOD__, __FILE__);
+            util_errorlogging::LogGeneralError(enum_LogType::Normal, $errorMessage, __METHOD__, __FILE__);
         }
 
-        return $myArray;
+        return $returnArray;
     }
 
     /**
@@ -325,7 +354,7 @@ class ciborium_stripe{
             else{
                 $myArray['Reason'] .= " However, credit card data was not removed from system.";
                 $errorMessage = $myArray['Reason']." . Called by ".$inCaller;
-                util_errorlogging::LogGeneralError(3, $errorMessage, __METHOD__, __FILE__);
+                util_errorlogging::LogGeneralError(enum_LogType::Normal, $errorMessage, __METHOD__, __FILE__);
             }
         }
         else{
@@ -336,7 +365,7 @@ class ciborium_stripe{
             else{
                 $errorMessage = "Error removing credit card. The removal was not completed. Message: ".$removeCardResponse['Reason']." . Called by ".$inCaller;
             }
-            util_errorlogging::LogGeneralError(3, $errorMessage, __METHOD__, __FILE__);
+            util_errorlogging::LogGeneralError(enum_LogType::Normal, $errorMessage, __METHOD__, __FILE__);
         }
 
 
@@ -407,7 +436,7 @@ class ciborium_stripe{
                 else{
                     $myArray['Reason'] .= " However, credit card data was not added to our system for LicenseId ".(string)$inLicenseId.". StripeCardID was ".$cardArray['id'];
                     $errorMessage = $myArray['Reason']." . Called by ".$inCaller;
-                    util_errorlogging::LogGeneralError(3, $errorMessage, __METHOD__, __FILE__);
+                    util_errorlogging::LogGeneralError(enum_LogType::Normal, $errorMessage, __METHOD__, __FILE__);
                 }
             }
             else{
@@ -418,7 +447,7 @@ class ciborium_stripe{
                 else{
                     $errorMessage = "Error adding credit card. The removal was not completed. Message: ".$addCreditCardResponse['Reason']." . Called by ".$inCaller;
                 }
-                util_errorlogging::LogGeneralError(3, $errorMessage, __METHOD__, __FILE__);
+                util_errorlogging::LogGeneralError(enum_LogType::Normal, $errorMessage, __METHOD__, __FILE__);
             }
         }
         else{
@@ -588,12 +617,12 @@ class ciborium_stripe{
     public static function LogLicenseTransactionFromSystem($inLicenseId, $inValuesArray, $inLastModifiedBy){
         if(!validate::tryParseInt($inLicenseId)){
             $ErrorMessage = "LicenseId was not an integer.";
-            util_errorlogging::LogGeneralError(3, $ErrorMessage, __METHOD__, __FILE__);
+            util_errorlogging::LogGeneralError(enum_LogType::Normal, $ErrorMessage, __METHOD__, __FILE__);
             return 0;
         }
         if(!validate::isNotNullOrEmpty_Array($inValuesArray)){
             $ErrorMessage = "Values array was empty or null";
-            util_errorlogging::LogGeneralError(2, $ErrorMessage, __METHOD__, __FILE__);
+            util_errorlogging::LogGeneralError(enum_LogType::Critical, $ErrorMessage, __METHOD__, __FILE__);
             return 0;
         }
 
@@ -651,7 +680,7 @@ class ciborium_stripe{
 //                $returnArray['Result'] = 0;
 //                $returnArray['Reason'] = "License or subscription update failed.";
 //                $ErrorMessage = "LicenseUpdate (".$inLicenseId.") or SubscriptionTypeID (".$inNewSubscriptionTypeId.") was/were not found.";
-//                util_errorlogging::LogGeneralError(3, $ErrorMessage, __METHOD__, __FILE__);
+//                util_errorlogging::LogGeneralError(enum_LogType::Normal, $ErrorMessage, __METHOD__, __FILE__);
 //            }
 
         }
@@ -659,13 +688,40 @@ class ciborium_stripe{
             $returnArray['Result'] = 0;
             $returnArray['Reason'] = "License or subscription not found.";
             $ErrorMessage = "LicenseID (".$inLicenseId.") or SubscriptionTypeID (".$inNewSubscriptionTypeId.") was/were not found.";
-            util_errorlogging::LogGeneralError(3, $ErrorMessage, __METHOD__, __FILE__);
+            util_errorlogging::LogGeneralError(enum_LogType::Normal, $ErrorMessage, __METHOD__, __FILE__);
         }
 
         return $returnArray;
     }
 
+    public static function applyDiscountToCustomer($inStripeCustomerId, $inStripeCouponId, $inCaller){
 
+        $returnArray = array(
+            'Result' => 0,
+            'Reason' => ""
+        );
+
+        $applyDiscountResponse = stripe_charger::applyDiscountToCustomer($inStripeCustomerId, $inStripeCouponId, $inCaller);
+        if($applyDiscountResponse['Result']){
+            $returnArray['Result'] = 1;
+        }
+        else{
+            $returnArray['Reason'] = "There was an issue applying the promo code.";
+            if($applyDiscountResponse['StripeException'] != null){
+                $stripeException = $applyDiscountResponse['StripeException'];
+                $HTTP_errorCode = $stripeException->http_status;
+                $errorArray = $stripeException->json_body['error'];
+                $message = $applyDiscountResponse['Reason']." HTTP status was ".$HTTP_errorCode." and error code was ".$errorArray['code'].".";
+                util_errorlogging::LogGeneralError(enum_LogType::Normal, $message, __METHOD__, __FILE__);
+            }
+            else{
+                util_errorlogging::LogGeneralError(enum_LogType::Normal, $applyDiscountResponse['Reason'], __METHOD__, __FILE__);
+            }
+        }
+
+
+        return $returnArray;
+    }
 }
 
 
