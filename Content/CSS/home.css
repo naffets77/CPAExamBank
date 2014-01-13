@@ -1,5 +1,19 @@
 ﻿
 
+/* Promotion */
+
+#promotion-holder{
+    height: 55px;
+    background-color: #fff;
+    padding: 0px 20px;
+    bottom: 0px;
+    z-index: 2000;
+    border: 2px solid #000;
+    margin: -2px auto 0px;
+    width: 920px;
+    display:none;
+}
+
 
 /* SPLASH PAGE */
 

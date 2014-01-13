@@ -14,13 +14,12 @@ window.onfocus = function () { window.blurred = false; };
 
 
 var siteOptions = {
-
+    defaultPromotion: true,
     loginCallback: function () {
 
         $.CPAEB.hideLoginUI();
         location.hash = "account";
     }
-
 };
 
 

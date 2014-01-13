@@ -30,7 +30,7 @@ $.CPAEB.pages.home.events = function () {
 	});
 
 
-	$("#home-login-password").on('click', function () {
+	$("#home-login-password").on('click focus', function () {
 
 	    if ($(this).val() == 'Password') {
 	        $(this).val("");
@@ -120,9 +120,26 @@ $.CPAEB.pages.home.events = function () {
 
 	});
 
-	//setInterval(function () {
-	//	self.slider.autoSlide();
-	//}, 8000);
+    // Start Auto slide
+	setInterval(function () {
+		self.slider.autoSlide();
+	}, 8000);
+
+
+
+
+    // Promotion Code Handling
+
+    // Check if there's a promotion, else check if there's a default promotion
+	if ($.COR.defaultPromotion) {
+	    setTimeout(function () {
+	        $("#promotion-coupon").show();
+	        $("#promotion-holder").slideDown();
+
+	    },500);
+	}
+
+
 
 }
 

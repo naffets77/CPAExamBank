@@ -8,6 +8,7 @@
         googleTracking: false,
         MD5: null,
         DisableCache: true,
+        defaultPromotion: false,
 
         config : {
             stripeKey: "pk_test_JyW7jbQudHJwV36CAQNiM63O"
@@ -50,7 +51,7 @@ $.COR.init = function (options) {
 
     // Called when login is completed
     this.site.loginCallback = options.loginCallback;
-
+    options.defaultPromotion ? this.defaultPromotion = options.defaultPromotion : false;
 
 
 };
