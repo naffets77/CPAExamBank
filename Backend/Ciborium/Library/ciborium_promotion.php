@@ -86,9 +86,10 @@ class ciborium_promotion{
         );
 
         $promotionId = promotion::verifyPromotionExistsById($inPromotionId);
+        print_r("PromotionId: ".$promotionId."<br />");
         if($promotionId){
             $promotion = promotion::getPromotionById($inPromotionId)[0];
-
+            var_dump($promotion);
             //validate
             if($promotion->IsActive){
 
