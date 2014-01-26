@@ -33,7 +33,7 @@ class service_promotion{
                 "promoCode" => $promoCode
             );
 
-            if(in_array(null, $checkValueArray) || !$checkValueArray['hashCheckResult'])
+            if(in_array(null, $checkValueArray))
             {
                 $inCheckValueArray = util_general::stringValuesInAssociativeArray($checkValueArray);
                 $inMessage = "Missing one or more POST variables OR hash check failed in ".self::$service."::".__FUNCTION__." . ";
