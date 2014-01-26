@@ -68,7 +68,7 @@ class ciborium_promotion{
             return ciborium_promotion::validateActivePromotion($promotionId, $inCaller);
         }
         else{
-            $returnArray['Reason'] = "Promotion code not found.";
+            $returnArray['Reason'] = "Promotion code not found from validateActivePromotionByCode.";
         }
 
         return $returnArray;
