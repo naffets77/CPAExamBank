@@ -8,7 +8,7 @@
         googleTracking: false,
         MD5: null,
         DisableCache: true,
-        defaultPromotion: false,
+        defaultPromotion: null,
 
         config : {
             stripeKey: "pk_test_JyW7jbQudHJwV36CAQNiM63O"

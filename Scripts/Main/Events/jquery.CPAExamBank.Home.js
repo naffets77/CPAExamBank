@@ -131,10 +131,32 @@ $.CPAEB.pages.home.events = function () {
     // Promotion Code Handling
 
     // Check if there's a promotion, else check if there's a default promotion
-	if ($.COR.defaultPromotion) {
+	if ($.COR.defaultPromotion != null) {
+
 	    setTimeout(function () {
-	        $("#promotion-coupon").show();
+
+	        $("#promotion-validation .promotion-code").html($.COR.defaultPromotion);
+	        $("#promotion-validation").show();
 	        $("#promotion-holder").slideDown();
+
+	        $.COR.services.checkPromoCode({ promoCode: $.COR.defaultPromotion }, function (data) {
+
+	            $("#promotion-validation .loader").hide();
+
+	            if (data.Result == 0) {
+	                $("#promotion-validation .promotion-code").html($.COR.defaultPromotion + " is Expired");
+	                setTimeout(function () {
+	                    $("#promotion-holder").slideUp();
+	                }, 1500)
+	            }
+	            else {
+	                $("#promotion-holder").slideUp(function () {
+	                    $("#promotion-validation").hide();
+	                    $("#promotion-coupon").show();
+	                    $("#promotion-holder").slideDown();
+	                });
+	            }
+	        });
 
 	    },500);
 	}

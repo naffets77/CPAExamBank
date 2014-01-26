@@ -14,7 +14,7 @@ window.onfocus = function () { window.blurred = false; };
 
 
 var siteOptions = {
-    defaultPromotion: true,
+    defaultPromotion: null,
     loginCallback: function () {
 
         $.CPAEB.hideLoginUI();
@@ -645,8 +645,6 @@ $.COR.ShowRegPopup = function (successCallback) {
 
 
 $(document).ready(function () {
-    $.CPAEB.init();
-    $.CPAEB.hookupGoogleAnalyticsEventWatcher();
 
     if ($.COR.Utilities.getURLParameter("offline") != null) {
         $.COR.account.offline = true;
@@ -655,6 +653,15 @@ $(document).ready(function () {
     if ($.COR.Utilities.getURLParameter("debug") != null) {
         $.COR.debug = true;
     }
+
+    if ($.COR.Utilities.getURLParameter("promo") != null) {
+        // Set default promo code
+        $.COR.defaultPromotion = $.COR.Utilities.getURLParameter("promo");
+    }
+
+    $.CPAEB.init();
+    $.CPAEB.hookupGoogleAnalyticsEventWatcher();
+
 
     // Initialization
     $.COR.pageEvents();
