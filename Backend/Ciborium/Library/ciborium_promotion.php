@@ -68,7 +68,7 @@ class ciborium_promotion{
             return ciborium_promotion::validateActivePromotion($promotionId, $inCaller);
         }
         else{
-            $returnArray['Reason'] = "Promotion code not found from validateActivePromotionByCode.";
+            $returnArray['Reason'] = "Promotion code not found.";
         }
 
         return $returnArray;
@@ -106,7 +106,8 @@ class ciborium_promotion{
 
                 if($promotionActivated && !$promotionExpired && !$maxRedemptionsReached){
                     $returnArray['Result'] = 1;
-                    $returnArray['Reason'] = ciborium_promotion::buildPromotionResultMessage_Public($promotion, $nonExpiringPromotion);
+                    //$returnArray['Reason'] = ciborium_promotion::buildPromotionResultMessage_Public($promotion, $nonExpiringPromotion);
+                    $returnArray['Reason'] = "It really is active. Test message.";
                 }
                 elseif(!$promotionActivated){
                     $returnArray['Reason'] = "Promotion code is not active yet.";
