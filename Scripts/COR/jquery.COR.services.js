@@ -17,6 +17,8 @@ $.COR.services.checkPromoCode = function (options, successCallback, failCallback
         }
     });
 
+    ph.submitPost();
+
 }
 
 // Question Services
