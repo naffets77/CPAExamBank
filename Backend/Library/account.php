@@ -53,6 +53,7 @@ class account
                     $userAccountLicense = self::getLicensesByAccountUserId($userAccountForSession->AccountUserId, "1");
                     $accountHash = self::createAccountHash($userAccountForSession->AccountUserId); //create hash for stopping middleman attacks
                     $licenseModules = self::getLicenseToSectionTypeForUser($userAccountLicense[0]->LicenseId);
+                    $promotionCodeArray = array('1211CPADEVTEST-14DOLLARSOFF-ONCE' => "Gets you $14 off your first month."); //TODO: actually retrieve this for the user as an array.
 
                     // Setup Session
                     $Timeout = library_configuration::$timeout; //in seconds
@@ -69,6 +70,7 @@ class account
                     $_SESSION['LastRefreshed'] = time();
                     $_SESSION['Subscriptions'] = $licenseModules;
                     $_SESSION['StripePublicKey'] = stripe_configuration::$public_key;
+                    $_SESSION['PromotionCodes'] = $promotionCodeArray;
 
                     //arrange for UI return
                     $returnArray = self::getLoggedInAccountDataForUI($userAccountForReturn[0], $accountHash, $returnArray['Reason']);;
@@ -563,6 +565,7 @@ class account
             //license module history
             $LicenseModules = self::getLicenseToSectionTypeForUser($License[0]->LicenseId);
             $LicenseModulesArray = self::returnLicenseToSectionTypeForUI($LicenseModules);
+            $promotionCodeArray = array('1211CPADEVTEST-14DOLLARSOFF-ONCE' => "Gets you $14 off your first month."); //TODO: actually retrieve this for the user as an array.
 
             return array(
                 "Reason" => $inReason,
@@ -572,7 +575,8 @@ class account
                 "Licenses" => $License[0], //should only be one right now
                 "UserSettings" => $UserSettings[0],
                 "Subscriptions" => $LicenseModulesArray,
-                "StripePublicKey" => stripe_configuration::$public_key
+                "StripePublicKey" => stripe_configuration::$public_key,
+                "PromotionCodes" => $promotionCodeArray
             );
 
         }
