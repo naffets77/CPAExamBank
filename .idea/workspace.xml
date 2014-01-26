@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Ciborium/Service/service_promotion.php" afterPath="$PROJECT_DIR$/Backend/Ciborium/Service/service_promotion.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_promotion.php" afterPath="$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_promotion.php" />
     </list>
     <ignored path="VaheCPA.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,7 +30,7 @@
     <file path="/Sync_QuestionDataFromPRODtoDEV.sql" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1385019251243" ignored="false" />
     <file path="/sp_DELETEAccountUserById.sql" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1386827382577" ignored="false" />
     <file path="/promotion.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1387603606928" ignored="false" />
-    <file path="/ciborium_promotion.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1387604925796" ignored="false" />
+    <file path="/ciborium_promotion.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1390779222241" ignored="false" />
     <file path="/util_datetime.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1386842178359" ignored="false" />
     <file path="/service_promotion.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1387605132465" ignored="false" />
     <file path="/mrtest.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1387605569632" ignored="false" />
@@ -56,7 +56,7 @@
       <file leaf-file-name="ciborium_enums.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_enums.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="169" column="22" selection-start="4075" selection-end="4075" vertical-scroll-proportion="-0.65384614">
+            <state line="169" column="22" selection-start="4075" selection-end="4075" vertical-scroll-proportion="-13.538462">
               <folding />
             </state>
           </provider>
@@ -71,19 +71,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ciborium_promotion.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ciborium_promotion.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_promotion.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="65" column="48" selection-start="2999" selection-end="2999" vertical-scroll-proportion="-10.0">
+            <state line="109" column="34" selection-start="4930" selection-end="4930" vertical-scroll-proportion="0.40421054">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="service_promotion.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="service_promotion.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Service/service_promotion.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="43" selection-start="1781" selection-end="1781" vertical-scroll-proportion="0.34836066">
+            <state line="48" column="58" selection-start="2265" selection-end="2265" vertical-scroll-proportion="-12.423077">
               <folding />
             </state>
           </provider>
@@ -142,7 +142,6 @@
         <option value="$PROJECT_DIR$/Backend/Library/utilities/util_datetime.php" />
         <option value="$PROJECT_DIR$/Backend/Library/promotion.php" />
         <option value="$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_enums.php" />
-        <option value="$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_promotion.php" />
         <option value="$PROJECT_DIR$/Backend/Ciborium/Library/ciboriumlib_account.php" />
         <option value="$PROJECT_DIR$/Backend/Ciborium/TestTools/mrtest.php" />
         <option value="$PROJECT_DIR$/Backend/Ciborium/Service/service_stripe.php" />
@@ -150,6 +149,7 @@
         <option value="$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_stripe.php" />
         <option value="$PROJECT_DIR$/Backend/Library/account.php" />
         <option value="$PROJECT_DIR$/Backend/Ciborium/Service/service_promotion.php" />
+        <option value="$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_promotion.php" />
       </list>
     </option>
   </component>
@@ -550,30 +550,9 @@
         <state line="1" column="0" selection-start="6" selection-end="1338" vertical-scroll-proportion="0.034836065" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_enums.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="169" column="22" selection-start="4075" selection-end="4075" vertical-scroll-proportion="-0.65384614">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Backend/Library/account.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="34" selection-start="767" selection-end="767" vertical-scroll-proportion="-0.65384614">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_promotion.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="48" selection-start="2999" selection-end="2999" vertical-scroll-proportion="-10.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/Library/promotion.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="32" selection-start="1740" selection-end="1740" vertical-scroll-proportion="-6.8846154">
           <folding />
         </state>
       </provider>
@@ -585,13 +564,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_stripe.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="193" column="43" selection-start="8824" selection-end="8824" vertical-scroll-proportion="-0.65384614">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciboriumlib_account.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="86" column="27" selection-start="2690" selection-end="2690" vertical-scroll-proportion="0.35157895">
@@ -599,9 +571,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_enums.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="169" column="22" selection-start="4075" selection-end="4075" vertical-scroll-proportion="-13.538462">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Library/promotion.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="48" column="32" selection-start="1740" selection-end="1740" vertical-scroll-proportion="-6.8846154">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_stripe.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="193" column="43" selection-start="8824" selection-end="8824" vertical-scroll-proportion="-0.65384614">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Service/service_promotion.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="43" selection-start="1781" selection-end="1781" vertical-scroll-proportion="0.34836066">
+        <state line="48" column="58" selection-start="2265" selection-end="2265" vertical-scroll-proportion="-12.423077">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_promotion.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="109" column="34" selection-start="4930" selection-end="4930" vertical-scroll-proportion="0.40421054">
           <folding />
         </state>
       </provider>

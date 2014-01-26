@@ -101,9 +101,13 @@ class ciborium_promotion{
                 }
 
                 $currentPHPTime = time();
-                $maxRedemptionsReached = $promotion->MaxRedemptions > 0 && ($promotion->TimesRedeemed >= $promotion->MaxRedemptions) ? true : false;
-                $promotionExpired = $promotion->DateExpiration != null && ($currentPHPTime >= util_datetime::getDateTimeToPHPTime($promotion->DateExpiration)) ? true : false;
+                $maxRedemptionsReached = ($promotion->MaxRedemptions > 0 && $promotion->TimesRedeemed >= $promotion->MaxRedemptions) ? true : false;
+                $promotionExpired = ($promotion->DateExpiration != null && $currentPHPTime >= util_datetime::getDateTimeToPHPTime($promotion->DateExpiration)) ? true : false;
                 $promotionActivated = $currentPHPTime >= util_datetime::getDateTimeToPHPTime($promotion->DateActivation) ? true : false;
+
+                print_r("Maxredemptions?: ".$maxRedemptionsReached."<br />");
+                print_r("expired?: ".$maxRedemptionsReached."<br />");
+                print_r("Activated?: ".$maxRedemptionsReached."<br />");
 
                 if($promotionActivated && !$promotionExpired && !$maxRedemptionsReached){
                     $returnArray['Result'] = 1;
