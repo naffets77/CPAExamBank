@@ -27,7 +27,7 @@ asyncTest("Valid Login is Successful", function () {
 });
 
 
-asyncTest("Invalid Login is Not Successfull", function () {
+asyncTest("Invalid Login is Not Successful", function () {
 
     expect(1);
 

@@ -1,3 +1,4 @@
+GLOBAL_TEMP_PROMOTION_AMOUNT = .25;
 
 $.COR.account = {
     offline: false,
@@ -721,6 +722,27 @@ $.COR.account.setUserData = function (data) {
     }
     else {
         $("#credit-card-on-file").hide();
+    }
+
+    // setup the promotion if exists
+    var promotionType = 'percent-off';
+    var promotionAmount = GLOBAL_TEMP_PROMOTION_AMOUNT;
+
+    switch (promotionType) {
+        case "percent-off":
+
+            $("#subscription-options .amount").each(function () {
+                var base = parseInt($(this).html().replace("$", ""));
+                var promoAmount = base - base * promotionAmount
+                $(this).html("$" + promoAmount);
+            });
+
+            $("#subscription-promotion-coupon .amount").html("$" + promotionAmount * 100 );
+
+            break;
+
+       default:
+            $("#subscription-promotion-coupon").hide();
     }
 
 }

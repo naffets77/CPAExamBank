@@ -1,8 +1,25 @@
 ﻿
 
 
-// Question Services
+// Promotion Code
 
+$.COR.services.checkPromoCode = function (options, successCallback, failCallback) {
+
+    var ph = new $.COR.Utilities.PostHandler({
+        service: "promotion", call: "validatePromotionCode",
+        params: {
+            promoCode: options.promoCode
+        },
+        success: function (data) {
+            if (typeof successCallback == 'function') {
+                successCallback(data);
+            }
+        }
+    });
+
+}
+
+// Question Services
 
 $.COR.services.getQuestionHistoryMetrics = function () {
 
