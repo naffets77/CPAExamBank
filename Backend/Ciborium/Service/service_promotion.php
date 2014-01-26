@@ -22,12 +22,15 @@ class service_promotion{
 
             $accountUserId = $_SESSION['Account']->AccountUserId;
 
-            $hash = validate::requirePostField('Hash', self::$service, __FUNCTION__);
-            $hashCheckReturn = validate::requireValidHash(self::$service, __FUNCTION__);
-            $checkValueArray = array(
+            //$hash = validate::requirePostField('Hash', self::$service, __FUNCTION__);
+            //$hashCheckReturn = validate::requireValidHash(self::$service, __FUNCTION__);
+            /*$checkValueArray = array(
                 "promoCode" => $promoCode,
                 "Hash" => $hash,
                 'hashCheckResult' => (bool)$hashCheckReturn['Result']
+            );*/
+            $checkValueArray = array(
+                "promoCode" => $promoCode
             );
 
             if(in_array(null, $checkValueArray) || !$checkValueArray['hashCheckResult'])
