@@ -553,9 +553,9 @@ $.COR.ShowRegPopup = function (successCallback) {
         $("#full-screen-container .registration-reg").prop('checked', $("#pricing-row4-check").prop('checked'));
 
 
-        if ($.COR.Utilities.getURLParameter("promo") != null) {
+        if ($.COR.defaultPromotion != null) {
             $("#full-screen-container .registration-promo-code-row").show();
-            $("#full-screen-container .registration-promotion-code").val($.COR.Utilities.getURLParameter("promo"));
+            $("#full-screen-container .registration-promotion-code").val($.COR.defaultPromotion);
         }
         else {
             $("#full-screen-container .registration-promotion-code").val('none');

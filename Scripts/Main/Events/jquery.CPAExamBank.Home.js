@@ -145,6 +145,9 @@ $.CPAEB.pages.home.events = function () {
 	                    $("#promotion-validation .loader").hide();
 
 	                    if (data.Result == 0) {
+
+	                        $.COR.defaultPromotion = null;
+
 	                        $("#promotion-validation .promotion-code").html($.COR.defaultPromotion + " is Expired");
 	                        setTimeout(function () {
 	                            $("#promotion-holder").slideUp(1500);
