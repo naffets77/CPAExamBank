@@ -147,8 +147,8 @@ $.CPAEB.pages.home.events = function () {
 	                    if (data.Result == 0) {
 	                        $("#promotion-validation .promotion-code").html($.COR.defaultPromotion + " is Expired");
 	                        setTimeout(function () {
-	                            $("#promotion-holder").slideUp();
-	                        }, 1500)
+	                            $("#promotion-holder").slideUp(1500);
+	                        }, 3000);
 	                    }
 	                    else {
 	                        $("#promotion-holder").slideUp(function () {
