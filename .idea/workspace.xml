@@ -74,7 +74,7 @@
       <file leaf-file-name="ciborium_promotion.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_promotion.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="91" column="33" selection-start="3814" selection-end="3814" vertical-scroll-proportion="0.40421054">
+            <state line="44" column="70" selection-start="2519" selection-end="2519" vertical-scroll-proportion="0.7621053">
               <folding />
             </state>
           </provider>
@@ -83,7 +83,7 @@
       <file leaf-file-name="service_promotion.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Service/service_promotion.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="58" selection-start="2265" selection-end="2265" vertical-scroll-proportion="-12.423077">
+            <state line="48" column="65" selection-start="2272" selection-end="2272" vertical-scroll-proportion="-12.423077">
               <folding />
             </state>
           </provider>
@@ -594,14 +594,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Service/service_promotion.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="58" selection-start="2265" selection-end="2265" vertical-scroll-proportion="-12.423077">
+        <state line="48" column="65" selection-start="2272" selection-end="2272" vertical-scroll-proportion="-12.423077">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_promotion.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="33" selection-start="3814" selection-end="3814" vertical-scroll-proportion="0.40421054">
+        <state line="44" column="70" selection-start="2519" selection-end="2519" vertical-scroll-proportion="0.7621053">
           <folding />
         </state>
       </provider>

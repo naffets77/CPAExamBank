@@ -42,7 +42,7 @@ class ciborium_promotion{
                 }
             }
             else{
-                $returnArray['Reason'] = "Promo code is no longer active.";
+                $returnArray['Reason'] = $activeCheckResult['Reason'];
             }
         }
         else{
@@ -86,10 +86,8 @@ class ciborium_promotion{
         );
 
         $promotionId = promotion::verifyPromotionExistsById($inPromotionId);
-        print_r("PromotionId: ".$promotionId."<br />");
         if($promotionId){
             $promotion = promotion::getPromotionById($inPromotionId)[0];
-            var_dump($promotion);
             //validate
             if($promotion->IsActive){
 
@@ -105,10 +103,6 @@ class ciborium_promotion{
                 $maxRedemptionsReached = ($promotion->MaxRedemptions > 0 && $promotion->TimesRedeemed >= $promotion->MaxRedemptions) ? true : false;
                 $promotionExpired = ($promotion->DateExpiration != null && $currentPHPTime >= util_datetime::getDateTimeToPHPTime($promotion->DateExpiration)) ? true : false;
                 $promotionActivated = $currentPHPTime >= util_datetime::getDateTimeToPHPTime($promotion->DateActivation) ? true : false;
-
-                print_r("Maxredemptions?: ".$maxRedemptionsReached."<br />");
-                print_r("expired?: ".$maxRedemptionsReached."<br />");
-                print_r("Activated?: ".$maxRedemptionsReached."<br />");
 
                 if($promotionActivated && !$promotionExpired && !$maxRedemptionsReached){
                     $returnArray['Result'] = 1;
