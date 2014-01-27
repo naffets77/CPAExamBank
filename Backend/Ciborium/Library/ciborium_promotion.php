@@ -25,7 +25,7 @@ class ciborium_promotion{
             $activeCheckResult = ciborium_promotion::validateActivePromotion($returnArray['PromotionId'], $inCaller);
 
             if($activeCheckResult['Result']){
-                $returnArray['Status'] = ciborium_promotion::checkPromotionStatusForUser($returnArray['PromotionId'], $inAccountUserId, $inCaller);
+                $returnArray['Status'] = ciborium_promotion::checkPromotionStatusForUser($returnArray['PromotionId'], $inAccountUserId, $inCaller)['Status'];
                 switch($returnArray['Status']){
                     case enum_PromotionToUserStatus::Applied:
                         $returnArray['Reason'] = "Promo code was already applied to this account.";
@@ -38,6 +38,9 @@ class ciborium_promotion{
                     case enum_PromotionToUserStatus::Redeemed:
                         $returnArray['Result'] = 1;
                         $returnArray['Reason'] = "Promo code is redeemed and ready for application by this account.";
+                        break;
+                    default:
+                        $returnArray['Reason'] = "Promo code is not valid for this account.";
                         break;
                 }
             }
@@ -106,8 +109,7 @@ class ciborium_promotion{
 
                 if($promotionActivated && !$promotionExpired && !$maxRedemptionsReached){
                     $returnArray['Result'] = 1;
-                    //$returnArray['Reason'] = ciborium_promotion::buildPromotionResultMessage_Public($promotion, $nonExpiringPromotion);
-                    $returnArray['Reason'] = "It really is active. Test message.";
+                    $returnArray['Reason'] = ciborium_promotion::buildPromotionResultMessage_Public($promotion, $nonExpiringPromotion);
                 }
                 elseif(!$promotionActivated){
                     $returnArray['Reason'] = "Promotion code is not active yet.";
