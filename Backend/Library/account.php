@@ -648,11 +648,13 @@ class account
                         break;
                 }
 
+                $expirationDate = $object->DateExpirationDate == null ? "Never" : $object->DateExpiration;
+
                 $promotionsArray[$object->PromotionCode] = array(
                     'Amount' => $object->PromotionValue,
                     'Type' => $type,
                     'Duration' => $duration,
-                    'ExpirationDate' => $object->DateExpiration
+                    'ExpirationDate' => $expirationDate
                 );
             }
         }

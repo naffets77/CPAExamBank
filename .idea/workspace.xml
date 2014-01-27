@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Library/account.php" afterPath="$PROJECT_DIR$/Backend/Library/account.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_enums.php" afterPath="$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_enums.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_promotion.php" afterPath="$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_promotion.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Library/database.php" afterPath="$PROJECT_DIR$/Backend/Library/database.php" />
     </list>
     <ignored path="VaheCPA.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -16,7 +13,7 @@
     <file path="/config.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1382592787644" ignored="false" />
     <file path="/ciboriumlib_account.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1382902212330" ignored="false" />
     <file path="/ciborium_enums.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1390783826949" ignored="false" />
-    <file path="/account.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1390786396874" ignored="false" />
+    <file path="/account.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1390786725013" ignored="false" />
     <file path="/ciborium_stripe.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1387611842373" ignored="false" />
     <file path="/service_stripe.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1387605854106" ignored="false" />
     <file path="$PROJECT_DIR$/Scripts/Main/account.js" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1382834955130" ignored="false" />
@@ -114,7 +111,7 @@
       <file leaf-file-name="account.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Backend/Library/account.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="581" column="49" selection-start="21056" selection-end="21056" vertical-scroll-proportion="0.99385244">
+            <state line="655" column="44" selection-start="23992" selection-end="23992" vertical-scroll-proportion="0.663067">
               <folding />
             </state>
           </provider>
@@ -622,7 +619,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Backend/Library/account.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="581" column="49" selection-start="21056" selection-end="21056" vertical-scroll-proportion="0.99385244">
+        <state line="655" column="44" selection-start="23992" selection-end="23992" vertical-scroll-proportion="0.663067">
           <folding />
         </state>
       </provider>
