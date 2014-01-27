@@ -527,6 +527,39 @@ class database
         return $returnArray;
     }
 
+    //WARNING: don't use this for any public calls
+    public static function runCustomSelectQueryString($inQueryString, $inCaller){
+        $returnArray = array();
+
+        //Check to see if string starts with "SELECT"
+        $beginningOfQuery = "INVALID";
+        if(strlen($inQueryString > 6)){
+            $beginningOfQuery = strtoupper(substr($inQueryString, 0, 5));
+        }
+
+        if($beginningOfQuery == "SELECT"){
+            try{
+                $db = new database();
+                $query = $inQueryString;
+                $sth= $db->dbc->prepare($query);
+                $sth->execute();
+                $result = $sth->fetchAll(PDO::FETCH_OBJ);
+
+                return $returnArray = $result;
+            }
+            catch(PDOException $ex){
+                util_errorlogging::LogGeneralError(1, $ex->getMessage(), $inCaller."=>".__METHOD__, __FILE__);
+                return $returnArray;
+            }
+        }
+        else{
+            util_errorlogging::LogGeneralError(3, "Query string was invalid. Did not start with SELECT.", $inCaller."=>".__METHOD__, __FILE__);
+            return $returnArray;
+        }
+
+        return $returnArray;
+    }
+
     //destructor
     function __destruct(){
         $this->dbc = null;

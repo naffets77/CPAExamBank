@@ -53,7 +53,7 @@ class account
                     $userAccountLicense = self::getLicensesByAccountUserId($userAccountForSession->AccountUserId, "1");
                     $accountHash = self::createAccountHash($userAccountForSession->AccountUserId); //create hash for stopping middleman attacks
                     $licenseModules = self::getLicenseToSectionTypeForUser($userAccountLicense[0]->LicenseId);
-                    $promotionCodeArray = array('1211CPADEVTEST-14DOLLARSOFF-ONCE' => "Gets you $14 off your first month."); //TODO: actually retrieve this for the user as an array.
+                    $promotionCodeArray = self::getActivePromotionsForUser($userAccountForSession->AccountUserId);
 
                     // Setup Session
                     $Timeout = library_configuration::$timeout; //in seconds
@@ -565,7 +565,11 @@ class account
             //license module history
             $LicenseModules = self::getLicenseToSectionTypeForUser($License[0]->LicenseId);
             $LicenseModulesArray = self::returnLicenseToSectionTypeForUI($LicenseModules);
-            $promotionCodeArray = array('1211CPADEVTEST-14DOLLARSOFF-ONCE' => "Gets you $14 off your first month."); //TODO: actually retrieve this for the user as an array.
+
+            //promotion codes
+            $promotionCodes = self::getActivePromotionsForUser($inUserAccount->AccountUserId);
+            $promotionCodeArray = self::returnPromotionsForUI($promotionCodes);
+
 
             return array(
                 "Reason" => $inReason,
@@ -613,6 +617,49 @@ class account
         return $LicenseModulesArray;
     }
 
+    public static function returnPromotionsForUI($inPromotionsArray){
+        $promotionsArray = array();
+        foreach($inPromotionsArray as $key => $object){
+            //Only add if "active"
+            if(ciborium_promotion::checkStatusOfPromotion($object) == enum_PromotionStatus::Active){
+                $duration = "";
+                if($object->PromotionDuration == -1){
+                    $duration = "Permanent";
+                }
+                if($object->PromotionDuration == 0){
+                    $duration = "One-Time";
+                }
+                if($object->PromotionDuration > 0){
+                    $duration = "Monthly";
+                }
+
+                $type = "";
+                switch($object->PromotionTypeId){
+                    case enum_PromotionType::PercentOff_OneTime:
+                    case enum_PromotionType::PercentOff_Monthly:
+                        $type = "Percent Off";
+                        break;
+                    case enum_PromotionType::AmountOff_OneTime:
+                    case enum_PromotionType::AmountOff_Monthly:
+                        $type = "Dollars Off";
+                        break;
+                    default:
+                        $type = "N/A";
+                        break;
+                }
+
+                $promotionsArray[$object->PromotionCode] = array(
+                    'Amount' => $object->PromotionValue,
+                    'Type' => $type,
+                    'Duration' => $duration,
+                    'ExpirationDate' => $object->DateExpiration
+                );
+            }
+        }
+
+        return $promotionsArray;
+    }
+
     /**
      * @param $inAccountUserId
      * @return array
@@ -641,6 +688,15 @@ class account
         $preparedArray = null;
 
         return database::select("LicenseToSectionType", $selectArray, $whereClause, $orderBy, $limit, $preparedArray, __METHOD__);
+    }
+
+    public static function getActivePromotionsForUser($inAccountUserId){
+        $queryString = "SELECT p.*
+            FROM Promotion p
+            JOIN `AccountUserToPromotion` autp ON p.PromotionId = autp.PromotionID
+            WHERE autp.AccountUserId = ".$inAccountUserId." AND autp.DateApplied IS NULL AND p.IsActive = 1";
+
+        return database::runCustomSelectQueryString($queryString, __METHOD__);
     }
 
     public static function updateLicenseForNewStripeCustomer($inLicenseId, $inStripeCustomerId, $inCCBrand, $inLast4CC, $inCCExpirationDateTime, $inStripeCreditCardId, $inCaller){

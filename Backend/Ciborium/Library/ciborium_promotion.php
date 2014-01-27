@@ -102,22 +102,20 @@ class ciborium_promotion{
                     return $returnArray;
                 }
 
-                $currentPHPTime = time();
-                $maxRedemptionsReached = ($promotion->MaxRedemptions > 0 && $promotion->TimesRedeemed >= $promotion->MaxRedemptions) ? true : false;
-                $promotionExpired = ($promotion->DateExpiration != null && $currentPHPTime >= util_datetime::getDateTimeToPHPTime($promotion->DateExpiration)) ? true : false;
-                $promotionActivated = $currentPHPTime >= util_datetime::getDateTimeToPHPTime($promotion->DateActivation) ? true : false;
+                //Checking status of promotion
+                $promotionStatus = self::checkStatusOfPromotion($promotion)['Status'];
 
-                if($promotionActivated && !$promotionExpired && !$maxRedemptionsReached){
+                if($promotionStatus == enum_PromotionStatus::Active){
                     $returnArray['Result'] = 1;
                     $returnArray['Reason'] = ciborium_promotion::buildPromotionResultMessage_Public($promotion, $nonExpiringPromotion);
                 }
-                elseif(!$promotionActivated){
+                elseif($promotionStatus == enum_PromotionStatus::Inactive){
                     $returnArray['Reason'] = "Promotion code is not active yet.";
                 }
-                elseif($promotionExpired){
+                elseif($promotionStatus == enum_PromotionStatus::Expired){
                     $returnArray['Reason'] = "Promotion code is expired.";
                 }
-                elseif($maxRedemptionsReached){
+                elseif($promotionStatus == enum_PromotionStatus::Redeemed){
                     $returnArray['Reason'] = "Promotion code maximum redemptions reached.";
                 }
                 else{
@@ -158,6 +156,37 @@ class ciborium_promotion{
             else{
                 $returnArray['Status'] = enum_PromotionToUserStatus::Redeemed;
             }
+        }
+
+        return $returnArray;
+    }
+
+    public static function checkStatusOfPromotion($inPromotion){
+        $returnArray = array(
+            'Status' => enum_PromotionToUserStatus::Unredeemed
+        );
+        $promotion = $inPromotion;
+        $currentPHPTime = time();
+        $maxRedemptionsReached = ($promotion->MaxRedemptions > 0 && $promotion->TimesRedeemed >= $promotion->MaxRedemptions) ? true : false;
+        $promotionExpired = ($promotion->DateExpiration != null && $currentPHPTime >= util_datetime::getDateTimeToPHPTime($promotion->DateExpiration)) ? true : false;
+        $promotionActivated = $currentPHPTime >= util_datetime::getDateTimeToPHPTime($promotion->DateActivation) ? true : false;
+
+        if($promotionActivated && !$promotionExpired && !$maxRedemptionsReached){
+            $returnArray['Status'] = enum_PromotionStatus::Active;
+        }
+        elseif(!$promotionActivated){
+            $returnArray['Status'] = enum_PromotionStatus::Inactive;
+        }
+        elseif($promotionExpired){
+            $returnArray['Status'] = enum_PromotionStatus::Expired;
+        }
+        elseif($maxRedemptionsReached){
+            $returnArray['Status'] = enum_PromotionStatus::Redeemed;
+        }
+        else{
+            $returnArray['Status'] = enum_PromotionStatus::Inactive;
+            $ErrorMessage = "Promotion code validation failed and is not accounted for in business logic. PromotionID (".$promotion->PromotionId.").";
+            util_errorlogging::LogGeneralError(3, $ErrorMessage, __METHOD__, __FILE__);
         }
 
         return $returnArray;

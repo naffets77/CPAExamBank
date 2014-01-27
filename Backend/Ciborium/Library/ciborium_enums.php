@@ -165,8 +165,16 @@ class enum_PromotionType{
 
 class enum_PromotionToUserStatus{
     const Applied = 1; //used up already
-    const Redeemed = 2; //code is active, but unused
-    const Unredeemed = 3;
+    const Redeemed = 2; //code is applied for user, but unused by user
+    const Unredeemed = 3; //code is valid, but not given to user yet
     const Unknown = 4;
+    const Invalid = 5; //covers expired and all other cases
+}
+
+class enum_PromotionStatus{
+    const Active = 1; //valid and activated for public use
+    const Expired = 2;
+    const Redeemed = 3; //maximum redemption values have been met
+    const Inactive = 4; //covers all other cases
 }
 ?>
