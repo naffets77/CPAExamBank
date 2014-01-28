@@ -532,12 +532,12 @@ class database
         $returnArray = array();
 
         //Check to see if string starts with "SELECT"
-        $beginningOfQuery = "INVALID";
+        /*$beginningOfQuery = "INVALID";
         if(strlen($inQueryString > 6)){
             $beginningOfQuery = strtoupper(substr($inQueryString, 0, 5));
-        }
+        }*/
 
-        if($beginningOfQuery == "SELECT"){
+        //if($beginningOfQuery == "SELECT"){
             try{
                 $db = new database();
                 $query = $inQueryString;
@@ -551,11 +551,11 @@ class database
                 util_errorlogging::LogGeneralError(1, $ex->getMessage(), $inCaller."=>".__METHOD__, __FILE__);
                 return $returnArray;
             }
-        }
-        else{
+        //}
+        /*else{
             util_errorlogging::LogGeneralError(3, "Query string was invalid. Did not start with SELECT.", $inCaller."=>".__METHOD__, __FILE__);
             return $returnArray;
-        }
+        }*/
 
         return $returnArray;
     }

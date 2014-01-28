@@ -183,6 +183,29 @@ class promotion
         return database::update("AccountUserToPromotion", $updateArray, $updatePrepare, $whereClause, __METHOD__);
 
     }
+
+    public static function redeemPromotion($inPromotionId, $inCaller){
+        $selectArray = array("TimesRedeemed");  //or array("field1", "field2"...)
+        $whereClause = "PromotionId = '".$inPromotionId."'";
+        $orderBy = "";
+        $limit = "";
+        $preparedArray = null;
+
+        $timesRedeemed = database::select("Promotion", $selectArray, $whereClause, $orderBy, $limit, $preparedArray, __METHOD__);
+
+        $updateArray = array(
+            'TimesRedeemed' => ':TimesRedeemed',
+            'LastModifiedBy' => ':LastModifiedBy'
+        );
+        $updatePrepare = array(
+            ':TimesRedeemed' => $timesRedeemed,
+            ':LastModifiedBy' => $inCaller
+        );
+
+        $whereClause = "PromotionId = '".$inPromotionId."'";
+
+        return database::update("Promotion", $updateArray, $updatePrepare, $whereClause, __METHOD__);
+    }
 }
 
 ?>

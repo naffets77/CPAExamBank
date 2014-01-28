@@ -195,8 +195,11 @@ class ciborium_stripe{
 
                 //apply promotion code if applicable
                 if($promotion != null){
-                    $applyPromotionResponse = ciborium_stripe::applyDiscountToCustomer($inStripeCustomerID, $promotion->StripeCouponId, $inCaller);
-                    if(!$applyPromotionResponse['Result']){
+                    $applyPromotionResponse = ciborium_stripe::applyCouponToCustomer($inStripeCustomerID, $promotion->StripeCouponId, $inCaller);
+                    if($applyPromotionResponse['Result']){
+                        ciborium_promotion::redeemPromotionForUser($promotion->PromotionId, $accountUserToPromotion->AccountUserToPromotionId, $inCaller);
+                    }
+                    else{
                         $errorMessage = "Tried to apply promo code id ".$promotion->StripeCouponId." to user ".$inAccountUserId." (StripeCustomerId ".$inStripeCustomerID.") and failed. See error logs for details.";
                         util_errorlogging::LogGeneralError(enum_LogType::Normal, $errorMessage, __METHOD__, __FILE__);
                     }
@@ -694,14 +697,14 @@ class ciborium_stripe{
         return $returnArray;
     }
 
-    public static function applyDiscountToCustomer($inStripeCustomerId, $inStripeCouponId, $inCaller){
+    public static function applyCouponToCustomer($inStripeCustomerId, $inStripeCouponId, $inCaller){
 
         $returnArray = array(
             'Result' => 0,
             'Reason' => ""
         );
 
-        $applyDiscountResponse = stripe_charger::applyDiscountToCustomer($inStripeCustomerId, $inStripeCouponId, $inCaller);
+        $applyDiscountResponse = stripe_charger::applyCouponToCustomer($inStripeCustomerId, $inStripeCouponId, $inCaller);
         if($applyDiscountResponse['Result']){
             $returnArray['Result'] = 1;
         }
