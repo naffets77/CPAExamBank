@@ -67,8 +67,20 @@
       <file leaf-file-name="account.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Backend/Library/account.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="633" column="17" selection-start="23085" selection-end="23085" vertical-scroll-proportion="0.8336842">
+            <state line="623" column="48" selection-start="22639" selection-end="22639" vertical-scroll-proportion="0.15368421">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ciborium_promotion.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_promotion.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="163" column="27" selection-start="6933" selection-end="6933" vertical-scroll-proportion="-6.423077">
+              <folding>
+                <element signature="n#validatePromotionCodeForUser#0;n#ciborium_promotion#0;n#!!top" expanded="false" />
+                <element signature="n#checkPromotionStatusForUser#0;n#ciborium_promotion#0;n#!!top" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -575,17 +587,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_promotion.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="27" selection-start="2954" selection-end="2954" vertical-scroll-proportion="-13.730769">
-          <folding>
-            <element signature="n#validatePromotionCodeForUser#0;n#ciborium_promotion#0;n#!!top" expanded="false" />
-            <element signature="n#checkPromotionStatusForUser#0;n#ciborium_promotion#0;n#!!top" expanded="false" />
-            <element signature="n#checkStatusOfPromotion#0;n#ciborium_promotion#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciboriumlib_account.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="375" column="74" selection-start="15728" selection-end="15728" vertical-scroll-proportion="-5.1538463">
@@ -675,9 +676,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_promotion.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="163" column="27" selection-start="6933" selection-end="6933" vertical-scroll-proportion="-6.423077">
+          <folding>
+            <element signature="n#validatePromotionCodeForUser#0;n#ciborium_promotion#0;n#!!top" expanded="false" />
+            <element signature="n#checkPromotionStatusForUser#0;n#ciborium_promotion#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Backend/Library/account.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="633" column="17" selection-start="23085" selection-end="23085" vertical-scroll-proportion="0.8336842">
+        <state line="623" column="48" selection-start="22639" selection-end="22639" vertical-scroll-proportion="0.15368421">
           <folding />
         </state>
       </provider>

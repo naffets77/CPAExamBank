@@ -618,10 +618,10 @@ class account
     }
 
     public static function returnPromotionsForUI($inPromotionsArray){
-        $promotionsArray = array("testing" => 1234);
+        $promotionsArray = array();
         foreach($inPromotionsArray as $key => $object){
             //Only add if "active"
-            if(ciborium_promotion::checkStatusOfPromotion($object) == enum_PromotionStatus::Active){
+            if(ciborium_promotion::checkStatusOfPromotion($object)['Status'] == enum_PromotionStatus::Active){
                 $duration = "";
                 if($object->PromotionDuration == -1){
                     $duration = "Permanent";
