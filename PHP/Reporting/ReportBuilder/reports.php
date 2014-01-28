@@ -31,7 +31,7 @@ class ReportBuilder {
 
 		$res_count = mysql_num_rows ( $res );
 
-		echo "<br /> Registered Users: $res_count</br>";
+		echo "<h4>Registered Users: $res_count</h4>";
 
 		$this->table_builder($res);
 	}
