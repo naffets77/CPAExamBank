@@ -11,12 +11,22 @@ class ReportBuilder {
 
     public function build_report($report) {
 
-		echo "Building Report: ". $report;
+		echo "<h3>Building Report: $report</h3> <br /><hr />";
 
 		$this->connect_db();
+		
+		//call_user_func($report);
 
 
+		$this->$report();
     }
+
+
+	public function rep_registered_users(){
+		echo "Showing registered users";
+	
+	}
+
 
 	public function connect_db(){
 

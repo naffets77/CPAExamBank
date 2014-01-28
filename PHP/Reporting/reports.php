@@ -25,7 +25,7 @@ if(isset($_POST['report'])){
 				<tr>
 					<td>
 						<select name='report'>
-							<option value='rep-registered_users'>Registered Users</option>
+							<option value='rep_registered_users'>Registered Users</option>
 						</select>
 					</td>
 					<td>
