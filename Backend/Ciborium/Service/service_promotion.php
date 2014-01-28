@@ -3,7 +3,6 @@ require_once(realpath(__DIR__)."/config.php");
 include_once(service_configuration::$environment_librarypath."/utilities/util_datetime.php");
 include_once(service_configuration::$environment_librarypath."/utilities/util_errorlogging.php");
 include_once(service_configuration::$environment_librarypath."/validate.php");
-include_once(service_configuration::$environment_librarypath."/account.php");
 include_once(service_configuration::$ciborium_librarypath."/ciborium_enums.php");
 include_once(service_configuration::$ciborium_librarypath."/ciboriumlib_account.php");
 include_once(service_configuration::$ciborium_librarypath."/ciborium_promotion.php");
@@ -57,7 +56,7 @@ class service_promotion{
         elseif($promoCode != null){
             $response = ciborium_promotion::validateActivePromotionByCode($promoCode, __METHOD__);
             if($response['Result']){
-                $promotionArray = account::returnPromotionsForUI(ciborium_promotion::getPromotionArrayById($response['PromotionId']));
+                $promotionArray = ciboriumlib_account::returnPromotionsForUI(ciborium_promotion::getPromotionArrayById($response['PromotionId']));
                 $returnArray['Result'] = 1;
                 $returnArray['Promotion'] = $promotionArray;
             }

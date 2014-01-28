@@ -760,4 +760,8 @@ class ciboriumlib_account{
 
     }
 
+    public static function returnPromotionsForUI($inPromotionsArray){
+        return account::returnPromotionsForUI($inPromotionsArray);
+    }
+
 }
