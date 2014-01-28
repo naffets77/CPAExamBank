@@ -1,8 +1,11 @@
 ﻿<?php
 
- // Do check to verify an admin user is logged in
- var_dump($_POST);
 
+
+if(isset($_POST['report'])){
+	$report = $_POST['report'];
+	$rb = new ReportBuilder();
+ }
 
 ?>
 
@@ -28,6 +31,14 @@
 				</tr>
 			</table>
 		</form>
+
+		<hr />
+
+		<?php
+			if(isset($report)){
+				$rb->build_report($report);
+			}
+		?>
 
 
 
