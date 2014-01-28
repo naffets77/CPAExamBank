@@ -48,7 +48,11 @@ class service_promotion{
                 return $returnArray;
             }
             $response = ciborium_promotion::validatePromotionCodeForUser($promoCode, $accountUserId, __METHOD__);
-            unset($response['PromotionId']);
+            if($response['Result']){
+                $promotionArray = ciboriumlib_account::returnPromotionsForUI(ciborium_promotion::getPromotionArrayById($response['PromotionId']));
+                $returnArray['Result'] = 1;
+                $returnArray['Promotion'] = $promotionArray;
+            }
 
             return $response;
 
