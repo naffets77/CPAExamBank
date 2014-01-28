@@ -693,12 +693,8 @@ class account
     }
 
     public static function getActivePromotionsForUser($inAccountUserId){
-        $queryString = "SELECT p.*
-            FROM Promotion p
-            JOIN `AccountUserToPromotion` autp ON p.PromotionId = autp.PromotionID
-            WHERE autp.AccountUserId = ".$inAccountUserId." AND autp.DateApplied IS NULL AND p.IsActive = 1";
 
-        return database::runCustomSelectQueryString($queryString, __METHOD__);
+        return database::callStoredProcedure("sp_getAccountUserPromotions", array($inAccountUserId), __METHOD__);
     }
 
     public static function updateLicenseForNewStripeCustomer($inLicenseId, $inStripeCustomerId, $inCCBrand, $inLast4CC, $inCCExpirationDateTime, $inStripeCreditCardId, $inCaller){
