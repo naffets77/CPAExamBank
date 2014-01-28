@@ -25,12 +25,15 @@ class ReportBuilder {
 	public function rep_registered_users(){
 		$this->output_title("Registered Users");
 
-		$res = $this->dbq("SELECT * FROM  `AccountUser`");
+		$res = $this->dbq("SELECT * FROM `AccountUser` WHERE AccountUserId NOT IN (1,2,3,4,5,6,7,13,28,113,114,116,117,118,119)");
+		$res2 =  $this->dbq('SHOW COLUMNS FROM AccountUser');
+
+
 		$res_count = mysql_num_rows ( $res );
 
-		echo "<br /> Num results: $res_count</br>";
+		echo "<br /> Registered Users: $res_count</br>";
 
-	
+		$this->table_builder($res);
 	}
 
 
@@ -39,6 +42,27 @@ class ReportBuilder {
 
 	public function output_title($report_name){
 		echo "<h3>Building Report: $report_name</h3><hr />";
+	}
+
+	public function table_builder($res){
+
+
+		if(mysql_num_rows($res)) {
+			echo '<table cellpadding="0" cellspacing="0" class="db-table">';
+			while($row2 = mysql_fetch_row($res)) {
+				echo '<tr>';
+				foreach($row2 as $key=>$value) {
+					echo '<td>',$value,'</td>';
+				}
+				echo '</tr>';
+			}
+			echo '</table><br />';
+		}
+		else{
+			echo "<br /> No Results";
+		}
+
+
 	}
 
 

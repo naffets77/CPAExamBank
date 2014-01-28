@@ -16,6 +16,12 @@ if(isset($_POST['report'])){
 
 <html>
 	<head>
+
+		<style>
+			table.db-table 		{ border-right:1px solid #ccc; border-bottom:1px solid #ccc; }
+			table.db-table td	{ padding:5px; border-left:1px solid #ccc; border-top:1px solid #ccc; }
+		</style>
+
 	</head>
 	<body>
 
