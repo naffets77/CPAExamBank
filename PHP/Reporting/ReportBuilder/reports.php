@@ -25,7 +25,7 @@ class ReportBuilder {
 	public function rep_registered_users(){
 		$this->output_title("Registered Users");
 
-		$res = $this->dbq("SELECT * FROM `AccountUser` WHERE AccountUserId NOT IN (1,2,3,4,5,6,7,13,28,113,114,116,117,118,119)");
+		$res = $this->dbq("SELECT AccountUserId, LoginName, DateCreated  FROM `AccountUser` WHERE AccountUserId NOT IN (1,2,3,4,5,6,7,13,28,113,114,116,117,118,119)");
 		$res2 =  $this->dbq('SHOW COLUMNS FROM AccountUser');
 
 
