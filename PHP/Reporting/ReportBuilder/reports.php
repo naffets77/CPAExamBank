@@ -41,7 +41,7 @@ class ReportBuilder {
 	// HTML Helpers
 
 	public function output_title($report_name){
-		echo "<h3>Building Report: $report_name</h3><hr />";
+		echo "<h3>Building Report: $report_name (PROD)</h3><hr />";
 	}
 
 	public function table_builder($res){
