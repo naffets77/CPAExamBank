@@ -12,6 +12,14 @@ include_once(ciborium_configuration::$ciborium_librarypath."/ciborium_email.php"
 class ciborium_promotion{
 
 
+    public static function getPromotionArrayById($inPromotionId){
+        return promotion::getPromotionById($inPromotionId);
+    }
+
+    public static function getPromotionById($inPromotionId){
+        return promotion::getPromotionById($inPromotionId)[0];
+    }
+
     public static function validatePromotionCodeForUser($inPromotionCode, $inAccountUserId, $inCaller){
         $returnArray = array(
             'Result' => 0,
@@ -85,7 +93,8 @@ class ciborium_promotion{
     public static function validateActivePromotion($inPromotionId, $inCaller){
         $returnArray = array(
             'Result' => 0,
-            'Reason' => ""
+            'Reason' => "",
+            'PromotionId' => $inPromotionId
         );
 
         $promotionId = promotion::verifyPromotionExistsById($inPromotionId);
