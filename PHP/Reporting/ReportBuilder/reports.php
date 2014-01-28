@@ -20,7 +20,7 @@ class ReportBuilder {
 
 	public function connect_db(){
 
-		mysql_connect("198.211.105.160", "root", "Naffets77") or die(mysql_error());
+		mysql_connect("198.211.105.160", "root", "!Naffets77") or die(mysql_error());
 		mysql_select_db("ciborium_prod") or die(mysql_error());
 	
 	}
