@@ -638,6 +638,7 @@ $.COR.account.setUserData = function (data) {
     this.subscriptions = data.Subscriptions;
     this.settings = data.UserSettings;
     this.stripePublicKey = data.StripePublicKey;
+    this.promotionCode = data.PromotionCodes.length > 0 ? data.PromotionCodes[0] : null;
 
     $("#account-settings-username").val(this.user.LoginName);
     $("#account-settings-current-password").val(this.user.LoginPassword);
