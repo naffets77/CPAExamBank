@@ -8,6 +8,7 @@ include_once(ciborium_configuration::$environment_librarypath."/database.php");
 include_once(ciborium_configuration::$environment_librarypath."/account.php");
 include_once(ciborium_configuration::$ciborium_librarypath."/ciborium_email.php");
 include_once(ciborium_configuration::$ciborium_librarypath."/ciborium_promotion.php");
+include_once(ciborium_configuration::$environment_librarypath."/promotion.php");
 /**
  * Account library for Ciborium project
  */
@@ -325,12 +326,13 @@ class ciboriumlib_account{
             util_errorlogging::LogBrowserError(3, $errorMessage, __METHOD__, __FILE__);
             return $returnArray;
         }
-        if(!validate::isNotNullOrEmpty_String($inPromoCode)){
+        /*if(!validate::isNotNullOrEmpty_String($inPromoCode)){
             $returnArray['Reason'] = "Invalid input";
-            $errorMessage = $returnArray['Reason']." for referral source. Was null or empty.";
+            $errorMessage = $returnArray['Reason']." for promo code. Was null or empty.";
             util_errorlogging::LogBrowserError(3, $errorMessage, __METHOD__, __FILE__);
             return $returnArray;
-        }
+        }*/
+
         //logout to clear any errant session
         ciboriumlib_account::logout();
         $myEmail = trim($inEmail);
@@ -366,6 +368,15 @@ class ciboriumlib_account{
                                 );
                                 $AccountUserLicenseTransactionHistoryId = account::insertIntoLicenseTransactionHistory($AccountUserLicenseId, enum_LicenseTransactionType::Assigned, $ValuesArray, $inCaller);
                                 if($AccountUserLicenseTransactionHistoryId > 0){
+
+                                    //check if valid promo code to apply to account
+                                    if($inPromoCode != null){
+                                        $promotionId = promotion::verifyPromotionExistsByCode($inPromoCode);
+                                        if($promotionId && ciborium_promotion::validateActivePromotion($promotionId, $inCaller)){
+                                            promotion::insertAccountUserToPromotion($promotionId, $AccountUserId, $inCaller);
+                                        }
+                                    }
+
                                     $returnArray['Result'] = 1;
                                     $returnArray['Login'] = $myEmail;
                                     //email new user registration email
