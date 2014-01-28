@@ -20,7 +20,7 @@ if(isset($_POST['report'])){
 	<body>
 
 
-		<form  method="post" action="<?php echo $PHP_SELF;?>">
+		<form  method="post" action="">
 			<table>
 				<tr>
 					<td>
