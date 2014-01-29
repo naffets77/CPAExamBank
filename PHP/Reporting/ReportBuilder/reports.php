@@ -26,15 +26,21 @@ class ReportBuilder {
 		$this->output_title("Registered Users");
 
 		$res = $this->dbq("SELECT AccountUserId, LoginName, DateCreated  FROM `AccountUser` WHERE AccountUserId NOT IN (1,2,3,4,5,6,7,13,28,113,114,116,117,118,119)");
-		$res2 =  $this->dbq('SHOW COLUMNS FROM AccountUser');
-
-
+    
 		$res_count = mysql_num_rows ( $res );
 
 		echo "<h4>Registered Users: $res_count</h4>";
 
 		$this->table_builder($res);
 	}
+  
+  public function rep_question_history(){
+  
+    $this->ouput_title("Question History Usage By User");
+    $res = $this->dbq("SELECT DISTINCT AccountUser.LoginName, COUNT( AccountUserQuestionHistory.QuestionId ) FROM AccountUser JOIN AccountUserQuestionHistory WHERE AccountUser.AccountUserId = AccountUserQuestionHistory.AccountUserId GROUP BY AccountUser.LoginName");
+		$this->table_builder($res); 
+  
+  }
 
 
 	
