@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_promotion.php" afterPath="$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_promotion.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PHP/UnitTests/mrtest_RegistrationUnitTest.php" afterPath="$PROJECT_DIR$/PHP/UnitTests/mrtest_RegistrationUnitTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Ciborium/Service/service_promotion.php" afterPath="$PROJECT_DIR$/Backend/Ciborium/Service/service_promotion.php" />
     </list>
     <ignored path="VaheCPA.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,7 +32,7 @@
     <file path="/promotion.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1390894463898" ignored="false" />
     <file path="/ciborium_promotion.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1390983373334" ignored="false" />
     <file path="/util_datetime.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1386842178359" ignored="false" />
-    <file path="/service_promotion.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1390900553599" ignored="false" />
+    <file path="/service_promotion.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1390983548943" ignored="false" />
     <file path="/mrtest.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1387605569632" ignored="false" />
     <file path="/database.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1390783173283" ignored="false" />
     <file path="/sp_getAccountUserPromotions.sql" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1390897601825" ignored="false" />
@@ -85,19 +83,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="service_promotion.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="service_promotion.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Service/service_promotion.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="58" selection-start="2351" selection-end="2351" vertical-scroll-proportion="-20.26923">
+            <state line="52" column="57" selection-start="2648" selection-end="2648" vertical-scroll-proportion="0.77072537">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mrtest_RegistrationUnitTest.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="mrtest_RegistrationUnitTest.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PHP/UnitTests/mrtest_RegistrationUnitTest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="46" column="37" selection-start="2506" selection-end="2506" vertical-scroll-proportion="0.6864295">
+            <state line="46" column="37" selection-start="2506" selection-end="2506" vertical-scroll-proportion="-20.038462">
               <folding />
             </state>
           </provider>
@@ -150,11 +148,11 @@
         <option value="$PROJECT_DIR$/Backend/Ciborium/StoredProceduresAndTriggers/StoredProcedures/sp_getAccountUserPromotions.sql" />
         <option value="$PROJECT_DIR$/Backend/Library/database.php" />
         <option value="$PROJECT_DIR$/Backend/Ciborium/Library/ciboriumlib_account.php" />
-        <option value="$PROJECT_DIR$/Backend/Ciborium/Service/service_promotion.php" />
         <option value="$PROJECT_DIR$/Backend/Library/account.php" />
         <option value="$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_stripe.php" />
         <option value="$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_promotion.php" />
         <option value="$PROJECT_DIR$/PHP/UnitTests/mrtest_RegistrationUnitTest.php" />
+        <option value="$PROJECT_DIR$/Backend/Ciborium/Service/service_promotion.php" />
       </list>
     </option>
   </component>
@@ -676,9 +674,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Service/service_promotion.php">
+    <entry file="file://$PROJECT_DIR$/PHP/UnitTests/mrtest_RegistrationUnitTest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="58" selection-start="2351" selection-end="2351" vertical-scroll-proportion="-20.26923">
+        <state line="46" column="37" selection-start="2506" selection-end="2506" vertical-scroll-proportion="-20.038462">
           <folding />
         </state>
       </provider>
@@ -690,9 +688,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PHP/UnitTests/mrtest_RegistrationUnitTest.php">
+    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Service/service_promotion.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="37" selection-start="2506" selection-end="2506" vertical-scroll-proportion="0.6864295">
+        <state line="52" column="57" selection-start="2648" selection-end="2648" vertical-scroll-proportion="0.77072537">
           <folding />
         </state>
       </provider>
