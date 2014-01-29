@@ -141,8 +141,8 @@ class ciborium_stripe{
             if($promoCodeResultArray['Result']){
                 //TODO: may have to check against subscription array one day
                 $promotionId = $promoCodeResultArray['PromotionId'];
-                $promotion = promotion::getPromotionById($promotionId)[0];
-                $accountUserToPromotion = promotion::getAccountUserToPromotion($promotionId, $inAccountUserId, $inCaller)[0];
+                $promotion = ciborium_promotion::getPromotionById($promotionId);
+                $accountUserToPromotion = ciborium_promotion::getAccountUserToPromotion($promotionId, $inAccountUserId, $inCaller)[0];
             }
             else{
                 $returnArray['Reason'] = "Promo code invalid";
@@ -193,17 +193,7 @@ class ciborium_stripe{
 
             if($myCurrentSubscriptionTypeId != $mySubscriptions[0]->SubscriptionTypeId){
 
-                //apply promotion code if applicable
-                if($promotion != null){
-                    $applyPromotionResponse = ciborium_stripe::applyCouponToCustomer($inStripeCustomerID, $promotion->StripeCouponId, $inCaller);
-                    if($applyPromotionResponse['Result']){
-                        ciborium_promotion::redeemPromotionForUser($promotion->PromotionId, $accountUserToPromotion->AccountUserToPromotionId, $inCaller);
-                    }
-                    else{
-                        $errorMessage = "Tried to apply promo code id ".$promotion->StripeCouponId." to user ".$inAccountUserId." (StripeCustomerId ".$inStripeCustomerID.") and failed. See error logs for details.";
-                        util_errorlogging::LogGeneralError(enum_LogType::Normal, $errorMessage, __METHOD__, __FILE__);
-                    }
-                }
+
 
                 //charge it
                 $chargeResponse = stripe_charger::chargeSubscription($inStripeCustomerID, $mySubscriptions[0]->StripePlanId);
@@ -234,6 +224,18 @@ class ciborium_stripe{
                     }
 
                     ciborium_stripe::LogLicenseTransactionFromSystem($inLicenseId, $LicenseTransactionValuesArray, __METHOD__);
+
+                    //apply promotion code if applicable
+                    if($promotion != null){
+                        $applyPromotionResponse = ciborium_stripe::applyCouponToCustomer($inStripeCustomerID, $promotion->StripeCouponId, $inCaller);
+                        if($applyPromotionResponse['Result']){
+                            ciborium_promotion::redeemPromotionForUser($promotion->PromotionId, $accountUserToPromotion->AccountUserToPromotionId, $inCaller);
+                        }
+                        else{
+                            $errorMessage = "Tried to apply promo code id ".$promotion->StripeCouponId." to user ".$inAccountUserId." (StripeCustomerId ".$inStripeCustomerID.") and failed. See error logs for details.";
+                            util_errorlogging::LogGeneralError(enum_LogType::Normal, $errorMessage, __METHOD__, __FILE__);
+                        }
+                    }
 
                     //$myArray['ConfirmationNumber'] = rand(1000000, 9000000); //TODO: finish this
                 }

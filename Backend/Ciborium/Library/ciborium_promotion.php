@@ -205,6 +205,11 @@ class ciborium_promotion{
         promotion::applyAccountUserToPromotion($inAccountUserToPromotionId, $inCaller);
         promotion::redeemPromotion($inPromotionId, $inCaller);
     }
+
+    public static function getAccountUserToPromotion($inPromotionId, $inAccountUserId, $inCaller){
+        return promotion::getAccountUserToPromotion($inPromotionId, $inAccountUserId, $inCaller);
+    }
+
     /**
      * @param $inPromotionId
      * @param $inAccountUserId
