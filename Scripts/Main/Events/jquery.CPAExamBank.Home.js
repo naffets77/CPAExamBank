@@ -156,6 +156,10 @@ $.CPAEB.pages.home.events = function () {
 	                    else {
 	                        $("#promotion-holder").slideUp(function () {
 	                            $("#promotion-validation").hide();
+
+	                            // Set the value
+	                            $("#promotion-holder .promotion-amount").html(data.Promotion.Amount);
+
 	                            $("#promotion-coupon").show();
 	                            $("#promotion-holder").slideDown();
 	                        });

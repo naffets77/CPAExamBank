@@ -1,4 +1,4 @@
-GLOBAL_TEMP_PROMOTION_AMOUNT = .25;
+
 
 $.COR.account = {
     offline: false,
@@ -638,7 +638,7 @@ $.COR.account.setUserData = function (data) {
     this.subscriptions = data.Subscriptions;
     this.settings = data.UserSettings;
     this.stripePublicKey = data.StripePublicKey;
-    this.promotionCode = data.PromotionCodes.length > 0 ? data.PromotionCodes[0] : null;
+    this.promotionCode = data.PromotionCodes ? data.PromotionCodes : null;
 
     $("#account-settings-username").val(this.user.LoginName);
     $("#account-settings-current-password").val(this.user.LoginPassword);
@@ -725,25 +725,28 @@ $.COR.account.setUserData = function (data) {
         $("#credit-card-on-file").hide();
     }
 
-    // setup the promotion if exists
-    var promotionType = 'percent-off';
-    var promotionAmount = GLOBAL_TEMP_PROMOTION_AMOUNT;
 
-    switch (promotionType) {
-        case "percent-off":
+    if ($.COR.account.promotionCode != null) {
+        // setup the promotion if exists
+        var promotionType = $.COR.account.promotionCode.PromotionType; // 'percent-off';
+        var promotionAmount = $.COR.account.promotionCode.PromotionValue; // .75;
 
-            $("#subscription-options .amount").each(function () {
-                var base = parseInt($(this).html().replace("$", ""));
-                var promoAmount = base - base * promotionAmount
-                $(this).html("$" + promoAmount);
-            });
+        switch (promotionType) {
+            case "Percent Off":
 
-            $("#subscription-promotion-coupon .amount").html("$" + promotionAmount * 100 );
+                $("#subscription-options .amount").each(function () {
+                    var base = parseInt($(this).html().replace("$", ""));
+                    var promoAmount = base - base * promotionAmount
+                    $(this).html("$" + promoAmount);
+                });
 
-            break;
+                $("#subscription-promotion-coupon .amount").html("$" + promotionAmount * 100);
 
-       default:
-            $("#subscription-promotion-coupon").hide();
+                break;
+
+            default:
+                $("#subscription-promotion-coupon").hide();
+        }
     }
 
 }
