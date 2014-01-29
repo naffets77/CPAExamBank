@@ -728,8 +728,8 @@ $.COR.account.setUserData = function (data) {
 
     if ($.COR.account.promotionCode != null) {
         // setup the promotion if exists
-        var promotionType = $.COR.account.promotionCode.PromotionType; // 'percent-off';
-        var promotionAmount = $.COR.account.promotionCode.PromotionValue; // .75;
+        var promotionType = $.COR.account.promotionCode.Type; // 'percent-off';
+        var promotionAmount = $.COR.account.promotionCode.Amount; // .75;
 
         switch (promotionType) {
             case "Percent Off":
