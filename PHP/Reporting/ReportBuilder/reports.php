@@ -36,9 +36,9 @@ class ReportBuilder {
   
   public function rep_question_history(){
   
-    $this->ouput_title("Question History Usage By User");
+    $this->output_title("Question History Usage By User");
     $res = $this->dbq("SELECT DISTINCT AccountUser.LoginName, COUNT( AccountUserQuestionHistory.QuestionId ) FROM AccountUser JOIN AccountUserQuestionHistory WHERE AccountUser.AccountUserId = AccountUserQuestionHistory.AccountUserId GROUP BY AccountUser.LoginName");
-		$this->table_builder($res); 
+	$this->table_builder($res); 
   
   }
 
