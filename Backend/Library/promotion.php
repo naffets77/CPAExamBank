@@ -191,7 +191,7 @@ class promotion
         $limit = "";
         $preparedArray = null;
 
-        $timesRedeemed = database::select("Promotion", $selectArray, $whereClause, $orderBy, $limit, $preparedArray, __METHOD__);
+        $timesRedeemed = database::select("Promotion", $selectArray, $whereClause, $orderBy, $limit, $preparedArray, __METHOD__)[0]->TimesRedeemed;
 
         $updateArray = array(
             'TimesRedeemed' => ':TimesRedeemed',
