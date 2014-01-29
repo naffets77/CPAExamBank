@@ -226,7 +226,6 @@ class ciborium_stripe{
                     ciborium_stripe::LogLicenseTransactionFromSystem($inLicenseId, $LicenseTransactionValuesArray, __METHOD__);
 
                     //apply promotion code if applicable
-                    var_dump($promotion);
                     if($promotion != null){
                         $applyPromotionResponse = ciborium_stripe::applyCouponToCustomer($inStripeCustomerID, $promotion->StripeCouponId, $inCaller);
                         if($applyPromotionResponse['Result']){
