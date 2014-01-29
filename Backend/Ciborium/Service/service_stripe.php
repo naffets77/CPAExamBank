@@ -70,7 +70,7 @@ class service_stripe{
                 if(validate::isValidJSONString($myJSONString)){
                     $moduleArray = json_decode($myJSONString, true);
 
-                    return $myStripeCharge = ciborium_stripe::chargeSubscription($_SESSION['Licenses']->StripeCustomerId, $moduleArray, $_SESSION['Licenses']->SubscriptionTypeId, $_SESSION['Licenses']->LicenseId, $_SESSION['Licenses']->AccountUserId, __METHOD__, $promoCode);
+                    return $myStripeCharge = ciborium_stripe::chargeSubscription($_SESSION['Licenses']->StripeCustomerId, $moduleArray, $_SESSION['Licenses']->SubscriptionTypeId, $_SESSION['Licenses']->LicenseId, $_SESSION['Licenses']->AccountUserId, __METHOD__, "CPA75OFFBETA");
                 }
                 else{
                     $myArray['Reason'] = "Invalid variable(s)";
