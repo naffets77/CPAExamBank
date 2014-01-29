@@ -198,7 +198,7 @@ class promotion
             'LastModifiedBy' => ':LastModifiedBy'
         );
         $updatePrepare = array(
-            ':TimesRedeemed' => $timesRedeemed,
+            ':TimesRedeemed' => $timesRedeemed + 1,
             ':LastModifiedBy' => $inCaller
         );
 

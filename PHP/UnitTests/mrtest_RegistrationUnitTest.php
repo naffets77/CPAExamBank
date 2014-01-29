@@ -32,7 +32,7 @@ echo "<pre>";
 print_r($returnArray['Token']);
 echo "</pre>";*/
 
-$promoCodeResultArray = ciborium_promotion::validatePromotionCodeForUser("CPA75OFFBETA", 233, "tester");
+/*$promoCodeResultArray = ciborium_promotion::validatePromotionCodeForUser("CPA75OFFBETA", 233, "tester");
 $result = $promoCodeResultArray['Result'] ? "pass" : "fail";
 echo "Result of creating user is: ".$result."<br/>";
 echo "Message is: ".$promoCodeResultArray['Reason']."<br/><br/>";
@@ -48,8 +48,23 @@ echo "Printing AccountusertoPromotion...<br/>";
 echo "<pre>";
 $accountUserToPromotion = ciborium_promotion::getAccountUserToPromotion(5, 233, "tester")[0];
 print_r($accountUserToPromotion);
+echo "</pre>";*/
+
+
+echo "Printing PromotionArray...<br/>";
+echo "<pre>";
+$promotionArray = ciboriumlib_account::returnPromotionsForUI(ciborium_promotion::getPromotionArrayById(5));
+print_r($promotionArray);
 echo "</pre>";
+echo "<br/><br/>";
 
-
+echo "Printing PromotionArray as JSON object...<br/>";
+echo "<pre>";
+$promotionArray = ciboriumlib_account::returnPromotionsForUI(ciborium_promotion::getPromotionArrayById(5));
+print_r(array('PromotionCodes' => $promotionArray));
+echo "</pre>";
+echo "<br/><br/>";
+echo "<h3>JSON object</h3>";
+echo json_encode(array('PromotionCodes' => $promotionArray));
 
 ?>
