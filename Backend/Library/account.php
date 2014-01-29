@@ -429,11 +429,11 @@ class account
 
             if(count($myAccount) > 0){
 
-                return true;
+                return $myAccount[0]->AccountUserId;
             }
             else{
 
-                return false;
+                return 0;
             }
 
         }
@@ -441,7 +441,7 @@ class account
             $errorMessage = "AccountUserId was not an integer";
             util_errorlogging::LogGeneralError(2, $errorMessage, __METHOD__, __FILE__);
             //die("Invalid input.");
-            return false;
+            return 0;
         }
 
     }
@@ -463,11 +463,11 @@ class account
 
             if(count($myAccount) > 0){
 
-                return true;
+                return $myAccount[0]->AccountUserId;
             }
             else{
 
-                return false;
+                return 0;
             }
 
         }
@@ -475,7 +475,7 @@ class account
             $errorMessage = "LoginEmail was not valid";
             util_errorlogging::LogGeneralError(2, $errorMessage, __METHOD__, __FILE__);
             //die("Invalid input.");
-            return false;
+            return 0;
         }
 
     }
