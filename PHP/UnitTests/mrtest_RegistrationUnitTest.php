@@ -37,4 +37,19 @@ $result = $promoCodeResultArray['Result'] ? "pass" : "fail";
 echo "Result of creating user is: ".$result."<br/>";
 echo "Message is: ".$promoCodeResultArray['Reason']."<br/><br/>";
 echo "PromotionId is: ".$promoCodeResultArray['PromotionId']."<br/><br/>";
+
+echo "Printing promotion...<br/>";
+echo "<pre>";
+$promotion = ciborium_promotion::getPromotionById($promotionId);
+print_r($promotion);
+echo "</pre>";
+
+echo "Printing AccountusertoPromotion...<br/>";
+echo "<pre>";
+$accountUserToPromotion = ciborium_promotion::getAccountUserToPromotion($promotionId, $inAccountUserId, $inCaller)[0];
+print_r($accountUserToPromotion);
+echo "</pre>";
+
+
+
 ?>

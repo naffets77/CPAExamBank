@@ -25,7 +25,8 @@ class ciborium_promotion{
             'Result' => 0,
             'Reason' => "",
             'Status' => enum_PromotionToUserStatus::Unknown,
-            'PromotionId' => 0
+            'PromotionId' => 0,
+            'Promotion' => null
         );
 
         $returnArray['PromotionId'] = promotion::verifyPromotionExistsByCode($inPromotionCode);
