@@ -69,14 +69,15 @@ $.COR.services.createSubscription = function (token, successCallback) {
 
 }
 
-$.COR.services.chargeSubscription = function (subscription, successCallback) {
+$.COR.services.chargeSubscription = function (subscription, promotionCode, successCallback) {
 
     if ($.COR.account.offline == false) {
 
         var ph = new $.COR.Utilities.PostHandler({
             service: "stripe", call: "chargeSubscription",
             params: {
-                moduleSelection: subscription
+                moduleSelection: subscription,
+                PromotionCode : promotionCode
             },
             success: function (data) {
                 successCallback(data);

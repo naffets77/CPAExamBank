@@ -389,8 +389,9 @@ $.COR.account.setupEvents = function () {
                                 $.COR.checkLogin(function (data) {
 
                                     var subscriptions = self.getSubscriptionsForServer();
+                                    var promotionCode = $.COR.account.promotionCode ? $.COR.account.promotionCode.PromotionCode : null;
 
-                                    $.COR.services.chargeSubscription(subscriptions, function () {
+                                    $.COR.services.chargeSubscription(subscriptions, promotionCode, function () {
 
                                         $.COR.checkLogin(function (data) {
 
@@ -453,7 +454,9 @@ $.COR.account.setupEvents = function () {
 
                     var subscriptions = self.getSubscriptionsForServer();
 
-                    $.COR.services.chargeSubscription(subscriptions, function () {
+                    var promotionCode = $.COR.account.promotionCode ? $.COR.account.promotionCode.PromotionCode : null;
+
+                    $.COR.services.chargeSubscription(subscriptions, promotionCode, function () {
 
                         $.COR.checkLogin(function (data) {
 
@@ -740,7 +743,7 @@ $.COR.account.setUserData = function (data) {
                     $(this).html("$" + promoAmount);
                 });
 
-                $("#subscription-promotion-coupon .amount").html("$" + promotionAmount);
+                $("#subscription-promotion-coupon .promotion-amount").html("$" + promotionAmount);
 
                 // Show Promotion Banner If Subscription is not active
                 if ($.COR.account.subscriptions.length == 0) {
