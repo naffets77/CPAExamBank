@@ -142,6 +142,8 @@ $.CPAEB.pages.home.events = function () {
 	            setTimeout(function () {
 	                $.COR.services.checkPromoCode({ promoCode: $.COR.defaultPromotion }, function (data) {
 
+	                    var promotion = data.Promotion[0];
+
 	                    $("#promotion-validation .loader").hide();
 
 	                    if (data.Result == 0) {
@@ -158,7 +160,7 @@ $.CPAEB.pages.home.events = function () {
 	                            $("#promotion-validation").hide();
 
 	                            // Set the value
-	                            $("#promotion-holder .promotion-amount").html(data.Promotion.Amount);
+	                            $("#promotion-holder .promotion-amount").html(promotion.Amount);
 
 	                            $("#promotion-coupon").show();
 	                            $("#promotion-holder").slideDown();
