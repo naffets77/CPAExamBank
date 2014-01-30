@@ -650,7 +650,8 @@ class account
 
                 $expirationDate = $object->DateExpiration == null ? "Never" : $object->DateExpiration;
 
-                $promotionsArray[$object->PromotionCode] = array(
+                $promotionsArray[] = array(
+                    'PromotionCode' => $object->PromotionCode,
                     'Amount' => $object->PromotionValue,
                     'Type' => $type,
                     'Duration' => $duration,
