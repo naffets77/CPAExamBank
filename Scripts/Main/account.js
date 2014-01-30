@@ -743,11 +743,11 @@ $.COR.account.setUserData = function (data) {
                     $(this).html("$" + promoAmount);
                 });
 
-                $("#subscription-promotion-coupon .promotion-amount").html(promotionAmount);
+                $("#subscription-promotion-coupon .promotion-amount").html(promotionAmount).show();
 
                 // Show Promotion Banner If Subscription is not active
                 if ($.COR.account.subscriptions.length == 0) {
-                    $("#promotion-holder .promotion-amount").html(promotionAmount).show();
+                    $("#promotion-holder .promotion-amount").html(promotionAmount);
 
                     $("#promotion-coupon").show();
                     $("#promotion-holder").slideDown();
