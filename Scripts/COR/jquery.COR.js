@@ -9,6 +9,7 @@
         MD5: null,
         DisableCache: true,
         defaultPromotion: null,
+        baseAmount: 20,
 
         config : {
             stripeKey: "pk_test_JyW7jbQudHJwV36CAQNiM63O"

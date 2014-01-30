@@ -77,7 +77,7 @@ $.COR.services.chargeSubscription = function (subscription, promotionCode, succe
             service: "stripe", call: "chargeSubscription",
             params: {
                 moduleSelection: subscription,
-                PromotionCode : promotionCode
+                promoCode : promotionCode
             },
             success: function (data) {
                 successCallback(data);

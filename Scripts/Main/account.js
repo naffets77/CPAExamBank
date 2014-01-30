@@ -738,7 +738,7 @@ $.COR.account.setUserData = function (data) {
             case "Percent Off":
 
                 $("#subscription-options .amount").each(function () {
-                    var base = parseInt($(this).html().replace("$", ""));
+                    var base = $.COR.baseAmount;
                     var promoAmount = base - base * (promotionAmount / 100);
                     $(this).html("$" + promoAmount);
                 });
@@ -747,7 +747,7 @@ $.COR.account.setUserData = function (data) {
 
                 // Show Promotion Banner If Subscription is not active
                 if ($.COR.account.subscriptions.length == 0) {
-                    $("#promotion-holder .promotion-amount").html(promotionAmount);
+                    $("#promotion-holder .promotion-amount").html(promotionAmount).show();
 
                     $("#promotion-coupon").show();
                     $("#promotion-holder").slideDown();
@@ -759,6 +759,7 @@ $.COR.account.setUserData = function (data) {
                 $("#subscription-promotion-coupon").hide();
         }
     }
+
 
 }
 
