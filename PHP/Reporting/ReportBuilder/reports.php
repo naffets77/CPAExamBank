@@ -44,7 +44,7 @@ class ReportBuilder {
   
   public function rep_raw_question_usage(){
     $this->output_title("Raw Question Usage Aggregate of Users");
-    $res = $this->dbq("SELECT Count, Count(Count) as CountAmount From(SELECT Count(LoginName) As Count, AccountUser.AccountUserId,LoginName FROM `AccountUser` LEFT Join AccountUserQuestionHistory ON AccountUser.AccountUserId = AccountUserQuestionHistory.AccountUserId WHERE Count > 1 GROUP By LoginName) as Custom GROUP By Count");
+    $res = $this->dbq("SELECT Count, Count(Count) as CountAmount From(SELECT Count(LoginName) As Count, AccountUser.AccountUserId,LoginName FROM `AccountUser` LEFT Join AccountUserQuestionHistory ON AccountUser.AccountUserId = AccountUserQuestionHistory.AccountUserId GROUP By LoginName) as Custom WHERE Count > 1  GROUP By Count");
     $this->table_builder($res);
   }
 
