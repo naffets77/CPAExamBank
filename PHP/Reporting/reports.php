@@ -17,8 +17,8 @@ if(isset($_POST['report'])){
 <html>
 	<head>
 
-		<link rel="stylesheet" type="text/css" href="css/visualize.css">
-		<link rel="stylesheet" type="text/css" href="css/visualize-light.css">
+		<link rel="stylesheet" type="text/css" href="jQuery.vis/css/visualize.css">
+		<link rel="stylesheet" type="text/css" href="jQuery.vis/css/visualize-light.css">
 
 		<style>
 			table.db-table 		{ border-right:1px solid #ccc; border-bottom:1px solid #ccc; }
