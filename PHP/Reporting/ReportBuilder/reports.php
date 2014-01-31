@@ -38,8 +38,14 @@ class ReportBuilder {
   
     $this->output_title("Question History Usage By User");
     $res = $this->dbq("SELECT DISTINCT AccountUser.LoginName, COUNT( AccountUserQuestionHistory.QuestionId ) FROM AccountUser JOIN AccountUserQuestionHistory WHERE AccountUser.AccountUserId = AccountUserQuestionHistory.AccountUserId GROUP BY AccountUser.LoginName");
-	$this->table_builder($res); 
+	  $this->table_builder($res); 
   
+  }
+  
+  public function rep_raw_question_usage(){
+    $this->output_title("Raw Question Usage Aggregate of Users");
+    $res = $this->dbq("SELECT Count, Count(Count) as CountAmount From(SELECT Count(LoginName) As Count, AccountUser.AccountUserId,LoginName FROM `AccountUser` LEFT Join AccountUserQuestionHistory ON AccountUser.AccountUserId = AccountUserQuestionHistory.AccountUserId WHERE Count > 1 GROUP By LoginName) as Custom GROUP By Count");
+    $this->table_builder($res);
   }
 
 

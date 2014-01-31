@@ -41,6 +41,7 @@ if(isset($_POST['report'])){
 						<select name='report'>
 							<option value='rep_registered_users'>Registered Users</option>
 							<option value='rep_question_history'>Question History Usage</option>
+                            <option value='rep_raw_question_usage'>Question Aggregate Usage</option>
 						</select>
 					</td>
 					<td>
