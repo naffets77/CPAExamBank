@@ -52,8 +52,8 @@ if(isset($_POST['report'])){
 
 
 
-		<script src='../../Scripts/jquery-2.0.3.min.js' type='text/javascript' />
-		<script src='jQuery.Vis/js/visualize.jQuery.js' type='text/javascript' />
+		<script src='../../Scripts/jquery-2.0.3.min.js' type='text/javascript'></script>
+		<script src='jQuery.Vis/js/visualize.jQuery.js' type='text/javascript'></script>
 
 	</body>
 </html>
