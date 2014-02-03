@@ -256,6 +256,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#21465d', end
     clear: both;
     /*background-image: url('/Content/Images/Textures/grey_wash_wall.png');*/
     height: 250px;
+
+position: fixed;
+left: 0px;
+bottom: -200px;
+width: 100%;
+z-index: 100;
 }
 
 #footer-wrapper-shadow {
