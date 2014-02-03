@@ -472,11 +472,18 @@ footer {
 }
 
 #footer-row-1 {
-    clear: both;
-    margin-top: 10px;
-    float: left;
-    width: 100%;
+    position: absolute;
+    width: 960px;
+    text-align: center;
+    margin-top: 0px;
+    font-weight: bold;
 }
+
+    #footer-row-1 a {
+        color:#999;
+        font-size:12px;
+        font-weight:normal;
+    }
 
 .js-content-wrapper .content {
     margin: 20px;
