@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 include_once("ReportBuilder/reports.php");
 
@@ -27,8 +27,8 @@ if(isset($_POST['report'])){
 			.visTable{display:none;}
 		</style>
 
-        <link rel="stylesheet" type="text/css" href="jQuery.Vis/css/visualize.css">
-        <link rel="stylesheet" type="text/css" href="jQuery.Vis/css/visualize-light.css">
+        <link rel="stylesheet" type="text/css" href="../../Scripts/Plugins/jQuery.Vis/css/visualize.css">
+        <link rel="stylesheet" type="text/css" href="../../Scripts/Plugins/jQuery.Vis/css/visualize-light.css">
 
 	</head>
 	<body>
@@ -116,7 +116,7 @@ if(isset($_POST['report'])){
 
 
 		<script src='../../Scripts/jquery-2.0.3.min.js' type='text/javascript'></script>
-		<script src='jQuery.Vis/js/visualize.jQuery.js' type='text/javascript'></script>
+		<script src='../../Scripts/Plugins/jQuery.Vis/js/visualize.jQuery.js' type='text/javascript'></script>
 
 		<script type='text/javascript'>
 			$(document).on('ready', function(){
