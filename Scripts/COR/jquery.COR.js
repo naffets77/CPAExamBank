@@ -11,19 +11,19 @@
         defaultPromotion: null,
         baseAmount: 20,
 
-        config : {
+        config: {
             stripeKey: "pk_test_JyW7jbQudHJwV36CAQNiM63O"
         },
 
         // Everything that is customizable for a given site goes in here
-        site : {
-            loginCallback : null
+        site: {
+            loginCallback: null
         },
 
         Utilities: {
             PostHandler: {}
         },
-        services:{}
+        services: {}
 
     };
 
@@ -123,19 +123,20 @@ $.COR.pageEvents = function () {
                 password,
                 function () { // success function
 
-                    self.toggleAccountNavigation();
-
-                    self.site.loginCallback();
+                    setTimeout(function () {
+                        self.toggleAccountNavigation();
+                        self.site.loginCallback();
+                    },1000);
                     //location.hash = "account";
                 },
                 function (failedReason) { // failure function (invalid email/password etc)
                     console.log("Error logging in : " + failedReason);
-                    
+
                     setTimeout(function () {
                         $("#invalid-account-message").show();
                         $("#header-navigation").show();
                         self.pageSwap($.COR.getCurrentDisplayedId(), tempPage); // tempPage keeps track of page clicked on when trying to login
-                    }, 1000);
+                    }, 2000);
                 }
             );
         } else {
