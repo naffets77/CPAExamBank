@@ -36,6 +36,31 @@
     }
 
 
+/* Login Page */
+
+#js-content-wrapper-login .login-container{
+    background-color: #fff;
+    width: 400px;
+    height:250px;
+    text-align: center;
+    margin: 0px auto;
+    margin-top: 40px;
+    padding: 20px 0px;
+
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -khtml-border-radius: 20px;
+}
+
+#js-content-wrapper-login .login-container h2{
+    font-weight:bold;
+    font-size:40px;
+}
+
+#js-content-wrapper-login .login-container img{
+    margin-top:25px;
+}
+
 /* Home */
 
 #home-forgot-login {
@@ -150,7 +175,6 @@
     margin: 63px 20px 20px 0px;
     float: left;
 }
-
 
     #home-product-container .product, #home-product-container .product-price {
         font-size: 18px;
