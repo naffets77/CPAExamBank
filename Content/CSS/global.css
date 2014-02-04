@@ -133,7 +133,7 @@ html {
 body {
     /*background-color: #21465D;*/
     color: #333;
-    font-size: .85em;
+    font-size: 1em;
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
     margin: 0;
     padding: 0;
@@ -280,7 +280,7 @@ z-index: 100;
 
 #body {
     clear: both;
-    width: 960px;
+    width: 1020px;
     background-repeat: repeat;
     margin: 0px auto;
 }

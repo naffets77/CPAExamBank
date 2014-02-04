@@ -11,7 +11,7 @@
 
         <div id="account-settings-subscription" class="account-settings-section">
                 
-            <div style="margin-bottom:20px; float:left; width:460px; overflow:hidden;">
+            <div style="margin-bottom:20px; float:left; width:480px; overflow:hidden; margin-left:50px;">
             
                 <div id="credit-card-on-file" style="display:none;">
                     <h2 style="margin-left:0px;">Credit Card</h2>
@@ -173,14 +173,14 @@
         </div>
         <div id="account-settings-account-info" class="account-settings-section" style="display:none;">
 
-            <div style='float:left; margin-bottom:20px; width:430px;'>
+            <div style='float:left; margin-bottom:20px; width:460px; margin-left:30px;'>
                 
                 <h2>Update Email</h2>
                 
                 <form>
                     <table class='account-settings'>
                         <tr>
-                            <td style="width:135px;">
+                            <td style="width:160px;">
                                 Email
                             </td>
                             <td>
@@ -217,7 +217,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>New Password Again</td>
+                                <td style="width:160px">New Password Again</td>
                                 <td>
                                     <input id='account-settings-new-password-again'  name='password_confirm' type='password' class='Validate' validate='Match,Required' validationmatch='account-settings-new-password' />
                                     <br />
@@ -257,8 +257,6 @@
             <tr>
                 <td>
                     Section
-                </td>
-                <td>
                     <select id="my-review-section-type">
                         <option value="5">All</option>
                         <option value="2">AUD</option>
@@ -269,16 +267,14 @@
                 </td>
                 <td>
                     Result
-                </td>
-                <td>
                     <select id="my-review-result-type">
                         <option value="4">Both</option>
                         <option value="2">Incorrect</option>
                         <option value="1">Correct</option>
                     </select>
                 </td>
-                <td>Order By</td>
                 <td>
+                    Order By
                     <select id="my-review-order-by">
                         <option value="1">Correct</option>
                         <option value="2">Incorrect</option>
@@ -288,7 +284,7 @@
                     </select>
                 </td>
                 <td>
-                    <button id="my-review-view-history" class="btn-orange">View History</button>
+                    <button id="my-review-view-history" class="btn-orange btn-medium">View History</button>
                 </td>
             </tr>
         </table>
@@ -359,6 +355,17 @@
             <tbody></tbody>
         </table>
 
+        <div id="review-stats-results" style="display:none">
+
+            <div class="title">Statistic One</div>
+            <div class="data open">Statistic One Data</div>
+            <div class="title">Statistic Two</div>
+            <div class="data">Statistic Two Data</div>
+            <div class="title">Statistic Three</div>
+            <div class="data">Statistic Three Data</div>
+            
+        </div>
+
     </div>
 </div>
 
@@ -375,7 +382,7 @@
                         Question Type
                     </td>
                     <td>
-                        <table id="practice-options-section-types" style="padding-left:0px; width:325px;">
+                        <table id="practice-options-section-types" style="padding-left:0px; width:350px;">
                             <tr class="trial">
                                 <td>
                                     <input  id="practice-category_aud" type="radio" name="practice-category" value="2" checked/>
@@ -488,7 +495,7 @@
                 </tr>
                 <tr class="section">
                     <td></td>
-                    <td><a class="button btn-orange btn-medium" href="#account/start-practice">Start</a></td>
+                    <td><a class="button btn-orange btn-large" href="#account/start-practice">Start</a></td>
                 </tr>
 
             </table>

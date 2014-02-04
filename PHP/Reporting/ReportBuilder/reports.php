@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 
 
@@ -15,7 +15,6 @@ class ReportBuilder {
 
 		$this->connect_db();
 		
-		//call_user_func($report);
 
 
 		$this->$report();
@@ -34,21 +33,36 @@ class ReportBuilder {
 		$this->table_builder($res);
 	}
   
-  public function rep_question_history(){
+    public function rep_question_history(){
   
     $this->output_title("Question History Usage By User");
     $res = $this->dbq("SELECT DISTINCT AccountUser.LoginName, COUNT( AccountUserQuestionHistory.QuestionId ) FROM AccountUser JOIN AccountUserQuestionHistory WHERE AccountUser.AccountUserId = AccountUserQuestionHistory.AccountUserId GROUP BY AccountUser.LoginName");
 	  $this->table_builder($res); 
   
-  }
+    }
   
-  public function rep_raw_question_usage(){
-    $this->output_title("Raw Question Usage Aggregate of Users");
-    $res = $this->dbq("SELECT Count, Count(Count) as CountAmount From(SELECT Count(LoginName) As Count, AccountUser.AccountUserId,LoginName FROM `AccountUser` LEFT Join AccountUserQuestionHistory ON AccountUser.AccountUserId = AccountUserQuestionHistory.AccountUserId GROUP By LoginName) as Custom WHERE Count > 1  GROUP By Count");
-    $this->table_builder($res);
-  }
+    public function rep_raw_question_usage(){
+        $this->output_title("Raw Question Usage Aggregate of Users");
+        $res = $this->dbq("SELECT Count, Count(Count) as CountAmount From(SELECT Count(LoginName) As Count, AccountUser.AccountUserId,LoginName FROM `AccountUser` LEFT Join AccountUserQuestionHistory ON AccountUser.AccountUserId = AccountUserQuestionHistory.AccountUserId GROUP By LoginName) as Custom WHERE Count > 1  GROUP By Count");
+        $this->table_builder($res);
+    }
 
+    public function rep_account_login(){
+        $this->output_title("Number of Users Logged In In The Last Week");
+        $res = $this->dbq("SELECT AccountUser.AccountUserId, LoginName, DateLastLogin
+                           FROM  `AccountUserSettings` Join `AccountUser` On 
+                           AccountUserSettings.AccountUserId = AccountUser.AccountUserId 
+                           WHERE AccountUser.AccountUserId NOT IN (1,2,3,4,5,6,7,13,28,113,114,116,117,118,119) And
+                           DateLastLogin between date_sub(now(),INTERVAL 1 WEEK) and now() 
+                           ORDER BY  `AccountUserSettings`.`DateLastLogin` DESC");
+                           
+        $res_count = mysql_num_rows ( $res );
 
+		echo "<h4>Registered Users: $res_count</h4>";
+                           
+        $this->table_builder($res);   
+    }
+    
 	
 	// HTML Helpers
 

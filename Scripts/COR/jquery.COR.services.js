@@ -194,7 +194,8 @@ $.COR.services.login = function (email, password, successCallback, failcallback)
 
             UserSettings: {
                 ShowNewUserTour: "false"
-            }
+            },
+            PromotionCodes : null
         };
 
 
