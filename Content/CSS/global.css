@@ -473,10 +473,11 @@ footer {
 
 #footer-row-1 {
     position: absolute;
-    width: 960px;
+    width: 600px;
     text-align: center;
     margin-top: 0px;
     font-weight: bold;
+    margin-left:165px;
 }
 
     #footer-row-1 a {

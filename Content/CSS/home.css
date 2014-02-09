@@ -75,9 +75,7 @@
 }
 
 #home-row-1 h1 {
-    float: right;
     text-align: left;
-    width: 590px;
     font-weight: bold;
     font-size: 22px;
     margin-top: 23px;
@@ -85,8 +83,6 @@
 }
 
 #home-row-1 p {
-    float: right;
-    width: 510px;
     margin: 0 0 20px 0;
     font-size: 16px;
     line-height: 26px;
