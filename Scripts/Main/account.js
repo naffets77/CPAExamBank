@@ -355,8 +355,14 @@ $.COR.account.setupEvents = function () {
 
                 $("#update-subscription-holder .save-credit-info").on('click', function () {
 
+                    var button = this;
+
                     if($(this).hasClass('disabled')){return;}
                     $(this).addClass('disabled');
+
+                    // reset
+                    $("#credit-card-error-message-row").hide();
+                    $("#credit-card-error-message-row td").html("");
 
 
 
@@ -376,8 +382,13 @@ $.COR.account.setupEvents = function () {
 
                         if (response.error) {
 
-                            // show the errors on the form
-                            $(".payment-errors").text(response.error.message);
+                            $("#update-subscription-holder .processing").hide();
+                            $("#update-subscription-holder .credit-card-info").show();
+                            $(".js-overlay-close").show();
+                            $(button).removeClass('disabled');
+
+                            $("#credit-card-error-message-row").show();
+                            $("#credit-card-error-message-row td").html(response.error.message);
                         } else {
 
                             // token contains id, last4, and card type
