@@ -253,6 +253,14 @@ $.COR.account.setupEvents = function () {
 
                 $("#update-subscription-holder .credit-card-info").hide();
 
+                if ($(this).hasClass('disabled')) { return; }
+                $(this).addClass('disabled');
+
+                // reset
+                $("#credit-card-error-message-row").hide();
+                $("#credit-card-error-message-row td").html("");
+
+
 
                 $(".js-overlay-close").hide();
                 $("#update-subscription-holder .processing").fadeIn();
@@ -266,10 +274,16 @@ $.COR.account.setupEvents = function () {
                     exp_year: $('#card-expiry-year').val()
                 }, function (status, response) {
 
-                    if (response.error) {
+                    if (response.error){
 
-                        // show the errors on the form
-                        $(".payment-errors").text(response.error.message);
+                        $("#update-subscription-holder .processing").hide();
+                        $("#update-subscription-holder .credit-card-info").show();
+                        $(".js-overlay-close").show();
+                        $(button).removeClass('disabled');
+
+                        $("#credit-card-error-message-row").show();
+                        $("#credit-card-error-message-row td").html(response.error.message);
+
                     } else {
 
                         // token contains id, last4, and card type
