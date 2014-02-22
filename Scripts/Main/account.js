@@ -251,6 +251,8 @@ $.COR.account.setupEvents = function () {
 
             $(".update-credit-info").on('click', function () {
 
+                var button = this;
+
                 $("#update-subscription-holder .credit-card-info").hide();
 
                 if ($(this).hasClass('disabled')) { return; }
