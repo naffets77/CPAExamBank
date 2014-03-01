@@ -127,6 +127,19 @@ $.CPAEB.pages.home.events = function () {
 
 
 
+	$("#launch-video-tour").on('click', function () {
+
+	    $.COR.Utilities.FullScreenOverlay.loadLocal("none_LoadYoutubeVideo", "medium", false, function () {
+	        $("#full-screen-container .content").append("<iframe width='800' height='600' src='//www.youtube.com/embed/lON3Bu2MMh8?rel=0&autoplay=1' frameborder='0' allowfullscreen></iframe>");
+
+	        $('body,html').animate({
+	            scrollTop: 0
+	        }, 800);
+
+	    });
+
+	});
+
 
     // Promotion Code Handling
 

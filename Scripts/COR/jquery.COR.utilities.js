@@ -231,7 +231,7 @@ $.COR.Utilities.FullScreenOverlay = {
 
             this.cache.push({
                 id: id,
-                html: $("#" + id).html(),
+                html: $("#" + id).length > 0 ? $("#" + id).html() : "",
                 sizeClass: contentClassSize,
                 events: events
             });
@@ -240,6 +240,7 @@ $.COR.Utilities.FullScreenOverlay = {
         }
 
     },
+
     show: function (id) {
         var self = this;
 
