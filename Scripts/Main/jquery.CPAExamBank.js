@@ -676,7 +676,16 @@ $(document).ready(function () {
 
             $("#pricing-holder .squaredTwo input").each(function (index, element) {
                 if ($(element).prop("checked")) {
-                    amount += 20;
+
+                    var defaultAmount = 20;
+
+                    // TODO GET THE 20 From Somewhere
+                    if ($.COR.promotion != null) {
+                        amount += ($.COR.promotion.amount * defaultAmount / 100);
+                    }
+                    else {
+                        amount += 20;
+                    }
                 }
             });
 

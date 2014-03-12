@@ -183,6 +183,8 @@ $.CPAEB.pages.home.events = function () {
 
 	                            $("#promotion-coupon").show();
 	                            $("#promotion-holder").slideDown();
+
+	                            $.COR.promotion = promotion;
 	                        });
 	                    }
 	                });

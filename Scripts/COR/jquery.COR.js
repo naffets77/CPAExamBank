@@ -9,6 +9,7 @@
         MD5: null,
         DisableCache: true,
         defaultPromotion: null,
+        promotion:null,
         baseAmount: 20,
 
         config: {
