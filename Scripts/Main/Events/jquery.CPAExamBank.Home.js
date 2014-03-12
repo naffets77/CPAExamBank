@@ -155,7 +155,7 @@ $.CPAEB.pages.home.events = function () {
 	            setTimeout(function () {
 	                $.COR.services.checkPromoCode({ promoCode: $.COR.defaultPromotion }, function (data) {
 
-	                    var promotion = data.Promotion[0];
+	                    
 
 	                    $("#promotion-validation .loader").hide();
 
@@ -169,6 +169,8 @@ $.CPAEB.pages.home.events = function () {
 	                        }, 3000);
 	                    }
 	                    else {
+	                        var promotion = data.Promotion[0];
+
 	                        $("#promotion-holder").slideUp(function () {
 	                            $("#promotion-validation").hide();
 
