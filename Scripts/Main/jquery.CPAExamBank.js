@@ -681,7 +681,9 @@ $(document).ready(function () {
 
                     // TODO GET THE 20 From Somewhere
                     if ($.COR.promotion != null) {
-                        amount += ($.COR.promotion.Amount * defaultAmount / 100);
+
+
+                        amount += (defaultAmount - ($.COR.promotion.Amount * defaultAmount / 100));
                     }
                     else {
                         amount += 20;

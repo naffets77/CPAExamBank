@@ -179,7 +179,7 @@ $.CPAEB.pages.home.events = function () {
 
 	                            // Update Product Pricing
 	                            var currentPrice = 20; // TODO: Get this from somewhere??
-	                            $("#pricing-holder .pricing-price").html("$" + (currentPrice * promotion.Amount / 100))
+	                            $("#pricing-holder .pricing-price").html("$" + (currentPrice - (currentPrice * promotion.Amount / 100)))
 
 	                            $("#promotion-coupon").show();
 	                            $("#promotion-holder").slideDown();
