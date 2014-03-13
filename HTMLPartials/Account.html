@@ -1,256 +1,258 @@
 
 <div id='js-content-wrapper-my-info' class="js-content-wrapper hidden">
-            
-    <div class="col1">
-        <ul class="nav">
-            <li accountsettings="subscription" class="link active">Subscription</li>
-            <li accountsettings="account-info" class="link">Account info</li>
-        </ul>
-    </div>
-    <div class="col2">
+    <div class="content-wrapper">
+        <div class="col1">
+            <ul class="nav">
+                <li accountsettings="subscription" class="link active">Subscription</li>
+                <li accountsettings="account-info" class="link">Account info</li>
+            </ul>
+        </div>
+        <div class="col2">
 
-        <div id="account-settings-subscription" class="account-settings-section">
-                
-            <div style="margin-bottom:20px; float:left; width:480px; overflow:hidden; margin-left:50px;">
-            
-                <div id="credit-card-on-file" style="display:none;">
-                    <h2 style="margin-left:0px;">Credit Card</h2>
+            <div id="account-settings-subscription" class="account-settings-section">
 
-                    <div id="credit-card-info-holder">
-                    
+                <div style="margin-bottom:20px; float:left; width:480px; overflow:hidden; margin-left:50px;">
 
-                        <table>
-                            <tr>
-                                <td>Card On File</td>
-                                <td id="subscription-credit-card-last-four">**** - **** - **** - 3847</td>
-                                <td id="subscription-credit-card-status">
-                                    Active
-                                </td>
-                                <td>
-                                    <span id="account-change-credit-card" class="link">Change</span>
-                                </td>
-                            </tr>
+                    <div id="credit-card-on-file" style="display:none;">
+                        <h2 style="margin-left:0px;">Credit Card</h2>
+
+                        <div id="credit-card-info-holder">
+
+
+                            <table>
+                                <tr>
+                                    <td>Card On File</td>
+                                    <td id="subscription-credit-card-last-four">**** - **** - **** - 3847</td>
+                                    <td id="subscription-credit-card-status">
+                                        Active
+                                    </td>
+                                    <td>
+                                        <span id="account-change-credit-card" class="link">Change</span>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+                    </div>
+
+                    <h2 style="margin-left:0px;">Subscription</h2>
+
+                    <div id="subscription-holder">
+
+                        <table id="subscription-options">
+                            <thead style="display:none;">
+                                <tr>
+                                    <td>Section</td>
+                                    <td>Status</td>
+                                    <td>Date<span class="tooltip" data-powertip="The date when your subscription expires or renews."></span></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+
+                            </thead>
+                            <tbody>
+                                <tr class="aud">
+                                    <td>
+                                        AUD <span class="tooltip" data-powertip="Auditing And Attestation">?</span>
+                                    </td>
+                                    <td class="status">
+                                        Inactive
+                                    </td>
+                                    <td class="date">
+                                        -
+                                    </td>
+                                    <td class="amount">
+                                        $20
+                                    </td>
+                                    <td>
+                                        <div class="squaredTwo">
+                                            <input type="checkbox" value="None" id="account_subscription_check-aud" name="check" />
+                                            <label for="account_subscription_check-aud"></label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="bec">
+                                    <td>
+                                        BEC <span class="tooltip" data-powertip="Business Environment and Concepts">?</span>
+                                    </td>
+                                    <td class="status">
+                                        Inactive
+                                    </td>
+                                    <td class="date">
+                                        -
+                                    </td>
+                                    <td class="amount">
+                                        $20
+                                    </td>
+                                    <td>
+                                        <div class="squaredTwo">
+                                            <input type="checkbox" value="None" id="account_subscription_check-bec" name="check" />
+                                            <label for="account_subscription_check-bec"></label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="far">
+                                    <td>
+                                        FAR <span class="tooltip" data-powertip="Financial Accounting and Reporting">?</span>
+                                    </td>
+                                    <td class="status">
+                                        Inactive
+                                    </td>
+                                    <td class="date">
+                                        -
+                                    </td>
+                                    <td class="amount">
+                                        $20
+                                    </td>
+                                    <td>
+                                        <div class="squaredTwo">
+                                            <input type="checkbox" value="None" id="account_subscription_check-far" name="check" />
+                                            <label for="account_subscription_check-far"></label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="reg">
+                                    <td>
+                                        REG <span class="tooltip" data-powertip="Regulation">?</span>
+                                    </td>
+                                    <td class="status">
+                                        Inactive
+                                    </td>
+                                    <td class="date">
+                                        -
+                                    </td>
+                                    <td class="amount">
+                                        $20
+                                    </td>
+                                    <td>
+                                        <div class="squaredTwo">
+                                            <input type="checkbox" value="None" id="account_subscription_check-reg" name="check" />
+                                            <label for="account_subscription_check-reg"></label>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
                         </table>
 
+                        <div id="subscription-promotion-coupon" class="promotion-message" style="display:none;">
+                            Current Promotion: Sections <span class="promotion-amount">25</span>% Off
+                        </div>
+
+                        <button id="account-update-subscription" class="btn-orange btn-medium"> Update Subscription </button>
+
+                        <div id="account-update-no-subscriptions-selected" class="account-update-subscription-error-message" style="display:none; clear:both; float:right; margin-top:15px; font-weight:bold;">
+                            Hey! You gotta have at least one section selected.
+                        </div>
+
+                        <div id="account-update-no-subscriptions-change-detected" class="account-update-subscription-error-message" style="display:none; clear:both; float:right; margin-top:15px; font-weight:bold;">
+                            Hey! You haven't changed your subscriptions, nothing to update.
+                        </div>
                     </div>
+
+
+                </div>
+                <div class="account-section-info">
+                    <h3>Credit Card</h3>
+                    <p>
+                        Your credit card is not kept on our servers. We use a secure third party to keep track of your information. The last four
+                        of the credit card are only available as a way for you to identify your card.
+                    </p>
+                    <h3>Subscription</h3>
+                    <p>
+                        Change your subscription plan effortlessly in 30 seconds. Select which section type you are interested in studying and
+                        update your status. Our third party credit card processing party will take your information and your account status will
+                        be updated.
+                    </p>
+                    <p style="display:none;">
+                        You are paying for 1 month of subscription per section, if you unselect a section you will receive access to those quesitons
+                        for the remainder of that month (this will be indicated). If you remain subscribed to a section and the month runs out you
+                        will automaticaly be charged again for another month.
+                    </p>
                 </div>
 
-                <h2 style="margin-left:0px;">Subscription</h2>
+            </div>
+            <div id="account-settings-account-info" class="account-settings-section" style="display:none;">
 
-                <div id="subscription-holder">
+                <div style='float:left; margin-bottom:20px; width:460px; margin-left:30px;'>
 
-                    <table id="subscription-options">
-                        <thead style="display:none;">
-                            <tr>
-                                <td>Section</td>
-                                <td>Status</td>
-                                <td>Date<span class="tooltip" data-powertip="The date when your subscription expires or renews."></span></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
+                    <h2>Update Email</h2>
 
-                        </thead>
-                        <tbody>
-                            <tr class="aud">
-                                <td>
-                                    AUD <span class="tooltip" data-powertip="Auditing And Attestation">?</span>
-                                </td>
-                                <td  class="status">
-                                    Inactive
-                                </td>
-                                <td class="date">
-                                    -
-                                </td>
-                                <td class="amount">
-                                    $20
-                                </td>
-                                <td>
-                                    <div class="squaredTwo">
-                                        <input type="checkbox" value="None" id="account_subscription_check-aud" name="check" />
-                                        <label for="account_subscription_check-aud"></label>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="bec">
-                                <td>
-                                    BEC <span class="tooltip" data-powertip="Business Environment and Concepts">?</span>
-                                </td>
-                                <td class="status">
-                                    Inactive
-                                </td>
-                                <td class="date">
-                                    -
-                                </td>
-                                <td class="amount">
-                                    $20
-                                </td>
-                                <td>
-                                    <div class="squaredTwo">
-                                        <input type="checkbox" value="None" id="account_subscription_check-bec" name="check" />
-                                        <label for="account_subscription_check-bec"></label>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="far">
-                                <td>
-                                    FAR <span class="tooltip" data-powertip="Financial Accounting and Reporting">?</span>
-                                </td>
-                                <td  class="status">
-                                    Inactive
-                                </td>
-                                <td class="date">
-                                    -
-                                </td>
-                                <td class="amount">
-                                    $20
-                                </td>
-                                <td>
-                                    <div class="squaredTwo">
-                                        <input type="checkbox" value="None" id="account_subscription_check-far" name="check" />
-                                        <label for="account_subscription_check-far"></label>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="reg">
-                                <td>
-                                    REG <span class="tooltip" data-powertip="Regulation">?</span>
-                                </td>
-                                <td  class="status">
-                                    Inactive
-                                </td>
-                                <td class="date">
-                                    -
-                                </td>
-                                <td class="amount">
-                                    $20
-                                </td>
-                                <td>
-                                    <div class="squaredTwo">
-                                        <input type="checkbox" value="None" id="account_subscription_check-reg" name="check" />
-                                        <label for="account_subscription_check-reg"></label>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <div id="subscription-promotion-coupon" class="promotion-message" style="display:none;">
-                        Current Promotion: Sections <span class="promotion-amount">25</span>% Off
-                    </div>
-
-                    <button id="account-update-subscription" class="btn-orange btn-medium"> Update Subscription </button>
-
-                    <div id="account-update-no-subscriptions-selected" class="account-update-subscription-error-message" style="display:none; clear:both; float:right; margin-top:15px; font-weight:bold;">
-                        Hey! You gotta have at least one section selected. 
-                    </div>
-
-                    <div id="account-update-no-subscriptions-change-detected" class="account-update-subscription-error-message" style="display:none; clear:both; float:right; margin-top:15px; font-weight:bold;">
-                        Hey! You haven't changed your subscriptions, nothing to update.
-                    </div>
-                </div>
-
-
-            </div>   
-            <div class="account-section-info">
-                <h3>Credit Card</h3>
-                <p>
-                    Your credit card is not kept on our servers. We use a secure third party to keep track of your information. The last four 
-                    of the credit card are only available as a way for you to identify your card. 
-                </p>
-                <h3>Subscription</h3>
-                <p>
-                    Change your subscription plan effortlessly in 30 seconds. Select which section type you are interested in studying and 
-                    update your status. Our third party credit card processing party will take your information and your account status will 
-                    be updated. 
-                </p>
-                <p style="display:none;">
-                    You are paying for 1 month of subscription per section, if you unselect a section you will receive access to those quesitons 
-                    for the remainder of that month (this will be indicated). If you remain subscribed to a section and the month runs out you 
-                    will automaticaly be charged again for another month.
-                </p>
-            </div>        
-        
-        </div>
-        <div id="account-settings-account-info" class="account-settings-section" style="display:none;">
-
-            <div style='float:left; margin-bottom:20px; width:460px; margin-left:30px;'>
-                
-                <h2>Update Email</h2>
-                
-                <form>
-                    <table class='account-settings'>
-                        <tr>
-                            <td style="width:160px;">
-                                Email
-                            </td>
-                            <td>
-                                <input id='account-settings-username' type='text' value='' style='width:260px;'  />
-                            </td>
-                        </tr>                        
-                        <tr id='account-settings-update-button-tr'>
-                            <td></td>
-                            <td>
-                                <button id='account-settings-update-email' class="btn-orange">Update</button>
-                            </td>
-                        
-                        </tr>
-                    </table>
-                </form>
-                        
-                <div style='width:100%; float:left; margin-top:20px;'>
-                    <h2>Update Password</h2>
                     <form>
-                        <input id='account-settings-current-password' type='hidden' />
                         <table class='account-settings'>
                             <tr>
-                                <td style="width:135px;">Current Password</td>
+                                <td style="width:160px;">
+                                    Email
+                                </td>
                                 <td>
-                                    <input id='account-settings-old-password' name='old_password' type='password' class='Validate' validate='MatchPassword,Required' validationmatch='account-settings-current-password' />
-                                    <br />
+                                    <input id='account-settings-username' type='text' value='' style='width:260px;' />
                                 </td>
                             </tr>
-                            <tr>
-                                <td>New Password</td>
-                                <td>
-                                    <input id='account-settings-new-password' name='password' type='password' class='Validate' validate='MinLength,Required' validationminlength='5' />
-                                    <br />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="width:160px">New Password Again</td>
-                                <td>
-                                    <input id='account-settings-new-password-again'  name='password_confirm' type='password' class='Validate' validate='Match,Required' validationmatch='account-settings-new-password' />
-                                    <br />
-                                </td>
-                            </tr>
-                            <tr>
+                            <tr id='account-settings-update-button-tr'>
                                 <td></td>
                                 <td>
-                                    <button id='account-settings-update-password-button' class="btn-orange">Update</button>
+                                    <button id='account-settings-update-email' class="btn-orange">Update</button>
                                 </td>
+
                             </tr>
                         </table>
                     </form>
+
+                    <div style='width:100%; float:left; margin-top:20px;'>
+                        <h2>Update Password</h2>
+                        <form>
+                            <input id='account-settings-current-password' type='hidden' />
+                            <table class='account-settings'>
+                                <tr>
+                                    <td style="width:135px;">Current Password</td>
+                                    <td>
+                                        <input id='account-settings-old-password' name='old_password' type='password' class='Validate' validate='MatchPassword,Required' validationmatch='account-settings-current-password' />
+                                        <br />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>New Password</td>
+                                    <td>
+                                        <input id='account-settings-new-password' name='password' type='password' class='Validate' validate='MinLength,Required' validationminlength='5' />
+                                        <br />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:160px">New Password Again</td>
+                                    <td>
+                                        <input id='account-settings-new-password-again' name='password_confirm' type='password' class='Validate' validate='Match,Required' validationmatch='account-settings-new-password' />
+                                        <br />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <button id='account-settings-update-password-button' class="btn-orange">Update</button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+
                 </div>
-                                
+
+                <div class="account-section-info">
+                    <h3>Email / Username</h3>
+                    <p>
+                        Your email is the username that you use to login to your account. If you change your email, when you re-login to your
+                        account the next time you will need to use the new email.
+                    </p>
+                </div>
+
             </div>
 
-            <div class="account-section-info">
-                <h3>Email / Username</h3>
-                <p>
-                    Your email is the username that you use to login to your account. If you change your email, when you re-login to your 
-                    account the next time you will need to use the new email. 
-                </p>
-            </div>  
-
         </div>
-
     </div>
-
 </div>
 
 <div id="js-content-wrapper-my-review" class="js-content-wrapper hidden">
-    <div class="content">
+
+
+    <div class="content-wrapper">
         <h2 style="margin-left:0px;">View Questions</h2>
 
         <table id="review-options">
@@ -290,19 +292,19 @@
         </table>
 
         <div id="review-messages">
-            
+
             <div id="review-messages-start" class="review-messages-content">
                 <p>
                     Use the options above to view the the questions you've taken.
                 </p>
-                
-                <h3>You can sort them by</h3> 
+
+                <h3>You can sort them by</h3>
 
                 <ul>
                     <li>Section</li>
                     <li>Result: Correct or Incorrect</li>
                 </ul>
-                
+
                 <h3>You can order the results by</h3>
 
                 <ul>
@@ -314,15 +316,15 @@
                 </ul>
 
                 <p>
-                    After you get your results you can click on a row to view that question, 
-                    see it's answers, and it's explanation. There will also be a history of everytime 
-                    you attempted to answer the question. 
+                    After you get your results you can click on a row to view that question,
+                    see it's answers, and it's explanation. There will also be a history of everytime
+                    you attempted to answer the question.
                 </p>
 
-                
+
             </div>
 
-            <div id="review-messages-no-results" style="display:none;"  class="review-messages-content">
+            <div id="review-messages-no-results" style="display:none;" class="review-messages-content">
                 Loading Question History...
             </div>
 
@@ -363,7 +365,7 @@
             <div class="data">Statistic Two Data</div>
             <div class="title">Statistic Three</div>
             <div class="data">Statistic Three Data</div>
-            
+
         </div>
 
     </div>
@@ -371,8 +373,8 @@
 
 <div id='js-content-wrapper-study' class='js-content-wrapper hidden'>
 
-    <div class="content">
-    
+    <div class="content-wrapper">
+
         <h2 style="margin-left:0px">Practice Options</h2>
 
         <div style="float:left; width:100%; margin-bottom:20px;">
@@ -385,25 +387,25 @@
                         <table id="practice-options-section-types" style="padding-left:0px; width:350px;">
                             <tr class="trial">
                                 <td>
-                                    <input  id="practice-category_aud" type="radio" name="practice-category" value="2" checked/>
+                                    <input id="practice-category_aud" type="radio" name="practice-category" value="2" checked />
                                 </td>
                                 <td style="position:relative;">
                                     <label for='practice-category_aud' style="float:left;">AUD - Auditing And Attestation</label>
-                                    <a href="#account/my-info" class="subscribe-message" ><span class="icon tooltip" data-powertip="You will only have access to 25 questions until you subscribe"></span></a>
+                                    <a href="#account/my-info" class="subscribe-message"><span class="icon tooltip" data-powertip="You will only have access to 25 questions until you subscribe"></span></a>
                                 </td>
                             </tr>
                             <tr class="trial">
                                 <td>
-                                    <input  id="practice-category_bec" type="radio" name="practice-category" value="3" />
+                                    <input id="practice-category_bec" type="radio" name="practice-category" value="3" />
                                 </td>
                                 <td>
                                     <label for="practice-category_bec" style="float:left;">BEC - Business Environment and Concepts</label>
-                                     <a href="#account/my-info" class="subscribe-message"><span class="icon tooltip" data-powertip="You will only have access to 25 questions until you subscribe"></span></a>
+                                    <a href="#account/my-info" class="subscribe-message"><span class="icon tooltip" data-powertip="You will only have access to 25 questions until you subscribe"></span></a>
                                 </td>
                             </tr>
                             <tr class="trial">
                                 <td>
-                                    <input  id="practice-category_far" type="radio" name="practice-category" value="1" />
+                                    <input id="practice-category_far" type="radio" name="practice-category" value="1" />
                                 </td>
                                 <td>
                                     <label for="practice-category_far" style="float:left;">FAR - Financial Accounting and Reporting</label>
@@ -412,21 +414,21 @@
                             </tr>
                             <tr class="trial">
                                 <td>
-                                    <input  id="practice-category_reg" type="radio" name="practice-category" value="4" />
+                                    <input id="practice-category_reg" type="radio" name="practice-category" value="4" />
                                 </td>
                                 <td>
                                     <label for="practice-category_reg" style="float:left;">REG - Regulation</label>
                                     <a href="#account/my-info" class="subscribe-message"><span class="icon tooltip" data-powertip="You will only have access to 25 questions until you subscribe"></span></a>
                                 </td>
                             </tr>
-                        </table> 
+                        </table>
                     </td>
                 </tr>
                 <tr class="section">
                     <td>Number of Questions</td>
                     <td>
                         <select id="practice-question-count" style="margin-left:10px;">
-                            <option>5</option> 
+                            <option>5</option>
                             <option>10</option>
                             <option selected>20</option>
                             <option>30</option>
@@ -459,7 +461,7 @@
                                     Test
                                 </td>
                             </tr>
-                        </table>                    
+                        </table>
                     </td>
                 </tr>
                 <tr class="section" style="display:none;">
@@ -468,10 +470,10 @@
                         <table style="padding-left:0px;">
                             <tr>
                                 <td>
-                                    <input type="radio" name="practice-strategy" value="new" checked/>
+                                    <input type="radio" name="practice-strategy" value="new" checked />
                                 </td>
                                 <td>
-                                    Get all new questions I've not seen before. 
+                                    Get all new questions I've not seen before.
                                 </td>
                             </tr>
                             <tr>
@@ -479,7 +481,7 @@
                                     <input type="radio" name="practice-strategy" value="smart" />
                                 </td>
                                 <td>
-                                    Get similar questions I've had trouble with in the past. 
+                                    Get similar questions I've had trouble with in the past.
                                 </td>
                             </tr>
                             <tr>
@@ -487,7 +489,7 @@
                                     <input type="radio" name="practice-strategy" value="mixed" />
                                 </td>
                                 <td>
-                                    Get a mix of both. 
+                                    Get a mix of both.
                                 </td>
                             </tr>
                         </table>
@@ -499,338 +501,340 @@
                 </tr>
 
             </table>
-            
+
             <div id="practice-explanation" class="explanation">
-                
+
                 <h3>Number of Questions</h3>
                 <p>
-                    The number of questions that you currently want to study. You can stop studying at any point. 
+                    The number of questions that you currently want to study. You can stop studying at any point.
                 </p>
 
                 <h3>Practice Mode</h3>
                 <p>
-                    Study mode will allow you to immediatley see the correct answer and explanation after you complete a question. Test mode you 
-                    must wait until you either complete the number of questions you've selected to do, or exited out of the test to see a summary 
-                    of your results with explanations. 
+                    Study mode will allow you to immediatley see the correct answer and explanation after you complete a question. Test mode you
+                    must wait until you either complete the number of questions you've selected to do, or exited out of the test to see a summary
+                    of your results with explanations.
                 </p>
 
                 <h3>Question Selection Strategy</h3>
                 <p>
-                    Once you have a history of questions we can start tailoring your study automatically. We can provide you with additional 
-                    questions similar to those that you have struggled with in the past. Otherwise we will try and provide you questions 
-                    that you have not seen before. 
+                    Once you have a history of questions we can start tailoring your study automatically. We can provide you with additional
+                    questions similar to those that you have struggled with in the past. Otherwise we will try and provide you questions
+                    that you have not seen before.
                 </p>
             </div>
         </div>
-        
+
     </div>
 
 </div>
 
 <div id="js-content-wrapper-accountfaqs" class="js-content-wrapper hidden">
 
-    <h2>FAQs</h2>
+    <div class="content-wrapper">
 
-    <div class="faq-holder">
-        <div class="col1">
-            <ul class="nav">
-                <li class="section">
-                    <h2>About The CPA Exam</h2>
-                    <ul>
-                        <li><a href="#account/accountfaqs/cpa-exam-structure">CPA Exam Structure</a></li>
-						<li><a href="#account/accountfaqs/cpa-exam-question-types">CPA Question Types and Sections</a></li>
-                        <!--<li><a href="#faqs/cpa-exam-question-types">Question Types</a></li>-->
-                        <li><a href="#account/accountfaqs/cpa-exam-question-scoring">CPA Exam Scoring</a></li>
-						<!--<li><a href="#faqs/cpa-exam-question-scoring">Question Scoring</a></li>-->
-                        <!--<li><a href="#faqs/cpa-exam-time-allocation">How long does a subscription last, what is the minimum amount of time I can subscribe?</a></li>-->
-						<li><a href="#account/accountfaqs/cpa-exam-administration">CPA Exam Administration</a></li>
-                    </ul>
-                </li>
-                <li class="section">
-                    <!--<h2>What Is CPAExamBank.com?</h2>-->
-					<h2>CPAExamBank.com?</h2>
-                    <ul>
-                        <!--<li><a href="#faqs/cpa-exam-question-bank">Question Bank</a></li>-->
-						<li><a href="#account/accountfaqs/cpa-exam-bank-what">What is The CPA Exam Bank?</a></li>
-						<li><a href="#account/accountfaqs/cpa-exam-bank-who">Who is the CPA Exam Bank for?</a></li>
-						<li><a href="#account/accountfaqs/cpa-exam-bank-charge">Am I charged when I register, can I see what you offer without providing my credit card information?</a></li>
-						<li><a href="#account/accountfaqs/cpa-exam-bank-free-questions">Are there any free questions?</a></li>
-						<li><a href="#account/accountfaqs/cpa-exam-bank-question-source">Where do you get your questions from?  Are the questions the same as the ones on the CPA Exam?</a></li>
-						<li><a href="#account/accountfaqs/cpa-exam-bank-pass-exam">Will I pass the exam using these questions to study with?</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-        <div class="col2">
-						
-			<!-- About the CPA Exam -->
-            <div id="accountfaqs_cpa-exam-structure" class="accountfaqs-content">
+        <h2>FAQs</h2>
 
-                <h2>CPA Exam Structure</h2>
-							
-				<p>
-					How is the CPA Exam structured?
-				</p>
-							
-                <p>
-                    The CPA exam consists of four sections:
-                </p>
-
-                <ul>
-                    <li>Auditing and Attestation ( AUD )</li>
-                    <li>Business Environment and Concepts ( BEC)</li>
-                    <li>Financial Accounting and Reporting ( FAR )</li>
-                    <li>Regulation ( REG )</li>
+        <div class="faq-holder">
+            <div class="col1">
+                <ul class="nav">
+                    <li class="section">
+                        <h2>About The CPA Exam</h2>
+                        <ul>
+                            <li><a href="#account/accountfaqs/cpa-exam-structure">CPA Exam Structure</a></li>
+                            <li><a href="#account/accountfaqs/cpa-exam-question-types">CPA Question Types and Sections</a></li>
+                            <!--<li><a href="#faqs/cpa-exam-question-types">Question Types</a></li>-->
+                            <li><a href="#account/accountfaqs/cpa-exam-question-scoring">CPA Exam Scoring</a></li>
+                            <!--<li><a href="#faqs/cpa-exam-question-scoring">Question Scoring</a></li>-->
+                            <!--<li><a href="#faqs/cpa-exam-time-allocation">How long does a subscription last, what is the minimum amount of time I can subscribe?</a></li>-->
+                            <li><a href="#account/accountfaqs/cpa-exam-administration">CPA Exam Administration</a></li>
+                        </ul>
+                    </li>
+                    <li class="section">
+                        <!--<h2>What Is CPAExamBank.com?</h2>-->
+                        <h2>CPAExamBank.com?</h2>
+                        <ul>
+                            <!--<li><a href="#faqs/cpa-exam-question-bank">Question Bank</a></li>-->
+                            <li><a href="#account/accountfaqs/cpa-exam-bank-what">What is The CPA Exam Bank?</a></li>
+                            <li><a href="#account/accountfaqs/cpa-exam-bank-who">Who is the CPA Exam Bank for?</a></li>
+                            <li><a href="#account/accountfaqs/cpa-exam-bank-charge">Am I charged when I register, can I see what you offer without providing my credit card information?</a></li>
+                            <li><a href="#account/accountfaqs/cpa-exam-bank-free-questions">Are there any free questions?</a></li>
+                            <li><a href="#account/accountfaqs/cpa-exam-bank-question-source">Where do you get your questions from?  Are the questions the same as the ones on the CPA Exam?</a></li>
+                            <li><a href="#account/accountfaqs/cpa-exam-bank-pass-exam">Will I pass the exam using these questions to study with?</a></li>
+                        </ul>
+                    </li>
                 </ul>
+            </div>
+            <div class="col2">
 
-                <p>
-                    The main content areas covered in each section are:
-                </p>
+                <!-- About the CPA Exam -->
+                <div id="accountfaqs_cpa-exam-structure" class="accountfaqs-content">
 
-				<p style="font-weight:bold">Auditing and Attestation (AUD)</p>
-				<ol style="margin-left:20px;">
-					<li>Planning the engagement</li>
-					<li>Internal controls</li>
-					<li>Obtain and document information</li>
-					<li>Review engagement and evaluate information</li>
-					<li>Prepare communications</li>
-				</ol>
+                    <h2>CPA Exam Structure</h2>
 
-				<p style="font-weight:bold">Business Environment and Concepts (BEC)</p>
-				<ol style="margin-left:20px;">
-					<li>Business structure</li>
-					<li>Economic concepts</li>
-					<li>Financial management</li>
-					<li>Information technology</li>
-					<li>Planning and measurement</li>
-				</ol>
-							
-				<p style="font-weight:bold">Financial Accounting and Reporting (FAR)</p>
-				<ol style="margin-left:20px;">
-					<li>Concepts and standards for financial statements</li>
-					<li>Typical items in financial statements</li>
-					<li>Specific types of transactions and events</li>
-					<li>Accounting and reporting for governmental entities</li>
-					<li>Accounting and reporting for nongovernmental and not-for-profit organizations</li>
-				</ol>
-							
-				<p style="font-weight:bold">Regulation (REG)</p>
-				<ol style="margin-left:20px;">
-					<li>Ethics and professional responsibility</li>
-					<li>Business law</li>
-					<li>Federal tax procedures and accounting issues</li>
-					<li>Federal taxation of property transactions</li>
-					<li>Federal taxation - individuals</li>
-					<li>Federal taxation - entities</li>
-				</ol>
+                    <p>
+                        How is the CPA Exam structured?
+                    </p>
+
+                    <p>
+                        The CPA exam consists of four sections:
+                    </p>
+
+                    <ul>
+                        <li>Auditing and Attestation ( AUD )</li>
+                        <li>Business Environment and Concepts ( BEC)</li>
+                        <li>Financial Accounting and Reporting ( FAR )</li>
+                        <li>Regulation ( REG )</li>
+                    </ul>
+
+                    <p>
+                        The main content areas covered in each section are:
+                    </p>
+
+                    <p style="font-weight:bold">Auditing and Attestation (AUD)</p>
+                    <ol style="margin-left:20px;">
+                        <li>Planning the engagement</li>
+                        <li>Internal controls</li>
+                        <li>Obtain and document information</li>
+                        <li>Review engagement and evaluate information</li>
+                        <li>Prepare communications</li>
+                    </ol>
+
+                    <p style="font-weight:bold">Business Environment and Concepts (BEC)</p>
+                    <ol style="margin-left:20px;">
+                        <li>Business structure</li>
+                        <li>Economic concepts</li>
+                        <li>Financial management</li>
+                        <li>Information technology</li>
+                        <li>Planning and measurement</li>
+                    </ol>
+
+                    <p style="font-weight:bold">Financial Accounting and Reporting (FAR)</p>
+                    <ol style="margin-left:20px;">
+                        <li>Concepts and standards for financial statements</li>
+                        <li>Typical items in financial statements</li>
+                        <li>Specific types of transactions and events</li>
+                        <li>Accounting and reporting for governmental entities</li>
+                        <li>Accounting and reporting for nongovernmental and not-for-profit organizations</li>
+                    </ol>
+
+                    <p style="font-weight:bold">Regulation (REG)</p>
+                    <ol style="margin-left:20px;">
+                        <li>Ethics and professional responsibility</li>
+                        <li>Business law</li>
+                        <li>Federal tax procedures and accounting issues</li>
+                        <li>Federal taxation of property transactions</li>
+                        <li>Federal taxation - individuals</li>
+                        <li>Federal taxation - entities</li>
+                    </ol>
+
+                </div>
+
+                <div id="accountfaqs_cpa-exam-question-types" class="accountfaqs-content hidden">
+                    <h2>CPA Question Types and Sections</h2>
+                    <p>
+                        What types of questions will I encounter on the CPA Exam?
+                    </p>
+
+                    <p>
+                        In Auditing and Attestation (AUD), Financial Accounting and Reporting (FAR), and Regulation (REG), multiple-choice
+                        questions account for 60%  and task-based simulations for 40% of the score.  In Business Environment and Concepts (BEC),
+                        multiple-choice questions account for 85% and written communication tasks account for 15% of the score.
+                    </p>
+                </div>
+
+                <div id="accountfaqs_cpa-exam-question-scoring" class="accountfaqs-content hidden">
+                    <h2>CPA Exam Scoring</h2>
+                    <p>
+                        How is the CPA Exam scored?
+                    </p>
+                    <p>
+                        The passing score is 75 on a 0-99 scale.  The scale of 0-99 does not represent "percent correct." A score of 75 indicates
+                        Examination performance reflecting a level of knowledge and skills that is sufficient for the protection of the public.
+                    </p>
+                    <p>
+                        The passing score is determined by the AICPA Board of Examiners (BOE). Like most other significant BOE decisions, the
+                        passing score decision is supported by a strong collaborative effort among the Examination partners.  The standard-setting
+                        process followed for the computer-based test (CBT) was rigorous, and performed with input from the National Association of
+                        State Boards of Accountancy (NASBA), state boards of accountancy, and several consultant psychometricians.
+                    </p>
+                    <p>
+                        In setting the passing score, the BOE considered many factors, including standard-setting study results, historical trends,
+                        any changes in CPA Examination content, and input from the academic community and the profession.  The passing score is
+                        the basis of the pass or fail decision recommended to boards of accountancy on the advisory score report.
+                    </p>
+                    <p>
+                        Scoring is fully automated for all Examination components except for the written communication tasks. Some written
+                        communication responses are scored by a network of readers (CPAs), while others are scored using an automated process. All
+                        scoring routines - whether automated or not - are verified at various stages of the scoring process.
+                    </p>
+                    <p>
+                        The CPA Examination is NOT curved.  Every candidates score is entirely independent of other candidates Examination results.
+                    </p>
+                    <p>
+                        The CPA Examination is a criterion-referenced examination which means that it rests upon pre-determined standards.  Every
+                        candidates performance is measured against established standards to determine whether the candidate has demonstrated the
+                        level of knowledge and skills that is represented by the passing score.  Every candidate is judged against the same standards,
+                        and every score is an independent result.
+                    </p>
+                    <p>
+                        The AICPA uses Item Response Theory (IRT) for the objective portion of the Examination. IRT is a well-established psychometric
+                        approach to scoring used by licensing and certification examinations that administer many different test forms. IRT scoring
+                        ensures that scores and pass or fail decisions based on scores from different Examination forms are comparable. Based on the
+                        large amounts of data that are collected in pretesting, the difficulty level as well as other statistical characteristics of
+                        Examination questions are known and taken into account in scoring.
+                    </p>
+                </div>
+
+                <div id="accountfaqs_cpa-exam-administration" class="accountfaqs-content hidden">
+                    <h2>CPA Exam Administration</h2>
+                    <p>
+                        How is the CPA Exam administered?
+                    </p>
+                    <p>
+                        The examination is administered at Prometric test centers in 54 U.S. jurisdictions, which include the 50 states, the District
+                        of Columbia, Puerto Rico, Guam and the U.S. Virgin Islands.
+                    </p>
+                </div>
+
+                <!--<div id="accountfaqs_cpa-exam-time-allocation" class="faqs-content hidden">
+                    <h2>How long does a subscription last, what is the minimum amount of time I can subscribe?</h2>
+                    <p>
+                        Each section is taken at a time.
+                    </p>
+                    <p>
+                        <table>
+                            <tr><span class='bold'>AUD</span><td></td></tr>
+                            <tr><td>Time:</td><td>4 hours</td></tr>
+                            <tr><td>Format:</td><td>3 multiple choice testlets and 7 short task-based simulation questions </td></tr>
+                        </table>
+                    </p>
+                    <p>
+                        <table>
+                            <tr><td><span class='bold'>BEC</span></td></tr>
+                            <tr><td>Time:</td><td>3 hours</td></tr>
+                            <tr><td>Format:</td><td>3 multiple choice testlets and 3 written simulations </td></tr>
+                        </table>
+                    </p>
+                    <p>
+                        <table>
+                            <tr><td><span class='bold'>FAR</span></td></tr>
+                            <tr><td>Time:</td><td>4 hours</td></tr>
+                            <tr><td>Format:</td><td>3 multiple choice testlets and 7 short task-based simulations</td></tr>
+                        </table>
+                    </p>
+                    <p>
+                        <table>
+                            <tr><td><span class='bold'>REG</span></td></tr>
+                            <tr><td>Time:</td><td>3 hours</td></tr>
+                            <tr><td>Format:</td><td>3 multiple choice testlets and 6 short task-based simulations </td></tr>
+                        </table>
+                    </p>
+                </div>-->
+                <!-- CPAExamBank.com -->
+                <div id="accountfaqs_cpa-exam-bank-what" class="accountfaqs-content hidden">
+                    <h2>What is The CPA Exam Bank?</h2>
+                    <p>
+                        The CPA Exam Bank is an online exam simulator that gives students access to questions, solutions, and explanations covering every
+                        topic tested on the Uniform CPA Exam.  The CPA Exam Bank will continually challenge your understanding of critical exam related
+                        subject matter.  Study online, from any computer, for as little or as long as you want.  Utilize our "Success Metrics"  to build
+                        your confidence and ensure that you are prepared come exam day.  The CPA Exam Bank can be used to supplement your current review
+                        course or as a stand alone tool for refreshing your understanding of all CPA Exam topics.
+                    </p>
+                </div>
+
+                <div id="accountfaqs_cpa-exam-bank-who" class="accountfaqs-content hidden">
+                    <h2>Who is the CPA Exam Bank for?</h2>
+                    <p>
+                        The CPA Exam Bank is for anyone who wants to pass the CPA Exam.  Use the online exam simulator to supplement your current CPA exam
+                        prep course or as a stand alone method of accumulating the knowledge you need to achieve your goal of passing the CPA Exam!
+                    </p>
+                </div>
+
+                <div id="accountfaqs_cpa-exam-bank-charge" class="accountfaqs-content hidden">
+                    <h2>Am I charged when I register, can I see what you offer without providing my credit card information?</h2>
+                    <p>
+                        Registering with the CPA Exam Bank is FREE and will give you access to! You will never be charged until you choose a
+                        subscription and accept our payment terms. If you do decide to subscribe you can cancel at any time!
+                    </p>
+                </div>
+
+                <div id="accountfaqs_cpa-exam-bank-free-questions" class="accountfaqs-content hidden">
+                    <h2>Are there any free questions?</h2>
+                    <p>
+                        Registering with CPA Exam Bank is FREE and will give you access to!
+                    </p>
+                </div>
+
+                <div id="accountfaqs_cpa-exam-bank-question-source" class="accountfaqs-content hidden">
+                    <h2>Where do you get your questions from?  Are the questions the same as the ones on the CPA Exam?</h2>
+                    <p>
+                        The CPA Exam Bank uses questions structured after actual CPA Exam questions.  Our team of accounting experts has a combined total
+                        of over 100 years of accounting experience.  Each question is crafted with the specific intent of testing a students understanding of
+                        relevant CPA Exam topics as specified by the AICPA.  Build the confidence you need to pass the exam and save money by not sitting
+                        for the exam until our proprietary "Success Metrics"  show that you're ready for test day!
+                    </p>
+                </div>
+
+                <div id="accountfaqs_cpa-exam-bank-pass-exam" class="accountfaqs-content hidden">
+                    <h2>Will I pass the exam using these questions to study with?</h2>
+                    <p>
+                        The CPA Exam is a test of persistence.  Your success will be based on how prepared and confident you are with exam topics and the test
+                        environment. Let the CPA Exam Banks "Success Metrics" motivate you to continually expand your knowledge base and  see for yourself
+                        why so many candidates have utilized the CPA Exam Bank to pass the exam.
+                    </p>
+                </div>
+                <!--
+                <div id="accountfaqs_cpa-exam-question-bank" class="faqs-content hidden">
+                    <h2>CPA Exam Question Bank</h2>
+                    <p>
+                        The CPA Exam Bank is your opportunity to build and refine the necessary skills required to achieve your highest score on the exam.
+                        When you register with the CPA Exam Bank you will encounter thousands of questions that will continually challenge your understanding of critical topics,
+                        formulas and comprehensive analytical skills.  Let us be the foundation of your success while saving money!
+                    </p>
+                </div>
+                -->
 
             </div>
-
-            <div id="accountfaqs_cpa-exam-question-types" class="accountfaqs-content hidden">
-                <h2>CPA Question Types and Sections</h2>
-                <p>
-					What types of questions will I encounter on the CPA Exam?
-				</p>
-							
-				<p>
-                    In Auditing and Attestation (AUD), Financial Accounting and Reporting (FAR), and Regulation (REG), multiple-choice 
-					questions account for 60%  and task-based simulations for 40% of the score.  In Business Environment and Concepts (BEC), 
-					multiple-choice questions account for 85% and written communication tasks account for 15% of the score.
-                </p>
-            </div>
-
-            <div id="accountfaqs_cpa-exam-question-scoring" class="accountfaqs-content hidden">
-                <h2>CPA Exam Scoring</h2>
-				<p>
-					How is the CPA Exam scored?
-				</p>
-                <p>
-					The passing score is 75 on a 0-99 scale.  The scale of 0-99 does not represent "percent correct." A score of 75 indicates 
-					Examination performance reflecting a level of knowledge and skills that is sufficient for the protection of the public.
-                </p>
-                <p>
-                    The passing score is determined by the AICPA Board of Examiners (BOE). Like most other significant BOE decisions, the 
-					passing score decision is supported by a strong collaborative effort among the Examination partners.  The standard-setting 
-					process followed for the computer-based test (CBT) was rigorous, and performed with input from the National Association of 
-					State Boards of Accountancy (NASBA), state boards of accountancy, and several consultant psychometricians.
-                </p>						
-				<p>
-					In setting the passing score, the BOE considered many factors, including standard-setting study results, historical trends, 
-					any changes in CPA Examination content, and input from the academic community and the profession.  The passing score is 
-					the basis of the pass or fail decision recommended to boards of accountancy on the advisory score report.  
-				</p>
-				<p>
-					Scoring is fully automated for all Examination components except for the written communication tasks. Some written 
-					communication responses are scored by a network of readers (CPAs), while others are scored using an automated process. All 
-					scoring routines - whether automated or not - are verified at various stages of the scoring process.
-				</p>
-				<p>
-					The CPA Examination is NOT curved.  Every candidates score is entirely independent of other candidates Examination results.
-				</p>
-				<p>
-					The CPA Examination is a criterion-referenced examination which means that it rests upon pre-determined standards.  Every 
-					candidates performance is measured against established standards to determine whether the candidate has demonstrated the 
-					level of knowledge and skills that is represented by the passing score.  Every candidate is judged against the same standards, 
-					and every score is an independent result.
-				</p>
-				<p>
-					The AICPA uses Item Response Theory (IRT) for the objective portion of the Examination. IRT is a well-established psychometric 
-					approach to scoring used by licensing and certification examinations that administer many different test forms. IRT scoring 
-					ensures that scores and pass or fail decisions based on scores from different Examination forms are comparable. Based on the 
-					large amounts of data that are collected in pretesting, the difficulty level as well as other statistical characteristics of 
-					Examination questions are known and taken into account in scoring.
-				</p>
-            </div>
-						
-			<div id="accountfaqs_cpa-exam-administration" class="accountfaqs-content hidden">
-				<h2>CPA Exam Administration</h2>
-				<p>
-					How is the CPA Exam administered?
-				</p>
-				<p>
-					The examination is administered at Prometric test centers in 54 U.S. jurisdictions, which include the 50 states, the District 
-					of Columbia, Puerto Rico, Guam and the U.S. Virgin Islands.
-				</p>
-			</div>
-						
-            <!--<div id="accountfaqs_cpa-exam-time-allocation" class="faqs-content hidden">
-                <h2>How long does a subscription last, what is the minimum amount of time I can subscribe?</h2>
-                <p>
-                    Each section is taken at a time.
-                </p>
-                <p>
-                    <table>
-                        <tr><span class='bold'>AUD</span><td></td></tr>
-                        <tr><td>Time:</td><td>4 hours</td></tr>
-                        <tr><td>Format:</td><td>3 multiple choice testlets and 7 short task-based simulation questions </td></tr>
-                    </table>                                 
-                </p>
-                <p>
-                    <table>
-                        <tr><td><span class='bold'>BEC</span></td></tr>
-                        <tr><td>Time:</td><td>3 hours</td></tr>
-                        <tr><td>Format:</td><td>3 multiple choice testlets and 3 written simulations </td></tr>
-                    </table> 
-                </p>
-                <p>
-                    <table>
-                        <tr><td><span class='bold'>FAR</span></td></tr>
-                        <tr><td>Time:</td><td>4 hours</td></tr>
-                        <tr><td>Format:</td><td>3 multiple choice testlets and 7 short task-based simulations</td></tr>
-                    </table>
-                </p>
-                <p>
-                    <table>
-                        <tr><td><span class='bold'>REG</span></td></tr>
-                        <tr><td>Time:</td><td>3 hours</td></tr>
-                        <tr><td>Format:</td><td>3 multiple choice testlets and 6 short task-based simulations </td></tr>
-                    </table>
-                </p>
-            </div>-->
-						
-			<!-- CPAExamBank.com -->
-			<div id="accountfaqs_cpa-exam-bank-what" class="accountfaqs-content hidden">
-                <h2>What is The CPA Exam Bank?</h2>
-                <p>
-                    The CPA Exam Bank is an online exam simulator that gives students access to questions, solutions, and explanations covering every 
-					topic tested on the Uniform CPA Exam.  The CPA Exam Bank will continually challenge your understanding of critical exam related 
-					subject matter.  Study online, from any computer, for as little or as long as you want.  Utilize our "Success Metrics"  to build 
-					your confidence and ensure that you are prepared come exam day.  The CPA Exam Bank can be used to supplement your current review 
-					course or as a stand alone tool for refreshing your understanding of all CPA Exam topics.
-                </p>
-            </div>
-						
-			<div id="accountfaqs_cpa-exam-bank-who" class="accountfaqs-content hidden">
-                <h2>Who is the CPA Exam Bank for?</h2>
-                <p>
-                    The CPA Exam Bank is for anyone who wants to pass the CPA Exam.  Use the online exam simulator to supplement your current CPA exam 
-					prep course or as a stand alone method of accumulating the knowledge you need to achieve your goal of passing the CPA Exam! 
-                </p>
-            </div>
-						
-			<div id="accountfaqs_cpa-exam-bank-charge" class="accountfaqs-content hidden">
-                <h2>Am I charged when I register, can I see what you offer without providing my credit card information?</h2>
-                <p>
-                    Registering with the CPA Exam Bank is FREE and will give you access to! You will never be charged until you choose a 
-					subscription and accept our payment terms. If you do decide to subscribe you can cancel at any time!
-                </p>
-            </div>
-						
-			<div id="accountfaqs_cpa-exam-bank-free-questions" class="accountfaqs-content hidden">
-                <h2>Are there any free questions?</h2>
-                <p>
-                    Registering with CPA Exam Bank is FREE and will give you access to!
-                </p>
-            </div>
-						
-			<div id="accountfaqs_cpa-exam-bank-question-source" class="accountfaqs-content hidden">
-                <h2>Where do you get your questions from?  Are the questions the same as the ones on the CPA Exam?</h2>
-                <p>
-                    The CPA Exam Bank uses questions structured after actual CPA Exam questions.  Our team of accounting experts has a combined total 
-					of over 100 years of accounting experience.  Each question is crafted with the specific intent of testing a students understanding of
-					relevant CPA Exam topics as specified by the AICPA.  Build the confidence you need to pass the exam and save money by not sitting 
-					for the exam until our proprietary "Success Metrics"  show that you're ready for test day!
-                </p>
-            </div>
-						
-			<div id="accountfaqs_cpa-exam-bank-pass-exam" class="accountfaqs-content hidden">
-                <h2>Will I pass the exam using these questions to study with?</h2>
-                <p>
-                    The CPA Exam is a test of persistence.  Your success will be based on how prepared and confident you are with exam topics and the test 
-					environment. Let the CPA Exam Banks "Success Metrics" motivate you to continually expand your knowledge base and  see for yourself 
-					why so many candidates have utilized the CPA Exam Bank to pass the exam.
-                </p>
-            </div>
-			<!--
-            <div id="accountfaqs_cpa-exam-question-bank" class="faqs-content hidden">
-                <h2>CPA Exam Question Bank</h2>
-                <p>
-                    The CPA Exam Bank is your opportunity to build and refine the necessary skills required to achieve your highest score on the exam.
-                    When you register with the CPA Exam Bank you will encounter thousands of questions that will continually challenge your understanding of critical topics,
-                    formulas and comprehensive analytical skills.  Let us be the foundation of your success while saving money! 
-                </p>
-            </div>
-			-->
-						
         </div>
     </div>
 </div>
-        
 
-<!-- Overlay for when we're loading questions -->   
-<div id="js-overlay-content-loading-questions" contentSize="full" class="hidden">
+
+<!-- Overlay for when we're loading questions -->
+<div id="js-overlay-content-loading-questions" contentsize="full" class="hidden">
 
     <div class="load-questions-explanation-wrapper">
 
         <div id="study-question-viewer-study-directions" class="load-questions-explanation shadow hidden">
 
             <h2>Starting CPA Exam Simulation</h2>
-                
+
             <h3>Mode: Study</h3>
-            
+
             <div style="width:600px;">
-                
+
                 <p>
-                    In the study mode, when you mark an answer it is your final decision! After you select 
-                    the answer you think is correct, the correct answer will be immediatley indicated and an 
-                    explanation will be provided. Your progress will not be saved unless you get to the end of the test or exit! You do not have 
-                    to answer all of the questions. If you skip a question it will be ignored, and not included in 
-                    questions that you have answered.   
+                    In the study mode, when you mark an answer it is your final decision! After you select
+                    the answer you think is correct, the correct answer will be immediatley indicated and an
+                    explanation will be provided. Your progress will not be saved unless you get to the end of the test or exit! You do not have
+                    to answer all of the questions. If you skip a question it will be ignored, and not included in
+                    questions that you have answered.
                 </p>
             </div>
 
             <div class="exit-explanation">
                 <p>
                     <strong>Important:</strong><br />
-                    To make sure your progress is saved either complete all questions or use 
+                    To make sure your progress is saved either complete all questions or use
                     the exit button at the top of the simulator.
                 </p>
 
                 <div class="exit-icon">Exit Icon</div>
             </div>
-                
-            
-            
+
+
+
             <button class="btn-orange start-study btn-medium">Continue</button>
             <a href="#account" class="button exit-study btn-small">Exit</a>
 
@@ -839,31 +843,31 @@
         <div id="study-question-viewer-test-directions" class="load-questions-explanation shadow hidden">
 
             <h2>Starting CPA Exam Simulation</h2>
-                
+
             <h3>Mode: Test</h3>
-            
+
             <div style="width:600px;">
-                
+
                 <p>
-                    In the test mode we try and recreate the experience you will have when you are taking the CPA Exam. You will 
+                    In the test mode we try and recreate the experience you will have when you are taking the CPA Exam. You will
                     not be immediatley graded on questions you complete (unlike study mode). After you finish the exam by clicking continue
-                    from the last quesiton your answers will be tallied. After you complete the exam, your progress will be saved and you will be able to review all of your questions and see 
-                    explanations for each question. Incorrect questions will be indicated in the quesiton navigation at the bottom of the screen.  
+                    from the last quesiton your answers will be tallied. After you complete the exam, your progress will be saved and you will be able to review all of your questions and see
+                    explanations for each question. Incorrect questions will be indicated in the quesiton navigation at the bottom of the screen.
                 </p>
             </div>
 
             <div class="exit-explanation">
                 <p>
                     <strong>Important:</strong><br />
-                    To make sure your progress is saved either complete all questions or use 
+                    To make sure your progress is saved either complete all questions or use
                     the exit button at the top of the simulator.
                 </p>
 
                 <div class="exit-icon">Exit Icon</div>
             </div>
-                
-            
-            
+
+
+
             <button class="btn-orange start-study btn-medium">Continue</button>
             <a href="#account" class="button btn-orange exit-study btn-small">Exit</a>
 
@@ -878,13 +882,13 @@
                 <td><img style="position:absolute; margin-top:1px; margin-left:-10px;" src="../Content/Images/Shared/ajax-loader-small.gif" /></td>
                 <td style="padding-left:20px;">Getting Questions... this could take a few seconds!</td>
             </tr>
-        </table> 
+        </table>
     </div>
 
 </div>
 
 <!-- Overlay for Simulator -->
-<div id="js-overlay-content-study-questions" contentSize="full" class="hidden">
+<div id="js-overlay-content-study-questions" contentsize="full" class="hidden">
 
     <div id="study-questions-viewer-wrapper">
         <div class="study-question-viewer-page shadow-centered" id="study-question-viewer-page">
@@ -897,7 +901,7 @@
 
 
             <div id="study-question-viewer-directions" class="study-quesitons-content">
-            
+
                 <h1>Directions</h1>
 
                 <h3>Directions Topics</h3>
@@ -905,29 +909,29 @@
                 <h2>Navigation</h2>
 
                 <p>
-                    To navigate from question to question, use the controls at the bottom of the screen. Click on the <span class="bold">Next</span> button to advance to the 
+                    To navigate from question to question, use the controls at the bottom of the screen. Click on the <span class="bold">Next</span> button to advance to the
                     next question, or the <span class="bold">Previous</span> button to go to the previous question. To go directly to any question, click on its number.
                 </p>
 
                 <img class="shadow" style="width:780px; margin:20px auto;" src="../Content/Images/Account/simulation_nav.PNG" />
-                
+
                 <p>
-                    If you would like a reminder to revist a question, or to indicate that you are finished with it, click on the reminder flag below the question number. 
-                    To clear the flag, click on it again. Reminder flags are for your use only - they do not contribute to your score. 
+                    If you would like a reminder to revist a question, or to indicate that you are finished with it, click on the reminder flag below the question number.
+                    To clear the flag, click on it again. Reminder flags are for your use only - they do not contribute to your score.
                 </p>
 
                 <h2>The Toolbar</h2>
 
                 <p>
-                    The toolbar at the top of the screen shows the amount of time remaining for you to complete the examination. In addition, the following tools are available. 
-                    Note that only the <span class="bold">Exit</span> button is displayed when Directions are visible - the <span class="bold">Calculator</span> button will appear 
-                    when you begin the questions. 
+                    The toolbar at the top of the screen shows the amount of time remaining for you to complete the examination. In addition, the following tools are available.
+                    Note that only the <span class="bold">Exit</span> button is displayed when Directions are visible - the <span class="bold">Calculator</span> button will appear
+                    when you begin the questions.
                 </p>
 
                 <div id="calculator-explanation" style="display:none;">
                     <div class="icon shadow"></div>
                     <div class="text">
-                        Click on this button to display the calculator; click it again to hide the calculator. To move the 
+                        Click on this button to display the calculator; click it again to hide the calculator. To move the
                         calculator, click on the calculator title bar and drag the calculator to the desired location.
                     </div>
                 </div>
@@ -935,9 +939,9 @@
                 <div id="exit-explanation">
                     <div class="icon shadow"></div>
                     <div class="text">
-                        Click on this button to go to the next part of the examination. You must complete all of the questions to 
-                        receive full credit. Once you click on <span class="bold">Exit</span> and confirm the action, you will NOT 
-                        be able to return to this testlet. 
+                        Click on this button to go to the next part of the examination. You must complete all of the questions to
+                        receive full credit. Once you click on <span class="bold">Exit</span> and confirm the action, you will NOT
+                        be able to return to this testlet.
                     </div>
                 </div>
 
@@ -947,8 +951,7 @@
                 <div class="question-content">
                 </div>
                 <div class="answer-options">
-                    <table>
-                    </table>
+                    <table></table>
                 </div>
                 <div class="answer-explanation hidden">
                     <h3>Explanation:</h3>
@@ -971,8 +974,8 @@
 
             <div id="study-question-viewer-exit-uncompleted" class="study-quesitons-content hidden">
                 <p class="not-finished">
-                    You've started a test and are not finished. Would you like to skip the rest of the questions 
-                    and view your results? Or exit the CPA Exam simulator. 
+                    You've started a test and are not finished. Would you like to skip the rest of the questions
+                    and view your results? Or exit the CPA Exam simulator.
                 </p>
 
                 <button class="exit-simulator-view-results btn-orange btn-medium" style="margin-left:202px;">View Results</button>
@@ -982,10 +985,10 @@
 
             <div id="study-question-viewer-results" class="study-quesitons-content hidden">
                 <h1>Results</h1>
-                
+
                 <p style="margin:20px;">
-                    You've completed all of the questions, and your results have been saved to your account. You may go back and review your work if you want 
-                    or exit using the icon above. 
+                    You've completed all of the questions, and your results have been saved to your account. You may go back and review your work if you want
+                    or exit using the icon above.
                 </p>
 
                 <h3>Summary</h3>
@@ -1035,11 +1038,11 @@
                     </tr>
                 </table>
 
-               
+
             </div>
 
             <div id="study-question-viewer-footer">
-            
+
                 <div class="study-question-navigation">
                     <div class="footer-flag-reminder">
                         <div class="flag"></div> = Reminder
@@ -1048,9 +1051,9 @@
 
                     <div class="footer-questions-quicklink-holder">
                         <div index="0" class="directions question-quicklink active">Directions</div>
-                        
+
                     </div>
-            
+
                     <div class="footer-nav">
                         <div class="prev hidden"><div class='icon'></div>Previous</div>
                         <div class="next"><div class="icon"></div>Next </div>
@@ -1064,7 +1067,7 @@
 
 
 </div>
-   
+
 
 
 <!-- Google Code for Registration Conversion Page -->
