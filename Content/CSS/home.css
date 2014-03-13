@@ -1,7 +1,7 @@
 ﻿
 /* Promotion */
 
-#promotion-holder{
+#promotion-holder {
     height: 55px;
     background-color: #fff;
     padding: 0px 20px;
@@ -10,12 +10,12 @@
     border: 1px solid #999;
     margin: -2px auto 0px;
     width: 920px;
-    display:none;
-    font-weight:bold;
+    display: none;
+    font-weight: bold;
 }
 
-#launch-video-tour{
-    cursor:pointer;
+#launch-video-tour {
+    cursor: pointer;
 }
 
 
@@ -32,8 +32,7 @@
     padding-bottom: 50px;
     /*border-left:1px solid #efefef;
     border-right:1px solid #efefef;*/
-
-    background-image:url("/Content/Images/Shared/greyTexture.png");
+    background-image: url("/Content/Images/Shared/greyTexture.png");
 }
 
     .js-content-wrapper .content {
@@ -43,28 +42,27 @@
 
 /* Login Page */
 
-#js-content-wrapper-login .login-container{
+#js-content-wrapper-login .login-container {
     background-color: #fff;
     width: 400px;
-    height:250px;
+    height: 250px;
     text-align: center;
     margin: 0px auto;
     margin-top: 40px;
     padding: 20px 0px;
-
     -moz-border-radius: 20px;
     -webkit-border-radius: 20px;
     -khtml-border-radius: 20px;
 }
 
-#js-content-wrapper-login .login-container h2{
-    font-weight:bold;
-    font-size:40px;
-}
+    #js-content-wrapper-login .login-container h2 {
+        font-weight: bold;
+        font-size: 40px;
+    }
 
-#js-content-wrapper-login .login-container img{
-    margin-top:25px;
-}
+    #js-content-wrapper-login .login-container img {
+        margin-top: 25px;
+    }
 
 /* Home */
 
@@ -116,7 +114,7 @@
     margin: 20px 0px 20px 20px;
     float: left;
     clear: both;
-    width:100%;
+    width: 100%;
 }
 
 #home-row-2 {
@@ -403,27 +401,27 @@
     }
 
 #js-content-wrapper-contact input {
-    padding:4px 6px;
-    font-size:18px;
+    padding: 4px 6px;
+    font-size: 18px;
 }
 
 #js-content-wrapper-contact select {
-    padding:4px 6px;
-    font-size:18px;
+    padding: 4px 6px;
+    font-size: 18px;
 }
 
 #js-content-wrapper-contact .content table tr td textarea {
     width: 660px;
     height: 150px;
-    font-size:18px;
-    padding:4px;
+    font-size: 18px;
+    padding: 4px;
 }
 
 
 #js-content-wrapper-contact .content table tr td:first-child {
     padding-right: 10px;
     vertical-align: middle;
-    font-weight:bold;
+    font-weight: bold;
 }
 
 /*** About Us Page Styles ***/
@@ -475,7 +473,7 @@
                     padding-left: 4px;
                     /*border-left: 4px solid #fff;*/
                     line-height: 22px;
-                    border-left:2px solid transparent;
+                    border-left: 2px solid transparent;
                 }
 
                     .faq-holder .col1 ul li.section ul li:hover {
@@ -519,7 +517,7 @@
             border-radius: 3px 3px 3px 3px;
             -moz-border-radius: 3px 3px 3px 3px;
             -webkit-border-radius: 3px 3px 3px 3px;
-            margin-top:20px;
+            margin-top: 20px;
         }
 
         .faq-holder .col2 p {
@@ -678,10 +676,22 @@
 /*
 	Slideshow
 */
+
+.slides_control img {
+    -moz-box-shadow: 0px 5px 20px #bbb;
+    -webkit-box-shadow: 0px 5px 20px #bbb;
+    box-shadow: 0px 5px 20px #bbb;
+
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    border-radius: 10px;
+    
+}
+
 #slides {
     position: relative;
-    width:920px;
-    margin:0px auto;
+    width: 920px;
+    margin: 0px auto;
 }
 
     #slides .slide h2 {
