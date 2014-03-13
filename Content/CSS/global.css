@@ -29,10 +29,6 @@ footer, header, hgroup, menu, nav, section {
     display: block;
 }
 
-body {
-    line-height: 1;
-}
-
 ol, ul {
     list-style: none;
 }
@@ -129,6 +125,11 @@ h2 {
     overflow-y: scroll;
 }*/
 
+html{
+    width:100%;
+    margin:0px; padding:0px;
+}
+
 body {
     /*background-color: #21465D;*/
     color: #333;
@@ -140,6 +141,7 @@ body {
     width: 100%;
     background-color: #e7ebf2;
     background-image:url("/Content/Images/Shared/greyTexture.png");
+    line-height:1;
 }
 
 
