@@ -122,13 +122,12 @@ h2 {
 /* END GLOBAL CLASSES */
 
 /* GLOBAL NON PAGE SPECIFIC STYLES */
-html {
+/*html {
     background-color: #333;
     margin: 0;
     padding: 0;
-    /*background-image: url('/Content/Images/Textures/grey_wash_wall.png');*/
     overflow-y: scroll;
-}
+}*/
 
 body {
     /*background-color: #21465D;*/
@@ -240,7 +239,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#21465d', end
 #wrapper {
     width: 100%;
     margin: 0px auto;
-    margin-top: 135px;
+    margin-top: 110px;
 }
 
 #header-wrapper {
@@ -283,6 +282,7 @@ z-index: 100;
     width: 1020px;
     background-repeat: repeat;
     margin: 0px auto;
+    width:100%;
 }
 
 #ServerErrorHandler {
@@ -414,6 +414,20 @@ z-index: 100;
     cursor: pointer;
     color: #fff;
     height: 69px;
+}
+
+.content-wrapper{
+    max-width:1020px;
+    min-width:580px;
+    margin:0px auto;
+}
+
+.content-wrapper p{
+    margin:20px 0px;
+}
+
+.content-wrapper h2{
+    margin-top:40px;
 }
 
 

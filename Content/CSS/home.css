@@ -32,6 +32,8 @@
     padding-bottom: 50px;
     /*border-left:1px solid #efefef;
     border-right:1px solid #efefef;*/
+
+    background-image:url("/Content/Images/Shared/greyTexture.png");
 }
 
     .js-content-wrapper .content {
@@ -267,8 +269,8 @@
 
 #pricing-holder {
     float: left;
-    width: 920px;
-    margin: 10px 20px 20px;
+    width: 1020px;
+    margin: 20px 0px 40px;
 }
 
     #pricing-holder div {
@@ -325,7 +327,7 @@
         background-color: #444;
         color: #fff;
         height: 408px;
-        width: 210px;
+        width: 310px;
     }
 
         #pricing-holder .col2 ol li {
@@ -374,8 +376,9 @@
     }
 
         #pricing-sign-up-more-info table td {
-            padding: 10px 10px 30px;
+            padding: 20px 20px 20px;
             border: 1px solid #efefef;
+            background-color: #ddd;
         }
 
             #pricing-sign-up-more-info table td:first-child {
@@ -438,7 +441,6 @@
 /*** FAQs ***/
 
 .faq-holder {
-    margin-left: 20px;
     margin-bottom: 50px;
     float: left;
     clear: both;
@@ -447,7 +449,7 @@
 
     .faq-holder .col1 {
         float: left;
-        width: 250px;
+        width: 302px;
         margin-top: 10px;
         margin-right: 40px;
     }
@@ -468,10 +470,12 @@
             }
 
                 .faq-holder .col1 ul li.section ul li {
-                    margin-bottom: 10px;
+                    margin-bottom: 20px;
                     margin-left: 5px;
                     padding-left: 4px;
-                    border-left: 2px solid #fff;
+                    /*border-left: 4px solid #fff;*/
+                    line-height: 22px;
+                    border-left:2px solid transparent;
                 }
 
                     .faq-holder .col1 ul li.section ul li:hover {
@@ -515,6 +519,7 @@
             border-radius: 3px 3px 3px 3px;
             -moz-border-radius: 3px 3px 3px 3px;
             -webkit-border-radius: 3px 3px 3px 3px;
+            margin-top:20px;
         }
 
         .faq-holder .col2 p {
@@ -636,7 +641,7 @@
 .register-row {
     float: left;
     margin: 90px 0px 45px 0px;
-    padding: 20px 0px 50px;
+    padding: 75px 0px 100px;
     color: #000;
     width: 100%;
     text-align: center;
