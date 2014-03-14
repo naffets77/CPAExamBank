@@ -14,7 +14,7 @@ window.onfocus = function () { window.blurred = false; };
 
 
 var siteOptions = {
-    defaultPromotion: null,
+    defaultPromotion: "CPA75OFF",
     loginCallback: function () {
 
         $.CPAEB.hideLoginUI();
@@ -23,7 +23,7 @@ var siteOptions = {
 };
 
 
-$.COR.init(siteOptions);
+
 
 
 $.CPAEB.init = function () {
@@ -645,6 +645,8 @@ $.COR.ShowRegPopup = function (successCallback) {
 
 
 $(document).ready(function () {
+
+    $.COR.init(siteOptions);
 
     if ($.COR.Utilities.getURLParameter("offline") != null) {
         $.COR.account.offline = true;

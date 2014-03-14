@@ -52,10 +52,15 @@
 $.COR.init = function (options) {
 
     // Called when login is completed
-    this.site.loginCallback = options.loginCallback;
-    options.defaultPromotion ? this.defaultPromotion = options.defaultPromotion : false;
+    this.site.loginCallback = options.loginCallback
 
-
+    if ($.COR.account.offline == false) {
+        // Set default promotion to the options, unless it's already been set (From the URL string in document ready)
+        this.defaultPromotion = this.defaultPromotion == null ? options.defaultPromotion || null : this.defaultPromotion;
+    }
+    else {
+        this.defaultPromotion = null;
+    }
 };
 
 // This should be a Utility
