@@ -24,7 +24,7 @@ class ReportBuilder {
 	public function rep_registered_users(){
 		$this->output_title("Registered Users");
 
-		$res = $this->dbq("SELECT AccountUser.AccountUserId, LoginName, StripeCustomerId, PromotionCode,  AccountUser.DateCreated FROM `AccountUser` Left Join License On AccountUser.AccountUserId = License.AccountUserId Left Join AccountUserToPromotion On AccountUser.AccountUserid = AccountUserToPromotion.AccountUserId Left Join Promotion On AccountUserToPromotion.PromotionId = Promotion.PromotionId WHERE AccountUser.AccountUserId NOT IN (1,2,3,4,5,6,7,13,28,113,114,116,117,118,119) Order By AccountUser.DateCreated Desc");
+		$res = $this->dbq("SELECT AccountUser.AccountUserId, LoginName, StripeCustomerId, PromotionCode,  DATE_FORMAT(AccountUser.DateCreated,'%m/%d/%Y') FROM `AccountUser` Left Join License On AccountUser.AccountUserId = License.AccountUserId Left Join AccountUserToPromotion On AccountUser.AccountUserid = AccountUserToPromotion.AccountUserId Left Join Promotion On AccountUserToPromotion.PromotionId = Promotion.PromotionId WHERE AccountUser.AccountUserId NOT IN (1,2,3,4,5,6,7,13,28,113,114,116,117,118,119) Order By AccountUser.DateCreated Desc");
     
 		$res_count = mysql_num_rows ( $res );
 
@@ -35,9 +35,9 @@ class ReportBuilder {
   
     public function rep_question_history(){
   
-    $this->output_title("Question History Usage By User");
-    $res = $this->dbq("SELECT DISTINCT AccountUser.LoginName, COUNT( AccountUserQuestionHistory.QuestionId ) FROM AccountUser JOIN AccountUserQuestionHistory WHERE AccountUser.AccountUserId = AccountUserQuestionHistory.AccountUserId GROUP BY AccountUser.LoginName");
-	  $this->table_builder($res); 
+        $this->output_title("Question History Usage By User");
+        $res = $this->dbq("SELECT DISTINCT AccountUser.LoginName, COUNT( AccountUserQuestionHistory.QuestionId ) FROM AccountUser JOIN AccountUserQuestionHistory WHERE AccountUser.AccountUserId = AccountUserQuestionHistory.AccountUserId GROUP BY AccountUser.LoginName");
+	    $this->table_builder($res); 
   
     }
   
