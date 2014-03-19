@@ -19,7 +19,7 @@ class library_configuration{
     public static $dblogin = "root";
     public static $dbpassword = "!Naffets77";
 
-    public static $error_toemail = "marcusrico32@gmail.com";
+    public static $error_toemail = "contact@cpaexambank.com";
     public static $error_fromemail = "errors@cpaexambank.com";
 
     public static $salt = "cibor14";

@@ -118,7 +118,7 @@ class ciborium_email{
         }
 
         $myQueue = new emailQueue();
-        $myQueue->ToEmail = "contactus@cpaexambank.com";
+        $myQueue->ToEmail = "contact@cpaexambank.com";
         $myQueue->FromEmail = "no-reply@cpaexambank.com";
         $myQueue->CCList = "";
         $myQueue->BCCList = "cpabccbin@gmail.com";
