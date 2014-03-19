@@ -3,6 +3,9 @@
 //print_r(ciborium_configuration::environment_librarypath);
 ?>
 <html>
+<head>
+    <title>MD5 Generator 2</title>
+</head>
 <body>
 <div><input type='text' id='input' value=''/><input id='generate' type='button' value='generate' /></div>
 <div id='md5hash'></div>
