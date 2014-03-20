@@ -587,7 +587,7 @@ $.COR.account.setupEvents = function () {
             },
             success: function (data) {
 
-                self.initReviewGrid(data.QuestionHistoryReturns);
+                self.initReviewGrid(data);
 
                 setTimeout(function () {
                     $("#review-messages-no-results").hide();
