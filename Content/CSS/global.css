@@ -282,7 +282,7 @@ z-index: 100;
 #ServerErrorHandler {
     width: 400px;
     margin: 0px auto;
-    position: absolute;
+    position: fixed;
     left: 50%;
     margin-left: -200px;
     padding: 60px 40px 20px;

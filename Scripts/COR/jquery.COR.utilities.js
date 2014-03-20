@@ -196,7 +196,7 @@ $.COR.Utilities.refreshLogin = function (successCallback) {
 $.COR.Utilities.FullScreenOverlay = {
 
     cache: [],
-    closeWithHash : false,
+    closeWithHash: false,
 
     loadExternal: function (externalPath, contentClassSize, closeWithHash, events) {
 
@@ -221,12 +221,12 @@ $.COR.Utilities.FullScreenOverlay = {
         }
 
     },
-    loadLocal: function (id, contentClassSize, closeWithHash, events) {
+    loadLocal: function (id, contentClassSize, closeWithHash, events, completed) {
 
         this.closeWithHash = closeWithHash;
 
         if (this.isCached(id)) {
-            this.show(id);
+            this.show(id, completed);
         } else {
 
             this.cache.push({
@@ -236,12 +236,12 @@ $.COR.Utilities.FullScreenOverlay = {
                 events: events
             });
 
-            this.show(id);
+            this.show(id, completed);
         }
 
     },
 
-    show: function (id) {
+    show: function (id, completed) {
         var self = this;
 
         this.hide(function () {
@@ -257,6 +257,8 @@ $.COR.Utilities.FullScreenOverlay = {
             if (typeof cachedContent.events == 'function') {
                 cachedContent.events();
             }
+
+
 
             if (cachedContent.sizeClass !== "full") {
 
@@ -277,7 +279,17 @@ $.COR.Utilities.FullScreenOverlay = {
 
             $("#full-screen-overlay").fadeIn(function () {
                 if (!$("#full-screen-container").is(":visible")) {
-                    $("#full-screen-container").fadeIn();
+                    $("#full-screen-container").fadeIn(function () {
+
+                        if (typeof completed == 'function') {
+                            completed();
+                        }
+                    });
+                }
+                else {
+                    if (typeof completed == 'function') {
+                        completed();
+                    }
                 }
             });
 

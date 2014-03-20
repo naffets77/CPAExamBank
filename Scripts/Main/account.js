@@ -6,14 +6,14 @@ $.COR.account = {
     hash: null,
     licenses: null,
     stripePublicKey: null,
-    subscriptions:null,
+    subscriptions: null,
     userSettings: null,
     simulator: {
         options: {
-            mode:null,
-            category:null,
-            questionCount:null,
-            strategy:null
+            mode: null,
+            category: null,
+            questionCount: null,
+            strategy: null
         },
         live: false,
         questions: null,
@@ -43,6 +43,7 @@ $.COR.account.setup = function (data, successCallback) {
         self.setUserData(data);
         self.setupEvents();
         self.initUser();
+        self.initReviewGrid();
 
         $("#contact-us-email").val(self.user.LoginName);
 
@@ -56,7 +57,7 @@ $.COR.account.setup = function (data, successCallback) {
             successCallback();
         }, 1500);
 
-         
+
     });
 }
 
@@ -112,7 +113,7 @@ $.COR.account.setupEvents = function () {
             $("#practice-question-count").append("<option id='practice-question-trial-amount' value='25'>25</option>");
             $("#practice-question-count").val(25);
             $("#practice-question-count").attr("disabled", "disabled");
-            $(this).parents("tr").first().find(".subscribe-message").css("display","block");
+            $(this).parents("tr").first().find(".subscribe-message").css("display", "block");
         }
         else {
             $("#practice-question-trial-amount").remove();
@@ -183,7 +184,7 @@ $.COR.account.setupEvents = function () {
 
 
             $.COR.services.updatePassword(
-                { password: oldPassword, newPassword: newPassword},
+                { password: oldPassword, newPassword: newPassword },
                 function (data) {
 
                     $("#account-settings-old-password").val("");
@@ -194,8 +195,8 @@ $.COR.account.setupEvents = function () {
                     $.COR.account.user.LoginPassword = newPassword;
                     $.COR.Utilities.cycleButton(self, "Saved", "Update");
                     $(self).removeClass("disabled");
-            });
-            
+                });
+
         }
 
     });
@@ -276,7 +277,7 @@ $.COR.account.setupEvents = function () {
                     exp_year: $('#card-expiry-year').val()
                 }, function (status, response) {
 
-                    if (response.error){
+                    if (response.error) {
 
                         $("#update-subscription-holder .processing").hide();
                         $("#update-subscription-holder .credit-card-info").show();
@@ -292,7 +293,7 @@ $.COR.account.setupEvents = function () {
                         var token = response['id'];
 
                         // Update Credit Card
-                        $.COR.services.changeCreditCard({token:token}, function (data) {
+                        $.COR.services.changeCreditCard({ token: token }, function (data) {
 
                             if (data.Result == 0) {
 
@@ -373,7 +374,7 @@ $.COR.account.setupEvents = function () {
 
                     var button = this;
 
-                    if($(this).hasClass('disabled')){return;}
+                    if ($(this).hasClass('disabled')) { return; }
                     $(this).addClass('disabled');
 
                     // reset
@@ -500,11 +501,11 @@ $.COR.account.setupEvents = function () {
 
                 });
             }
-            
 
 
 
-            
+
+
 
 
         });
@@ -554,7 +555,7 @@ $.COR.account.setupEvents = function () {
 
     });
 
-    
+
     /* ----- Simulator ----- */
     $(window).bind('beforeunload', function () {
 
@@ -572,6 +573,33 @@ $.COR.account.setupEvents = function () {
         followMouse: true
         //placement:'ne'
     });
+
+
+
+    if (self.offline != true) {
+        var ph = new $.COR.Utilities.PostHandler({
+            service: "question", call: "getAccountUserQuestionHistory",
+            params: {
+                Filters: JSON.stringify({
+                    "SectionTypeId": $("#my-review-section-type").val(),
+                    "ResultId": $("#my-review-result-type").val(),
+                    "OrderById": $("#my-review-order-by").val()
+                })
+            },
+            success: function (data) {
+
+                self.initReviewGrid(data.QuestionHistoryReturns);
+
+                setTimeout(function () {
+                    $("#review-messages-no-results").hide();
+                    $("#review-results").show();
+                }, 1000);
+
+            }
+        });
+
+        ph.submitPost();
+    }
 
 };
 
@@ -591,7 +619,6 @@ $.COR.account.initUser = function () {
     if ($.COR.account.user.IsRegistrationInfoObtained == "0") {
         this.showNewAccountPopup();
     }
-
 
     if (this.user.IsAdmin == "1") {
         $("#practice-question-count").append("<option value='-1'>All</option>");
@@ -710,12 +737,12 @@ $.COR.account.setUserData = function (data) {
 
             }
 
-            // It hasn't expired but it's not active
+                // It hasn't expired but it's not active
             else if (NotExpired) {
                 $("#account_subscription_check-" + subname).prop('checked', false);
                 $("#practice-category_" + subname).parents('tr').removeClass("trial");
                 $(tr).find('.status').html("Expires On");
-                
+
 
                 if (subname == "aud") {
                     AUDEnabled = true;
@@ -738,7 +765,7 @@ $.COR.account.setUserData = function (data) {
         $("#practice-question-count").append("<option id='practice-question-trial-amount' value='25'>25</option>");
         $("#practice-question-count").val(25);
         $("#practice-question-count").attr("disabled", "disabled");
-        $("#practice-category_aud").parents("tr").first().find(".subscribe-message").css('display','block');
+        $("#practice-category_aud").parents("tr").first().find(".subscribe-message").css('display', 'block');
     }
     else {
         $("#practice-question-count").val(20);
@@ -798,9 +825,107 @@ $.COR.account.showDefaultPage = function () {
     $("#header-navigation_study").addClass('current');
 }
 
+$.COR.account.initReviewGrid = function (data) {
+
+    if (this.offline == true) {
+        data = $.parseJSON(offlineQuestionHistoryData);
+    }
+
+
+    var quesitonHistoryData = data.QuestionHistoryReturns;
+
+    // need to massage the data a bit to get it into the right format for now... 
+    var kendoData = [];
+
+    for (var i = 0; i < quesitonHistoryData.length; i++) {
+
+        var historyData = quesitonHistoryData[i];
+
+        if (historyData.Metrics[0].IsActive == '1') {
+
+            kendoData.push({
+                QuestionId: historyData.Metrics[0].QuestionId,
+                Section: historyData.Metrics[0].SectionType,
+                Correct: historyData.Metrics[0].TimesCorrect,
+                Incorrect: historyData.Metrics[0].TimesIncorrect,
+                Answered: historyData.Metrics[0].TimesAnswered,
+                AvgTimeSpent: historyData.Metrics[0].AverageTimePerQuestion
+
+            });
+        }
+
+    }
+
+
+
+
+
+    $("#kg-review-table").kendoGrid({
+        dataSource: {
+            data: kendoData,
+            schema: {
+                model: {
+                    fields: {
+                        Section: { type: "string" },
+                        Correct: { type: "number" },
+                        Incorrect: { type: "number" },
+                        AvgTimeSpent: { type: "number" },
+                    }
+                }
+            },
+            pageSize: 10
+        },
+        change: function () {
+
+            var selectedCells = this.select();
+
+            // pass question id
+            $.COR.account.ShowQuestionHistory($($(selectedCells).find("td")[0]).html());
+
+        },
+        selectable:"row",
+        sortable: true,
+        pageable: {
+            refresh: true,
+            pageSizes: true,
+            buttonCount: 5
+        },
+        columns: [
+            {
+                field: "QuestionId",
+                title: "Question Id",
+                width: 50
+            },
+            {
+                field: "Section",
+                title: "Section",
+                width: 140
+            }, {
+                field: "Correct",
+                title: "Correct",
+                width: 50
+            }, {
+                field: "Incorrect",
+                title: "Incorrect",
+                width: 50
+            },
+            {
+                field: "Answered",
+                title: "Times Answered",
+                width: 100
+            },
+            {
+                field: "AvgTimeSpent",
+                title: "Avg. Time Spent",
+                width: 110
+            }]
+    });
+
+}
+
 // Subscription Helpers
 
-$.COR.account.getSubscriptionsForServer = function(){
+$.COR.account.getSubscriptionsForServer = function () {
     return JSON.stringify({
         "AUD": $("#account_subscription_check-aud").prop('checked') ? 1 : 0,
         "FAR": $("#account_subscription_check-far").prop('checked') ? 1 : 0,
@@ -827,7 +952,7 @@ $.COR.account.getSubscriptionTotal = function () {
 $.COR.account.BuildQuestionHistory = function (QuestionResponse) {
 
 
-    
+
 
     var len = QuestionResponse.length;
 
@@ -838,23 +963,23 @@ $.COR.account.BuildQuestionHistory = function (QuestionResponse) {
 
         // Build Question Answers
         var questionAnswers = "";
-        for(var j = 0; j < response.QuestionResponse[0].Answers.length; j++){
+        for (var j = 0; j < response.QuestionResponse[0].Answers.length; j++) {
             var correctClass = j == response.QuestionResponse[0].CorrectAnswerIndex ? "class='correct'" : "";
 
-            questionAnswers += "<li " + correctClass+ " >" + response.QuestionResponse[0].Answers[j].DisplayText + "</li>";
+            questionAnswers += "<li " + correctClass + " >" + response.QuestionResponse[0].Answers[j].DisplayText + "</li>";
         }
 
         // Build Question History
 
         var questionHistory = "";
 
-        for(var j = 0; j < response.Summary.length; j++){
+        for (var j = 0; j < response.Summary.length; j++) {
             var summary = response.Summary[j];
 
             // Figure out the index of the answer
             var questionIndex = "-"; // default set for skipped;
-            if(summary.QuestionsToAnswersId != 0){
-                for(var k = 0; k < response.QuestionResponse[0].Answers.length; k++){
+            if (summary.QuestionsToAnswersId != 0) {
+                for (var k = 0; k < response.QuestionResponse[0].Answers.length; k++) {
                     if (response.QuestionResponse[0].Answers[k].QuestionToAnswersId == summary.QuestionsToAnswersId) {
                         questionIndex = k;
                         break;
@@ -865,9 +990,9 @@ $.COR.account.BuildQuestionHistory = function (QuestionResponse) {
 
             questionHistory += "<tr>" +
                                             //"<td>" + questionIndex + "</td>"+
-                                            "<td>" + summary.Correct + "</td>"+
-                                            "<td>" + summary.TimeSpentOnQuestion + "</td>"+
-                                            "<td>" + summary.SimulationMode + "</td>" + 
+                                            "<td>" + summary.Correct + "</td>" +
+                                            "<td>" + summary.TimeSpentOnQuestion + "</td>" +
+                                            "<td>" + summary.SimulationMode + "</td>" +
                                             "<td>" + summary.SimultationDate + "</td>" +
                                         "</tr>";
         }
@@ -930,7 +1055,84 @@ $.COR.account.BuildQuestionHistory = function (QuestionResponse) {
 
 }
 
+$.COR.account.ShowQuestionHistory = function (QuestionId) {
 
+
+    var data = $.parseJSON(offlineQuestionHistoryData); // get this from cached object when logging in or something... 
+    var quesitonHistoryData = data.QuestionHistoryReturns;
+
+
+    var options = {
+        answers: "",
+        question: null,
+        explanation: null,
+        history: ""
+    };
+
+
+
+    // we gotta go through the cache find the quesiton id and build everything
+
+    var foundQuestion = null;
+
+    for (var i = 0; i < quesitonHistoryData.length; i++) {
+
+        var historyData = quesitonHistoryData[i];
+
+        if (historyData.Metrics[0].QuestionId == QuestionId) {
+
+            foundQuestion = historyData;
+            break;
+        }
+    }
+
+
+    options.question = foundQuestion.QuestionResponse[0].Question;
+    options.explanation = foundQuestion.QuestionResponse[0].Explanation;
+
+    for (var j = 0; j < foundQuestion.QuestionResponse[0].Answers.length; j++) {
+        var correctClass = j == foundQuestion.QuestionResponse[0].CorrectAnswerIndex ? "class='correct'" : "";
+
+        options.answers += "<li " + correctClass + " >" + historyData.QuestionResponse[0].Answers[j].DisplayText + "</li>";
+    }
+
+    for (var j = 0; j < foundQuestion.Summary.length; j++) {
+        var summary = foundQuestion.Summary[j];
+
+        // Figure out the index of the answer
+        var questionIndex = "-"; // default set for skipped;
+        if (foundQuestion.QuestionsToAnswersId != 0) {
+            for (var k = 0; k < foundQuestion.QuestionResponse[0].Answers.length; k++) {
+                if (foundQuestion.QuestionResponse[0].Answers[k].QuestionToAnswersId == summary.QuestionsToAnswersId) {
+                    questionIndex = k;
+                    break;
+                }
+            }
+        }
+
+
+        options.history += "<tr>" +
+                                        //"<td>" + questionIndex + "</td>"+
+                                        "<td>" + summary.Correct + "</td>" +
+                                        "<td>" + summary.TimeSpentOnQuestion + "</td>" +
+                                        "<td>" + summary.SimulationMode + "</td>" +
+                                        "<td>" + summary.SimultationDate + "</td>" +
+                                    "</tr>";
+    }
+
+
+
+    $.COR.Utilities.FullScreenOverlay.loadLocal("js-overlay-quesiton-history", "medium", false, null, function () {
+
+        $("#full-screen-container .my-info-question-text").html(options.question);
+        $("#full-screen-container .my-info-question-answers").html(options.answers);
+        $("#full-screen-container .my-info-explanation").html(options.explanation);
+        $("#full-screen-container .my-info-history").html(options.history);
+
+        $("#full-screen-container .my-info-question-data").css('visibility','visible');
+
+    });
+}
 
 // Question Study Helpers
 
@@ -971,7 +1173,7 @@ $.COR.account.startStudy = function () {
             self.simulator.questionIndex = 0;
 
             if (self.offline == true) {
-                
+
 
                 setTimeout(function () {
 
@@ -1010,7 +1212,7 @@ $.COR.account.startStudy = function () {
                                     self.showSimulator();
                                 }, 1000);
                             }
-                            
+
                         }
                         else {
                             alert('Server Error, please refresh the page and try again');
@@ -1184,7 +1386,7 @@ $.COR.account.initQuestions = function () {
         self.completeTest();
     });
 
-    $("#full-screen-container .exit-simulator-exit").on('click', function(){
+    $("#full-screen-container .exit-simulator-exit").on('click', function () {
         self.simulator.live = false;
         $("#full-screen-container #study-questions-viewer-wrapper").unbind().remove();
         $.COR.TPrep.hideFullScreenOverlay();
@@ -1254,7 +1456,7 @@ $.COR.account.displayStudyQuestion = function (question) {
         $("#study-question-viewer-question-mc").fadeOut(function () {
             $("#study-question-viewer-directions").fadeIn();
         });
-        
+
     }
     else {
 
@@ -1342,11 +1544,11 @@ $.COR.account.setStudyQuestionData = function (question) {
         }, 1000);
 
     }
-    
+
 
     // Check if Study Mode and Question Answered - Disable Question
 
-    if ((question.selectedAnswer != 0  && self.simulator.options.mode == 'study') || self.simulator.completed == true) {
+    if ((question.selectedAnswer != 0 && self.simulator.options.mode == 'study') || self.simulator.completed == true) {
 
         var SelectedAnswerIndex;
         for (var i = 0; i < question.Answers.length; i++) {
@@ -1481,7 +1683,7 @@ $.COR.account.completeTest = function () {
                         $("#full-screen-container .footer-questions-quicklink-holder [index=" + question.index + "]").addClass("incorrect");
                     }
                 }
-                else{
+                else {
                     // make all the wrong answers red in the navigation
                     if (answeredCorrectly == 0) {
                         incorrect++;
@@ -1583,3 +1785,8 @@ $.COR.account.getOfflineQuestions = function () {
 
 
 }
+
+
+
+
+var offlineQuestionHistoryData = '{ "Result": 1, "Reason": "", "QuestionHistoryReturns": [{ "Metrics": [{ "QuestionId": "1", "SectionType": "AUD", "TimesCorrect": "1", "TimesIncorrect": "3", "TimesAnswered": "4", "AverageTimePerQuestion": "12", "IsActive": "1" }], "QuestionResponse": [{ "Result": 1, "Reason": "", "QuestionClientId": "AUD1S1", "QuestionTypeId": 1, "QuestionCategoryId": "1", "SectionTypeId": 0, "QuestionClientImage": "", "IsApprovedForUse": 0, "IsActive": 0, "Question": "<p>A  service which cannot be performed for a nonissuer attest client is&nbsp;<\/p>", "Answers": [{ "QuestionToAnswersId": "1", "QuestionId": "1", "DisplayText": "Signing of Payroll Checks", "IsAnswerToQuestion": "1" }, { "QuestionToAnswersId": "2", "QuestionId": "1", "DisplayText": "Recording management approved transactions", "IsAnswerToQuestion": "0" }, { "QuestionToAnswersId": "3", "QuestionId": "1", "DisplayText": "Performing data processing services", "IsAnswerToQuestion": "0" }, { "QuestionToAnswersId": "4", "QuestionId": "1", "DisplayText": "Preparation of a balance sheet", "IsAnswerToQuestion": "0" }], "CorrectAnswerIndex": 0, "Explanation": "Management functions impair the independence of CPA\'s. &nbsp;Signing payroll checks is a management function.", "QuestionId": "1", "IsDeprecated": 0 }], "Summary": [{ "QuestionId": "1", "SimulationMode": "Practice", "TestSection": "AUD", "Question": "<p>A  service which cannot be performed for a nonissuer attest client is&nbsp;<\/p>", "QuestionsToAnswersId": "1", "Correct": "Yes", "Skipped": "No", "TimeSpentOnQuestion": "19", "SimultationDate": "2013-07-04 09:07:28" }, { "QuestionId": "1", "SimulationMode": "Practice", "TestSection": "AUD", "Question": "<p>A  service which cannot be performed for a nonissuer attest client is&nbsp;<\/p>", "QuestionsToAnswersId": "2", "Correct": "No", "Skipped": "No", "TimeSpentOnQuestion": "25", "SimultationDate": "2013-07-04 09:07:28" }, { "QuestionId": "1", "SimulationMode": "Practice", "TestSection": "AUD", "Question": "<p>A  service which cannot be performed for a nonissuer attest client is&nbsp;<\/p>", "QuestionsToAnswersId": "4", "Correct": "No", "Skipped": "No", "TimeSpentOnQuestion": "2", "SimultationDate": "2013-07-05 04:40:50" }, { "QuestionId": "1", "SimulationMode": "Practice", "TestSection": "AUD", "Question": "<p>A  service which cannot be performed for a nonissuer attest client is&nbsp;<\/p>", "QuestionsToAnswersId": "2", "Correct": "No", "Skipped": "No", "TimeSpentOnQuestion": "2", "SimultationDate": "2013-09-20 00:53:31" }] }, { "Metrics": [{ "QuestionId": "40", "SectionType": "AUD", "TimesCorrect": "1", "TimesIncorrect": "0", "TimesAnswered": "0", "AverageTimePerQuestion": "3", "IsActive": "1" }], "QuestionResponse": [{ "Result": 1, "Reason": "", "QuestionClientId": "AUD16S1", "QuestionTypeId": 1, "QuestionCategoryId": "1", "SectionTypeId": 0, "QuestionClientImage": "", "IsApprovedForUse": 0, "IsActive": 0, "Question": "<p>When accountants anticipate third-party reliance on compiled financial statements, which of the following statements is correct?<\/p>", "Answers": [{ "QuestionToAnswersId": "157", "QuestionId": "40", "DisplayText": "Each page of the financial statements should have a restriction such as Restricted for Management Use Only", "IsAnswerToQuestion": "0" }, { "QuestionToAnswersId": "158", "QuestionId": "40", "DisplayText": "An opinion on fairness of financial statement presentations is required.", "IsAnswerToQuestion": "0" }, { "QuestionToAnswersId": "159", "QuestionId": "40", "DisplayText": "A compilation report must be issued.", "IsAnswerToQuestion": "1" }, { "QuestionToAnswersId": "160", "QuestionId": "40", "DisplayText": "Omission of note disclosures is unacceptable.", "IsAnswerToQuestion": "0" }], "CorrectAnswerIndex": 2, "Explanation": "<p>Accountants must issue a compilation report when they anticipate third-party reliance. <\/p>", "QuestionId": "40", "IsDeprecated": 0 }], "Summary": [{ "QuestionId": "40", "SimulationMode": "Practice", "TestSection": "AUD", "Question": "<p>When accountants anticipate third-party reliance on compiled financial statements, which of the following statements is correct?<\/p>", "QuestionsToAnswersId": "159", "Correct": "Yes", "Skipped": "No", "TimeSpentOnQuestion": "3", "SimultationDate": "2013-09-20 00:53:31" }] }, { "Metrics": [{ "QuestionId": "34", "SectionType": "AUD", "TimesCorrect": "1", "TimesIncorrect": "0", "TimesAnswered": "0", "AverageTimePerQuestion": "2", "IsActive": "1" }], "QuestionResponse": [{ "Result": 1, "Reason": "", "QuestionClientId": "AUD10S1", "QuestionTypeId": 1, "QuestionCategoryId": "1", "SectionTypeId": 0, "QuestionClientImage": "", "IsApprovedForUse": 0, "IsActive": 0, "Question": "<p>An auditor investigates a manufacturing entity to determine whether slow-moving, defective and obsolete items included in inventory are identified properly. Which procedure is the auditor least likely to perform?<\/p>", "Answers": [{ "QuestionToAnswersId": "133", "QuestionId": "34", "DisplayText": "Compare inventory balances to anticipated sales volumes.", "IsAnswerToQuestion": "0" }, { "QuestionToAnswersId": "134", "QuestionId": "34", "DisplayText": "Test the calculations of standard overhead rates.", "IsAnswerToQuestion": "1" }, { "QuestionToAnswersId": "135", "QuestionId": "34", "DisplayText": "Tour the manufacturing plant or production facility.", "IsAnswerToQuestion": "0" }, { "QuestionToAnswersId": "136", "QuestionId": "34", "DisplayText": "Review inventory experience and trends.", "IsAnswerToQuestion": "0" }], "CorrectAnswerIndex": 1, "Explanation": "<p>Testing standard overhead rates might provide only limited help. These rates might be used to arrive at the cost of an item. But, the approach doesn\'t help determine if an item is obsolete<\/p>", "QuestionId": "34", "IsDeprecated": 0 }], "Summary": [{ "QuestionId": "34", "SimulationMode": "Practice", "TestSection": "AUD", "Question": "<p>An auditor investigates a manufacturing entity to determine whether slow-moving, defective and obsolete items included in inventory are identified properly. Which procedure is the auditor least likely to perform?<\/p>", "QuestionsToAnswersId": "134", "Correct": "Yes", "Skipped": "No", "TimeSpentOnQuestion": "2", "SimultationDate": "2013-09-20 00:53:31" }] }, { "Metrics": [{ "QuestionId": "32", "SectionType": "AUD", "TimesCorrect": "1", "TimesIncorrect": "0", "TimesAnswered": "0", "AverageTimePerQuestion": "3", "IsActive": "1" }], "QuestionResponse": [{ "Result": 1, "Reason": "", "QuestionClientId": "AUD8S1", "QuestionTypeId": 1, "QuestionCategoryId": "1", "SectionTypeId": 0, "QuestionClientImage": "", "IsApprovedForUse": 0, "IsActive": 0, "Question": "<p>Which of the following approaches is the right way for an auditor to test internal controls of a computerized accounting system?<\/p>", "Answers": [{ "QuestionToAnswersId": "125", "QuestionId": "32", "DisplayText": "Auditors don\'t need to test the data. All compliance-related conditions are contained in data test programs.", "IsAnswerToQuestion": "0" }, { "QuestionToAnswersId": "126", "QuestionId": "32", "DisplayText": "Auditors don\'t need to create customized tests for each client\'s computer application.", "IsAnswerToQuestion": "0" }, { "QuestionToAnswersId": "127", "QuestionId": "32", "DisplayText": "Process data with the client\'s computer and compare the results with the auditor\'s pre-determined results.", "IsAnswerToQuestion": "1" }, { "QuestionToAnswersId": "128", "QuestionId": "32", "DisplayText": "Code data to a dummy subsidiary, so that data can be extracted from the system under actual operating conditions.", "IsAnswerToQuestion": "0" }], "CorrectAnswerIndex": 2, "Explanation": "<p>In this approach the internal controls are tested by using various types of data on the client\'s computer. <\/p>", "QuestionId": "32", "IsDeprecated": 0 }], "Summary": [{ "QuestionId": "32", "SimulationMode": "Practice", "TestSection": "AUD", "Question": "<p>Which of the following approaches is the right way for an auditor to test internal controls of a computerized accounting system?<\/p>", "QuestionsToAnswersId": "127", "Correct": "Yes", "Skipped": "No", "TimeSpentOnQuestion": "3", "SimultationDate": "2013-09-20 00:53:31" }] }, { "Metrics": [{ "QuestionId": "38", "SectionType": "AUD", "TimesCorrect": "1", "TimesIncorrect": "0", "TimesAnswered": "0", "AverageTimePerQuestion": "2", "IsActive": "1" }], "QuestionResponse": [{ "Result": 1, "Reason": "", "QuestionClientId": "AUD14S1", "QuestionTypeId": 1, "QuestionCategoryId": "1", "SectionTypeId": 0, "QuestionClientImage": "", "IsApprovedForUse": 0, "IsActive": 0, "Question": "<p>According to Statements on Standards for Accounting and Review Service (SSARS), a review engagement is performed on a non- publicly owned company\'s financial statements. Which of the following statement is correct in this scenario?<\/p>", "Answers": [{ "QuestionToAnswersId": "149", "QuestionId": "38", "DisplayText": "Accountants must establish an understanding with their client in an engagement letter.", "IsAnswerToQuestion": "0" }, { "QuestionToAnswersId": "150", "QuestionId": "38", "DisplayText": "While performing a review, accountants must obtain an understanding of the client\'s internal controls.", "IsAnswerToQuestion": "0" }, { "QuestionToAnswersId": "151", "QuestionId": "38", "DisplayText": "A review provides accountants with a basis for expressing limited assurance on the financial statements.", "IsAnswerToQuestion": "1" }, { "QuestionToAnswersId": "152", "QuestionId": "38", "DisplayText": "A review report contains accountants\' overall opinions of the financial statements.", "IsAnswerToQuestion": "0" }], "CorrectAnswerIndex": 2, "Explanation": "<p>SSARS indicates that the objective of a review is to provide a reasonable basis for expressing limited assurance. That is, no material modifications have been made to financial statements to make them conform with generally accepted accounting principles.<\/p>", "QuestionId": "38", "IsDeprecated": 0 }], "Summary": [{ "QuestionId": "38", "SimulationMode": "Practice", "TestSection": "AUD", "Question": "<p>According to Statements on Standards for Accounting and Review Service (SSARS), a review engagement is performed on a non- publicly owned company\'s financial statements. Which of the following statement is correct in this scenario?<\/p>", "QuestionsToAnswersId": "151", "Correct": "Yes", "Skipped": "No", "TimeSpentOnQuestion": "2", "SimultationDate": "2013-09-20 00:53:31" }] }, { "Metrics": [{ "QuestionId": "5", "SectionType": "AUD", "TimesCorrect": "1", "TimesIncorrect": "0", "TimesAnswered": "0", "AverageTimePerQuestion": "2", "IsActive": "1" }], "QuestionResponse": [{ "Result": 1, "Reason": "", "QuestionClientId": "AUD5S1", "QuestionTypeId": 1, "QuestionCategoryId": "1", "SectionTypeId": 0, "QuestionClientImage": "", "IsApprovedForUse": 0, "IsActive": 0, "Question": "<p>A factor that is most likely to result in a CPA declining an audit engagement is<\/p>", "Answers": [{ "QuestionToAnswersId": "17", "QuestionId": "5", "DisplayText": "The audit engagement takes place an inconvenient distance from the auditors office", "IsAnswerToQuestion": "0" }, { "QuestionToAnswersId": "18", "QuestionId": "5", "DisplayText": "Inquiry of the company\'s legal counsel is disallowed by management.", "IsAnswerToQuestion": "1" }, { "QuestionToAnswersId": "19", "QuestionId": "5", "DisplayText": "The predecessor auditor has an outstanding balance with the company for a previous engagement", "IsAnswerToQuestion": "0" }, { "QuestionToAnswersId": "20", "QuestionId": "5", "DisplayText": "The company\'s internal auditor of 15 years was hired by the company\'s primary competitor", "IsAnswerToQuestion": "0" }], "CorrectAnswerIndex": 1, "Explanation": "<p>Managements lack of permission regarding the inquiry of legal counsel is always considered a scope limitation. &nbsp;Scope limitations will often result in disclaimer and a CPA generally shouldn\'t accept an engagement if the result is likely to be a disclaimer of opinion.<\/p>", "QuestionId": "5", "IsDeprecated": 0 }], "Summary": [{ "QuestionId": "5", "SimulationMode": "Practice", "TestSection": "AUD", "Question": "<p>A factor that is most likely to result in a CPA declining an audit engagement is<\/p>", "QuestionsToAnswersId": "18", "Correct": "Yes", "Skipped": "No", "TimeSpentOnQuestion": "2", "SimultationDate": "2013-09-20 00:53:31" }] }, { "Metrics": [{ "QuestionId": "42", "SectionType": "AUD", "TimesCorrect": "1", "TimesIncorrect": "0", "TimesAnswered": "0", "AverageTimePerQuestion": "2", "IsActive": "1" }], "QuestionResponse": [{ "Result": 1, "Reason": "", "QuestionClientId": "AUD18S1", "QuestionTypeId": 1, "QuestionCategoryId": "1", "SectionTypeId": 0, "QuestionClientImage": "", "IsApprovedForUse": 0, "IsActive": 0, "Question": "<p>When sales invoices are traced to shipping documents, the invoices provide evidence that:<\/p>", "Answers": [{ "QuestionToAnswersId": "165", "QuestionId": "42", "DisplayText": "Customers were billed for the shipment.", "IsAnswerToQuestion": "0" }, { "QuestionToAnswersId": "166", "QuestionId": "42", "DisplayText": "Billed items were shipped.", "IsAnswerToQuestion": "1" }, { "QuestionToAnswersId": "167", "QuestionId": "42", "DisplayText": "Items shipped appear as debits in the subsidiary accounts receivables ledger.", "IsAnswerToQuestion": "0" }, { "QuestionToAnswersId": "168", "QuestionId": "42", "DisplayText": "Items shipped to customers were recorded as receivables.", "IsAnswerToQuestion": "0" }], "CorrectAnswerIndex": 1, "Explanation": "<p>Sales invoices will often serve as bills and by tracing them to shipping documents, the auditor will discover whether those bills are supported by shipments.<\/p>", "QuestionId": "42", "IsDeprecated": 0 }], "Summary": [{ "QuestionId": "42", "SimulationMode": "Practice", "TestSection": "AUD", "Question": "<p>When sales invoices are traced to shipping documents, the invoices provide evidence that:<\/p>", "QuestionsToAnswersId": "166", "Correct": "Yes", "Skipped": "No", "TimeSpentOnQuestion": "2", "SimultationDate": "2013-09-20 00:53:31" }] }, { "Metrics": [{ "QuestionId": "2", "SectionType": "AUD", "TimesCorrect": "1", "TimesIncorrect": "0", "TimesAnswered": "0", "AverageTimePerQuestion": "8", "IsActive": "1" }], "QuestionResponse": [{ "Result": 1, "Reason": "", "QuestionClientId": "AUD2S1", "QuestionTypeId": 1, "QuestionCategoryId": "1", "SectionTypeId": 0, "QuestionClientImage": "", "IsApprovedForUse": 0, "IsActive": 0, "Question": "<p> A CPA should make inquiries of the predecessor auditor  when he is approached to perform an audit for the first time. This is required because the predecessor may provide the successor with relevant information which  will help the successor to determine<\/p>", "Answers": [{ "QuestionToAnswersId": "5", "QuestionId": "2", "DisplayText": "if the company has been following GAAP in previous years.", "IsAnswerToQuestion": "0" }, { "QuestionToAnswersId": "6", "QuestionId": "2", "DisplayText": "if the companies internal control has been materially weak in the past", "IsAnswerToQuestion": "0" }, { "QuestionToAnswersId": "7", "QuestionId": "2", "DisplayText": "whether or not to accept the engagement.", "IsAnswerToQuestion": "1" }, { "QuestionToAnswersId": "8", "QuestionId": "2", "DisplayText": "whether the work of the internal auditors can be relied upon.", "IsAnswerToQuestion": "0" }], "CorrectAnswerIndex": 2, "Explanation": "<p>Communication between predecessor and successor is required to allow the successor more information that will help in making a determination as to whether the engagement should be accepted<\/p>", "QuestionId": "2", "IsDeprecated": 0 }], "Summary": [{ "QuestionId": "2", "SimulationMode": "Practice", "TestSection": "AUD", "Question": "<p> A CPA should make inquiries of the predecessor auditor  when he is approached to perform an audit for the first time. This is required because the predecessor may provide the successor with relevant information which  will help the successor to determine<\/p>", "QuestionsToAnswersId": "1", "Correct": "Yes", "Skipped": "No", "TimeSpentOnQuestion": "8", "SimultationDate": "2013-07-04 09:07:28" }] }, { "Metrics": [{ "QuestionId": "43", "SectionType": "AUD", "TimesCorrect": "0", "TimesIncorrect": "1", "TimesAnswered": "0", "AverageTimePerQuestion": "2", "IsActive": "1" }], "QuestionResponse": [{ "Result": 1, "Reason": "", "QuestionClientId": "AUD19S1", "QuestionTypeId": 1, "QuestionCategoryId": "1", "SectionTypeId": 0, "QuestionClientImage": "", "IsApprovedForUse": 0, "IsActive": 0, "Question": "<p>In terms of maintaining good internal controls, which of these pairs of duties are considered incompatible?<\/p>", "Answers": [{ "QuestionToAnswersId": "169", "QuestionId": "43", "DisplayText": "Posting to the general ledger and approving payroll-related additions and terminations", "IsAnswerToQuestion": "0" }, { "QuestionToAnswersId": "170", "QuestionId": "43", "DisplayText": "Maintaining receivable subsidiary ledger accounts and preparing monthly customer statements", "IsAnswerToQuestion": "0" }, { "QuestionToAnswersId": "171", "QuestionId": "43", "DisplayText": "Maintaining expense subsidiary ledgers and having custody of signed but un-mailed checks", "IsAnswerToQuestion": "0" }, { "QuestionToAnswersId": "172", "QuestionId": "43", "DisplayText": "Maintaining accounts receivable records and collecting receipts on account", "IsAnswerToQuestion": "1" }], "CorrectAnswerIndex": 3, "Explanation": "<p>Maintaining accounts receivable records and collecting receipts on account combine custody and recording of assets.<\/p>", "QuestionId": "43", "IsDeprecated": 0 }], "Summary": [{ "QuestionId": "43", "SimulationMode": "Practice", "TestSection": "AUD", "Question": "<p>In terms of maintaining good internal controls, which of these pairs of duties are considered incompatible?<\/p>", "QuestionsToAnswersId": "170", "Correct": "No", "Skipped": "No", "TimeSpentOnQuestion": "2", "SimultationDate": "2013-09-20 00:53:31" }] }, { "Metrics": [{ "QuestionId": "41", "SectionType": "AUD", "TimesCorrect": "0", "TimesIncorrect": "1", "TimesAnswered": "0", "AverageTimePerQuestion": "2", "IsActive": "1" }], "QuestionResponse": [{ "Result": 1, "Reason": "", "QuestionClientId": "AUD17S1", "QuestionTypeId": 1, "QuestionCategoryId": "1", "SectionTypeId": 0, "QuestionClientImage": "", "IsApprovedForUse": 0, "IsActive": 0, "Question": "<p>Choose the correct statement that applies to CPA records. <\/p>", "Answers": [{ "QuestionToAnswersId": "161", "QuestionId": "41", "DisplayText": "CPAs may withhold the supporting records, These records are not reflected in the client\'s records if fees for the engagement remain unpaid.(e.g., proposed adjustment entries).", "IsAnswerToQuestion": "1" }, { "QuestionToAnswersId": "162", "QuestionId": "41", "DisplayText": "CPAs may retain records prepared by their client until fees due are received (e.g., the general ledger )", "IsAnswerToQuestion": "0" }, { "QuestionToAnswersId": "163", "QuestionId": "41", "DisplayText": "Working papers of CPAs include copies of client records. This information is not available to third parties under any circumstances.", "IsAnswerToQuestion": "0" }, { "QuestionToAnswersId": "164", "QuestionId": "41", "DisplayText": "Working papers of CPAs are the joint property of the CPA and the client.", "IsAnswerToQuestion": "0" }], "CorrectAnswerIndex": 0, "Explanation": "<p>CPAs may keep supporting records that they prepare.<\/p>", "QuestionId": "41", "IsDeprecated": 0 }], "Summary": [{ "QuestionId": "41", "SimulationMode": "Practice", "TestSection": "AUD", "Question": "<p>Choose the correct statement that applies to CPA records. <\/p>", "QuestionsToAnswersId": "162", "Correct": "No", "Skipped": "No", "TimeSpentOnQuestion": "2", "SimultationDate": "2013-09-20 00:53:31" }] }, { "Metrics": [{ "QuestionId": "39", "SectionType": "AUD", "TimesCorrect": "0", "TimesIncorrect": "1", "TimesAnswered": "0", "AverageTimePerQuestion": "2", "IsActive": "1" }], "QuestionResponse": [{ "Result": 1, "Reason": "", "QuestionClientId": "AUD15S1", "QuestionTypeId": 1, "QuestionCategoryId": "1", "SectionTypeId": 0, "QuestionClientImage": "", "IsApprovedForUse": 0, "IsActive": 0, "Question": "<p>A publicly owned company wants to issue financial statements in an audit report. In this scenario, which of the following standards apply?<\/p>", "Answers": [{ "QuestionToAnswersId": "153", "QuestionId": "39", "DisplayText": "Securities and Exchange Commission", "IsAnswerToQuestion": "0" }, { "QuestionToAnswersId": "154", "QuestionId": "39", "DisplayText": "Sarbanes-Oxley", "IsAnswerToQuestion": "0" }, { "QuestionToAnswersId": "155", "QuestionId": "39", "DisplayText": "Public Company Accounting Oversight Board", "IsAnswerToQuestion": "1" }, { "QuestionToAnswersId": "156", "QuestionId": "39", "DisplayText": "Generally accepted auditing standards", "IsAnswerToQuestion": "0" }], "CorrectAnswerIndex": 2, "Explanation": "<p>In the United States, the PCAOB requires that audit reports indicate that audits are performed with PCAOB standards. <\/p>", "QuestionId": "39", "IsDeprecated": 0 }], "Summary": [{ "QuestionId": "39", "SimulationMode": "Practice", "TestSection": "AUD", "Question": "<p>A publicly owned company wants to issue financial statements in an audit report. In this scenario, which of the following standards apply?<\/p>", "QuestionsToAnswersId": "154", "Correct": "No", "Skipped": "No", "TimeSpentOnQuestion": "2", "SimultationDate": "2013-09-20 00:53:31" }] }, { "Metrics": [{ "QuestionId": "36", "SectionType": "AUD", "TimesCorrect": "0", "TimesIncorrect": "1", "TimesAnswered": "0", "AverageTimePerQuestion": "2", "IsActive": "1" }], "QuestionResponse": [{ "Result": 1, "Reason": "", "QuestionClientId": "AUD12S1", "QuestionTypeId": 1, "QuestionCategoryId": "1", "SectionTypeId": 0, "QuestionClientImage": "", "IsApprovedForUse": 0, "IsActive": 0, "Question": "<p>For a reasonable period of time, an auditor has had substantial doubt about an entity\'s ability to continue as a going concern. Of the following mitigation plans, which would the auditor most likely consider while evaluating the entity\'s plan for dealing with the future?<\/p>", "Answers": [{ "QuestionToAnswersId": "141", "QuestionId": "36", "DisplayText": "Issue stock options to key executives.", "IsAnswerToQuestion": "0" }, { "QuestionToAnswersId": "142", "QuestionId": "36", "DisplayText": "Accelerate  expenditures for research and development projects.", "IsAnswerToQuestion": "0" }, { "QuestionToAnswersId": "143", "QuestionId": "36", "DisplayText": "Operate at increased levels of production.", "IsAnswerToQuestion": "0" }, { "QuestionToAnswersId": "144", "QuestionId": "36", "DisplayText": "Extend the due dates of existing loans.", "IsAnswerToQuestion": "1" }], "CorrectAnswerIndex": 3, "Explanation": "<p>Extending due dates of existing loans might help to reduce a cash shortage<\/p>", "QuestionId": "36", "IsDeprecated": 0 }], "Summary": [{ "QuestionId": "36", "SimulationMode": "Practice", "TestSection": "AUD", "Question": "<p>For a reasonable period of time, an auditor has had substantial doubt about an entity\'s ability to continue as a going concern. Of the following mitigation plans, which would the auditor most likely consider while evaluating the entity\'s plan for dealing with the future?<\/p>", "QuestionsToAnswersId": "142", "Correct": "No", "Skipped": "No", "TimeSpentOnQuestion": "2", "SimultationDate": "2013-09-20 00:53:31" }] }, { "Metrics": [{ "QuestionId": "31", "SectionType": "AUD", "TimesCorrect": "0", "TimesIncorrect": "1", "TimesAnswered": "0", "AverageTimePerQuestion": "2", "IsActive": "1" }], "QuestionResponse": [{ "Result": 1, "Reason": "", "QuestionClientId": "AUD7S1", "QuestionTypeId": 1, "QuestionCategoryId": "1", "SectionTypeId": 0, "QuestionClientImage": "", "IsApprovedForUse": 0, "IsActive": 0, "Question": "<p>Rehmer Corporation has many customers. A file of customer records is stored on disk. Each customer record contains a name, address, credit limit and account balance.  How can auditors check whether customers have exceed their credit limits?<\/p>", "Answers": [{ "QuestionToAnswersId": "121", "QuestionId": "31", "DisplayText": "Develop a program to compare credit limits with account balances. Then, print out the details of any accounts with a balance exceeding its credit limit.", "IsAnswerToQuestion": "1" }, { "QuestionToAnswersId": "122", "QuestionId": "31", "DisplayText": "Print out a sample set of customer records so that the balances can be checked against the credit limit.", "IsAnswerToQuestion": "0" }, { "QuestionToAnswersId": "123", "QuestionId": "31", "DisplayText": "Print out all account balances so that credit balances can be checked manually against the credit limit.", "IsAnswerToQuestion": "0" }, { "QuestionToAnswersId": "124", "QuestionId": "31", "DisplayText": "Develop a test that would cause account balances to exceed the credit limit. Then, determine if the system actually detects test situations.", "IsAnswerToQuestion": "0" }], "CorrectAnswerIndex": 0, "Explanation": "<p>Actual account balances are compared with a pre-determined credit limit. The auditor can prepare a report about which balances exceed credit limits. <\/p>", "QuestionId": "31", "IsDeprecated": 0 }], "Summary": [{ "QuestionId": "31", "SimulationMode": "Practice", "TestSection": "AUD", "Question": "<p>Rehmer Corporation has many customers. A file of customer records is stored on disk. Each customer record contains a name, address, credit limit and account balance.  How can auditors check whether customers have exceed their credit limits?<\/p>", "QuestionsToAnswersId": "123", "Correct": "No", "Skipped": "No", "TimeSpentOnQuestion": "2", "SimultationDate": "2013-09-20 00:53:31" }] }, { "Metrics": [{ "QuestionId": "4", "SectionType": "AUD", "TimesCorrect": "0", "TimesIncorrect": "1", "TimesAnswered": "0", "AverageTimePerQuestion": "2", "IsActive": "1" }], "QuestionResponse": [{ "Result": 1, "Reason": "", "QuestionClientId": "AUD4S1", "QuestionTypeId": 1, "QuestionCategoryId": "1", "SectionTypeId": 0, "QuestionClientImage": "", "IsApprovedForUse": 0, "IsActive": 0, "Question": "<p>Cost accounting systems are tested during an audit to determine that<\/p>", "Answers": [{ "QuestionToAnswersId": "13", "QuestionId": "4", "DisplayText": "matching of physical inventory and book inventory exists", "IsAnswerToQuestion": "0" }, { "QuestionToAnswersId": "14", "QuestionId": "4", "DisplayText": "The calculation of inventory quantities on hand have been completed with due diligence.", "IsAnswerToQuestion": "0" }, { "QuestionToAnswersId": "15", "QuestionId": "4", "DisplayText": "GAAP has been followed regarding the implementation of the system.", "IsAnswerToQuestion": "0" }, { "QuestionToAnswersId": "16", "QuestionId": "4", "DisplayText": "The correct accounts have been affected by the progression of the product through the various stages involved in the production process.", "IsAnswerToQuestion": "1" }], "CorrectAnswerIndex": 3, "Explanation": "<p>Cost accounting systems are used for the purpose of product valuation. &nbsp;Testing the accuracy of cost accounting systems is done to assure that the costs related to creating a product are assigned correctly to the different accounts that relate to the variety of stages involved in the completion of a salable product.<\/p>", "QuestionId": "4", "IsDeprecated": 0 }], "Summary": [{ "QuestionId": "4", "SimulationMode": "Practice", "TestSection": "AUD", "Question": "<p>Cost accounting systems are tested during an audit to determine that<\/p>", "QuestionsToAnswersId": "14", "Correct": "No", "Skipped": "No", "TimeSpentOnQuestion": "2", "SimultationDate": "2013-09-20 00:53:31" }] }, { "Metrics": [{ "QuestionId": "3", "SectionType": "AUD", "TimesCorrect": "0", "TimesIncorrect": "1", "TimesAnswered": "0", "AverageTimePerQuestion": "2", "IsActive": "1" }], "QuestionResponse": [{ "Result": 1, "Reason": "", "QuestionClientId": "AUD3S1", "QuestionTypeId": 1, "QuestionCategoryId": "1", "SectionTypeId": 0, "QuestionClientImage": "", "IsApprovedForUse": 0, "IsActive": 0, "Question": "<p>In respect to an auditor\'s responsibility to report fraud, which of the following statements is true?<\/p>", "Answers": [{ "QuestionToAnswersId": "9", "QuestionId": "3", "DisplayText": "The SEC should immediately be informed of all fraud discovered which involves the company\'s senior management.", "IsAnswerToQuestion": "0" }, { "QuestionToAnswersId": "10", "QuestionId": "3", "DisplayText": "Ordinarily, regarding the discovery of fraud, the auditor is not required to inform any parties other than the audit committee and management.", "IsAnswerToQuestion": "1" }, { "QuestionToAnswersId": "11", "QuestionId": "3", "DisplayText": "Every instance of fraud discovered by the auditor should be communicated to upper management.", "IsAnswerToQuestion": "0" }, { "QuestionToAnswersId": "12", "QuestionId": "3", "DisplayText": "Both the SEC and principal stockholders should be notified by the auditor when the discovery of fraud is material and involves senior management.", "IsAnswerToQuestion": "0" }], "CorrectAnswerIndex": 1, "Explanation": "<p>The auditor is generally not required to report fraud to anyone except the audit committee and the company\'s management.<\/p>", "QuestionId": "3", "IsDeprecated": 0 }], "Summary": [{ "QuestionId": "3", "SimulationMode": "Practice", "TestSection": "AUD", "Question": "<p>In respect to an auditor\'s responsibility to report fraud, which of the following statements is true?<\/p>", "QuestionsToAnswersId": "12", "Correct": "No", "Skipped": "No", "TimeSpentOnQuestion": "2", "SimultationDate": "2013-09-20 00:53:31" }] }, { "Metrics": [{ "QuestionId": "44", "SectionType": "AUD", "TimesCorrect": "0", "TimesIncorrect": "1", "TimesAnswered": "0", "AverageTimePerQuestion": "2", "IsActive": "1" }], "QuestionResponse": [{ "Result": 1, "Reason": "", "QuestionClientId": "AUD20S1", "QuestionTypeId": 1, "QuestionCategoryId": "1", "SectionTypeId": 0, "QuestionClientImage": "", "IsApprovedForUse": 0, "IsActive": 0, "Question": "<p>Use the ratio sampling method to calculate the year-end, accounts payable, audited balance from the following data:<\/p><br><table><tbody><tr><td>Number of Accounts Population:<\/td><td>2050<\/td><\/tr><tr><td>Sample:<\/td><td>100<\/td><\/tr><tr><td>Book Balance<\/td><td>$2,500,000 <\/td><\/tr><tr><td>Audited Balance <\/td><td>$150,000<\/td><\/tr><\/tbody><\/table>", "Answers": [{ "QuestionToAnswersId": "173", "QuestionId": "44", "DisplayText": "$5,250,000", "IsAnswerToQuestion": "0" }, { "QuestionToAnswersId": "174", "QuestionId": "44", "DisplayText": "$2,562,500", "IsAnswerToQuestion": "0" }, { "QuestionToAnswersId": "175", "QuestionId": "44", "DisplayText": "$3,000,000", "IsAnswerToQuestion": "1" }, { "QuestionToAnswersId": "176", "QuestionId": "44", "DisplayText": "$75,000", "IsAnswerToQuestion": "0" }], "CorrectAnswerIndex": 2, "Explanation": "<p>The ratio method estimates the audited value by: 1.Taking the ratio of the audited value over the book value of the sample. 2. Multiplying the ratio value by the population book value. In this case, ($150,000\/$125,000) X $2,500,000 = $ 3,000,000<\/p>", "QuestionId": "44", "IsDeprecated": 0 }], "Summary": [{ "QuestionId": "44", "SimulationMode": "Practice", "TestSection": "AUD", "Question": "<p>Use the ratio sampling method to calculate the year-end, accounts payable, audited balance from the following data:<\/p><br><table><tbody><tr><td>Number of Accounts Population:<\/td><td>2050<\/td><\/tr><tr><td>Sample:<\/td><td>100<\/td><\/tr><tr><td>Book Balance<\/td><td>$2,500,000 <\/td><\/tr><tr><td>Audited Balance <\/td><td>$150,000<\/td><\/tr><\/tbody><\/table>", "QuestionsToAnswersId": "174", "Correct": "No", "Skipped": "No", "TimeSpentOnQuestion": "2", "SimultationDate": "2013-09-20 00:53:31" }] }] }';

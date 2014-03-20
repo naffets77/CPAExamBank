@@ -303,12 +303,11 @@ select{
         margin-bottom:5px;
     }
 
-#review-results {
-    margin-top: 20px;
+.my-info-question-data {
     width: 100%;
 }
 
-    #review-results tr td {
+    .my-info-question-data tr td {
         padding: 4px 20px 4px 0px;
         text-align: center;
 
@@ -322,7 +321,7 @@ select{
         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1f6f9', endColorstr='#dee3e8',GradientType=0 ); /* IE6-9 */
     }
 
-    #review-results thead tr td {
+    .my-info-question-data thead tr td {
         font-weight: bold;
         /*border-bottom: 1px solid #000;*/
 
@@ -338,19 +337,24 @@ select{
         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 ); /* IE6-9 */
     }
 
-    #review-results .my-info-question-data-row td {
+    .my-info-question-data .my-info-explanation{
+        display:block;
+        margin-top:15px;
+    }
+
+    .my-info-question-data .my-info-question-data-row td {
         padding: 0px;
     }
 
-    #review-results .my-info-question-data-row .my-info-question-data {
+    .my-info-question-data .my-info-question-data-row .my-info-question-data {
         display: none;
     }
 
-        #review-results .my-info-question-data-row .my-info-question-data p {
+        .my-info-question-data .my-info-question-data-row .my-info-question-data p {
             line-height: 22px;
         }
 
-    #review-results .my-info-question-holder {
+    .my-info-question-data .my-info-question-holder {
         text-align: left;
         padding: 20px;
         background-color: #efefef;
@@ -358,22 +362,22 @@ select{
         border-bottom: none;
     }
 
-        #review-results .my-info-question-holder .header {
+        .my-info-question-data .my-info-question-holder .header {
             margin-bottom: 10px;
             font-size: 18px;
         }
 
-        #review-results .my-info-question-holder .my-info-question-text {
+        .my-info-question-data .my-info-question-holder .my-info-question-text {
             font-size: 16px;
             color: #000;
             margin-bottom: 15px;
         }
 
-        #review-results .my-info-question-holder .my-info-explanation-text {
+        .my-info-question-data .my-info-question-holder .my-info-explanation-text {
             margin-top: 15px;
         }
 
-        #review-results .my-info-question-holder .my-info-question-answers li {
+        .my-info-question-data .my-info-question-holder .my-info-question-answers li {
             padding-left: 30px;
             padding-bottom: 10px;
             margin-bottom: 10px;
@@ -381,7 +385,7 @@ select{
             list-style-position: inside;
         }
 
-            #review-results .my-info-question-holder .my-info-question-answers li.correct {
+            .my-info-question-data .my-info-question-holder .my-info-question-answers li.correct {
                 background-image: url('/Content/Images/Account/green-arrow.png');
                 background-repeat: no-repeat;
                 background-size: 18px;
@@ -389,31 +393,31 @@ select{
                 font-weight: bold;
             }
 
-    #review-results .my-info-question-history {
+    .my-info-question-data .my-info-question-history {
         padding: 20px;
         background-color: #efefef;
         border: 1px solid #ddd;
         border-top: none;
     }
 
-        #review-results .my-info-question-history .my-info-question-history-header {
+        .my-info-question-data .my-info-question-history .my-info-question-history-header {
             text-align: left;
             font-weight: bold;
             margin-bottom: 5px;
             font-size: 18px;
         }
 
-        #review-results .my-info-question-history table {
-            width: 872px;
+        .my-info-question-data .my-info-question-history table {
+            width: 100%;
             margin: 15px 0px 10px;
         }
 
-            #review-results .my-info-question-history table thead td {
+            .my-info-question-data .my-info-question-history table thead td {
                 font-weight: normal;
                 padding:10px 0px;
             }
 
-            #review-results .my-info-question-history table tbody td {
+            .my-info-question-data .my-info-question-history table tbody td {
                 padding: 10px 0px;
             }
 
@@ -812,3 +816,12 @@ select{
 
 
 
+
+
+/* KENDO GRID STYLES */
+
+#kg-review-table tbody tr:hover {
+    background: #21465D;
+    cursor:pointer;
+    color:#fff;
+}

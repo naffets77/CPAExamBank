@@ -251,123 +251,47 @@
 
 <div id="js-content-wrapper-my-review" class="js-content-wrapper hidden">
 
-
     <div class="content-wrapper">
         <h2 style="margin-left:0px;">View Questions</h2>
 
-        <table id="review-options">
-            <tr>
-                <td>
-                    Section
-                    <select id="my-review-section-type">
-                        <option value="5">All</option>
-                        <option value="2">AUD</option>
-                        <option value="1">FAR</option>
-                        <option value="3">BEC</option>
-                        <option value="4">REG</option>
-                    </select>
-                </td>
-                <td>
-                    Result
-                    <select id="my-review-result-type">
-                        <option value="4">Both</option>
-                        <option value="2">Incorrect</option>
-                        <option value="1">Correct</option>
-                    </select>
-                </td>
-                <td>
-                    Order By
-                    <select id="my-review-order-by">
-                        <option value="1">Correct</option>
-                        <option value="2">Incorrect</option>
-                        <option value="3">Section</option>
-                        <option value="4">Question Id</option>
-                        <option value="5">Avg. Time Spent</option>
-                    </select>
-                </td>
-                <td>
-                    <button id="my-review-view-history" class="btn-orange btn-medium">View History</button>
-                </td>
-            </tr>
-        </table>
+        <p>
+            Click the quesiton for more information. Analyze your questions and find out areas that you need to work on. 
+        </p>
 
-        <div id="review-messages">
+        <div id="kg-review-table"></div>
 
-            <div id="review-messages-start" class="review-messages-content">
-                <p>
-                    Use the options above to view the the questions you've taken.
-                </p>
+        <div id="js-overlay-quesiton-history" style="display:none;">
+            <div class='my-info-question-data' style="visibility:hidden; min-height:500px;">
 
-                <h3>You can sort them by</h3>
+                <div class='my-info-question-holder'>
 
-                <ul>
-                    <li>Section</li>
-                    <li>Result: Correct or Incorrect</li>
-                </ul>
+                    <div class='header bold'>Question</div>
+                    <div class='my-info-question-text'>  options.questions  </div>
+                    <ol class='my-info-question-answers'>  options.answers  </ol>
+                    <p class='my-info-explanation-text'>
 
-                <h3>You can order the results by</h3>
+                        <span class='bold'>Explanation:</span><br /><span class='my-info-explanation'>  options.explanation  </span>
 
-                <ul>
-                    <li>Times Correct (Default)</li>
-                    <li>Times Incorrect</li>
-                    <li>Section</li>
-                    <li>Question Id</li>
-                    <li>Average Time Spent</li>
-                </ul>
+                    </p>
 
-                <p>
-                    After you get your results you can click on a row to view that question,
-                    see it's answers, and it's explanation. There will also be a history of everytime
-                    you attempted to answer the question.
-                </p>
+                </div>
+                <div class='my-info-question-history'>
 
-
+                    <div class='my-info-question-history-header'>Your Summary</div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>Correct</td>
+                                <td>Seconds Taken</td>
+                                <td>Mode</td>
+                                <td>Date</td>
+                            </tr>
+                        </thead>
+                        <tbody class="my-info-history">  options.history  </tbody>
+                    </table>
+                </div>
             </div>
-
-            <div id="review-messages-no-results" style="display:none;" class="review-messages-content">
-                Loading Question History...
-            </div>
-
         </div>
-
-        <table id="review-results" style="display:none">
-            <thead>
-                <tr>
-                    <td>
-                        Question ID
-                    </td>
-                    <td>
-                        Section
-                    </td>
-                    <td>
-                        Times Correct
-                    </td>
-                    <td>
-                        Times Incorrect
-                    </td>
-                    <td>
-                        Avg. Time Spent
-                    </td>
-                    <td>
-                        Active
-                    </td>
-                    <td></td>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
-
-        <div id="review-stats-results" style="display:none">
-
-            <div class="title">Statistic One</div>
-            <div class="data open">Statistic One Data</div>
-            <div class="title">Statistic Two</div>
-            <div class="data">Statistic Two Data</div>
-            <div class="title">Statistic Three</div>
-            <div class="data">Statistic Three Data</div>
-
-        </div>
-
     </div>
 </div>
 

@@ -646,7 +646,7 @@ $.COR.ShowRegPopup = function (successCallback) {
 
 $(document).ready(function () {
 
-    $.COR.init(siteOptions);
+   
 
     if ($.COR.Utilities.getURLParameter("offline") != null) {
         $.COR.account.offline = true;
@@ -660,6 +660,10 @@ $(document).ready(function () {
         // Set default promo code
         $.COR.defaultPromotion = $.COR.Utilities.getURLParameter("promo");
     }
+
+
+    $.COR.init(siteOptions);
+
 
     $.CPAEB.init();
     $.CPAEB.hookupGoogleAnalyticsEventWatcher();
