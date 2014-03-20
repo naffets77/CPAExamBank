@@ -43,7 +43,6 @@ $.COR.account.setup = function (data, successCallback) {
         self.setUserData(data);
         self.setupEvents();
         self.initUser();
-        self.initReviewGrid();
 
         $("#contact-us-email").val(self.user.LoginName);
 
