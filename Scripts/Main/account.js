@@ -539,7 +539,7 @@ $.COR.account.setupEvents = function () {
             },
             success: function (data) {
                 $(thisElement).removeClass("disabled");
-                self.BuildQuestionHistory(data.QuestionHistoryReturns);
+                self.BuildQuestionHistory(data);
 
                 setTimeout(function () {
                     $("#review-messages-no-results").hide();

@@ -14,7 +14,7 @@ window.onfocus = function () { window.blurred = false; };
 
 
 var siteOptions = {
-    defaultPromotion: "CPA75OFF",
+    defaultPromotion: null, //"CPA75OFF",
     loginCallback: function () {
 
         $.CPAEB.hideLoginUI();
