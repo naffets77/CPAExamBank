@@ -1113,7 +1113,7 @@ $.COR.account.ShowQuestionHistory = function (QuestionId) {
         options.history += "<tr>" +
                                         //"<td>" + questionIndex + "</td>"+
                                         "<td>" + summary.Correct + "</td>" +
-                                        "<td>" + summary.TimeSpentOnQuestion + "</td>" +
+                                        "<td>" + summary.TimeSpentOnQuestion + " s</td>" +
                                         "<td>" + summary.SimulationMode + "</td>" +
                                         "<td>" + summary.SimultationDate + "</td>" +
                                     "</tr>";
