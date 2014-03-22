@@ -916,7 +916,8 @@ $.COR.account.initReviewGrid = function (data) {
             {
                 field: "AvgTimeSpent",
                 title: "Avg. Time Spent",
-                width: 110
+                template:"#: AvgTimeSpent # seconds",
+                width: 130
             }]
     });
 
