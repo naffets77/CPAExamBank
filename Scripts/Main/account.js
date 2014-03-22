@@ -865,6 +865,7 @@ $.COR.account.initReviewGrid = function (data) {
             schema: {
                 model: {
                     fields: {
+                        QuestionId: {type:"number"},
                         Section: { type: "string" },
                         Correct: { type: "number" },
                         Incorrect: { type: "number" },
