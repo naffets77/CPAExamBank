@@ -364,17 +364,15 @@ z-index: 100;
         }
 
 #header-login-container {
-    float: right;
-    margin-top: 0px;
-    font-size: 12px;
-    margin-bottom: 10px;
-    margin-right: 6px;
+    width: 500px;
+    margin: 0px auto;
+    margin-top:50px;
 }
 
 #invalid-account-message {
     position: absolute;
     margin-left: -130px;
-    margin-top: 12px;
+    margin-top: 43px;
     height: 30px;
     width: 73px;
     padding: 10px 15px 15px;
@@ -391,12 +389,14 @@ z-index: 100;
     #header-login-container table tr td {
         vertical-align: top;
         padding-right: 10px;
+        padding-bottom:20px;
     }
 
 #header-login-container input {
-    width: 150px;
+    width: 350px;
     color: #999;
-    padding: 2px 0 2px 4px;
+    font-size:22px;
+    padding: 6px 8px 4px 8px;
 }
 
 #header-logout-container {

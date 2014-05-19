@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta name="description" content="CPAExambank.com provides questions for you to practice and pass the CPA Exam. Register now and access 100 free questions." />
+    <meta name="keywords" content="CPA Exam Bank, CPA Test Questions, CPA Questions, CPA Exam, CPA Practice Questions, CPA Test Bank" />
+
+    <title>CPA Exam Bank - CPA Exam Questions</title>
+
+
+    <!-- http://refresh-sf.com/yui/ -->
+
+    <link href="Content/CSS/global.css" rel="stylesheet" />
+    <link href="Content/CSS/jquery.powertip.css" rel="stylesheet" />
+
+    <link href="Content/CSS/buttons.css" rel="stylesheet" />
+    <link href="Content/CSS/home.css" rel="stylesheet" />
+    <link href="Content/CSS/account.css" rel="stylesheet" />
+    <link href="Scripts/Kendo/kendo.common.min.css" rel="stylesheet" />
+    <link href="Scripts/Kendo/kendo.default.min.css" rel="stylesheet" />
+
+    <!-- Only include if using a new style, otherwise put used styles into home.css -->
+    <!--<link href="Content/CSS/fancyInputs.css" rel="stylesheet" />-->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/headjs/0.99/head.load.min.js" type="text/javascript"></script>
+
+    <link rel="icon" type="image/png" href="favicon.png">
+
+</head>
+<body>
+
+    <div id="full-screen-overlay" class="hidden">
+    </div>
+
+
+
+    <div id="full-screen-container" class="hidden">
+        <div class="content"></div>
+    </div>
+
+    <div id="header-wrapper" class="shadow">
+
+        <div id="header">
+            <!--<div id="header-logo">CPA<span class="highlight">ExamBank</span>.com</div>-->
+            <img id="header-logo" src="/Content/Images/Shared/Logos/Logo4.png" />
+            <div id="header-login-container">
+                <div id="invalid-account-message" class="arrow_box">Invalid Account</div>
+                <table>
+                    <tr>
+                        <td>
+                            <input type="text" id='home-login-username' value="Email" />
+                        </td>
+                        <td>
+                            <input type="text" id='home-login-password' value="Password" />
+                        </td>
+                        <td>
+                            <button id='login' class="btn-orange" style="margin-top: 1px">Login</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="padding-top: 4px;"><a href="#reset-password" id='home-forgot-login'>Forgot Password/Email?</a></td>
+                    </tr>
+                </table>
+            </div>
+            <div id="header-logout-container">
+                Logout
+            </div>
+
+            <ul class="header-navigation" id="header-navigation">
+                <li id="header-navigation_" class="current first"><a href='#'>Home</a></li>
+                <li id="header-navigation_product-pricing"><a href='#product-pricing'>Product Pricing</a></li>
+                <li id="header-navigation_faqs"><a href='#faqs/cpa-exam-structure'>FAQs</a></li>
+                <li id="header-navigation_about"><a href='#about'>About</a></li>
+                <li id="header-navigation_contact" class="last"><a href='#contact'>Contact</a></li>
+            </ul>
+
+            <ul class="header-navigation hidden" id="header-navigation-account">
+                <li id="header-navigation-account_study" class="first"><a href='#account/study'>Study</a></li>
+                <li id="header-navigation-account_my-review"><a href='#account/my-review'>Review</a></li>
+                <li id="header-navigation-account_accountfaqs"><a href='#account/accountfaqs/cpa-exam-structure'>FAQs</a></li>
+                <li id="header-navigation-account_contact" class="last"><a href='#account/contact'>Contact</a></li>
+                <li id="header-navigation-account_my-info"><a href='#account/my-info'>Account</a></li>
+            </ul>
+
+        </div>
+
+    </div>
+
+    <div id="wrapper">
+
+        <div id="promotion-holder">
+            <div id="promotion-coupon" class="promotion-message" style="display:none;">
+                <h2 style="margin-top:0px; text-align:center;">Promotion: All Sections <span class="promotion-amount">25</span>% Off</h2>
+            </div>
+
+            <div id="promotion-validation" class="promotion-message" style="display:none;">
+                <h2 style="margin-top:0px; text-align:center;">
+                    Validating Promotion Code : <span class="promotion-code"></span>
+                    <img class="loader" style="height:35px; margin-left:10px;" src="Content/Images/Shared/ajax-loader-medium.gif" />
+                </h2>
+            </div>
+            <div id="promotion-bottom-shadow">
+                <img src="Content/Images/Shared/topShadow.png" />
+            </div>
+        </div>
+
+        <div id="body">
+
+
+
+            <div id="ServerErrorHandler" class="shadow-centered">
+                <h2>There was an error trying to make your request.</h2>
+                <p>
+                    Please refresh the page and try again. If you are seeing this message and you have verified your internet
+                    connection is valid then please <span class="link" style="color: #000;">contact us</span>.
+                </p>
+            </div>
+
+            <!-- Home Page -->
+            <div id="js-content-wrapper-splash" class="js-content-wrapper hidden">
+
+
+
+                <div id="home-row-2">
+                    <div class="slides-js-wrap col-width" style="display: block;">
+                        <div id="slides">
+
+                            <div class="slides_container" style="position: relative; display: block;">
+                                <div class="slides_control" style="position: relative; height: 400px; left: -990px;">
+
+                                    <div id="slide1" class="slide register-sign-up">
+                                        <img src="Content/Images/Home/Slider/ss2.jpg" width="920" height="400" title="" alt="">
+                                    </div>
+                                    <div id="slide2" class="slide current register-sign-up">
+                                        <img src="Content/Images/Home/Slider/ss1.jpg" width="920" height="400" title="" alt="">
+                                    </div>
+                                    <div id="slide3" class="slide register-sign-up">
+                                        <img src="Content/Images/Home/Slider/ss3.jpg" width="920" height="400" title="" alt="">
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <span class="prev">Arrow Prev</span>
+                            <span class="next">Arrow Next</span>
+                            <ul class="pagination">
+                                <li class=""><span>1</span></li>
+                                <li class="current">
+                                    <span>2</span>
+                                </li>
+                                <li class=""><span>3</span></li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="register-row shadow">
+                    <h2 style="margin:0px auto 50px; font-size:32px;">Sign up for 100 free questions, No credit card required</h2>
+                    <input type="text" class="watermark registration-email" value="email" originalvalue="email" />
+                    <input type="text" class="watermark registration-password" value="password" originalvalue="password" />
+                    <div class="btn-large btn-orange button sign-up shadow">Start Practicing</div>
+                </div>
+
+                <div style="float:left; margin:20px 0px; width:100%; text-align:center;">
+                    <img id="launch-video-tour" src="Content/Images/Home/videotour.png" />
+                </div>
+
+                <div id="home-row-1">
+
+                    <div class="content-wrapper">
+
+
+                        <h1>Study Effectively With CPAExamBank.com</h1>
+
+                        <ul style="display:none;">
+                            <li>Can't beat the price, most affordable practice questions available.</li>
+                            <li>Convenient month-to-month subscriptions. Cancel at any time.</li>
+                            <li>A la carte CPA Exam sections, only pay for what you need to study.</li>
+                            <li>Use our exam simulator. Study with the same interface as you'll be using to take the exam.</li>
+                            <li>Intelligent Question algorithm for optimized studying.</li>
+                            <li style="font-weight:bold;"><a href='/#product-pricing'>Select the sections you're interested in and register for free.</a></li>
+                        </ul>
+
+                        <p>
+                            By registering with CPAExamBank.com you are gaining access to an invaluable study tool specifically designed by accountants to test candidates on the Content and Skill Specifications for the Uniform CPA Examination.  Over 84 accounting topics are tested and explained through our expansive test bank of multiple-choice questions, answers, and explanations.
+                        </p>
+
+                        <p>
+                            CPAExamBank.com allows candidates to replicate the experience of sitting for the exam prior to test day and employs a proprietary algorithm called “<span style="text-decoration:underline">Success Metrics</span>”.   Designed to zero-in on a candidates areas of weakness Success Metrics provide targeted feedback to strengthen understanding of accounting concepts.
+                            <br /><br />
+                            <span class="link register-sign-up" style="font-weight:bold;">&gt;&gt; Register now and start studying with 100 FREE Questions</span>
+                        </p>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <!-- FAQs page -->
+
+            <div id="js-content-wrapper-faqs" class="js-content-wrapper hidden">
+                <div class="content-wrapper">
+                    <h2 style="margin-left:0px;">FAQs</h2>
+
+                    <div class="faq-holder">
+                        <div class="col1">
+                            <ul class="nav">
+                                <li class="section">
+                                    <h2>About The CPA Exam</h2>
+                                    <ul>
+                                        <li><a href="#faqs/cpa-exam-structure">CPA Exam Structure</a></li>
+                                        <li><a href="#faqs/cpa-exam-question-types">CPA Question Types and Sections</a></li>
+                                        <!--<li><a href="#faqs/cpa-exam-question-types">Question Types</a></li>-->
+                                        <li><a href="#faqs/cpa-exam-question-scoring">CPA Exam Scoring</a></li>
+                                        <!--<li><a href="#faqs/cpa-exam-question-scoring">Question Scoring</a></li>-->
+                                        <!--<li><a href="#faqs/cpa-exam-time-allocation">How long does a subscription last, what is the minimum amount of time I can subscribe?</a></li>-->
+                                        <li><a href="#faqs/cpa-exam-administration">CPA Exam Administration</a></li>
+                                    </ul>
+                                </li>
+                                <li class="section">
+                                    <!--<h2>What Is CPAExamBank.com?</h2>-->
+                                    <h2>CPAExamBank.com?</h2>
+                                    <ul>
+                                        <!--<li><a href="#faqs/cpa-exam-question-bank">Question Bank</a></li>-->
+                                        <li><a href="#faqs/cpa-exam-bank-what">What is The CPA Exam Bank?</a></li>
+                                        <li><a href="#faqs/cpa-exam-bank-who">Who is the CPA Exam Bank for?</a></li>
+                                        <li><a href="#faqs/cpa-exam-bank-charge">Am I charged when I register, can I see what you offer without providing my credit card information?</a></li>
+                                        <li><a href="#faqs/cpa-exam-bank-free-questions">Are there any free questions?</a></li>
+                                        <li><a href="#faqs/cpa-exam-bank-question-source">Where do you get your questions from?  Are the questions the same as the ones on the CPA Exam?</a></li>
+                                        <li><a href="#faqs/cpa-exam-bank-pass-exam">Will I pass the exam using these questions to study with?</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col2">
+
+                            <div id="faqs-default" class="faqs-question">
+                                <h2>First FAQ Quesiton - Only shows when you first show up...</h2>
+                                <p>
+                                    AUD: 4 hours
+                                    Format: 3 multiple choice testlets and 7 short task-based simulation questions
+
+                                    BEC - 3 hours
+                                    Format:  3 multiple choice testlets and 3 written simulations
+
+                                    FAR - 4 hours
+                                    Format:  3 multiple choice testlets and 7 short task-based simulations
+
+                                    REG - 3 hours
+                                    Format: 3 multiple choice testlets and 6 short task-based simulations
+                                </p>
+                            </div>
+
+                            <!-- About the CPA Exam -->
+                            <div id="faqs_cpa-exam-structure" class="faqs-content hidden">
+
+                                <h2>CPA Exam Structure</h2>
+
+                                <p>
+                                    How is the CPA Exam structured?
+                                </p>
+
+                                <p>
+                                    The CPA exam consists of four sections:
+                                </p>
+
+                                <ul>
+                                    <li>Auditing and Attestation ( AUD )</li>
+                                    <li>Business Environment and Concepts ( BEC)</li>
+                                    <li>Financial Accounting and Reporting ( FAR )</li>
+                                    <li>Regulation ( REG )</li>
+                                </ul>
+
+                                <p>
+                                    The main content areas covered in each section are:
+                                </p>
+
+                                <p style="font-weight:bold">Auditing and Attestation (AUD)</p>
+                                <ol style="margin-left:20px;">
+                                    <li>Planning the engagement</li>
+                                    <li>Internal controls</li>
+                                    <li>Obtain and document information</li>
+                                    <li>Review engagement and evaluate information</li>
+                                    <li>Prepare communications</li>
+                                </ol>
+
+                                <p style="font-weight:bold">Business Environment and Concepts (BEC)</p>
+                                <ol style="margin-left:20px;">
+                                    <li>Business structure</li>
+                                    <li>Economic concepts</li>
+                                    <li>Financial management</li>
+                                    <li>Information technology</li>
+                                    <li>Planning and measurement</li>
+                                </ol>
+
+                                <p style="font-weight:bold">Financial Accounting and Reporting (FAR)</p>
+                                <ol style="margin-left:20px;">
+                                    <li>Concepts and standards for financial statements</li>
+                                    <li>Typical items in financial statements</li>
+                                    <li>Specific types of transactions and events</li>
+                                    <li>Accounting and reporting for governmental entities</li>
+                                    <li>Accounting and reporting for nongovernmental and not-for-profit organizations</li>
+                                </ol>
+
+                                <p style="font-weight:bold">Regulation (REG)</p>
+                                <ol style="margin-left:20px;">
+                                    <li>Ethics and professional responsibility</li>
+                                    <li>Business law</li>
+                                    <li>Federal tax procedures and accounting issues</li>
+                                    <li>Federal taxation of property transactions</li>
+                                    <li>Federal taxation - individuals</li>
+                                    <li>Federal taxation - entities</li>
+                                </ol>
+
+                            </div>
+
+                            <div id="faqs_cpa-exam-question-types" class="faqs-content hidden">
+                                <h2>CPA Question Types and Sections</h2>
+                                <p>
+                                    What types of questions will I encounter on the CPA Exam?
+                                </p>
+
+                                <p>
+                                    In Auditing and Attestation (AUD), Financial Accounting and Reporting (FAR), and Regulation (REG), multiple-choice
+                                    questions account for 60%  and task-based simulations for 40% of the score.  In Business Environment and Concepts (BEC),
+                                    multiple-choice questions account for 85% and written communication tasks account for 15% of the score.
+                                </p>
+                            </div>
+
+                            <div id="faqs_cpa-exam-question-scoring" class="faqs-content hidden">
+                                <h2>CPA Exam Scoring</h2>
+                                <p>
+                                    How is the CPA Exam scored?
+                                </p>
+                                <p>
+                                    The passing score is 75 on a 0-99 scale.  The scale of 0-99 does not represent "percent correct." A score of 75 indicates
+                                    Examination performance reflecting a level of knowledge and skills that is sufficient for the protection of the public.
+                                </p>
+                                <p>
+                                    The passing score is determined by the AICPA Board of Examiners (BOE). Like most other significant BOE decisions, the
+                                    passing score decision is supported by a strong collaborative effort among the Examination partners.  The standard-setting
+                                    process followed for the computer-based test (CBT) was rigorous, and performed with input from the National Association of
+                                    State Boards of Accountancy (NASBA), state boards of accountancy, and several consultant psychometricians.
+                                </p>
+                                <p>
+                                    In setting the passing score, the BOE considered many factors, including standard-setting study results, historical trends,
+                                    any changes in CPA Examination content, and input from the academic community and the profession.  The passing score is
+                                    the basis of the pass or fail decision recommended to boards of accountancy on the advisory score report.
+                                </p>
+                                <p>
+                                    Scoring is fully automated for all Examination components except for the written communication tasks. Some written
+                                    communication responses are scored by a network of readers (CPAs), while others are scored using an automated process. All
+                                    scoring routines - whether automated or not - are verified at various stages of the scoring process.
+                                </p>
+                                <p>
+                                    The CPA Examination is NOT curved.  Every candidates score is entirely independent of other candidates Examination results.
+                                </p>
+                                <p>
+                                    The CPA Examination is a criterion-referenced examination which means that it rests upon pre-determined standards.  Every
+                                    candidates performance is measured against established standards to determine whether the candidate has demonstrated the
+                                    level of knowledge and skills that is represented by the passing score.  Every candidate is judged against the same standards,
+                                    and every score is an independent result.
+                                </p>
+                                <p>
+                                    The AICPA uses Item Response Theory (IRT) for the objective portion of the Examination. IRT is a well-established psychometric
+                                    approach to scoring used by licensing and certification examinations that administer many different test forms. IRT scoring
+                                    ensures that scores and pass or fail decisions based on scores from different Examination forms are comparable. Based on the
+                                    large amounts of data that are collected in pretesting, the difficulty level as well as other statistical characteristics of
+                                    Examination questions are known and taken into account in scoring.
+                                </p>
+                            </div>
+
+                            <div id="faqs_cpa-exam-administration" class="faqs-content hidden">
+                                <h2>CPA Exam Administration</h2>
+                                <p>
+                                    How is the CPA Exam administered?
+                                </p>
+                                <p>
+                                    The examination is administered at Prometric test centers in 54 U.S. jurisdictions, which include the 50 states, the District
+                                    of Columbia, Puerto Rico, Guam and the U.S. Virgin Islands.
+                                </p>
+                            </div>
+
+                            <!--<div id="faqs_cpa-exam-time-allocation" class="faqs-content hidden">
+                                <h2>How long does a subscription last, what is the minimum amount of time I can subscribe?</h2>
+                                <p>
+                                    Each section is taken at a time.
+                                </p>
+                                <p>
+                                    <table>
+                                        <tr><span class='bold'>AUD</span><td></td></tr>
+                                        <tr><td>Time:</td><td>4 hours</td></tr>
+                                        <tr><td>Format:</td><td>3 multiple choice testlets and 7 short task-based simulation questions </td></tr>
+                                    </table>
+                                </p>
+                                <p>
+                                    <table>
+                                        <tr><td><span class='bold'>BEC</span></td></tr>
+                                        <tr><td>Time:</td><td>3 hours</td></tr>
+                                        <tr><td>Format:</td><td>3 multiple choice testlets and 3 written simulations </td></tr>
+                                    </table>
+                                </p>
+                                <p>
+                                    <table>
+                                        <tr><td><span class='bold'>FAR</span></td></tr>
+                                        <tr><td>Time:</td><td>4 hours</td></tr>
+                                        <tr><td>Format:</td><td>3 multiple choice testlets and 7 short task-based simulations</td></tr>
+                                    </table>
+                                </p>
+                                <p>
+                                    <table>
+                                        <tr><td><span class='bold'>REG</span></td></tr>
+                                        <tr><td>Time:</td><td>3 hours</td></tr>
+                                        <tr><td>Format:</td><td>3 multiple choice testlets and 6 short task-based simulations </td></tr>
+                                    </table>
+                                </p>
+                            </div>-->
+                            <!-- CPAExamBank.com -->
+                            <div id="faqs_cpa-exam-bank-what" class="faqs-content hidden">
+                                <h2>What is The CPA Exam Bank?</h2>
+                                <p>
+                                    The CPA Exam Bank is an online exam simulator that gives students access to questions, solutions, and explanations covering every
+                                    topic tested on the Uniform CPA Exam.  The CPA Exam Bank will continually challenge your understanding of critical exam related
+                                    subject matter.  Study online, from any computer, for as little or as long as you want.  Utilize our "Success Metrics"  to build
+                                    your confidence and ensure that you are prepared come exam day.  The CPA Exam Bank can be used to supplement your current review
+                                    course or as a stand alone tool for refreshing your understanding of all CPA Exam topics.
+                                </p>
+                            </div>
+
+                            <div id="faqs_cpa-exam-bank-who" class="faqs-content hidden">
+                                <h2>Who is the CPA Exam Bank for?</h2>
+                                <p>
+                                    The CPA Exam Bank is for anyone who wants to pass the CPA Exam.  Use the online exam simulator to supplement your current CPA exam
+                                    prep course or as a stand alone method of accumulating the knowledge you need to achieve your goal of passing the CPA Exam!
+                                </p>
+                            </div>
+
+                            <div id="faqs_cpa-exam-bank-charge" class="faqs-content hidden">
+                                <h2>Am I charged when I register, can I see what you offer without providing my credit card information?</h2>
+                                <p>
+                                    Registering with the CPA Exam Bank is FREE and will give you access to! You will never be charged until you choose a
+                                    subscription and accept our payment terms. If you do decide to subscribe you can cancel at any time!
+                                </p>
+                            </div>
+
+                            <div id="faqs_cpa-exam-bank-free-questions" class="faqs-content hidden">
+                                <h2>Are there any free questions?</h2>
+                                <p>
+                                    Registering with CPA Exam Bank is FREE and will give you access to!
+                                </p>
+                            </div>
+
+                            <div id="faqs_cpa-exam-bank-question-source" class="faqs-content hidden">
+                                <h2>Where do you get your questions from?  Are the questions the same as the ones on the CPA Exam?</h2>
+                                <p>
+                                    The CPA Exam Bank uses questions structured after actual CPA Exam questions.  Our team of accounting experts has a combined total
+                                    of over 100 years of accounting experience.  Each question is crafted with the specific intent of testing a students understanding of
+                                    relevant CPA Exam topics as specified by the AICPA.  Build the confidence you need to pass the exam and save money by not sitting
+                                    for the exam until our proprietary "Success Metrics"  show that you're ready for test day!
+                                </p>
+                            </div>
+
+                            <div id="faqs_cpa-exam-bank-pass-exam" class="faqs-content hidden">
+                                <h2>Will I pass the exam using these questions to study with?</h2>
+                                <p>
+                                    The CPA Exam is a test of persistence.  Your success will be based on how prepared and confident you are with exam topics and the test
+                                    environment. Let the CPA Exam Banks "Success Metrics" motivate you to continually expand your knowledge base and  see for yourself
+                                    why so many candidates have utilized the CPA Exam Bank to pass the exam.
+                                </p>
+                            </div>
+                            <!--
+                            <div id="faqs_cpa-exam-question-bank" class="faqs-content hidden">
+                                <h2>CPA Exam Question Bank</h2>
+                                <p>
+                                    The CPA Exam Bank is your opportunity to build and refine the necessary skills required to achieve your highest score on the exam.
+                                    When you register with the CPA Exam Bank you will encounter thousands of questions that will continually challenge your understanding of critical topics,
+                                    formulas and comprehensive analytical skills.  Let us be the foundation of your success while saving money!
+                                </p>
+                            </div>
+                            -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- pricing page -->
+            <div id="js-content-wrapper-product-pricing" class="js-content-wrapper hidden">
+
+                <div class="content-wrapper">
+                    <h2 style="margin-left:0px;">Product Pricing</h2>
+
+
+                    <p>
+                        Use the CPA Exam Bank to hone your skills and effectively strengthen your overall score.  Flexible subscription options allow you to only pay for the section you're currently studying for. Once you select a section, click the sign up button to begin practicing.
+                    </p>
+
+                    <p style="margin-bottom:0px;">
+                        <span class='bold'>Select what sections you want to study and try out our system for free!</span>
+                    </p>
+
+
+                    <div id="pricing-holder" class="shadow">
+                        <div class="col1">
+                            <div class="pricing-row row1">
+                                <div class="pricing-price">$20</div>
+                                <div class="pricing-product-name">Financial Accounting and Reporting</div>
+                            </div>
+                            <div class="pricing-row row2">
+                                <div class="pricing-price">$20</div>
+                                <div class="pricing-product-name">Auditing and Attestation</div>
+                            </div>
+                            <div class="pricing-row row3">
+                                <div class="pricing-price">$20</div>
+                                <div class="pricing-product-name">Business Environment and Concepts</div>
+                            </div>
+                            <div class="pricing-row row4">
+                                <div class="pricing-price">$20</div>
+                                <div class="pricing-product-name">Regulation and Taxation</div>
+                            </div>
+                        </div>
+                        <div class="col2">
+                            <ol>
+                                <li>Simulated Prometric Exam Environment</li>
+                                <li>Historical performance overview</li>
+                                <li>Targeted Feedback</li>
+                                <li>Study from any Computer with Internet Access</li>
+                                <li>New Content Added Every Quarter</li>
+                                <li>Over 84 accounting topics tested</li>
+                                <li>Unlimited Test Bank Access During Subscription Period</li>
+                                <li>Flexible Subscription Options</li>
+                                <li>Supplement your Existing Review Course</li>
+                            </ol>
+
+
+                        </div>
+                        <div class="col3">
+                            <div class="pricing-row row1">
+                                <div class="squaredTwo">
+                                    <input type="checkbox" value="None" id="pricing-row1-check" name="check" />
+                                    <label for="pricing-row1-check"></label>
+                                </div>
+                            </div>
+                            <div class="pricing-row row2">
+                                <div class="squaredTwo">
+                                    <input type="checkbox" value="None" id="pricing-row2-check" name="check" />
+                                    <label for="pricing-row2-check"></label>
+                                </div>
+                            </div>
+                            <div class="pricing-row row3">
+                                <div class="squaredTwo">
+                                    <input type="checkbox" value="None" id="pricing-row3-check" name="check" />
+                                    <label for="pricing-row3-check"></label>
+                                </div>
+                            </div>
+                            <div class="pricing-row row4">
+                                <div class="squaredTwo">
+                                    <input type="checkbox" value="None" id="pricing-row4-check" name="check" />
+                                    <label for="pricing-row4-check"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <button id="pricing-sign-up" class="btn-orange btn-large shadow register-sign-up">
+                        Sign Up
+                    </button>
+                    <div id="pricing-total">$<span class='amount'>0</span> / Month</div>
+
+
+                    <p style="margin-bottom:0px; clear:both; margin-top:20px; float:left;">
+                        <span class='bold'>Our system provides the easiest way for you to get the practice you need.</span>
+                    </p>
+                    <div id="pricing-sign-up-more-info">
+                        <table style="margin:20px 0px 20px;">
+                            <tr>
+                                <td>Customized Test Simulator:</td>
+                                <td>
+                                    The 2014 version features the opportunity to select the section, and number of practice questions for each session. Take control of your progression and don't waste time reviewing what you already know
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Performance analysis:</td>
+                                <td>
+                                    Review your strengths and weaknesses with the Performance analysis overview capability. See which sections you improved in and pinpoint where you need to allocate more practice time. The more you know about your strengths and weaknesses the more you can improve your overall score.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Test Bank</td>
+                                <td>
+                                    Using our question select methodology combined with the immense volume of questions in our bank we are able to strategically present you with the topics and question strengths you would experience in a live testing environment. Sign up with the CPA Exam today and experience the progression first hand.
+                                </td>
+                            </tr>
+                        </table>
+
+
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- about us page -->
+            <div id="js-content-wrapper-about" class="js-content-wrapper hidden">
+                <div class="content-wrapper">
+                    <h2>About CPAExamBank.com</h2>
+
+                    <div class="content">
+                        <div id="aboutus-holder">
+                            <p>
+                                CPA Exam Bank was created to efficiently prepare Candidates for the Uniform CPA Exam by providing them with the tools they need to study smart: a precisely simulated exam experience, thousands of multiple choice questions, and targeted feedback on a candidate’s strengths and weaknesses.
+                            </p>
+                            <p style="margin-top:20px;">
+                                Our test bank has been designed around the official CPA Exam Content Specification Outline (CSO) and integrates seamlessly with other CPA Review Courses.  Perfect as a supplement to an existing study plan or as a stand-alone refresher course, CPA Exam Bank will give you the edge you need to boost your score and pass all four sections of the CPA Exam.
+                            </p>
+
+                            <br />
+                            <p><span class="link register-sign-up" style="font-weight:bold;">&gt;&gt; Register now and start studying with 100 FREE Questions</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- contact us -->
+            <div id="js-content-wrapper-contact" class="js-content-wrapper hidden">
+                <div class="content-wrapper">
+                    <h2>Contact Us</h2>
+
+                    <div class="content">
+                        <p style="line-height:20px; font-size:16px;">
+                            The CPA Exam Bank greatly values your opinions/suggestions and is always striving to offer you the best experience possible.
+                            For questions concerning technical issues, subscriptions, partnering or business development please provide the following information below and click the submit button.
+                        </p>
+
+                        <table>
+                            <tr>
+                                <td>Contact Email</td>
+                                <td>
+                                    <input id="contact-us-email" style="width: 300px; margin-left: 2px;" type="text" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Reason
+                                </td>
+                                <td>
+                                    <select id="contact-us-reason">
+                                        <option>Questions</option>
+                                        <option>Comment</option>
+                                        <option>Problem</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Message</td>
+                                <td>
+                                    <textarea id="contact-us-message" cols="70" rows="5"></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <button id="contact-us-submit-form" class="btn-orange btn-medium">Submit</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- Login Placeholder while logging in -->
+            <div id="js-content-wrapper-login" class="js-content-wrapper hidden">
+
+                <div class="login-container shadow">
+                    <h2>Logging In</h2>
+                    <img src="https://s3.amazonaws.com/CPAExamBank/Images/Shared/loader.gif" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="footer-wrapper">
+        <div id="footer-wrapper-shadow"></div>
+        <footer>
+            <div class="fb-like" data-href="https://www.facebook.com/cpaexambank" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+            <div id="footer-row-1">
+                <ul>
+                    <li>www.cpaexambank.com &copy; 2013</li>
+                    <li style="margin-top:3px;"><a href="#privacy-policy">Privacy Policy</a> - <a href="#terms-of-service">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div id="footer-social-media-holder" style="text-align:right; height:20px;">
+                <a style="margin-right:10px;" target="_blank" href="https://www.facebook.com/cpaexambank"><img style="height:30px;" src="Content/Images/Shared/Social/facebook.png" /></a>
+                <a style="margin-right:10px;" target="_blank" href="http://www.linkedin.com/groups/CPA-Exam-Bank-6546191?home=&gid=6546191&trk=anet_ug_hm"><img style="height:30px;" src="Content/Images/Shared/Social/linkedin.png" /></a>
+                <a style="margin-right:10px;" target="_blank" href="https://twitter.com/TheCPAExamBank"><img style="height:30px;" src="Content/Images/Shared/Social/twitter.png" /></a>
+                <a href="https://plus.google.com/108808347504951101747" rel="publisher" target="_blank"><img style="height:30px;" src="Content/Images/Shared/Social/googleplus.png" /></a>
+            </div>
+            <div id="footer-content-holder">
+                <ul id="footer-nav">
+                    <!--                    <li id="footer-nav-aboutus"><a href="#about">About Us</a></li>
+                                    <li id="footer-nav-contactus"><a href="#contact">Contact Us</a></li>
+                                    <li id="footer-nav-support"><a href="#faqs/cpa-exam-structure">FAQ</a></li>-->
+                    <li id="footer-nav-privacypolicy"><a href="#privacy-policy">Privacy Policy</a></li>
+                    <li id="footer-nav-termsofuse"><a href="#terms-of-service">Terms of Service</a></li>
+                </ul>
+                <img id="footer-watermark-logo" src="Content/Images/Shared/Logos/watermark.png" />
+                <div id="footer-row-2">
+                    <div id="footer-logo"></div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- register popup -->
+    <div id="js-overlay-register" contentsize="small" class="hidden">
+        <div id="js-overlay-register-content" class="js-overlay-content">
+
+            <h1>Register</h1>
+
+            <div class="js-overlay-register-content-container">
+                <form class="registration-popup-form">
+                    <table>
+                        <tr>
+                            <td>
+                                Email
+                            </td>
+                            <td>
+                                <input type="text" class="registration-email Validate" validate="Required,Email" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Password</td>
+                            <td>
+                                <input type="password" class="registration-password Validate" validate="Required" />
+                            </td>
+                        </tr>
+                        <tr class="registration-promo-code-row" style="display:none;">
+                            <td>Promo Code</td>
+                            <td>
+                                <input type="text" class="registration-promotion-code" disabled />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="title" style="padding-top:25px;">Interested In...</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <input class="registration-far" type="checkbox" checked />
+                                (FAR) Financial Accounting and Reporting
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <input class="registration-aud" type="checkbox" checked />
+                                (AUD) Auditing and Attestation
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <input class="registration-bec" type="checkbox" checked />
+                                (BEC) Business environment and concepts
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <input class="registration-reg" type="checkbox" checked />
+                                (REG) Regulation and Taxation
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+
+            <div class="js-overlay-register-content-footer">
+                <button class="registration-finish-button btn-orange btn-large">Get Started</button></td>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="js-overlay-relogin" class="hidden" contentsize="small">
+        <div class="js-overlay-content js-overlay-relogin-content">
+            <h2 style="margin-left:0px;">Login</h2>
+            <p style="margin:20px 0px;">
+                Your session has timed out, please re-login to continue. You will not lose any work or data.
+            </p>
+            <table>
+                <tr>
+                    <td>Username</td>
+                    <td><input type="text" id="relogin-username" /></td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><input type="password" id="relogin-password" /></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><button id="relogin" class="btn-orange">Login</button></td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+
+
+
+
+
+
+    <script type="text/javascript">
+
+        // Load scripts with head.js
+        // http://headjs.com/
+
+        head.js(
+            "Scripts/jquery-2.0.3.min.js",
+            "https://jquery-ui.googlecode.com/svn/tags/latest/ui/jquery.effects.core.js",
+            "https://jquery-ui.googlecode.com/svn/tags/latest/ui/jquery.effects.slide.js",
+            "Scripts/Plugins/jquery.hashchange.js",
+            "Scripts/Plugins/jquery.hotkeys.js",
+            "Scripts/Plugins/jquery.powertip.min.js",
+            "Scripts/COR/jquery.COR.js?v=1",
+            "Scripts/COR/jquery.COR.utilities.js?v=1",
+            "Scripts/COR/jquery.COR.services.js?v=1",
+            "Scripts/Main/jquery.CPAExamBank.js?v=1",
+            "Scripts/Main/Events/jquery.CPAExamBank.Home.js?v=1",
+            "Scripts/Main/account.js?v=2",
+            "Scripts/Kendo/kendo.custom.min.js",
+            "https://js.stripe.com/v2/"
+        );
+
+
+    </script>
+
+
+    <div id="fb-root"></div>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=421834154539725";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-43918748-1', 'cpaexambank.com');
+        ga('send', 'pageview');
+
+    </script>
+
+</body>
+</html>
