@@ -662,6 +662,9 @@ $(document).ready(function () {
     }
 
 
+
+
+
     $.COR.init(siteOptions);
 
 
@@ -671,7 +674,6 @@ $(document).ready(function () {
 
     // Initialization
     $.COR.pageEvents();
-
 
     $("#pricing-holder .squaredTwo label").on('click', function () {
         var amount = 0;
@@ -765,6 +767,20 @@ $(document).ready(function () {
 
 
     $(window).hashchange();
+
+
+    if ($.COR.Utilities.getURLParameter("register")) {
+        $.COR.ShowRegPopup();
+
+        //$('body,html').animate({
+        //    scrollTop: 0
+        //}, 800);
+        $("#header-login-container").show();
+    }
+    else {
+        $("#header-login-container").show();
+    }
+
 
 
 });
