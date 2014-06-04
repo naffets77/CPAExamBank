@@ -54,7 +54,7 @@ class service_stripe{
                 $inMessage .= implode(", ", $inMessageAppend);
                 util_errorlogging::LogBrowserError(3, $inMessage, __METHOD__, __FILE__);
 
-                $myArray['Reason'] = "Missing requried variable(s)";
+                $myArray['Reason'] = "Missing required variable(s)";
                 return $myArray;
             }
             $isNewSubscriber = validate::isNotNullOrEmpty_String($_SESSION['Licenses']->StripeCustomerId) ? false : true;
@@ -121,7 +121,7 @@ class service_stripe{
                 $inMessage .= implode(", ", $inMessageAppend);
                 util_errorlogging::LogBrowserError(3, $inMessage, __METHOD__, __FILE__);
 
-                $myArray['Reason'] = "Missing requried variable(s)";
+                $myArray['Reason'] = "Missing required variable(s)";
                 return $myArray;
             }
 

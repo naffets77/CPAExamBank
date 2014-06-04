@@ -335,7 +335,7 @@ class service_account{
                 }
                 $inMessage .= implode(", ", $inMessageAppend);
                 util_errorlogging::LogBrowserError(3, $inMessage, __METHOD__, __FILE__);
-                $myArray['Reason'] = "Missing requried variable(s)";
+                $myArray['Reason'] = "Missing required variable(s)";
                 return $myArray;
             }
 
@@ -391,7 +391,7 @@ class service_account{
                 }
                 $inMessage .= implode(", ", $inMessageAppend);
                 util_errorlogging::LogBrowserError(3, $inMessage, __METHOD__, __FILE__);
-                $myArray['Reason'] = "Missing requried variable(s)";
+                $myArray['Reason'] = "Missing required variable(s)";
                 return $myArray;
             }
 
@@ -466,7 +466,7 @@ class service_account{
             }
             $inMessage .= implode(", ", $inMessageAppend);
             util_errorlogging::LogBrowserError(3, $inMessage, __METHOD__, __FILE__);
-            $myArray['Reason'] = "Missing requried variable(s)";
+            $myArray['Reason'] = "Missing required variable(s)";
             return $myArray;
         }
 
@@ -501,7 +501,7 @@ class service_account{
             }
             $inMessage .= implode(", ", $inMessageAppend);
             util_errorlogging::LogBrowserError(3, $inMessage, __METHOD__, __FILE__);
-            $myArray['Reason'] = "Missing requried variable(s)";
+            $myArray['Reason'] = "Missing required variable(s)";
             return $myArray;
         }
 

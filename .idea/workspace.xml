@@ -2,42 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" name="Default" comment="Added sp and PHP call to delete user's question history.">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Library/question.php" afterPath="$PROJECT_DIR$/Backend/Library/question.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Ciborium/Service/service_account.php" afterPath="$PROJECT_DIR$/Backend/Ciborium/Service/service_account.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Ciborium/Service/service_stripe.php" afterPath="$PROJECT_DIR$/Backend/Ciborium/Service/service_stripe.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="VaheCPA.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1394814144810" ignored="false" />
-    <file path="/mrtest_StripeUnitTests.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1382595913773" ignored="false" />
-    <file path="/stripe_charger.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1390893639465" ignored="false" />
-    <file path="/a.dummy" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1390777112699" ignored="false" />
-    <file path="/config.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1382592787644" ignored="false" />
-    <file path="/ciboriumlib_account.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1390900512902" ignored="false" />
-    <file path="/ciborium_enums.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1390783826949" ignored="false" />
-    <file path="/account.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1390980508344" ignored="false" />
-    <file path="/ciborium_stripe.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1390982596078" ignored="false" />
-    <file path="/service_stripe.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1387605854106" ignored="false" />
-    <file path="$PROJECT_DIR$/Scripts/Main/account.js" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1382834955130" ignored="false" />
-    <file path="/service_account.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1382902008941" ignored="false" />
-    <file path="/sp_DELETEAccountUserQuestionHistoryById.sql" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1382840239597" ignored="false" />
-    <file path="/question.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1394814443374" ignored="false" />
-    <file path="/ciborium_question.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1385020923319" ignored="false" />
-    <file path="/service_question.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1385017467106" ignored="false" />
-    <file path="/sp_fixQuestionsAndAnswersWithBadData.sql" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1383118968868" ignored="false" />
-    <file path="/sp_getQuestionsAndAnswersWithBadData.sql" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1383112387031" ignored="false" />
-    <file path="/validate.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1383113987239" ignored="false" />
-    <file path="/sp_SetAccountUserToPermanentSubscriber.sql" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1383636721326" ignored="false" />
-    <file path="$PROJECT_DIR$/HTMLPartials/Account.html" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1383635571477" ignored="false" />
-    <file path="/Sync_QuestionDataFromPRODtoDEV.sql" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1385019251243" ignored="false" />
-    <file path="/sp_DELETEAccountUserById.sql" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1386827382577" ignored="false" />
-    <file path="/promotion.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1390984762250" ignored="false" />
-    <file path="/ciborium_promotion.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1390983373334" ignored="false" />
-    <file path="/util_datetime.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1386842178359" ignored="false" />
-    <file path="/service_promotion.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1390983548943" ignored="false" />
-    <file path="/mrtest.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1387605569632" ignored="false" />
-    <file path="/database.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1390783173283" ignored="false" />
-    <file path="/sp_getAccountUserPromotions.sql" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1390897601825" ignored="false" />
-    <file path="/mrtest_RegistrationUnitTest.php" changelist="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" time="1390986506906" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +30,7 @@
       <file leaf-file-name="promotion.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Backend/Library/promotion.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="200" column="51" selection-start="6997" selection-end="6997" vertical-scroll-proportion="0.0">
+            <state line="200" column="51" selection-start="6997" selection-end="6997" vertical-scroll-proportion="-0.0" vertical-offset="3400" max-vertical-offset="3672">
               <folding />
             </state>
           </provider>
@@ -69,7 +39,7 @@
       <file leaf-file-name="account.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Backend/Library/account.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="652" column="43" selection-start="23869" selection-end="23869" vertical-scroll-proportion="0.0">
+            <state line="652" column="43" selection-start="23869" selection-end="23869" vertical-scroll-proportion="0.0" vertical-offset="11084" max-vertical-offset="17170">
               <folding />
             </state>
           </provider>
@@ -78,43 +48,34 @@
       <file leaf-file-name="ciborium_promotion.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_promotion.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="206" column="29" selection-start="9025" selection-end="9025" vertical-scroll-proportion="0.0">
+            <state line="206" column="29" selection-start="9025" selection-end="9025" vertical-scroll-proportion="-0.0" vertical-offset="3502" max-vertical-offset="4998">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="service_promotion.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Service/service_promotion.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="46" column="72" selection-start="2241" selection-end="2241" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="service_stripe.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="service_stripe.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Service/service_stripe.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="67" selection-start="2190" selection-end="2190" vertical-scroll-proportion="-0.65384614">
+            <state line="123" column="52" selection-start="5502" selection-end="5502" vertical-scroll-proportion="-0.339934" vertical-offset="2297" max-vertical-offset="4845">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ciborium_question.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_question.php">
+      <file leaf-file-name="service_account.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Service/service_account.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="406" column="52" selection-start="15995" selection-end="15995" vertical-scroll-proportion="-1.6538461">
+            <state line="503" column="50" selection-start="18537" selection-end="18537" vertical-scroll-proportion="-7.923077" vertical-offset="8345" max-vertical-offset="9163">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="question.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="question.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Backend/Library/question.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="223" column="28" selection-start="12157" selection-end="12157" vertical-scroll-proportion="0.48409894">
+            <state line="223" column="28" selection-start="12157" selection-end="12157" vertical-scroll-proportion="-0.0" vertical-offset="3791" max-vertical-offset="6647">
               <folding />
             </state>
           </provider>
@@ -123,7 +84,7 @@
       <file leaf-file-name="ciboriumlib_account.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciboriumlib_account.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="763" column="35" selection-start="30082" selection-end="30082" vertical-scroll-proportion="0.0">
+            <state line="71" column="61" selection-start="2493" selection-end="2493" vertical-scroll-proportion="-7.8461537" vertical-offset="1003" max-vertical-offset="13124">
               <folding />
             </state>
           </provider>
@@ -151,27 +112,27 @@
         <option value="$PROJECT_DIR$/Backend/Ciborium/TestTools/mrtest.php" />
         <option value="$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_enums.php" />
         <option value="$PROJECT_DIR$/Backend/Library/stripe_charger.php" />
-        <option value="$PROJECT_DIR$/Backend/Ciborium/Service/service_account.php" />
         <option value="$PROJECT_DIR$/Backend/Ciborium/StoredProceduresAndTriggers/StoredProcedures/sp_getAccountUserPromotions.sql" />
         <option value="$PROJECT_DIR$/Backend/Library/database.php" />
         <option value="$PROJECT_DIR$/Backend/Ciborium/Library/ciboriumlib_account.php" />
         <option value="$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_promotion.php" />
         <option value="$PROJECT_DIR$/Backend/Ciborium/Service/service_promotion.php" />
         <option value="$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_stripe.php" />
-        <option value="$PROJECT_DIR$/Backend/Ciborium/Service/service_stripe.php" />
         <option value="$PROJECT_DIR$/Backend/Library/promotion.php" />
         <option value="$PROJECT_DIR$/PHP/UnitTests/mrtest_RegistrationUnitTest.php" />
         <option value="$PROJECT_DIR$/Backend/Library/account.php" />
         <option value="$PROJECT_DIR$/Backend/Library/question.php" />
+        <option value="$PROJECT_DIR$/Backend/Ciborium/Service/service_account.php" />
+        <option value="$PROJECT_DIR$/Backend/Ciborium/Service/service_stripe.php" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="22" />
-    <option name="y" value="42" />
-    <option name="width" value="1152" />
-    <option name="height" value="720" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -267,7 +228,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Library" />
+              <option name="myItemId" value="Service" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -315,6 +276,12 @@
       <method />
     </configuration>
     <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <list size="0" />
@@ -376,15 +343,16 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="22" y="42" width="1152" height="720" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3288835" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3445826" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29293993" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27247706" sideWeight="0.6554174" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1609375" sideWeight="0.6554174" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -399,62 +367,18 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
-    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
-    <option name="CHECK_NEW_TODO" value="true" />
     <option name="myTodoPanelSettings">
-      <value>
-        <are-packages-shown value="false" />
-        <are-modules-shown value="false" />
-        <flatten-packages value="false" />
-        <is-autoscroll-to-source value="false" />
-      </value>
+      <TodoPanelSettings />
     </option>
-    <option name="PERFORM_UPDATE_IN_BACKGROUND" value="true" />
-    <option name="PERFORM_COMMIT_IN_BACKGROUND" value="true" />
-    <option name="PERFORM_EDIT_IN_BACKGROUND" value="true" />
-    <option name="PERFORM_CHECKOUT_IN_BACKGROUND" value="true" />
-    <option name="PERFORM_ADD_REMOVE_IN_BACKGROUND" value="true" />
-    <option name="PERFORM_ROLLBACK_IN_BACKGROUND" value="false" />
-    <option name="CHECK_LOCALLY_CHANGED_CONFLICTS_IN_BACKGROUND" value="false" />
-    <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
-    <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
-    <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
-    <option name="DEFAULT_PATCH_EXTENSION" value="patch" />
-    <option name="SHORT_DIFF_HORIZONTALLY" value="true" />
-    <option name="SHORT_DIFF_EXTRA_LINES" value="2" />
-    <option name="SOFT_WRAPS_IN_SHORT_DIFF" value="true" />
-    <option name="INCLUDE_TEXT_INTO_PATCH" value="false" />
-    <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
-    <option name="SHOW_FILE_HISTORY_DETAILS" value="true" />
-    <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
-    <option name="SHOW_DIRTY_RECURSIVELY" value="false" />
-    <option name="LIMIT_HISTORY" value="true" />
-    <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
-    <option name="UPDATE_FILTER_SCOPE_NAME" />
-    <option name="USE_COMMIT_MESSAGE_MARGIN" value="false" />
-    <option name="COMMIT_MESSAGE_MARGIN_SIZE" value="72" />
-    <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
-    <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added sp and PHP call to delete user's question history." />
-    <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
-    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
-    <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
-    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="false" />
-    <option name="REFORMAT_BEFORE_FILE_COMMIT" value="false" />
-    <option name="FILE_HISTORY_DIALOG_COMMENTS_SPLITTER_PROPORTION" value="0.8" />
-    <option name="FILE_HISTORY_DIALOG_SPLITTER_PROPORTION" value="0.5" />
-    <option name="ACTIVE_VCS_NAME" />
-    <option name="UPDATE_GROUP_BY_PACKAGES" value="false" />
-    <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
-    <option name="UPDATE_FILTER_BY_SCOPE" value="false" />
-    <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
-    <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
     <MESSAGE value="Testing git commit from PHP storm." />
     <MESSAGE value="Made hash expiration part of config file. Added just api call for remove card and fixed # in reset url." />
     <MESSAGE value="Created unit test for remove credit card. Created service and BL to remove credit card. NOTE: stripe remove cc is not working yet. Need to fix it." />
@@ -463,6 +387,7 @@
     <MESSAGE value="testing git commit" />
     <MESSAGE value="Added referral source to registration process. Added updateNewCreditCard() service. Added check to see if credit card is still on file for adding credit card." />
     <MESSAGE value="Added sp and PHP call to delete user's question history." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added sp and PHP call to delete user's question history." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -470,100 +395,160 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Service/service_account.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="24" selection-start="2557" selection-end="2557" vertical-scroll-proportion="0.5010526" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PHP/UnitTests/mrtest_StripeUnitTests.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="8" selection-start="1063" selection-end="1432" vertical-scroll-proportion="0.3831967" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_enums.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/TestTools/mrtest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="0" selection-start="1633" selection-end="1714" vertical-scroll-proportion="0.022397893" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/Library/database.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="376" column="41" selection-start="16061" selection-end="16061" vertical-scroll-proportion="0.57588077" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/Library/validate.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="133" column="27" selection-start="4486" selection-end="4486" vertical-scroll-proportion="0.33465084" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_stripe.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="235" column="127" selection-start="12053" selection-end="12053" vertical-scroll-proportion="1.0158103" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciboriumlib_account.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="763" column="35" selection-start="30082" selection-end="30082" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Backend/Library/promotion.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="200" column="51" selection-start="6997" selection-end="6997" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PHP/UnitTests/mrtest_RegistrationUnitTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="0" selection-start="1852" selection-end="1852" vertical-scroll-proportion="0.022397893" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Service/service_promotion.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="72" selection-start="2241" selection-end="2241" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_promotion.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="206" column="29" selection-start="9025" selection-end="9025" vertical-scroll-proportion="0.0">
+        <state line="200" column="51" selection-start="6997" selection-end="6997" vertical-scroll-proportion="0.0" vertical-offset="3400" max-vertical-offset="3672">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Backend/Library/account.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="652" column="43" selection-start="23869" selection-end="23869" vertical-scroll-proportion="0.0">
+        <state line="652" column="43" selection-start="23869" selection-end="23869" vertical-scroll-proportion="0.0" vertical-offset="11084" max-vertical-offset="17170">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_promotion.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="206" column="29" selection-start="9025" selection-end="9025" vertical-scroll-proportion="0.0" vertical-offset="3502" max-vertical-offset="4998">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Service/service_promotion.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="72" selection-start="2241" selection-end="2241" vertical-scroll-proportion="0.0" vertical-offset="782" max-vertical-offset="1411">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Service/service_stripe.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="67" selection-start="2190" selection-end="2190" vertical-scroll-proportion="-0.65384614">
+        <state line="51" column="67" selection-start="2190" selection-end="2190" vertical-scroll-proportion="0.0" vertical-offset="867" max-vertical-offset="4845">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_question.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="406" column="52" selection-start="15995" selection-end="15995" vertical-scroll-proportion="-1.6538461">
+        <state line="406" column="52" selection-start="15995" selection-end="15995" vertical-scroll-proportion="0.0" vertical-offset="6902" max-vertical-offset="23562">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Backend/Library/question.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="223" column="28" selection-start="12157" selection-end="12157" vertical-scroll-proportion="0.48409894">
+        <state line="223" column="28" selection-start="12157" selection-end="12157" vertical-scroll-proportion="0.0" vertical-offset="3791" max-vertical-offset="6647">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciboriumlib_account.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="763" column="35" selection-start="30082" selection-end="30082" vertical-scroll-proportion="0.0" vertical-offset="12971" max-vertical-offset="13124">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PHP/UnitTests/mrtest_StripeUnitTests.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="8" selection-start="1063" selection-end="1432" vertical-scroll-proportion="0.3831967" vertical-offset="0" max-vertical-offset="0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_enums.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/TestTools/mrtest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="0" selection-start="1633" selection-end="1714" vertical-scroll-proportion="0.022397893" vertical-offset="0" max-vertical-offset="0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Library/database.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="376" column="41" selection-start="16061" selection-end="16061" vertical-scroll-proportion="0.57588077" vertical-offset="0" max-vertical-offset="0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_stripe.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="235" column="127" selection-start="12053" selection-end="12053" vertical-scroll-proportion="1.0158103" vertical-offset="0" max-vertical-offset="0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Library/promotion.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="200" column="51" selection-start="6997" selection-end="6997" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PHP/UnitTests/mrtest_RegistrationUnitTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="0" selection-start="1852" selection-end="1852" vertical-scroll-proportion="0.022397893" vertical-offset="0" max-vertical-offset="0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Library/account.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="652" column="43" selection-start="23869" selection-end="23869" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciboriumlib_account.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="71" column="61" selection-start="2493" selection-end="2493" vertical-scroll-proportion="-7.8461537" vertical-offset="1003" max-vertical-offset="13124">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Library/validate.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="210" column="27" selection-start="6372" selection-end="6372" vertical-scroll-proportion="0.2714055" vertical-offset="3402" max-vertical-offset="4369">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_question.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="406" column="52" selection-start="15995" selection-end="15995" vertical-scroll-proportion="-0.42079207" vertical-offset="7157" max-vertical-offset="23562">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Service/service_account.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="503" column="50" selection-start="18537" selection-end="18537" vertical-scroll-proportion="-7.923077" vertical-offset="8345" max-vertical-offset="9163">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Library/question.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="223" column="28" selection-start="12157" selection-end="12157" vertical-scroll-proportion="-0.0" vertical-offset="3791" max-vertical-offset="6647">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Service/service_promotion.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="72" selection-start="2241" selection-end="2241" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_promotion.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="206" column="29" selection-start="9025" selection-end="9025" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Service/service_stripe.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="123" column="52" selection-start="5502" selection-end="5502" vertical-scroll-proportion="-0.339934" vertical-offset="2297" max-vertical-offset="4845">
           <folding />
         </state>
       </provider>
