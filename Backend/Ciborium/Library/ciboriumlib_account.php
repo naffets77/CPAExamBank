@@ -580,6 +580,33 @@ class ciboriumlib_account{
         return $returnArray;
     }
 
+    public static function getSubscriptionTypeIdByLicenseId($inLicenseId, $inCaller){
+
+        $returnArray = array(
+            "Reason" => "",
+            "Result" => 0,
+            'SubscriptionTypeId' => 0
+        );
+
+        if(validate::tryParseInt($inLicenseId)){
+            $licenses = account::getSubscriptionTypeIdByLicenseId($inLicenseId);
+            if(count($licenses) > 0){
+                $returnArray['SubscriptionTypeId'] =  $licenses[0]->SubscriptionTypeId;
+                $returnArray['Result'] = 1;
+            }
+            else{
+                $returnArray['Reason'] = "No SubscriptionTypeId found.";
+            }
+        }
+        else{
+            $Message = "LicenseId (".$inLicenseId.") not valid. Called by ".$inCaller.".";
+            util_errorlogging::LogGeneralError(enum_LogType::Normal, $Message, __METHOD__, __FILE__);
+            $returnArray['Reason'] = "Invalid input";
+        }
+
+        return $returnArray;
+    }
+
     //*******************************
     // custom validation functions
     //*******************************

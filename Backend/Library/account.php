@@ -678,6 +678,16 @@ class account
         return database::select("License", $selectArray, $whereClause, $orderBy, $limit, $preparedArray, __METHOD__);
     }
 
+    public static function getSubscriptionTypeIdByLicenseId($inLicenseId){
+        $selectArray = array("SubscriptionTypeId");
+        $whereClause = "LicenseId = '".$inLicenseId."'";
+        $orderBy = "";
+        $limit = "";
+        $preparedArray = null;
+
+        return database::select("License", $selectArray, $whereClause, $orderBy, $limit, $preparedArray, __METHOD__);
+    }
+
     public static function createAccountHash($inAccountUserId){
         $salt = library_configuration::$salt;
         return md5($inAccountUserId.$salt);

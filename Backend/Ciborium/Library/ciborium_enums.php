@@ -31,7 +31,7 @@ class enum_QuestionType{
 class enum_LicenseTransactionType{
 
     //See LicenseTransactionType table
-    //Current as of 6/27/2013
+    //Current as of 6/4/2014
     const Assigned = 1;
     const Subscribed = 2;
     const Cancelled = 3;
@@ -41,6 +41,8 @@ class enum_LicenseTransactionType{
     const Renewed = 7;
     const Reinstated = 8;
     const Changed = 9;
+    const OneTimeCharge = 10;
+    const OneTimeRefund = 11;
 }
 
 class enum_SubscriptionType{
@@ -64,7 +66,7 @@ class enum_SubscriptionType{
     const Perpetual = 15; //not public
     const AUD_BEC_REG = 16;
     const FAR_BEC_REG = 17;
-
+    const FAR_AUD_BEC_REG_Perpetual = 18;
 }
 
 class enum_TestModeType{

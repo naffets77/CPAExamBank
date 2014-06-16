@@ -321,8 +321,6 @@ class stripe_charger{
             //check if successful
             if($charge != null){
                 $returnArray['Charge'] = $charge;
-                $returnArray['Result'] = 1;
-                $returnArray['Reason'] = "Charge test was successful";
 
                 if($charge['failure_code'] == null){
                     $returnArray['Result'] = 1;
@@ -399,7 +397,7 @@ class stripe_charger{
                         if($chargeArray['amount'] == $chargeInputArray['amount']){
                             if($cardArray['customer'] == $chargeInputArray['customer']){
                                 $returnArray['Result'] = 1;
-                                $returnArray['Reason'] = "Charge test was successful";
+                                $returnArray['Reason'] = "Charge was successful";
                             }
                             else{
                                 $returnArray['Reason'] = "Card object's customer field (".$cardArray['customer'].") did not match ".$chargeInputArray['customer']." .";

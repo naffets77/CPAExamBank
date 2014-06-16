@@ -298,6 +298,160 @@ class ciborium_stripe{
     }
 
     /**
+     * Library: chargePerpetualSubscription()
+     * Charges/updates perpetual subscription for a user
+     *
+     * @param $inStripeCustomerID
+     * @param $inLicenseId
+     * @param $inAccountUserId
+     * @param $inAmount
+     * @param $inCaller
+     * @param null $inPromotionCode
+     * @return array
+     *      Reason
+     *      Result
+     */
+    public static function chargePerpetualSubscription($inStripeCustomerID, $inLicenseId, $inAccountUserId, $inAmount, $inCaller, $inPromotionCode = null){
+        $returnArray = array(
+            'Reason' => "",
+            'Result' => 0
+        );
+
+        //If we are going to have different types of perpetual charges, will have to make this be looked up
+        $subscriptionTypeId = enum_SubscriptionType::FAR_AUD_BEC_REG_Perpetual;
+        $stripePlanId = "Perpetual - All Four Sections";
+
+
+        $response = ciborium_stripe::chargeOneTimePurchase($inStripeCustomerID, $inLicenseId, $inAccountUserId, $inAmount, $inCaller, $inPromotionCode);
+
+        if($response['Result']){
+
+            //base notes to log
+            $LicenseTransactionValuesArray = array(
+                'LicenseTransactionTypeId' => enum_LicenseTransactionType::Subscribed,
+                'SystemNotes' => "New subscription (".$stripePlanId.") subscribed via ".$inCaller."."
+            );
+
+            $currentSubscriptionTypeId = account::getSubscriptionTypeIdByLicenseId($inLicenseId);
+
+            //significant datetimes
+            $mySubscribedDate = util_datetime::getDateTimeNow();
+            $myExpirationDate = util_datetime::getDateStringToDateTime("2037-12-31");
+
+            //Check to see if they are a first time subscriber
+            if($currentSubscriptionTypeId != enum_SubscriptionType::Free){
+                $returnArray['Reason'] = "Update completed successfully.";
+                $LicenseTransactionValuesArray['LicenseTransactionTypeId'] = enum_LicenseTransactionType::Changed;
+                $LicenseTransactionValuesArray['SystemNotes'] = "Subscription plan updated from ".$currentSubscriptionTypeId." to ".$subscriptionTypeId." via ".$inCaller.".";
+                ciborium_stripe::updateForSubscriptionChange($inLicenseId, $subscriptionTypeId, $mySubscribedDate, $myExpirationDate, $inCaller, null, false);
+            }
+            else{
+                ciborium_stripe::updateForSubscriptionChange($inLicenseId, $subscriptionTypeId, $mySubscribedDate, $myExpirationDate, $inCaller, null, true);
+            }
+
+            //log notes
+            ciborium_stripe::LogLicenseTransactionFromSystem($inLicenseId, $LicenseTransactionValuesArray, __METHOD__);
+        }
+        else{
+            $returnArray['Reason'] = "Invalid input";
+            $errorMessage = "Failed to charge invoice amount (".$inAmount." cents) for StripeCustomerID (".$inStripeCustomerID."). Message: ".$response['Reason']." Called by ".$inCaller;
+            util_errorlogging::LogGeneralError(enum_LogType::Critical, $errorMessage, __METHOD__, __FILE__);
+        }
+
+        return $returnArray;
+
+    }
+
+    /**
+     * @param $inStripeCustomerID
+     * @param $inLicenseId
+     * @param $inAccountUserId
+     * @param $inAmount; int (cents for USD)
+     * @param $inCaller
+     * @param null $inPromotionCode
+     * @return array
+     */
+    public static function chargeOneTimePurchase($inStripeCustomerID, $inLicenseId, $inAccountUserId, $inAmount, $inCaller, $inPromotionCode = null)
+    {
+        $returnArray = array(
+            'Reason' => "",
+            'Result' => 0
+        );
+
+        //if promotion code was passed in
+        $promotionId = null;
+        $promotion = null;
+        $accountUserToPromotion = null;
+        if(validate::isNotNullOrEmpty_String($inPromotionCode)){
+            $promoCodeResultArray = ciborium_promotion::validatePromotionCodeForUser($inPromotionCode, $inAccountUserId, $inCaller);
+            if($promoCodeResultArray['Result']){
+                //TODO: may have to check against subscription array one day
+                $promotionId = $promoCodeResultArray['PromotionId'];
+                $promotion = ciborium_promotion::getPromotionById($promotionId);
+                $accountUserToPromotion = ciborium_promotion::getAccountUserToPromotion($promotionId, $inAccountUserId, $inCaller)[0];
+            }
+            else{
+                $returnArray['Reason'] = "Promo code invalid";
+                return $returnArray;
+            }
+        }
+
+
+
+        //Verify inputs
+        if(!validate::isNotNullOrEmpty_String(trim($inStripeCustomerID))){
+            $returnArray['Reason'] = "Invalid input";
+            $errorMessage = $returnArray['Reason']." for inStripeCustomerID ".$inStripeCustomerID.".";
+            util_errorlogging::LogBrowserError(2, $errorMessage, __METHOD__, __FILE__);
+            return $returnArray;
+        }
+
+        if(!validate::isNotNullOrEmpty_String(trim($inLicenseId)) || !validate::tryParseInt($inLicenseId) ){
+            $returnArray['Reason'] = "Invalid input";
+            $errorMessage = $returnArray['Reason']." for inLicenseId ".$inLicenseId.".";
+            util_errorlogging::LogBrowserError(3, $errorMessage, __METHOD__, __FILE__);
+            return $returnArray;
+        }
+
+        if(!validate::isNotNullOrEmpty_String(trim($inAccountUserId)) || !validate::tryParseInt($inAccountUserId) ){
+            $returnArray['Reason'] = "Invalid input";
+            $errorMessage = $returnArray['Reason']." for inAccountUserId ".$inAccountUserId.".";
+            util_errorlogging::LogBrowserError(3, $errorMessage, __METHOD__, __FILE__);
+            return $returnArray;
+        }
+
+        if(!validate::isNotNullOrEmpty_String(trim($inAmount)) || !validate::tryParseInt($inAmount) || (int)$inAmount <= 0 ){
+            $returnArray['Reason'] = "Invalid input";
+            $errorMessage = $returnArray['Reason']." for inAmount ".$inAmount.".";
+            util_errorlogging::LogBrowserError(3, $errorMessage, __METHOD__, __FILE__);
+            return $returnArray;
+        }
+
+        //charge it
+        $amountToCharge = (int)$inAmount;
+        $chargeResponse = stripe_charger::chargeOneTimePurchase($inStripeCustomerID, $amountToCharge, "usd");
+        if($chargeResponse['Result']){
+            $returnArray['Result'] = 1;
+            $returnArray['Reason'] = "Charge completed successfully.";
+
+            $chargeArray = util_general::getProtectedValue($chargeResponse['Charge'], "_values");
+            $cardArray = util_general::getProtectedValue($chargeArray['card'], "_values");
+
+            //log it
+            $LicenseTransactionValuesArray['LicenseTransactionTypeId'] = enum_LicenseTransactionType::OneTimeCharge;
+            $LicenseTransactionValuesArray['SystemNotes'] = "Credit card ".$cardArray['type']." ".$cardArray['last4']." charged for amount ".$chargeArray['amount']." (cents) via ".$inCaller.". StripeChargeId ".$chargeArray['id'];
+            ciborium_stripe::LogLicenseTransactionFromSystem($inLicenseId, $LicenseTransactionValuesArray, __METHOD__);
+        }
+        else{
+            $returnArray['Reason'] = "Invalid input";
+            $errorMessage = "Failed to charge for StripeCustomerID (".$inStripeCustomerID.") and Amount (".$inAmount."). Message: ".$chargeResponse['Reason']." Called by ".$inCaller;
+            util_errorlogging::LogGeneralError(enum_LogType::Normal, $errorMessage, __METHOD__, __FILE__);
+        }
+
+        return $returnArray;
+    }
+
+    /**
      * Library: removeCreditCard()
      * Removes credit card for the license in system and in Stripe
      *
