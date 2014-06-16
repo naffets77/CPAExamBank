@@ -155,23 +155,36 @@ class ciborium_stripe{
         //Verify inputs
         if(!validate::isNotNullOrEmpty_String(trim($inStripeCustomerID))){
             $returnArray['Reason'] = "Invalid input";
-            $errorMessage = $returnArray['Reason']." for inStripeCustomerID ".$inStripeCustomerID.".";
+            $errorMessage = $returnArray['Reason']." for inStripeCustomerID ".$inStripeCustomerID." from caller ".$inCaller.".";
             util_errorlogging::LogBrowserError(2, $errorMessage, __METHOD__, __FILE__);
             return $returnArray;
         }
         $checkModuleSelectionResponse = ciborium_stripe::checkValidModuleSelectionArray($inModuleArray);
         if(!$checkModuleSelectionResponse['Result']){
             $returnArray['Reason'] = "Invalid input";
-            $errorMessage = $returnArray['Reason']." for inModuleArray. ".$checkModuleSelectionResponse['Reason'].".";
+            $errorMessage = $returnArray['Reason']." for inModuleArray from caller ".$inCaller.". ".$checkModuleSelectionResponse['Reason'].".";
             util_errorlogging::LogBrowserError(3, $errorMessage, __METHOD__, __FILE__);
             return $returnArray;
         }
         if(!validate::isNotNullOrEmpty_String(trim($inSubscriptionTypeId)) || !validate::tryParseInt($inSubscriptionTypeId) ){
             $returnArray['Reason'] = "Invalid input";
-            $errorMessage = $returnArray['Reason']." for inSubscriptionTypeId ".$inSubscriptionTypeId.".";
+            $errorMessage = $returnArray['Reason']." for inSubscriptionTypeId ".$inSubscriptionTypeId." from caller ".$inCaller.".";
             util_errorlogging::LogBrowserError(3, $errorMessage, __METHOD__, __FILE__);
             return $returnArray;
         }
+        if(!validate::isNotNullOrEmpty_String(trim($inLicenseId)) || !validate::tryParseInt($inLicenseId) ){
+            $returnArray['Reason'] = "Invalid input";
+            $errorMessage = $returnArray['Reason']." for inLicenseId ".$inLicenseId." from caller ".$inCaller.".";
+            util_errorlogging::LogBrowserError(3, $errorMessage, __METHOD__, __FILE__);
+            return $returnArray;
+        }
+        if(!validate::isNotNullOrEmpty_String(trim($inAccountUserId)) || !validate::tryParseInt($inAccountUserId) ){
+            $returnArray['Reason'] = "Invalid input";
+            $errorMessage = $returnArray['Reason']." for inAccountUserId ".$inAccountUserId." from caller ".$inCaller.".";
+            util_errorlogging::LogBrowserError(3, $errorMessage, __METHOD__, __FILE__);
+            return $returnArray;
+        }
+
 
         //query for subscription
         $inDBModuleArray = array(
@@ -304,25 +317,65 @@ class ciborium_stripe{
      * @param $inStripeCustomerID
      * @param $inLicenseId
      * @param $inAccountUserId
-     * @param $inAmount
+     * @param $inAmountToCharge
      * @param $inCaller
      * @param null $inPromotionCode
      * @return array
      *      Reason
      *      Result
      */
-    public static function chargePerpetualSubscription($inStripeCustomerID, $inLicenseId, $inAccountUserId, $inAmount, $inCaller, $inPromotionCode = null){
+    public static function chargePerpetualSubscription($inStripeCustomerID, $inModuleArray, $inSubscriptionTypeId, $inLicenseId, $inAccountUserId, $inCaller, $inAmountToCharge = null, $inPromotionCode = null){
         $returnArray = array(
             'Reason' => "",
             'Result' => 0
         );
 
+        //Verify inputs
+        if(!validate::isNotNullOrEmpty_String(trim($inStripeCustomerID))){
+            $returnArray['Reason'] = "Invalid input";
+            $errorMessage = $returnArray['Reason']." for inStripeCustomerID ".$inStripeCustomerID." from caller ".$inCaller.".";
+            util_errorlogging::LogBrowserError(2, $errorMessage, __METHOD__, __FILE__);
+            return $returnArray;
+        }
+        /*$checkModuleSelectionResponse = ciborium_stripe::checkValidModuleSelectionArray($inModuleArray);
+        if(!$checkModuleSelectionResponse['Result']){
+            $returnArray['Reason'] = "Invalid input";
+            $errorMessage = $returnArray['Reason']." for inModuleArray from caller ".$inCaller.". ".$checkModuleSelectionResponse['Reason'].".";
+            util_errorlogging::LogBrowserError(3, $errorMessage, __METHOD__, __FILE__);
+            return $returnArray;
+        }*/
+        if(!validate::isNotNullOrEmpty_String(trim($inSubscriptionTypeId)) || !validate::tryParseInt($inSubscriptionTypeId) ){
+            $returnArray['Reason'] = "Invalid input";
+            $errorMessage = $returnArray['Reason']." for inSubscriptionTypeId ".$inSubscriptionTypeId." from caller ".$inCaller.".";
+            util_errorlogging::LogBrowserError(3, $errorMessage, __METHOD__, __FILE__);
+            return $returnArray;
+        }
+        if(!validate::isNotNullOrEmpty_String(trim($inLicenseId)) || !validate::tryParseInt($inLicenseId) ){
+            $returnArray['Reason'] = "Invalid input";
+            $errorMessage = $returnArray['Reason']." for inLicenseId ".$inLicenseId." from caller ".$inCaller.".";
+            util_errorlogging::LogBrowserError(3, $errorMessage, __METHOD__, __FILE__);
+            return $returnArray;
+        }
+        if(!validate::isNotNullOrEmpty_String(trim($inAccountUserId)) || !validate::tryParseInt($inAccountUserId) ){
+            $returnArray['Reason'] = "Invalid input";
+            $errorMessage = $returnArray['Reason']." for inAccountUserId ".$inAccountUserId." from caller ".$inCaller.".";
+            util_errorlogging::LogBrowserError(3, $errorMessage, __METHOD__, __FILE__);
+            return $returnArray;
+        }
+
+        //Set amount to charge
+        $amountToCharge = 0; //in cents
+        if(validate::isNotNullOrEmpty_String(trim($inAmountToCharge)) && validate::tryParseInt($inAmountToCharge) && (int)$inAmountToCharge >= 0 ){
+            $amountToCharge = (int)$inAmountToCharge;
+        }
+
         //If we are going to have different types of perpetual charges, will have to make this be looked up
         $subscriptionTypeId = enum_SubscriptionType::FAR_AUD_BEC_REG_Perpetual;
         $stripePlanId = "Perpetual - All Four Sections";
+        $amountToCharge = 5000;
 
 
-        $response = ciborium_stripe::chargeOneTimePurchase($inStripeCustomerID, $inLicenseId, $inAccountUserId, $inAmount, $inCaller, $inPromotionCode);
+        $response = ciborium_stripe::chargeOneTimePurchase($inStripeCustomerID, $inLicenseId, $inAccountUserId, $amountToCharge, $inCaller, $inPromotionCode);
 
         if($response['Result']){
 
@@ -332,7 +385,7 @@ class ciborium_stripe{
                 'SystemNotes' => "New subscription (".$stripePlanId.") subscribed via ".$inCaller."."
             );
 
-            $currentSubscriptionTypeId = account::getSubscriptionTypeIdByLicenseId($inLicenseId);
+            $currentSubscriptionTypeId = (int)$inSubscriptionTypeId;
 
             //significant datetimes
             $mySubscribedDate = util_datetime::getDateTimeNow();
@@ -354,7 +407,7 @@ class ciborium_stripe{
         }
         else{
             $returnArray['Reason'] = "Invalid input";
-            $errorMessage = "Failed to charge invoice amount (".$inAmount." cents) for StripeCustomerID (".$inStripeCustomerID."). Message: ".$response['Reason']." Called by ".$inCaller;
+            $errorMessage = "Failed to charge invoice amount (".$inAmountToCharge." cents) for StripeCustomerID (".$inStripeCustomerID."). Message: ".$response['Reason']." Called by ".$inCaller;
             util_errorlogging::LogGeneralError(enum_LogType::Critical, $errorMessage, __METHOD__, __FILE__);
         }
 
@@ -748,7 +801,7 @@ class ciborium_stripe{
 
     public static function findStandardSubscriptionByModuleSelection($inModuleArray){
         $selectArray = array("SubscriptionTypeId", "HasFARModule", "HasAUDModule", "HasBECModule", "HasREGModule", "StripePlanId");
-        $whereClause = "IsPublic = 1 AND IsActive = 1 AND SubscriptionTypeId NOT IN (1, 15) AND ";
+        $whereClause = "IsSubscription = 1 AND IsPublic = 1 AND IsActive = 1 AND SubscriptionTypeId NOT IN (1, 15) AND ";
         $whereArray = array();
         foreach($inModuleArray as $key => $value){
             array_push($whereArray, $key."=".$value);
