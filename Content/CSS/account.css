@@ -122,48 +122,42 @@ select{
     width: 480px;
 }
 
-#subscription-options {
+.subscription-options {
     margin:20px 0px;
     width:100%;
+    border:1px solid #333;
 }
 
-#subscription-options thead tr td{
+.subscription-options thead tr td{
     color:#000;
 }
 
-#subscription-options tr td{
+.subscription-options tr td{
     text-align: center;
     color: #FFF;
     font-size: 22px;
     vertical-align: middle;
     padding: 12px 10px;
+    border-bottom: 1px solid #aaa;
+    background-color: #21465D !important;
 }
 
-#subscription-options tr td:first-child{
+.subscription-options tr td:first-child{
     width:65px;
 }
 
-#subscription-options tr td:last-child{
+.subscription-options tr td:last-child{
     width:30px;
 }
 
-#subscription-options tr.far td{
-    background-color:#5e9a9e;
+
+.subscription-options tr.one-time td{
+    background-color:#d95a1a !important;
 }
 
-#subscription-options tr.aud td{
-    background-color:#706b62;
-}
 
-#subscription-options tr.bec td{
-    background-color:#d95a1a;
-}
 
-#subscription-options tr.reg td{
-    background-color:#9e7c92;
-}
-
-#subscription-options tr td .squaredTwo{
+.subscription-options tr td .squaredTwo{
     margin:0px;
 }
 

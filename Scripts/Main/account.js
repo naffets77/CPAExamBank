@@ -328,6 +328,26 @@ $.COR.account.setupEvents = function () {
 
     });
 
+
+    $("#account_subscription_check-one-time").on("click", function () {
+        // if checked disable other options
+
+        if ($(this).prop('checked')) {
+            $("#account_subscription_check-aud").attr('disabled', 'disabled').prop('checked',false);
+            $("#account_subscription_check-reg").attr('disabled', 'disabled').prop('checked', false);
+            $("#account_subscription_check-bec").attr('disabled', 'disabled').prop('checked', false);
+            $("#account_subscription_check-far").attr('disabled', 'disabled').prop('checked', false);
+        }
+        else {
+            $("#account_subscription_check-aud").removeAttr('disabled');
+            $("#account_subscription_check-reg").removeAttr('disabled');
+            $("#account_subscription_check-bec").removeAttr('disabled');
+            $("#account_subscription_check-far").removeAttr('disabled');
+        }
+        
+
+    });
+
     $("#account-update-subscription").on("click", function () {
 
         $(".account-update-subscription-error-message").hide();
@@ -707,7 +727,7 @@ $.COR.account.setUserData = function (data) {
     */
 
     // default everything to false
-    $("#subscription-options input").prop('checked', false);
+    $(".subscription-options input").prop('checked', false);
     $("#practice-options [name='practice-category']").parents("tr").addClass("trial");
 
     var AUDEnabled = false;
@@ -790,7 +810,7 @@ $.COR.account.setUserData = function (data) {
         switch (promotionType) {
             case "Percent Off":
 
-                $("#subscription-options .amount").each(function () {
+                $(".subscription-options .amount").each(function () {
                     var base = $.COR.baseAmount;
                     var promoAmount = base - base * (promotionAmount / 100);
                     $(this).html("$" + promoAmount);
@@ -927,18 +947,35 @@ $.COR.account.initReviewGrid = function (data) {
 // Subscription Helpers
 
 $.COR.account.getSubscriptionsForServer = function () {
-    return JSON.stringify({
-        "AUD": $("#account_subscription_check-aud").prop('checked') ? 1 : 0,
-        "FAR": $("#account_subscription_check-far").prop('checked') ? 1 : 0,
-        "BEC": $("#account_subscription_check-bec").prop('checked') ? 1 : 0,
-        "REG": $("#account_subscription_check-reg").prop('checked') ? 1 : 0
-    });
+
+    var result = null;
+
+    if ($("#account_subscription_check-one-time").prop('checked')) {
+        result = {
+            "AUD": 1,
+            "FAR": 1,
+            "BEC": 1,
+            "REG": 1,
+            "IsOneTimeSubscription": 1
+        };
+    }
+    else {
+        result = {
+            "AUD": $("#account_subscription_check-aud").prop('checked') ? 1 : 0,
+            "FAR": $("#account_subscription_check-far").prop('checked') ? 1 : 0,
+            "BEC": $("#account_subscription_check-bec").prop('checked') ? 1 : 0,
+            "REG": $("#account_subscription_check-reg").prop('checked') ? 1 : 0,
+            "IsOneTimeSubscription": 0
+        };
+    }
+
+    return JSON.stringify(result);
 }
 
 $.COR.account.getSubscriptionTotal = function () {
 
     var subscriptionAmount = 0;
-    $('#subscription-options .amount').each(function (index, element) {
+    $('.subscription-options .amount').each(function (index, element) {
         if ($(element).parents('tr').find('.squaredTwo input').is(':checked')) {
             subscriptionAmount += parseInt($(element).html().replace("$", ""));
         }
