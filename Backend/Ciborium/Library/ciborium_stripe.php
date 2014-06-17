@@ -821,6 +821,8 @@ class ciborium_stripe{
         $limit = "1";
         $preparedArray = null;
 
+        var_dump($whereClause);
+
         return database::select("SubscriptionType", $selectArray, $whereClause, $orderBy, $limit, $preparedArray, __METHOD__);
     }
 
