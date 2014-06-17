@@ -65,7 +65,7 @@
       <file leaf-file-name="ciborium_stripe.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_stripe.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="823" column="31" selection-start="39861" selection-end="39861" vertical-scroll-proportion="0.81709146" vertical-offset="12001" max-vertical-offset="14790">
+            <state line="813" column="55" selection-start="39559" selection-end="39559" vertical-scroll-proportion="0.5622189" vertical-offset="12001" max-vertical-offset="14790">
               <folding>
                 <element signature="e#1152#1448#0" expanded="false" />
                 <element signature="n#createNewSubscriber#0;n#ciborium_stripe#0;n#!!top" expanded="false" />
@@ -683,7 +683,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_stripe.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="823" column="31" selection-start="39861" selection-end="39861" vertical-scroll-proportion="0.81709146" vertical-offset="12001" max-vertical-offset="14790">
+        <state line="813" column="55" selection-start="39559" selection-end="39559" vertical-scroll-proportion="0.5622189" vertical-offset="12001" max-vertical-offset="14790">
           <folding>
             <element signature="e#1152#1448#0" expanded="false" />
             <element signature="n#createNewSubscriber#0;n#ciborium_stripe#0;n#!!top" expanded="false" />
