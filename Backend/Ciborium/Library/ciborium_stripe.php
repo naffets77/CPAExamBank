@@ -811,6 +811,7 @@ class ciborium_stripe{
         $whereArray = array();
 
         //remove key(s)
+        unset($inModuleArray['HasIsOneTimeSubscription']);
         unset($inModuleArray['IsOneTimeSubscription']);
 
         foreach($inModuleArray as $key => $value){
@@ -820,8 +821,6 @@ class ciborium_stripe{
         $orderBy = "SubscriptionTypeId ASC";
         $limit = "1";
         $preparedArray = null;
-
-        var_dump($whereClause);
 
         return database::select("SubscriptionType", $selectArray, $whereClause, $orderBy, $limit, $preparedArray, __METHOD__);
     }
