@@ -811,7 +811,7 @@ class ciborium_stripe{
         $whereArray = array();
 
         //remove key(s)
-        unset($inModuleArray['HasIsOneTimeSubscription']);
+        unset($inModuleArray['HasIsOneTimeSubscriptionModule']);
         unset($inModuleArray['IsOneTimeSubscription']);
 
         foreach($inModuleArray as $key => $value){
