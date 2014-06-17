@@ -205,6 +205,9 @@ $.COR.account.setupEvents = function () {
         $.COR.Utilities.FullScreenOverlay.loadExternal("/HTMLPartials/Account/ChangeCreditCard.html", "medium", false, function () {
 
             $("#update-subscription-holder .credit-card-info").show();
+
+
+
             $("#update-subscription-holder .amount-charged").html("$" + self.getSubscriptionTotal());
 
             if ($.COR.debug == true) {
@@ -485,6 +488,17 @@ $.COR.account.setupEvents = function () {
 
                 $("#update-subscription-holder .update-subscription").show();
 
+                if ($("#account_subscription_check-one-time").prop('checked')) {
+
+                    $("#update-subscription-holder .update-subscription .update-subscription-content").hide();
+                    $("#update-subscription-holder .update-subscription .one-time-charge-content").show();
+
+                }
+                else {
+                    $("#update-subscription-holder .update-subscription .one-time-charge-content").hide();
+                    $("#update-subscription-holder .update-subscription .update-subscription-content").show();
+                    
+                }
 
 
                 $("#update-subscription-holder .update-plan").on('click', function () {

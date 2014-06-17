@@ -70,25 +70,34 @@
     </div>
 
     <div class="update-subscription" style="display:none; margin:20px;">
-        
-        
+        <div class="update-subscription-content">
+            <p>
+                You are changing your subscription. After the change your credit card will be charged every month for
+                <span class="amount-charged"></span>. We will be charging immediatley a pro-rated amount less
+                than the full amount of the additional sections right now (We don't know this amount because it's
+                handled by our payment processor).
+                <br /><br />
+                For more information or any questions you may have check the <span class="link">FAQs</span>
+            </p>
 
-        <p>
-            You are changing your subscription. After the change your credit card will be charged every month for 
-            <span class="amount-charged"></span>. We will be charging immediatley a pro-rated amount less 
-            than the full amount of the additional sections right now (We don't know this amount because it's 
-            handled by our payment processor). 
-            <br /><br />
-            For more information or any questions you may have check the <span class="link">FAQs</span>
-        </p>
+            <p style="margin-top:20px; margin-bottom:20px; font-weight:bold;">
+                Your subscription total charge will become <span class="amount-charged"></span>.
+            </p>
 
-        <p style="margin-top:20px; margin-bottom:20px; font-weight:bold;">
-            Your subscription total charge will become <span class="amount-charged"></span>, and the first charge for the full amount 
-            will be <span class='subscription-renews-date'>some date</span>.
-        </p>
+            <button class="btn-orange btn-medium update-plan">Confirm Plan Update</button>
+        </div>
+        <div class="one-time-charge-content">
 
-        <button class="btn-orange btn-medium update-plan">Confirm Plan Update</button>
+            <p>
+                This is a one time charge that will give you access to everything cpaexambank.com has forever!
+            </p>
 
+            <p style="margin-top:20px; margin-bottom:20px; font-weight:bold;">
+                Your total charge will be <span class="amount-charged"></span>.
+            </p>
+
+            <button class="btn-orange btn-medium update-plan">Confirm Plan Update</button>
+        </div>
     </div>
 
     <div class="subscription-completed" style="display:none; margin:20px;">
