@@ -70,7 +70,7 @@ class service_stripe{
                 if(validate::isValidJSONString($myJSONString)){
                     $moduleArray = json_decode($myJSONString, true);
 
-                    if(isset($moduleArray['IsOneTimeSubscription']) && validate::isValidBool($moduleArray['IsOneTimeSubscription']) && (bool)$moduleArray['IsOneTimeSubscription']){
+                    if(isset($moduleArray['IsOneTimeSubscription']) && (bool)$moduleArray['IsOneTimeSubscription']){
                         $amountToCharge = 5000; //TODO: remove when making this dynamic
                         return $myStripeCharge = ciborium_stripe::chargePerpetualSubscription($_SESSION['Licenses']->StripeCustomerId, $moduleArray, $_SESSION['Licenses']->SubscriptionTypeId, $_SESSION['Licenses']->LicenseId, $_SESSION['Licenses']->AccountUserId, __METHOD__, 5000, $promoCode);
                     }

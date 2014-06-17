@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ad22b1d5-ae12-4b5d-870f-5b7c019cae0e" name="Default" comment="Added sp and PHP call to delete user's question history.">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_stripe.php" afterPath="$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_stripe.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Ciborium/Service/service_stripe.php" afterPath="$PROJECT_DIR$/Backend/Ciborium/Service/service_stripe.php" />
     </list>
     <ignored path="VaheCPA.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,10 +26,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="promotion.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="promotion.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Backend/Library/promotion.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="200" column="51" selection-start="6997" selection-end="6997" vertical-scroll-proportion="0.6147309" vertical-offset="2966" max-vertical-offset="3672">
+            <state line="16" column="7" selection-start="665" selection-end="665" vertical-scroll-proportion="-10.461538" vertical-offset="0" max-vertical-offset="3672">
               <folding />
             </state>
           </provider>
@@ -43,10 +44,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="service_stripe.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="service_stripe.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Service/service_stripe.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="72" column="134" selection-start="3142" selection-end="3142" vertical-scroll-proportion="-4.269231" vertical-offset="1002" max-vertical-offset="4947">
+            <state line="72" column="116" selection-start="3124" selection-end="3124" vertical-scroll-proportion="0.3328336" vertical-offset="1002" max-vertical-offset="4947">
               <folding />
             </state>
           </provider>
@@ -64,7 +65,7 @@
       <file leaf-file-name="ciborium_stripe.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_stripe.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="538" column="66" selection-start="28004" selection-end="28004" vertical-scroll-proportion="-2.6346154" vertical-offset="7530" max-vertical-offset="14552">
+            <state line="803" column="113" selection-start="39166" selection-end="39166" vertical-scroll-proportion="-6.5576925" vertical-offset="11865" max-vertical-offset="14705">
               <folding>
                 <element signature="e#1152#1448#0" expanded="false" />
                 <element signature="n#createNewSubscriber#0;n#ciborium_stripe#0;n#!!top" expanded="false" />
@@ -72,7 +73,6 @@
                 <element signature="e#3758#4001#0" expanded="false" />
                 <element signature="e#11056#11306#0" expanded="false" />
                 <element signature="e#13993#14170#0" expanded="false" />
-                <element signature="e#16153#16276#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -137,8 +137,8 @@
         <option value="$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_enums.php" />
         <option value="$PROJECT_DIR$/Backend/Library/account.php" />
         <option value="$PROJECT_DIR$/Backend/Ciborium/Library/ciboriumlib_account.php" />
-        <option value="$PROJECT_DIR$/Backend/Ciborium/Service/service_stripe.php" />
         <option value="$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_stripe.php" />
+        <option value="$PROJECT_DIR$/Backend/Ciborium/Service/service_stripe.php" />
       </list>
     </option>
   </component>
@@ -473,7 +473,6 @@
             <element signature="e#3758#4001#0" expanded="false" />
             <element signature="e#11056#11306#0" expanded="false" />
             <element signature="e#13993#14170#0" expanded="false" />
-            <element signature="e#16153#16276#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -654,31 +653,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_stripe.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="538" column="66" selection-start="28004" selection-end="28004" vertical-scroll-proportion="-2.6346154" vertical-offset="7530" max-vertical-offset="14552">
-          <folding>
-            <element signature="e#1152#1448#0" expanded="false" />
-            <element signature="n#createNewSubscriber#0;n#ciborium_stripe#0;n#!!top" expanded="false" />
-            <element signature="e#1569#1673#0" expanded="false" />
-            <element signature="e#3758#4001#0" expanded="false" />
-            <element signature="e#11056#11306#0" expanded="false" />
-            <element signature="e#13993#14170#0" expanded="false" />
-            <element signature="e#16153#16276#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Backend/Library/question.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="223" column="28" selection-start="12157" selection-end="12157" vertical-scroll-proportion="-0.0" vertical-offset="3791" max-vertical-offset="6647">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Service/service_stripe.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="134" selection-start="3142" selection-end="3142" vertical-scroll-proportion="-4.269231" vertical-offset="1002" max-vertical-offset="4947">
           <folding />
         </state>
       </provider>
@@ -692,7 +669,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Backend/Library/promotion.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="200" column="51" selection-start="6997" selection-end="6997" vertical-scroll-proportion="0.6147309" vertical-offset="2966" max-vertical-offset="3672">
+        <state line="16" column="7" selection-start="665" selection-end="665" vertical-scroll-proportion="-10.461538" vertical-offset="0" max-vertical-offset="3672">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Library/ciborium_stripe.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="803" column="113" selection-start="39166" selection-end="39166" vertical-scroll-proportion="-6.5576925" vertical-offset="11865" max-vertical-offset="14705">
+          <folding>
+            <element signature="e#1152#1448#0" expanded="false" />
+            <element signature="n#createNewSubscriber#0;n#ciborium_stripe#0;n#!!top" expanded="false" />
+            <element signature="e#1569#1673#0" expanded="false" />
+            <element signature="e#3758#4001#0" expanded="false" />
+            <element signature="e#11056#11306#0" expanded="false" />
+            <element signature="e#13993#14170#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Ciborium/Service/service_stripe.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="72" column="116" selection-start="3124" selection-end="3124" vertical-scroll-proportion="0.3328336" vertical-offset="1002" max-vertical-offset="4947">
           <folding />
         </state>
       </provider>

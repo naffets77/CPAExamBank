@@ -803,8 +803,15 @@ class ciborium_stripe{
         $selectArray = array("SubscriptionTypeId", "HasFARModule", "HasAUDModule", "HasBECModule", "HasREGModule", "StripePlanId");
         $whereClause = "IsSubscription = 1 AND IsPublic = 1 AND IsActive = 1 AND SubscriptionTypeId NOT IN (1, 15) AND ";
         $whereArray = array();
+
+        $keysToExclude = array(
+            "IsOneTimeSubscription"
+        );
         foreach($inModuleArray as $key => $value){
-            array_push($whereArray, $key."=".$value);
+            if(!in_array($key, $keysToExclude)){
+                array_push($whereArray, $key."=".$value);
+            }
+
         }
         $whereClause .= implode(" AND ", $whereArray);
         $orderBy = "SubscriptionTypeId ASC";
