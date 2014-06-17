@@ -303,7 +303,13 @@ class ciborium_stripe{
             foreach($inModuleArray as $key => $value){
                 array_push($errorMessageAppend, $key."==".$value);
             }
-            $errorMessage = "Subscription not found for inModuleArray (".implode(", ", $errorMessageAppend)."). Called by ".$inCaller;
+            $errorMessage = "";
+            if (count($mySubscriptions) > 1){
+                $errorMessage = "Multiple subscriptions found for inModuleArray (".implode(", ", $errorMessageAppend)."). Called by ".$inCaller;
+            }
+            else{
+                $errorMessage = "Subscription not found for inModuleArray (".implode(", ", $errorMessageAppend)."). Called by ".$inCaller;
+            }
             util_errorlogging::LogGeneralError(enum_LogType::Normal, $errorMessage, __METHOD__, __FILE__);
         }
 
@@ -804,14 +810,11 @@ class ciborium_stripe{
         $whereClause = "IsSubscription = 1 AND IsPublic = 1 AND IsActive = 1 AND SubscriptionTypeId NOT IN (1, 15) AND ";
         $whereArray = array();
 
-        $keysToExclude = array(
-            "IsOneTimeSubscription"
-        );
-        foreach($inModuleArray as $key => $value){
-            if(!in_array($key, $keysToExclude)){
-                array_push($whereArray, $key."=".$value);
-            }
+        //remove key(s)
+        unset($inModuleArray['IsOneTimeSubscription']);
 
+        foreach($inModuleArray as $key => $value){
+            array_push($whereArray, $key."=".$value);
         }
         $whereClause .= implode(" AND ", $whereArray);
         $orderBy = "SubscriptionTypeId ASC";
