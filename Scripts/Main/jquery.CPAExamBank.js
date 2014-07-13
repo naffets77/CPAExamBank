@@ -670,11 +670,11 @@ $(document).ready(function () {
 
 
             if (username.length > 0) {
-                $("#full-screen-container .registration-email").val($(".register-row .registration-email").val());
+                $("#full-screen-container .registration-email").val(username);
             }
 
             if (password.length > 0) {
-                $("#full-screen-container .registration-password").val($(".register-row .registration-password").val());
+                $("#full-screen-container .registration-password").val(password);
             }
 
             $(".registration-finish-button").trigger('click');
