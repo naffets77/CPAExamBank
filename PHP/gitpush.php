@@ -1,10 +1,10 @@
-<?php
+
 
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
 
-$command = "/usr/bin/git pull https://naffets77:!Naffets77@github.com/naffets77/VaheCPA 2>&$
+$command = "/usr/bin/git pull https://naffets77:!Naffets77@github.com/naffets77/VaheCPA 2>&1";
 
 
 
@@ -19,8 +19,8 @@ if(chdir("/srv/www/tprep/dev/")){
      if(system($command)){
          echo "<br /><br />Git request success:<br /><br /> ";
 
-        system("cp -r /srv/www/tprep/dev/Backend/Ciborium/Library/* /srv/lib/TPrepLib/dev/"$
-        system("cp -r /srv/www/tprep/dev/Backend/Ciborium/Service/* /srv/lib/TPrepServices/$
+        system("cp -r /srv/www/tprep/dev/Backend/Ciborium/Library/* /srv/lib/TPrepLib/dev/");
+        system("cp -r /srv/www/tprep/dev/Backend/Ciborium/Service/* /srv/lib/TPrepServices/dev/");
         system("cp -r /srv/www/tprep/dev/Backend/Library/* /srv/lib/_master/dev/");
     }
     else{
@@ -33,5 +33,3 @@ else{
 
 
 ?>
-
-
