@@ -206,11 +206,16 @@ $.COR.services.login = function (email, password, successCallback, failcallback)
 $.COR.services.register = function (email, password, sections, refSource, promoCode, callback) {
 
     if ($.COR.account.offline == false) {
+
+
+        var passwordMD5 = $.COR.Utilities.getURLParameter("register") != null && $.COR.Utilities.getURLParameter("p").length > 0 ?
+            password : $.COR.MD5(password);
+
         var ph = new $.COR.Utilities.PostHandler({
             service: "account", call: "registerNewUser",
             params: {
                 email: email,
-                password: $.COR.MD5(password),
+                password: passwordMD5,
                 promoCode: promoCode,
                 sections: JSON.stringify(sections),
                 referralSource : refSource

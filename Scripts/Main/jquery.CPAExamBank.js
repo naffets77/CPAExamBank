@@ -661,6 +661,24 @@ $(document).ready(function () {
         $.COR.defaultPromotion = $.COR.Utilities.getURLParameter("promo");
     }
 
+    if ($.COR.Utilities.getURLParameter("register") != null) {
+
+        var username = $.COR.Utilities.getURLParameter("u");
+        var password = $.COR.Utilities.getURLParameter("p");
+
+        if (username.length > 0) {
+            $("#full-screen-container .registration-email").val($(".register-row .registration-email").val());
+        }
+
+        if (password.length > 0) {
+            $("#full-screen-container .registration-password").val($(".register-row .registration-password").val());
+        }
+
+
+        $(".registration-finish-button").trigger('click');
+
+    }
+
 
 
 
@@ -769,19 +787,21 @@ $(document).ready(function () {
     $(window).hashchange();
 
 
-    if ($.COR.Utilities.getURLParameter("register")) {
-        $.COR.ShowRegPopup();
+    //if ($.COR.Utilities.getURLParameter("register")) {
+    //    $.COR.ShowRegPopup(function () {
 
-        //$('body,html').animate({
-        //    scrollTop: 0
-        //}, 800);
-        $("#header-login-container").show();
-    }
-    else {
-        $("#header-login-container").show();
-    }
+    //    });
 
+    //    //$('body,html').animate({
+    //    //    scrollTop: 0
+    //    //}, 800);
+    //    $("#header-login-container").show();
+    //}
+    //else {
+    //    $("#header-login-container").show();
+    //}
 
+    $("#header-login-container").show();
 
 });
 
