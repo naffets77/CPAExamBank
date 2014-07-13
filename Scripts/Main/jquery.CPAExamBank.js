@@ -666,17 +666,20 @@ $(document).ready(function () {
         var username = $.COR.Utilities.getURLParameter("u");
         var password = $.COR.Utilities.getURLParameter("p");
 
-        if (username.length > 0) {
-            $("#full-screen-container .registration-email").val($(".register-row .registration-email").val());
-        }
-
-        if (password.length > 0) {
-            $("#full-screen-container .registration-password").val($(".register-row .registration-password").val());
-        }
+        $.COR.ShowRegPopup(function () {
 
 
-        $(".registration-finish-button").trigger('click');
+            if (username.length > 0) {
+                $("#full-screen-container .registration-email").val($(".register-row .registration-email").val());
+            }
 
+            if (password.length > 0) {
+                $("#full-screen-container .registration-password").val($(".register-row .registration-password").val());
+            }
+
+            $(".registration-finish-button").trigger('click');
+
+        });
     }
 
 
