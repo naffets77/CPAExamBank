@@ -155,7 +155,7 @@ $.COR.services.login = function (email, password, successCallback, failcallback)
     if (COR.account.offline == false) {
         var ph = new $.COR.Utilities.PostHandler({
             service: "account", call: "login",
-            params: { email: email, password: $.COR.MD5(password) },
+            params: { email: email, password:  password.length == 32 ? password : $.COR.MD5(password) },
             success: function (data) {
 
                 if (data.Account != null) {
